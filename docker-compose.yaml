@@ -1,0 +1,14 @@
+version: '3'
+services:
+  server:
+    container_name: stylify-server
+    build: .
+    working_dir: /var/www/html
+    ports:
+      - 3000:3000
+    volumes:
+      - ./:/var/www/html
+    environment:
+        - DOMAIN=localhost
+        - SCHEME=http
+    tty: true
