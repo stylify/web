@@ -24,13 +24,15 @@
       ]
     },
     "types": [
-      "@nuxt/types",
-      "@nuxt/content",
-      "@types/node"
+		"@nuxt/types",
+		"@nuxt/content",
+		"@types/prismjs",
+		"@types/node"
     ]
   },
   "exclude": [
     "node_modules",
+	"stylify-packages",
     ".nuxt",
     "dist"
   ]

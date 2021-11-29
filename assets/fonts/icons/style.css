@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'stylify';
+  src: url('~assets/fonts/icons/fonts/stylify.woff?i2fnba') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'stylify' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-copy:before {
+  content: "\e906";
+}
+.icon-link:before {
+  content: "\e904";
+}
+.icon-x:before {
+  content: "\e905";
+}
+.icon-menu:before {
+  content: "\e900";
+}
+.icon-edit:before {
+  content: "\e901";
+}
+.icon-search:before {
+  content: "\e902";
+}
+.icon-arrow-down-circle:before {
+  content: "\e903";
+}
