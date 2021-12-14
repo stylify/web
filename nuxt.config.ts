@@ -1,5 +1,8 @@
 import { highlightCode } from "./services";
 
+const defaultPageTitle = 'Stylify';
+const defaultPageDescription = 'Stylify is a library that generates CSS dynamicly based on what you write.';
+
 export default {
 	// Global page headers: https://go.nuxtjs.dev/config-head
 	server: {
@@ -10,17 +13,24 @@ export default {
 	ssr: false,
 
 	head: {
-		title: 'Stylify',
+		title: defaultPageTitle,
 		htmlAttrs: {
 			lang: 'en'
 		},
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: '' },
+			{ hid: 'description', name: 'description', content: defaultPageDescription },
 			{ name: 'format-detection', content: 'telephone=no' },
 			{ name: 'msapplication-TileColor', content: '#01befe' },
-			{ name: 'theme-color', content: '#01befe' }
+			{ name: 'theme-color', content: '#01befe' },
+			// Open Graph
+			{ hid: 'og:title', property: 'og:title', content: 'Stylify' },
+			{ hid: 'og:image', property: 'og:image', content: '/images/og-image.jpg' },
+			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
+			// Twitter Card
+			{ hid: 'twitter:title', name: 'twitter:title', content: defaultPageTitle },
+			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription }
 		],
 		link: [
 			{ rel: 'apple-touch-icon', sizes: "180x180", href: '/images/favicon/apple-touch-icon.png' },
@@ -46,16 +56,6 @@ export default {
 		}
 	},
 
-	document: {
-		loaders: {
-			vue: {
-				compilerOptions: {
-				preserveWhitespace: true
-				}
-			}
-		}
-	},
-
 	components: true,
 
 	content: {
@@ -70,12 +70,11 @@ export default {
 		'@nuxt/typescript-build',
 		'@nuxtjs/stylelint-module',
 		'@nuxtjs/google-analytics',
-		"@stylify/nuxt-module"
+		'@stylify/nuxt-module'
 	],
 
 	modules: [
 		'@nuxt/content',
-		'@nuxt/image',
 		'@nuxtjs/sitemap'
 	],
 
@@ -88,7 +87,7 @@ export default {
 	],
 
 	googleAnalytics: {
-		id: 'UA-XXX-X'
+		id: 'G-4FSJEJPF2K'
 	}
 
 }

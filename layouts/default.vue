@@ -9,13 +9,13 @@
 		>
 				<div class="display:flex margin-bottom:24px width:100% md:width:auto md:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex align-items:center">
-						<nuxt-link to="/" class="text-decoration:none display:flex"><nuxt-img src="/images/logo.svg" alt="" width="180" height="42" class="width:120px md:width:180px"/></nuxt-link>
+						<nuxt-link to="/" class="text-decoration:none display:flex"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px"/></nuxt-link>
 					</section>
 					<section class="display:inline-flex justify-content:flex-end min-width:150px md:display:none">
 						<nav class="display:flex align-items:center">
-							<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><nuxt-img src="/images/brands/github-icon.svg" height="24" class="margin-left:12px" /></a>
-							<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><nuxt-img src="/images/brands/discord-icon.svg" height="24" class="margin-left:12px" /></a>
-							<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><nuxt-img src="/images/brands/twitter-icon.svg" height="24" class="margin-left:12px"/></a>
+							<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" /></a>
+							<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" /></a>
+							<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px"/></a>
 						</nav>
 					</section>
 				</div>
@@ -27,9 +27,9 @@
 				</section>
 				<section class="display:none md:display:inline-flex justify-content:flex-end min-width:150px">
 					<nav class="display:flex align-items:center">
-						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><nuxt-img src="/images/brands/github-icon.svg" height="24" class="margin-left:12px" /></a>
-						<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><nuxt-img src="/images/brands/discord-icon.svg" height="24" class="margin-left:12px" /></a>
-						<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><nuxt-img src="/images/brands/twitter-icon.svg" height="24" class="margin-left:12px"/></a>
+						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" /></a>
+						<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" /></a>
+						<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px"/></a>
 					</nav>
 				</section>
 			</div>
@@ -58,7 +58,7 @@
 				<hr class="margin-bottom:40px">
 				<section class="display:flex flex-direction:column justify-content:center align-items:center md:flex-direction:row md:justify-content:space-between">
 					<div class="margin-bottom:24px md:margin-bottom:0">
-						<nuxt-img src="/images/logo.svg" alt="" width="180" height="42" loading="lazy"/>
+						<img src="/images/logo.svg" alt="" width="180" height="42" loading="lazy"/>
 					</div>
 					<div class="text-align:center md:text-align:left">
 						Released under the MIT license

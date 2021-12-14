@@ -15,7 +15,7 @@ It provides information about the Runtime and the Compiler such as Variables lis
 
 See [how to install @stylify/profiler](/docs/profiler/installation-and-usage) and [how to create an extension](/docs/creating-extension).
 
-<!-- <nuxt-img src="/images/docs/profiler/screen1.png" format="webp" alt="" width="862" height="476" loading="lazy" class="border-radius:4px" /> -->
+<!-- <img src="/images/docs/profiler/screen1.png" alt="" width="862" height="476" loading="lazy" class="border-radius:4px" /> -->
 
 ## Preview
 ![image alt text](/images/docs/profiler/screen1.png)

@@ -38,7 +38,7 @@
 								position:relative display:inline-flex align-items:center hover:background-color:$blue2 border-radius:$radius1`
 							]"
 						>
-	 						<nuxt-img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
+	 						<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
 	 						<span>{{ sectionItem.navigationTitle }}</span>
 						</nuxt-link>
 					</nav>
@@ -51,7 +51,7 @@
 				<span>Show docs navigation</span>
 			</a>
 		</div>
-		<section class="width:100% max-width:800px padding:0__14px lg:padding:0 margin-left:auto margin-right:auto">
+		<section class="width:100% max-width:800px padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
  			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
 				<p>{{ pageContent.description }}</p>

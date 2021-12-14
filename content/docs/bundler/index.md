@@ -21,4 +21,4 @@ Bundler can be used with Webpack or Rollup.jss. You just have to integrate them.
 
 Check out [how to install the @stylify/bundler](/docs/bundler/installation-and-usage) and how to [configure it](/docs/bundler/configuration).
 
-<nuxt-img src="/images/docs/bundler/bundler.png" format="webp" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
+<img src="/images/docs/bundler/bundler.png" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
