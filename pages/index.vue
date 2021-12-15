@@ -221,7 +221,7 @@ new Compiler({
 let plainSelectorsDefaultCode = `
 new Compiler({
 	plainSelectors: {
-		input, button: \`
+		'input, button': \`
 			font-weight:bold color:#000
 			md:font-size:24px
 		\`,
