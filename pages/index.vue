@@ -70,7 +70,7 @@
 								If you want to apply the same style to multiple elements, then <strong>instead of duplicating multiple selectors, you can define a component</strong>.
 								<!-- </stylify-ignore> -->
 							</p>
-							<div class="max-width:800px lg:margin-left:24px width:50% display:flex flex-direction:column align-items:flex-start">
+							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
 								<code-editor
 									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
 									:defaultCode="componentsDefaultHtmlCode"
@@ -103,7 +103,7 @@
 								You can <strong>define variables in order to reuse values</strong>. For example for colors, shadows and etc.
 								<!-- </stylify-ignore> -->
 							</p>
-							<div class="max-width:800px lg:margin-left:24px width:50% display:flex flex-direction:column align-items:flex-start">
+							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
 								<code-editor
 									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
 									:defaultCode="variablesDefaultHtmlCode"

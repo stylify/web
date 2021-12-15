@@ -33,6 +33,7 @@
 		"eslint": "^7.29",
 		"eslint-plugin-nuxt": "^2.0",
 		"eslint-plugin-vue": "^7.12",
+		"fast-glob": "^3.2.7",
 		"sass": "^1.43",
 		"sass-loader": "10.1",
 		"stylelint": "^13.13",

@@ -1,4 +1,6 @@
 import { highlightCode } from "./services";
+import path from 'path';
+import fg from 'fast-glob';
 
 const defaultPageTitle = 'Stylify';
 const defaultPageDescription = 'Stylify is a library that generates CSS dynamicly based on what you write.';
@@ -10,7 +12,6 @@ export default {
 	},
 
 	target: 'static',
-	ssr: false,
 
 	head: {
 		title: defaultPageTitle,
@@ -46,13 +47,15 @@ export default {
 		'normalize.css/normalize.css'
 	],
 
-	router: {
-		extendRoutes(routes: any[], resolve: any) {
-			routes.push({
-				name: 'docs',
-				path: '/docs',
-				component: resolve(__dirname, 'pages/docs/_.vue')
-			})
+	generate: {
+		routes() {
+			const actualPath = __dirname;
+			const contentPath = path.join(actualPath, 'content');
+			let files = fg.sync(path.join(contentPath, 'docs', '**', '*.md'));
+
+			return files.map((file) => {
+				return file.replace(contentPath, '').replace('index.md', '').replace('.md', '');
+			});
 		}
 	},
 
