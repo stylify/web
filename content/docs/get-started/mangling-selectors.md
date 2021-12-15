@@ -4,7 +4,9 @@ section: get-started
 order: 3
 
 navigationTitle: "Mangling selectors"
-title: "How to mangle html class selectors using the Stylify Compiler."
+
+title: "Mangling Selectors"
+description: "How to mangle html class selectors using the Stylify Compiler."
 ---
 
 Selectors can be mangled using Compiler. This process works only on the backend side or during a build.

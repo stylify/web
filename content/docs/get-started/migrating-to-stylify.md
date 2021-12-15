@@ -4,7 +4,9 @@ section: get-started
 order: 4
 
 navigationTitle: "Migrating to Stylify"
-title: 'How to import Stylify into an existing project.'
+
+title: "Migrating to Stylify"
+description: "How to import Stylify into an existing project."
 ---
 
 If you are about to integrate the Stylify into an existing project you should start by rewriting small pieces of your application to minimize the integration errors and carefully remove all unused rewritten pieces of CSS.

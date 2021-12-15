@@ -6,7 +6,8 @@ order: 0
 
 navigationTitle: "@stylify/nuxt-module"
 
-title: "@stylify/nuxt-module provides provides seamless Stylify integration into the Nuxt.js."
+title: "@stylify/nuxt-module"
+description: "@stylify/nuxt-module provides provides seamless Stylify integration into the Nuxt.js."
 ---
 
 

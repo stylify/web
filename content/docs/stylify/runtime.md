@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: Runtime
 
-title: "Learn how to use the @stylify/stylify runtime and start using the Stylify in no time."
+title: "Runtime"
+description: "Learn how to use the @stylify/stylify runtime and start using the Stylify in no time."
 ---
 
 Runtime is ment to be used in a browser. Under the hood it uses Compiler. It generates CSS from any added or changed element.

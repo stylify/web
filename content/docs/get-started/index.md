@@ -6,8 +6,8 @@ order: 0
 
 navigationTitle: Get Started
 
-title: Get Started
-description: 'Stylify is a Library that generates CSS dynamically based on what you write. Learn how to use it!'
+title: "Get Started"
+description: "Stylify is a Library that generates CSS dynamically based on what you write. Learn how to use it!"
 ---
 
 Stylify is a Library that generates CSS dynamically based on what you write.

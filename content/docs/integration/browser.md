@@ -6,8 +6,8 @@ order: 1
 navigationTitle: Browser
 navigationIconPath: '/images/browser.svg'
 
-title: Browser integration
-description: 'Learn how to use Stylify in a browser directly without Node.js and bundlers.'
+title: "Browser integration"
+description: "Learn how to use Stylify in a browser directly without Node.js and bundlers."
 ---
 
 Stylify can be used directly in the browser using CDN or imported as a module.

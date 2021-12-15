@@ -5,7 +5,8 @@ order: 2
 
 navigationTitle: "Creating extension"
 
-title: "Learn how to create an extension for the stylify/profiler."
+title: "Creating extension"
+description: "Learn how to create an extension for the stylify/profiler."
 ---
 
 You can easily extend profiler by creating your own extension.

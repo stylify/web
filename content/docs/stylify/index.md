@@ -6,7 +6,8 @@ order: 0
 
 navigationTitle: "@stylify/stylify"
 
-title: "Stylify is a Library that generates CSS dynamically based on what you write."
+title: "@stylify/stylify"
+description: "Stylify is a Library that generates CSS dynamically based on what you write."
 ---
 
 Stylify is a Library that generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment.

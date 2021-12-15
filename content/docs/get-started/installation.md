@@ -4,7 +4,9 @@ section: get-started
 order: 1
 
 navigationTitle: "Installation"
-title: 'How to install the Stylify and a first usage.'
+
+title: "Installation"
+description: 'How to install the Stylify and a first usage.'
 ---
 
 Stylify can be used through CDN or installed via CLI like NPM or Yarn.

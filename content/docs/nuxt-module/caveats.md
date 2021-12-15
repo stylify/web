@@ -5,7 +5,8 @@ order: 3
 
 navigationTitle: "Caveats"
 
-title: "Limitations when using Stylify with Nuxt.js."
+title: "Caveats"
+description: "Limitations when using Stylify with Nuxt.js."
 ---
 
 Right now Stylify generates only one CSS file for the whole project and puts it into the assets/stylify.css file.

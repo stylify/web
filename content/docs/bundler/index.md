@@ -6,7 +6,8 @@ order: 0
 
 navigationTitle: "@stylify/bundler"
 
-title: "@stylify/bundler is a package for simple CSS generating and bundling in a project."
+title: "@stylify/bundler"
+description: "@stylify/bundler is a package for simple CSS generating and bundling in a project."
 ---
 
 Bundler is a package that provides functionality for creating CSS bundles for given files.

@@ -5,7 +5,8 @@ order: 2
 
 navigationTitle: "Configuration"
 
-title: "Learn how to configure the @stylify/nuxt-module."
+title: "Configuration"
+description: "Learn how to configure the @stylify/nuxt-module."
 ---
 
 By default @stylify/nuxt-module uses [Native preset](). You can change the configuration however you need.

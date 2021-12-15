@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: "Installation"
 
-title: "Learn how to install and use the @stylify/profiler."
+title: "Installation and usage"
+description: "Learn how to install and use the @stylify/profiler."
 ---
 
 Profiler can be used directly through CDN or installed using CLI like NPM or YARN.

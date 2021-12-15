@@ -5,7 +5,7 @@ order: 0
 
 navigationTitle: "Integrations"
 
-title: 'Integrations'
+title: "Integrations"
 description: "Learn how to integrate Stylify into Vue.js, Nuxt.js, Next.js or Symfony framework or Webpack."
 ---
 

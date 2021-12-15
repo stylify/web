@@ -5,7 +5,8 @@ order: 2
 
 navigationTitle: "Configuration"
 
-title: "Learn how to configure @stylify/bundler."
+title: "Configuration"
+description: "Learn how to configure @stylify/bundler."
 ---
 
 Bundler provides various options for configuration:

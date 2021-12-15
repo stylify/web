@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: "Installation"
 
-title: "Learn how to install and use the @stylify/bundler package."
+title: "Installation"
+description: "Learn how to install and use the @stylify/bundler package."
 ---
 
 Bundler can be only installed via CLI like NPM or Yarn.

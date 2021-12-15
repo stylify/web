@@ -6,7 +6,8 @@ order: 0
 
 navigationTitle: "@stylify/profiler"
 
-title: "Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify."
+title: "@stylify/profiler"
+description: "Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify."
 ---
 
 Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify.

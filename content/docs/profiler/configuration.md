@@ -5,7 +5,8 @@ order: 2
 
 navigationTitle: "Configuration"
 
-title: "Learn how to configure the @stylify/profiler."
+title: "Configuration"
+configuration: "Learn how to configure the @stylify/profiler."
 ---
 
 Profiler can be configured inside a browser or during an initialization.

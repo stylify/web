@@ -54,7 +54,6 @@
 		<section class="width:100% max-width:800px padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
  			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
-				<p>{{ pageContent.description }}</p>
 				<nuxt-content :document="pageContent" />
 			</article>
 			<div class="display:flex justify-content:space-between margin-bottom:24px">

@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: Native Preset
 
-title: "Native preset is a prepared configuration for Stylify with 678 selector types you can use."
+title: "Native Preset"
+description: "Native preset is a prepared configuration for Stylify with 678 selector types you can use."
 ---
 
 Native preset is a prepared configuration for Stylify that consist of predefined macro, screens and helpers.

@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: "Installation"
 
-title: "Learn how to install and use the @stylify/nuxt-module."
+title: "Installation and usage"
+description: "Learn how to install and use the @stylify/nuxt-module."
 ---
 
 Nuxt module can be installed only via CLI like NPM or Yarn.

@@ -4,7 +4,9 @@ section: stylify
 order: 1
 
 navigationTitle: Compiler
-title: "Stylify Compiler is a tool for generating CSS, mangling selectors and a lot more."
+
+title: "Compiler"
+description: "Stylify Compiler is a tool for generating CSS, mangling selectors and a lot more."
 ---
 
 Compiler provides a method for generating CSS according to given configuration from a given content and a method that can rewrite (mangle) selectors in a given content.

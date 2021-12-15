@@ -4,7 +4,9 @@ section: get-started
 order: 2
 
 navigationTitle: "Writing first CSS"
-title: "How to start using Stylify. First selectors and configuration."
+
+title: "Writting first CSS"
+description: "How to start using Stylify. First selectors and configuration."
 ---
 
 In all the examples bellow we are going to use the [Native Preset](/docs/stylify/native-preset). This preset contains a macro that allows us to write selectors in the similar syntax as CSS properties.

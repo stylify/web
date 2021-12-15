@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Nuxt.js"
 navigationIconPath: '/images/brands/nuxtjs-icon.svg'
 
-title: Nuxt.js integration
+title: "Nuxt.js integration"
 description: "Learn how to integrate Stylify easily into the Nuxt.js."
 ---
 

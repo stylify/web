@@ -5,7 +5,8 @@ order: 1
 
 navigationTitle: "Installation"
 
-title: "How to install and use @stylify/autoprefixer."
+title: "Installation"
+description: "How to install and use @stylify/autoprefixer."
 ---
 
 Autoprefixer can be installed only via CLI like NPM or Yarn.
