@@ -87,7 +87,7 @@ export default {
 	],
 
 	googleAnalytics: {
-		id: 'G-4FSJEJPF2K'
+		id: 'UA-215428942-1'
 	}
 
 }
