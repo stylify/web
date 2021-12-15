@@ -261,7 +261,7 @@ new Compiler({
 		},
 	},
 	macros: {
-		'text:(\\S+)': function (macroMatch, selectorProperties) {
+		'text:(\\\\S+)': function (macroMatch, selectorProperties) {
 			const property = this.helpers.textPropertyType(
 				macroMatch.getCapture(0)
 			);
