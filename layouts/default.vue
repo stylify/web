@@ -77,13 +77,6 @@ import { DocsRepository } from '~/services/model';
 export default {
 	head: {
 		title: 'Stylify',
-		meta: [
-			{
-			hid: 'description',
-			name: 'description',
-			content: 'my website description'
-			}
-		],
 		link: [
 			{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
 			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' },
