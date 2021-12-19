@@ -2,7 +2,7 @@ import { highlightCode } from "./services";
 import path from 'path';
 import fg from 'fast-glob';
 
-const defaultPageTitle = 'Stylify';
+const defaultPageTitle = 'Stylify. Dynamic CSS Generator. Write HTML. Get CSS.';
 const defaultPageDescription = 'Stylify is a library that generates CSS dynamicly based on what you write.';
 
 export default {
@@ -48,6 +48,7 @@ export default {
 	],
 
 	generate: {
+		fallback: '404.html',
 		routes() {
 			const actualPath = __dirname;
 			const contentPath = path.join(actualPath, 'content');

@@ -50,7 +50,7 @@ When using the Native Preset you can use its internal helpers for lightening or 
 
 <!-- <stylify-ignore> -->
 <example-editor layout="column">
-<div class="color:lighten(#222) ddd color:darken(#eee) background:colorToRgb(#aaa,__0.5)">
+<div class="color:lighten(#222,10) ddd color:darken(#eee,10) background:colorToRgb(#aaa,__0.5)">
 	Hello World!
 </div>
 </example-editor>
@@ -72,7 +72,7 @@ const configuration = {
 	compiler: {
 		variables: {
 			blue1: '#01befe',
-			blue2: '#f2fcff',
+			blue2: '#f2fcff'
 		},
 		macros: {
 			'color:(\\S+)': function (macroMatch, cssProperties): void {

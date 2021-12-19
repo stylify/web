@@ -95,7 +95,7 @@ export default {
 		const docsRepository = new DocsRepository(this.$root.context.$content);
 
 		const getStartedLinks = await docsRepository.findBySection({ section: 'get-started', only: linksRequiredData });
-		const integrationLinks = await docsRepository.findBySection({ section: 'integration', only: linksRequiredData });
+		const integrationLinks = await docsRepository.findBySection({ section: 'integrations', only: linksRequiredData });
 
 		this.getStartedLinks = getStartedLinks;
 		this.integrationLinks = integrationLinks;

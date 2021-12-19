@@ -1,6 +1,6 @@
 ---
-slug: 'integration'
-section: integration
+slug: 'integrations'
+section: integrations
 order: 0
 
 navigationTitle: "Integrations"
@@ -18,3 +18,4 @@ All integration examples can be found in the [integration examples repository](h
 </template></note>
 
 <integration-blocks />
+

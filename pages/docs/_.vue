@@ -147,7 +147,7 @@ export default {
 			'get-started': {
 				sort: ['order', 'asc']
 			},
-			'integration': {},
+			'integrations': {},
 			'stylify': {},
 			'bundler': {},
 			'profiler': {},

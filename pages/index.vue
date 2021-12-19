@@ -55,7 +55,7 @@
 						<div v-show="featuresSelectedTab === 'dynamicSelectors'" class="display:flex flex-direction:column lg:flex-direction:row">
 							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
 								<!-- <stylify-ignore> -->
-								Stylify ships without predefined CSS. Thanks to that it will not slow your build with unused selectors or unnecessary CSS purging. <strong>You can write any selector you want</strong>. Just instead of spaces use  “__” (two spaces) and instead of quotes “,,” (two commans).
+								Stylify ships without predefined CSS. Thanks to that it will not slow your build with unused selectors or unnecessary CSS purging. <strong>You can write any selector you want</strong>. Just instead of spaces use  “__” (two underscores) and instead of quotes “^” (hat).
 								<!-- </stylify-ignore> -->
 							</p>
 							<code-editor
@@ -170,7 +170,7 @@
 					Stylify can be used in node.js and in the browser directly. You can use <strong class="white-space:nowrap">@stylify/bundler</strong> for bundling files and <strong class="white-space:nowrap">@stylify/nuxt-module</strong> in case you use Nuxt.
 				</p>
 				<div>
-					<nuxt-link to="/docs/integration" class="hp__section-more-info-link">
+					<nuxt-link to="/docs/integrations" class="hp__section-more-info-link">
 						<span>Learn more</span>
 						<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
 					</nuxt-link>

@@ -17,7 +17,11 @@ For easier start, create an index.html file, copy the code bellow into it and ch
 <div class="color:steelblue">
 	Hello World!
 </div>
-<script src="https://unpkg.com/@stylify/stylify@0.0.2/dist/stylify.native.min.js"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"
+    integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE="
+    crossorigin="anonymous"
+></script>
 ```
 
 <note><template>
