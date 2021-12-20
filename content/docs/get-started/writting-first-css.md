@@ -67,6 +67,7 @@ There are many options to configure in the Stylify. The example bellow covers on
 
 Stylify let's you configure for example variables, macros, components, and screens.
 
+<!-- <stylify-ignore> -->
 ```js
 const configuration = {
 	compiler: {
@@ -99,6 +100,7 @@ const configuration = {
 
 Stylify.runtime.configure(configuration);
 ```
+<!-- </stylify-ignore> -->
 
 You can then use your configuration during the development:
 

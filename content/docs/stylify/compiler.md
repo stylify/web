@@ -88,6 +88,7 @@ Because selectors are inside class attributes and therefore can be wrapped by a 
 font-family:^Open__Sans^ => font-family:'Open Sans'
 content:^Some__long__content^ => content:'Some long content'
 ```
+
 <!-- </stylify-ignore> -->
 
 ## Logical operands in screens
@@ -144,6 +145,7 @@ Macros are used to match selectors and generate css according to the match. The 
 
 Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,255)` => `_abc123`.
 
+<!-- <stylify-ignore> -->
 ```js
 const compilerConfig = {
 	macros: {
@@ -155,6 +157,7 @@ const compilerConfig = {
 	},
 };
 ```
+<!-- </stylify-ignore> -->
 
 Usage:
 <!-- <stylify-ignore> -->

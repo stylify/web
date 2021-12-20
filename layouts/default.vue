@@ -68,6 +68,7 @@
 				</section>
 			</div>
 		</footer>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
 	</div>
 </template>
 
@@ -75,14 +76,6 @@
 import { DocsRepository } from '~/services/model';
 
 export default {
-	head: {
-		title: 'Stylify',
-		link: [
-			{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap' }
-		]
-	},
 	fetch: async function () {
 		const linksRequiredData = ['navigationTitle', 'path', 'dir'];
 		const docsRepository = new DocsRepository(this.$root.context.$content);

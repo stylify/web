@@ -19,6 +19,10 @@ pre code {
 	background: #282a36;
 }
 
+.prism-editor-wrapper .prism-editor__container {
+	overflow: visible;
+}
+
 .prism-editor__editor,
 .code-editor__wrapper,
 code[class*="language-"],
@@ -28,7 +32,7 @@ pre[class*="language-"] {
 	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
 	text-align: left;
-	white-space: pre;
+	white-space: pre !important;
 	word-spacing: normal;
 	word-break: normal;
 	word-wrap: normal;

@@ -16,7 +16,7 @@
 				]"
 			>
 				<div>
-					<div class="padding:8px__12px__0__12px xl:padding:8px__24px__0__24px color:#fff">
+					<div class="padding:8px__12px__0__12px xl:padding:8px__24px__0__24px color:#fff white-space:nowrap overflow:auto">
 						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? '' : 'btn--transparent', 'btn color:#fff']" >Editor</a>
 						<a role="button" v-on:click="selectedTab = 'css'" :class="[selectedTab === 'css' ? '' : 'btn--transparent', 'btn']" >CSS</a>
 						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'mangledHtml'" :class="[selectedTab === 'mangledHtml' ? '' : 'btn--transparent', 'btn']" >Mangled HTML</a>

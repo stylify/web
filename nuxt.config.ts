@@ -3,10 +3,9 @@ import path from 'path';
 import fg from 'fast-glob';
 
 const defaultPageTitle = 'Stylify. Dynamic CSS Generator. Write HTML. Get CSS.';
-const defaultPageDescription = 'Stylify is a library that generates CSS dynamicly based on what you write.';
+const defaultPageDescription = 'Stylify is a library that generates CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
 
 export default {
-	// Global page headers: https://go.nuxtjs.dev/config-head
 	server: {
 		host: '0.0.0.0'
 	},
@@ -34,11 +33,14 @@ export default {
 			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription }
 		],
 		link: [
-			{ rel: 'apple-touch-icon', sizes: "180x180", href: '/images/favicon/apple-touch-icon.png' },
-			{ rel: 'icon', type: "image/png", size: "32x32", href: '/images/favicon/favicon-32x32.png' },
-			{ rel: 'icon', type: 'image/png', size: "16x16", href: '/images/favicon/favicon-16x16.png' },
+			{ rel: 'apple-touch-icon', sizes: "180x180", href: '/images/favicon/apple-touch-icon.png?v2' },
+			{ rel: 'icon', type: "image/png", size: "32x32", href: '/images/favicon/favicon-32x32.png?v2' },
+			{ rel: 'icon', type: 'image/png', size: "16x16", href: '/images/favicon/favicon-16x16.png?v2' },
 			{ rel: 'manifest', href: '/site.webmanifest' },
-			{ rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: "#5bbad5" }
+			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
+			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
+			{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' }
 		]
 	},
 

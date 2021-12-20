@@ -9,17 +9,113 @@
 					Write HTML. Get CSS.
 				</p>
 				<div class="margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px margin-bottom:40px">
-					<nuxt-link to="/docs/get-started" class="btn margin-left:24px margin-bottom:24px">Go ahead. Try it now!</nuxt-link>
-					<span
-						class="
-							padding:8px__12px border:1px__solid__#E7E7E7 margin-bottom:24px line-height:1
-							margin-left:24px background-color:$grey1 border-radius:$radius2
-							md:padding:12px__24px
-						"
-					>npm i @stylify/stylify</span>
+					<nuxt-link to="/docs/get-started" class="btn margin-left:24px margin-bottom:24px box-shadow:$shadow1">Go ahead. Try it now!</nuxt-link>
+					<a :href="'#' + filters.webalize('Installation')" class="btn btn--transparent color:#000 md:padding:12px__24px box-shadow:$shadow1 margin-bottom:24px margin-left:24px">Installation</a>
 				</div>
 
 				<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
+			</section>
+		</div>
+		<div :id="filters.webalize('Installation')">
+			<section class="container margin-bottom:90px md:margin-bottom:135px">
+				<h2 class="hp__section-title">Installation</h2>
+				<p class="hp__section-subtitle">
+					Stylify packages can be used directly through CDN or installed using CLI like NPM or YARN.<br>
+					<small class="font-size:16px line-height:27px">(Always use specific version on production like 1.0.0 for CDN instead of the latest.)</small>
+				</p>
+				<div class="hp__section-content">
+					<div
+						class="
+							margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:32px
+							overflow:auto
+							md:margin-left:-12px md:margin-right:-24px
+							lg:margin-left:-8px
+						"
+					>
+						<a role="button" v-on:click="installationSelectedTab = 'stylify'" :class="[installationSelectedTab === 'stylify' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Stylify</a>
+						<a role="button" v-on:click="installationSelectedTab = 'bundler'" :class="[installationSelectedTab === 'bundler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Bundler</a>
+						<a role="button" v-on:click="installationSelectedTab = 'profiler'" :class="[installationSelectedTab === 'profiler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Profiler</a>
+						<a role="button" v-on:click="installationSelectedTab = 'nuxtModule'" :class="[installationSelectedTab === 'nuxtModule' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Nuxt.js Module</a>
+						<a role="button" v-on:click="installationSelectedTab = 'autoprefixer'" :class="[installationSelectedTab === 'autoprefixer' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Autoprefixer</a>
+					</div>
+					<div>
+						<div v-show="installationSelectedTab === 'stylify'">
+							<div class="margin-bottom:24px">
+								<nuxt-link to="/docs/stylify" class="hp__section-more-info-link">
+									<span>Stylify documentation</span>
+									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
+								</nuxt-link>
+							</div>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 margin-bottom:24px"
+								:defaultCode="stylifyCdnDefaultCode"
+								readonly
+							/>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								:defaultCode="stylifyCliDefaultCode"
+								readonly
+							/>
+						</div>
+						<div v-show="installationSelectedTab === 'bundler'">
+							<div class="margin-bottom:24px">
+								<nuxt-link to="/docs/bundler" class="hp__section-more-info-link">
+									<span>Bundler documentation</span>
+									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
+								</nuxt-link>
+							</div>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								:defaultCode="bundlerCliDefaultCode"
+								readonly
+							/>
+						</div>
+						<div v-show="installationSelectedTab === 'profiler'">
+							<div class="margin-bottom:24px">
+								<nuxt-link to="/docs/profiler" class="hp__section-more-info-link">
+									<span>Profiler documentation</span>
+									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
+								</nuxt-link>
+							</div>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 margin-bottom:24px"
+								:defaultCode="profilerCdnDefaultCode"
+								readonly
+							/>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								:defaultCode="profilerCliDefaultCode"
+								readonly
+							/>
+						</div>
+						<div v-show="installationSelectedTab === 'nuxtModule'">
+							<div class="margin-bottom:24px">
+								<nuxt-link to="/docs/nuxt-module" class="hp__section-more-info-link">
+									<span>Nuxt.js module documentation</span>
+									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
+								</nuxt-link>
+							</div>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								:defaultCode="nuxtModuleCliDefaultCode"
+								readonly
+							/>
+						</div>
+						<div v-show="installationSelectedTab === 'autoprefixer'">
+							<div class="margin-bottom:24px">
+								<nuxt-link to="/docs/autoprefixer" class="hp__section-more-info-link">
+									<span>Autoprefixer documentation</span>
+									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
+								</nuxt-link>
+							</div>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								:defaultCode="autoprefixerCliDefaultCode"
+								readonly
+							/>
+						</div>
+					</div>
+				</div>
 			</section>
 		</div>
 
@@ -195,13 +291,77 @@
 	</div>
 </template>
 
+<!-- <stylify-ignore> -->
 <script>
 import CodeEditor from '~/components/CodeEditor.vue';
+
+
+const stylifyCdnDefaultCode = `
+<!-- UMD - Runtime only -->
+<script
+	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"
+	integrity="sha256-CCqsfSP+nkhwN2Ga8cCdSRKlOEuvqNjOyVevAthK9Ns="
+	crossorigin="anonymous"
+><\/script>
+
+<!-- UMD - Runtime + Native Preset -->
+<script
+	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"
+	integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE="
+	crossorigin="anonymous"
+><\/script>
+
+<!-- ESM - Complete @stylify/stylify library -->
+<script
+	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/esm/index.min.js"
+	integrity="sha256-MgcGTt8YGa/d9U4XloYDL8xp1XtsJkkYqJhzvqXKJgI="
+	crossorigin="anonymous"
+><\/script>
+`.trim();
+
+const stylifyCliDefaultCode = `
+yarn add @stylify/stylify
+
+npm i @stylify/stylify
+`.trim();
+
+const bundlerCliDefaultCode = `
+yarn add @stylify/stylify
+
+npm i @stylify/stylify
+`.trim();
+
+const profilerCdnDefaultCode = `
+<!-- UMD - Profiler -->
+<script
+	src="https://cdn.jsdelivr.net/npm/@stylify/profiler@latest/dist/profiler.min.js"
+	integrity="sha256-todmivx6lvBSy4MF5GAKw1lhhIhbb/0AOcXo6tAemKY="
+	crossorigin="anonymous"
+><\/script>
+`.trim();
+
+const profilerCliDefaultCode = `
+yarn add -D @stylify/profiler
+
+npm i -D @stylify/profiler
+`.trim();
+
+const nuxtModuleCliDefaultCode = `
+yarn add @stylify/nuxt-module
+
+npm i @stylify/nuxt-module
+`.trim();
+
+const autoprefixerCliDefaultCode = `
+yarn add @stylify/autoprefixer
+
+npm i @stylify/autoprefixer
+`.trim();
 
 const dynamicSelectorsDefaultCode = `
 <div class="
 	border:2px__solid__blue
-	content:,,Hello World,,
+	content:^Hello World^
 	transition:color__0.3s__ease-in-out
 	width:calc(100%__*__1/4__-24px)
 "></div>`.trim();
@@ -273,8 +433,24 @@ new Compiler({
 });`.trim();
 
 export default {
-  components: { CodeEditor },
+	components: { CodeEditor },
 	data: () => ({
+		// Installation tabs
+		installationSelectedTab: 'stylify',
+
+		stylifyCdnDefaultCode: stylifyCdnDefaultCode,
+		stylifyCliDefaultCode: stylifyCliDefaultCode,
+
+		bundlerCliDefaultCode: bundlerCliDefaultCode,
+
+		profilerCdnDefaultCode: profilerCdnDefaultCode,
+		profilerCliDefaultCode: profilerCliDefaultCode,
+
+		nuxtModuleCliDefaultCode: nuxtModuleCliDefaultCode,
+
+		autoprefixerCliDefaultCode: autoprefixerCliDefaultCode,
+
+		// Features tabs
 		featuresSelectedTab: 'dynamicSelectors',
 		dynamicSelectorsDefaultCode: dynamicSelectorsDefaultCode,
 		componentsDefaultHtmlCode: componentsDefaultHtmlCode,
@@ -287,3 +463,4 @@ export default {
 	})
 }
 </script>
+<!-- </stylify-ignore> -->
