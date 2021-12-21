@@ -9,6 +9,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 assets/stylify.css
+assets/scss/variables/stylify-variables.scss
 
 # Runtime data
 pids
