@@ -83,6 +83,8 @@ bundler.bundle([
 		// This selector is used EXACTLY as you set it. So if you use space on the end,
 		// the space will be used in the scope.
 		scope: '#my-scope',
+		// Compiler config can be bundle specific
+		compilerConfig: {}
 		// When a bundle is bundled, this callback is called
 		callback: (bundleConfig, bundleBuildCache) => {
 			console.log(bundleConfig);

@@ -178,9 +178,13 @@ const compilerConfig = {
 		blue: '#01befe',
 		shadow: '0 8px 32px -8px rgb(0, 0, 0, 0.2)'
 	},
+	// By default variables are replaced by their value. If this option is enabled, they
+	// are replaced by var(--variableName) and can be more dynamic.
+	// This is great for example for switching between light and dark mode.
+	replaceVariablesByCssVariables: false,
 	// By default, variables are automatically injected into the generated CSS as CSS variables.
 	// You can change this behavior by setting the option bellow to false
-	injectVariablesIntoCss = true
+	injectVariablesIntoCss: true
 };
 ```
 

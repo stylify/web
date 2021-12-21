@@ -14,6 +14,9 @@
 						<i class="icon icon-x color:$blue1 font-weight:bold"></i>
 					</a>
 				</div>
+				<div>
+					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
+				</div>
 				<section v-for="(sectionItems, sectionName) in navigationItems" :key="sectionName" class="margin-bottom:12px">
 					<nuxt-link
 						:to="sectionItems[0].dir"

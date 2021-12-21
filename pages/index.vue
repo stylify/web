@@ -21,7 +21,8 @@
 				<h2 class="hp__section-title">Installation</h2>
 				<p class="hp__section-subtitle">
 					Stylify packages can be used directly through CDN or installed using CLI like NPM or YARN.<br>
-					<small class="font-size:16px line-height:27px">(Always use specific version in production like 1.0.0 for CDN instead of the latest.)</small>
+					<small class="font-size:16px line-height:27px display:block margin-bottom:8px">(Always use specific version in production like 1.0.0 for CDN instead of the latest.)</small>
+					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener" class="display:inline-flex"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
 				</p>
 				<div class="hp__section-content">
 					<div
