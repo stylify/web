@@ -21,7 +21,7 @@
 				<h2 class="hp__section-title">Installation</h2>
 				<p class="hp__section-subtitle">
 					Stylify packages can be used directly through CDN or installed using CLI like NPM or YARN.<br>
-					<small class="font-size:16px line-height:27px">(Always use specific version on production like 1.0.0 for CDN instead of the latest.)</small>
+					<small class="font-size:16px line-height:27px">(Always use specific version in production like 1.0.0 for CDN instead of the latest.)</small>
 				</p>
 				<div class="hp__section-content">
 					<div
