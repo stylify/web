@@ -7,7 +7,13 @@ navigationTitle: "Vite.js"
 navigationIconPath: '/images/brands/vitejs.svg'
 
 title: "Vite.js integration"
+description: "Learn how to use the Stylify utilify-first CSS generator along with the Vite.js."
 ---
+
+Stylify can be integrated into the Vite.js using @stylify/bundler.
+
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src/App.vue"></stack-blitz-link>
+
 
 <note><template>
 Integration example for the Vite.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/vitejs" target="_blank" rel="noopener">integrations examples repository</a>.

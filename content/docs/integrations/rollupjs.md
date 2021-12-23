@@ -7,6 +7,7 @@ navigationTitle: "Rollup.js"
 navigationIconPath: '/images/brands/rollupjs.svg'
 
 title: Rollup.js integration
+description: "Learn how to use the Stylify utilify-first CSS generator along with the Rollup.js."
 ---
 
 <note><template>

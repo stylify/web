@@ -7,6 +7,7 @@ navigationTitle: "Symfony"
 navigationIconPath: '/images/brands/symfony-icon.svg'
 
 title: Symfony Framework integration
+description: "Learn how to integrate the Stylify utilify-first CSS generator into the Symfony Framework."
 ---
 
 <note><template>

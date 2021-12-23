@@ -92,8 +92,14 @@ export default {
 		'~plugins/index.ts'
 	],
 
+	// gtag("consent","default",{ad_storage:"denied",analytics_storage:"denied"})
 	googleAnalytics: {
-		id: 'UA-215428942-1'
+		id: 'UA-215428942-1',
+		storage: 'none',
+		debug: {
+			enabled: process.env.NODE_ENV !== 'production',
+			sendHitTask: true,
+		}
 	}
 
 }

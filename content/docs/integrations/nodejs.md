@@ -7,7 +7,7 @@ navigationTitle: Node.js
 navigationIconPath: '/images/brands/nodejs.svg'
 
 title: "Node.js integration"
-description: "Learn how to use Stylify in the Node.js environment."
+description: "Learn how to use the Stylify utility-first CSS generator in the Node.js environment."
 ---
 
 Stylify can be used in two ways in the Node.js environment. Directly through [@stylify/stylify](/docs/stylify) or using the [@stylify/bundler](/docs/bundler) package.

@@ -7,6 +7,7 @@ navigationTitle: "Nette"
 navigationIconPath: '/images/brands/nette.png'
 
 title: Nette Framework integration
+description: "Learn how to integrate the Stylify utilify-first CSS generator into the Nette Framework."
 ---
 
 Since Nette Framework doesn't have any native integration of own CSS loader, you have to build your own. The easiest way is to use Stylify along with the Nette Framework is to use the [Bundler](/docs/bundler), [Webpack](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs).

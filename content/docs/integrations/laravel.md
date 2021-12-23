@@ -7,7 +7,7 @@ navigationTitle: "Laravel"
 navigationIconPath: '/images/brands/laravel.svg'
 
 title: Laravel Framework integration
-description: ""
+description: "Learn how to integrate he Stylify utilify-first CSS generator into the Laravel Framework."
 ---
 
 Laravel uses internally its own integration of Webpack. Thanks to that the Stylif integration and configuration is similar to the [Webpack](/docs/integrations/webpack) configuration.

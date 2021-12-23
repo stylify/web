@@ -7,8 +7,12 @@ navigationTitle: "Next.js"
 navigationIconPath: '/images/brands/nextjs.svg'
 
 title: Next.js integration
+description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Next.js."
 ---
 
+Stylify can be easily integrated into the Next.js using @stylify/bundler and Webpack plugin.
+
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages/index.js"></stack-blitz-link>
 
 <note><template>
 Integration example for the Next.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nextjs" target="_blank" rel="noopener">integrations examples repository</a>.

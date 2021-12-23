@@ -7,7 +7,7 @@ navigationTitle: "Webpack"
 navigationIconPath: '/images/brands/webpack-icon.svg'
 
 title: Webpack integration
-description: ''
+description: "Learn how to use the Stylify utilify-first CSS generator along with Webpack."
 ---
 
 <note><template>

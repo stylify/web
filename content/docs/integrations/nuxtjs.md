@@ -7,12 +7,14 @@ navigationTitle: "Nuxt.js"
 navigationIconPath: '/images/brands/nuxtjs-icon.svg'
 
 title: "Nuxt.js integration"
-description: "Learn how to integrate Stylify easily into the Nuxt.js."
+description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Nuxt.js."
 ---
 
 For easier integration into the Nuxt.js, there is a package named [@stylify/nuxt-module](/docs/nuxt-module).
 
 It is focused on seamless integration and also provides an extension for profiler that will show you what is your configuration or what the size of your CSS is.
+
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-nuxtjs-template?devtoolsheight=33&file=pages/index.vue"></stack-blitz-link>
 
 <note><template>
 Integration example for the Nuxt.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nuxtjs" target="_blank" rel="noopener">integrations examples repository</a>.
