@@ -40,7 +40,9 @@ export default {
 			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
 			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
 			{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' }
+			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' },
+			{ rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap', as: "font" },
+			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap', loading: "eager"}
 		]
 	},
 
