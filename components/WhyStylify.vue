@@ -37,7 +37,7 @@
 				<span>Dynamic Screens</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>Combine screens using logical operands like <code class="white-space:nowrap">sm&&tolg</code>, <code class="white-space:nowrap">xl||landscape</code> and <code class="white-space:nowrap">lg&&dark</code>.</li>
+				<li>Combine screens using <nuxt-link to="/docs/stylify/compiler#logical-operands-in-screens" class="color:$blue1">logical operands</nuxt-link> like <code class="white-space:nowrap">sm&&tolg</code>, <code class="white-space:nowrap">xl||landscape</code> and <code class="white-space:nowrap">lg&&dark</code>.</li>
 				<li>Use dynamic values such as <code class="white-space:nowrap">minw640px</code>. This feature minimizes the amount of defined screens and makes them more flexible.</li>
 			</ul>
 		</div>
@@ -57,7 +57,7 @@
 				<span>Seamless integration</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>Integrated Stylify easily into the <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>. It works well along with <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link> and <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link>. The CSS can be generated easily for <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/nette" class="color:$blue1">Nette</nuxt-link> or <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link>.</li>
+				<li>Integrate Stylify easily into the <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>. It works well along with <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link> and <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link>. The CSS can be generated easily for <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/nette" class="color:$blue1">Nette</nuxt-link> or <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link>.</li>
 				<li>Generated CSS can be used within SCSS, Less and Stylus projects.</li>
 			</ul>
 		</div>
