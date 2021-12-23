@@ -98,6 +98,7 @@ export default {
 	googleAnalytics: {
 		id: 'UA-215428942-1',
 		storage: 'none',
+		dev: process.env.NODE_ENV !== 'production',
 		debug: {
 			enabled: process.env.NODE_ENV !== 'production',
 			sendHitTask: true,
