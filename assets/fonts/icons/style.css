@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'stylify';
-  src: url('~assets/fonts/icons/fonts/stylify.woff?i2fnba') format('woff');
+  src: url('~assets/fonts/icons/fonts/stylify.woff?bijkov') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -41,4 +41,22 @@
 }
 .icon-arrow-down-circle:before {
   content: "\e903";
+}
+.icon-heart:before {
+  content: "\e90c";
+}
+.icon-layout:before {
+  content: "\e90a";
+}
+.icon-layers:before {
+  content: "\e909";
+}
+.icon-settings:before {
+  content: "\e90b";
+}
+.icon-pie-chart:before {
+  content: "\e907";
+}
+.icon-archive:before {
+  content: "\e908";
 }
