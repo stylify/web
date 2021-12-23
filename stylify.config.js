@@ -80,6 +80,7 @@ export default {
 				`,
 
 				// HP
+				'hp__section-blue-wrapper': 'background-color:$blue2 padding:45px__0 margin:45px__0 md:padding:90px__0 md:margin-bottom:90px',
 				'hp__section-title': `
 					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:24px
 					md:font-size:60px md:line-height:90px md:margin-bottom:32px
@@ -94,7 +95,21 @@ export default {
 					text-decoration:none color:$blue1 display:inline-flex align-items:center font-size:18px
 					md:font-size:24px
 				`,
-				'hp__section-more-info-link-icon': 'margin-left:12px transform:rotate(-90deg)'
+				'hp__section-more-info-link-icon': 'margin-left:12px transform:rotate(-90deg)',
+				'hp__tab-buttons-wrapper': `
+					margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:32px
+					overflow:auto md:margin-left:-12px md:margin-right:-24px lg:margin-left:-8px
+				`,
+				'hp__code-editor': 'box-shadow:$shadow1 padding:12px__0 border-radius:$radius2',
+
+				// Why Stylify
+				'why-stylify__block': `
+					box-shadow:$shadow1 margin-left:24px margin-bottom:24px background:#fff padding:12px md:padding:24px
+					width:100% sm:width:calc(50%__-__24px) lg:width:calc(100%__*__1/3__-__24px) border-radius:$radius2
+				`,
+				'why-stylify__block-title': 'margin:0 font-size:24px line-height:41px display:flex flex-direction:row align-items:center',
+				'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
+				'why-stylify__list': 'margin-bottom:0 padding-left:24px'
 			}
 		}
 	}

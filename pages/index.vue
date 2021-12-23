@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<div>
-			<section class="container margin-bottom:62px md:margin-top:140px md:margin-bottom:104px">
-				<h2 class="font-size:40px line-height:64px text-align:center md:font-size:72px md:line-height:108px">Dynamic CSS Generator</h2>
+			<section class="container margin-bottom:62px md:margin-bottom:104px">
+				<h2 class="font-size:40px line-height:64px text-align:center md:font-size:72px md:line-height:108px margin-bottom:24px">Dynamic CSS Generator</h2>
 				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px md:font-size:24px md:line-height:42px">
 					Stylify is a library that generates CSS dynamicly based on what you write.
 					<br>
@@ -16,6 +16,12 @@
 				<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
 			</section>
 		</div>
+		<div :id="filters.webalize('Why Stylify?')" class="hp__section-blue-wrapper">
+			<section class="container">
+				<h2 class="hp__section-title">Why Stylify?</h2>
+				<why-stylify />
+			</section>
+		</div>
 		<div :id="filters.webalize('Installation')">
 			<section class="container margin-bottom:90px md:margin-bottom:135px">
 				<h2 class="hp__section-title">Installation</h2>
@@ -25,14 +31,7 @@
 					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener" class="display:inline-flex"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
 				</p>
 				<div class="hp__section-content">
-					<div
-						class="
-							margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:32px
-							overflow:auto
-							md:margin-left:-12px md:margin-right:-24px
-							lg:margin-left:-8px
-						"
-					>
+					<div class="hp__tab-buttons-wrapper">
 						<a role="button" v-on:click="installationSelectedTab = 'stylify'" :class="[installationSelectedTab === 'stylify' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Stylify</a>
 						<a role="button" v-on:click="installationSelectedTab = 'bundler'" :class="[installationSelectedTab === 'bundler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Bundler</a>
 						<a role="button" v-on:click="installationSelectedTab = 'profiler'" :class="[installationSelectedTab === 'profiler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Profiler</a>
@@ -48,12 +47,12 @@
 								</nuxt-link>
 							</div>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 margin-bottom:24px"
+								class="hp__code-editor margin-bottom:24px"
 								:defaultCode="stylifyCdnDefaultCode"
 								readonly
 							/>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								class="hp__code-editor"
 								:defaultCode="stylifyCliDefaultCode"
 								readonly
 							/>
@@ -66,7 +65,7 @@
 								</nuxt-link>
 							</div>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								class="hp__code-editor"
 								:defaultCode="bundlerCliDefaultCode"
 								readonly
 							/>
@@ -79,12 +78,12 @@
 								</nuxt-link>
 							</div>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 margin-bottom:24px"
+								class="hp__code-editor margin-bottom:24px"
 								:defaultCode="profilerCdnDefaultCode"
 								readonly
 							/>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								class="hp__code-editor"
 								:defaultCode="profilerCliDefaultCode"
 								readonly
 							/>
@@ -97,7 +96,7 @@
 								</nuxt-link>
 							</div>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								class="hp__code-editor"
 								:defaultCode="nuxtModuleCliDefaultCode"
 								readonly
 							/>
@@ -110,7 +109,7 @@
 								</nuxt-link>
 							</div>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+								class="hp__code-editor"
 								:defaultCode="autoprefixerCliDefaultCode"
 								readonly
 							/>
@@ -120,7 +119,7 @@
 			</section>
 		</div>
 
-		<div :id="filters.webalize('Focused on rapid and fluent coding.')" class="background-color:$blue2 padding:45px__0 margin:45px__0 md:padding:90px__0 md:margin-bottom:90px">
+		<div :id="filters.webalize('Focused on rapid and fluent coding.')" class="hp__section-blue-wrapper">
 			<section class="container">
 				<h2 class="hp__section-title">Focused on rapid and fluent coding.</h2>
 				<p class="hp__section-subtitle">
@@ -133,14 +132,7 @@
 					</nuxt-link>
 				</div>
 				<div class="hp__section-content">
-					<div
-						class="
-							margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:32px
-							overflow:auto
-							md:margin-left:-12px md:margin-right:-24px
-							lg:margin-left:-8px
-						"
-					>
+					<div class="hp__tab-buttons-wrapper">
 						<a role="button" v-on:click="featuresSelectedTab = 'dynamicSelectors'" :class="[featuresSelectedTab === 'dynamicSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Dynamic selectors</a>
 						<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Components</a>
 						<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Plain selectors</a>
@@ -156,7 +148,7 @@
 								<!-- </stylify-ignore> -->
 							</p>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 max-width:800px lg:margin-left:24px lg:width:50%"
+								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="dynamicSelectorsDefaultCode"
 								readonly
 							/>
@@ -188,7 +180,7 @@
 								<!-- </stylify-ignore> -->
 							</p>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 max-width:800px lg:margin-left:24px lg:width:50%"
+								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="plainSelectorsDefaultCode"
 								lang="js"
 								readonly
@@ -207,7 +199,7 @@
 									readonly
 								/>
 								<code-editor
-									class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2"
+									class="hp__code-editor"
 									:defaultCode="variablesDefaultJsCode"
 									lang="js"
 									readonly
@@ -221,7 +213,7 @@
 								<!-- </stylify-ignore> -->
 							</p>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 max-width:800px lg:margin-left:24px lg:width:50%"
+								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="dynamicScreensDefaultCode"
 								readonly
 							/>
@@ -233,7 +225,7 @@
 								<!-- </stylify-ignore> -->
 							</p>
 							<code-editor
-								class="box-shadow:$shadow1 padding:12px__0 border-radius:$radius2 max-width:800px lg:margin-left:24px lg:width:50%"
+								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="helpersDefaultCode"
 								lang="js"
 								readonly
