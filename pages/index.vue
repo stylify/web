@@ -4,7 +4,7 @@
 			<section class="container margin-bottom:62px md:margin-bottom:104px">
 				<h2 class="font-size:40px line-height:64px text-align:center md:font-size:72px md:line-height:108px margin-bottom:24px">Dynamic CSS Generator</h2>
 				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px md:font-size:24px md:line-height:42px">
-					Stylify is a library that generates utility-first CSS dynamicly based on what you write.
+					Stylify is a library that generates utility-first CSS dynamically based on what you write.
 					<br>
 					Write HTML. Get CSS.
 				</p>
