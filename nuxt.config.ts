@@ -2,7 +2,7 @@ import { highlightCode } from "./services";
 import path from 'path';
 import fg from 'fast-glob';
 
-const defaultPageTitle = 'Stylify. Dynamic utility-first CSS Generator. Write HTML. Get CSS.';
+const defaultPageTitle = 'Stylify. Dynamic Utility-First CSS Generator. Write HTML. Get CSS.';
 const defaultPageDescription = 'Stylify is a library that generates utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
 
 export default {

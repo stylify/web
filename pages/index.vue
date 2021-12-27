@@ -2,17 +2,20 @@
 	<div>
 		<div>
 			<section class="container margin-bottom:62px md:margin-bottom:104px">
-				<h2 class="font-size:40px line-height:64px text-align:center md:font-size:72px md:line-height:108px margin-bottom:24px">Dynamic CSS Generator</h2>
-				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px md:font-size:24px md:line-height:42px">
-					Stylify is a library that generates utility-first CSS dynamically based on what you write.
+				<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:nobreak white-space:nowrap">Utility-First</span> CSS Generator</h2>
+				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px lg:line-height:42px lg:font-size:24px">
+					Stylify is a library that generates <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 					<br>
 					Write HTML. Get CSS.
 				</p>
-				<div class="margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px margin-bottom:40px">
+				<div class="margin-left:-24px margin-bottom:12px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
 					<nuxt-link to="/docs/get-started" class="btn margin-left:24px margin-bottom:24px box-shadow:$shadow1">Go ahead. Try it now!</nuxt-link>
 					<a :href="'#' + filters.webalize('Installation')" class="btn btn--transparent color:#000 md:padding:12px__24px box-shadow:$shadow1 margin-bottom:24px margin-left:24px">Installation</a>
 				</div>
-
+				<div class="height:34px display:flex align-items:center justify-content:center margin-bottom:48px">
+					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
+					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+				</div>
 				<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
 			</section>
 		</div>
@@ -281,6 +284,8 @@
 				</div>
 			</section>
 		</div>
+		<script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</div>
 </template>
 

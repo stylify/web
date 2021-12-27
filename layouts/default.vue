@@ -7,7 +7,7 @@
 				md:flex-direction:row
 			"
 		>
-				<div class="display:flex margin-bottom:24px width:100% md:width:auto md:margin-bottom:0 justify-content:space-between">
+				<div class="display:flex margin-bottom:12px width:100% md:width:auto md:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex align-items:center">
 						<nuxt-link to="/" class="text-decoration:none display:flex"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px"/></nuxt-link>
 					</section>
