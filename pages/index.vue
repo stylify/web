@@ -19,7 +19,28 @@
 				<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
 			</section>
 		</div>
-		<div :id="filters.webalize('Why Stylify?')" class="hp__section-blue-wrapper">
+		<div class="padding-bottom:24px md:padding-bottom:48px">
+			<div class="container display:flex justify-content:center">
+				<div class="display:flex flex-direction:column sm:flex-direction:row">
+					<div class="min-width:50px">
+						<img src="/images/hp/rating-profile-image.gif" alt="" loading="lazy" width="50" height="50" class="border-radius:50px margin-left:12px sm:margin-left:0 sm:margin-top:24px">
+					</div>
+					<div class="max-width:638px font-size:24px sm:margin-left:12px sm:width:calc(100%__-__50px)">
+						<div class="border-radius:12px margin-bottom:12px padding:12px  border:2px__solid__#f0f0f0 md:padding:24px">
+							<div class="margin-bottom:18px">LUKESHIRU <span class="color:#7e7e7e">•</span> <span class="color:#7e7e7e">Dec 21</span></div>
+							<div class="font-size:24px">
+								It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!<br>
+								<div class="font-size:12px line-height:21px margin-top:12px">From Dev.to: <a href="https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe" target="_blank" rel="noopener" class="color:$blue1">Stylify.dev. Dynamic CSS Generator for fluent and rapid development</a>.</div>
+							</div>
+						</div>
+						<div>
+							<img src="/images/hp/rating-likes.svg" alt="" loading="lazy" width="154" height="56" class="object-fit:cover max-width:100px height:auto">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div :id="filters.webalize('Why Stylify?')" class="margin-top:0 hp__section-blue-wrapper">
 			<section class="container">
 				<h2 class="hp__section-title">Why Stylify?</h2>
 				<why-stylify />
