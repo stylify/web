@@ -47,7 +47,7 @@ export default defineConfig(({ mode}) => {
 
   // Create a new Bundler instance.
   const bundler = new Bundler({
-    compilerConfig: nativePreset.compiler,
+    compiler: nativePreset.compiler,
     watchFiles: mode === 'development'
   });
 

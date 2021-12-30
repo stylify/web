@@ -22,7 +22,7 @@ const compilationResult = compiler.compile(content);
 
 const css = compilationResult.generateCss();
 // If the third parameter is set and if it is true (default) it rewrites selectors
-// only in areas defined in rewriteSelectorsAreas and not in whole content
+// only in areas defined in selectorsAreas and not in whole content
 const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
 ```
 
@@ -149,7 +149,7 @@ Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,2
 ```js
 const compilerConfig = {
 	macros: {
-		'color:(\\S+)': function (macroMatch, cssProperties): void {
+		'color:(\\S+?)': function (macroMatch, cssProperties): void {
 			// color:blue => will create => color: blue
 			// You can also use addMultiple({})
 			cssProperties.add('color', macroMatch.getCapture(0));
@@ -233,8 +233,22 @@ const compilerConfig = {
 			margin:0__auto
 			md:max-width:1280px
 		`,
+		// When you are creating a component modifier you should add the selectorsChain
+		// to increase the CSS specificity
+		'button--big': {
+			selectors: 'font-size:48px',
+			selectorsChain: 'button'
+		}
 	}
 };
+```
+
+Component can also be defined by calling the compiler `addComponent` method. This method expects configuration object as shown with the `button--big` component or a selectors string or an array of selectors strings:
+
+```js
+const compiler = new Compiler(/* ... */);
+
+compiler.addComponent('button', '...');
 ```
 
 Usage:
@@ -314,7 +328,7 @@ const compilerConfig = {
 		}
 	},
 	macros: {
-		'(bgc|zi):(\\S+)': function (macroMatch, cssProperties) {
+		'(bgc|zi):(\\S+?)': function (macroMatch, cssProperties) {
 			const property = this.helpers.shortcut(macroMatch.getCapture(0));
 			macroMatch.add(property, cssProperties.getCapture(1));
 		}
@@ -329,19 +343,19 @@ Usage:
 ```
 <!-- </stylify-ignore> -->
 
-### rewriteSelectorsAreas
+### selectorsAreas
 In case you want to rewrite selectors in any framework specific class attribute, you must define that attribute to be matched.
 By default Stylify only rewrites `class=""` and `class=''`.
 
 ```js
 const compilerConfig = {
-	rewriteSelectorsAreas: [
+	selectorsAreas: [
 		// Vue.js
 		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"'
 		// React
-		'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+		'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+?)`\\}'
 		// Angular
-		'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+)}"'
+		'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+?)}"'
 		// Nette framework
 		'(?:^|\\s+)n:class="([^"]+)"'
 		// ...

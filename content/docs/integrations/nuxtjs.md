@@ -43,10 +43,10 @@ There is a lot of options you can configure. See [@stylify/nuxt-module](/docs/nu
 For the bundler configuration checkout the [@stylify/bundler page](/docs/bundler/configuration).
 For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
 
-In case you will want to mangle selectors, you will need to add the `v-bind:class` attribute into the [rewriteSelectorsAreas](/docs/stylify/compiler#rewriteselectorsareas) in the Compiler config if you use this attribute.
+In case you will want to mangle selectors, you will need to add the `v-bind:class` attribute into the [selectorsAreas](/docs/stylify/compiler#rewriteselectorsareas) in the Compiler config if you use this attribute.
 
 ```js
-nativePreset.compiler.rewriteSelectorsAreas = [
+nativePreset.compiler.selectorsAreas = [
 	'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
 	'(?:^|\\s+)(?:v-bind)?:class=\'([^\']+)\''
 ];

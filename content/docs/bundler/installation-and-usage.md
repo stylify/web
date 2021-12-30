@@ -25,7 +25,7 @@ npm i -D @stylify/bundler
 import { nativePreset } from '@stylify/stylify';
 import { Bundler } from '@stylify/bundler';
 
-const bundler = new Bundler({compilerConfig: nativePreset.compiler})
+const bundler = new Bundler({compiler: nativePreset.compiler})
 
 bundler.bundle([
 	{

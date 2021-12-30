@@ -15,7 +15,7 @@ Bundler provides various options for configuration:
 const config = {
 	// Required
 	// Config for the compiler
-	compilerConfig: {},
+	compiler: {},
 
 	// Optional
 	// Path to a config file. When in a watch mode
@@ -84,7 +84,7 @@ bundler.bundle([
 		// the space will be used in the scope.
 		scope: '#my-scope',
 		// Compiler config can be bundle specific
-		compilerConfig: {}
+		compiler: {}
 		// When a bundle is bundled, this callback is called
 		callback: (bundleConfig, bundleBuildCache) => {
 			console.log(bundleConfig);

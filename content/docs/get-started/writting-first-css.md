@@ -62,7 +62,7 @@ By default Stylify doesn't ship with any configuration. When you don't want to c
 On the other hand, if you decide to use your own configuration, it can be done very easily.
 
 <note><template>
-There are many options to configure in the Stylify. The example bellow covers only a few of them for easier start. For more information see [how to configure stylify](/docs/stylify/compiler#configuration).
+There are many options to configure in the Stylify. The example bellow covers only a few of them for easier start. For more information see [how to configure Stylify](/docs/stylify/compiler#configuration).
 </template></note>
 
 Stylify let's you configure for example variables, macros, components, and screens.
@@ -76,7 +76,7 @@ const configuration = {
 			blue2: '#f2fcff'
 		},
 		macros: {
-			'color:(\\S+)': function (macroMatch, cssProperties): void {
+			'color:(\\S+?)': function (macroMatch, cssProperties): void {
 				// color:blue => will create => color: blue
 				cssProperties.add('color', macroMatch.getCapture(0));
 			},

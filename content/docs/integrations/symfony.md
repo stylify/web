@@ -48,7 +48,7 @@ class StylifyPlugin {
 
 		// Create a new Bundler instance.
 		const bundler = new Bundler({
-			compilerConfig: nativePreset.compiler,
+			compiler: nativePreset.compiler,
             cssVarsDirPath: './assets/styles',
 			watchFiles: compiler.options.watch || false
 		});

@@ -33,13 +33,13 @@ const compilerConfig = nativePreset.compiler;
 // In case, you use any framework specific class attribute
 // you must configure it because by default, Stylify rewrites
 // selectors only inside class="" and class=''
-compilerConfig.rewriteSelectorsAreas = [
+compilerConfig.selectorsAreas = [
 	// Vue.js
 	'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"'
 	// React
-	'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+	'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+?)`\\}'
 	// Angular
-	'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+)}"'
+	'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+?)}"'
 	// Nette framework
 	'(?:^|\\s+)n:class="([^"]+)"'
 	// ...

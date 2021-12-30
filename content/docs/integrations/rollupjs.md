@@ -38,7 +38,7 @@ nativePreset.compiler.variables = {
 
 // Create a new Bundler instance.
 const bundler = new Bundler({
-	compilerConfig: nativePreset.compiler,
+	compiler: nativePreset.compiler,
 	watchFiles: process.env.ROLLUP_WATCH || false
 });
 
