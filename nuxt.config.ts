@@ -4,6 +4,7 @@ import fg from 'fast-glob';
 
 const defaultPageTitle = 'Stylify. Dynamic Utility-First CSS Generator. Write HTML. Get CSS.';
 const defaultPageDescription = 'Stylify is a library that generates utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
+const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
 	server: {
@@ -96,13 +97,8 @@ export default {
 
 	// gtag("consent","default",{ad_storage:"denied",analytics_storage:"denied"})
 	googleAnalytics: {
-		id: 'UA-215428942-1',
-		storage: 'none',
-		dev: process.env.NODE_ENV !== 'production',
-		debug: {
-			enabled: process.env.NODE_ENV !== 'production',
-			sendHitTask: true,
-		}
+		id: isProduction ? 'UA-215428942-1' : null,
+		storage: 'none'
 	}
 
 }
