@@ -233,6 +233,11 @@ const compilerConfig = {
 			margin:0__auto
 			md:max-width:1280px
 		`,
+		// You can define multiple components in one key, just separate them by "," (comma)
+		'wrapper, footer': 'padding:24px',
+		// When one component is defined multiple times, the selectors are merged
+		// When selectorsChain is defined the last one is applied
+		'wrapper': 'margin-top:24px',
 		// When you are creating a component modifier you should add the selectorsChain
 		// to increase the CSS specificity
 		'button--big': {

@@ -28,6 +28,10 @@ const config = {
 	// If set to true, after the build, bundler will start
 	// watching files for a change
 	watchFiles: false,
+	// Bundles can be defined directly when the instance is created
+	// The bundle configuration is shown bellow in bundler.bundle() method
+	// The bundle() method must be called to initiate the bundling process
+	bundles: []
 	// If file path is provided in the following options
 	// variables from the Compiler config will be exported into those files
 	// so you can reuse them inside css, scss and etc.
