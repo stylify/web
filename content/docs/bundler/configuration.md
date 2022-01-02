@@ -31,7 +31,7 @@ const config = {
 	// Bundles can be defined directly when the instance is created
 	// The bundle configuration is shown bellow in bundler.bundle() method
 	// The bundle() method must be called to initiate the bundling process
-	bundles: []
+	bundles: [],
 	// If file path is provided in the following options
 	// variables from the Compiler config will be exported into those files
 	// so you can reuse them inside css, scss and etc.
