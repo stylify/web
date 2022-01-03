@@ -43,6 +43,12 @@ class StylifyPlugin {
 	}
 
 	apply(compiler) {
+		nativePreset.compiler.selectorsAreas = [
+			'(?:^|\\s+)className="([^"]+)"',
+			'(?:^|\\s+)className=\'([^\']+)\'',
+			'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+		];
+
 		// Optional configuration.
 		nativePreset.compiler.variables = {
 			blue: 'steelblue'
@@ -101,12 +107,3 @@ Now you can use the Next.js commands to build your assets. This will also trigge
 
 The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
 For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
-
-In case you will want to mangle selectors, you will need to add the `className` attribute into the [selectorsAreas](/docs/stylify/compiler#rewriteselectorsareas) in the Compiler config if you use this attribute.
-
-```js
-nativePreset.compiler.selectorsAreas = [
-	'(?:^|\\s+)className="([^"]+)"',
-	'(?:^|\\s+)className=\'([^\']+)\'',
-	'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-];

@@ -18,4 +18,3 @@ All integration examples can be found in the [integration examples repository](h
 </template></note>
 
 <integration-blocks />
-

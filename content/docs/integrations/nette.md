@@ -37,6 +37,11 @@ const { Bundler } = require('@stylify/bundler');
 
 const watchFiles = process.argv[process.argv.length - 1] === '--w';
 
+nativePreset.compiler.selectorsAreas = [
+	'(?:^|\\s+)n:class="([^"]+)"',
+	'(?:^|\\s+)n:class=\'([^\']+)\''
+];
+
 // Optional configuration.
 nativePreset.compiler.variables = {
 	blue: 'steelblue'
@@ -86,12 +91,3 @@ You can customize the build above however you want.
 
 The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
 For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
-
-In case you will want to mangle selectors, you will need to add the `n:class` attribute into the [selectorsAreas](/docs/stylify/compiler#rewriteselectorsareas) in the Compiler config if you use this attribute.
-
-```js
-nativePreset.compiler.selectorsAreas = [
-	'(?:^|\\s+)n:class="([^"]+)"',
-	'(?:^|\\s+)n:class=\'([^\']+)\''
-];
-```
