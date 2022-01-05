@@ -4,32 +4,34 @@
 			<div class="
 				display:flex flex-direction:column justify-content:center padding-top:16px
 				padding-bottom:16px justify-content:space-between align-items:center container
-				md:flex-direction:row
+				lg:flex-direction:row
 			"
 		>
-				<div class="display:flex margin-bottom:12px width:100% md:width:auto md:margin-bottom:0 justify-content:space-between">
+				<div class="display:flex margin-bottom:12px width:100% lg:width:auto lg:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex align-items:center">
-						<nuxt-link to="/" class="text-decoration:none display:flex"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px"/></nuxt-link>
+						<nuxt-link to="/" class="text-decoration:none display:flex"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px" alt=""/></nuxt-link>
 					</section>
-					<section class="display:inline-flex justify-content:flex-end min-width:150px md:display:none">
+					<section class="display:inline-flex justify-content:flex-end min-width:150px lg:display:none">
 						<nav class="display:flex align-items:center">
-							<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" /></a>
-							<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" /></a>
-							<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px"/></a>
+							<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" alt="" /></a>
+							<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" alt="" /></a>
+							<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px" alt=""/></a>
 						</nav>
 					</section>
 				</div>
-				<section class="margin-left:-24px display:inline-flex align-items:center position:relative">
-					<nav>
+				<section class="max-width:calc(100%__+__16px) overflow:auto margin-left:-8px margin-right:-8px display:inline-flex align-items:center position:relative lg:margin-left:-24px">
+					<nav class="display:flex flex-wrap:nowrap white-space:nowrap">
 						<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px font-weight:bold color:#000 text-decoration:none hover:color:$blue1">Documentation</nuxt-link>
+						<nuxt-link to="/blog" class="margin-left:24px font-size:18px font-weight:bold color:#000 text-decoration:none hover:color:$blue1">Blog</nuxt-link>
 						<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="margin-left:24px font-size:18px font-weight:bold color:#000 text-decoration:none hover:color:$blue1">Playground</a>
 					</nav>
+					<span class="lg:display:none">&nbsp;</span>
 				</section>
-				<section class="display:none md:display:inline-flex justify-content:flex-end min-width:150px">
+				<section class="display:none lg:display:inline-flex justify-content:flex-end min-width:150px">
 					<nav class="display:flex align-items:center">
-						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" /></a>
-						<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" /></a>
-						<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px"/></a>
+						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px" alt="" /></a>
+						<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" alt="" /></a>
+						<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px" alt=""/></a>
 					</nav>
 				</section>
 			</div>

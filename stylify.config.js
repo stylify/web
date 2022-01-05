@@ -15,8 +15,10 @@ export default {
 				grey1: '#f8f9fa',
 				grey2: '#222',
 				grey3: '#e5e7eb',
+				grey4: '#71717a',
 
 				shadow1: '0 8px 32px -8px rgb(0, 0, 0, 0.2)',
+				shadow2: '0 2px 12px rgba(0, 0, 0, 0.25)',
 
 				radius1: '4px',
 				radius2: '8px'
@@ -33,7 +35,7 @@ export default {
 
 				// Articles common
 				'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
-				'article h1': 'scroll-margin-top:50px cursor:pointer font-size:34px line-height:54px margin-bottom:12px',
+				'article h1': 'scroll-margin-top:50px cursor:pointer font-size:30px line-height:40px md:font-size:34px md:font-size:34px line-height:54px margin-bottom:12px',
 				'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:42px margin-bottom:12px',
 				'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:32px margin-bottom:8px',
 				'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:32px margin-bottom:8px',
@@ -109,7 +111,7 @@ export default {
 				`,
 				'why-stylify__block-title': 'margin:0 font-size:24px line-height:41px display:flex flex-direction:row align-items:center',
 				'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
-				'why-stylify__list': 'margin-bottom:0 padding-left:24px'
+				'why-stylify__list': 'margin-bottom:0 padding-left:24px',
 			}
 		}
 	}

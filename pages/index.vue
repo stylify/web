@@ -2,7 +2,7 @@
 	<div>
 		<div>
 			<section class="container margin-bottom:62px md:margin-bottom:104px">
-				<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:nobreak white-space:nowrap">Utility-First</span> CSS Generator</h2>
+				<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:keep-all white-space:nowrap">Utility-First</span> CSS Generator</h2>
 				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px lg:line-height:42px lg:font-size:24px">
 					Stylify is a library that generates <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 					<br>
