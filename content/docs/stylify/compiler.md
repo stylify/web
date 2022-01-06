@@ -356,11 +356,11 @@ By default Stylify only rewrites `class=""` and `class=''`.
 const compilerConfig = {
 	selectorsAreas: [
 		// Vue.js
-		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"'
+		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
 		// React
-		'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+?)`\\}'
+		'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+?)`\\}',
 		// Angular
-		'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+?)}"'
+		'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+?)}"',
 		// Nette framework
 		'(?:^|\\s+)n:class="([^"]+)"'
 		// ...

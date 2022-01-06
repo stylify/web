@@ -42,3 +42,19 @@ Now you can start using Stylify with Nuxt.js.
 There is a lot of options you can configure. See [@stylify/nuxt-module](/docs/nuxt-module/configuration).
 For the bundler configuration checkout the [@stylify/bundler page](/docs/bundler/configuration).
 For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+
+### Stylelint
+In case you use Stylelint, you may want to add the generated `stylify.css` and possible files with variables into the `.stylelintignore` file.
+
+```
+assets/stylify.css
+assets/scss/variables/stylify-variables.scss
+```
+
+If the Stylelint complains about a pattern that doesn't match any files, add the [--allow-empty-input](https://stylelint.io/user-guide/usage/cli/#--allow-empty-input---aei) rule into the package.json file to the `lint:style` and the `stylelint` config into the `nuxt.config.js`:
+
+```js
+stylelint: {
+	allowEmptyInput: true
+}
+```
