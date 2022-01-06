@@ -87,6 +87,10 @@ export default {
 		'@nuxtjs/sitemap'
 	],
 
+	stylelint: {
+		allowEmptyInput: true
+	},
+
 	sitemap: {
 		hostname: 'https://stylify.dev',
 	},
