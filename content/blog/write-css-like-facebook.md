@@ -62,7 +62,7 @@ In the example bellow there is a code for simple gallery image:
 	md:margin:48px
 	md:width:600px
 ">
-	<img class="width:100% object-fit:cover height:auto" src="https://stylify.dev/images/blog/stylify-nuxt/mountains.jpg" alt="">
+	<img class="width:100% object-fit:cover height:auto" src="https://stylify.dev/images/blog/stylify-facebook/mountains.jpg" alt="">
 	<div class="
 		font-family:arial
 		font-weight:bold
@@ -168,7 +168,7 @@ With all the enhancements above, the finall code is a way smaller:
 <!-- <stylify-ignore> -->
 ```html
 <div class="gallery-image__wrapper">
-	<img class="gallery-image" src="https://stylify.dev/images/blog/stylify-nuxt/mountains.jpg">
+	<img class="gallery-image" src="https://stylify.dev/images/blog/stylify-facebook/mountains.jpg">
 	<div class="gallery-image__label">
 		Zakopané (Poland)
 	</div>
