@@ -43,7 +43,7 @@ Stylify ships with the [native preset](https://stylify.dev/docs/stylify/native-p
 - **Selectors mangling**: from long `font-weight:bold` to short `_ab`
 - No preprocessor, postprocessor or bundler is required
 - **On demand generated CSS**: the CSS can be bundled on demand, for example during a request
-- Because it can generates CSS separatel and doesn't bring any CSS by default, it **can be easily integrated into an existing project without increasing its size globally**
+- Because it can generates CSS separately and doesn't bring any CSS by default, it **can be easily integrated into an existing project without increasing its size globally**
 
 ## Write HTML. Get CSS. Mangle selectors. All automagically.
 
