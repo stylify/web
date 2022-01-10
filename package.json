@@ -9,7 +9,11 @@
 		"generate": "nuxt generate",
 		"lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
 		"lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
-		"lint": "yarn lint:js && yarn lint:style"
+		"lint": "yarn lint:js && yarn lint:style",
+		"dev:cp": "node scripts/copy-stylify-packages.js --verbose",
+		"dev:ulp": "node scripts/use-stylify-from-folder.js --verbose",
+		"dev:urp": "node scripts/use-stylify-from-registry.js --verbose",
+		"dev:swl": "yarn dev:cp && yarn dev:ulp"
 	},
 	"dependencies": {
 		"@nuxt/content": "^1.15",
