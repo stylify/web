@@ -39,7 +39,7 @@ Stylify ships with the [native preset](https://stylify.dev/docs/stylify/native-p
 - **No pregenerated CSS**: the CSS is generated only if a component or selector is found in the content
 - Internaly combines and reuses selectors as much as possible to keep the CSS small
 - **Macros**: can be used to define custom selectors like `m:20px` for margin
-- **Logical operands for screens**: like `&&` and `||` operands for screens combination
+- **Logical operands for screens**: like `&&` and `||` operands for screens combination like `sm&&tolg:font-size:24px`
 - **Selectors mangling**: from long `font-weight:bold` to short `_ab`
 - No preprocessor, postprocessor or bundler is required
 - **On demand generated CSS**: the CSS can be bundled on demand, for example during a request
