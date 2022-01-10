@@ -8,6 +8,7 @@ services:
       - 3000:3000
     volumes:
       - ./:/var/www/html
+      - "../stylify:/var/www/stylify"
     environment:
         - DOMAIN=localhost
         - SCHEME=http
