@@ -4,6 +4,7 @@ image: '/images/blog/intro/header.gif'
 ogImage: '/images/blog/intro/og-image.jpg'
 author: 'Vladimír Macháček'
 annotation: 'Stylify is a library that generates utility-first CSS dynamically based on what you write. Write HTML. Get CSS. 🚀'
+createdAt: January 5, 2022
 ---
 
 ## Let me tell you a story

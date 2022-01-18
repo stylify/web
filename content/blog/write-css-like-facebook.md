@@ -4,6 +4,7 @@ image: '/images/blog/stylify-facebook/stylify-facebook.jpg'
 ogImage: '/images/blog/stylify-facebook/stylify-facebook.jpg'
 author: 'Vladimír Macháček'
 annotation: 'Pixel perfect webdesign, atomic CSS, mangled selectors and minimalistic output? Yes 🤩!'
+createdAt: January 10, 2022
 ---
 
 Some time ago during a coffee ☕ break I have been digging through the Facebook CSS. I checked multiple pages, downloaded the CSS from them and got an idea on a tool that could simplify the way I write the CSS.
