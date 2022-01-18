@@ -4,13 +4,15 @@ const fs = require('fs');
 const path = require('path');
 
 const rootDir = path.join(__dirname, '..');
-console.log("Reading package.json");
-let projectPackageJsonContent = fs.readFileSync(path.join(rootDir, 'package.json')).toString();
 
+console.log("Reading package.json");
+const packageJsonDir = path.join(rootDir, 'package.json');
+let projectPackageJsonContent = fs.readFileSync(packageJsonDir).toString();
 console.log("Rewriting package.json");
 projectPackageJsonContent = projectPackageJsonContent.replace(/"@stylify\/(\S+)": "[^"]+"/g, (fullMatch, packageName) => {
 	return `"@stylify/${packageName}": "^0.0"`;
 });
+fs.writeFileSync(packageJsonDir, projectPackageJsonContent);
 
 const yarnLockFilePath = path.join(rootDir, 'yarn.lock');
 if (fs.existsSync(yarnLockFilePath)) {

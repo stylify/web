@@ -1538,34 +1538,34 @@
     remark "^13.0.0"
     unist-util-find-all-after "^3.0.2"
 
-"@stylify/bundler@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.0.9.tgz#7cfb480000015e9365361d36009229227c86a187"
-  integrity sha512-mZ2JR2BPXPpdL4CDxXAijCaSlmjKA2+AzETnbeAOK8I0qmySkfIgZsfF9qQksszC20yq8KDwxW64sZt6bakKaA==
+"@stylify/bundler@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.0.10.tgz#79397514a17eed51fc8ada11c0d0968f2eb4ab14"
+  integrity sha512-5zo6HNt3x1ESzMZG1n5Uisbm8SOWE/OehRyokYegcPnTPdwgh1a604YC/dlxzXnAU2amgYgUyIdw7R6slkJn4g==
   dependencies:
-    "@stylify/stylify" "^0.0.9"
+    "@stylify/stylify" "^0.0.10"
     fast-glob "^3.2"
     normalize-path "^3.0"
 
 "@stylify/nuxt-module@^0.0":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.0.9.tgz#f8b940e82653093b25ace84d2091a3dda860d617"
-  integrity sha512-NJUwexku5/5LgRu4DAXKdMC0ZmOPIbMBQATZvQzpHS4cWBkBhUl4P6GzMKUVaegurQX4YfbTdeqiKhcNha9p6g==
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.0.10.tgz#c1b6d42174ecc14ebfe4d3bf3aa6f6ad0d4e347d"
+  integrity sha512-NAbigd0iMa7AxapQEYaBRA/mttL3XGXwtWylAx653ooWWmCrS5t3XsIdL6UDv69+aSKSRSe5xVu2I5Yo7oUFZw==
   dependencies:
-    "@stylify/bundler" "^0.0.9"
-    "@stylify/profiler" "^0.0.9"
-    "@stylify/stylify" "^0.0.9"
+    "@stylify/bundler" "^0.0.10"
+    "@stylify/profiler" "^0.0.10"
+    "@stylify/stylify" "^0.0.10"
     loader-utils "^2.0"
 
-"@stylify/profiler@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@stylify/profiler/-/profiler-0.0.9.tgz#96318f77abd0a34570f49af1e66bc5b774302b88"
-  integrity sha512-tJqVemgB2FQXb80aVLNqogxeTAUljh+f4Lc1fwGwF4LieITP1S8Me2+naI9Ln75q1dHVgWylZkpJ62qN4GMgTQ==
+"@stylify/profiler@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@stylify/profiler/-/profiler-0.0.10.tgz#183e28234c9bc1fd567e61a55de33760d0d9190f"
+  integrity sha512-qdXsycXwTpXJRTQx0Pay2Zy5rHFrMroPogaNJuH2gTtR7ntOJgiOQRRkd/ifL60O9pklA0q+02oYUbvnzm1Yfg==
 
-"@stylify/stylify@^0.0.9":
-  version "0.0.9"
-  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.0.9.tgz#83eab5154f9a31e478f82f0aa8655d861f7ed0b2"
-  integrity sha512-Oz5uiivHy9hekb83Mj2kFou6/Rd9rG6FwD6hpTL+EVEOdbqSMoGVL2heG90vFpP0aX+miv2DfkkpsuyOm7PW8g==
+"@stylify/stylify@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.0.10.tgz#83a0044954abe6158eb7f867aebd49a2abc18d9a"
+  integrity sha512-+V1Ax0aBXgwqge8jWWka4ajGz2M7laRO0R93Nz7rxGK456NmAax5V4+9HKTjyxNhVM5ic3cwlkZvi3LLNFg9lA==
 
 "@types/anymatch@*":
   version "3.0.0"
@@ -4119,9 +4119,9 @@ ee-first@1.1.1:
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
 electron-to-chromium@^1.4.17:
-  version "1.4.47"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.47.tgz#5d5535cdbca2b9264abee4d6ea121995e9554bbe"
-  integrity sha512-ZHc8i3/cgeCRK/vC7W2htAG6JqUmOUgDNn/f9yY9J8UjfLjwzwOVEt4MWmgJAdvmxyrsR5KIFA/6+kUHGY0eUA==
+  version "1.4.48"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.4.48.tgz#1948b5227aa0ca1ed690945eae1adbe9e7904575"
+  integrity sha512-RT3SEmpv7XUA+tKXrZGudAWLDpa7f8qmhjcLaM6OD/ERxjQ/zAojT8/Vvo0BSzbArkElFZ1WyZ9FuwAYbkdBNA==
 
 elliptic@^6.5.3:
   version "6.5.4"

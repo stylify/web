@@ -369,8 +369,12 @@ const compilerConfig = {
 ```
 
 ### ignoredElements
-Each tag name inside ignored elements will be ignored and its content "stripped" from compilation.
-The default ignored elements are `code`, `head`, `pre`, `script`, `style`, `stylify-ignore`.
+`stylify-ignore` and `stylify-runtime-ignore` are by default two tags you can use to remove content from compilation.
+
+<note>
+Ignored tags can be configured but they are always matched without attributes because no html parser is integrated in Stylify and is not reliable to match them with regular expressions.
+The ignoredElements options is marked as @internal to keep you away from this option.
+</note>
 
 ```js
 const compilerConfig = {
