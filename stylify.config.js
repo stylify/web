@@ -65,9 +65,14 @@ export default {
 				btn: `
 					background-color:$blue1 white-space:nowrap line-height:1 transition:background-color__0.3s,__color__0.3s cursor:pointer color:#fff text-decoration:none font-weight:bold
 					border-radius:$radius2 padding:12px__24px display:inline-flex align-items:center
+					hover:background-color:darken($blue1,10)
 				`,
 				'btn--transparent': {
 					selectors: 'background:none hover:background-color:rgba(1,__190,__254,__0.1)',
+					selectorsChain: 'btn'
+				},
+				'btn--hp': {
+					selectors: 'justify-content:center min-width:306px padding:24px font-size:24px',
 					selectorsChain: 'btn'
 				},
 				'integration-block__image-wrapper': `max-height:60px max-width:100%`,
@@ -82,17 +87,17 @@ export default {
 				`,
 
 				// HP
-				'hp__section-blue-wrapper': 'background-color:$blue2 padding:45px__0 margin:45px__0 md:padding:90px__0 md:margin-bottom:90px',
+				'hp__section-blue-wrapper': 'background-color:$blue2 padding:45px__0 margin:45px__0 md:padding:80px__0 md:margin-bottom:80px',
 				'hp__section-title': `
-					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:24px
-					md:font-size:60px md:line-height:90px md:margin-bottom:32px
+					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:12px
+					md:font-size:60px md:line-height:90px
 				`,
 				'hp__section-subtitle': `
 					font-size:18px line-height:32px
 					margin-top:0 margin-bottom:24px max-width:800px
 					md:font-size:24px md:line-height:40px
 				`,
-				'hp__section-content': 'margin-top:40px md:margin-top:80px',
+				'hp__section-content': 'margin-top:24px md:margin-top:48px',
 				'hp__section-more-info-link': `
 					text-decoration:none color:$blue1 display:inline-flex align-items:center font-size:18px
 					md:font-size:24px

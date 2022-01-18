@@ -1,32 +1,41 @@
 <template>
 	<div>
-		<div>
-			<section class="container margin-bottom:62px md:margin-bottom:104px">
-				<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:keep-all white-space:nowrap">Utility-First</span> CSS Generator</h2>
-				<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px lg:line-height:42px lg:font-size:24px">
-					Stylify is a library that generates <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
-					<br>
-					Write HTML. Get CSS.
-				</p>
-				<div class="margin-left:-24px margin-bottom:12px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-					<nuxt-link to="/docs/get-started" class="btn margin-left:24px margin-bottom:24px box-shadow:$shadow1">Go ahead. Try it now!</nuxt-link>
-					<a :href="'#' + filters.webalize('Installation')" class="btn btn--transparent color:#000 md:padding:12px__24px box-shadow:$shadow1 margin-bottom:24px margin-left:24px">Installation</a>
-				</div>
+		<section class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px">
+			<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:keep-all white-space:nowrap">Utility-First</span> CSS Generator</h2>
+			<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px lg:line-height:42px lg:font-size:24px">
+				Stylify is a library that generates <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
+				<br>
+				Write HTML. Get CSS 💎.
+			</p>
+			<div class="margin-left:-24px margin-bottom:24px md:margin-bottom:48px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
+				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
+			</div>
+			<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
+		</section>
+
+		<section :id="filters.webalize('Installation')" class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px">
+			<h2 class="hp__section-title">Seamless integration.</h2>
+			<p class="hp__section-subtitle">
+				Start using Stylify with your favorite tool in a minute.
+			</p>
+			<div class="hp__section-content">
+				<integration-blocks />
+			</div>
+		</section>
+
+		<div :id="filters.webalize('Fans')" class="margin-top:0 hp__section-blue-wrapper">
+			<div class="container display:flex justify-content:center flex-direction:column align-items:center">
 				<div class="height:34px display:flex align-items:center justify-content:center margin-bottom:48px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
 					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
 				</div>
-				<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
-			</section>
-		</div>
-		<div class="padding-bottom:24px md:padding-bottom:48px">
-			<div class="container display:flex justify-content:center">
 				<div class="display:flex flex-direction:column sm:flex-direction:row">
 					<div class="min-width:50px">
 						<img src="/images/hp/rating-profile-image.gif" alt="" loading="lazy" width="50" height="50" class="border-radius:50px margin-left:12px sm:margin-left:0 sm:margin-top:24px">
 					</div>
 					<div class="max-width:638px font-size:24px sm:margin-left:12px sm:width:calc(100%__-__50px)">
-						<div class="border-radius:12px margin-bottom:12px padding:12px  border:2px__solid__#f0f0f0 md:padding:24px">
+						<div class="border-radius:12px margin-bottom:12px padding:12px background:#fff border:2px__solid__#f0f0f0 md:padding:24px">
 							<div class="margin-bottom:18px">LUKESHIRU <span class="color:#7e7e7e">•</span> <span class="color:#7e7e7e">Dec 21</span></div>
 							<div class="font-size:24px">
 								It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!<br>
@@ -40,115 +49,16 @@
 				</div>
 			</div>
 		</div>
-		<div :id="filters.webalize('Why Stylify?')" class="margin-top:0 hp__section-blue-wrapper">
-			<section class="container">
-				<h2 class="hp__section-title">Why Stylify?</h2>
-				<why-stylify />
-			</section>
-		</div>
-		<div :id="filters.webalize('Installation')">
-			<section class="container margin-bottom:90px md:margin-bottom:135px">
-				<h2 class="hp__section-title">Installation</h2>
-				<p class="hp__section-subtitle">
-					Stylify packages can be used directly through CDN or installed using CLI like NPM or YARN.<br>
-					<small class="font-size:16px line-height:27px display:block margin-bottom:8px">(Always use specific version in production like 1.0.0 for CDN instead of the latest.)</small>
-					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener" class="display:inline-flex"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
-				</p>
-				<div class="hp__section-content">
-					<div class="hp__tab-buttons-wrapper">
-						<a role="button" v-on:click="installationSelectedTab = 'stylify'" :class="[installationSelectedTab === 'stylify' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Stylify</a>
-						<a role="button" v-on:click="installationSelectedTab = 'bundler'" :class="[installationSelectedTab === 'bundler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Bundler</a>
-						<a role="button" v-on:click="installationSelectedTab = 'profiler'" :class="[installationSelectedTab === 'profiler' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Profiler</a>
-						<a role="button" v-on:click="installationSelectedTab = 'nuxtModule'" :class="[installationSelectedTab === 'nuxtModule' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Nuxt.js Module</a>
-						<a role="button" v-on:click="installationSelectedTab = 'autoprefixer'" :class="[installationSelectedTab === 'autoprefixer' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Autoprefixer</a>
-					</div>
-					<div>
-						<div v-show="installationSelectedTab === 'stylify'">
-							<div class="margin-bottom:24px">
-								<nuxt-link to="/docs/stylify" class="hp__section-more-info-link">
-									<span>Stylify documentation</span>
-									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-								</nuxt-link>
-							</div>
-							<code-editor
-								class="hp__code-editor margin-bottom:24px"
-								:defaultCode="stylifyCdnDefaultCode"
-								readonly
-							/>
-							<code-editor
-								class="hp__code-editor"
-								:defaultCode="stylifyCliDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="installationSelectedTab === 'bundler'">
-							<div class="margin-bottom:24px">
-								<nuxt-link to="/docs/bundler" class="hp__section-more-info-link">
-									<span>Bundler documentation</span>
-									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-								</nuxt-link>
-							</div>
-							<code-editor
-								class="hp__code-editor"
-								:defaultCode="bundlerCliDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="installationSelectedTab === 'profiler'">
-							<div class="margin-bottom:24px">
-								<nuxt-link to="/docs/profiler" class="hp__section-more-info-link">
-									<span>Profiler documentation</span>
-									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-								</nuxt-link>
-							</div>
-							<code-editor
-								class="hp__code-editor margin-bottom:24px"
-								:defaultCode="profilerCdnDefaultCode"
-								readonly
-							/>
-							<code-editor
-								class="hp__code-editor"
-								:defaultCode="profilerCliDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="installationSelectedTab === 'nuxtModule'">
-							<div class="margin-bottom:24px">
-								<nuxt-link to="/docs/nuxt-module" class="hp__section-more-info-link">
-									<span>Nuxt.js module documentation</span>
-									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-								</nuxt-link>
-							</div>
-							<code-editor
-								class="hp__code-editor"
-								:defaultCode="nuxtModuleCliDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="installationSelectedTab === 'autoprefixer'">
-							<div class="margin-bottom:24px">
-								<nuxt-link to="/docs/autoprefixer" class="hp__section-more-info-link">
-									<span>Autoprefixer documentation</span>
-									<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-								</nuxt-link>
-							</div>
-							<code-editor
-								class="hp__code-editor"
-								:defaultCode="autoprefixerCliDefaultCode"
-								readonly
-							/>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
+
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-bottom:62px md:margin-bottom:80px" >
+			<h2 class="hp__section-title">Why Stylify?</h2>
+			<div class="hp__section-content"><why-stylify /></div>
+		</section>
 
 		<div :id="filters.webalize('Focused on rapid and fluent coding.')" class="hp__section-blue-wrapper">
 			<section class="container">
 				<h2 class="hp__section-title">Focused on rapid and fluent coding.</h2>
-				<p class="hp__section-subtitle">
-					You can <strong>write any selector you want</strong>, use <strong>logical operands to combine screens</strong>, <strong>define variables</strong> for repeated values and <strong>call custom helpers</strong>. To make the CSS and HTML even smaller, you can <strong>mangle selectors</strong>.
-				</p>
+
 				<div>
 					<nuxt-link to="/docs/get-started" class="hp__section-more-info-link">
 						<span>Getting started</span>
@@ -165,12 +75,13 @@
 						<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Helpers</a>
 					</div>
 					<div>
-						<div v-show="featuresSelectedTab === 'dynamicSelectors'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								Stylify ships without predefined CSS. Thanks to that it will not slow your build with unused selectors or unnecessary CSS purging. <strong>You can write any selector you want</strong>. Just instead of spaces use  “__” (two underscores) and instead of quotes “^” (hat).
-								<!-- </stylify-ignore> -->
-							</p>
+						<div v-show="featuresSelectedTab === 'dynamicSelectors'" class="display:flex flex-direction:column lg:flex-direction:row align-items:flex-start">
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li>No predefined CSS - <strong>no CSS purge needed</strong>.</li>
+								<li>Use all <strong>678 browser CSS properties for selectors</strong>.</li>
+								<li><strong>Define custom selectors</strong> like <code>m:20px</code> for margin.</li>
+								<li>Use <code>__</code> (two underscores) for spaces and <code>^</code> (hat) for quotes to define any selector you want like <code>border:2px__dotted__#01befe</code>.</li>
+							</ul>
 							<code-editor
 								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="dynamicSelectorsDefaultCode"
@@ -178,11 +89,10 @@
 							/>
 						</div>
 						<div v-show="featuresSelectedTab === 'components'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								If you want to apply the same style to multiple elements, then <strong>instead of duplicating multiple selectors, you can define a component</strong>.
-								<!-- </stylify-ignore> -->
-							</p>
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li>Define components to reuse selectors and style.</li>
+								<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
+							</ul>
 							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
 								<code-editor
 									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
@@ -198,11 +108,10 @@
 							</div>
 						</div>
 						<div v-show="featuresSelectedTab === 'plainSelectors'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								Plain selectors allows you to <strong>style elements without using classes or IDs</strong>. They can be combined and separated by a comma like in normall CSS.
-								<!-- </stylify-ignore> -->
-							</p>
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li>Style elements without classes or IDs.</li>
+								<li>You can style multiple selectors at once, just separate them by comma.</li>
+							</ul>
 							<code-editor
 								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="plainSelectorsDefaultCode"
@@ -211,11 +120,10 @@
 							/>
 						</div>
 						<div v-show="featuresSelectedTab === 'variables'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								You can <strong>define variables in order to reuse values</strong>. For example for colors, shadows and etc.
-								<!-- </stylify-ignore> -->
-							</p>
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li>Define variables to reuse their values.</li>
+								<li>Great for colors, sizes, shadows and etc.</li>
+							</ul>
 							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
 								<code-editor
 									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
@@ -231,11 +139,11 @@
 							</div>
 						</div>
 						<div v-show="featuresSelectedTab === 'dynamicScreens'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								You can <strong>write any screens you want</strong> and even <strong>combine them with logical operands like "&&" and "||"</strong>. Before generating finall CSS they are automatically sorted according to mobile first best practice. You can easily define your own screens.
-								<!-- </stylify-ignore> -->
-							</p>
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
+								<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
+								<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
+							</ul>
 							<code-editor
 								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="dynamicScreensDefaultCode"
@@ -243,11 +151,10 @@
 							/>
 						</div>
 						<div v-show="featuresSelectedTab === 'helpers'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<p class="font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<!-- <stylify-ignore> -->
-								Helpers are called when a selector is matched. For example for recalculating pixels to rem units and etc. In order to keep Stylify as small as possible, it does not provide any helper by default so feel free to define them yoursef.
-								<!-- </stylify-ignore> -->
-							</p>
+							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+								<li>Helpers are called when a selector is found.</li>
+								<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
+							</ul>
 							<code-editor
 								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
 								:defaultCode="helpersDefaultCode"
@@ -256,40 +163,6 @@
 							/>
 						</div>
 					</div>
-				</div>
-			</section>
-		</div>
-
-		<section class="container margin-bottom:45px md:margin-bottom:90px">
-			<h2 class="hp__section-title">All CSS properties available.</h2>
-			<p class="hp__section-subtitle">
-				Stylify comes with a <strong>native preset</strong> that allows you to use <strong> 678 different CSS properties</strong> that are <strong>available in Chrome, Mozila, Safari, Edge and Opera</strong>. You can also define your own configuration from scratch.
-			</p>
-			<div>
-				<nuxt-link to="/docs/stylify/native-preset" class="hp__section-more-info-link">
-					<span>Discover Native Preset</span>
-					<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-				</nuxt-link>
-			</div>
-			<div class="hp__section-content ">
-				<example-editor class="hp__example-editor" showConfig showHtml />
-			</div>
-		</section>
-
-		<div class="background-color:$blue2 padding:45px__0 margin:40px__0 md:padding:90px__0 md:margin-bottom:80px">
-			<section class="container">
-				<h2 class="hp__section-title">Seamless integration.</h2>
-				<p class="hp__section-subtitle">
-					Stylify can be used in node.js and in the browser directly. You can use <strong class="white-space:nowrap">@stylify/bundler</strong> for bundling files and <strong class="white-space:nowrap">@stylify/nuxt-module</strong> in case you use Nuxt.
-				</p>
-				<div>
-					<nuxt-link to="/docs/integrations" class="hp__section-more-info-link">
-						<span>Learn more</span>
-						<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-					</nuxt-link>
-				</div>
-				<div class="hp__section-content">
-					<integration-blocks />
 				</div>
 			</section>
 		</div>
@@ -454,9 +327,6 @@ new Compiler({
 export default {
 	components: { CodeEditor },
 	data: () => ({
-		// Installation tabs
-		installationSelectedTab: 'stylify',
-
 		stylifyCdnDefaultCode: stylifyCdnDefaultCode,
 		stylifyCliDefaultCode: stylifyCliDefaultCode,
 

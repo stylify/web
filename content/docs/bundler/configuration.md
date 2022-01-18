@@ -42,7 +42,10 @@ const config = {
 	cssVarsDirPath: 'path/to/vars.css',
 	sassVarsDirPath: 'path/to/vars.sass',
 	lessVarsDirPath: 'path/to/vars.less',
-	stylusVarsDirPath: 'path/to/vars.stylus'
+	stylusVarsDirPath: 'path/to/vars.stylus',
+	onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
+	onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
+	onBundleProcessed: (data) => console.log(data.bundleConfig, data.bundleBuildCache)
 };
 
 const bundler = new Bundler(config);
@@ -88,12 +91,10 @@ bundler.bundle([
 		// the space will be used in the scope.
 		scope: '#my-scope',
 		// Compiler config can be bundle specific
-		compiler: {}
-		// When a bundle is bundled, this callback is called
-		callback: (bundleConfig, bundleBuildCache) => {
-			console.log(bundleConfig);
-			console.log(bundleBuildCache);
-		}
+		compiler: {},
+		onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
+		onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
+		onBundleProcessed: (data) => console.log(data.bundleConfig, data.bundleBuildCache)
 	}
 ]);
 
