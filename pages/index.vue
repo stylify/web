@@ -11,7 +11,7 @@
 				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
 				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
 			</div>
-			<example-editor class="hp__example-editor" :showConfig="true" :showHtml="true" />
+			<example-editor class="hp__example-editor" :showHtml="true" />
 		</section>
 
 		<section :id="filters.webalize('Installation')" class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px">
@@ -30,22 +30,24 @@
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
 					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
 				</div>
-				<div class="display:flex flex-direction:column sm:flex-direction:row">
-					<div class="min-width:50px">
-						<img src="/images/hp/rating-profile-image.gif" alt="" loading="lazy" width="50" height="50" class="border-radius:50px margin-left:12px sm:margin-left:0 sm:margin-top:24px">
-					</div>
-					<div class="max-width:638px font-size:24px sm:margin-left:12px sm:width:calc(100%__-__50px)">
-						<div class="border-radius:12px margin-bottom:12px padding:12px background:#fff border:2px__solid__#f0f0f0 md:padding:24px">
-							<div class="margin-bottom:18px">LUKESHIRU <span class="color:#7e7e7e">•</span> <span class="color:#7e7e7e">Dec 21</span></div>
-							<div class="font-size:24px">
-								It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!<br>
-								<div class="font-size:12px line-height:21px margin-top:12px">From Dev.to: <a href="https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe" target="_blank" rel="noopener" class="color:$blue1">Stylify.dev. Dynamic CSS Generator for fluent and rapid development</a>.</div>
-							</div>
+				<div class="display:flex flex-wrap:wrap sm:margin-left:-24px justify-content:center flex-direction:column sm:flex-direction:row">
+					<a
+						v-for="(fan, index) in fans"
+						:key="index"
+						:href="fan.link"
+						target="blank"
+						rel="noopener nofollow"
+						class="
+							text-decoration:none color:#000
+							sm:max-width:calc(100%__*__1/2__-__24px) margin-bottom:24px md:max-width:calc(100%__*__1/3__-__24px) box-shadow:$shadow1 sm:margin-left:24px background:#fff padding:24px border-radius:4px
+						"
+					>
+						<div class="display:flex align-items:center margin-bottom:12px">
+							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" loading="lazy" width="50" height="50">
+							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
 						</div>
-						<div>
-							<img src="/images/hp/rating-likes.svg" alt="" loading="lazy" width="154" height="56" class="object-fit:cover max-width:100px height:auto">
-						</div>
-					</div>
+						<div>{{ fan.text }}</div>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -348,7 +350,27 @@ export default {
 		variablesDefaultHtmlCode: variablesDefaultHtmlCode,
 		variablesDefaultJsCode: variablesDefaultJsCode,
 		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
-		helpersDefaultCode: helpersDefaultCode
+		helpersDefaultCode: helpersDefaultCode,
+		fans: [
+			{
+				name: 'Lukeshiru',
+				image: 'lukeshiru.gif',
+				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
+				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
+			},
+			{
+				name: 'Mubashar Hashmat',
+				image: 'mubashar-hashmat.jpg',
+				text: `Extremely awesome 😎.`,
+				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
+			},
+			{
+				name: 'Angsuman Chakraborty',
+				image: 'angsuman-chakraborty.jpg',
+				text: `For your information https://stylify.dev: Dynamic Utility-First CSS Generator`,
+				link: 'https://twitter.com/angsuman/status/1482257827188310017'
+			}
+		]
 	})
 }
 </script>

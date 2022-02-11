@@ -19,10 +19,6 @@ pre code {
 	background: #282a36;
 }
 
-.prism-editor-wrapper .prism-editor__container {
-	overflow: visible;
-}
-
 .prism-editor__editor,
 .code-editor__wrapper,
 code[class*="language-"],
@@ -60,6 +56,22 @@ pre[class*="language-"] {
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
 	background: #282a36;
+}
+
+.prism-editor-wrapper {
+	.prism-editor__container {
+		max-height: 100%;
+		overflow: auto;
+	}
+
+	.prism-editor__editor {
+		overflow: visible;
+	}
+
+	.prism-editor__textarea {
+		word-break: keep-all;
+		white-space: nowrap;
+	}
 }
 
 /* Inline code */

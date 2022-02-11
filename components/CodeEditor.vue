@@ -7,7 +7,6 @@
 					v-model="code"
 					:highlight="highlighter"
 					:readonly="readonly"
-					line-numbers
 					class="language-html"
 				></prism-editor>
 			</div>

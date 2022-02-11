@@ -9,23 +9,17 @@ title: "Installation"
 description: 'How to install the Stylify and a first usage.'
 ---
 
-Stylify can be used through CDN or installed via CLI like NPM or Yarn.
+Stylify ships with multiple packages. All of them can be installed using NPM or YARN. Stylify and Profiler can also be used directly through CDN:
+- [@stylify/stylify](/docs/stylify) - For generating CSS
+- [@stylify/bundler](/docs/bundler) - Creates CSS bundles for your project and minifies selectors
+- [@stylify/nuxt-module](/docs/nuxt-module) - A module for Nuxt.js
+- [@stylify/profiler](/docs/profiler) - This package shows you what is happening under the hood
+- [@stylify/autoprefixer](/docs/autoprefixer) - Autoprefixer can be used to generate prefixes that are later used during on demand CSS generating for example in SSR, PHP or Python applications
 
-For easier start, create an index.html file, copy the code bellow into it and check whether the text is blue. If yes, then everything is ok and you can start coding.
+## Integrations examples
 
-```html
-<div class="color:steelblue">
-	Hello World!
-</div>
-<script
-    src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"
-    integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE="
-    crossorigin="anonymous"
-></script>
-```
+For easier start with your favorite tool checkout the [integration examples](/docs/integrations).
 
-<note><template>
-In case you want to know more about the installation, checkout the [Stylify package](/docs/stylify#installation) page for additional information.
-</template></note>
+<note>If you haven't found your favorite tool let us know and we will add it.</note>
 
-In the example above we are using the Stylify Runtime and the [Native Preset](/docs/stylify/native-preset). Runtime allows us to generate CSS directly in the browser and the preset provides additional configuration so you can use the `color:steelblue` selector.
+<integration-blocks />

@@ -51,7 +51,9 @@ export default {
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor.example-editor': 'min-height:330px',
+				'.hp__example-editor.example-editor': 'min-height:402px',
+				// Editor
+				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs
 				'.docs__aside-link.nuxt-link-active': 'font-weight:bold color:$blue1 background-color:$blue2'
 			},
@@ -97,7 +99,7 @@ export default {
 					margin-top:0 margin-bottom:24px max-width:800px
 					md:font-size:24px md:line-height:40px
 				`,
-				'hp__section-content': 'margin-top:24px md:margin-top:48px',
+				'hp__section-content': 'word-break:break-word margin-top:24px md:margin-top:48px',
 				'hp__section-more-info-link': `
 					text-decoration:none color:$blue1 display:inline-flex align-items:center font-size:18px
 					md:font-size:24px

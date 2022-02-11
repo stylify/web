@@ -21,5 +21,5 @@ The recommended steps you should follow are the following:
 2. Create a bundle for that piece of application using [@stylify/bundler](/docs/bundler).
 3. Rewrite the CSS of that selected part.
 4. Import the bundle CSS and remove the unused rewritten CSS.
-5. If all the previous steps are done, mangle selectors during a production build.
+5. If all the previous steps are done, mangle selectors during a production build and repeat the process until everything is rewritten.
 
