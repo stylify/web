@@ -17,7 +17,7 @@ It is inspired by Tailwind and Tachynos. Unlike these CSS frameworks, Stylify sh
 
 In case you want shorter or completely different selectors you can configure them or create a whole new preset preset.
 
-## Quick start
+## Quick Start
 The easiest way to start is to use Stylify through CDN.
 Create an index.html file and copy the code bellow into it.
 
