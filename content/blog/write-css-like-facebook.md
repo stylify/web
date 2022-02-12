@@ -187,13 +187,3 @@ Under the hood the Stylify optimizes the CSS in the following ways:
 Bellow is an image from StackBlitz with the processed and optimized output. The css (without new lines and spaces) has only **0.78kb**:
 
 <img src="/images/blog/stylify-facebook/processed-html.jpg" alt="" loading="lazy" width="856" height="506">
-
-## Let me know what you think!
-Stylify took a year of development and the first release was published a month ago.
-I will be very happy for any feedback, issue or an idea! 😊.
-
-----
-Stay in touch:<br>
-👉 [8machy](https://twitter.com/8machy)<br>
-👉 [dev.to/machy8](https://dev.to/machy8)<br>
-👉 [medium.com/@8machy](https://medium.com/@8machy)
