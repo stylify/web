@@ -9,7 +9,7 @@
 		>
 				<div class="display:flex margin-bottom:12px width:100% lg:width:auto lg:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex align-items:center">
-						<nuxt-link to="/" class="text-decoration:none display:flex"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px" alt=""/></nuxt-link>
+						<nuxt-link to="/" class="text-decoration:none display:flex" aria-label="Homepage"><img src="/images/logo.svg" width="180" height="42" class="width:120px md:width:180px" alt=""/></nuxt-link>
 					</section>
 					<section class="display:inline-flex justify-content:flex-end min-width:150px lg:display:none">
 						<nav class="display:flex align-items:center">
