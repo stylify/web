@@ -12,7 +12,7 @@ When you want to style it, you can use various frameworks and preprocessors.
 
 I personally prefer pure CSS or SCSS instead of utility-first frameworks. Even though the syntax is a bit longer than, somehow named and shortened selectors.
 
-The problem with writting CSS manualy is that it is slow. It's also easy to end up with duplicate CSS `property:value` in various selectors which causes the CSS size to grow.
+The problem with writing CSS manually is that it is slow. It's also easy to end up with duplicate CSS `property:value` in various selectors which causes the CSS size to grow.
 
 Because of this I have created the [Stylify.dev](https://stylify.dev):
 - It generates utility-first CSS dynamicly based on what I write
@@ -39,7 +39,7 @@ buildModules: [
 ]
 ```
 
-And that's it. Now you can start using [Stylify](https://stylify.dev) to style your Nuxt.js app 🤩.
+And that's it. Now you can start using the [Stylify](https://stylify.dev) to style your Nuxt.js app 🤩.
 
 ## First CSS
 
@@ -49,7 +49,9 @@ Open the `pages/index.vue` directory and copy the following content into it.
 ```html
 <template>
 	<div class="max-width:1024px margin:0__auto">
-		<h1 class="font-size:24px lg:font-size:32px text-align:center">Hello World 🥳!</h1>
+		<h1 class="font-size:24px lg:font-size:32px text-align:center">
+			Hello World 🥳!
+		</h1>
 	</div>
 </template>
 ```

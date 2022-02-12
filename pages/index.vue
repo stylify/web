@@ -26,9 +26,12 @@
 
 		<div :id="filters.webalize('Fans')" class="margin-top:0 hp__section-blue-wrapper">
 			<div class="container display:flex justify-content:center flex-direction:column align-items:center">
-				<div class="height:34px display:flex align-items:center justify-content:center margin-bottom:48px">
+				<div class="height:34px display:flex align-items:center justify-content:center">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
 					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+				</div>
+				<div class="text-align:center margin-bottom:48px">
+					<share-buttons url="https://stylify.dev" title="Dynamic Utility-First CSS Generator. Write HTML. Get CSS." description="Stylify is a library that generates utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
 				<div class="display:flex flex-wrap:wrap sm:margin-left:-24px justify-content:center flex-direction:column sm:flex-direction:row">
 					<a

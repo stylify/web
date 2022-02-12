@@ -16,8 +16,16 @@
 				<h1>{{ post.title }}</h1>
 				<p>{{ post.annotation }}</p>
 				<hr>
+				<div class="text-align:center">
+					<share-buttons :url="host + post.path" :title="post.title" :description="post.annotation" :image="post.ogImage" />
+				</div>
+				<hr>
 				<nuxt-content :document="post" />
 			</article>
+			<hr class="margin-top:24px">
+			<div class="text-align:center">
+				<share-buttons :url="host + post.path" :title="post.title" :description="post.annotation" :image="post.ogImage" />
+			</div>
 			<hr class="margin-bottom:24px">
 			<div class="display:flex justify-content:space-between margin-bottom:24px">
 				<div class="display:flex margin-right:8px">
@@ -57,13 +65,19 @@
 import { BlogRepository } from '../../services/model/BlogRepository';
 import { formatDateTime } from '../../services/blogDateTimeHelper';
 
+const host= 'https://stylify.dev';
+
 export default {
+	data() {
+		return {
+			host: host
+		}
+	},
 	head() {
 		if (!this.post) {
 			return;
 		}
 
-		const host = 'https://stylify.dev';
 		const postTitle = this.post.title + ' | Stylify';
 		const postAnnotation = this.post.annotation;
 		const postImage = this.post.ogImage;
