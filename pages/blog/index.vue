@@ -52,7 +52,7 @@ export default {
   	},
 	async asyncData({ $content }) {
 		const blogRepository = new BlogRepository($content);
-		const posts = await blogRepository.createQueryBuilder().sortBy('createdAt', 'DESC')
+		const posts = await blogRepository.createQueryBuilder().sortBy('createdAt', 'desc')
 			.only(['path', 'image', 'title', 'createdAt', 'annotation'])
 			.fetch();
 		return { posts };
