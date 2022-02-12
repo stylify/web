@@ -21,11 +21,7 @@ Integration example for browser can be found in <a href="https://github.com/styl
 For production purposes, use correct version instead of the latest. Otherwise, during the request for the file, there will be an internal redirect in the CDN in order to get the correct version which will increase the page loading time.
 
 ```js
-<script
-	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"
-	integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE="
-	crossorigin="anonymous"
-></script>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"></script>
 
 <script>
 Stylify.configure({

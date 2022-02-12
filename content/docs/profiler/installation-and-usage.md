@@ -22,7 +22,7 @@ npm i -D @stylify/profiler
 CDN:
 
 ```html
-<script src="https://unpkg.com/@stylify/profiler@0.0.2/dist/profiler.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/profiler@latest/dist/profiler.min.js"></script>
 ```
 
 ## Usage
