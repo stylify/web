@@ -45,6 +45,7 @@ And that's it. Now you can start using [Stylify](https://stylify.dev) to style y
 
 Open the `pages/index.vue` directory and copy the following content into it.
 
+<!-- <stylify-ignore> -->
 ```html
 <template>
 	<div class="max-width:1024px margin:0__auto">
@@ -52,6 +53,7 @@ Open the `pages/index.vue` directory and copy the following content into it.
 	</div>
 </template>
 ```
+<!-- </stylify-ignore> -->
 
 Congratulations, you have styled your first page!
 
@@ -66,6 +68,7 @@ Therefore we have components. Components can be defined on three places:
 
 Let's define add the title component into the index.vue as it is used only here. In this example, the selectors are defined on one line, but you can use template literals and split it on multiple lines. They are replaced by quotes so the content inside `[]` is valid JSON.
 
+<!-- <stylify-ignore> -->
 ```html
 <!--
 @stylify-components[{
@@ -78,6 +81,7 @@ Let's define add the title component into the index.vue as it is used only here.
 	</div>
 </template>
 ```
+<!-- </stylify-ignore> -->
 
 Now, let's add a container component in `stylify.config.js`, because it is going to probably be used in a whole project.
 
