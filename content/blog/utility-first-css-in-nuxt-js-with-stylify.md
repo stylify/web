@@ -1,7 +1,7 @@
 ---
 title: Utility-First CSS in Nuxt.js with Stylify
 image: '/images/blog/stylify-nuxt/stylify-nuxt.jpg'
-ogImage: '/images/blog/stylify-nuxt/stylify-nuxt.jpg'
+ogImage: '/images/blog/stylify-nuxt/stylify-nuxt-og-image.jpg'
 author: 'Vladimír Macháček'
 annotation: 'Utility-First CSS using pure CSS selectors. Style your Nuxt.js app quickly, seamlessly and without thinking.'
 createdAt: February 12, 2022
