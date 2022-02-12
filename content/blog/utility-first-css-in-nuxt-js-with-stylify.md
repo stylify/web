@@ -68,13 +68,16 @@ Therefore we have components. Components can be defined on three places:
 - In the `stylify.config.js` file
 - Inside a `nuxt.config.js` in the Stylify section
 
-Let's define add the title component into the index.vue as it is used only here. In this example, the selectors are defined on one line, but you can use template literals and split it on multiple lines. They are replaced by quotes so the content inside `[]` is valid JSON.
+Let's define add the title component into the index.vue as it is used only here.
 
 <!-- <stylify-ignore> -->
 ```html
 <!--
 @stylify-components[{
-	"title": "font-size:24px lg:font-size:32px text-align:center"
+	"title": `
+		font-size:24px lg:font-size:32px
+		text-align:center
+	`
 }]
 -->
 <template>

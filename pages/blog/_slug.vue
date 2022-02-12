@@ -103,7 +103,7 @@ export default {
 				{ hid: 'og:title', property: 'og:title', content: postTitle },
 				{ hid: 'og:type', property: 'og:type', content: 'article' },
 				{ hid: 'og:url', property: 'og:url', content: postCanonicalUrl},
-				{ hid: 'og:image', property: 'og:image', content: host + '/static' + postImage },
+				{ hid: 'og:image', property: 'og:image', content: host + postImage },
 				{ hid: 'og:description', property: 'og:description', content: postAnnotation },
 
 				// Twitter Card
