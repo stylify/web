@@ -5,47 +5,47 @@
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/nodejs" aria-label="Node.js" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/nodejs.svg" alt="" height="60" width="90" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/nodejs.svg" alt="" height="60" width="90" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/nuxtjs" aria-label="Nuxt" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/nuxtjs.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/nuxtjs.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/nextjs" aria-label="Nuxt" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/nextjs.svg" alt="" height="1" width="2" loading="lazy"  class="width:auto height:60px" />
+				<img src="/images/brands/nextjs.svg" alt="" height="1" width="2" decoding="async" loading="lazy"  class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/webpack" aria-label="Webpack" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/webpack.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/webpack.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/vitejs" aria-label="Vite" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/vitejs.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px"/>
+				<img src="/images/brands/vitejs.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px"/>
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/rollupjs" aria-label="Rollup" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/rollupjs.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/rollupjs.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/symfony" aria-label="Symfony" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/symfony.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/symfony.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/nette" aria-label="Nette" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/nette.png" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/nette.png" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 		<nuxt-link to="/docs/integrations/laravel" aria-label="Laravel" class="integration-block">
 			<div class="integration-block__image-wrapper">
-				<img src="/images/brands/laravel.svg" alt="" height="1" width="2" loading="lazy" class="width:auto height:60px" />
+				<img src="/images/brands/laravel.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
 	</div>

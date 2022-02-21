@@ -33,7 +33,7 @@
 				<div class="text-align:center margin-bottom:48px">
 					<share-buttons url="https://stylify.dev" title="Dynamic Utility-First CSS Generator. Write HTML. Get CSS." description="Stylify is a library that generates utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
-				<div class="display:flex flex-wrap:wrap sm:margin-left:-24px justify-content:center flex-direction:column sm:flex-direction:row">
+				<div class="sm:column-gap:24px sm:column-count:2 md:column-count:3">
 					<a
 						v-for="(fan, index) in fans"
 						:key="index"
@@ -42,11 +42,12 @@
 						rel="noopener nofollow"
 						class="
 							text-decoration:none color:#000
-							sm:max-width:calc(100%__*__1/2__-__24px) margin-bottom:24px md:max-width:calc(100%__*__1/3__-__24px) box-shadow:$shadow1 sm:margin-left:24px background:#fff padding:24px border-radius:4px
+							display:inline-block width:100%
+							margin-bottom:12px sm:margin-bottom:24px box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
 						"
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" loading="lazy" width="50" height="50">
+							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
 							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
 						</div>
 						<div>{{ fan.text }}</div>
@@ -367,10 +368,28 @@ export default {
 				text: `Extremely awesome 😎.`,
 				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
 			},
+            {
+				name: 'Paul⭐Bear',
+				image: 'paul-bear.jpg',
+				text: `Very cool library!`,
+				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
+			},
+            {
+				name: 'Tomáš Pilař',
+				image: 'tomas-pilar.jpg',
+				text: `I recommend looking at Stylify.dev if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏 #webdevelopers #CSS #stylify`,
+				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
+			},
+            {
+				name: 'Develop Greatness',
+				image: 'develop-greatness.jpg',
+				text: `Well, I guess we all need to follow @stylify_dev to reduce our #CSS related nerve attacks 😂😂.`,
+				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
+			},
 			{
 				name: 'Angsuman Chakraborty',
 				image: 'angsuman-chakraborty.jpg',
-				text: `For your information https://stylify.dev: Dynamic Utility-First CSS Generator`,
+				text: `For your information Stylify.dev: Dynamic Utility-First CSS Generator.`,
 				link: 'https://twitter.com/angsuman/status/1482257827188310017'
 			}
 		]
