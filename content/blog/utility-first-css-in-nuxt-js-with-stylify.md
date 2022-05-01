@@ -239,9 +239,3 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 	}
 }
 ```
-
-## Let me know what you think!
-
-Stylify is a way to write pure CSS in a more faster and seamless way. For me it is more efficient approach than writting it manually.
-
-But I am aware it may not be for everyone and therefore I will be happy for any positive and negative feedback, idea, thought or issue 🙂.
