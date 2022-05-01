@@ -3,7 +3,7 @@ title: Cumulative Style Sheets
 image: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets.jpg'
 ogImage: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets-og-image.jpg'
 author: 'Vladimír Macháček'
-annotation: "It's just CSS. What’s the worst that could happen? Maybe a refactoring within a few months."
+annotation: "Learn how to write CSS the optimized way and stay away from expensive refactoring."
 createdAt: 'May 1, 2022'
 ---
 
