@@ -7,7 +7,7 @@ annotation: "Learn how to write CSS the optimized way and stay away from expensi
 createdAt: 'May 1, 2022'
 ---
 
-Let's start with an example. How hard it is, to make a simple blue button? It's like one selector, probably a hover state and a few properties. Something like this:
+Let's start with an example. How hard it is, to create a simple blue button? It's like one selector, probably a hover state and a few properties. Something like this:
 
 ```css
 .button {
