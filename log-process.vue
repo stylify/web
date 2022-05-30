@@ -1,47 +1,47 @@
 <template>
 	<div>
-		<section class="container margin-bottom:48px margin-top:48px">
-			<h2 class="margin-top:0 font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px">Write CSS Faster<br><span class="color:#ccc font-size:32px lg:font-size:48px">without framework</span></h2>
-			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:32px lg:font-size:22px">
-				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
+		<section class="_7tcrv _11sk _5p9uv0">
+			<h2 class="_if95v4 _h35b1 _4outnm _1vegb8 _v3ui _4rnsf _11f _rsfm7">Write CSS Faster<br><span class="_olqug5 _h2a44 _rpu1g">without framework</span></h2>
+			<p class="_1vegb8 _if95v4 _v3ui _h0lic _4p0ntk _aa5kmk _rnu7c">
+				Stylify generates optimized <span class="_qthj _nb49l">utility-first</span> CSS dynamically based on what you write.
 				<br>
 				Write HTML. Get CSS 💎
 			</p>
 
-			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
-				<div class="hp__tab-buttons-wrapper">
-					<a role="button" v-on:click="featuresSelectedTab = 'selectors'" :class="[featuresSelectedTab === 'selectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use selectors you know</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Define components</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Style anything</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'variables'" :class="[featuresSelectedTab === 'variables' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use variables</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'dynamicScreens'" :class="[featuresSelectedTab === 'dynamicScreens' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Customize screens</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Extend functionality</a>
+			<div :id="filters.webalize('Features')" class="_11sk">
+				<div class="_04oup">
+					<a role="button" v-on:click="featuresSelectedTab = 'selectors'" :class="[featuresSelectedTab === 'selectors' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Use selectors you know</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Define components</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Style anything</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'variables'" :class="[featuresSelectedTab === 'variables' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Use variables</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'dynamicScreens'" :class="[featuresSelectedTab === 'dynamicScreens' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Customize screens</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : '_3d9a _olsfuo', '_750o _is _dn0qp']">Extend functionality</a>
 				</div>
 				<div>
-					<div v-show="featuresSelectedTab === 'selectors'" class="display:flex flex-direction:column align-items:flex-start">
-						<example-editor class="hp__example-editor width:100%" :showHtml="true" />
+					<div v-show="featuresSelectedTab === 'selectors'" class="_fr9l37 _u6t11 _6984cs">
+						<example-editor class="hp__example-editor _f5a1a" :showHtml="true" />
 					</div>
 					<div v-show="featuresSelectedTab === 'components'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
+						<div class="_lapd7">
+							<ul class="_ose3e">
 								<li>Define components to reuse selectors and style.</li>
 								<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
 							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2" :defaultCode="componentsDefaultHtmlCode" readonly></example-code-editor>
-								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 padding:12px__0 border-radius:$radius2" :defaultCode="componentsDefaultJsCode" lang="js" readonly></example-code-editor>
+							<div class="_557or _uvbb4b _dlunh _fr9l37 _u6t11 _6984cs">
+								<example-code-editor class="_l8gbrn _ikfi8 _ttoe8q _u4vh _ohuopp" :defaultCode="componentsDefaultHtmlCode" readonly></example-code-editor>
+								<example-code-editor class="_l8gbrn _ikfi8 _ikfi8 _ohuopp" :defaultCode="componentsDefaultJsCode" lang="js" readonly></example-code-editor>
 							</div>
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'plainSelectors'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
+						<div class="_lapd7">
+							<ul class="_ose3e">
 								<li>Style elements without classes or IDs.</li>
 								<li>You can style multiple selectors at once, just separate them by comma.</li>
 							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+							<div class="_557or _uvbb4b _dlunh">
 								<example-code-editor
-									class="hp__code-editor"
+									class="_dsb5"
 									:defaultCode="plainSelectorsDefaultCode"
 									lang="js"
 									readonly
@@ -50,19 +50,19 @@
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'variables'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
+						<div class="_lapd7">
+							<ul class="_ose3e">
 								<li>Define variables to reuse their values.</li>
 								<li>Great for colors, sizes, shadows and etc.</li>
 							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
+							<div class="_557or _uvbb4b _dlunh _fr9l37 _u6t11 _6984cs">
 								<example-code-editor
-									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2"
+									class="_l8gbrn _ikfi8 _ttoe8q _u4vh _ohuopp"
 									:defaultCode="variablesDefaultHtmlCode"
 									readonly
 								/>
 								<example-code-editor
-									class="hp__code-editor"
+									class="_dsb5"
 									:defaultCode="variablesDefaultJsCode"
 									lang="js"
 									readonly
@@ -71,15 +71,15 @@
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'dynamicScreens'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
+						<div class="_lapd7">
+							<ul class="_ose3e">
+								<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="_nb49l">rng640px-1024px</code>.</li>
 								<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
 								<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
 							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+							<div class="_557or _uvbb4b _dlunh">
 								<example-code-editor
-									class="hp__code-editor"
+									class="_dsb5"
 									:defaultCode="dynamicScreensDefaultCode"
 									readonly
 								/>
@@ -87,14 +87,14 @@
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'helpers'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
+						<div class="_lapd7">
+							<ul class="_ose3e">
 								<li>Helpers are called when a selector is found.</li>
 								<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
 							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+							<div class="_557or _uvbb4b _dlunh">
 								<example-code-editor
-									class="hp__code-editor"
+									class="_dsb5"
 									:defaultCode="helpersDefaultCode"
 									lang="js"
 									readonly
@@ -104,34 +104,34 @@
 					</div>
 				</div>
 			</div>
-			<div class="max-width:100% margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px md:margin-bottom:0 border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
-				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent md:margin-bottom:0 color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
+			<div class="_bahj1 _uaaj _fr9l37 _p9tfh _8sgb1q _8g58ul _vhc4h _1vegb8 _h0lic _4p00er">
+				<nuxt-link to="/docs/get-started" class="_is _g6o4 _pe5msi _v3ui _rfit _2vo74c">Go ahead. Try it now!</nuxt-link>
+				<a :href="'#' + filters.webalize('Installation')" class="_is _g6o4 _3d9a _rfit _s86te _2vo74c _jrvd _v3ui _pe5msi">Installation</a>
 			</div>
 		</section>
 
-		<section :id="filters.webalize('Installation')" class="container margin-bottom:48px margin-top:48px md:margin-bottom:48px max-width:100%">
-			<h2 class="hp__section-title">Seamless integration.</h2>
-			<p class="hp__section-subtitle">
+		<section :id="filters.webalize('Installation')" class="_7tcrv _11sk _5p9uv0 _dsuhv _bahj1">
+			<h2 class="_cgi3o">Seamless integration.</h2>
+			<p class="_nqq78">
 				Start using Stylify with your favorite tool in a minute.
 			</p>
-			<div class="hp__section-content">
+			<div class="_mjbgin">
 				<integration-blocks />
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:48px">
-			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
-				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
-					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
-					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+		<div :id="filters.webalize('Fans')" class="_bahj1 _qlf4a _if95v4 _9tche _8js0 _ed2r _dsuhv">
+			<div class="_fr9l37 _vhc4h _8g58ul _u6t11 _pmq5r4 _v3ui">
+				<div class="_ttrusi _fr9l37 _8g58ul _vhc4h _q0gdn _f9a2i _3o1tp">
+					<div class="_fr9l37 _ttso7d _cguu4 _f59bb"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
+					<div class="_fr9l37 _evotf"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
 				</div>
-				<div class="text-align:center">
+				<div class="_1vegb8">
 					<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
 			</div>
-			<div class="slideshow width:200% height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
+			<div class="slideshow _e9459 _kkd _m0vnad _psffd _rkau4 _qlf4a">
+				<div class="_fr9l37 _vhc4h _p9tfh _6984cs _6tl5u _rqn73 _rrpb _lb _rkau4 _0qb63 _deu9 _qmk67">
 					<a
 						v-for="(fan, index) in fans"
 						:key="index"
@@ -139,14 +139,14 @@
 						target="blank"
 						rel="noopener nofollow"
 						class="
-						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
-						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+						_d73oq _olsfuo
+						_53dod _u6t11 _g6s8l _6egid _2j _oim62 _84omq _54821 _rle6 _prm8
+						_l8gbrn _677kd _6pso _5s72l
 					"
 					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
+						<div class="_fr9l37 _8g58ul _u4vh">
+							<img :src="`/images/hp/fans/${fan.image}`" class="_mbrbb" alt="" decoding="async" loading="lazy" width="50" height="50">
+							<strong class="_78os _h0lic">{{ fan.name }}</strong>
 						</div>
 						<div>{{ fan.text }}</div>
 					</a>
@@ -157,14 +157,14 @@
 						target="blank"
 						rel="noopener nofollow"
 						class="
-						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
-						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+						_d73oq _olsfuo
+						_53dod _u6t11 _g6s8l _6egid _2j _oim62 _84omq _54821 _rle6 _prm8
+						_l8gbrn _677kd _6pso _5s72l
 					"
 					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
+						<div class="_fr9l37 _8g58ul _u4vh">
+							<img :src="`/images/hp/fans/${fan.image}`" class="_mbrbb" alt="" decoding="async" loading="lazy" width="50" height="50">
+							<strong class="_78os _h0lic">{{ fan.name }}</strong>
 						</div>
 						<div>{{ fan.text }}</div>
 					</a>
@@ -172,19 +172,19 @@
 			</div>
 		</div>
 
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-bottom:48px" >
-			<h2 class="hp__section-title">Why Stylify?</h2>
-			<div class="hp__section-content"><why-stylify /></div>
+		<section :id="filters.webalize('Why Stylify?')" class="_7tcrv _11sk" >
+			<h2 class="_cgi3o">Why Stylify?</h2>
+			<div class="_mjbgin"><why-stylify /></div>
 		</section>
 
 		<div>
-			<section class="container display:flex flex-direction:column align-items:center margin-bottom:48px">
-				<h2 class="margin-top:0 font-size:32px line-height:52px margin-bottom:18px md:font-size:60px md:line-height:90px">Go ahead, try it now!</h2>
-				<p class="margin-top:0 font-size:24px margin-bottom:34px">
+			<section class="_7tcrv _fr9l37 _u6t11 _8g58ul _11sk">
+				<h2 class="_if95v4 _h2a44 _4ou68t _uajn _4r0dm _ki8">Go ahead, try it now!</h2>
+				<p class="_if95v4 _h1et7 _011h">
 					Code less. Do more.
 				</p>
 				<div>
-					<nuxt-link to="/docs/get-started" class="btn">Get started!</nuxt-link>
+					<nuxt-link to="/docs/get-started" class="_is">Get started!</nuxt-link>
 				</div>
 			</section>
 		</div>
@@ -309,7 +309,8 @@ new Compiler({
 				return 'font-weight';
 			} else if (value === 'italic') {
 				return 'font-style'
-			} else if (value.includes('$')) {
+			} else if (value.includes('</stylify-ignore> -->
+)) {
 				return 'color';
 			}
 		},
