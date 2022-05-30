@@ -4,7 +4,6 @@ export default {
 	sassVarsDirPath: path.join(__dirname, 'assets', 'scss', 'variables'),
 	extend: {
 		compiler: {
-			ignoredElements: ['code-editor'],
 			variables: {
 				blue1: '#01befe',
 				blue2: '#f2fcff',
@@ -113,6 +112,8 @@ export default {
 					margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:12px
 					overflow:auto md:margin-left:-12px md:margin-right:-24px lg:margin-left:-8px
 				`,
+				'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
+				'hp__tab-content-list': 'margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px',
 				'hp__code-editor': 'box-shadow:$shadow1 padding:12px__0 border-radius:$radius2',
 
 				// Why Stylify

@@ -23,20 +23,20 @@
 					</div>
 					<div class="display:flex flex:1">
 						<code ref="codeSlot" hidden><slot></slot></code>
-						<code-editor
+						<example-code-editor
 							class="height:100% padding:12px__0 display:flex justify-content:center"
 							v-show="selectedTab === 'editor'"
 							:defaultCode="code"
 							@codeChanged="setPreviewCode"
-						></code-editor>
-						<code-editor
+						></example-code-editor>
+						<example-code-editor
 							class="content-visibility:auto height:100% padding:12px__0 display:flex justify-content:center"
 							v-show="selectedTab === 'css'"
 							:defaultCode="css"
 							lang="css"
 							readonly
 						/>
-						<code-editor
+						<example-code-editor
 							class="content-visibility:auto height:100% padding:12px__0 display:flex justify-content:center"
 							v-if="showHtml"
 							v-show="selectedTab === 'mangledHtml'"
