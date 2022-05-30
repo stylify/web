@@ -3,7 +3,7 @@ import path from 'path';
 import fg from 'fast-glob';
 
 const defaultPageTitle = 'Write CSS Faster and Efficiently. Write HTML. Get CSS.';
-const defaultPageDescription = 'Stylify is a library that generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
+const defaultPageDescription = 'Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {

@@ -45,7 +45,7 @@ export default {
 				'article table td': 'word-break:keep-all border-bottom:1px__solid__$grey3 padding:4px',
 				'article table th': 'text-align:left padding:4px',
 				'article table thead': 'position:sticky top:0 left:0 background-color:rgba(255,255,255,0.8) backdrop-filter:blur(12px)',
-				'article .note':'margin:16px__0',
+				'article .note': 'margin:16px__0',
 				'article .note, article .note *': 'font-size:14px line-height:24px',
 				'article .example-editor': 'margin:24px__0',
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
@@ -69,6 +69,10 @@ export default {
 					border-radius:$radius2 padding:12px__24px display:inline-flex align-items:center
 					hover:background-color:darken($blue1,10)
 				`,
+				'btn--hp-tabs': {
+					selectors: 'padding-left:12px padding-right:12px',
+					selectorsChain: 'btn'
+				},
 				'btn--transparent': {
 					selectors: 'background:none hover:background-color:rgba(1,__190,__254,__0.1)',
 					selectorsChain: 'btn'
@@ -99,14 +103,14 @@ export default {
 					margin-top:0 margin-bottom:24px max-width:800px
 					md:font-size:24px md:line-height:40px
 				`,
-				'hp__section-content': 'word-break:break-word margin-top:24px md:margin-top:48px',
+				'hp__section-content': 'word-break:break-word margin-top:24px',
 				'hp__section-more-info-link': `
 					text-decoration:none color:$blue1 display:inline-flex align-items:center font-size:18px
 					md:font-size:24px
 				`,
 				'hp__section-more-info-link-icon': 'margin-left:12px transform:rotate(-90deg)',
 				'hp__tab-buttons-wrapper': `
-					margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:32px
+					margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:12px
 					overflow:auto md:margin-left:-12px md:margin-right:-24px lg:margin-left:-8px
 				`,
 				'hp__code-editor': 'box-shadow:$shadow1 padding:12px__0 border-radius:$radius2',
@@ -118,7 +122,7 @@ export default {
 				`,
 				'why-stylify__block-title': 'margin:0 font-size:24px line-height:41px display:flex flex-direction:row align-items:center',
 				'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
-				'why-stylify__list': 'margin-bottom:0 padding-left:24px',
+				'why-stylify__list': 'margin-bottom:0 padding-left:24px'
 			}
 		}
 	}

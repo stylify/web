@@ -1,20 +1,109 @@
 <template>
 	<div>
-		<section class="container margin-bottom:64px margin-top:48px md:margin-bottom:80px">
+		<section class="container margin-bottom:48px margin-top:48px">
 			<h2 class="margin-top:0 font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px">Write CSS Faster<br><span class="color:#ccc font-size:32px lg:font-size:48px">Without Framework</span></h2>
-			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:38px lg:font-size:24px">
-				Stylify is a library that generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
+			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:32px lg:font-size:22px">
+				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 				<br>
 				Write HTML. Get CSS 💎
 			</p>
-			<div class="max-width:100% margin-left:-24px margin-bottom:24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
-				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
+
+			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
+				<div class="hp__tab-buttons-wrapper">
+					<a role="button" v-on:click="featuresSelectedTab = 'selectors'" :class="[featuresSelectedTab === 'selectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use selectors you know</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Define components</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Style anything</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'variables'" :class="[featuresSelectedTab === 'variables' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use variables</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'dynamicScreens'" :class="[featuresSelectedTab === 'dynamicScreens' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Customize screens</a>
+					<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Extend functionality</a>
+				</div>
+				<div>
+					<div v-show="featuresSelectedTab === 'selectors'" class="display:flex flex-direction:column align-items:flex-start">
+						<example-editor class="hp__example-editor width:100%" :showHtml="true" />
+					</div>
+					<div v-show="featuresSelectedTab === 'components'" class="display:flex flex-direction:column lg:flex-direction:row">
+						<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+							<li>Define components to reuse selectors and style.</li>
+							<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
+						</ul>
+						<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2"
+								:defaultCode="componentsDefaultHtmlCode"
+								readonly
+							/>
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 padding:12px__0 border-radius:$radius2"
+								:defaultCode="componentsDefaultJsCode"
+								lang="js"
+								readonly
+							/>
+						</div>
+					</div>
+					<div v-show="featuresSelectedTab === 'plainSelectors'" class="display:flex flex-direction:column lg:flex-direction:row">
+						<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+							<li>Style elements without classes or IDs.</li>
+							<li>You can style multiple selectors at once, just separate them by comma.</li>
+						</ul>
+						<code-editor
+							class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
+							:defaultCode="plainSelectorsDefaultCode"
+							lang="js"
+							readonly
+						/>
+					</div>
+					<div v-show="featuresSelectedTab === 'variables'" class="display:flex flex-direction:column lg:flex-direction:row">
+						<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+							<li>Define variables to reuse their values.</li>
+							<li>Great for colors, sizes, shadows and etc.</li>
+						</ul>
+						<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
+							<code-editor
+								class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2"
+								:defaultCode="variablesDefaultHtmlCode"
+								readonly
+							/>
+							<code-editor
+								class="hp__code-editor"
+								:defaultCode="variablesDefaultJsCode"
+								lang="js"
+								readonly
+							/>
+						</div>
+					</div>
+					<div v-show="featuresSelectedTab === 'dynamicScreens'" class="display:flex flex-direction:column lg:flex-direction:row">
+						<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+							<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
+							<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
+							<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
+						</ul>
+						<code-editor
+							class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
+							:defaultCode="dynamicScreensDefaultCode"
+							readonly
+						/>
+					</div>
+					<div v-show="featuresSelectedTab === 'helpers'" class="display:flex flex-direction:column lg:flex-direction:row">
+						<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
+							<li>Helpers are called when a selector is found.</li>
+							<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
+						</ul>
+						<code-editor
+							class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
+							:defaultCode="helpersDefaultCode"
+							lang="js"
+							readonly
+						/>
+					</div>
+				</div>
 			</div>
-			<example-editor class="hp__example-editor" :showHtml="true" />
+			<div class="max-width:100% margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px md:margin-bottom:0 border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
+				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent md:margin-bottom:0 color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
+			</div>
 		</section>
 
-		<section :id="filters.webalize('Installation')" class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px max-width:100%">
+		<section :id="filters.webalize('Installation')" class="container margin-bottom:48px margin-top:48px md:margin-bottom:48px max-width:100%">
 			<h2 class="hp__section-title">Seamless integration.</h2>
 			<p class="hp__section-subtitle">
 				Start using Stylify with your favorite tool in a minute.
@@ -24,13 +113,15 @@
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:80px">
-			<div class="height:34px display:flex align-items:center justify-content:center">
-				<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
-				<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
-			</div>
-			<div class="text-align:center margin-bottom:48px">
-				<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify is a library that generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:48px">
+			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
+				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
+					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
+					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+				</div>
+				<div class="text-align:center">
+					<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
+				</div>
 			</div>
 			<div class="slideshow width:200% height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
 				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
@@ -74,125 +165,13 @@
 			</div>
 		</div>
 
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-bottom:62px md:margin-bottom:80px" >
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-bottom:48px" >
 			<h2 class="hp__section-title">Why Stylify?</h2>
 			<div class="hp__section-content"><why-stylify /></div>
 		</section>
 
-		<div :id="filters.webalize('Focused on rapid and fluent coding.')" class="hp__section-blue-wrapper">
-			<section class="container">
-				<h2 class="hp__section-title">Focused on rapid and fluent coding.</h2>
-
-				<div>
-					<nuxt-link to="/docs/get-started" class="hp__section-more-info-link">
-						<span>Getting started</span>
-						<i class="hp__section-more-info-link-icon icon icon-arrow-down-circle"></i>
-					</nuxt-link>
-				</div>
-				<div class="hp__section-content">
-					<div class="hp__tab-buttons-wrapper">
-						<a role="button" v-on:click="featuresSelectedTab = 'dynamicSelectors'" :class="[featuresSelectedTab === 'dynamicSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Dynamic selectors</a>
-						<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Components</a>
-						<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Plain selectors</a>
-						<a role="button" v-on:click="featuresSelectedTab = 'variables'" :class="[featuresSelectedTab === 'variables' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Variables</a>
-						<a role="button" v-on:click="featuresSelectedTab = 'dynamicScreens'" :class="[featuresSelectedTab === 'dynamicScreens' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Dynamic screens</a>
-						<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : 'btn--transparent color:#000', 'margin-left:8px btn']">Helpers</a>
-					</div>
-					<div>
-						<div v-show="featuresSelectedTab === 'dynamicSelectors'" class="display:flex flex-direction:column lg:flex-direction:row align-items:flex-start">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li>No predefined CSS - <strong>no CSS purge needed</strong>.</li>
-								<li>Use all <strong>678 browser CSS properties for selectors</strong>.</li>
-								<li><strong>Define custom selectors</strong> like <code>m:20px</code> for margin.</li>
-								<li>Use <code>__</code> (two underscores) for spaces and <code>^</code> (hat) for quotes to define any selector you want like <code>border:2px__dotted__#01befe</code>.</li>
-							</ul>
-							<code-editor
-								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
-								:defaultCode="dynamicSelectorsDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="featuresSelectedTab === 'components'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li>Define components to reuse selectors and style.</li>
-								<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<code-editor
-									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
-									:defaultCode="componentsDefaultHtmlCode"
-									readonly
-								/>
-								<code-editor
-									class="box-shadow:$shadow1 padding:12px__0 padding:12px__0 border-radius:$radius2"
-									:defaultCode="componentsDefaultJsCode"
-									lang="js"
-									readonly
-								/>
-							</div>
-						</div>
-						<div v-show="featuresSelectedTab === 'plainSelectors'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li>Style elements without classes or IDs.</li>
-								<li>You can style multiple selectors at once, just separate them by comma.</li>
-							</ul>
-							<code-editor
-								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
-								:defaultCode="plainSelectorsDefaultCode"
-								lang="js"
-								readonly
-							/>
-						</div>
-						<div v-show="featuresSelectedTab === 'variables'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li>Define variables to reuse their values.</li>
-								<li>Great for colors, sizes, shadows and etc.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<code-editor
-									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:24px border-radius:$radius2"
-									:defaultCode="variablesDefaultHtmlCode"
-									readonly
-								/>
-								<code-editor
-									class="hp__code-editor"
-									:defaultCode="variablesDefaultJsCode"
-									lang="js"
-									readonly
-								/>
-							</div>
-						</div>
-						<div v-show="featuresSelectedTab === 'dynamicScreens'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
-								<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
-								<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
-							</ul>
-							<code-editor
-								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
-								:defaultCode="dynamicScreensDefaultCode"
-								readonly
-							/>
-						</div>
-						<div v-show="featuresSelectedTab === 'helpers'" class="display:flex flex-direction:column lg:flex-direction:row">
-							<ul class="margin-top:0 font-size:18px line-height:32px lg:width:50% max-width:800px">
-								<li>Helpers are called when a selector is found.</li>
-								<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
-							</ul>
-							<code-editor
-								class="hp__code-editor max-width:800px lg:margin-left:24px lg:width:50%"
-								:defaultCode="helpersDefaultCode"
-								lang="js"
-								readonly
-							/>
-						</div>
-					</div>
-				</div>
-			</section>
-		</div>
-
 		<div>
-			<section class="container display:flex flex-direction:column align-items:center margin-bottom:40px md:margin-bottom:80px">
+			<section class="container display:flex flex-direction:column align-items:center margin-bottom:48px">
 				<h2 class="margin-top:0 font-size:32px line-height:52px margin-bottom:18px md:font-size:60px md:line-height:90px">Go ahead, try it now!</h2>
 				<p class="margin-top:0 font-size:24px margin-bottom:34px">
 					Code less. Do more.
@@ -273,14 +252,6 @@ yarn add @stylify/autoprefixer
 
 npm i @stylify/autoprefixer
 `.trim();
-
-const dynamicSelectorsDefaultCode = `
-<div class="
-	border:2px__solid__blue
-	content:^Hello World^
-	transition:color__0.3s__ease-in-out
-	width:calc(100%__*__1/4__-24px)
-"></div>`.trim();
 
 
 let componentsDefaultHtmlCode = '<div class="button"></div>';
@@ -364,8 +335,7 @@ export default {
 		autoprefixerCliDefaultCode: autoprefixerCliDefaultCode,
 
 		// Features tabs
-		featuresSelectedTab: 'dynamicSelectors',
-		dynamicSelectorsDefaultCode: dynamicSelectorsDefaultCode,
+		featuresSelectedTab: 'selectors',
 		componentsDefaultHtmlCode: componentsDefaultHtmlCode,
 		componentsDefaultJsCode: componentsDefaultJsCode,
 		plainSelectorsDefaultCode: plainSelectorsDefaultCode,
@@ -395,7 +365,7 @@ export default {
 			{
 				name: 'Ahmad Tahir',
 				image: 'ahmad-tahir.jpg',
-				text: `Wow this looks neat 💯. I’ll be checking it out`,
+				text: `Wow this looks neat 💯. I’ll be checking it out.`,
 				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
 			},
 			{
