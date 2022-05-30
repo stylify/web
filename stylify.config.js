@@ -89,7 +89,7 @@ export default {
 				`,
 
 				// HP
-				'hp__section-blue-wrapper': 'background-color:$blue2 padding:45px__0 margin:45px__0 md:padding:80px__0 md:margin-bottom:80px',
+				'hp__section-blue-wrapper': 'background-color:$blue2 padding-top:45px padding-bottom:45px margin:45px__0 md:margin-bottom:80px',
 				'hp__section-title': `
 					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:12px
 					md:font-size:60px md:line-height:90px

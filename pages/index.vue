@@ -1,20 +1,20 @@
 <template>
 	<div>
-		<section class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px">
-			<h2 class="font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px"><span class="word-break:keep-all white-space:nowrap">Utility-First</span> CSS Generator</h2>
-			<p class="text-align:center margin-bottom:32px font-size:18px line-height:32px lg:line-height:42px lg:font-size:24px">
-				Stylify is a library that generates <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
+		<section class="container margin-bottom:64px margin-top:48px md:margin-bottom:80px">
+			<h2 class="margin-top:0 font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px">Write CSS Faster<br><span class="color:#ccc font-size:32px lg:font-size:48px">Without Framework</span></h2>
+			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:38px lg:font-size:24px">
+				Stylify is a library that generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 				<br>
-				Write HTML. Get CSS 💎.
+				Write HTML. Get CSS 💎
 			</p>
-			<div class="margin-left:-24px margin-bottom:24px md:margin-bottom:48px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
+			<div class="max-width:100% margin-left:-24px margin-bottom:24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
 				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
 				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
 			</div>
 			<example-editor class="hp__example-editor" :showHtml="true" />
 		</section>
 
-		<section :id="filters.webalize('Installation')" class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px">
+		<section :id="filters.webalize('Installation')" class="container margin-bottom:62px margin-top:100px md:margin-bottom:80px max-width:100%">
 			<h2 class="hp__section-title">Seamless integration.</h2>
 			<p class="hp__section-subtitle">
 				Start using Stylify with your favorite tool in a minute.
@@ -24,16 +24,16 @@
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="margin-top:0 hp__section-blue-wrapper">
-			<div class="container display:flex justify-content:center flex-direction:column align-items:center">
-				<div class="height:34px display:flex align-items:center justify-content:center">
-					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
-					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
-				</div>
-				<div class="text-align:center margin-bottom:48px">
-					<share-buttons url="https://stylify.dev" title="Dynamic Utility-First CSS Generator. Write HTML. Get CSS." description="Stylify is a library that generates utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
-				</div>
-				<div class="sm:column-gap:24px sm:column-count:2 md:column-count:3">
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:80px">
+			<div class="height:34px display:flex align-items:center justify-content:center">
+				<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
+				<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+			</div>
+			<div class="text-align:center margin-bottom:48px">
+				<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify is a library that generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
+			</div>
+			<div class="slideshow width:200% height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
 						:key="index"
@@ -41,10 +41,28 @@
 						target="blank"
 						rel="noopener nofollow"
 						class="
-							text-decoration:none color:#000
-							display:inline-block width:100%
-							margin-bottom:12px sm:margin-bottom:24px box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
-						"
+						text-decoration:none color:#000
+						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
+						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+					"
+					>
+						<div class="display:flex align-items:center margin-bottom:12px">
+							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
+							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
+						</div>
+						<div>{{ fan.text }}</div>
+					</a>
+					<a
+						v-for="(fan, index) in fans"
+						:key="index"
+						:href="fan.link"
+						target="blank"
+						rel="noopener nofollow"
+						class="
+						text-decoration:none color:#000
+						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
+						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+					"
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
 							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
@@ -357,12 +375,6 @@ export default {
 		helpersDefaultCode: helpersDefaultCode,
 		fans: [
 			{
-				name: 'Lukeshiru',
-				image: 'lukeshiru.gif',
-				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
-				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
-			},
-			{
 				name: 'Mubashar Hashmat',
 				image: 'mubashar-hashmat.jpg',
 				text: `Extremely awesome 😎.`,
@@ -374,26 +386,65 @@ export default {
 				text: `Very cool library!`,
 				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
 			},
-            {
-				name: 'Tomáš Pilař',
-				image: 'tomas-pilar.jpg',
-				text: `I recommend looking at Stylify.dev if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏 #webdevelopers #CSS #stylify`,
-				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
+			{
+				name: 'sam i am',
+				image: 'sam-i-am.jpg',
+				text: `That's nice!`,
+				link: 'https://twitter.com/sbworld/status/1518571221490749441'
 			},
-            {
-				name: 'Develop Greatness',
-				image: 'develop-greatness.jpg',
-				text: `Well, I guess we all need to follow @stylify_dev to reduce our #CSS related nerve attacks 😂😂.`,
-				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
+			{
+				name: 'Ahmad Tahir',
+				image: 'ahmad-tahir.jpg',
+				text: `Wow this looks neat 💯. I’ll be checking it out`,
+				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
 			},
 			{
 				name: 'Angsuman Chakraborty',
 				image: 'angsuman-chakraborty.jpg',
 				text: `For your information Stylify.dev: Dynamic Utility-First CSS Generator.`,
 				link: 'https://twitter.com/angsuman/status/1482257827188310017'
-			}
+			},
+						{
+				name: 'Lukeshiru',
+				image: 'lukeshiru.gif',
+				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
+				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
+			},
+			{
+				name: 'Tom Ravn',
+				image: 'tom-ravn.jpg',
+				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
+				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
+			},
+			{
+				name: 'Tomáš Pilař',
+				image: 'tomas-pilar.jpg',
+				text: `I recommend looking at Stylify.dev if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
+				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
+			},
+			{
+				name: 'David Mario Licla',
+				image: 'david-mario-licla.jpeg',
+				text: '🤯 Did you know that there is an alternative to TailwindCSS but only using CSS properties? Look it\'s called Stylify!',
+				link: 'https://www.linkedin.com/posts/davidmariolc_sab%C3%ADas-que-existe-una-alternativa-a-tailwindcss-activity-6912058924682604544-ImsK?utm_source=linkedin_share&utm_medium=member_desktop_web'
+			},
+			{
+				name: 'Develop Greatness',
+				image: 'develop-greatness.jpg',
+				text: `Well, I guess we all need to follow @stylify_dev to reduce our #CSS related nerve attacks 😂😂.`,
+				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
+			},
 		]
 	})
 }
 </script>
+
+<style lang="scss">
+@keyframes slideshow {
+	100% {
+		transform: translateX(-50%);
+	}
+}
+</style>
+
 <!-- </stylify-ignore> -->
