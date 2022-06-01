@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<section class="container margin-bottom:48px margin-top:48px">
-			<h2 class="margin-top:0 font-size:40px line-height:48px text-align:center margin-bottom:24px md:font-size:56px md:line-height:64px lg:font-size:72px">Write CSS Faster<br><span class="color:#ccc font-size:32px lg:font-size:48px">without framework</span></h2>
-			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:32px lg:font-size:22px">
+			<h2 class="hp-title margin-top:0 font-size:40px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px">Write CSS Faster</h2>
+			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:30px lg:font-size:20px">
 				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 				<br>
-				Write HTML. Get CSS 💎
+				Write Selectors. Get CSS. Without framework 💎
 			</p>
 
 			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
@@ -417,6 +417,13 @@ export default {
 </script>
 
 <style lang="scss">
+.hp-title {
+	background: #007cf0;
+	background: linear-gradient(to right, #007cf0 0%, #00b4f4 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
 @keyframes slideshow {
 	100% {
 		transform: translateX(-50%);
