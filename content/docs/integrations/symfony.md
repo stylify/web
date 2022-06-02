@@ -18,70 +18,39 @@ Integration example for the Symfony framework can be found in <a href="https://g
 
 The example bellow uses `symfony/skeleton` and ads a few composer packages according to the getting started tutorial: `twig, annotations, @symfony/webpack-encore`.
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First install the [@stylify/bundler](/docs/unplugin) package using NPM or Yarn:
 
 ```
-npm i -D @stylify/bundler
-
-yarn add -D @stylify/bundler
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
 ```
 
 Now add the following configuration into the webpack.config.js:
 
 ```js
 const Encore = require('@symfony/webpack-encore');
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
+const { webpackPlugin } = require('@stylify/unplugin');
 const path = require('path');
 
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
-class StylifyPlugin {
-	apply(compiler) {
-		// Disable variables file.
-		// Use the variables files instead created by the Bundler
-        nativePreset.compiler.injectVariablesIntoCss = false;
-		// Optional configuration
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
-
-		// Create a new Bundler instance.
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-            cssVarsDirPath: './assets/styles',
-			watchFiles: compiler.options.watch || false
-		});
-
-		// Customize bundles however you want.
-		bundler.bundle([
-			{
-				outputFile: layoutCssPath,
-				files: ['./templates/base.html.twig']
-			},
-            {
-                outputFile: homepageCssPath,
-                files: ['./templates/homepage/homepage.html.twig']
-            }
-		]);
-
-		// You can change these hooks.
-		// Just remember, the Stylify must be initialized before the build.
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-	}
-}
-
 // ...
 
+const stylifyPlugin = webpackPlugin({
+	transformIncludeFilter: (id) => id.endsWith('twig'),
+	bundles: [
+		{ outputFile: layoutCssPath, files: [
+			'./templates/base.html.twig'
+		]},
+		{ outputFile: homepageCssPath, files: [
+			'./templates/homepage/homepage.html.twig'
+		]}
+	]
+});
+
 Encore
-	// ...
 	// Use the Stylify plugin
-    .addPlugin(new StylifyPlugin())
+    .addPlugin(stylifyPlugin)
     .addStyleEntry('layout', [
         './assets/styles/stylify-variables.css',
         layoutCssPath
@@ -99,7 +68,4 @@ Now you can use the generated bundles in the symfony app:
 {{ encore_entry_link_tags('homepage') }}
 ```
 
-## Configuration
-
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next />

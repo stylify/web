@@ -52,3 +52,5 @@ bundler.bundle([
 	}
 ]);
 ```
+
+<where-to-next package="bundler" />

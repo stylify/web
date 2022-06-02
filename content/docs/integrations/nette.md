@@ -87,7 +87,4 @@ Now you can add a link for generated css into the `@layout.latte` and `homepage/
 
 You can customize the build above however you want.
 
-## Configuration
-
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next package="bundler" />

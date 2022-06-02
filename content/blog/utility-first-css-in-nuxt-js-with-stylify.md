@@ -73,12 +73,12 @@ Let's define add the title component into the index.vue as it is used only here.
 <!-- <stylify-ignore> -->
 ```html
 <!--
-@stylify-components[{
-	"title": `
+@stylify-components
+	title: `
 		font-size:24px lg:font-size:32px
 		text-align:center
 	`
-}]
+/@stylify-components
 -->
 <template>
 	<div class="container">
@@ -138,9 +138,9 @@ Now we can use the variable in our selectors in a whole project:
 
 ```html
 <!--
-@stylify-components[{
+@stylify-components
 	"title": "color:$titleColor ..."
-}]
+/@stylify-components
 -->
 ```
 

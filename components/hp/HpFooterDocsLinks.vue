@@ -1,6 +1,6 @@
 <template>
 	<section v-if="links.length" class="display:flex align-items:center width:100% max-width:calc(50%__-__8px) flex-direction:column md:align-items:flex-start md:width:calc(25%__-__8px)">
-		<h3 class="margin-bottom:18px font-size:14px line-height:24px">
+		<h3 class="margin-top:0 margin-bottom:18px font-size:14px line-height:24px">
 			<nuxt-link v-if="titleLinkEnabled" :to="links[0].dir" class="color:#000 text-decoration:none">{{ links[0].navigationTitle }}</nuxt-link>
 			<span v-else>{{ sectionTitle }}</span>
 		</h3>

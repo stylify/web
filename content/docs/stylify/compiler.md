@@ -405,32 +405,36 @@ Some configuration can be only a file or bundle specific. Because of that Stylif
 
 Common syntax is the following:
 ```
-@stylify-<option>[ ...data ]
+@stylify-<option><data>/@stylify-<option>
 ```
 
 The default available content options are listed bellow:
 
 <!-- <stylify-ignore> -->
 ```html
-// Components expects a valid JSON as value
-@stylify-components[{
-	'button': `font-size:24px padding:4px`
-}]
+// Components expects a valid javascript object as value
+@stylify-components
+	button: `font-size:24px padding:4px`,
+	'button--big': {
+		selectors: 'font-size:48px',
+		selectorsChain: 'button'
+	}
+/@stylify-components
 
-// Variables expects a valid JSON as value
-@stylify-variables[{
-	'blue': `#01befe`
-}]
+// Variables expects a valid javascript object as value
+@stylify-variables
+	blue: `#01befe`
+/@stylify-variables
 
-// Plain selectors expects a valid JSON as value
-@stylify-plainSelectors[{
-	'article': `font-size:24px`
-}]
+// Plain selectors expects a valid javascript object as value
+@stylify-plainSelectors
+	article: `font-size:24px`
+/@stylify-plainSelectors
 
 // Pregenerate expects a string
-@stylify-pregenerate[
+@stylify-pregenerate
 	border-top:1px__solid__#444
-]
+/@stylify-pregenerate
 ```
 <!-- <stylify-ignore> -->
 
@@ -445,7 +449,7 @@ const compilerConfig = {
 	contentOptionsProcessors: {
 		// Content options is an object of already matched options.
 		// OptionMatch value is the matched value of your option
-		// @stylify-myOption[ ...optionMatchValue ]
+		// @stylify-myOption optionMatchValue /@stylify-myOption
 		myOption: (contentOptions, optionMatchValue) => {
 			// Process the option value ...
 

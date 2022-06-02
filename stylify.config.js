@@ -1,6 +1,7 @@
 import path from 'path';
+import { defineConfig } from '@stylify/nuxt-module';
 
-export default {
+export default defineConfig({
 	sassVarsDirPath: path.join(__dirname, 'assets', 'scss', 'variables'),
 	extend: {
 		compiler: {
@@ -26,17 +27,17 @@ export default {
 				// Global
 				'*': 'box-sizing:border-box scroll-behavior:smooth',
 				'body': 'font-size:16px line-height:28px',
-				img: 'max-width:100%',
+				img: 'max-width:100% image-rendering:-webkit-optimize-contrast',
 				textarea: 'outline:none',
 				hr: 'border:0 height:1px background-color:$grey3',
 				'::selection': 'color:#fff background:$blue1',
-				'.prism-editor-wrapper *': 'font-size:16px line-height:18px',
+				'.prism-editor-wrapper *': 'font-size:14px line-height:1',
 
 				// Articles common
 				'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
-				'article h1': 'scroll-margin-top:50px cursor:pointer font-size:30px line-height:40px md:font-size:34px md:font-size:34px line-height:54px margin-bottom:12px',
-				'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:42px margin-bottom:12px',
-				'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:32px margin-bottom:8px',
+				'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px line-height:40px md:font-size:34px md:font-size:34px line-height:54px margin-bottom:12px',
+				'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:22px margin-bottom:12px',
+				'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:12px margin-bottom:8px',
 				'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:32px margin-bottom:8px',
 				'article pre': 'margin-top:0',
 				'article a': 'color:$blue1',
@@ -50,7 +51,7 @@ export default {
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor.example-editor': 'min-height:402px',
+				'.hp__example-editor.example-editor': 'min-height:333px align-items:flex-start',
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs
@@ -118,13 +119,13 @@ export default {
 
 				// Why Stylify
 				'why-stylify__block': `
-					box-shadow:$shadow1 margin-left:24px margin-bottom:24px background:#fff padding:12px md:padding:24px
+					box-shadow:$shadow1 margin-left:24px margin-bottom:24px background:#fff padding:12px
 					width:100% sm:width:calc(50%__-__24px) lg:width:calc(100%__*__1/3__-__24px) border-radius:$radius2
 				`,
-				'why-stylify__block-title': 'margin:0 font-size:24px line-height:41px display:flex flex-direction:row align-items:center',
+				'why-stylify__block-title': 'margin:0 font-size:22px line-height:38px display:flex flex-direction:row align-items:center',
 				'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
-				'why-stylify__list': 'margin-bottom:0 padding-left:24px'
+				'why-stylify__list': 'margin-bottom:0 margin-top:4px padding-left:24px'
 			}
 		}
 	}
-};
+});

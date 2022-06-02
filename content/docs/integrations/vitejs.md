@@ -23,12 +23,11 @@ Integration example for the Vite.js can be found in <a href="https://github.com/
 
 The example bellow works with the Vite - Vue.js template. You can however use the example bellow and configure it for Svelte, React and any other framework you use.
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
-npm i -D @stylify/bundler
-
-yarn add -D @stylify/bundler
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
 ```
 
 Next add the following configuration into the `vite.config.js`:
@@ -36,44 +35,22 @@ Next add the following configuration into the `vite.config.js`:
 ```js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { nativePreset } from '@stylify/stylify';
-import { Bundler } from '@stylify/bundler';
+import { vitePlugin } from '@stylify/unplugin';
 
+const stylifyPlugin = vitePlugin({
+	transformIncludeFilter: (id) => id.endsWith('vue'),
+	bundles: [{
+		files: ['./src/**/*.vue'],
+		outputFile: './src/assets/stylify.css'
+	}]
+});
+
+// https://vitejs.dev/config/
 export default defineConfig(({ mode}) => {
-  // Optional configuration.
-  nativePreset.compiler.variables = {
-    blue: 'steelblue'
-  };
-
-  // Create a new Bundler instance.
-  const bundler = new Bundler({
-    compiler: nativePreset.compiler,
-    watchFiles: mode === 'development'
-  });
-
-  // You can customize bundles however you want.
-  const bundle = async () => {
-    bundler.bundle([
-      {
-        files: ['./src/**/*.vue'],
-        outputFile: './src/assets/stylify.css'
-      }
-    ]);
-    return bundler.waitOnBundlesProcessed();
-  };
-
-  const stylifyBundlerPlugin = () => {
-    return {
-      name: 'stylify',
-      options: bundle
-    }
-  };
-
-  // Use the Stylify plugin.
   return {
-    plugins: [vue(), stylifyBundlerPlugin()]
+    plugins: [stylifyPlugin, vue()]
   }
-})
+});
 ```
 
 Now you can add the path to the generated `stylify.css` into `src/main.js` file:
@@ -88,7 +65,4 @@ createApp(App).mount('#app')
 
 If you use the Vite.js commands now you will get the `stylify.css` file generated.
 
-## Configuration
-
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next />

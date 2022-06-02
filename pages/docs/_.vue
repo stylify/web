@@ -1,6 +1,8 @@
 <template>
 	<div class="docs container display:flex flex-direction:column justify-content:center margin-top:48px margin-bottom:48px lg:flex-direction:row">
-		<aside @click="toggleSidebar" :class="[
+		<aside
+			@click="toggleSidebar"
+			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
 				`width:100% margin-right:34px max-height:100vh overflow:auto transition:transform__0.3s__ease-in-out
 				position:fixed top:0 left:0 background:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:2 padding-right:8px
@@ -17,15 +19,15 @@
 				<div>
 					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
 				</div>
-				<section v-for="(sectionItems, sectionName) in navigationItems" :key="sectionName" class="margin-bottom:12px">
+				<section v-for="(sectionItems, sectionName) in navigationItems" :key="sectionName">
 					<nuxt-link
 						:to="sectionItems[0].dir"
 						:class="[
 							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:black',
-							`display:block text-decoration:none`
+							`display:block text-decoration:none position:sticky top:0 z-index:1`
 						]"
 					>
-						<h3 class="font-size:16px padding:12px__0 position:sticky margin:0 top:0 background:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1">
+						<h3 class="font-size:16px padding:8px__0 position:sticky margin:0 top:0 background:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1">
 							{{ sectionItems[0].navigationTitle }}
 						</h3>
 					</nuxt-link>
@@ -36,31 +38,31 @@
 							:to="sectionItem.path"
 							:data-super="key"
 							:class="[
-								sectionItem.navigationIconPath ? 'padding:4px__4px__4px__38px' : 'padding:4px__12px',
-								`docs__aside-link color:#000 font-size:16px margin-bottom:4px text-decoration:none
+								sectionItem.navigationIconPath ? 'padding:4px__4px__4px__38px' : 'padding:4px__8px',
+								`docs__aside-link color:#000 font-size:16px text-decoration:none
 								position:relative display:inline-flex align-items:center hover:background-color:$blue2 border-radius:$radius1`
 							]"
 						>
-	 						<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
-	 						<span>{{ sectionItem.navigationTitle }}</span>
+							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
+							<span>{{ sectionItem.navigationTitle }}</span>
 						</nuxt-link>
 					</nav>
 				</section>
 			</div>
 		</aside>
-		<div class="background-color:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1 top:0 padding:12px__0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
+		<div class="background-color:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px__0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
 			<a role="button" @click="toggleSidebar" class="cursor:pointer display:inline-flex align-items:center">
 				<i class="icon icon-menu margin-right:4px font-weight:bold color:$blue1"></i>
 				<span>Show docs navigation</span>
 			</a>
 		</div>
-		<section class="width:100% max-width:800px padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
- 			<article class="margin-bottom:24px">
+		<section class="width:100% lg:width:calc(100%__-__254px) padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
+			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
 				<nuxt-content :document="pageContent" />
 			</article>
 			<div class="display:flex justify-content:space-between margin-bottom:24px">
-  				<div>
+				<div>
 					<nuxt-link
 						v-if="previousPage"
 						:to="previousPage.slug === pageContent.section ? previousPage.dir : previousPage.path"
@@ -153,15 +155,15 @@ export default {
 			'integrations': {},
 			'stylify': {},
 			'bundler': {},
-			'profiler': {},
+			'unplugin': {},
+			'nuxt': {},
 			'nuxt-module': {},
+			'profiler': {},
 			'autoprefixer': {}
-		}
-
+		};
 		for (const section of Object.keys(navigationSectionsConfig)) {
 			navigationItems[section] = await getNavigationSectionItems(section, navigationSectionsConfig[section]);
 		}
-
 		const whereConditionKey = urlPathToArray.length >= 2 ? 'path' : 'slug';
 		let pageContent = await $content('docs', { deep: true})
 			.where({
@@ -185,7 +187,7 @@ export default {
 
 		return {
 			urlPath: urlPath,
- 			pageContent: pageContent || null,
+			pageContent: pageContent || null,
 			previousPage: pageIndexInNavigation > 0
 				? navigationItems[pageContent.section][(pageIndexInNavigation - 1)]
 				: null,
@@ -222,7 +224,7 @@ export default {
 				{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
 			]
 		}
-  	},
+	},
 	mounted() {
 		document.querySelectorAll('h2, h3, h4, h5, h6').forEach((title) => {
 			title.addEventListener('click', () => {

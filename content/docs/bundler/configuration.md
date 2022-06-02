@@ -12,7 +12,9 @@ description: "Learn how to configure @stylify/bundler."
 Bundler provides various options for configuration:
 
 ```js
-const config = {
+import { defineConfig } from '@stylify/bundler';
+
+const config = defineConfig({
 	// Required
 	// Config for the compiler
 	compiler: {},
@@ -46,7 +48,7 @@ const config = {
 	onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
 	onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
 	onBundleProcessed: (data) => console.log(data.bundleConfig, data.bundleBuildCache)
-};
+});
 
 const bundler = new Bundler(config);
 
