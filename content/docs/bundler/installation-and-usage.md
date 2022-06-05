@@ -48,9 +48,9 @@ For more information about content options see [compiler documentation](/docs/st
 ```
 // This option expects files paths as string
 // When file path starts with /, it is an absolut path, otherwise is relative
-@stylify-files[
+@stylify-files
 	/path/to/layout.html
 	path/to/template/part.html
-]
+/@stylify-files
 ```
 <!-- </stylify-ignore> -->

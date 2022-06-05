@@ -85,7 +85,7 @@ When using the Native Preset you can use its internal helpers for lightening or 
 
 <!-- <stylify-ignore> -->
 <example-editor layout="column">
-<div class="color:lighten(#222,10) ddd color:darken(#eee,10) background:colorToRgb(#aaa,__0.5)">
+<div class="color:lighten(#222,10) color:darken(#eee,10) background:colorToRgb(#aaa,__0.5)">
 	Helpers
 </div>
 </example-editor>

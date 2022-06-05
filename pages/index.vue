@@ -28,7 +28,7 @@
 								<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
 							</ul>
 							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2" :defaultCode="componentsDefaultHtmlCode" readonly></example-code-editor>
+								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 height:46px margin-bottom:12px border-radius:$radius2" :defaultCode="componentsDefaultHtmlCode" readonly></example-code-editor>
 								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 padding:12px__0 border-radius:$radius2" :defaultCode="componentsDefaultJsCode" lang="js" readonly></example-code-editor>
 							</div>
 						</div>
@@ -57,7 +57,7 @@
 							</ul>
 							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
 								<example-code-editor
-									class="box-shadow:$shadow1 padding:12px__0 height:70px margin-bottom:12px border-radius:$radius2"
+									class="box-shadow:$shadow1 padding:12px__0 height:46px margin-bottom:12px border-radius:$radius2"
 									:defaultCode="variablesDefaultHtmlCode"
 									readonly
 								/>

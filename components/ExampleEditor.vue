@@ -10,8 +10,8 @@
 			<div
 				:class="[
 					layout === 'column' ? 'md:width:100% border-radius:0__0__$radius2__$radius2' : 'border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
-					`background:#282a36 display:flex margin-bottom:24px box-shadow:$shadow1
-					md:margin-bottom:0
+					`background:#282d3f display:flex margin-bottom:24px box-shadow:$shadow1
+					md:margin-bottom:0 md:align-self:stretch
 					`
 				]"
 			>
@@ -50,9 +50,10 @@
 				v-html="previewCode"
 				:class="[
 					layout === 'column' ? 'md:width:100% border-radius:$radius2__$radius2__0__0' : 'border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
-					`min-height:148px max-height:400px overflow:auto display:flex
+					`min-height:100px max-height:400px overflow:auto display:flex
 					align-items:center justify-content:center box-shadow:$shadow1 padding:24px
 					border-radius:$radius2
+					md:align-self:stretch
 					`
 				]"
 			></div>

@@ -10,9 +10,9 @@ title: "@stylify/stylify"
 description: "Stylify is a Library that generates CSS dynamically based on what you write."
 ---
 
-Stylify is a Library that generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment.
+Stylify generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment.
 
-Stylify is heavily inspired by Tailwind with the focus on utility classes and pushes the idea even further. Unlike Bootstrap, Foundation or the Bulma it doesn't ship with pregenerated CSS.
+Stylify is inspired by Tailwind and Tachynos with the focus on utility classes and pushes the idea even further. Unlike Bootstrap, Foundation or the Bulma it doesn't ship with pregenerated CSS.
 Stylify allow developers to define flexible macros, that matches selectors and according to the matches it generates CSS. With this approach, you can define one macro and use it for generating countless variants of selectors and therefore CSS properties without the repetative configuration of new selectors or dimensions.
 
 Stylify core size is around <strong>20 Kb</strong>. When a [Native Preset](/docs/stylify/native-preset) is included, the size is around 28 Kb non Gzipped. Thanks to this size Stylify won't slow down build of your application.

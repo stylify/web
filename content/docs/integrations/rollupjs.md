@@ -16,64 +16,35 @@ Integration example for the Rollup.js can be found in <a href="https://github.co
 
 ## How to integrate the Stylify into the Rollup.js
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
-npm i -D @stylify/bundler
-
-yarn add -D @stylify/bundler
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
 ```
 
 Next, add create a configuration file `rollup.config.js`:
 
 ```js
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
+const { rollupPlugin } = require('@stylify/unplugin');
 const postcss = require('rollup-plugin-postcss');
 
-// Optional configuration.
-nativePreset.compiler.variables = {
-	blue: 'stelblue'
-};
-
-// Create a new Bundler instance.
-const bundler = new Bundler({
-	compiler: nativePreset.compiler,
-	watchFiles: process.env.ROLLUP_WATCH || false
+const stylifyPlugin = rollupPlugin({
+	dev: true,
+	transformIncludeFilter: (id) => id.endsWith('html'),
+	bundles: [{
+		files: ['./index.html'],
+		outputFile: './index.css'
+	}]
 });
-
-// You can customize bundles however you want.
-const bundle = async () => {
-	bundler.bundle([
-		{
-			files: ['./index.html'],
-			outputFile: './index.css'
-		}
-	]);
-	return bundler.waitOnBundlesProcessed();
-};
-
-const stylifyBundlerPlugin = () => {
-	return {
-		name: 'stylify',
-		options: bundle
-	}
-};
 
 export default {
   input: 'input.js',
-  plugins: [
-	stylifyBundlerPlugin(),
-	postcss()
-  ],
-  output: {
-    file: 'index.js',
-    format: 'umd',
-  }
+  plugins: [stylifyPlugin, postcss()],
+  output: { file: 'index.js', format: 'umd' }
 };
 ```
 
-## Configuration
+Now you can run build command. This will generate the `stylify.css` and mangle selectors in files, if selected.
 
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next />

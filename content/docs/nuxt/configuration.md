@@ -1,31 +1,32 @@
 ---
-section: nuxt-module
+section: nuxt
 
 order: 2
 
 navigationTitle: "Configuration"
 
 title: "Configuration"
-description: "Learn how to configure the @stylify/nuxt-module."
+description: "Learn how to configure the @stylify/nuxt."
 ---
 
 <note>
-	<strong>@stylify/nuxt-module</strong> can be used only in Nuxt v2. For Nuxt v3 and above checkout <nuxt-link to="/docs/nuxt">@stylify/nuxt</nuxt-link>.
+	<strong>@stylify/nuxt</strong> can be used only in Nuxt v3 and above. For Nuxt v2 checkout <nuxt-link to="/docs/nuxt-module">@stylify/nuxt-module</nuxt-link>.
 </note>
 
-By default @stylify/nuxt-module uses [Native preset](/docs/stylify/native-preset). You can change the configuration however you need.
+By default @stylify/nuxt uses [Native preset](/docs/stylify/native-preset). You can change the configuration however you need.
 
 If you want to configure the Stylify, you can use configuration section directly in `nuxt.config.js` or create a file `stylify.config.js` next to the nuxt.config.js. In both cases you use the same configuration scheme shown bellow.
 
 The code part bellow should be used inside the `nuxt.config.js` or inside the `stylify.config.js`:
+
 ```js
-import { defineConfig } from '@stylify/nuxt-module';
+import { defineConfig } from '@stylify/nuxt';
 
 const stylifyConfig = defineConfig({
 	dev: false,
 	configPath: 'stylify.config.js',
 	// Compiler config info https://stylify.dev/docs/stylify/compiler
-	compiler: nativePreset.compiler,
+	compiler: {},
 	// When vars dir paths are set, Stylify will export variables into
 	// a file according to given path
 	cssVarsDirPath: null,
@@ -44,8 +45,6 @@ const stylifyConfig = defineConfig({
 	//		test: /\.vue$/i,
 	//		include: ['path/to/some/dir']
 	//	},
-	loaders: [],
-
 	// When options above are used inside the extend field,
 	// they extend existing configuration instead of overriding it
 	extend: {

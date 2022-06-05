@@ -18,66 +18,38 @@ Integration example for the Laravel framework can be found in <a href="https://g
 
 ## How to integrate the Stylify into the Laravel Framework
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
-npm i -D @stylify/bundler
-
-yarn add -D @stylify/bundler
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
 ```
 
 Next add Stylify plugin into the `webpack.mix.js`:
 
 ```js
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
-
-class StylifyPlugin {
-	apply(compiler) {
-		// Optional configuration.
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
-
-		// Create a new Bundler instance.
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-			injectVariablesIntoCss: false,
-			watchFiles: compiler.options.watch || false
-		});
-
-		// Customize bundles however you want.
-		bundler.bundle([
-			{
-				outputFile: './resources/css/homepage.css',
-				files: ['./resources/views/welcome.blade.php']
-			}
-		]);
-
-		// You can change these hooks.
-		// Just remember, the Stylify must be initialized before the build.
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-	}
-};
+const { webpackPlugin } = require('@stylify/unplugin');
 
 // ...
+
+const mode = 'development';
+const stylifyPlugin = webpackPlugin({
+	transformIncludeFilter: (id) => id.endsWith('php'),
+	bundles: [{
+		outputFile: './resources/css/homepage.css',
+		files: ['./resources/views/welcome.blade.php']
+	}]
+});
 
 mix
 	// ...
     .webpackConfig({
-        plugins: [new StylifyPlugin()]
+		mode: mode,
+        plugins: [stylifyPlugin]
     })
 	// ...
 ```
 
-Now you can use the commands for laravel mix. It will also trigger the Stylify Bundler.
+Now you can use the commands for laravel mix.
 
-## Configuration
-
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next />

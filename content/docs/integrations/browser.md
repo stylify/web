@@ -45,6 +45,4 @@ nativePreset.compiler.variables = {
 new Runtime(nativePreset);
 ```
 
-## Configuration
-The example above uses the [@stylify/stylify](/docs/stylify) package. More precisely its [Runtime](/docs/stylify/runtime) component.
-The configuration for the Stylify can be found on the [Compiler](/docs/stylify/compiler) and the [Runtime](/docs/stylify/runtime) documenation pages.
+<where-to-next package="null" />

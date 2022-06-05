@@ -10,7 +10,7 @@ title: Next.js integration
 description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Next.js."
 ---
 
-Stylify can be easily integrated into the Next.js using @stylify/bundler and Webpack plugin.
+Stylify can be easily integrated into the Next.js using @stylify/unplugin.
 
 <stack-blitz-link link="https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages/index.js"></stack-blitz-link>
 
@@ -20,69 +20,42 @@ Integration example for the Next.js can be found in <a href="https://github.com/
 
 ## How to integrate the Stylify into the Next.js
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First install the [@stylify/bundler](/docs/unplugin) package using NPM or Yarn:
 
 ```
-npm i -D @stylify/bundler
-
-yarn add -D @stylify/bundler
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
 ```
 
 Next add a configuration into the `next.config.js`:
 
 ```js
-const { nativePreset } = require('@stylify/stylify');
-const { Bundler } = require('@stylify/bundler');
+const { webpackPlugin } = require('@stylify/unplugin');
 
-class StylifyPlugin {
-	constructor(options) {
-		this.options = {
-			...{ isDev: false },
-			...options
+const stylifyPlugin = (dev) => webpackPlugin({
+	dev: dev,
+	transformIncludeFilter: (id) => id.endsWith('js'),
+	bundles: [{
+		outputFile: './styles/stylify.css',
+		files: ['./pages/**/*.js'],
+	}],
+	extend: {
+		bundler: {
+			compiler: {
+				selectorsAreas: [
+					'(?:^|\\s+)className="([^"]+)"',
+					'(?:^|\\s+)className=\'([^\']+)\'',
+					'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+				]
+			}
 		}
 	}
-
-	apply(compiler) {
-		nativePreset.compiler.selectorsAreas = [
-			'(?:^|\\s+)className="([^"]+)"',
-			'(?:^|\\s+)className=\'([^\']+)\'',
-			'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-		];
-
-		// Optional configuration.
-		nativePreset.compiler.variables = {
-			blue: 'steelblue'
-		};
-
-		// Create a new Bundler instance.
-		const bundler = new Bundler({
-			compiler: nativePreset.compiler,
-			watchFiles: this.options.isDev
-		});
-
-		// You can customize bundles however you want.
-		bundler.bundle([
-			{
-				outputFile: './styles/stylify.css',
-				files: ['./pages/**/*.js']
-			}
-		]);
-
-		// You can change these hooks.
-		// Just remember, the Stylify must be initialized before the build.
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-		compiler.hooks.beforeRun.tapPromise(StylifyPlugin.name, () => {
-			return bundler.waitOnBundlesProcessed();
-		});
-	}
-}
+});
 
 module.exports = {
-  // ...
+  reactStrictMode: true,
   webpack: (config, { dev }) => {
-    config.plugins.push(new StylifyPlugin({ isDev: dev }));
+    config.plugins.push(stylifyPlugin(dev));
     return config;
   }
 }
@@ -101,9 +74,6 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 ```
 
-Now you can use the Next.js commands to build your assets. This will also trigger the Stylify Bundler.
+Now you can use the Next.js commands to build your assets. In production, it will mangle selectors.
 
-## Configuration
-
-The example above uses the [@stylify/bundler](/docs/bundler) package and the configuration can be found inside that package documentation.
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+<where-to-next />
