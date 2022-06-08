@@ -111,5 +111,5 @@ The CSS selectors can also be minified [when used in node.js](https://stylify.de
 </style>
 ```
 
-In case you also take the time and separate your CSS for layout and each page separately ([which is easy to do with Stylify](https://stylify.dev/docs/bundler/installation-and-usage#installation)) you can have a realy small CSS chunks for each of your page.
+In case you also take the time and separate your CSS for layout and each page separately ([which is easy to do with Stylify](https://stylify.dev/docs/bundler#installation)) you can have a realy small CSS chunks for each of your page.
 You also don't have to care about duplicates and the selectors get's minified automatically.

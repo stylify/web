@@ -11,11 +11,19 @@ description: "Stylify Compiler is a tool for generating CSS, mangling selectors 
 
 Compiler provides a method for generating CSS according to given configuration from a given content and a method that can rewrite (mangle) selectors in a given content.
 
+<span class="margin-left:-12px">
+	<span class="margin-left:12px">Shortcuts:</span>
+	<shortcut-button link="#variables">Variables</shortcut-button>
+	<shortcut-button link="#components">Components</shortcut-button>
+	<shortcut-button link="#screens">Custom screens</shortcut-button>
+	<shortcut-button link="#macros">Custom selectors</shortcut-button>
+</span>
+
 ## Usage
 ```js
 import { Compiler, nativePreset } from '@stylify/stylify';
 
-const content = 'color:blue';
+const content = '<div class="color:blue"></div>';
 
 const compiler = new Compiler(nativePreset.compiler);
 const compilationResult = compiler.compile(content);
@@ -24,6 +32,45 @@ const css = compilationResult.generateCss();
 // If the third parameter is set and if it is true (default) it rewrites selectors
 // only in areas defined in selectorsAreas and not in whole content
 const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
+```
+
+## Configuration
+The configuration is different based on the tool and environment where the compiler is used.
+The example bellows shows configuration for Node.js and Browser. For more examples, checkout the [integration examples](/docs/integrations) page.
+
+Node.js
+
+```js
+import { Compiler, nativePreset } from '@stylify/stylify';
+
+// ---When adding config to native preset
+// Example for macros and components when configuring native preset
+nativePreset.compiler.variables = {
+	blue: 'steelblue'
+};
+nativePreset.compiler.macros = {
+	myMacro: ''
+};
+// ...
+
+// --- When using custom config
+const compiler = new Compiler({
+	macros: {},
+	variables: {},
+	// ...
+});
+
+// --- You can also extend the configuration directly on instance
+compiler.configure({ /* ... */})
+```
+
+Browser
+```js
+Stylify.runtime.configure({
+	compiler: {
+		// ...
+	}
+});
 ```
 
 ## Syntax
@@ -91,7 +138,7 @@ content:^Some__long__content^ => content:'Some long content'
 
 <!-- </stylify-ignore> -->
 
-## Logical operands in screens
+### Logical operands in screens
 Screens can be randomly combined using logical operands. Before the CSS is generated, they are sorted in the following order:
 
 <note><template>
@@ -470,7 +517,7 @@ In the Compiler there are two hooks that you can use to streamline or extend the
 This hook is called when the compile function is called and the new CompilationResult is created or updated. You can for example change the configuration of the compilation result or see what is happening under the hood.
 
 <note><template>
-An example of this hook usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer/installation-and-usage#usage) page.
+An example of this hook usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
 </template></note>
 
 ```js
@@ -509,7 +556,7 @@ Be aware that if you modifie compilation result or create a new one with a wrong
 </note>
 
 <note><template>
-An example of CompilationResult hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer/installation-and-usage#usage) page.
+An example of CompilationResult hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
 </template></note>
 
 ```js
@@ -533,7 +580,7 @@ const compilationResult = new CompilationResult({
 Css record can be accessed only through a hook from compilation result.
 
 <note><template>
-An example of CssRecord hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer/installation-and-usage#usage) page.
+An example of CssRecord hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
 </template></note>
 
 ```js

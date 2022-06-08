@@ -10,15 +10,10 @@
 
 			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
 				<div class="hp__tab-buttons-wrapper">
-					<a role="button" v-on:click="featuresSelectedTab = 'selectors'" :class="[featuresSelectedTab === 'selectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use selectors you know</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'components'" :class="[featuresSelectedTab === 'components' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Define components</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'plainSelectors'" :class="[featuresSelectedTab === 'plainSelectors' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Style anything</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'variables'" :class="[featuresSelectedTab === 'variables' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Use variables</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'dynamicScreens'" :class="[featuresSelectedTab === 'dynamicScreens' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Customize screens</a>
-					<a role="button" v-on:click="featuresSelectedTab = 'helpers'" :class="[featuresSelectedTab === 'helpers' ? '' : 'btn--transparent color:#000', 'margin-left:4px btn btn--hp-tabs']">Extend functionality</a>
+					<a v-for="(tabLabel, tab) in tabs" :key="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'border-color:$blue1 color:$blue1 font-weight:bold' : 'border-color:transparent', 'white-space:nowrap cursor:pointer border-bottom-width:4px border-bottom-style:solid padding:8px text-align:center display:inline-block']">{{tabLabel}}</a>
 				</div>
 				<div>
-					<div v-show="featuresSelectedTab === 'selectors'" class="display:flex flex-direction:column align-items:flex-start">
+					<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
 						<example-editor class="hp__example-editor width:100%" :showHtml="true" />
 					</div>
 					<div v-show="featuresSelectedTab === 'components'">
@@ -105,7 +100,9 @@
 				</div>
 			</div>
 			<div class="max-width:100% margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px md:margin-bottom:0 border:2px__solid__$blue1">Go ahead. Try it now!</nuxt-link>
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px md:margin-bottom:0 border:2px__solid__$blue1">
+					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
 				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent md:margin-bottom:0 color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
 			</div>
 		</section>
@@ -350,6 +347,14 @@ export default {
 		variablesDefaultJsCode: variablesDefaultJsCode,
 		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
 		helpersDefaultCode: helpersDefaultCode,
+		tabs: {
+			selectors: 'Use selectors you know',
+			components: 'Define components',
+			plainSelectors: 'Style anything',
+			variables: 'Use variables',
+			dynamicScreens: 'Customize screens',
+			helpers: 'Extend functionality'
+		},
 		fans: [
 			{
 				name: 'Mubashar Hashmat',

@@ -29,6 +29,7 @@
 						<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Docs</nuxt-link>
 						<nuxt-link to="/blog" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Blog</nuxt-link>
 						<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Playground</a>
+						<nuxt-link to="/faq" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">FAQ</nuxt-link>
 					</nav>
 					<span class="lg:display:none">&nbsp;</span>
 				</section>

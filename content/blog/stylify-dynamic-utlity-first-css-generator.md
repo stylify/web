@@ -67,6 +67,6 @@ When compiled and mangled, it generates the following CSS:
 ## Seamless Integration
 Stylify can be integrated easily into frameworks like [Next.js](https://stylify.dev/docs/integrations/nextjs), [Nuxt.js](https://stylify.dev/docs/integrations/nuxtjs), [Vite.js](https://stylify.dev/docs/integrations/vitejs), [Symfony Framework](https://stylify.dev/docs/integrations/symfony), [Nette Framework](https://stylify.dev/docs/integrations/nette), [Laravel](https://stylify.dev/docs/integrations/laravel) and etc. Also it works great along with [Webpack](https://stylify.dev/docs/integrations/webpack) and [Rollup.js](https://stylify.dev/docs/integrations/rollupjs).
 
-For easier integration there is a [@stylify/nuxt-module](https://stylify.dev/docs/nuxt-module/installation-and-usage) for Nuxt.js and a [@stylify/bundler](https://stylify.dev/docs/bundler/installation-and-usage) that can be used with already mentioned Rollup.js and Webpack or in any other tool.
+For easier integration there is a [@stylify/nuxt-module](https://stylify.dev/docs/nuxt-module) for Nuxt.js and a [@stylify/bundler](https://stylify.dev/docs/bundler) that can be used with already mentioned Rollup.js and Webpack or in any other tool.
 
 When integrating into an existing project, it is possible to generate CSS for each page separately (even for small components) and [slowly rewrite the website](https://stylify.dev/docs/get-started/migrating-to-stylify) without increasing it's size or breaking anything.

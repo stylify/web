@@ -25,7 +25,6 @@ First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler
-
 yarn add -D @stylify/bundler
 ```
 

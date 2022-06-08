@@ -20,12 +20,28 @@ It is focused on seamless integration and also provides an extension for profile
 Integration example for the Nuxt.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nuxtjs" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
 
-## How to integrate Stylify into the Nuxt.js
+## How to integrate Stylify into the Nuxt.js v3+
+
+First install the package using CLI:
+```
+npm i -D @stylify/nuxt
+yarn add -D @stylify/nuxt
+```
+
+Than add a build module into the `nuxt.config.js` build modules section:
+```js
+buildModules: [
+	'@stylify/nuxt'
+]
+```
+
+Now you can start using Stylify with Nuxt.js.
+
+## How to integrate Stylify into the Nuxt.js v2+ < v3
 
 First install the package using CLI:
 ```
 npm i -D @stylify/nuxt-module
-
 yarn add -D @stylify/nuxt-module
 ```
 
@@ -39,9 +55,9 @@ buildModules: [
 Now you can start using Stylify with Nuxt.js.
 
 ## Configuration
-There is a lot of options you can configure. See [@stylify/nuxt-module](/docs/nuxt-module/configuration).
-For the bundler configuration checkout the [@stylify/bundler page](/docs/bundler/configuration).
-For the Compiler config, checkout the [Compiler documentation](/docs/stylify/compiler).
+There is a lot of options you can configure:
+- Nuxt v3+ [@stylify/nuxt](/docs/nuxt)
+- Nuxt v2 [@stylify/nuxt-module](/docs/nuxt-module)
 
 ### Stylelint
 In case you use Stylelint, you may want to add the generated `stylify.css` and possible files with variables into the `.stylelintignore` file.
