@@ -95,9 +95,11 @@ const compilerConfig = {
 ```
 
 Usage:
+<!-- <stylify-ignore> -->
 ```html
 <div class="color:$blue"></div>
 ```
+<!-- </stylify-ignore> -->
 
 ### How to define a Component
 When we want to reuse a piece of code, for example for a button without duplicating classes, we can define a component like this:
