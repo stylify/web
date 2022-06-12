@@ -30,14 +30,13 @@ Now add the following configuration into the webpack.config.js:
 ```js
 const Encore = require('@symfony/webpack-encore');
 const { webpackPlugin } = require('@stylify/unplugin');
-const path = require('path');
 
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
 // ...
 
 const stylifyPlugin = webpackPlugin({
-	transformIncludeFilter: (id) => id.endsWith('twig'),
+	transformIncludeFilter: (id) => id.endsWith('twig') || id.endsWith('php'),
 	bundles: [
 		{ outputFile: layoutCssPath, files: [
 			'./templates/base.html.twig'
@@ -51,10 +50,7 @@ const stylifyPlugin = webpackPlugin({
 Encore
 	// Use the Stylify plugin
     .addPlugin(stylifyPlugin)
-    .addStyleEntry('layout', [
-        './assets/styles/stylify-variables.css',
-        layoutCssPath
-    ])
+    .addStyleEntry('layout', layoutCssPath)
 	.addStyleEntry('homepage', homepageCssPath)
     // ...
 

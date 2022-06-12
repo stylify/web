@@ -415,8 +415,10 @@ const compilerConfig = {
 };
 ```
 
-### ignoredElements
-`stylify-ignore` and `stylify-runtime-ignore` are by default two tags you can use to remove content from compilation.
+### ignoredAreas
+`stylify-ignore` and `stylify-runtime-ignore` are by default areas you can use to remove content from compilation.
+
+Then there are the following tags, that are ignored (only without attributes): `code, head, pre, script, style.
 
 <note>
 Ignored tags can be configured but they are always matched without attributes because no html parser is integrated in Stylify and is not reliable to match them with regular expressions.
@@ -425,7 +427,9 @@ The ignoredElements options is marked as @internal to keep you away from this op
 
 ```js
 const compilerConfig = {
-	ignoredElements: ['pre', 'code']
+	ignoredAreas: [
+		/<myElement[\s]*?>([\s\S]*?)<\/myElement>/,
+	]
 };
 ```
 
@@ -443,7 +447,7 @@ The pregenerate option allows you to add some content into the compilation proce
 
 ```js
 const compilerConfig = {
-	pregenerate: 'color:red color:blue <div class="width:100%">Lorem Ipsum</div>'
+	pregenerate: 'color:red color:blue width:100%'
 };
 ```
 
