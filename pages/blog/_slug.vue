@@ -121,7 +121,7 @@ export default {
 						"headline": postTitle,
 						"description": postAnnotation,
 						"image": [
-							host + "/static" + this.post.ogImage
+							host + postImage
 						],
 						"mainEntityOfPage": {
     						"@type": "WebPage",
