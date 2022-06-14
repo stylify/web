@@ -107,6 +107,7 @@ export default {
 				{ hid: 'og:description', property: 'og:description', content: postAnnotation },
 
 				// Twitter Card
+				{ hid: 'twitter:image:src', name: 'twitter:image:src', content:  host + postImage },
 				{ hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
 				{ hid: 'twitter:title', name: 'twitter:title', content: postTitle },
 				{ hid: 'twitter:description', name: 'twitter:description', content: postAnnotation }
