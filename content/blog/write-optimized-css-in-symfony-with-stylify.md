@@ -1,5 +1,5 @@
 ---
-title: Write optimized CSS in Symfony application with Stylify
+title: Write optimized CSS in Symfony with Stylify
 image: '/images/blog/stylify-symfony/header.jpg'
 ogImage: '/images/blog/stylify-symfony/og-image.jpg'
 author: 'Vladimír Macháček'
