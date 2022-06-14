@@ -5,6 +5,10 @@ export default defineConfig({
 	sassVarsDirPath: path.join(__dirname, 'assets', 'scss', 'variables'),
 	extend: {
 		compiler: {
+			ignoredAreas: [
+				// Ignore code areas in docs
+				/`{3}\S+([\s\S]+?)`{3}/
+			],
 			variables: {
 				blue1: '#01befe',
 				blue2: '#f2fcff',
@@ -31,7 +35,7 @@ export default defineConfig({
 				textarea: 'outline:none',
 				hr: 'border:0 height:1px background-color:$grey3',
 				'::selection': 'color:#fff background:$blue1',
-				'.prism-editor-wrapper *': 'font-size:14px line-height:1',
+				'.prism-editor-wrapper *': 'font-size:16px line-height:1',
 
 				// Articles common
 				'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
@@ -52,7 +56,7 @@ export default defineConfig({
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor.example-editor': 'min-height:333px align-items:flex-start',
+				'.hp__example-editor.example-editor': 'min-height:304px align-items:flex-start',
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs

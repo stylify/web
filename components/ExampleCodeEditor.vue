@@ -1,5 +1,5 @@
 <template>
-	<div class="code-editor__wrapper display:flex width:100%">
+	<div class="code-editor__wrapper min-height:48px display:flex width:100%">
 		<code ref="codeSlot" style="display: none;"><slot></slot></code>
 		<client-only placeholder="Loading...">
 			<div class="max-height:400px overflow:auto width:100% border-radius:8px">
@@ -65,8 +65,8 @@ export default {
 	}),
 	methods: {
 		highlighter(code) {
-			this.$emit('codeChanged', code);
-			return highlightCode(code, this.lang); // languages.<insert language> to return html with markup
+			this.$emit('codeChanged', code.trim());
+			return highlightCode(code.trim(), this.lang); // languages.<insert language> to return html with markup
 		},
 	},
 };
