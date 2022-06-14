@@ -9,14 +9,14 @@
 		>
 			<div
 				:class="[
-					layout === 'column' ? 'md:width:100% border-radius:0__0__$radius2__$radius2' : 'max-width:100% border-radius:0__0__$radius2__$radius2 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
+					layout === 'column' ? 'md:width:100% border-radius:0__0__$radius2__$radius2' : 'width:100% max-width:100% border-radius:0__0__$radius2__$radius2 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
 					`background:#282d3f display:flex margin-bottom:24px box-shadow:$shadow1
 					md:margin-bottom:0 md:align-self:stretch
 					`
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
-					<div class="padding:8px__12px__0__12px xl:padding:8px__24px__0__24px color:#fff white-space:nowrap overflow:auto">
+					<div class="padding:8px__12px__0__12px color:#fff white-space:nowrap overflow:auto">
 						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? '' : 'btn--transparent', 'btn color:#fff']" >Editor</a>
 						<a role="button" v-on:click="selectedTab = 'css'" :class="[selectedTab === 'css' ? '' : 'btn--transparent', 'btn']" >CSS</a>
 						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'mangledHtml'" :class="[selectedTab === 'mangledHtml' ? '' : 'btn--transparent', 'btn']" >Mangled HTML</a>
@@ -63,26 +63,6 @@
 <script>
 import { Compiler, nativePreset } from '@stylify/stylify';
 
-const defaultCode = `
-<!-- Copy this script and try Stylify in the browser. -->
-<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>
-
-<strong class="
-	font-size:24px
-	border-radius:4px
-	padding:24px
-	border:2px__dotted__#01befe
-	hover:border-color:#bd0c65
-">
-	<!--
-		Write selectors as css properties.
-		Use __ (two underscores) instead of a space
-		https://stylify.dev/docs/get-started
-	-->
-	Edit me 🤩!
-</strong>
-`.trim();
-
 nativePreset.compiler.onPrepareCompilationResult = (compilationResult) => {
 	compilationResult.onPrepareCssRecord = (cssRecord) => {
 		cssRecord.scope = '.stylify-preview ';
@@ -120,7 +100,7 @@ export default {
 		}
 	},
 	created() {
-		this.code = defaultCode;
+		this.code = '';
 	},
 	mounted() {
 		if (typeof this.$refs.codeSlot !== 'undefined') {

@@ -14,7 +14,9 @@
 				</div>
 				<div>
 					<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-						<example-editor class="hp__example-editor width:100%" :showHtml="true" />
+						<example-editor class="hp__example-editor width:100%" :showHtml="true">
+							{{ editableExampleDefaultCode }}
+						</example-editor>
 					</div>
 					<div v-show="featuresSelectedTab === 'components'">
 						<div class="hp__tab-content">
@@ -113,6 +115,7 @@
 				Start using Stylify with your favorite tool in a minute.
 			</p>
 			<div class="hp__section-content">
+				<div  class="margin-bottom:24px display:inline-flex max-width:100%"><example-code-editor :defaultCode="cdnUsageDefaultCode" lang="html" readonly/></div>
 				<integration-blocks />
 			</div>
 		</section>
@@ -121,13 +124,17 @@
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
-					<div class="display:flex width:162px"><a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @stylify_dev</a></div>
+					<div class="display:flex width:162px">
+						<a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px__12px border-radius:12px twitter-follow-button">
+							Follow @stylify_dev
+						</a>
+					</div>
 				</div>
 				<div class="text-align:center">
 					<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
 			</div>
-			<div class="slideshow width:200% height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
+			<div class="slideshow width:200% height:300px md:height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
 				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
@@ -137,7 +144,7 @@
 						rel="noopener nofollow"
 						class="
 						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
+						display:inline-flex flex-direction:column flex-shrink:0 max-width:300px md:max-width:400px height:280px md:height:220px
 						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
 					"
 					>
@@ -155,7 +162,7 @@
 						rel="noopener nofollow"
 						class="
 						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 minw1536px:max-width:400px height:220px md:height:220px lg:height:220px xl:height:220px minw1536px:height:auto minw1536px:min-height:200px
+						display:inline-flex flex-direction:column flex-shrink:0 max-width:300px md:max-width:400px height:280px md:height:220px
 						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
 					"
 					>
@@ -185,7 +192,6 @@
 				</div>
 			</section>
 		</div>
-		<script async defer src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</div>
 </template>
@@ -323,6 +329,30 @@ new Compiler({
 	}
 });`.trim();
 
+const cdnUsageDefaultCode = `
+<!-- Copy this script and try Stylify in the browser. -->
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>
+`;
+
+
+const editableExampleDefaultCode = `
+<strong class="
+	font-size:32px
+	lg:font-size:48px
+	color:#bd0c65
+	border-bottom:4px__solid__#fff
+	transition:border-color__0.3s
+	hover:border-color:#bd0c65
+">
+	<!--
+		Write selectors as css properties.
+		Use __ (two underscores) instead of a space
+		https://stylify.dev/docs/get-started
+	-->
+	Edit me 🤩!
+</strong>
+`
+
 export default {
 	components: { ExampleCodeEditor },
 	data: () => ({
@@ -347,6 +377,9 @@ export default {
 		variablesDefaultJsCode: variablesDefaultJsCode,
 		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
 		helpersDefaultCode: helpersDefaultCode,
+		cdnUsageDefaultCode: cdnUsageDefaultCode,
+		editableExampleDefaultCode: editableExampleDefaultCode,
+
 		tabs: {
 			selectors: 'Use selectors you know',
 			components: 'Define components',
@@ -417,7 +450,7 @@ export default {
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
 			},
 		]
-	})
+	}),
 }
 </script>
 
