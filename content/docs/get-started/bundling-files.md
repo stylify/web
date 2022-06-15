@@ -21,13 +21,11 @@ import { Bundler } from '@stylify/bundler';
 
 // Adding variablees and macros into the default config
 nativePreset.compiler.variables = {};
-nativePreset.compiler.macros['myMacro'] = {
-	...nativePreset.compiler.macros,
-	{
-		customMacro: ''
-	}
-}
-
+// Custom macro
+nativePreset.compiler.macros['ml:(\\S+?)'] = function (macroMatch, cssProperties): void {
+	// ml:24px => will create => margin-left: 24px
+	cssProperties.add('margin-left', macroMatch.getCapture(0));
+};
 
 const bundler = new Bundler({compiler: nativePreset.compiler})
 
