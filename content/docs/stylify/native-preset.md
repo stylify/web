@@ -38,7 +38,7 @@ const mangledContent = compiler.rewriteSelectors(content, compilationResult);
 
 ### Predefined macro
 This macro allows you to use **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
-Just instead of spaces use `__` (two underscores) and instead of quotes `^` (hat). This allows you to write selectors like `border:1px__solid__blue` or `font-family:^Open__Sans^` (see [syntax](/docs/get-started/writting-first-css#special-syntax)).
+Just instead of spaces use `__` (two underscores) and instead of quotes `^` (hat). This allows you to write selectors like `border:1px__solid__blue` or `font-family:^Open__Sans^` (see [syntax](/docs/get-started#quick-start)).
 
 List of all available selectors can be found in the <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/native-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>
 

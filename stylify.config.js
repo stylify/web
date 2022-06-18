@@ -35,7 +35,7 @@ export default defineConfig({
 				textarea: 'outline:none',
 				hr: 'border:0 height:1px background-color:$grey3',
 				'::selection': 'color:#fff background:$blue1',
-				'.prism-editor-wrapper *': 'font-size:16px line-height:1',
+				'.prism-editor-wrapper *': 'font-size:14px line-height:1',
 
 				// Articles common
 				'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
@@ -56,7 +56,7 @@ export default defineConfig({
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor.example-editor': 'min-height:304px align-items:flex-start',
+				'.hp__example-editor.example-editor': 'min-height:240px align-items:flex-start',
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs
@@ -97,12 +97,12 @@ export default defineConfig({
 				'hp__section-blue-wrapper': 'background-color:$blue2 padding-top:45px padding-bottom:45px margin:45px__0 md:margin-bottom:80px',
 				'hp__section-title': `
 					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:12px
-					md:font-size:60px md:line-height:90px
+					md:font-size:48px md:line-height:64px
 				`,
 				'hp__section-subtitle': `
 					font-size:18px line-height:32px
 					margin-top:0 margin-bottom:24px max-width:800px
-					md:font-size:24px md:line-height:40px
+					md:font-size:22px md:line-height:34px
 				`,
 				'hp__section-content': 'word-break:break-word margin-top:24px',
 				'hp__section-more-info-link': `
