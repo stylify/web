@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<section class="container margin-bottom:48px margin-top:48px">
-			<h2 class="hp-title margin-top:0 font-size:40px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px">Write CSS Faster</h2>
-			<p class="text-align:center margin-top:0 margin-bottom:24px font-size:18px line-height:28px lg:line-height:30px lg:font-size:20px">
+			<h2 class="hp-title margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px">Write CSS Faster</h2>
+			<p class="text-align:center margin-top:0 md:margin-bottom:24px font-size:18px line-height:28px lg:line-height:30px lg:font-size:20px">
 				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 				<br>
 				Write Selectors. Get CSS. Without framework 💎
@@ -10,61 +10,39 @@
 
 			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
 				<div class="hp__tab-buttons-wrapper">
-					<a v-for="(tabLabel, tab) in tabs" :key="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'border-color:$blue1 color:$blue1 font-weight:bold' : 'border-color:transparent', 'white-space:nowrap cursor:pointer border-bottom-width:4px border-bottom-style:solid padding:8px text-align:center display:inline-block']">{{tabLabel}}</a>
+					<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'border-color:$blue1 color:$blue1 font-weight:bold' : 'border-color:transparent', 'white-space:nowrap cursor:pointer border-bottom-width:4px border-bottom-style:solid padding:8px text-align:center display:inline-block']">{{tabLabel}}</a>
 				</div>
 				<div>
 					<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-						<example-editor class="hp__example-editor width:100%" :showHtml="true">
-							{{ editableExampleDefaultCode }}
-						</example-editor>
+						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
+							Write selectors as css <code>property:value</code>. Use <code>__</code> (two underscores) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
+						</p>
+						<div class="hp__example-editor width:100%">
+							<GetStartedSelectors />
+						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'components'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li>Define components to reuse selectors and style.</li>
-								<li>Components are <strong>generated only when found in content. No unwanted CSS will be generated</strong>.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 height:46px margin-bottom:12px border-radius:$radius2" :defaultCode="componentsDefaultHtmlCode" readonly></example-code-editor>
-								<example-code-editor class="box-shadow:$shadow1 padding:12px__0 padding:12px__0 border-radius:$radius2" :defaultCode="componentsDefaultJsCode" lang="js" readonly></example-code-editor>
-							</div>
+						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
+							Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
+						</p>
+						<div class="hp__example-editor width:100%">
+							<GetStartedComponents />
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'plainSelectors'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li>Style elements without classes or IDs.</li>
-								<li>You can style multiple selectors at once, just separate them by comma.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
-								<example-code-editor
-									class="hp__code-editor"
-									:defaultCode="plainSelectorsDefaultCode"
-									lang="js"
-									readonly
-								/>
-							</div>
+						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
+							Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
+						</p>
+						<div class="hp__example-editor width:100%">
+							<GetStartedPlainSelectors />
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'variables'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li>Define variables to reuse their values.</li>
-								<li>Great for colors, sizes, shadows and etc.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50% display:flex flex-direction:column align-items:flex-start">
-								<example-code-editor
-									class="box-shadow:$shadow1 padding:12px__0 height:46px margin-bottom:12px border-radius:$radius2"
-									:defaultCode="variablesDefaultHtmlCode"
-									readonly
-								/>
-								<example-code-editor
-									class="hp__code-editor"
-									:defaultCode="variablesDefaultJsCode"
-									lang="js"
-									readonly
-								/>
-							</div>
+						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
+							Avoid hardcoded values in templates. Use variables. Can be configurd within a template (expects an object without surounding brackets) or in a Compiler config.
+						</p>
+						<div class="hp__example-editor width:100%">
+							<GetStartedVariables />
 						</div>
 					</div>
 					<div v-show="featuresSelectedTab === 'dynamicScreens'">
@@ -121,6 +99,10 @@
 		</section>
 
 		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:48px">
+			<div class="max-width:1280px margin-left:auto margin-right:auto">
+				<h2 class="hp__section-title text-align:center">Give us a Feedback!</h2>
+				<p class="hp__section-subtitle text-align:center margin-left:auto margin-right:auto">Star a repo, follow us on the Twitter, mention Stylify on a social media and let us know, what you think!</p>
+			</div>
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
@@ -138,7 +120,7 @@
 				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
-						:key="index"
+						:key="'orig-' + index"
 						:href="fan.link"
 						target="blank"
 						rel="noopener nofollow"
@@ -156,7 +138,7 @@
 					</a>
 					<a
 						v-for="(fan, index) in fans"
-						:key="index"
+						:key="'copy-' + index"
 						:href="fan.link"
 						target="blank"
 						rel="noopener nofollow"
@@ -200,101 +182,6 @@
 <script>
 import ExampleCodeEditor from '~/components/ExampleCodeEditor.vue';
 
-
-const stylifyCdnDefaultCode = `
-<!-- UMD - Runtime only -->
-<script
-	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"
-	integrity="sha256-CCqsfSP+nkhwN2Ga8cCdSRKlOEuvqNjOyVevAthK9Ns="
-	crossorigin="anonymous"
-><\/script>
-
-<!-- UMD - Runtime + Native Preset -->
-<script
-	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"
-	integrity="sha256-GTrpA8ciFraUhjNCwG1oRkXTNsnhk45K1s4iI1ptHLE="
-	crossorigin="anonymous"
-><\/script>
-
-<!-- ESM - Complete @stylify/stylify library -->
-<script
-	src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/esm/index.min.js"
-	integrity="sha256-MgcGTt8YGa/d9U4XloYDL8xp1XtsJkkYqJhzvqXKJgI="
-	crossorigin="anonymous"
-><\/script>
-`.trim();
-
-const stylifyCliDefaultCode = `
-yarn add @stylify/stylify
-
-npm i @stylify/stylify
-`.trim();
-
-const bundlerCliDefaultCode = `
-yarn add @stylify/stylify
-
-npm i @stylify/stylify
-`.trim();
-
-const profilerCdnDefaultCode = `
-<!-- UMD - Profiler -->
-<script
-	src="https://cdn.jsdelivr.net/npm/@stylify/profiler@latest/dist/profiler.min.js"
-	integrity="sha256-todmivx6lvBSy4MF5GAKw1lhhIhbb/0AOcXo6tAemKY="
-	crossorigin="anonymous"
-><\/script>
-`.trim();
-
-const profilerCliDefaultCode = `
-yarn add -D @stylify/profiler
-
-npm i -D @stylify/profiler
-`.trim();
-
-const nuxtModuleCliDefaultCode = `
-yarn add @stylify/nuxt-module
-
-npm i @stylify/nuxt-module
-`.trim();
-
-const autoprefixerCliDefaultCode = `
-yarn add @stylify/autoprefixer
-
-npm i @stylify/autoprefixer
-`.trim();
-
-
-let componentsDefaultHtmlCode = '<div class="button"></div>';
-let componentsDefaultJsCode = `
-new Compiler({
-	components: {
-		button: \`
-			font-weight:bold padding:4px border-radius:8px
-			background-color:blue font-size:16px
-		\`
-	}
-});`.trim();
-
-let plainSelectorsDefaultCode = `
-new Compiler({
-	plainSelectors: {
-		'input, button': \`
-			font-weight:bold color:#000
-			md:font-size:24px
-		\`,
-		'a, .link': 'color:blue'
-	}
-});
-`.trim();
-
-let variablesDefaultHtmlCode = '<div class="color:$blue"></div>';
-let variablesDefaultJsCode = `
-new Compiler({
-	variables: {
-		blue: '#01befe'
-	}
-});`.trim();
-
 const dynamicScreensDefaultCode = `
 <div class="
 	lg:font-size:24px
@@ -334,51 +221,32 @@ const cdnUsageDefaultCode = `
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>
 `;
 
-
-const editableExampleDefaultCode = `
-<strong class="
-	font-size:32px
-	lg:font-size:48px
-	color:#bd0c65
-	border-bottom:4px__solid__#fff
-	transition:border-color__0.3s
-	hover:border-color:#bd0c65
+const variablesExampleCode = `
+<!--
+ATstylify-variables
+	fontSize: '24px',
+	fontSizeLg: '32px',
+	textShadow: '0 4px 8px #379adf'
+/ATstylify-variables
+-->
+<div class="
+	font-size:$fontSize
+	lg:font-size:$fontSizeLg
+	text-shadow:$textShadow
 ">
-	<!--
-		Write selectors as css properties.
-		Use __ (two underscores) instead of a space
-		https://stylify.dev/docs/get-started
-	-->
-	Edit me 🤩!
-</strong>
-`
+	Seamless coding 🏄‍♀️
+</div>
+`.replace(/AT/g, '@');
 
 export default {
 	components: { ExampleCodeEditor },
 	data: () => ({
-		stylifyCdnDefaultCode: stylifyCdnDefaultCode,
-		stylifyCliDefaultCode: stylifyCliDefaultCode,
-
-		bundlerCliDefaultCode: bundlerCliDefaultCode,
-
-		profilerCdnDefaultCode: profilerCdnDefaultCode,
-		profilerCliDefaultCode: profilerCliDefaultCode,
-
-		nuxtModuleCliDefaultCode: nuxtModuleCliDefaultCode,
-
-		autoprefixerCliDefaultCode: autoprefixerCliDefaultCode,
 
 		// Features tabs
 		featuresSelectedTab: 'selectors',
-		componentsDefaultHtmlCode: componentsDefaultHtmlCode,
-		componentsDefaultJsCode: componentsDefaultJsCode,
-		plainSelectorsDefaultCode: plainSelectorsDefaultCode,
-		variablesDefaultHtmlCode: variablesDefaultHtmlCode,
-		variablesDefaultJsCode: variablesDefaultJsCode,
 		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
 		helpersDefaultCode: helpersDefaultCode,
 		cdnUsageDefaultCode: cdnUsageDefaultCode,
-		editableExampleDefaultCode: editableExampleDefaultCode,
 
 		tabs: {
 			selectors: 'Use selectors you know',

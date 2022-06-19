@@ -32,7 +32,7 @@
 						<example-code-editor
 							class="content-visibility:auto height:100% padding:12px__0 display:flex justify-content:center"
 							v-show="selectedTab === 'css'"
-							:defaultCode="css"
+							:defaultCode="css.replace(previewElRegExp, '')"
 							lang="css"
 							readonly
 						/>
@@ -47,7 +47,6 @@
 				</div>
 			</div>
 			<div
-				v-html="previewCode"
 				:class="[
 					layout === 'column' ? 'md:width:100% border-radius:$radius2__$radius2__0__0' : 'width:100% border-radius:$radius2__$radius2__0__0 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
 					`min-height:100px max-height:400px overflow:auto display:flex
@@ -56,22 +55,20 @@
 					md:align-self:stretch
 					`
 				]"
-			></div>
+			>
+				<style v-html="css">
+					/* Code */
+				</style>
+				<div :class="previewElClass"><div v-html="previewCode"></div></div>
+			</div>
 		</div>
 </template>
 
 <script>
 import { Compiler, nativePreset } from '@stylify/stylify';
 
-nativePreset.compiler.onPrepareCompilationResult = (compilationResult) => {
-	compilationResult.onPrepareCssRecord = (cssRecord) => {
-		cssRecord.scope = '.stylify-preview ';
-	}
-};
 nativePreset.compiler.dev = true;
 nativePreset.compiler.mangleSelectors = true;
-
-const compiler = new Compiler(nativePreset.compiler);
 
 export default {
 	props: {
@@ -101,6 +98,8 @@ export default {
 	},
 	created() {
 		this.code = '';
+		this.previewElClass = 'stylify-preview-' + this._uid;
+		this.previewElRegExp = new RegExp('\\.' + this.previewElClass, 'g');
 	},
 	mounted() {
 		if (typeof this.$refs.codeSlot !== 'undefined') {
@@ -115,11 +114,16 @@ export default {
 			this.selectedTab = tab;
 		},
 		setPreviewCode(code) {
+			const compiler = new Compiler(nativePreset.compiler);
+			compiler.onPrepareCompilationResult = (compilationResult) => {
+				compilationResult.onPrepareCssRecord = (cssRecord) => {
+					cssRecord.scope = '.' + this.previewElClass + ' ';
+				}
+			};
 			const compilationResult = compiler.compile(code);
-			this.css = compilationResult.generateCss().replace(/\.stylify-preview /g, '');
+			this.css = compilationResult.generateCss();
 			this.mangledHtml = compiler.rewriteSelectors(code, compilationResult);
-			const previewCode = this.mangledHtml.replace('<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>', '');
-			this.previewCode = `<style>${this.css}</style><div class="stylify-preview"><div>${previewCode}</div></div>`;
+			this.previewCode = this.mangledHtml;
 		}
 	},
 };

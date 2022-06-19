@@ -59,6 +59,17 @@
 		<section class="width:100% lg:width:calc(100%__-__254px) padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
 			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
+				<div v-if="shortcutLinks.length" class="margin-left:-8px margin-top:8px min-height:38px">
+					<span class="margin-left:12px">Shortcuts:</span>
+					<a
+						v-for="shortcutLink in shortcutLinks"
+						:key="shortcutLink.label"
+						:href="shortcutLink.link"
+						class="btn btn--transparent color:$blue1 border:2px__solid__$blue1 padding:4px__8px margin-bottom:8px margin-left:8px"
+					>
+						{{ shortcutLink.label }}
+					</a>
+				</div>
 				<nuxt-content :document="pageContent" />
 			</article>
 			<div class="display:flex justify-content:space-between margin-bottom:24px">
@@ -104,7 +115,8 @@ import { DocsRepository } from '~/services/model';
 
 export default {
 	data: () => ({
-		sidebarVisible: false
+		sidebarVisible: false,
+		shortcutLinks: []
 	}),
 	methods: {
 		scrollSelectedLinkIntoView() {
@@ -231,6 +243,25 @@ export default {
 				title.querySelector('a').click();
 			});
 		});
+
+		const shortcutLinks = [];
+		const h2Titles = document.querySelectorAll('article h2');
+
+		if (h2Titles.length > 1) {
+			document.querySelectorAll('article h2').forEach((title) => {
+				const titleId = title.getAttribute('id');
+				if (titleId) {
+					shortcutLinks.push({
+						link: '#' + titleId,
+						label: title.textContent
+					})
+				}
+			});
+
+			if (shortcutLinks.length > 1) {
+				this.shortcutLinks = shortcutLinks;
+			}
+		}
 	}
 }
 </script>

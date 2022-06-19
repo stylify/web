@@ -11,14 +11,6 @@ description: "Stylify Compiler is a tool for generating CSS, mangling selectors 
 
 Compiler provides a method for generating CSS according to given configuration from a given content and a method that can rewrite (mangle) selectors in a given content.
 
-<span class="margin-left:-12px">
-	<span class="margin-left:12px">Shortcuts:</span>
-	<shortcut-button link="#variables">Variables</shortcut-button>
-	<shortcut-button link="#components">Components</shortcut-button>
-	<shortcut-button link="#screens">Custom screens</shortcut-button>
-	<shortcut-button link="#macros">Custom selectors</shortcut-button>
-</span>
-
 ## Usage
 ```js
 import { Compiler, nativePreset } from '@stylify/stylify';
@@ -34,7 +26,7 @@ const css = compilationResult.generateCss();
 const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
 ```
 
-## Configuration
+### Configuration
 The configuration is different based on the tool and environment where the compiler is used.
 The example bellows shows configuration for Node.js and Browser. For more examples, checkout the [integration examples](/docs/integrations) page.
 
@@ -456,7 +448,7 @@ Some configuration can be only a file or bundle specific. Because of that Stylif
 
 Common syntax is the following:
 ```
-@stylify-<option><data>/@stylify-<option>
+@stylify-<option> ...data /@stylify-<option>
 ```
 
 The default available content options are listed bellow:
