@@ -100,8 +100,8 @@
 
 		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="hp__section-title text-align:center">Give us a Feedback!</h2>
-				<p class="hp__section-subtitle text-align:center margin-left:auto margin-right:auto">Star a repo, follow us on the Twitter, mention Stylify on a social media and let us know, what you think!</p>
+				<h2 class="hp__section-title text-align:center">We'd love your Feedback! ❤️</h2>
+				<p class="hp__section-subtitle text-align:center margin-left:auto margin-right:auto">Star our repo, follow us on the Twitter, mention Stylify on a social media and let us know, what you think!</p>
 			</div>
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">

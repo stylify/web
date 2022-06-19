@@ -56,7 +56,7 @@ export default defineConfig({
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor.example-editor': 'min-height:240px align-items:flex-start',
+				'.hp__example-editor .example-editor': 'min-height:240px align-items:flex-start',
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs
@@ -96,7 +96,7 @@ export default defineConfig({
 				// HP
 				'hp__section-blue-wrapper': 'background-color:$blue2 padding-top:45px padding-bottom:45px margin:45px__0 md:margin-bottom:80px',
 				'hp__section-title': `
-					font-size:32px line-height:52px font-weight:bold margin-top:0 margin-bottom:12px
+					font-size:32px line-height:42px font-weight:bold margin-top:0 margin-bottom:12px
 					md:font-size:48px md:line-height:64px
 				`,
 				'hp__section-subtitle': `
