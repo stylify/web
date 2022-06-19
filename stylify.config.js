@@ -55,8 +55,9 @@ export default defineConfig({
 				'article .example-editor': 'margin:24px__0',
 				'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 				'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
+				'article .nuxt-content-highlight': 'font-size:14px',
 				'.nuxt-content .nuxt-content-highlight': 'position:relative margin-top:24px margin-bottom:24px',
-				'.hp__example-editor .example-editor': 'min-height:240px align-items:flex-start',
+				'.hp__example-editor .example-editor': 'min-height:220px align-items:flex-start',
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs

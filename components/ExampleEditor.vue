@@ -10,7 +10,7 @@
 			<div
 				:class="[
 					layout === 'column' ? 'md:width:100% border-radius:0__0__$radius2__$radius2' : 'width:100% max-width:100% border-radius:0__0__$radius2__$radius2 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
-					`background:#282d3f display:flex margin-bottom:24px box-shadow:$shadow1 md:margin-bottom:0 md:align-self:stretch min-height:220px`
+					`background:#282d3f display:flex margin-bottom:24px box-shadow:$shadow1 md:margin-bottom:0 md:align-self:stretch`
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
