@@ -287,7 +287,7 @@ export default {
 				text: `For your information stylifycss.com: Dynamic Utility-First CSS Generator.`,
 				link: 'https://twitter.com/angsuman/status/1482257827188310017'
 			},
-						{
+			{
 				name: 'Lukeshiru',
 				image: 'lukeshiru.gif',
 				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
