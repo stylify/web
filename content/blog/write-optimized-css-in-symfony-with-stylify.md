@@ -10,7 +10,7 @@ createdAt: 'July 14, 2022'
 From anoying switching between files to flawless coding. Learn how to improve the coding experience in your Symfony Web Application in 5 minutes 🚀.
 
 ## Introduction
-[Stylify](https://stylify.dev) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `_zx, _ga{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `_zx, _ga{color:red}`.
 
 With Stylify, you can stay in the Twig templates or PHP files, write selectors and get smallest CSS chunks possible for each page separately 🤟.
 
@@ -133,7 +133,7 @@ and the `hp.html.twig`
 <div class="color:$textColor">Hello world!</div>
 ```
 
-Sometime, some components are used only one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify has a [content options](https://stylify.dev/docs/stylify/compiler#contentoptionsprocessors) for that.
+Sometime, some components are used only one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify has a [content options](https://stylifycss.com/docs/stylify/compiler#contentoptionsprocessors) for that.
 
 Let's add a paragraph component in the `hp.html.twig`:
 
@@ -176,14 +176,14 @@ Optimized hp css:
 @media (min-width: 768px) {._bpb5,._hhvd{margin:24px 0}}
 ```
 
-The example can be also found in the [docs](https://stylify.dev/docs/integrations/symfony).
+The example can be also found in the [docs](https://stylifycss.com/docs/integrations/symfony).
 
 ## More configuration
 The examples above doesn't include everything Stylify can do:
-- You can map [nested files](https://stylify.dev/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylify.dev/docs/stylify/compiler#plainselectors)
-- Define [custom screens](https://stylify.dev/docs/stylify/compiler#screens)
-- Add [own macros](https://stylify.dev/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
+- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [checkout the docs](https://stylify.dev/docs/get-started) to learn more 💎.
+Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

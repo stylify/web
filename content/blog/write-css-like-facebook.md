@@ -9,7 +9,7 @@ createdAt: January 10, 2022
 
 Some time ago during a coffee ☕ break I have been digging through the Facebook CSS. I checked multiple pages, downloaded the CSS from them and got an idea on a tool that could simplify the way I write the CSS.
 
-Laziness is a great thing. It leads people to simplify their work so in the end they have to do nothing. It also led me to create the https://stylify.dev 💎.
+Laziness is a great thing. It leads people to simplify their work so in the end they have to do nothing. It also led me to create the https://stylifycss.com 💎.
 
 When I have been digging through the Facebook code, I found the following.
 
@@ -35,7 +35,7 @@ So the objective was clear. Create a tool that will be able to:
 - Work on its own without bundlers, frameworks and post/preprocessors
 
 ## Atomic CSS with Stylify
-Stylify ships with the [native preset](https://stylify.dev/docs/stylify/native-preset) in which the selectors are the same like CSS `property:value`. Thanks to that I don't have to remember or search for selectors. The Native Preset is optional and you can define your own selectors. It also provides the following features:
+Stylify ships with the [native preset](https://stylifycss.com/docs/stylify/native-preset) in which the selectors are the same like CSS `property:value`. Thanks to that I don't have to remember or search for selectors. The Native Preset is optional and you can define your own selectors. It also provides the following features:
 - **Small chunks**: it can generate CSS for each file, component, layout separately
 - **No pregenerated CSS**: the CSS is generated only if a component or selector is found in the content
 - Internaly combines and reuses selectors as much as possible to keep the CSS small
@@ -63,7 +63,7 @@ In the example bellow there is a code for simple gallery image:
 	md:margin:48px
 	md:width:600px
 ">
-	<img class="width:100% object-fit:cover height:auto" src="https://stylify.dev/images/blog/stylify-facebook/mountains.jpg" alt="">
+	<img class="width:100% object-fit:cover height:auto" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg" alt="">
 	<div class="
 		font-family:arial
 		font-weight:bold
@@ -169,7 +169,7 @@ With all the enhancements above, the finall code is a way smaller:
 <!-- <stylify-ignore> -->
 ```html
 <div class="gallery-image__wrapper">
-	<img class="gallery-image" src="https://stylify.dev/images/blog/stylify-facebook/mountains.jpg">
+	<img class="gallery-image" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg">
 	<div class="gallery-image__label">
 		Zakopané (Poland)
 	</div>

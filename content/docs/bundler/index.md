@@ -103,7 +103,7 @@ const config = defineConfig({
 	// -----------
 	// CSS variables are by default injected into the generated CSS.
 	// You can change this behavior by configuring compiler
-	// See https://stylify.dev/docs/stylify/compiler#variables
+	// See https://stylifycss.com/docs/stylify/compiler#variables
 	cssVarsDirPath: 'path/to/vars.css',
 	sassVarsDirPath: 'path/to/vars.sass',
 	lessVarsDirPath: 'path/to/vars.less',

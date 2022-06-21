@@ -46,7 +46,7 @@ export default {
 				{ hid: 'twitter:description', name: 'twitter:description', content: pageDescription }
 			],
 			link: [
-				{ rel: 'canonical', href: 'https://stylify.dev/blog' }
+				{ rel: 'canonical', href: 'https://stylifycss.com/blog' }
 			]
 		}
   	},

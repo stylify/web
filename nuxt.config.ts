@@ -92,7 +92,7 @@ export default {
 	},
 
 	sitemap: {
-		hostname: 'https://stylify.dev',
+		hostname: 'https://stylifycss.com',
 	},
 
 	plugins: [

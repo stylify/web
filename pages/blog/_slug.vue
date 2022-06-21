@@ -65,7 +65,7 @@
 import { BlogRepository } from '../../services/model/BlogRepository';
 import { formatDateTime } from '../../services/blogDateTimeHelper';
 
-const host= 'https://stylify.dev';
+const host= 'https://stylifycss.com';
 
 export default {
 	data() {

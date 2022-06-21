@@ -19,7 +19,7 @@
 <template>
 	<ul class="share-buttons" data-source="simplesharingbuttons.com">
 		<li><a :href="`https://www.facebook.com/sharer/sharer.php?u=${postUrl}&quote=${postTitle}`" title="Share on Facebook" target="_blank" rel="noopener"><img width="32" height="32" loading="lazy" alt="Share on Facebook" src="/images/share-icons/Facebook.svg" /></a></li>
-		<li><a :href="`https://twitter.com/intent/tweet?source=${postUrl}&text=${postTitle}:+${postUrl}&via=stylify_dev`" target="_blank" rel="noopener" title="Tweet"><img width="32" height="32" loading="lazy" alt="Tweet" src="/images/share-icons/Twitter.svg" /></a></li>
+		<li><a :href="`https://twitter.com/intent/tweet?source=${postUrl}&text=${postTitle}:+${postUrl}&via=stylifycss`" target="_blank" rel="noopener" title="Tweet"><img width="32" height="32" loading="lazy" alt="Tweet" src="/images/share-icons/Twitter.svg" /></a></li>
 		<li><a :href="`http://www.tumblr.com/share?v=3&u=${postUrl}&quote=${postTitle}&s=`" target="_blank" rel="noopener" title="Post to Tumblr"><img width="32" height="32" loading="lazy" alt="Post to Tumblr" src="/images/share-icons/Tumblr.svg" /></a></li>
 		<li><a :href="`http://pinterest.com/pin/create/button/?url=${postUrl}&media=${postImage}&description=${postDescription}`" target="_blank" rel="noopener" title="Pin it"><img width="32" height="32" loading="lazy" alt="Pin it" src="/images/share-icons/Pinterest.svg" /></a></li>
 		<li><a :href="`https://getpocket.com/save?url=${postUrl}&title=${postTitle}`" target="_blank" rel="noopener" title="Add to Pocket"><img width="32" height="32" loading="lazy" alt="Add to Pocket" src="/images/share-icons/Pocket.svg" /></a></li>

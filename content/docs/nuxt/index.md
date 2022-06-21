@@ -48,7 +48,7 @@ import { defineConfig } from '@stylify/nuxt';
 const stylifyConfig = defineConfig({
 	dev: false,
 	configPath: 'stylify.config.js',
-	// Compiler config info https://stylify.dev/docs/stylify/compiler
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler
 	compiler: {},
 	// When vars dir paths are set, Stylify will export variables into
 	// a file according to given path
