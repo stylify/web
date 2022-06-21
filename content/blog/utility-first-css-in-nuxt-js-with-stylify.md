@@ -14,17 +14,17 @@ I personally prefer pure CSS or SCSS instead of utility-first frameworks. Even t
 
 The problem with writing CSS manually is that it is slow. It's also easy to end up with duplicate CSS `property:value` in various selectors which causes the CSS size to grow.
 
-Because of this I have created the [Stylify.dev](https://stylify.dev):
+Because of this I have created the [stylifycss.com](https://stylifycss.com):
 - It generates utility-first CSS dynamicly based on what I write
 - The selectors are the same like like in pure CSS
 - There are just two rules. `__` instead of a space and `^` instead of a quote.
-- And there are multiple other features like code splitting, selectors minification, dynamic screens, on demand generated CSS and etc. Feel free to checkout the [Stylify docs](https://stylify.dev)
+- And there are multiple other features like code splitting, selectors minification, dynamic screens, on demand generated CSS and etc. Feel free to checkout the [Stylify docs](https://stylifycss.com)
 
 In this Article I will show you how to use it in the Nuxt.js 🤟.
 
 ## Installation
 
-Stylify provides [@stylify/nuxt-module](https://stylify.dev/docs/nuxt-module) that symplifies the integration process to minimum:
+Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that symplifies the integration process to minimum:
 
 ```
 yarn add @stylify/nuxt-module
@@ -39,7 +39,7 @@ buildModules: [
 ]
 ```
 
-And that's it. Now you can start using the [Stylify](https://stylify.dev) to style your Nuxt.js app 🤩.
+And that's it. Now you can start using the [Stylify](https://stylifycss.com) to style your Nuxt.js app 🤩.
 
 ## First CSS
 

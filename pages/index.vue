@@ -107,13 +107,13 @@
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
 					<div class="display:flex width:162px">
-						<a href="https://twitter.com/stylify_dev?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px__12px border-radius:12px twitter-follow-button">
-							Follow @stylify_dev
+						<a href="https://twitter.com/stylifycss?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px__12px border-radius:12px twitter-follow-button">
+							Follow @stylifycss
 						</a>
 					</div>
 				</div>
 				<div class="text-align:center">
-					<share-buttons url="https://stylify.dev" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
+					<share-buttons url="https://stylifycss.com" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
 			</div>
 			<div class="slideshow width:200% height:300px md:height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
@@ -284,7 +284,7 @@ export default {
 			{
 				name: 'Angsuman Chakraborty',
 				image: 'angsuman-chakraborty.jpg',
-				text: `For your information Stylify.dev: Dynamic Utility-First CSS Generator.`,
+				text: `For your information stylifycss.com: Dynamic Utility-First CSS Generator.`,
 				link: 'https://twitter.com/angsuman/status/1482257827188310017'
 			},
 						{
@@ -302,7 +302,7 @@ export default {
 			{
 				name: 'Tomáš Pilař',
 				image: 'tomas-pilar.jpg',
-				text: `I recommend looking at Stylify.dev if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
+				text: `I recommend looking at stylifycss.com if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
 				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
 			},
 			{
@@ -314,7 +314,7 @@ export default {
 			{
 				name: 'Develop Greatness',
 				image: 'develop-greatness.jpg',
-				text: `Well, I guess we all need to follow @stylify_dev to reduce our #CSS related nerve attacks 😂😂.`,
+				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
 			},
 		]

@@ -74,7 +74,7 @@ Let me explain: Every `property:value` you add into the CSS should also be an ut
 Ok, but who would want to write something like this manually? The good news is, you don't have to.
 
 ## Stylify to the rescue
-Exactly because of the reasons above, the [Stylify.dev](https://stylify.dev) have been created.
+Exactly because of the reasons above, the [stylifycss.com](https://stylifycss.com) have been created.
 
 Here is an example, of how to create the same button with the Stylify (Checkout the HTML tab):
 
@@ -86,7 +86,7 @@ Here is an example, of how to create the same button with the Stylify (Checkout 
 <script async defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 
-The CSS selectors can also be minified [when used in node.js](https://stylify.dev/docs/stylify/compiler#usage):
+The CSS selectors can also be minified [when used in node.js](https://stylifycss.com/docs/stylify/compiler#usage):
 
 ```html
 <button class="_91rm6e"></button>
@@ -111,5 +111,5 @@ The CSS selectors can also be minified [when used in node.js](https://stylify.de
 </style>
 ```
 
-In case you also take the time and separate your CSS for layout and each page separately ([which is easy to do with Stylify](https://stylify.dev/docs/bundler#installation)) you can have a realy small CSS chunks for each of your page.
+In case you also take the time and separate your CSS for layout and each page separately ([which is easy to do with Stylify](https://stylifycss.com/docs/bundler#installation)) you can have a realy small CSS chunks for each of your page.
 You also don't have to care about duplicates and the selectors get's minified automatically.

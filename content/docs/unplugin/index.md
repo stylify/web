@@ -37,7 +37,7 @@ import { unplugin, vitePlugin, rollupPlugin, defineConfig, webpackPlugin } from 
 
 const config = defineConfig({
 	// --- Required
-	// See https://stylify.dev/docs/bundler#configuration
+	// See https://stylifycss.com/docs/bundler#configuration
 	// Part Array of bundles
 	bundles: [],
 
@@ -46,7 +46,7 @@ const config = defineConfig({
 	// Default is null. If null value is detected
 	// the plugin tries to detect the environment
 	dev: null,
-	// See https://stylify.dev/docs/bundler#configuration
+	// See https://stylifycss.com/docs/bundler#configuration
 	bundler: BundlerConfigInterface,
 	// Id is a file name
 	// Return true, if the file type or name should be processed
