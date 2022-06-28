@@ -6,11 +6,13 @@ import 'prismjs/components/prism-javascript';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-markup-templating';
 import 'prismjs/components/prism-markup';
+import 'prismjs/components/prism-jsx';
 import 'prismjs/components/prism-css';
 import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-twig';
 
 export const highlightCode = (code: string, lang: string): string => {
+	code = code.replace(/\&commat;/g, '@');
 	lang = lang in languages ? lang : 'txt';
 	return highlight(code, languages[lang]);
 }
