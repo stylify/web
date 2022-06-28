@@ -7,7 +7,7 @@ annotation: "Style your Next.js website faster, more efficiently and intuitively
 createdAt: 'July 28, 2022'
 ---
 
-Style your Next.js website faster, more efficiently and intuitively with [Stylify](https://stylifycss.com). Don't study selectors and the syntax. Use pure CSS syntax and get automatically generated CSS with advanced optimization for production.
+Style your Next.js website faster, more efficiently and intuitively with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get automatically generated CSS with advanced optimization for production.
 
 For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
