@@ -32,7 +32,7 @@
 		"@nuxtjs/google-analytics": "^2.4",
 		"@nuxtjs/sitemap": "^2.4",
 		"@nuxtjs/stylelint-module": "^4.0",
-		"@stylify/nuxt-module": "^0.0",
+		"@stylify/nuxt-module": "^0.1",
 		"@types/prismjs": "^1.16",
 		"eslint": "^7.29",
 		"eslint-plugin-nuxt": "^2.0",

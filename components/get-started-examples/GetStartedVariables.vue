@@ -7,11 +7,11 @@
 <script>
 const code = `
 <!--
-ATstylify-variables
+stylify-variables
 	fontSize: '24px',
 	fontSizeLg: '32px',
 	textShadow: '0 4px 8px #379adf'
-/ATstylify-variables
+/stylify-variables
 -->
 <div class="
 	font-size:$fontSize
@@ -20,7 +20,7 @@ ATstylify-variables
 ">
 	Seamless coding 🏄‍♀️
 </div>
-`.replace(/AT/g, '@');
+`;
 
 export default {
 	props: {

@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<section class="container margin-bottom:48px margin-top:48px">
+		<section class="container margin-bottom:24px margin-top:24px md:margin-top:48px md:margin-bottom:48px">
 			<h2 class="hp-title margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px">Write CSS Faster</h2>
 			<p class="text-align:center margin-top:0 md:margin-bottom:24px font-size:18px line-height:28px lg:line-height:30px lg:font-size:20px">
 				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
@@ -8,7 +8,7 @@
 				Write Selectors. Get CSS. Without framework 💎
 			</p>
 
-			<div :id="filters.webalize('Features')" class="margin-bottom:48px">
+			<div :id="filters.webalize('Features')" class="margin-bottom:24px md:margin-bottom:48px">
 				<div class="hp__tab-buttons-wrapper">
 					<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'border-color:$blue1 color:$blue1 font-weight:bold' : 'border-color:transparent', 'white-space:nowrap cursor:pointer border-bottom-width:4px border-bottom-style:solid padding:8px text-align:center display:inline-block']">{{tabLabel}}</a>
 				</div>
@@ -79,11 +79,11 @@
 					</div>
 				</div>
 			</div>
-			<div class="max-width:100% margin-left:-24px display:flex flex-direction:row flex-wrap:wrap align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:24px margin-bottom:24px md:margin-bottom:0 border:2px__solid__$blue1">
+			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px__solid__$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
-				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent md:margin-bottom:0 color:$blue1 border:2px__solid__$blue1 md:padding:12px__24px margin-bottom:24px margin-left:24px">Installation</a>
+				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 margin-left:8px sm:margin-left:12px md:padding:12px__24px">Installation</a>
 			</div>
 		</section>
 
@@ -178,7 +178,6 @@
 	</div>
 </template>
 
-<!-- <stylify-ignore> -->
 <script>
 import ExampleCodeEditor from '~/components/ExampleCodeEditor.vue';
 
@@ -223,11 +222,11 @@ const cdnUsageDefaultCode = `
 
 const variablesExampleCode = `
 <!--
-ATstylify-variables
+stylify-variables
 	fontSize: '24px',
 	fontSizeLg: '32px',
 	textShadow: '0 4px 8px #379adf'
-/ATstylify-variables
+/stylify-variables
 -->
 <div class="
 	font-size:$fontSize
@@ -236,7 +235,7 @@ ATstylify-variables
 ">
 	Seamless coding 🏄‍♀️
 </div>
-`.replace(/AT/g, '@');
+`;
 
 export default {
 	components: { ExampleCodeEditor },
@@ -336,5 +335,3 @@ export default {
 	}
 }
 </style>
-
-<!-- </stylify-ignore> -->

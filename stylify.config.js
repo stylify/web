@@ -80,7 +80,7 @@ export default defineConfig({
 					selectorsChain: 'btn'
 				},
 				'btn--hp': {
-					selectors: 'justify-content:center min-width:230px padding:24px font-size:24px',
+					selectors: 'justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px',
 					selectorsChain: 'btn'
 				},
 				'integration-block__image-wrapper': `max-height:60px max-width:100%`,

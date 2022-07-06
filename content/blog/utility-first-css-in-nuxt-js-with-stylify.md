@@ -45,7 +45,6 @@ And that's it. Now you can start using the [Stylify](https://stylifycss.com) to 
 
 Open the `pages/index.vue` directory and copy the following content into it.
 
-<!-- <stylify-ignore> -->
 ```html
 <template>
 	<div class="max-width:1024px margin:0__auto">
@@ -55,7 +54,6 @@ Open the `pages/index.vue` directory and copy the following content into it.
 	</div>
 </template>
 ```
-<!-- </stylify-ignore> -->
 
 Congratulations, you have styled your first page!
 
@@ -70,15 +68,14 @@ Therefore we have components. Components can be defined on three places:
 
 Let's define add the title component into the index.vue as it is used only here.
 
-<!-- <stylify-ignore> -->
 ```html
 <!--
-@stylify-components
+stylify-components
 	title: `
 		font-size:24px lg:font-size:32px
 		text-align:center
 	`
-/@stylify-components
+/stylify-components
 -->
 <template>
 	<div class="container">
@@ -86,7 +83,6 @@ Let's define add the title component into the index.vue as it is used only here.
 	</div>
 </template>
 ```
-<!-- </stylify-ignore> -->
 
 Now, let's add a container component in `stylify.config.js`, because it is going to probably be used in a whole project.
 
@@ -138,9 +134,9 @@ Now we can use the variable in our selectors in a whole project:
 
 ```html
 <!--
-@stylify-components
+stylify-components
 	"title": "color:$titleColor ..."
-/@stylify-components
+/stylify-components
 -->
 ```
 

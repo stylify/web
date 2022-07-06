@@ -99,9 +99,9 @@ Templates bloated with utility selectors are hard to read. Stylify allows you to
 
 ```jsx
 /*
-&commat;stylify-components
+stylify-components
   container: 'max-width:800px margin:0__auto'
-/&commat;stylify-components
+/stylify-components
 */
 export default function Home() {
   return (
@@ -117,14 +117,14 @@ It's a good practice to avoid hardcoded values in the selectors. [Variables](htt
 
 ```jsx
 /*
-@stylify-variables
+stylify-variables
   blue: 'steelblue',
   containerWidth: '800px'
-/@stylify-variables
+/stylify-variables
 
-&commat;stylify-components
+stylify-components
   container: 'max-width:$containerWidth margin:0__auto'
-/&commat;stylify-components
+/stylify-components
 */
 export default function Home() {
   return (

@@ -51,7 +51,6 @@ Stylify ships with the [native preset](https://stylifycss.com/docs/stylify/nativ
 The example bellow and all its code can be found and edited on the [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html).
 
 In the example bellow there is a code for simple gallery image:
-<!-- <stylify-ignore> -->
 ```html
 <div class="
 	display:inline-flex
@@ -80,7 +79,6 @@ In the example bellow there is a code for simple gallery image:
 	</div>
 </div>
 ```
-<!-- </stylify-ignore> -->
 
 The result of the code above will look like this:
 
@@ -166,7 +164,6 @@ nativePreset.compiler.plainSelectors: {
 
 With all the enhancements above, the finall code is a way smaller:
 
-<!-- <stylify-ignore> -->
 ```html
 <div class="gallery-image__wrapper">
 	<img class="gallery-image" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg">

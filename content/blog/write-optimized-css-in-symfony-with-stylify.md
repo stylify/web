@@ -139,13 +139,13 @@ Let's add a paragraph component in the `hp.html.twig`:
 
 ```twig
 {#
-@stylify-components
+stylify-components
   'text-block': `
     font-size:16px
     margin:12px__0
     md:margin:24px__0
   `
-/@stylify-components
+/stylify-components
 #}
 ...
 {% block body %}
