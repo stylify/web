@@ -18,6 +18,11 @@
 				<img src="/images/brands/nextjs.svg" alt="" height="1" width="2" decoding="async" loading="lazy"  class="width:auto height:60px" />
 			</div>
 		</nuxt-link>
+		<nuxt-link to="/docs/integrations/reactjs" aria-label="Nuxt" class="integration-block">
+			<div class="integration-block__image-wrapper">
+				<img src="/images/brands/react.png" alt="" height="1" width="2" decoding="async" loading="lazy"  class="width:auto height:60px" />
+			</div>
+		</nuxt-link>
 		<nuxt-link to="/docs/integrations/webpack" aria-label="Webpack" class="integration-block">
 			<div class="integration-block__image-wrapper">
 				<img src="/images/brands/webpack.svg" alt="" height="1" width="2" decoding="async" loading="lazy" class="width:auto height:60px" />

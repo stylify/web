@@ -4,7 +4,7 @@ image: '/images/blog/stylify-next/header.jpg'
 ogImage: '/images/blog/stylify-next/og-image.jpg'
 author: 'Vladimír Macháček'
 annotation: "Style your Next.js website faster, more efficiently and intuitively with Stylify."
-createdAt: 'July 28, 2022'
+createdAt: 'June 28, 2022'
 ---
 
 Style your Next.js website faster, more efficiently and intuitively with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get automatically generated CSS with advanced optimization for production.
