@@ -4,7 +4,7 @@ image: '/images/blog/stylify-symfony/header.jpg'
 ogImage: '/images/blog/stylify-symfony/og-image-v2.jpg'
 author: 'Vladimír Macháček'
 annotation: "Stay in Twig and PHP files, write HTML and get optimized CSS. Learn how to write optimized CSS in a Symfony web application in a minute."
-createdAt: 'July 14, 2022'
+createdAt: 'June 14, 2022'
 ---
 
 From anoying switching between files to flawless coding. Learn how to improve the coding experience in your Symfony Web Application in 5 minutes 🚀.
