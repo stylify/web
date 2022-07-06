@@ -91,7 +91,7 @@ Stylify watches any change in the files that matches mask in the bundle files an
 
 If you add for example `color:blue` the CSS will be automatically updated 🎉.
 
-Go ahead and try Stylify directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-reactjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡.
+Go ahead and try Stylify directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) 💡.
 
 ### Components
 To avoid bloated templates with utilities, you can use
