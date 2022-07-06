@@ -7,7 +7,7 @@
 <script>
 const code = `
 <!--
-ATstylify-components
+stylify-components
 	'label-icon': 'lg:font-size:48px margin-left:8px',
 	label: \`
 		display:flex
@@ -15,12 +15,12 @@ ATstylify-components
 		font-size:32px
 		align-items:center
 	\`,
-/ATstylify-components
+/stylify-components
 -->
 <span class="label">
 	Components time!<span class="label-icon">🎉</span>
 </span>
-`.replace(/AT/g, '@');
+`;
 
 export default {
 	props: {

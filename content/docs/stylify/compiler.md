@@ -91,29 +91,21 @@ If you decide to use the [Native Preset](/docs/stylify/native-preset), the synta
 
 Screens and pseudo classes are optional. In case you need to use screen and pseudo class, the screen must be always before the pseudo class.
 
-<!-- <stylify-ignore> -->
-
 ```txt
 color:red
 hover:color:red
 sm:hover:color:red
 ```
-<!-- </stylify-ignore> -->
 
 ### Spaces
 In case of writting a selector, that should contain a space, you can use `__` (two underscores). These underscores are replaced by a space during compilation.
 
 - Spaces character: `__` (two underscores)
 
-<!-- <stylify-ignore> -->
-
 ```txt
 border:1px__solid__red => border:1px solid red
 width:calc(100%__-__8px) => width:calc(100% - 8px)
 ```
-
-<!-- </stylify-ignore> -->
-
 
 ### Quotes
 Some CSS properties requires quotes such as a `font-family` or a `content`.
@@ -121,14 +113,12 @@ Because selectors are inside class attributes and therefore can be wrapped by a 
 
 - Quotes character: `^` (hat)
 
-<!-- <stylify-ignore> -->
 
 ```txt
 font-family:^Open__Sans^ => font-family:'Open Sans'
 content:^Some__long__content^ => content:'Some long content'
 ```
 
-<!-- </stylify-ignore> -->
 
 ### Logical operands in screens
 Screens can be randomly combined using logical operands. Before the CSS is generated, they are sorted in the following order:
@@ -157,13 +147,11 @@ The sorting function can be changed (see [configuration](/docs/stylify/compiler#
 - Logical AND: `&&`
 - Logical OR: `||`
 
-<!-- <stylify-ignore> -->
 
 ```txt
 sm&&dark:color:red
 minw740px||landscape:color:blue
 ```
-<!-- </stylify-ignore> -->
 
 
 ## Configuration
@@ -184,7 +172,6 @@ Macros are used to match selectors and generate css according to the match. The 
 
 Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,255)` => `_abc123`.
 
-<!-- <stylify-ignore> -->
 ```js
 const compilerConfig = {
 	macros: {
@@ -196,16 +183,13 @@ const compilerConfig = {
 	},
 };
 ```
-<!-- </stylify-ignore> -->
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <span class="color:red"></span>
 <div class="color:#000"></span>
 <div class="color:rgb(255,__255,__255)"></span>
 ```
-<!-- </stylify-ignore> -->
 
 
 ### variables
@@ -228,11 +212,9 @@ const compilerConfig = {
 ```
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <span class="color:$blue"></span>
 ```
-<!-- </stylify-ignore> -->
 
 ### screens
 
@@ -250,13 +232,11 @@ const compilerConfig = {
 ```
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <span class="sm:color:darkred"></span>
 <div class="minw640px:color:$blue"></span>
 <div class="minw80rem:color:darkgreen"></span>
 ```
-<!-- </stylify-ignore> -->
 
 ### components
 
@@ -296,12 +276,10 @@ compiler.addComponent('button', '...');
 ```
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <span class="button"></span>
 <div class="container"></div>
 ```
-<!-- </stylify-ignore> -->
 
 ### plainSelectors
 
@@ -318,11 +296,9 @@ const compilerConfig = {
 ```
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <article></article>
 ```
-<!-- </stylify-ignore> -->
 
 #### Caveats
 In case you want to add for example a `hover:color:blue` to a selector, you should follow the approaches bellow. It is becuase when a pseudo class is used in a dependency, it is added on the end of the selector and that might not be alwas that what you want.
@@ -381,11 +357,9 @@ const compilerConfig = {
 ```
 
 Usage:
-<!-- <stylify-ignore> -->
 ```html
 <div class="zi:2 bgc:red"></div>
 ```
-<!-- </stylify-ignore> -->
 
 ### selectorsAreas
 In case you want to rewrite selectors in any framework specific class attribute, you must define that attribute to be matched.
@@ -428,10 +402,10 @@ const compilerConfig = {
 `stylify-ignore` (and any other ignore element) can be placed inside a comment and therefore can be used in any file format.
 
 ```html
-<!-- <stylify-ignore> -->
+<!-- stylify-ignore -->
 Everything between these tags will be ignored
 <div class="color:red"></div>
-<!-- </stylify-ignore> -->
+<!-- /stylify-ignore -->
 ```
 
 ### pregenerate
@@ -448,38 +422,41 @@ Some configuration can be only a file or bundle specific. Because of that Stylif
 
 Common syntax is the following:
 ```
-@stylify-<option> ...data /@stylify-<option>
+stylify-<option> ...data /stylify-<option>
 ```
 
 The default available content options are listed bellow:
 
-<!-- <stylify-ignore> -->
 ```html
 // Components expects a valid javascript object as value
-@stylify-components
+stylify-components
 	button: `font-size:24px padding:4px`,
 	'button--big': {
 		selectors: 'font-size:48px',
 		selectorsChain: 'button'
 	}
-/@stylify-components
+/stylify-components
 
 // Variables expects a valid javascript object as value
-@stylify-variables
+stylify-variables
 	blue: `#01befe`
-/@stylify-variables
+/stylify-variables
 
 // Plain selectors expects a valid javascript object as value
-@stylify-plainSelectors
+stylify-plainSelectors
 	article: `font-size:24px`
-/@stylify-plainSelectors
+/stylify-plainSelectors
 
 // Pregenerate expects a string
-@stylify-pregenerate
+stylify-pregenerate
 	border-top:1px__solid__#444
-/@stylify-pregenerate
+/stylify-pregenerate
+
+stylify-screens
+	'testScreen': '(min-width: 123px)',
+	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
+/stylify-screens
 ```
-<!-- <stylify-ignore> -->
 
 It is possible to define own content options processor:
 
@@ -492,7 +469,7 @@ const compilerConfig = {
 	contentOptionsProcessors: {
 		// Content options is an object of already matched options.
 		// OptionMatch value is the matched value of your option
-		// @stylify-myOption optionMatchValue /@stylify-myOption
+		// stylify-myOption optionMatchValue /stylify-myOption
 		myOption: (contentOptions, optionMatchValue) => {
 			// Process the option value ...
 

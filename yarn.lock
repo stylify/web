@@ -1598,34 +1598,34 @@
     remark "^13.0.0"
     unist-util-find-all-after "^3.0.2"
 
-"@stylify/bundler@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.0.15.tgz#80ee54f85b2a8617786067ac5236b3f99afa95ce"
-  integrity sha512-0hZzt8DUMwR4b2/2jczTT0r9cqnyatlZ3tm7ZRdJWv+CuRbiQfFpvjgZkeaZnE67tLxdovSwoZosLzTWcI4hYQ==
+"@stylify/bundler@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.1.1.tgz#45c745a72063e787425201c3ce2e9de4c0777956"
+  integrity sha512-jsjOlgZcnan+nOWasQOp4fqOKyjzD9DRNfZLpNquBQCzK8u9Ck0RHtpZrimwEttZzjtJpzzTRb1i9u7jFAJrRg==
   dependencies:
-    "@stylify/stylify" "^0.0.15"
+    "@stylify/stylify" "^0.1.1"
     fast-glob "^3.2"
     normalize-path "^3.0"
 
-"@stylify/nuxt-module@^0.0":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.0.15.tgz#42cf3a405a51d5ef214e1ad6ba2a81e764584272"
-  integrity sha512-Fvq5QaseXIV1By2PcM+z38lY563Hcr9IbKgXedcXVM+mQHp4s2un406QubX3+NWmLkMdCiPZ1nuqF4gC3BfLcA==
+"@stylify/nuxt-module@^0.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.1.1.tgz#6c2f6c3997e2df0b5c68726224e0430f3a55ec62"
+  integrity sha512-KrgnTxiasr/oUkRan/Y1MKhicKu3JigPpA78SREC/nhkxlXN4yW1rUMuYAEWwev4U4cLynyQxdFGga/vXhmAOA==
   dependencies:
-    "@stylify/bundler" "^0.0.15"
-    "@stylify/profiler" "^0.0.15"
-    "@stylify/stylify" "^0.0.15"
+    "@stylify/bundler" "^0.1.1"
+    "@stylify/profiler" "^0.1.1"
+    "@stylify/stylify" "^0.1.1"
     loader-utils "^2.0"
 
-"@stylify/profiler@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@stylify/profiler/-/profiler-0.0.15.tgz#d6297f0d3d3d815e3f96d6e06599f1f59bcc7de6"
-  integrity sha512-Ac8yMmXQ/zW9NnAdkDT59dyoo1NSBqylpuJ6Fk6pM9F+/b215bEdrKKhXFpJ8i7R6uyBcEafCfJrUGt8AOEmwQ==
+"@stylify/profiler@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stylify/profiler/-/profiler-0.1.1.tgz#1e96befb64fce5661831b914e00399fc8cc93475"
+  integrity sha512-ryVntWmMGPAZEtgBwccPTj6uXaEehJEKaSh4cMXj1exRExHZUZMiZbxM4hkqMaiqOBYmrK3OxdUzzN42Z7cJXQ==
 
-"@stylify/stylify@^0.0.15":
-  version "0.0.15"
-  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.0.15.tgz#a4f14442358d434443b27a3e7eefe4fd481a200e"
-  integrity sha512-XmUOSSUVSJCnYxOJOxnm2GvyZsOoTeP72x+mcrLycZFQ9A1RpCP7ExmMpY0booGHYpyC5VNZjSh68+EnGgKhLg==
+"@stylify/stylify@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.1.1.tgz#2131a6e83fce98aa669dd7ef41dbb1f85d4bf2fd"
+  integrity sha512-8HGY9jEonXFR/k+3SBNtNeWiSgFnOEAmyqHhnRfotBWCnFRyKe1WU7QG17yAFjTENYicjyWLix5BtlY+oGWyrw==
 
 "@types/anymatch@*":
   version "3.0.0"

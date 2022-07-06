@@ -59,16 +59,14 @@ This option allows you to have minimum input files, because these input files ca
 For more information about content options see [compiler documentation](/docs/stylify/compiler#contentoptionsprocessors).
 </template></note>
 
-<!-- <stylify-ignore> -->
 ```
 // This option expects files paths as string
 // When file path starts with /, it is an absolut path, otherwise is relative
-@stylify-files
+stylify-files
 	/path/to/layout.html
 	path/to/template/part.html
-/@stylify-files
+/stylify-files
 ```
-<!-- </stylify-ignore> -->
 
 ## Configuration
 

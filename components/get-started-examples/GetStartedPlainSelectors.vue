@@ -7,7 +7,7 @@
 <script>
 const code = `
 <!--
-ATstylify-plainSelectors
+stylify-plainSelectors
 	'div': \`
 		text-align:center
 		line-height:1.2
@@ -15,11 +15,11 @@ ATstylify-plainSelectors
 		lg:font-size:34px
 	\`,
 	'div + div': 'margin-top:8px'
-/ATstylify-plainSelectors
+/stylify-plainSelectors
 -->
 <div>Style anything easily</div>
 <div>🏖️🍹🤟</div>
-`.replace(/AT/g, '@');
+`;
 
 export default {
 	props: {

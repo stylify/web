@@ -12,7 +12,6 @@ import 'prismjs/components/prism-php';
 import 'prismjs/components/prism-twig';
 
 export const highlightCode = (code: string, lang: string): string => {
-	code = code.replace(/\&commat;/g, '@');
 	lang = lang in languages ? lang : 'txt';
 	return highlight(code, languages[lang]);
 }

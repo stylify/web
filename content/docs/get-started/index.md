@@ -44,9 +44,9 @@ Before you start writting selectors, there are few rules you need to know:
 The <code>property:value</code> syntax comems from the <nuxt-link to="/docs/stylify/native-preset">Native Preset</nuxt-link> that is a default config for browser environment. You can define custom selectors and presets if you like. You can find more about that in the content bellow.
 </note>
 
-<!-- <stylify-ignore> -->
+<!-- stylify-ignore -->
 <get-started-selectors layout="column"></get-started-selectors>
-<!-- </stylify-ignore> -->
+<!-- /stylify-ignore -->
 
 ## Screens usage
 In the Native Preset there are predefined shortcuts like `sm, md, lg` you may know from Tailwind or Bootstrap and dynamic screens such as `minw, maxw, rng`. Dynamic screens are flexible and the generated media query depends on the value you choose when using them.
@@ -54,24 +54,24 @@ Checkout the [full list](/docs/stylify/native-preset#screens).
 
 When not using the Native Preset, you have to define your own screens as shown bellow in the [configuration](#configuration) section.
 
-<!-- <stylify-ignore> -->
+<!-- stylify-ignore -->
 <example-editor layout="column">
 <div class="font-size:12px minw768px:font-size:32px lg:font-size:24px">
 	Screens
 </div>
 </example-editor>
-<!-- </stylify-ignore> -->
+<!-- /stylify-ignore -->
 
 Screens can also be randomly combined by using logical operands. There is a **logical AND** `&&` and a **logical OR** `||`.
 Don't worry about the screens order. They are sorted before the CSS is generated (see [screens documentation](/docs/stylify/compiler#logical-operands-in-screens)).
 
-<!-- <stylify-ignore> -->
+<!-- stylify-ignore -->
 <example-editor layout="column">
 <div class="lg||landscape:color:darkred sm&&dark:color:grey lg&&dark:color:white">
 	Combined screens
 </div>
 </example-editor>
-<!-- </stylify-ignore> -->
+<!-- /stylify-ignore -->
 
 If you want to add a custom screen, you can do that like this:
 ```js

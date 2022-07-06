@@ -51,7 +51,7 @@ Dont forget that screens can be combined using logical operands `&&` (and) and `
 
 <div class="max-width:100% overflow:auto">
 
-<!-- <stylify-ignore> -->
+<!-- stylify-ignore -->
 
 | Screen     | Value                                                        | Example                    |
 |------------|--------------------------------------------------------------|----------------------------|
@@ -79,7 +79,7 @@ Dont forget that screens can be combined using logical operands `&&` (and) and `
 | dark       | @media (prefers-color-scheme: dark)                          | dark:color:blue            |
 | light      | @media (prefers-color-scheme: light)                         | light:color:blue           |
 
-<!-- </stylify-ignore> -->
+<!-- /stylify-ignore -->
 </div>
 
 ### Helpers
@@ -90,34 +90,26 @@ When passing an argument into the helper, you can use variables like `$myVariabl
 
 #### Lighten color
 This helper expects a color in a hex or rgb format and and makes the color lighter. The color is returned in a hex format.
-<!-- <stylify-ignore> -->
+
 ```txt
 color:lighten($myColor,10)
 color:lighten(#222,10)
 color:lighten(^rgb(0,0,0)^,10)
 ```
-<!-- </stylify-ignore> -->
 
 #### Darken color
 This helper expects a color in a hex or rgb format and and makes the color darker. The color is returned in a hex format.
-
-<!-- <stylify-ignore> -->
 
 ```txt
 color:darken(#eee,10)
 color:darken(^rgb(255,255,255)^,10)
 ```
 
-<!-- </stylify-ignore> -->
-
 #### Color to rgb
 This helper expects a color in a hex or rgb format. It returns in the rgb format. If alpha canal is passed as second argument, it returns the rgba format.
-
-<!-- <stylify-ignore> -->
 
 ```txt
 color:colorToRgb(#000) => is converted into rgba(0, 0, 0);
 color:colorToRgb(#000,0.1) => is converted into rgba(0, 0, 0, 0.1)
 color:colorToRgb(^rgb(0,0,0)^,0.1) => is converted into rgba(0, 0, 0, 0.1)
 ```
-<!-- </stylify-ignore> -->
