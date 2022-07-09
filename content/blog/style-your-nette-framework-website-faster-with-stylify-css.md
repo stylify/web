@@ -146,7 +146,7 @@ It's always a good idea to have a clean and flexible code without hardcoded valu
 {* ... *}
 ```
 
-## Mapping files
+### Mapping files
 When a template includes a component or a nested template part, we can add it to the bundle using `stylify-files` option.
 
 Let's create the `_content.latte` template part next to the `default.latte` with the following content:
