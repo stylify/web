@@ -45,7 +45,6 @@ const stylifyPlugin = vitePlugin({
 	}]
 });
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode}) => {
   return {
     plugins: [stylifyPlugin, vue()]
@@ -53,7 +52,7 @@ export default defineConfig(({ mode}) => {
 });
 ```
 
-Now you can add the path to the generated `stylify.css` into `src/main.js` file:
+Now you can add the path of the generated `stylify.css` into `src/main.js` file:
 
 ```js
 import { createApp } from 'vue'
