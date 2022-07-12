@@ -1,7 +1,7 @@
 ---
 title: 🚀 Style your Svelte website faster with Stylify CSS
 image: '/images/blog/stylify-svelte/header.jpg'
-ogImage: '/images/blog/stylify-svelte/og-image.jpg'
+ogImage: '/images/blog/stylify-svelte/og-image-v2.jpg'
 author: 'Vladimír Macháček'
 annotation: "Style your Svelte website faster and intuitively with Stylify."
 createdAt: 'July 11, 2022'
