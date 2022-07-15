@@ -4,7 +4,7 @@ image: '/images/blog/stylify-vue/header.jpg'
 ogImage: '/images/blog/stylify-vue/og-image.jpg'
 author: 'Vladimír Macháček'
 annotation: "Style your Vue website faster and intuitively with Stylify."
-createdAt: 'July 11, 2022'
+createdAt: 'July 15, 2022'
 ---
 [Stylify](https://stylifycss.com) + Vue + Vite. Style your Vue website faster with Stylify. Don't study selectors, syntax and documentation. Use pure CSS syntax and get generated CSS with advanced optimization for production.
 
