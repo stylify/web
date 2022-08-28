@@ -21,7 +21,7 @@ export default defineConfig({
 				grey3: '#e5e7eb',
 				grey4: '#71717a',
 
-				shadow1: '0 8px 32px -8px rgb(0, 0, 0, 0.2)',
+				shadow1: 'rgb(99 99 99 / 20%) 0px 2px 8px 0px',
 				shadow2: '0 2px 12px rgba(0, 0, 0, 0.25)',
 
 				radius1: '4px',
@@ -91,7 +91,7 @@ export default defineConfig({
 					text-decoration:none color:#000 min-height:100px
 					sm:width:calc(100%__*__1/3__-__12px)
 					md:width:calc(100%__*__1/4__-__24px) md:margin-bottom:24px md:margin-left:24px
-					lg:padding:18px lg:width:calc(100%__*__1/5__-__24px)
+					lg:padding:18px lg:width:calc(100%__*__1/5__-__24px) lg:width:calc(100%__*__1/6__-__24px)
 				`,
 
 				// HP
@@ -112,12 +112,12 @@ export default defineConfig({
 				`,
 				'hp__section-more-info-link-icon': 'margin-left:12px transform:rotate(-90deg)',
 				'hp__tab-buttons-wrapper': `
-					margin-left:-8px margin-right:-8px display:flex flex-wrap:nowrap margin-bottom:12px
-					overflow:auto md:margin-left:-12px md:margin-right:-24px lg:margin-left:0px lg:margin-right:0
+					padding-left:12px padding-top:12px margin-left:-12px display:flex flex-wrap:nowrap
+					overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
 				`,
 				'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
 				'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
-				'hp__code-editor': 'box-shadow:$shadow1 padding:12px__0 border-radius:$radius2',
+				'hp__code-editor': 'padding:12px__0 border-radius:$radius2',
 
 				// Why Stylify
 				'why-stylify__block': `

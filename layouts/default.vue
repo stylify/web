@@ -2,8 +2,8 @@
 	<div>
 		<header>
 			<div class="
-				display:flex flex-direction:column justify-content:center padding-top:8px
-				padding-bottom:8px justify-content:space-between align-items:center container
+				display:flex flex-direction:column justify-content:center padding-top:34px
+				padding-bottom:34px justify-content:space-between align-items:center container
 				lg:flex-direction:row
 			"
 		>
@@ -33,7 +33,7 @@
 					</section>
 				</div>
 				<section class="max-width:calc(100%__+__16px) overflow:auto margin-left:-8px margin-right:-8px display:inline-flex align-items:center position:relative">
-					<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding-left:8px padding-right 8px">
+					<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding-left:8px padding-right 8px font-weight:bold">
 						<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Docs</nuxt-link>
 						<nuxt-link to="/blog" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Blog</nuxt-link>
 						<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="margin-left:24px font-size:18px color:#000 text-decoration:none hover:color:$blue1">Playground</a>

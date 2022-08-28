@@ -1,7 +1,7 @@
 <template>
 		<div
 			:class="[
-				layout === 'column' ? 'flex-direction:column-reverse' : 'md:flex-direction:row md:margin-left:-8px lg:margin-left:-24px',
+				layout === 'column' ? 'flex-direction:column-reverse' : 'md:flex-direction:row',
 				`example-editor display:flex justify-content:space-between
 				flex-direction:column-reverse justify-content:center
 				`
@@ -9,8 +9,8 @@
 		>
 			<div
 				:class="[
-					layout === 'column' ? 'md:width:100% border-radius:0__0__$radius2__$radius2' : 'width:100% max-width:100% border-radius:0__0__$radius2__$radius2 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
-					`background:#282d3f display:flex margin-bottom:24px box-shadow:$shadow1 md:margin-bottom:0 md:align-self:stretch`
+					layout === 'column' ? 'md:width:100%' : 'width:100% max-width:100% md:width:50% md:min-width:50%',
+					`background:#282d3f display:flex margin-bottom:24px md:margin-bottom:0 md:align-self:stretch`
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
@@ -46,10 +46,9 @@
 			</div>
 			<div
 				:class="[
-					layout === 'column' ? 'md:width:100% border-radius:$radius2__$radius2__0__0' : 'width:100% border-radius:$radius2__$radius2__0__0 md:border-radius:$radius2 md:width:50% md:min-width:50% md:margin-left:8px lg:margin-left:24px',
+					layout === 'column' ? 'md:width:100%' : 'width:100% border-radius:$radius2__$radius2__0__0 md:border-radius:$radius2 md:width:50% md:min-width:50%',
 					`min-height:100px max-height:400px overflow:auto display:flex
-					align-items:center justify-content:center box-shadow:$shadow1 padding:24px
-					lg:border-radius:$radius2
+					align-items:center justify-content:center padding:24px
 					md:align-self:stretch
 					`
 				]"
