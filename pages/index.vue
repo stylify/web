@@ -1,84 +1,85 @@
 <template>
 	<div>
-		<section class="container margin-bottom:24px margin-top:24px md:margin-top:48px md:margin-bottom:48px">
-			<h2 class="hp-title margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px">Write CSS Faster</h2>
-			<p class="text-align:center margin-top:0 md:margin-bottom:24px font-size:18px line-height:28px lg:line-height:30px lg:font-size:20px">
+		<section class="container margin-top:24px">
+			<h2 class="color:$blue1 margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
+			<p class="text-align:center margin-top:0 font-size:18px line-height:32px lg:line-height:30px lg:font-size:24px">
 				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
 				<br>
-				Write Selectors. Get CSS. Without framework 💎
+				Don't study Docs. Write Selectors you know. Get optimized CSS. Without framework 💎
 			</p>
-
-			<div :id="filters.webalize('Features')" class="margin-bottom:24px md:margin-bottom:48px">
-				<div class="hp__tab-buttons-wrapper">
-					<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'border-color:$blue1 color:$blue1 font-weight:bold' : 'border-color:transparent', 'white-space:nowrap cursor:pointer border-bottom-width:4px border-bottom-style:solid padding:8px text-align:center display:inline-block']">{{tabLabel}}</a>
+		</section>
+		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:32px">
+			<div class="hp__tab-buttons-wrapper">
+				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'box-shadow:$shadow1 background:#fff border-top-color:$blue1' : 'border-color:transparent color:$grey4', 'margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px__24px text-align:center display:inline-flex']">{{tabLabel}}</a>
+			</div>
+			<div class="box-shadow:$shadow1 padding:12px lg:padding:24px">
+				<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
+					<p class="margin-top:0 font-size:14px line-height:28px">
+						Write selectors as css <code>property:value</code>. Use <code>__</code> (two underscores) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
+					</p>
+					<div class="hp__example-editor width:100%">
+						<GetStartedSelectors />
+					</div>
 				</div>
-				<div>
-					<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
-							Write selectors as css <code>property:value</code>. Use <code>__</code> (two underscores) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
-						</p>
-						<div class="hp__example-editor width:100%">
-							<GetStartedSelectors />
+				<div v-show="featuresSelectedTab === 'components'">
+					<p class="margin-top:0 font-size:14px line-height:28px">
+						Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
+					</p>
+					<div class="hp__example-editor width:100%">
+						<GetStartedComponents />
+					</div>
+				</div>
+				<div v-show="featuresSelectedTab === 'plainSelectors'">
+					<p class="margin-top:0 font-size:14px line-height:28px">
+						Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
+					</p>
+					<div class="hp__example-editor width:100%">
+						<GetStartedPlainSelectors />
+					</div>
+				</div>
+				<div v-show="featuresSelectedTab === 'variables'">
+					<p class="margin-top:0 font-size:14px line-height:28px">
+						Avoid hardcoded values in templates. Use variables. Can be configurd within a template (expects an object without surounding brackets) or in a Compiler config.
+					</p>
+					<div class="hp__example-editor width:100%">
+						<GetStartedVariables />
+					</div>
+				</div>
+				<div v-show="featuresSelectedTab === 'dynamicScreens'">
+					<div class="hp__tab-content">
+						<ul class="hp__tab-content-list">
+							<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
+							<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
+							<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
+						</ul>
+						<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+							<example-code-editor
+								class="hp__code-editor"
+								:defaultCode="dynamicScreensDefaultCode"
+								readonly
+							/>
 						</div>
 					</div>
-					<div v-show="featuresSelectedTab === 'components'">
-						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
-							Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
-						</p>
-						<div class="hp__example-editor width:100%">
-							<GetStartedComponents />
-						</div>
-					</div>
-					<div v-show="featuresSelectedTab === 'plainSelectors'">
-						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
-							Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
-						</p>
-						<div class="hp__example-editor width:100%">
-							<GetStartedPlainSelectors />
-						</div>
-					</div>
-					<div v-show="featuresSelectedTab === 'variables'">
-						<p class="margin-top:0 max-width:600px font-size:14px line-height:28px">
-							Avoid hardcoded values in templates. Use variables. Can be configurd within a template (expects an object without surounding brackets) or in a Compiler config.
-						</p>
-						<div class="hp__example-editor width:100%">
-							<GetStartedVariables />
-						</div>
-					</div>
-					<div v-show="featuresSelectedTab === 'dynamicScreens'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
-								<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
-								<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
-								<example-code-editor
-									class="hp__code-editor"
-									:defaultCode="dynamicScreensDefaultCode"
-									readonly
-								/>
-							</div>
-						</div>
-					</div>
-					<div v-show="featuresSelectedTab === 'helpers'">
-						<div class="hp__tab-content">
-							<ul class="hp__tab-content-list">
-								<li>Helpers are called when a selector is found.</li>
-								<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
-							</ul>
-							<div class="max-width:800px lg:margin-left:24px lg:width:50%">
-								<example-code-editor
-									class="hp__code-editor"
-									:defaultCode="helpersDefaultCode"
-									lang="js"
-									readonly
-								/>
-							</div>
+				</div>
+				<div v-show="featuresSelectedTab === 'helpers'">
+					<div class="hp__tab-content">
+						<ul class="hp__tab-content-list">
+							<li>Helpers are called when a selector is found.</li>
+							<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
+						</ul>
+						<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+							<example-code-editor
+								class="hp__code-editor"
+								:defaultCode="helpersDefaultCode"
+								lang="js"
+								readonly
+							/>
 						</div>
 					</div>
 				</div>
 			</div>
+		</section>
+		<section class="container margin-bottom:24px md:margin-bottom:48px">
 			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
 				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px__solid__$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
@@ -322,13 +323,6 @@ export default {
 </script>
 
 <style lang="scss">
-.hp-title {
-	background: #007cf0;
-	background: linear-gradient(to right, #007cf0 0%, #00b4f4 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
-
 @keyframes slideshow {
 	100% {
 		transform: translateX(-50%);
