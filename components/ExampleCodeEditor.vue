@@ -1,8 +1,8 @@
 <template>
-	<div class="code-editor__wrapper min-height:48px display:flex width:100%">
+	<div :class="[withBorder ? 'border:1px__solid__#36425b padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
 		<code ref="codeSlot" style="display: none;"><slot></slot></code>
 		<client-only placeholder="Loading...">
-			<div class="max-height:400px overflow:auto width:100% border-radius:8px">
+			<div class="max-height:400px overflow:auto width:100%">
 				<prism-editor
 					v-model="code"
 					:highlight="highlighter"
@@ -23,6 +23,10 @@ import '~/assets/scss/code-editor-theme.scss';
 
 export default {
 	props: {
+		withBorder: {
+			type: Boolean,
+			default: true
+		},
 		defaultCode: {
 			type: String,
 			default: ''

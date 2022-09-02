@@ -1,7 +1,7 @@
 <template>
 	<div
 		:class="[
-			isBlue ? 'border-color:$blue1 background:$blue2' : '',
+			isBlue ? 'border-color:$blue1 background:lighten($blue3,20)' : '',
 			isOrange ? 'border-color:$orange1 background:$orange2' : '',
 			'note border-left-width:8px border-left-style:solid padding:8px lg:padding:12px'
 		]">

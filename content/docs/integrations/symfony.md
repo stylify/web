@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Symfony"
 navigationIconPath: '/images/brands/symfony-icon.svg'
 
-title: Symfony Framework integration
+title: Using Stylify CSS in Symfony Framework
 description: "Learn how to integrate the Stylify utilify-first CSS generator into the Symfony Framework."
 ---
 
@@ -44,7 +44,21 @@ const stylifyPlugin = webpackPlugin({
 		{ outputFile: homepageCssPath, files: [
 			'./templates/homepage/homepage.html.twig'
 		]}
-	]
+	],
+	// Optional
+	extend: {
+		bundler: {
+			compiler: {
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		}
+	}
 });
 
 Encore

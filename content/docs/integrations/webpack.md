@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Webpack"
 navigationIconPath: '/images/brands/webpack-icon.svg'
 
-title: Webpack integration
+title: Using Stylify CSS with Webpack
 description: "Learn how to use the Stylify utilify-first CSS generator along with Webpack."
 ---
 
@@ -36,7 +36,21 @@ const stylifyPlugin = webpackPlugin({
 		outputFile: './index.css',
 		files: ['./index.html'],
 		rewriteSelectorsInFiles: mode === 'production'
-	}]
+	}],
+	// Optional
+	extend: {
+		bundler: {
+			compiler: {
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		}
+	}
 });
 
 module.exports = {

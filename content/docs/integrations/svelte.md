@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Svelte"
 navigationIconPath: '/images/brands/svelte.svg'
 
-title: "Svelte integration"
+title: Using Stylify CSS in Svelte
 description: "Integrate Stylify CSS into the the Svelte"
 ---
 
@@ -41,7 +41,21 @@ const stylifyPlugin = vitePlugin({
 	bundles: [{
 		outputFile: './src/stylify.css',
 		files: ['./src/**/*.svelte'],
-	}]
+	}],
+	// Optional
+	extend: {
+		bundler: {
+			compiler: {
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		}
+	}
 });
 
 export default defineConfig({

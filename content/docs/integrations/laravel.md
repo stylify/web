@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Laravel"
 navigationIconPath: '/images/brands/laravel.svg'
 
-title: Laravel Framework integration
+title: Using Stylify CSS in Laravel Framework
 description: "Learn how to integrate he Stylify utilify-first CSS generator into the Laravel Framework."
 ---
 
@@ -38,7 +38,21 @@ const stylifyPlugin = webpackPlugin({
 	bundles: [{
 		outputFile: './resources/css/homepage.css',
 		files: ['./resources/views/welcome.blade.php']
-	}]
+	}],
+	// Optional
+	extend: {
+		bundler: {
+			compiler: {
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		}
+	}
 });
 
 mix

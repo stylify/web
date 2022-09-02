@@ -4,6 +4,7 @@
 	</example-editor>
 </template>
 
+<!-- stylify-ignore -->
 <script>
 const code = `
 <!--
@@ -26,11 +27,12 @@ export default {
 	props: {
 		layout: {
 			type: String,
-			default: 'row'
-		}
+			default: "row",
+		},
 	},
 	data: () => ({
-		code: code
-	})
-}
+		code: code,
+	}),
+};
 </script>
+<!-- /stylify-ignore -->

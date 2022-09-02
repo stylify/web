@@ -77,10 +77,16 @@ export default {
 
 	buildModules: [
 		'@nuxt/typescript-build',
-		'@nuxtjs/stylelint-module',
 		'@nuxtjs/google-analytics',
 		'@stylify/nuxt-module'
 	],
+
+	build: {
+		transpile: [
+			'@stylify/stylify/lib/index.cjs',
+			'@stylify/stylify/esm/index.mjs'
+		]
+	},
 
 	modules: [
 		'@nuxt/content',

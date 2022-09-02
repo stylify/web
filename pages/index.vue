@@ -1,18 +1,18 @@
 <template>
 	<div>
-		<section class="container margin-top:24px">
-			<h2 class="color:$blue1 margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
-			<p class="text-align:center margin-top:0 font-size:18px line-height:32px lg:line-height:30px lg:font-size:24px">
-				Stylify generates optimized <span class="word-break:keep-all white-space:nowrap">utility-first</span> CSS dynamically based on what you write.
+		<section class="container margin-top:24px md:margin-top:64px">
+			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
+			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
+				Stylify uses CSS like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0__auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">plain selectors</span> to generate CSS dynamically based on what you write.
 				<br>
-				Don't study Docs. Write Selectors you know. Get optimized CSS. Without framework 💎
+				💎&nbsp;Don't study Docs. Write Selectors you know. Get optimized CSS. Without framework.&nbsp;💎
 			</p>
 		</section>
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:32px">
 			<div class="hp__tab-buttons-wrapper">
-				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'box-shadow:$shadow1 background:#fff border-top-color:$blue1' : 'border-color:transparent color:$grey4', 'margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px__24px text-align:center display:inline-flex']">{{tabLabel}}</a>
+				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color__.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px__24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
-			<div class="box-shadow:$shadow1 padding:12px lg:padding:24px">
+			<div class="padding:12px lg:padding:24px background:lighten($blue3,20)">
 				<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
 					<p class="margin-top:0 font-size:14px line-height:28px">
 						Write selectors as css <code>property:value</code>. Use <code>__</code> (two underscores) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
@@ -48,9 +48,8 @@
 				<div v-show="featuresSelectedTab === 'dynamicScreens'">
 					<div class="hp__tab-content">
 						<ul class="hp__tab-content-list">
-							<li><strong>You can use any value for screen you want</strong> like <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code>.</li>
-							<li><strong>Screens can be combined using logical operands</strong> like <code>sm&&tolg</code> or <code>sm||tolg</code>.</li>
-							<li><strong>Screens are automatically sorted</strong>. The sorting function can be changed.</li>
+							<li><strong>Use custom values for screens</strong>: <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code></li>
+							<li><strong>Combine screens with logicl operands</strong>: <code>sm&&tolg</code> or <code>sm||tolg</code></li>
 						</ul>
 						<div class="max-width:800px lg:margin-left:24px lg:width:50%">
 							<example-code-editor
@@ -89,7 +88,7 @@
 		</section>
 
 		<section :id="filters.webalize('Installation')" class="container margin-bottom:48px margin-top:48px md:margin-bottom:48px max-width:100%">
-			<h2 class="hp__section-title">Seamless integration.</h2>
+			<h2 class="hp__section-title">Seamless integration</h2>
 			<p class="hp__section-subtitle">
 				Start using Stylify with your favorite tool in a minute.
 			</p>
@@ -99,7 +98,7 @@
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 background-color:$blue2 padding-top:45px margin:45px__0 md:margin-bottom:48px">
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:45px margin:45px__0 md:margin-bottom:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
 				<h2 class="hp__section-title text-align:center">We'd love your Feedback! ❤️</h2>
 				<p class="hp__section-subtitle text-align:center margin-left:auto margin-right:auto">Star our repo, follow us on the Twitter, mention Stylify on a social media and let us know, what you think!</p>
@@ -107,7 +106,7 @@
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
-					<div class="display:flex width:162px">
+					<div class="display:flex">
 						<a href="https://twitter.com/stylifycss?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px__12px border-radius:12px twitter-follow-button">
 							Follow @stylifycss
 						</a>
@@ -118,7 +117,7 @@
 				</div>
 			</div>
 			<div class="slideshow width:200% height:300px md:height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__36s__linear__infinite lg:animation:slideshow__20s__linear__infinite column-gap:24px">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__50s__linear__infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
 						:key="'orig-' + index"
@@ -126,16 +125,17 @@
 						target="blank"
 						rel="noopener nofollow"
 						class="
-						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 max-width:300px md:max-width:400px height:280px md:height:220px
-						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+						text-decoration:none color:$blue4
+						width:320px
+						display:inline-flex flex-direction:column flex-shrink:0 height:230px
+						background:lighten($blue3,20) padding:12px border-radius:4px
 					"
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
 							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
+							<strong class="margin-left:8px font-size:18px color:#fff">{{ fan.name }}</strong>
 						</div>
-						<div>{{ fan.text }}</div>
+						<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
 					</a>
 					<a
 						v-for="(fan, index) in fans"
@@ -144,16 +144,17 @@
 						target="blank"
 						rel="noopener nofollow"
 						class="
-						text-decoration:none color:#000
-						display:inline-flex flex-direction:column flex-shrink:0 max-width:300px md:max-width:400px height:280px md:height:220px
-						box-shadow:$shadow1 background:#fff padding:12px border-radius:4px
+						text-decoration:none color:$blue4
+						width:320px
+						display:inline-flex flex-direction:column flex-shrink:0 height:230px
+						background:lighten($blue3,20) padding:12px border-radius:4px
 					"
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
 							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px">{{ fan.name }}</strong>
+							<strong class="margin-left:8px font-size:18px color:#fff">{{ fan.name }}</strong>
 						</div>
-						<div>{{ fan.text }}</div>
+						<div class="font-size:14px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
 					</a>
 				</div>
 			</div>
@@ -217,7 +218,7 @@ new Compiler({
 });`.trim();
 
 const cdnUsageDefaultCode = `
-<!-- Copy this script and try Stylify in the browser. -->
+<!-- Try Stylify using CDN. Copy this into any html file. -->
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>
 `;
 

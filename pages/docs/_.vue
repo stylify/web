@@ -5,12 +5,12 @@
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
 				`width:100% margin-right:34px max-height:100vh overflow:auto transition:transform__0.3s__ease-in-out
-				position:fixed top:0 left:0 background:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:2 padding-right:8px
+				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
 				lg:position:sticky lg:transition:none lg:transform:translateX(0) lg:top:0 lg:max-width:220px`
 			]
 			"
 		>
-			<div class="background:#fff border-right:1px__solid__$grey3 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
+			<div class="background:$blue3 border-right:1px__solid__#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
 				<div class="text-align:right lg:display:none">
 					<a role="button" class="cursor:pointer font-size:32px display:inline-block width:32px line-height:32px">
 						<i class="icon icon-x color:$blue1 font-weight:bold"></i>
@@ -23,11 +23,11 @@
 					<nuxt-link
 						:to="sectionItems[0].dir"
 						:class="[
-							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:black',
+							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:$blue4',
 							`display:block text-decoration:none position:sticky top:0 z-index:1`
 						]"
 					>
-						<h3 class="font-size:16px padding:8px__0 position:sticky margin:0 top:0 background:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1">
+						<h3 class="font-size:16px padding:8px__0 position:sticky margin:0 top:0 backdrop-filter:blur(12px) z-index:1">
 							{{ sectionItems[0].navigationTitle }}
 						</h3>
 					</nuxt-link>
@@ -39,18 +39,18 @@
 							:data-super="key"
 							:class="[
 								sectionItem.navigationIconPath ? 'padding:4px__4px__4px__38px' : 'padding:4px__8px',
-								`docs__aside-link color:#000 font-size:16px text-decoration:none
-								position:relative display:inline-flex align-items:center hover:background-color:$blue2 border-radius:$radius1`
+								`docs__aside-link color:$blue4 font-size:16px text-decoration:none
+								position:relative display:inline-flex align-items:center hover:background-color:lighten($blue3,20) border-radius:$radius1`
 							]"
 						>
-							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
+							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px border-radius:4px padding:2px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
 							<span>{{ sectionItem.navigationTitle }}</span>
 						</nuxt-link>
 					</nav>
 				</section>
 			</div>
 		</aside>
-		<div class="background-color:rgba(255,255,255,0.8) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px__0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
+		<div class="background:lighten($blue3,20) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px__0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
 			<a role="button" @click="toggleSidebar" class="cursor:pointer display:inline-flex align-items:center">
 				<i class="icon icon-menu margin-right:4px font-weight:bold color:$blue1"></i>
 				<span>Show docs navigation</span>
@@ -65,7 +65,7 @@
 						v-for="shortcutLink in shortcutLinks"
 						:key="shortcutLink.label"
 						:href="shortcutLink.link"
-						class="btn btn--transparent color:$blue1 border:2px__solid__$blue1 padding:4px__8px margin-bottom:8px margin-left:8px"
+						class="color:$blue4 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px"
 					>
 						{{ shortcutLink.label }}
 					</a>

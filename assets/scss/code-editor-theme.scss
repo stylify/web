@@ -11,12 +11,13 @@ code {
 	padding: 4px;
 	background: $grey3;
 	border-radius: 4px;
+	background: #222e40
 }
 
 pre code {
 	padding: 0;
 	color: #fff;
-	background: #282d3f;
+	background: #1a2331
 }
 
 .prism-editor__editor,
@@ -55,7 +56,7 @@ pre[class*="language-"] {
 .code-editor__wrapper,
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #282d3f;
+	background: #1a2331
 }
 
 .prism-editor-wrapper {
@@ -105,18 +106,13 @@ pre[class*="language-"] {
 	color: #ff79c6;
 }
 
-.token.boolean,
-.token.number {
-	color: #bd93f9;
-}
-
 .token.selector,
 .token.attr-name,
 .token.string,
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #50fa7b;
+	color: #fff;
 }
 
 .token.operator,
@@ -130,13 +126,13 @@ pre[class*="language-"] {
 
 .token.atrule,
 .token.attr-value,
-.token.function,
+//.token.function,
 .token.class-name {
-	color: #f1fa8c;
+	color: #01befe;
 }
 
 .token.keyword {
-	color: #8be9fd;
+	color: #01befe;
 }
 
 .token.regex,

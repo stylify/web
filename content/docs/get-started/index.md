@@ -22,11 +22,17 @@ Create an index.html file and copy the code bellow into it (you can also try our
 ```html
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"></script>
 <script>
-// This will be used for the configuration in examples bellow
-const compilerConfig = {};
-Stylify.runtime.configure({
-	compiler: compilerConfig
-})
+const compilerConfig = {
+	// https://stylifycss.com/docs/stylify/compiler#variables
+	variables: {},
+	// https://stylifycss.com/docs/stylify/compiler#components
+	components: {},
+	// https://stylifycss.com/docs/stylify/compiler#screens
+	screens: {},
+	// https://stylifycss.com/docs/stylify/compiler#macros
+	macros: {}
+};
+Stylify.runtime.configure({ compiler: compilerConfig });
 </script>
 ```
 
@@ -67,7 +73,7 @@ Don't worry about the screens order. They are sorted before the CSS is generated
 
 <!-- stylify-ignore -->
 <example-editor layout="column">
-<div class="lg||landscape:color:darkred sm&&dark:color:grey lg&&dark:color:white">
+<div class="lg||landscape:color:orange sm&&dark:color:grey lg&&dark:color:white">
 	Combined screens
 </div>
 </example-editor>

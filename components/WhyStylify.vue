@@ -1,3 +1,14 @@
+<!--
+stylify-components
+	'why-stylify__block': `
+		margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px
+		width:100% sm:width:calc(50%__-__24px) lg:width:calc(100%__*__1/3__-__24px) border-radius:$radius2
+	`,
+	'why-stylify__block-title': 'margin:0 font-size:22px line-height:38px display:flex flex-direction:row align-items:center',
+	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
+	'why-stylify__list': 'margin-bottom:0 margin-top:4px padding-left:24px color:lighten($blue4,20)'
+/stylify-components
+-->
 <template>
 	<div class="display:flex margin-left:-24px flex-wrap:wrap">
 		<div class="why-stylify__block">

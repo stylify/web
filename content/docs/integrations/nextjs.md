@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Next.js"
 navigationIconPath: '/images/brands/nextjs.svg'
 
-title: Next.js integration
+title: Using Stylify CSS in Next.js
 description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Next.js."
 ---
 
@@ -46,7 +46,14 @@ const stylifyPlugin = (dev) => webpackPlugin({
 					'(?:^|\\s+)className="([^"]+)"',
 					'(?:^|\\s+)className=\'([^\']+)\'',
 					'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-				]
+				],
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
 			}
 		}
 	}
