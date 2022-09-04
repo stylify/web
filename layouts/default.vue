@@ -145,7 +145,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style>
 body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 16px;
