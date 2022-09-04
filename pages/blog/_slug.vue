@@ -12,7 +12,7 @@
 
 			<article class="margin-bottom:24px">
 				<div class="margin-bottom:12px color:$grey4">{{ getPostCreatedAtDate(post.createdAt) }}</div>
-				<img :src="post.image" alt="" loading="eager" width="800" height="400" class="width:100% height:auto max-height:400px object-fit:cover">
+				<img :src="post.image" alt="" loading="eager" width="800" height="400" class="filter:brightness(0.9) width:100% height:auto max-height:400px object-fit:cover">
 				<h1>{{ post.title }}</h1>
 				<p>{{ post.annotation }}</p>
 				<hr>

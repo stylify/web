@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Nette"
 navigationIconPath: '/images/brands/nette.png'
 
-title: Nette Framework integration
+title: Using Stylify CSS in Nette Framework
 description: "Learn how to integrate the Stylify utilify-first CSS generator into the Nette Framework."
 ---
 

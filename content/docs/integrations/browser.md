@@ -6,7 +6,7 @@ order: 1
 navigationTitle: Browser
 navigationIconPath: '/images/browser.svg'
 
-title: "Browser integration"
+title: "Using Stylify CSS in browser"
 description: "Learn how to use the Stylify utilify-first CSS generator in a browser directly without the Node.js and bundlers."
 ---
 
@@ -20,14 +20,21 @@ Integration example for browser can be found in <a href="https://github.com/styl
 
 For production purposes, use correct version instead of the latest. Otherwise, during the request for the file, there will be an internal redirect in the CDN in order to get the correct version which will increase the page loading time.
 
-```js
+```html
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"></script>
 
 <script>
-Stylify.configure({
-	// ...
+Stylify.runtime.configure({
+	// Optional
 	compiler: {
-		// ...
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// https://stylifycss.com/docs/stylify/compiler#screens
+		screens: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {}
 	}
 })
 </script>
@@ -37,10 +44,9 @@ Stylify.configure({
 import { Runtime, nativePreset } from '@stylify/stylify';
 
 // Optional configuration
-nativePreset.compiler.variables = {
-	blue: 'steelblue'
-}
-// ...
+nativePreset.compiler.variables = { blue: 'steelblue' };
+nativePreset.compilet.components = {};
+nativePreset.compiler.macros['clr:(\\S+)'] = (match, selectorProperties) => {};
 
 new Runtime(nativePreset);
 ```

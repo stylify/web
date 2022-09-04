@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "React.js"
 navigationIconPath: '/images/brands/react.png'
 
-title: "React.js integration"
+title: Using Stylify CSS in React.js
 description: "Integrate Stylify CSS into the the React.js."
 ---
 
@@ -48,6 +48,7 @@ const stylifyPlugin = vitePlugin({
         outputFile: './src/stylify.css',
         files: ['./src/**/*.js', './src/**/*.ts', './src/**/*.jsx', './src/**/*.tsx'],
     }],
+	// Optional
     extend: {
         bundler: {
             compiler: {
@@ -55,8 +56,15 @@ const stylifyPlugin = vitePlugin({
                     '(?:^|\\s+)className="([^"]+)"',
                     '(?:^|\\s+)className=\'([^\']+)\'',
                     '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-                ]
-            }
+                ],
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
         }
     }
 });

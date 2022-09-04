@@ -8,10 +8,9 @@
 const code = `
 <span class="
 	font-size:32px
-	font-weight:bold
 	lg:font-size:48px
-	color:#bd0c65
-	border-bottom:4px__solid__#fff
+	color:#fff
+	border-bottom:4px__solid__transparent
 	transition:border-color__0.3s
 	hover:border-color:#bd0c65
 ">

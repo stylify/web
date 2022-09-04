@@ -6,7 +6,7 @@ order: 1
 navigationTitle: "Vite.js"
 navigationIconPath: '/images/brands/vitejs.svg'
 
-title: "Vite.js integration"
+title: Using Stylify CSS with Vite.js
 description: "Learn how to use the Stylify utilify-first CSS generator along with the Vite.js."
 ---
 
@@ -42,7 +42,21 @@ const stylifyPlugin = vitePlugin({
 	bundles: [{
 		files: ['./src/**/*.vue'],
 		outputFile: './src/assets/stylify.css'
-	}]
+	}],
+	// Optional
+	extend: {
+		bundler: {
+			compiler: {
+				// https://stylifycss.com/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		}
+	}
 });
 
 export default defineConfig(({ mode}) => {

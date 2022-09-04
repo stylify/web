@@ -6,7 +6,7 @@ order: 1
 navigationTitle: Node.js
 navigationIconPath: '/images/brands/nodejs.svg'
 
-title: "Node.js integration"
+title: Using Stylify CSS in Node.js
 description: "Learn how to use the Stylify utility-first CSS generator in the Node.js environment."
 ---
 

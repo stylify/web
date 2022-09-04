@@ -12,6 +12,8 @@ export default defineConfig({
 			variables: {
 				blue1: '#01befe',
 				blue2: '#f2fcff',
+				blue3: '#0a101d',
+				blue4: '#99a6b8',
 
 				orange1: '#fe9901',
 				orange2: '#fff9f2',
@@ -30,19 +32,20 @@ export default defineConfig({
 			plainSelectors: {
 				// Global
 				'*': 'box-sizing:border-box scroll-behavior:smooth',
-				'body': 'font-size:16px line-height:28px',
-				img: 'max-width:100% image-rendering:-webkit-optimize-contrast',
+				'body': 'color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
+				'h1,h2,h3,h4,h5,h6': 'color:$grey3',
+				img: 'max-width:100% object-fit:contain',
 				textarea: 'outline:none',
-				hr: 'border:0 height:1px background-color:$grey3',
+				hr: 'border:0 height:1px background:lighten($blue3,40)',
 				'::selection': 'color:#fff background:$blue1',
 				'.prism-editor-wrapper *': 'font-size:14px line-height:1',
 
 				// Articles common
 				'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
 				'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px line-height:40px md:font-size:34px md:font-size:34px line-height:54px margin-bottom:8px',
-				'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:22px margin-bottom:0',
-				'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:12px margin-bottom:0',
-				'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:32px margin-bottom:0',
+				'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:48px margin-bottom:0',
+				'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:32px margin-bottom:0',
+				'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:24px margin-bottom:0',
 				'article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p': 'margin-top:0',
 				'article pre': 'margin-top:0',
 				'article a': 'color:$blue1',
@@ -61,7 +64,7 @@ export default defineConfig({
 				// Editor
 				'.client-only-placeholder': 'display:flex align-self:center',
 				// Docs
-				'.docs__aside-link.nuxt-link-active': 'font-weight:bold color:$blue1 background-color:$blue2'
+				'.docs__aside-link.nuxt-link-active': 'font-weight:bold color:$blue1 background-color:lighten($blue3,20)'
 			},
 			components: {
 				// Global
@@ -83,17 +86,6 @@ export default defineConfig({
 					selectors: 'justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px',
 					selectorsChain: 'btn'
 				},
-				'integration-block__image-wrapper': `max-height:60px max-width:100%`,
-				'integration-block': `
-					display:flex flex-direction:row justify-content:center align-items:center
-					box-shadow:$shadow1 border-radius:$radius2 background-color:#fff
-					width:calc(100%__*__1/2__-__12px) margin-bottom:12px margin-left:12px padding:12px
-					text-decoration:none color:#000 min-height:100px
-					sm:width:calc(100%__*__1/3__-__12px)
-					md:width:calc(100%__*__1/4__-__24px) md:margin-bottom:24px md:margin-left:24px
-					lg:padding:18px lg:width:calc(100%__*__1/5__-__24px) lg:width:calc(100%__*__1/6__-__24px)
-				`,
-
 				// HP
 				'hp__section-blue-wrapper': 'background-color:$blue2 padding-top:45px padding-bottom:45px margin:45px__0 md:margin-bottom:80px',
 				'hp__section-title': `
@@ -117,16 +109,7 @@ export default defineConfig({
 				`,
 				'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
 				'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
-				'hp__code-editor': 'padding:12px__0 border-radius:$radius2',
-
-				// Why Stylify
-				'why-stylify__block': `
-					box-shadow:$shadow1 margin-left:24px margin-bottom:24px background:#fff padding:12px
-					width:100% sm:width:calc(50%__-__24px) lg:width:calc(100%__*__1/3__-__24px) border-radius:$radius2
-				`,
-				'why-stylify__block-title': 'margin:0 font-size:22px line-height:38px display:flex flex-direction:row align-items:center',
-				'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
-				'why-stylify__list': 'margin-bottom:0 margin-top:4px padding-left:24px'
+				'hp__code-editor': 'padding:12px__0 border-radius:$radius2'
 			}
 		}
 	}
