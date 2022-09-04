@@ -1,3 +1,36 @@
+<!--
+stylify-components
+	'btn--hp': {
+		selectors: 'justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px',
+		selectorsChain: 'btn'
+	},
+	'hp__section-title': `
+		font-size:32px line-height:42px font-weight:bold margin-top:0 margin-bottom:12px
+		md:font-size:48px md:line-height:64px
+	`,
+	'hp__section-subtitle': `
+		font-size:18px line-height:32px
+		margin-top:0 margin-bottom:24px max-width:800px
+		md:font-size:22px md:line-height:34px
+	`,
+	'hp__section-content': 'word-break:break-word margin-top:24px',
+	'hp__tab-buttons-wrapper': `
+		padding-left:12px padding-top:12px margin-left:-12px display:flex flex-wrap:nowrap
+		overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
+	`,
+	'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
+	'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
+	'hp__code-editor': 'padding:12px__0 border-radius:$radius2'
+/stylify-components
+
+stylify-keyframes
+	slideshow: `
+		100% {
+			transform: translateX(-50%);
+		}
+	`
+/stylify-keyframes
+-->
 <template>
 	<div>
 		<section class="container margin-top:24px md:margin-top:64px">
@@ -78,7 +111,17 @@
 				</div>
 			</div>
 		</section>
+
 		<section class="container margin-bottom:24px md:margin-bottom:48px">
+			<div>
+				<p class="hp__section-subtitle">
+					Start using Stylify with your favorite tool in a minute.
+				</p>
+				<div class="hp__section-content">
+					<div  class="margin-bottom:24px display:inline-flex max-width:100%"><example-code-editor :defaultCode="cdnUsageDefaultCode" lang="html" readonly/></div>
+					<integration-blocks />
+				</div>
+			</div>
 			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
 				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px__solid__$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
@@ -87,22 +130,32 @@
 			</div>
 		</section>
 
-		<section :id="filters.webalize('Installation')" class="container margin-bottom:48px margin-top:48px md:margin-bottom:48px max-width:100%">
-			<h2 class="hp__section-title">Seamless integration</h2>
-			<p class="hp__section-subtitle">
-				Start using Stylify with your favorite tool in a minute.
-			</p>
-			<div class="hp__section-content">
-				<div  class="margin-bottom:24px display:inline-flex max-width:100%"><example-code-editor :defaultCode="cdnUsageDefaultCode" lang="html" readonly/></div>
-				<integration-blocks />
+		<section id="quote" class="container margin-top:48px padding-top:48px">
+			<div class="max-width:1280px margin-left:auto margin-right:auto">
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">Write CSS to get CSS. Avoid complexity.</h2>
+				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
+					<div class="max-width:724px md:width:calc(100%__-__220px) font-size:16px line-height:24px">
+						<p class="margin-top:0">
+							The thing you want is to style your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features that are great but also make the development more complex and force you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
+						</p>
+						<p class="margin:0">
+							Stylify goes against the grain and uses CSS like selectors you already know. It's like writing pure CSS directly into the markup without the need of switching between files and figuring out the names for selectors. If you know CSS, you know how to use Stylify.
+							<br>If you try Stylify, you will find out that preprocessors and short selectors in frameworks are unnecessary.
+						</p>
+					</div>
+					<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
+						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:24px border-radius:200px height:100px md:height:136px width:100px md:width:136px">
+						<div class="margin-left:12px md:margin-left:0 md:margin-top:12px md:text-align:center">
+							<strong class="color:#fff">Vladimír Macháček</strong>
+							<br>Author of Stylify CSS
+							<br>Webdev at <a href="https://slevomat.cz" class="color:$blue1" target="_blank">Slevomat.cz</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:45px margin:45px__0 md:margin-bottom:48px">
-			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="hp__section-title text-align:center">We'd love your Feedback! ❤️</h2>
-				<p class="hp__section-subtitle text-align:center margin-left:auto margin-right:auto">Star our repo, follow us on the Twitter, mention Stylify on a social media and let us know, what you think!</p>
-			</div>
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:46px margin:45px__0 md:margin-bottom:48px">
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
@@ -322,11 +375,3 @@ export default {
 	}),
 }
 </script>
-
-<style lang="scss">
-@keyframes slideshow {
-	100% {
-		transform: translateX(-50%);
-	}
-}
-</style>

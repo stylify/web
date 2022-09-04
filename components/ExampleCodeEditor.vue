@@ -1,5 +1,5 @@
 <template>
-	<div :class="[withBorder ? 'border:1px__solid__#36425b padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
+	<div :class="[withBorder ? 'border:1px__solid__$blue5 padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
 		<code ref="codeSlot" style="display: none;"><slot></slot></code>
 		<client-only placeholder="Loading...">
 			<div class="max-height:400px overflow:auto width:100%">
@@ -19,7 +19,7 @@
 import { PrismEditor } from 'vue-prism-editor';
 import { highlightCode } from '~/services';
 import 'vue-prism-editor/dist/prismeditor.min.css';
-import '~/assets/scss/code-editor-theme.scss';
+import '~/assets/code-editor-theme.css';
 
 export default {
 	props: {

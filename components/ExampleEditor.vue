@@ -14,7 +14,7 @@ stylify-components
 		<div
 			:class="[
 				layout === 'column' ? 'flex-direction:column-reverse' : 'md:flex-direction:row',
-				`example-editor background:#1a2331 border:1px__solid__#36425b overflow:hidden border-radius:4px display:flex justify-content:space-between
+				`example-editor background:$blue6 border:1px__solid__$blue5 overflow:hidden border-radius:4px display:flex justify-content:space-between
 				flex-direction:column-reverse justify-content:center
 				`
 			]"
@@ -26,7 +26,7 @@ stylify-components
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
-					<div class="padding:8px__12px__0__12px background:#1a2331 font-weight:bold color:$blue4 white-space:nowrap overflow-x:auto">
+					<div class="padding:8px__12px__0__12px background:$blue6 font-weight:bold color:$blue4 white-space:nowrap overflow-x:auto">
 						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Editor</a>
 						<a role="button" v-on:click="selectedTab = 'css'" :class="[selectedTab === 'css' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >CSS</a>
 						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'mangledHtml'" :class="[selectedTab === 'mangledHtml' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Mangled HTML</a>
@@ -61,7 +61,7 @@ stylify-components
 			</div>
 			<div
 				:class="[
-					layout === 'column' ? 'md:width:100% border-bottom:1px__solid__#36425b' : 'width:100% border-bottom:1px__solid__#36425b md:border-bottom:0 md:border-left:1px__solid__#36425b md:width:50% md:min-width:50%',
+					layout === 'column' ? 'md:width:100% border-bottom:1px__solid__$blue5' : 'width:100% border-bottom:1px__solid__$blue5 md:border-bottom:0 md:border-left:1px__solid__$blue5 md:width:50% md:min-width:50%',
 					`min-height:100px max-height:400px overflow:auto display:flex
 					align-items:center justify-content:center padding:24px
 					md:align-self:stretch

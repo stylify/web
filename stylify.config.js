@@ -2,7 +2,6 @@ import path from 'path';
 import { defineConfig } from '@stylify/nuxt-module';
 
 export default defineConfig({
-	sassVarsDirPath: path.join(__dirname, 'assets', 'scss', 'variables'),
 	extend: {
 		compiler: {
 			ignoredAreas: [
@@ -14,6 +13,8 @@ export default defineConfig({
 				blue2: '#f2fcff',
 				blue3: '#0a101d',
 				blue4: '#99a6b8',
+				blue5: '#36425b',
+				blue6: '#1a2331',
 
 				orange1: '#fe9901',
 				orange2: '#fff9f2',
@@ -33,7 +34,7 @@ export default defineConfig({
 				// Global
 				'*': 'box-sizing:border-box scroll-behavior:smooth',
 				'body': 'color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
-				'h1,h2,h3,h4,h5,h6': 'color:$grey3',
+				'h1,h2,h3,h4,h5,h6': 'color:#fff',
 				img: 'max-width:100% object-fit:contain',
 				textarea: 'outline:none',
 				hr: 'border:0 height:1px background:lighten($blue3,40)',
@@ -81,35 +82,7 @@ export default defineConfig({
 				'btn--transparent': {
 					selectors: 'background:none hover:background-color:rgba(1,__190,__254,__0.1)',
 					selectorsChain: 'btn'
-				},
-				'btn--hp': {
-					selectors: 'justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px',
-					selectorsChain: 'btn'
-				},
-				// HP
-				'hp__section-blue-wrapper': 'background-color:$blue2 padding-top:45px padding-bottom:45px margin:45px__0 md:margin-bottom:80px',
-				'hp__section-title': `
-					font-size:32px line-height:42px font-weight:bold margin-top:0 margin-bottom:12px
-					md:font-size:48px md:line-height:64px
-				`,
-				'hp__section-subtitle': `
-					font-size:18px line-height:32px
-					margin-top:0 margin-bottom:24px max-width:800px
-					md:font-size:22px md:line-height:34px
-				`,
-				'hp__section-content': 'word-break:break-word margin-top:24px',
-				'hp__section-more-info-link': `
-					text-decoration:none color:$blue1 display:inline-flex align-items:center font-size:18px
-					md:font-size:24px
-				`,
-				'hp__section-more-info-link-icon': 'margin-left:12px transform:rotate(-90deg)',
-				'hp__tab-buttons-wrapper': `
-					padding-left:12px padding-top:12px margin-left:-12px display:flex flex-wrap:nowrap
-					overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
-				`,
-				'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
-				'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
-				'hp__code-editor': 'padding:12px__0 border-radius:$radius2'
+				}
 			}
 		}
 	}
