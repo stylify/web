@@ -186,7 +186,10 @@ stylify-keyframes
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
 							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px color:#fff">{{ fan.name }}</strong>
+							<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
+								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
+								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
+							</div>
 						</div>
 						<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
 					</a>
@@ -205,7 +208,10 @@ stylify-keyframes
 					>
 						<div class="display:flex align-items:center margin-bottom:12px">
 							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<strong class="margin-left:8px font-size:18px color:#fff">{{ fan.name }}</strong>
+							<div class="margin-left:12px display:flex flex-direction:column align-items:flex-start">
+								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
+								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
+							</div>
 						</div>
 						<div class="font-size:14px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
 					</a>
@@ -313,6 +319,7 @@ export default {
 		fans: [
 			{
 				name: 'Mubashar Hashmat',
+				note: 'Manager at Scorp',
 				image: 'mubashar-hashmat.jpg',
 				text: `Extremely awesome 😎.`,
 				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
@@ -330,47 +337,59 @@ export default {
 				link: 'https://twitter.com/sbworld/status/1518571221490749441'
 			},
 			{
-				name: 'Ahmad Tahir',
-				image: 'ahmad-tahir.jpg',
-				text: `Wow this looks neat 💯. I’ll be checking it out.`,
-				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
-			},
-			{
 				name: 'Angsuman Chakraborty',
 				image: 'angsuman-chakraborty.jpg',
 				text: `For your information stylifycss.com: Dynamic Utility-First CSS Generator.`,
 				link: 'https://twitter.com/angsuman/status/1482257827188310017'
 			},
 			{
+				name: 'Phan An',
+				note: '@vuejs core team member',
+				image: 'phan-an.jpg',
+				text: `This looks super interesting!`,
+				link: 'https://twitter.com/notphanan/status/1566610354246864901'
+			},
+			{
 				name: 'Lukeshiru',
+				note: 'Webdev at Vangware',
 				image: 'lukeshiru.gif',
 				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
 				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
 			},
 			{
 				name: 'Tom Ravn',
+				note: 'Webdeveloper & SysAdmin',
 				image: 'tom-ravn.jpg',
 				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
 				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
 			},
 			{
 				name: 'Tomáš Pilař',
+				note: 'Co-Founder & CTO Conviu.com',
 				image: 'tomas-pilar.jpg',
 				text: `I recommend looking at stylifycss.com if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
 				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
 			},
 			{
 				name: 'David Mario Licla',
+				note: 'Front-End dev at Forma',
 				image: 'david-mario-licla.jpeg',
 				text: '🤯 Did you know that there is an alternative to TailwindCSS but only using CSS properties? Look it\'s called Stylify!',
 				link: 'https://www.linkedin.com/posts/davidmariolc_sab%C3%ADas-que-existe-una-alternativa-a-tailwindcss-activity-6912058924682604544-ImsK?utm_source=linkedin_share&utm_medium=member_desktop_web'
 			},
 			{
-				name: 'Develop Greatness',
-				image: 'develop-greatness.jpg',
+				name: 'Ahmad Tahir',
+				note: 'Fullstack Dev',
+				image: 'ahmad-tahir.jpg',
+				text: `Wow this looks neat 💯. I'll be checking it out.`,
+				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
+			},
+			{
+				name: 'Japheth Mutai',
+				image: 'japheth-mutai.jpg',
 				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
-			},
+			}
 		]
 	}),
 }
