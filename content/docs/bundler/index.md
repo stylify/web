@@ -10,62 +10,33 @@ title: "@stylify/bundler"
 description: "@stylify/bundler is a package for simple CSS generating and bundling in a project."
 ---
 
-Bundler is a package that provides functionality for creating CSS bundles for given files.
-
-It is similar to Rollup.js or Webpack and it simplifies the routine of loading files, compiling them, generating CSS, creating CSS files, mangling target files and etc.
-
-The reason why Stylify provides its own bundler instead of a Webpack loader or Rollup.js plugin is, that some developers may not want to use these loaders or can't. The Bundler also can be easily integrated into an existing project with custom bundlers. The only requirement is to have the Node.js environment available so the Stylify Bundler can be executed.
-
-<note><template>
-Bundler can be used with Webpack or Rollup.jss. You just have to integrate them. See [Webpack.js](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs) integration guide.
-</template></note>
-
-Check out [how to install the @stylify/bundler](/docs/bundler) and how to [configure it](/docs/bundler#configuration).
+Bundler is a package that allows you to generate CSS files for your project. Bundler is internally used within other Stylify packages.
 
 <img src="/images/docs/bundler/bundler.png" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
 
 ## Installation
 
-Bundler can be only installed via CLI like NPM or Yarn.
+Bundler can be only installed via CLI like NPM or Yarn:
 
 ```
 yarn add -D @stylify/bundler
-
 npm i -D @stylify/bundler
 ```
 
 ## Usage
 
 ```js
-import { nativePreset } from '@stylify/stylify';
 import { Bundler } from '@stylify/bundler';
 
-const bundler = new Bundler({compiler: nativePreset.compiler})
+const bundler = new Bundler();
 
 bundler.bundle([
 	{
 		outputFile: 'path/to/output.css',
 		files: ['path/to/layout.html', 'path/to/page.vue']
-	}
+	},
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
 ]);
-```
-
-### Files content option
-
-File content option can help you easily collect files into a bundle.
-This option allows you to have minimum input files, because these input files can have path to another files and masks using files content option. Thanks to that it searches for paths automatically and you don't have to change config of all depending bundler every time template or component changes. Instead you just add or remove file path in file content option and this change is automatically reflected in all bundles.
-
-<note><template>
-For more information about content options see [compiler documentation](/docs/stylify/compiler#contentoptionsprocessors).
-</template></note>
-
-```
-// This option expects files paths as string
-// When file path starts with /, it is an absolut path, otherwise is relative
-stylify-files
-	/path/to/layout.html
-	path/to/template/part.html
-/stylify-files
 ```
 
 ## Configuration
@@ -76,11 +47,14 @@ Bundler provides various options for configuration:
 import { defineConfig } from '@stylify/bundler';
 
 const config = defineConfig({
-	// Required
-	// Config for the compiler
-	compiler: {},
+	// Bundles are optional.
+	// But if they are not passed during bundle() method call
+	// they need to be passed here. Otherwise no bundles will be generated
+	bundles: [],
 
-	// Optional
+	// Optional options are optional
+	// https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {},
 	// Path to a config file. When in a watch mode
 	// nuxt watches the config file for changes
 	configFile: 'path/to/config.js',
@@ -119,10 +93,10 @@ bundler.bundle([
 		// Required
 		// Output file will be used to store the generated CSS
 		// from given files
-		outputFile: string,
+		outputFile: '/path/to/output.css',
 		// Files or files masks will be used for finding files
 		// from which the CSS will be generated.
-		// Internally Stylify uses https://www.npmjs.com/package/fast-glob
+		// Internally Stylify uses https://npmjs.com/package/fast-glob
 		// for finding files.
 		files: [
 			'path/to/file.html',
@@ -140,13 +114,6 @@ bundler.bundle([
 		// Can disable rewriting selectors inside a file when you want to just
 		// mangle css but not files
 		rewriteSelectorsInFiles: false,
-		// Will dump a cache into a json file using the same file path
-		// as the outputFile have etc path/to/file.css.json
-		dumpCache: false,
-		// This options expects serialized compilation result. uses it to
-		// The purpose of this option is to configure the CompilationResult
-		// during the build.
-		cache: {},
 		// When you want to generate CSS only for a specific part of page or don't want to
 		// break other CSS in the project. Good for components and open source plugins
 		// like chats and etc.
@@ -154,6 +121,7 @@ bundler.bundle([
 		// the space will be used in the scope.
 		scope: '#my-scope',
 		// Compiler config can be bundle specific
+		// https://stylifycss.com/docs/stylify/compiler#configuration
 		compiler: {},
 		onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
 		onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
@@ -161,7 +129,28 @@ bundler.bundle([
 	}
 ]);
 
-// In case you want to build some code that must wait on the Bundler to finish bundling.
-// This method can also be used when the watch mode is used.
+// In case you need to wait for the CSS to be generated, call this method.
 await bundler.waitOnBundlesProcessed();
 ```
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">Files content option</h3>
+
+File [content options](/docs/stylify/compiler#contentoptionsprocessors) allows you to configure options directly in a file. Apart from default content options, you can use the `files` option.
+
+This option expects files paths as string When file path starts with /, it is an absolut path, otherwise is relative.
+
+</template>
+<template #code>
+
+```
+stylify-files
+	/path/to/layout.html
+	path/to/template/part.html
+/stylify-files
+```
+
+</template>
+</docs-section>

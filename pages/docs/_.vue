@@ -59,8 +59,8 @@
 		<section class="width:100% lg:width:calc(100%__-__254px) padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
 			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
-				<div v-if="shortcutLinks.length" class="margin-left:-8px margin-top:8px min-height:38px">
-					<span class="margin-left:12px">Shortcuts:</span>
+				<div v-if="shortcutLinks.length" class="margin-top:8px min-height:38px">
+					<span>Shortcuts:</span>
 					<a
 						v-for="shortcutLink in shortcutLinks"
 						:key="shortcutLink.label"
@@ -168,6 +168,7 @@ export default {
 			'stylify': {},
 			'bundler': {},
 			'unplugin': {},
+			'astro': {},
 			'nuxt': {},
 			'nuxt-module': {},
 			'profiler': {},

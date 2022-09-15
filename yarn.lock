@@ -1609,30 +1609,30 @@
   resolved "https://registry.yarnpkg.com/@polka/url/-/url-1.0.0-next.21.tgz#5de5a2385a35309427f6011992b544514d559aa1"
   integrity sha512-a5Sab1C4/icpTZVzZc5Ghpz88yQtGOyNqYXcZgOssB2uuAr+wF/MvN6bgtW32q7HHrvBki+BsZ0OuNv6EV3K9g==
 
-"@stylify/bundler@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.2.1.tgz#36822f8b482253d9f1169c5720607031186ed8cd"
-  integrity sha512-ol8HVVsu9RsZ4KxFAEVyS3p54gHgJzLRy77nHfYzpF3QFXTvlZkPeRkc3qcg1vovS88pl1KZE6475vS+U6NdrQ==
+"@stylify/bundler@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@stylify/bundler/-/bundler-0.3.0.tgz#2e3d8ab37752f5ed4f565441eb7aabd816f40aaf"
+  integrity sha512-AhGiXjp3b/e7bq7M5qIeLq7g1Mdh6I9viMtjWXuDcwnvHNY5Hi0fX9ntUp4oDBk7aQOk4S1q0/ZBZesfTmvMrg==
   dependencies:
-    "@stylify/stylify" "^0.2.1"
+    "@stylify/stylify" "^0.3.0"
     autoprefixer "^10.4"
     fast-glob "^3.2"
     normalize-path "^3.0"
     postcss "^8.4"
 
-"@stylify/nuxt-module@^0.2":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.2.1.tgz#23e841918443b8f782b117b2097de3a2cf59ec5e"
-  integrity sha512-ASXva0+7KNaJ7qG47XhtS421m6dXAK82TjYd+ySr/1wL3Hb9nQz+PwixV+NmoStcXwKNXBQQN5ockW5lmpRgnA==
+"@stylify/nuxt-module@^0.3":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@stylify/nuxt-module/-/nuxt-module-0.3.0.tgz#b6ec94e81c07c5155a101707164fe7da00a86f69"
+  integrity sha512-dSzsCVYzf2KXXIVu1P4tDjJHyYBrJ0L1etBo2ovZg+c5iCks1fgki4sVn3JGq/SXh9hI10GUrHigsMbkBiQ0sA==
   dependencies:
-    "@stylify/bundler" "^0.2.1"
-    "@stylify/stylify" "^0.2.1"
+    "@stylify/bundler" "^0.3.0"
+    "@stylify/stylify" "^0.3.0"
     loader-utils "^2.0"
 
-"@stylify/stylify@^0.2.1":
-  version "0.2.1"
-  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.2.1.tgz#8b9619d159519f8f8208655c69504c18d0a27cef"
-  integrity sha512-LIeBMNtIG0eSgPfKrYsmEIfgqKiKU7I5xmuMDCzB+1fKIu7G59zE9TcDyW5Cc/3H8rzDGUpA28DZtSC+vrKyNA==
+"@stylify/stylify@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@stylify/stylify/-/stylify-0.3.0.tgz#5cbbd7d0dcadf27f9e6a3bc9c86fa2a540a85932"
+  integrity sha512-Um7VGmel4OxNvh+OvHpT48uEcnhfvOfqWgwB4A3v6LxKCSwRV60yualrsxa1KDbpknrBF+wkFp0BkUJGOcGU4Q==
 
 "@types/anymatch@*":
   version "3.0.0"

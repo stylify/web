@@ -14,8 +14,8 @@ Unplugin is an universal plugin for Webpack, Vite.js and Rollup.js and Esbuild.<
 Under the hood it uses [unplugin](https://github.com/unjs/unplugin).
 
 ## Installation
-Unplugin can be installed only via CLI like NPM or Yarn.
 
+Unplugin can be installed only via CLI like NPM or Yarn:
 ```
 yarn add @stylify/unplugin
 npm i @stylify/unplugin
@@ -46,30 +46,17 @@ const config = defineConfig({
 	// Default is null. If null value is detected
 	// the plugin tries to detect the environment
 	dev: null,
+	// https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {}
 	// See https://stylifycss.com/docs/bundler#configuration
-	bundler: BundlerConfigInterface,
+	bundler: {},
 	// Id is a file name
 	// Return true, if the file type or name should be processed
 	// Example is with html suffix
-	transformIncludeFilter: (id) => id.endsWith('html');
-	// Everything within extend field, extends the options above
-	// (if they are object) instead of overriding them.
-	// Those that cannot be extended (boolean for example) are
-	// still overriden.
-	extend: {
-		// Example for extending compiler config
-		bundler: {
-			compiler: {
-				// This is compiler config
-				variables: {
-					blue: 'steelblue'
-				},
-				macros: { /* ... */ },
-				components: { /* ... */ },
-				screens: { /* ... */ }
-			}
-		}
-	}
+	// By default stylify checks if the file is not in node_modules
+	// and also checks for a various file types
+	// listed here https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
+	transformIncludeFilter: (id) => id.endsWith('html')
 });
 
 let webpackPlugin = webpackPlugin(config);

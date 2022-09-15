@@ -5,7 +5,7 @@ services:
     build: .
     working_dir: /var/www/html
     ports:
-      - 3000:3000
+      - 3001:3000
     volumes:
       - ./:/var/www/html
       - "../stylify:/var/www/stylify"

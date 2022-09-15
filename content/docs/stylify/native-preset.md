@@ -9,43 +9,19 @@ title: "Native Preset"
 description: "Native preset is a prepared configuration for Stylify with 678 selector types you can use."
 ---
 
-Native preset is a prepared configuration for Stylify that consist of predefined macro, screens and helpers.
-The code behind the NativePreset can be found in the <a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Presets/nativePreset.ts" target="_blank" rel="noopener">@stylify/stylify repository</a>.
-
-
-## Usage
-```js
-import { Compiler, nativePreset } from '@stylify/stylify';
-
-// Optional, if you want to extend the configuration
-nativePreset.compiler.macros['customMacro'] = function (macroMatch, selectorProperties) {
-	// ...
-};
-nativePrest.compiler.variables = {
-	customVariable: 123
-};
-
-const compiler = new Compiler(nativePreset.compiler);
-
-// Usage example
-const content = '';
-const compilationResult = compiler.compile(content);
-const css = compilationResult.generateCss();
-const mangledContent = compiler.rewriteSelectors(content, compilationResult);
-```
+Native (default) preset is a prepared configuration for Stylify that consist of predefined macro, screens and helpers.
+The code behind the NativePreset can be found in the <a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Compiler/defaultPreset.ts" target="_blank" rel="noopener">@stylify/stylify repository</a>.
 
 ## Inside the preset
 
 ### Predefined macro
-This macro allows you to use **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
-Just instead of spaces use `__` (two underscores) and instead of quotes `^` (hat). This allows you to write selectors like `border:1px__solid__blue` or `font-family:^Open__Sans^` (see [syntax](/docs/get-started#quick-start)).
+This macro allows you to CSS like syntax matching **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
+Checkout the [syntax guide](/docs/stylify/compiler#syntax).
 
-List of all available selectors can be found in the <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/native-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>
+List of all available selectors can be found in the <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/default-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>
 
 ### Screens
-There are static screens like `tosm, sm, md, ...` you may know from some CSS frameworks like Bootstrap or Tailwind. These screens are predefined according to most used screens in 2021.
-
-Then there are are dynamic screens like `minw, maxw, rng, ...` that generates media queries based on the value you choose when using them. The values and units you use are up to you.
+There are static shortcuts like `tosm, sm, md, ...` and dynamic screens like `minw, maxw, rng, ...` that generates media queries based on the value you choose when using them. The values and units you use are up to you.
 
 Dont forget that screens can be combined using logical operands `&&` (and) and `||` (or) like `maxw320px&&maxh667px:color:blue`.
 
@@ -82,14 +58,54 @@ Dont forget that screens can be combined using logical operands `&&` (and) and `
 <!-- /stylify-ignore -->
 </div>
 
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">Sorting</h3>
+
+Screens are automaticaly sorted. The sorting function can be changed (see [configuration](/docs/stylify/compiler#compilation-result)).
+
+<note><template>
+**asc** - from smallest to largest, mobile first approach<br>
+**desc** - from largest to smallest, desktop first approach
+</template></note>
+
+</template>
+<template #code>
+
+- without media query
+- min-width => asc
+- min-height => asc
+- max-width => desc
+- max-height => desc
+- min-device-width => asc
+- min-device-height => asc
+- max-device-width => desc
+- max-device-height => desc
+- light mode => according to above
+- dark mode => according to above
+- print => according to above
+- others
+
+</template>
+</docs-section>
+
 ### Helpers
 Native preset ships with a few helpers that can simplify the development process.
-When passing an argument that contains `,`, you must add quotes to that argument using `^` (`^` is replaced by quote, see [syntax page](/docs/stylify/compiler#quotes).
+When passing an argument that contains `,`, you must add quotes to that argument using `^` (`^` is replaced by quote, see [syntax page](/docs/stylify/compiler#quotes)).
 
 When passing an argument into the helper, you can use variables like `$myVariable`.
 
-#### Lighten color
+<docs-section>
+<template #description>
+
+<h4 class="margin-top:0">Lighten color</h4>
+
 This helper expects a color in a hex or rgb format and and makes the color lighter. The color is returned in a hex format.
+
+</template>
+<template #code>
 
 ```txt
 color:lighten($myColor,10)
@@ -97,19 +113,42 @@ color:lighten(#222,10)
 color:lighten(^rgb(0,0,0)^,10)
 ```
 
-#### Darken color
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h4 class="margin-top:0">Darken color</h4>
+
 This helper expects a color in a hex or rgb format and and makes the color darker. The color is returned in a hex format.
+
+</template>
+<template #code>
 
 ```txt
 color:darken(#eee,10)
 color:darken(^rgb(255,255,255)^,10)
 ```
 
-#### Color to rgb
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h4 class="margin-top:0">Color to RGB</h4>
+
 This helper expects a color in a hex or rgb format. It returns in the rgb format. If alpha canal is passed as second argument, it returns the rgba format.
+
+</template>
+<template #code>
 
 ```txt
 color:colorToRgb(#000) => is converted into rgba(0, 0, 0);
 color:colorToRgb(#000,0.1) => is converted into rgba(0, 0, 0, 0.1)
 color:colorToRgb(^rgb(0,0,0)^,0.1) => is converted into rgba(0, 0, 0, 0.1)
 ```
+
+</template>
+</docs-section>

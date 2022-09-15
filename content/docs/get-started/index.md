@@ -10,55 +10,40 @@ title: "Get Started"
 description: "Stylify generates CSS dynamically based on what you write. Learn how to use it!"
 ---
 
-Stylify generates CSS dynamically based on what you write.
-It can be used directly in the browser or in a Node.js environment. It is inspired by Tailwind and Tachynos.
+Stylify generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment. It is inspired by Tailwind and Tachynos.
 
-Unlike these CSS frameworks, Stylify uses native syntax like CSS `property:value` as selectors. Therefore, you don't have to study or remember the selectors because they are almost the same like pure CSS. In case you want shorter or completely different selectors you can configure them or create a whole new preset.
+Unlike these CSS frameworks, Stylify uses CSS like selectors `color:blue`, `font-weight:bold`, `border:2px__solid__blue`.
+Thanks to that, you don't have to study any framework, remember shortcuts and think about how to use which feature.
+In case you want shorter or completely different selectors like `ml-2` (margin) or `font-2xl` you can easily configure them.
 
-## Quick Start
-The easiest way to start is to use Stylify through CDN.
-Create an index.html file and copy the code bellow into it (you can also try our <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>).
+## Installation
+
+Stylify can work with any tool. For some of them it have its own integration. If you havent found your favorite let us know.
+
+<integration-blocks></integration-blocks>
+
+## Quick start
+The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
+
+Syntax is similar to CSS `property:value` with a few differences:
+- Use `__` (two underscores) for a space and `^` (a hat) for a quote
+- The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"></script>
-<script>
-const compilerConfig = {
-	// https://stylifycss.com/docs/stylify/compiler#variables
-	variables: {},
-	// https://stylifycss.com/docs/stylify/compiler#components
-	components: {},
-	// https://stylifycss.com/docs/stylify/compiler#screens
-	screens: {},
-	// https://stylifycss.com/docs/stylify/compiler#macros
-	macros: {}
-};
-Stylify.runtime.configure({ compiler: compilerConfig });
-</script>
+color:blue => blue color
+hover:color:blue => blue color after hover
+lg:color:blue => blue color for from selected screen
+lg:hover:color:blue => blue color after hover from selected screen
 ```
-
-<note>
-Configuration varries based on where the Stylify is used. Checkout <nuxt-link to="/docs/integrations">integration examples</nuxt-link> to find the tutorial for your favorite tool.
-</note>
-
-## Writting first CSS
-Before you start writting selectors, there are few rules you need to know:
-- Selectors are almost the same like css `property:value`
-- Use `__` (two underscores) for a space and `^` (a hat) for a quote
-- The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`
-
-<note>
-The <code>property:value</code> syntax comems from the <nuxt-link to="/docs/stylify/native-preset">Native Preset</nuxt-link> that is a default config for browser environment. You can define custom selectors and presets if you like. You can find more about that in the content bellow.
-</note>
 
 <!-- stylify-ignore -->
 <get-started-selectors layout="column"></get-started-selectors>
 <!-- /stylify-ignore -->
 
 ## Screens usage
-In the Native Preset there are predefined shortcuts like `sm, md, lg` you may know from Tailwind or Bootstrap and dynamic screens such as `minw, maxw, rng`. Dynamic screens are flexible and the generated media query depends on the value you choose when using them.
-Checkout the [full list](/docs/stylify/native-preset#screens).
+Stylify has predefined shortcuts like `sm`, `md`, `lg` and dynamic screens such as `minw`, `maxw`, `rng`. Dynamic screens are flexible and the generated media query depends on the value you choose when using them.
+Checkout the [full list](/docs/stylify/native-preset#screens). All generated screens are [automaticaly sorted](/docs/stylify/compiler#logical-operands-in-screens).
 
-When not using the Native Preset, you have to define your own screens as shown bellow in the [configuration](#configuration) section.
 
 <!-- stylify-ignore -->
 <example-editor layout="column">
@@ -68,8 +53,7 @@ When not using the Native Preset, you have to define your own screens as shown b
 </example-editor>
 <!-- /stylify-ignore -->
 
-Screens can also be randomly combined by using logical operands. There is a **logical AND** `&&` and a **logical OR** `||`.
-Don't worry about the screens order. They are sorted before the CSS is generated (see [screens documentation](/docs/stylify/compiler#logical-operands-in-screens)).
+Screens can also be combined using logical operands: **Logical AND**: `&&`, **Logical OR**: `||`
 
 <!-- stylify-ignore -->
 <example-editor layout="column">
@@ -84,17 +68,16 @@ If you want to add a custom screen, you can do that like this:
 const compilerConfig = {
 	screens: {
 		'xs': '(min-width: 400px)',
-		// Screens can also be functions
-		// That allows you to make as flexible screen as possible
-		'minw\\w+': (screen) => `(min-width: ${screen.replace('minw', '')})`
+		// Screens can also be functions => dynamic screens
+		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
 	}
 };
 ```
 
 ## Adding a Variable
-It's not a good practice to have hardcoded variables in the code. Therefore you can define Variables.
+It's not a good practice to have hardcoded values in the code. Therefore you can define Variables.
 
-Variable can be defined in a content (expects an object without surounding brackets) when used localy (one file / a few pages) or in a compiler config, when used globally.
+Variable can be defined in a content (expects an object without surounding brackets) when used localy where it is used or in a compiler config, when used globally.
 
 <get-started-variables layout="column"></get-started-variables>
 
@@ -121,12 +104,12 @@ In a compiler config:
 const compilerConfig = {
 	components: {
 		'label-icon': 'lg:font-size:48px margin-left:8px',
-		label: \`
+		label: `
 			display:flex
 			line-height:1.2
 			font-size:32px
 			align-items:center
-		\`,
+		`,
 	}
 };
 ```
@@ -136,7 +119,7 @@ In case you want to add a custom selector, for example a shorter variant for `ma
 ```js
 const compilerConfig = {
 	macros: {
-		'ml:(\\S+?)': function (macroMatch, cssProperties): void {
+		'ml:(\\S+?)': (macroMatch, cssProperties) => {
 			// ml:24px => will create => margin-left: 24px
 			cssProperties.add('margin-left', macroMatch.getCapture(0));
 		}
@@ -145,27 +128,21 @@ const compilerConfig = {
 ```
 
 ## More Configuration
-Checkout the [compiler](/docs/stylify/compiler) documentation to learn, how to configure Stylify even more.
-
-The way to pass the configuration depends on how and where you use the Stylify. Make shure to checkout our guides bellow on how to integrate the Stylify into various tools.
+Checkout the [compiler](/docs/stylify/compiler) for more configuration options.
 
 ## Stylify Packages
-
 Stylify ships with multiple packages. All of them can be installed using NPM or YARN. Stylify and Profiler can also be used directly through CDN:
 
-- [@stylify/stylify](/docs/stylify) - For generating CSS
-- [@stylify/bundler](/docs/bundler) - Generates CSS bundles for your project
+- [@stylify/astro](/docs/astro) - Integration module for Astro.build
+- [@stylify/stylify](/docs/stylify) - The core. Generates CSS. Rewrites (mangles) selectors
+- [@stylify/bundler](/docs/bundler) - For generating CSS bundles
 - [@stylify/unplugin](/docs/unplugin) - Universal plugin for Rollup, Webpack, Vite and Esbuild
 - [@stylify/nuxt](/docs/nuxt) - A module for Nuxt.js v3
 - [@stylify/nuxt-module](/docs/nuxt-module) - A module for Nuxt.js v2 < v3
-- [@stylify/profiler](/docs/profiler) - This package shows you what is happening under the hood
-- [@stylify/autoprefixer](/docs/autoprefixer) - Autoprefixer for dynamic prefixing in SSR apps
 
 ## Try Stylify with your favorite tool!
 
 For easier start with your favorite tool checkout the [integration examples](/docs/integrations).
-
-<note>If you haven't found your favorite tool let us know and we will add it.</note>
 
 <integration-blocks />
 

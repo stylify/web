@@ -17,9 +17,7 @@ stylify-components
 		class="display:flex flex-direction:row flex-wrap:wrap margin-left:-12px md:margin-left:-24px"
 	>
 		<nuxt-link to="/docs/integrations/browser" class="integration-block">
-			<span class="font-weight:bold word-break:keep-all sm:font-size:18px md:font-size:24px"
-				>Browser</span
-			>
+			<span class="font-weight:bold word-break:keep-all sm:font-size:18px md:font-size:24px">Browser</span>
 		</nuxt-link>
 		<nuxt-link
 			to="/docs/integrations/nextjs"
@@ -56,6 +54,23 @@ stylify-components
 			</div>
 		</nuxt-link>
 		<nuxt-link
+			to="/docs/integrations/vuejs"
+			aria-label="Vue.js"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/vuejs.svg"
+					alt=""
+					height="1"
+					width="2"
+					decoding="async"
+					loading="lazy"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
 			to="/docs/integrations/nuxtjs"
 			aria-label="Nuxt"
 			class="integration-block"
@@ -63,6 +78,23 @@ stylify-components
 			<div class="integration-block__image-wrapper">
 				<img
 					src="/images/brands/nuxtjs.svg"
+					alt=""
+					height="1"
+					width="2"
+					decoding="async"
+					loading="lazy"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
+			to="/docs/integrations/astro"
+			aria-label="Astro"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/astro.svg"
 					alt=""
 					height="1"
 					width="2"

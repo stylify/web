@@ -84,7 +84,7 @@ export default {
 	build: {
 		transpile: [
 			'@stylify/stylify/lib/index.cjs',
-			'@stylify/stylify/esm/index.mjs'
+			'@stylify/stylify/esm/index.js'
 		]
 	},
 

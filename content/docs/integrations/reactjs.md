@@ -7,7 +7,7 @@ navigationTitle: "React.js"
 navigationIconPath: '/images/brands/react.png'
 
 title: Using Stylify CSS in React.js
-description: "Integrate Stylify CSS into the the React.js."
+description: "Learn how to use the Stylify CSS with the React.js."
 ---
 
 
@@ -15,12 +15,7 @@ Stylify can be used with React.js in varous ways:
 - With Vite.js (this example)
 - [Next.js](/docs/integrations/nextjs)
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx"></stack-blitz-link>
-
-
-<note><template>
-Integration example for the Vite.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/reactjs" target="_blank" rel="noopener">integrations examples repository</a>.
-</template></note>
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-react-vite"></stack-blitz-link>
 
 ## How to integrate the Stylify with React.js and Vite.js
 
@@ -41,32 +36,17 @@ import react from '@vitejs/plugin-react'
 import { vitePlugin } from '@stylify/unplugin';
 
 const stylifyPlugin = vitePlugin({
-    transformIncludeFilter: (id) => {
-		return id.endsWith('js') || id.endsWith('ts') || id.endsWith('tsx') || id.endsWith('jsx');
-	},
-    bundles: [{
-        outputFile: './src/stylify.css',
-        files: ['./src/**/*.js', './src/**/*.ts', './src/**/*.jsx', './src/**/*.tsx'],
-    }],
+    bundles: [{outputFile: './src/stylify.css', files: ['./src/**'] }],
 	// Optional
-    extend: {
-        bundler: {
-            compiler: {
-                selectorsAreas: [
-                    '(?:^|\\s+)className="([^"]+)"',
-                    '(?:^|\\s+)className=\'([^\']+)\'',
-                    '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-                ],
-				// https://stylifycss.com/docs/stylify/compiler#variables
-				variables: {},
-				// https://stylifycss.com/docs/stylify/compiler#macros
-				macros: {},
-				// https://stylifycss.com/docs/stylify/compiler#components
-				components: {},
-				// ...
-			}
-        }
-    }
+    compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
 });
 
 export default defineConfig({
@@ -77,7 +57,6 @@ export default defineConfig({
 Now you can add the path to the generated `src/stylify.css` into `src/main.js` file:
 
 ```js
-// ..
 import './assets/stylify.css';
 ```
 

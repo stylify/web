@@ -10,14 +10,18 @@ title: "@stylify/autoprefixer"
 description: "@stylify/autoprefixer package for PostCSS Autoprefixer SSR integration."
 ---
 
+<note color="orange">
+	This package was discontinued and you should no longer use it.
+</note>
+
 Autoprefixer is a package that uses PostCSS to generate prefixes map for your CSS.
 
 This map then can used be inside an SSR applications or inside a browser when you want to generate prefixed CSS on demand but don't want to slow down the application with the postcss post processing.
 
 
 ## Installation
-Autoprefixer can be installed only via CLI like NPM or Yarn.
 
+Autoprefixer can be installed only via CLI like NPM or Yarn:
 ```
 yarn add @stylify/autoprefixer
 
