@@ -7,21 +7,16 @@ navigationTitle: "Vite.js"
 navigationIconPath: '/images/brands/vitejs.svg'
 
 title: Using Stylify CSS with Vite.js
-description: "Learn how to use the Stylify utilify-first CSS generator along with the Vite.js."
+description: "Learn how to use the Stylify CSS with the Vite.js."
 ---
 
 Stylify can be integrated into the Vite.js using @stylify/bundler.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src/App.vue"></stack-blitz-link>
-
-
-<note><template>
-Integration example for the Vite.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/vitejs" target="_blank" rel="noopener">integrations examples repository</a>.
-</template></note>
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-vite-example"></stack-blitz-link>
 
 ## How to integrate the Stylify into the Vite.js
 
-The example bellow works with the Vite - Vue.js template. You can however use the example bellow and configure it for Svelte, React and any other framework you use.
+The example bellow works with the Vite template. You can however use the example bellow and configure it for Svelte, React, Vue, Angular, Lit and any other framework you want.
 
 First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
@@ -34,46 +29,23 @@ Next add the following configuration into the `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
 import { vitePlugin } from '@stylify/unplugin';
 
 const stylifyPlugin = vitePlugin({
-	transformIncludeFilter: (id) => id.endsWith('vue'),
-	bundles: [{
-		files: ['./src/**/*.vue'],
-		outputFile: './src/assets/stylify.css'
-	}],
-	// Optional
-	extend: {
-		bundler: {
-			compiler: {
-				// https://stylifycss.com/docs/stylify/compiler#variables
-				variables: {},
-				// https://stylifycss.com/docs/stylify/compiler#macros
-				macros: {},
-				// https://stylifycss.com/docs/stylify/compiler#components
-				components: {},
-				// ...
-			}
-		}
-	}
+  bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
+  // Optional - https://stylifycss.com/docs/unplugin
+  compiler: {},
 });
 
-export default defineConfig(({ mode}) => {
-  return {
-    plugins: [stylifyPlugin, vue()]
-  }
-});
+export default defineConfig(({ mode }) => ({
+  plugins: [stylifyPlugin],
+}));
 ```
 
-Now you can add the path of the generated `stylify.css` into `src/main.js` file:
+Now you can add the path of the generated `stylify.css` into `main.js` file:
 
 ```js
-import { createApp } from 'vue'
-import App from './App.vue'
-import './assets/stylify.css';
-
-createApp(App).mount('#app')
+import './stylify.css';
 ```
 
 If you use the Vite.js commands now you will get the `stylify.css` file generated.

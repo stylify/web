@@ -77,7 +77,7 @@ stylify-components
 </template>
 
 <script>
-import { Compiler, nativePreset } from '@stylify/stylify';
+import { Compiler } from '@stylify/stylify/esm/index.js';
 
 export default {
 	props: {
@@ -123,8 +123,8 @@ export default {
 			this.selectedTab = tab;
 		},
 		setPreviewCode(code) {
-			const editorCompiler = new Compiler(nativePreset.compiler);
-			const previewCompiler = new Compiler(nativePreset.compiler);
+			const editorCompiler = new Compiler();
+			const previewCompiler = new Compiler();
 
 			editorCompiler.dev = true;
 			editorCompiler.mangleSelectors = true;

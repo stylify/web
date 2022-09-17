@@ -7,16 +7,12 @@ navigationTitle: "Next.js"
 navigationIconPath: '/images/brands/nextjs.svg'
 
 title: Using Stylify CSS in Next.js
-description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Next.js."
+description: "Learn how to integrate the Stylify CSS into the the Next.js."
 ---
 
 Stylify can be easily integrated into the Next.js using @stylify/unplugin.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages/index.js"></stack-blitz-link>
-
-<note><template>
-Integration example for the Next.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nextjs" target="_blank" rel="noopener">integrations examples repository</a>.
-</template></note>
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-nextjs-template"></stack-blitz-link>
 
 ## How to integrate the Stylify into the Next.js
 
@@ -34,28 +30,16 @@ const { webpackPlugin } = require('@stylify/unplugin');
 
 const stylifyPlugin = (dev) => webpackPlugin({
 	dev: dev,
-	transformIncludeFilter: (id) => id.endsWith('js'),
-	bundles: [{
-		outputFile: './styles/stylify.css',
-		files: ['./pages/**/*.js'],
-	}],
-	extend: {
-		bundler: {
-			compiler: {
-				selectorsAreas: [
-					'(?:^|\\s+)className="([^"]+)"',
-					'(?:^|\\s+)className=\'([^\']+)\'',
-					'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-				],
-				// https://stylifycss.com/docs/stylify/compiler#variables
-				variables: {},
-				// https://stylifycss.com/docs/stylify/compiler#macros
-				macros: {},
-				// https://stylifycss.com/docs/stylify/compiler#components
-				components: {},
-				// ...
-			}
-		}
+	bundles: [{ outputFile: './styles/stylify.css', files: ['./pages/**/*.js'] }],
+	// Optional
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
 	}
 });
 

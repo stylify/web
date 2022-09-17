@@ -27,7 +27,7 @@ Stylify can be used through CDN or installed via CLI like Yarn or NPM.
 ### CDN
 
 ```html
-<script src="https://unpkg.com/@stylify/stylify@0.0.2/dist/stylify.native.min.js"></script>
+<script src="https://unpkg.com/@stylify/stylify@0.0.2/dist/stylify.min.js"></script>
 ```
 
 ### CLI

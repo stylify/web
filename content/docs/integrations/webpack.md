@@ -7,7 +7,7 @@ navigationTitle: "Webpack"
 navigationIconPath: '/images/brands/webpack-icon.svg'
 
 title: Using Stylify CSS with Webpack
-description: "Learn how to use the Stylify utilify-first CSS generator along with Webpack."
+description: "Learn how to use the Stylify CSS with the Webpack."
 ---
 
 <note><template>
@@ -31,25 +31,20 @@ const { webpackPlugin } = require('@stylify/unplugin');
 
 const mode = 'development';
 const stylifyPlugin = webpackPlugin({
-	transformIncludeFilter: (id) => id.endsWith('html'),
 	bundles: [{
 		outputFile: './index.css',
-		files: ['./index.html'],
+		files: ['./**/*.html'],
 		rewriteSelectorsInFiles: mode === 'production'
 	}],
 	// Optional
-	extend: {
-		bundler: {
-			compiler: {
-				// https://stylifycss.com/docs/stylify/compiler#variables
-				variables: {},
-				// https://stylifycss.com/docs/stylify/compiler#macros
-				macros: {},
-				// https://stylifycss.com/docs/stylify/compiler#components
-				components: {},
-				// ...
-			}
-		}
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
 	}
 });
 

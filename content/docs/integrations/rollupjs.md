@@ -7,7 +7,7 @@ navigationTitle: "Rollup.js"
 navigationIconPath: '/images/brands/rollupjs.svg'
 
 title: Using Stylify CSS with Rollup.js
-description: "Learn how to use the Stylify utilify-first CSS generator along with the Rollup.js."
+description: "Learn how to use the Stylify CSS along with the Rollup.js."
 ---
 
 <note><template>
@@ -30,25 +30,16 @@ const { rollupPlugin } = require('@stylify/unplugin');
 const postcss = require('rollup-plugin-postcss');
 
 const stylifyPlugin = rollupPlugin({
-	dev: true,
-	transformIncludeFilter: (id) => id.endsWith('html'),
-	bundles: [{
-		files: ['./index.html'],
-		outputFile: './index.css'
-	}],
+	bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
 	// Optional
-	extend: {
-		bundler: {
-			compiler: {
-				// https://stylifycss.com/docs/stylify/compiler#variables
-				variables: {},
-				// https://stylifycss.com/docs/stylify/compiler#macros
-				macros: {},
-				// https://stylifycss.com/docs/stylify/compiler#components
-				components: {},
-				// ...
-			}
-		}
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
 	}
 });
 

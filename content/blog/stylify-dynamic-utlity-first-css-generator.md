@@ -28,7 +28,7 @@ In practice, the usage of the Stylify looks like this:
 <div class="font-size:24px hover:color:red md:font-size:48px">
     Hello World!
 </div>
-<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
 ```
 Because some values can contain a space and a quote, I have decided to add a special syntax. When writting a selector its value should contain a space, you can use `__`(two underscores) and for a quote `^` (hat).
 

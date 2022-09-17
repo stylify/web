@@ -14,14 +14,17 @@ Runtime is ment to be used in a browser. Under the hood it uses Compiler. It gen
 ## Configuration
 
 ```js
+import 
+
 const config = {
 	// Dev is passed into the Compiler too
 	// so it is not neccessary to define it there too
 	dev: false,
-	// Default is 5 ms. This reduces the amount of compilation
+	// https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {}
+	// Default is 10 ms. This reduces the amount of compilation
 	// when page loads or when something changes
-	repaintTimeout: null,
-	compiler: { /* Compiler config... */ }
+	repaintTimeout: null
 }
 
 new Runtime(config);

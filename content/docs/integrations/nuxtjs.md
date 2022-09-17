@@ -7,18 +7,12 @@ navigationTitle: "Nuxt.js"
 navigationIconPath: '/images/brands/nuxtjs-icon.svg'
 
 title: Using Stylify CSS in Nuxt.js
-description: "Learn how to integrate the Stylify utilify-first CSS generator into the the Nuxt.js."
+description: "Learn how to use the Stylify CSS with the Nuxt.js."
 ---
 
-For easier integration into the Nuxt.js, there is a package named [@stylify/nuxt-module](/docs/nuxt-module).
+The integration uses Stylify packages for Nuxt 2 and Nuxt 3. Checkout the guides bellow.
 
-It is focused on seamless integration and also provides an extension for profiler that will show you what is your configuration or what the size of your CSS is.
-
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-nuxtjs-template?devtoolsheight=33&file=pages/index.vue"></stack-blitz-link>
-
-<note><template>
-Integration example for the Nuxt.js can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nuxtjs" target="_blank" rel="noopener">integrations examples repository</a>.
-</template></note>
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-nuxtjs-template"></stack-blitz-link>
 
 ## How to integrate Stylify into the Nuxt.js v3+
 
@@ -56,8 +50,8 @@ Now you can start using Stylify with Nuxt.js.
 
 ## Configuration
 There is a lot of options you can configure:
-- Nuxt v3+ [@stylify/nuxt](/docs/nuxt)
-- Nuxt v2 [@stylify/nuxt-module](/docs/nuxt-module)
+- Nuxt v3: [@stylify/nuxt](/docs/nuxt)
+- Nuxt v2: [@stylify/nuxt-module](/docs/nuxt-module)
 
 ### Stylelint
 In case you use Stylelint, you may want to add the generated `stylify.css` and possible files with variables into the `.stylelintignore` file.
@@ -72,6 +66,19 @@ If the Stylelint complains about a pattern that doesn't match any files, add the
 ```js
 stylelint: {
 	allowEmptyInput: true
+}
+```
+
+### Build config
+It is possible that the build will fail because it is not configured to use modern ES6 features.
+You can fix it by setting the transpile option in the `nuxt.config.js`:
+
+```js
+build: {
+	transpile: [
+		'@stylify/stylify/lib/index.cjs',
+		'@stylify/stylify/esm/index.mjs'
+	]
 }
 ```
 

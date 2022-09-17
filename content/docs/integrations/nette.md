@@ -7,12 +7,11 @@ navigationTitle: "Nette"
 navigationIconPath: '/images/brands/nette.png'
 
 title: Using Stylify CSS in Nette Framework
-description: "Learn how to integrate the Stylify utilify-first CSS generator into the Nette Framework."
+description: "Learn how to integrate the Stylify CSS into the Nette Framework."
 ---
 
-Since Nette Framework doesn't have any native integration of own CSS loader, you have to build your own. The easiest way is to use Stylify along with the Nette Framework is to use the [Bundler](/docs/bundler), [Webpack](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs).
-You can also easily combine the Bundler with these loaders. Just checkout their documentation pages.
-
+Since Nette Framework doesn't use any bundler by default. Therefore you an use onl the [Bundler](/docs/bundler) or configure bundler and use Stylify with [Webpack](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs) and etc.
+´
 <note><template>
 Integration example for the Nette framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
@@ -34,54 +33,38 @@ Next, create a file, for example `bundles.js`:
 const { nativePreset } = require('@stylify/stylify');
 const { Bundler } = require('@stylify/bundler');
 
-const watchFiles = process.argv[process.argv.length - 1] === '--w';
-
-nativePreset.compiler.selectorsAreas = [
-	'(?:^|\\s+)n:class="([^"]+)"',
-	'(?:^|\\s+)n:class=\'([^\']+)\''
-];
-
-// Optional configuration.
-nativePreset.compiler.variables = {
-	blue: 'steelblue'
-}
-
-// Create a new Bundler instance.
 const bundler = new Bundler({
-	compiler: nativePreset.compiler,
-	watchFiles: watchFiles
+	watchFiles: process.argv[process.argv.length - 1] === '--w',
+	// Optional
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
 });
 
-// You can customize bundles however you want.
-bundler.bundle([
-	{
-		files: ['./app/Presenters/templates/@layout.latte'],
-		outputFile: './www/static/css/layout.css'
-	},
-	{
-		files: ['./app/Presenters/templates/Homepage/default.latte'],
-		outputFile: './www/static/css/homepage.css'
-	}
-]);
+bundler.bundle([{
+	files: ['./app/Presenters/templates/**/*.latte'], outputFile: './www/static/css/index.css'
+}]);
 ```
 
 And the last step is to add scripts into the `package.json`:
 
 ```json
-{
-	"scripts": {
-		"build": "node bundles.js",
-		"watch": "node bundles.js --w"
-	}
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
 }
 ```
 
-Now you can add a link for generated css into the `@layout.latte` and `homepage/default.latte`:
+Now you can add a link for generated css into the `@layout.latte`:
 
 ```html
-<link rel="stylesheet" href="/static/css/layout.css">
-
-<link rel="stylesheet" href="/static/css/homepage.css">
+<link rel="stylesheet" href="/static/css/index.css">
 ```
 
 You can customize the build above however you want.

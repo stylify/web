@@ -9,156 +9,46 @@ title: "Compiler"
 description: "Stylify Compiler is a tool for generating CSS, mangling selectors and a lot more."
 ---
 
-Compiler provides a method for generating CSS according to given configuration from a given content and a method that can rewrite (mangle) selectors in a given content.
+The Compiler is the core for generating CSS with Stylify. This tool generates CSS and rewrites (mangles) selectors. Also when you need to add Variables, Components, custom Macros and etc, you do that in a Compiler config.
 
-## Usage
-```js
-import { Compiler, nativePreset } from '@stylify/stylify';
+<docs-section>
+<template #description>
 
-const content = '<div class="color:blue"></div>';
+<h2 class="margin-top:0">Syntax</h2>
 
-const compiler = new Compiler(nativePreset.compiler);
-const compilationResult = compiler.compile(content);
+Syntax is similar to CSS `property:value` with a few differences:
+- Use `__` (two underscores) for a space and `^` (a hat) for a quote
+- The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
+- Screns can be combined using logical operands:
+	- **Logical AND**: `&&`
+	- **Logical OR**: `||`
 
-const css = compilationResult.generateCss();
-// If the third parameter is set and if it is true (default) it rewrites selectors
-// only in areas defined in selectorsAreas and not in whole content
-const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
+</template>
+<template #code>
+
+```html
+color:blue => blue color
+hover:color:blue => blue color after hover
+lg:color:blue => blue color for from selected screen
+lg:hover:color:blue => blue color after hover from selected screen
+
+lg&&dark:color:red => large screen and prefer-color-scheme dark
+minw740px||landscape:color:blue => for min width or landscape
 ```
 
-### Configuration
-The configuration is different based on the tool and environment where the compiler is used.
-The example bellows shows configuration for Node.js and Browser. For more examples, checkout the [integration examples](/docs/integrations) page.
-
-Node.js
-
-```js
-import { Compiler, nativePreset } from '@stylify/stylify';
-
-// ---When adding config to native preset
-// Example for macros and components when configuring native preset
-nativePreset.compiler.variables = {
-	blue: 'steelblue'
-};
-nativePreset.compiler.macros = {
-	myMacro: ''
-};
-// ...
-
-// --- When using custom config
-const compiler = new Compiler({
-	macros: {},
-	variables: {},
-	// ...
-});
-
-// --- You can also extend the configuration directly on instance
-compiler.configure({ /* ... */})
-```
-
-Browser
-```js
-Stylify.runtime.configure({
-	compiler: {
-		// ...
-	}
-});
-```
-
-## Syntax
-In order to be as flexible as possible, Stylify provides a few useful features when writing selectors.
-Before you start using Stylify, you should check them first.
-
-### Selectors matching patern
-Stylify takes a content and matches selectors using configured macros. Then it generates CSS from matched selectors.
-By default Stylify doesn't have any configuration and you have to configure it yourself.
-
-<note><template>
-Stylify does however provide the [Native Preset](/docs/stylify/native-preset). This preset provides a configuration containing useful helpers and a macro that matches 678 selector types from Chrome, Firefox, Opera, Edge and Safari.
-</template></note>
-
-The default pattern for all Stylify selectors is the following:
-
-```txt
-<screens and pseudo classes>:?<customSelector>
-```
-
-If you decide to use the [Native Preset](/docs/stylify/native-preset), the syntax is then extended to this:
-
-```txt
-<screens and pseudo classes>:?<property>:<value>
-```
-
-Screens and pseudo classes are optional. In case you need to use screen and pseudo class, the screen must be always before the pseudo class.
-
-```txt
-color:red
-hover:color:red
-sm:hover:color:red
-```
-
-### Spaces
-In case of writting a selector, that should contain a space, you can use `__` (two underscores). These underscores are replaced by a space during compilation.
-
-- Spaces character: `__` (two underscores)
-
-```txt
-border:1px__solid__red => border:1px solid red
-width:calc(100%__-__8px) => width:calc(100% - 8px)
-```
-
-### Quotes
-Some CSS properties requires quotes such as a `font-family` or a `content`.
-Because selectors are inside class attributes and therefore can be wrapped by a single quote or double quote, an alternative is necessary.
-
-- Quotes character: `^` (hat)
-
-
-```txt
-font-family:^Open__Sans^ => font-family:'Open Sans'
-content:^Some__long__content^ => content:'Some long content'
-```
-
-
-### Logical operands in screens
-Screens can be randomly combined using logical operands. Before the CSS is generated, they are sorted in the following order:
-
-<note><template>
-**asc** - from smallest to largest, mobile first approach<br>
-**desc** - from largest to smallest, desktop first approach
-</template></note>
-
-- without media query
-- min-width => asc
-- min-height => asc
-- max-width => desc
-- max-height => desc
-- min-device-width => asc
-- min-device-height => asc
-- max-device-width => desc
-- max-device-height => desc
-- light mode => according to above
-- dark mode => according to above
-- print => according to above
-- others
-
-The sorting function can be changed (see [configuration](/docs/stylify/compiler#compilation-result)).
-
-- Logical AND: `&&`
-- Logical OR: `||`
-
-
-```txt
-sm&&dark:color:red
-minw740px||landscape:color:blue
-```
-
+</template>
+</docs-section>
 
 ## Configuration
-Compiler by default has no configuration. You can configure it using the options bellow.
 
-### dev
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">dev</h3>
 If dev is set to true, the generated CSS will contain new lines and spaces to be more readable, selectors in generated CSS will not be mangled and if any variable is missing, only a warning will be shown in the console.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -166,16 +56,24 @@ const compilerConfig = {
 };
 ```
 
-### macros
+</template>
+</docs-section>
 
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">macros</h3>
 Macros are used to match selectors and generate css according to the match. The key inside the object can be a string or a regular expression.
 
 Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,255)` => `_abc123`.
 
+</template>
+<template #code>
+
 ```js
 const compilerConfig = {
 	macros: {
-		'color:(\\S+?)': function (macroMatch, cssProperties): void {
+		'color:(\\S+?)': (macroMatch, cssProperties) => {
 			// color:blue => will create => color: blue
 			// You can also use addMultiple({})
 			cssProperties.add('color', macroMatch.getCapture(0));
@@ -191,15 +89,31 @@ Usage:
 <div class="color:rgb(255,__255,__255)"></span>
 ```
 
+</template>
+</docs-section>
 
-### variables
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">variables</h3>
 Variables can be used in a selector or accessed inside a macro.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
 	variables: {
 		blue: '#01befe',
-		shadow: '0 8px 32px -8px rgb(0, 0, 0, 0.2)'
+		shadow: '0 8px 32px -8px rgb(0, 0, 0, 0.2)',
+		// When variable is an object, Stylify tries to find screen for it
+		// You can use any screen you have defined in the screens
+		dark: { blue: 'lightblue' },
+		md: { fontSize: 24px },
+		'minw640px': { fontSize: 32px },
+		// When screen is not found, it falls back to a random plain selector
+		'.dark': { blue: 'lightblue' },
+		':root[data-theme="dark"]': { blue: 'lightblue' }
 	},
 	// By default variables are replaced by their value. If this option is enabled, they
 	// are replaced by var(--variableName) and can be more dynamic.
@@ -216,9 +130,17 @@ Usage:
 <span class="color:$blue"></span>
 ```
 
-### screens
+</template>
+</docs-section>
 
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">screens</h3>
 Screens are used to generate media queries. The key can be a string or a regular expression.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -238,9 +160,20 @@ Usage:
 <div class="minw80rem:color:darkgreen"></span>
 ```
 
-### components
+</template>
+</docs-section>
 
-Components can decrease the amount of selectors in a template.
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">components</h3>
+
+Components can decrease the amount of selectors in a template. They can be defined in the file where they are used or in the config. When defined using content-option, it expects javascript object without surrounding brackets.
+
+Components can be also defined directly in files using [content options](#contentoptionsprocessors).
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -267,23 +200,28 @@ const compilerConfig = {
 };
 ```
 
-Component can also be defined by calling the compiler `addComponent` method. This method expects configuration object as shown with the `button--big` component or a selectors string or an array of selectors strings:
-
-```js
-const compiler = new Compiler(/* ... */);
-
-compiler.addComponent('button', '...');
-```
-
 Usage:
 ```html
 <span class="button"></span>
 <div class="container"></div>
 ```
 
-### plainSelectors
+</template>
+</docs-section>
 
-Plain selectors allows you to write CSS selectors for elements
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">plainSelectors</h3>
+
+Plain selectors allows you to write CSS selectors for elements.
+When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the stylify selector. Checkout the examples.
+
+Plain selectors can be also defined directly in files using [content options](#contentoptionsprocessors).
+
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -291,6 +229,12 @@ const compilerConfig = {
 		// selector => dependencies
 		'article': 'font-size:16px line-height:28px color:#222',
 		'article h1, article h2': 'color:blue',
+		// For indirect selectors with pseudo class like `div > button`, `article a`
+		'article a:hover': 'color:blue'
+		'article a:hover i': 'color:white'
+		// For direct selectors with pseudo class like a, input or a.button and a.link
+		'a': 'color:green hover:color:blue',
+		'a.link': 'color:green hover:color:red'
 	}
 };
 ```
@@ -300,40 +244,18 @@ Usage:
 <article></article>
 ```
 
-#### Caveats
-In case you want to add for example a `hover:color:blue` to a selector, you should follow the approaches bellow. It is becuase when a pseudo class is used in a dependency, it is added on the end of the selector and that might not be alwas that what you want.
+</template>
+</docs-section>
 
-If the selector is indirect like `div > button`, `article a`, you should add the dependency like this:
-```js
-const compilerConfig = {
-	plainSelectors: {
-		// First without the pseudo class
-		'article a': 'color:green',
-		// Then with the pseudo class
-		'article a:hover': 'color:blue'
-		'article a:hover i': 'color:white'
-	}
-};
-```
 
-When the selector is direct like an `a`, `input` or a class like `a.button`, `.link` you can use the approch above and bellow:
+<docs-section>
+<template #description>
 
-```js
-const compilerConfig = {
-	plainSelectors: {
-		'a': 'color:green hover:color:blue',
-		'a.link': 'color:green hover:color:red'
-	}
-};
-```
-
-### helpers
-
+<h3 class="margin-top:0">helpers</h3>
 Helpers are functions that can be called when a selector is matched and its properties are being generated.
 
-<note><template>
-Helpers can also be used directly in selectors. It is done automatically in the Native Preset. If you don't use this preset, you must configure it on your own using [onNewMacroMatch](#onnewmacromatch) hook. Example of such integration can be found in the <a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Presets/nativePreset.ts" target="_blank" rel="noopener">native preset config</a>.
-</template></note>
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -345,7 +267,8 @@ const compilerConfig = {
 			};
 
 			return value in shortcuts ? shortcuts[value] : value;
-		}
+		},
+		joinText(...texts) => '"' + texts.join(' ') + '"'
 	},
 	macros: {
 		'(bgc|zi):(\\S+?)': function (macroMatch, cssProperties) {
@@ -358,12 +281,26 @@ const compilerConfig = {
 
 Usage:
 ```html
-<div class="zi:2 bgc:red"></div>
+<div class="
+	zi:2 bgc:red
+	color:lighten(#000,10)
+	content:joinText(^Custom^,^Long__Text^)
+"></div>
 ```
 
-### selectorsAreas
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">selectorsAreas</h3>
+
 In case you want to rewrite selectors in any framework specific class attribute, you must define that attribute to be matched.
-By default Stylify only rewrites `class=""` and `class=''`.
+By default Stylify support a few syntaxes from Vue, React, Lit, AlpineJS and Nette. In case, some of the class attributes wasn't matched, add the selectorsAreas option with a regular expression to match it.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -371,45 +308,61 @@ const compilerConfig = {
 		// Vue.js
 		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
 		// React
-		'(?:^|\\s+)className="([^"]+)"', '(?:^|\\s+)className=\\{`((?:.|\n)+?)`\\}',
-		// Angular
-		'(?:^|\\s+)[className]="([^"]+)"', '(?:^|\\s+)[ngClass]="{((?:.|\n)+?)}"',
-		// Nette framework
-		'(?:^|\\s+)n:class="([^"]+)"'
-		// ...
+		'(?:^|\\s+)className="([^"]+)"'
 	]
 };
 ```
 
-### ignoredAreas
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">ignoredAreas</h3>
+
+In case you need to mark a code to be ignored during compilatio, you can use ignored areas.
+
 `stylify-ignore` and `stylify-runtime-ignore` are by default areas you can use to remove content from compilation.
 
-Then there are the following tags, that are ignored (only without attributes): `code, head, pre, script, style.
+Also the following elements are ignored (only without attributes): `code, head, pre, script, style`.
 
-<note>
-Ignored tags can be configured but they are always matched without attributes because no html parser is integrated in Stylify and is not reliable to match them with regular expressions.
-The ignoredElements options is marked as @internal to keep you away from this option.
-</note>
+Note that matching tags or areas using regular expressions is not reliable in some situations, therefore try to use the `stylify-ignore` as it is the most reliable option.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
-	ignoredAreas: [
-		/<myElement[\s]*?>([\s\S]*?)<\/myElement>/,
+	selectorsAreas: [
+		// Vue.js
+		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
+		// React
+		'(?:^|\\s+)className="([^"]+)"'
 	]
 };
 ```
 
-`stylify-ignore` (and any other ignore element) can be placed inside a comment and therefore can be used in any file format.
-
+Usage
 ```html
 <!-- stylify-ignore -->
-Everything between these tags will be ignored
+Everything inside will be ignored
 <div class="color:red"></div>
 <!-- /stylify-ignore -->
 ```
 
-### pregenerate
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">pregenerate</h3>
+
 The pregenerate option allows you to add some content into the compilation process.
+
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
@@ -417,15 +370,19 @@ const compilerConfig = {
 };
 ```
 
-### contentOptionsProcessors
-Some configuration can be only a file or bundle specific. Because of that Stylify provides a content options that are processed during a compilation and provides a way to define a components, variables and etc. only for a specific file or bundle.
+</template>
+</docs-section>
 
-Common syntax is the following:
-```
-stylify-<option> ...data /stylify-<option>
-```
 
-The default available content options are listed bellow:
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">contentOptionsProcessors</h3>
+
+Some configuration options can be defined directly in the file. It's good to keep the definition of for example a component with its HTML.
+
+</template>
+<template #code>
 
 ```html
 // Components expects a valid javascript object as value
@@ -458,12 +415,7 @@ stylify-screens
 /stylify-screens
 ```
 
-It is possible to define own content options processor:
-
-<note><template>
-An example of a content option definition can be found inside the <a href="https://github.com/stylify/packages/blob/master/packages/bundler/src/Bundler.ts" target="_blank" rel="noopener">@stylify/bundler package</a>.
-</template></note>
-
+Adding custom content option processor
 ```js
 const compilerConfig = {
 	contentOptionsProcessors: {
@@ -481,46 +433,64 @@ const compilerConfig = {
 }
 ```
 
+</template>
+</docs-section>
+
+
 ### Hooks
 
 In the Compiler there are two hooks that you can use to streamline or extend the Stylify functionality.
 
-#### onPrepareCompilationResult
+<docs-section>
+<template #description>
+
+<h4 class="margin-top:0"> onPrepareCompilationResult</h4>
 
 This hook is called when the compile function is called and the new CompilationResult is created or updated. You can for example change the configuration of the compilation result or see what is happening under the hood.
 
-<note><template>
-An example of this hook usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
-</template></note>
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
-	onPrepareCompilationResult: (compilationResult) {
+	onPrepareCompilationResult: (compilationResult) => {
 		console.log(compilationResult);
 	};
 }
 ```
 
-#### onNewMacroMatch
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+<h4 class="margin-top:0">onNewMacroMatch</h4>
+
 
 When a selector is matched by macro within a content a new MacroMatch is created. Right after its creation this hook is called with the MacroMatch as its argument.
 
 The selector properties inside the hook already contains values of variables if they vere in the selector.
 
-<note><template>
-An example of this hooks usage can be found in the <a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Presets/nativePreset.ts" target="_blank" rel="noopener">Native Preset code</a>.
-</template></note>
+</template>
+<template #code>
 
 ```js
 const compilerConfig = {
-	onNewMacroMatch: (macroMatch, selectorProperties) {
+	onNewMacroMatch: (macroMatch, selectorProperties) => {
 		console.log(macroMatch);
 		console.log(selectorProperties);
 	}
 }
 ```
 
-### Compilation Result
+</template>
+</docs-section>
+
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">Compilation Result</h3>
 
 Compilation result can be created or configured and passed into the Compiler as a second argument. By this approach, you can change the compilation behavior and extend the functionality.
 
@@ -528,9 +498,8 @@ Compilation result can be created or configured and passed into the Compiler as 
 Be aware that if you modifie compilation result or create a new one with a wrong configuration, you can break the whole compilation process.
 </note>
 
-<note><template>
-An example of CompilationResult hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
-</template></note>
+</template>
+<template #code>
 
 ```js
 const compilationResult = new CompilationResult({
@@ -548,13 +517,18 @@ const compilationResult = new CompilationResult({
 });
 ```
 
-### CSS Record
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+<h3 class="margin-top:0">CSS Record</h3>
 
 Css record can be accessed only through a hook from compilation result.
 
-<note><template>
-An example of CssRecord hooks usage can be found on the [@stylify/autoprefixer](/docs/autoprefixer#usage) page.
-</template></note>
+</template>
+<template #code>
 
 ```js
 const compilationResult = new CompilationResult({
@@ -574,4 +548,21 @@ const compilationResult = new CompilationResult({
 		}
 	}
 });
+```
+
+</template>
+</docs-section>
+
+## Custom compilation process
+```js
+import { Compiler } from '@stylify/stylify';
+
+const content = '<div class="color:blue"></div>';
+
+const compiler = new Compiler();
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+// If the third parameter is set and if it is true (default) it rewrites selectors
+// only in areas defined in selectorsAreas and not in whole content
+const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
 ```

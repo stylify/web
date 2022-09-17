@@ -278,7 +278,7 @@ new Compiler({
 
 const cdnUsageDefaultCode = `
 <!-- Try Stylify using CDN. Copy this into any html file. -->
-<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.native.min.js"><\/script>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"><\/script>
 `;
 
 const variablesExampleCode = `

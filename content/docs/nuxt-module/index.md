@@ -17,28 +17,44 @@ Nuxt module provides seamless Stylify integration into the Nuxt.js v2+ < v3.
 	<strong>@stylify/nuxt-module</strong> can be used only in Nuxt v2. For Nuxt v3 and above checkout <nuxt-link to="/docs/nuxt">@stylify/nuxt</nuxt-link>.
 </note>
 
-## Installation
+<docs-section>
+<template #description>
 
-Nuxt module can be installed only via CLI like NPM or Yarn.
+<h2 class="margin-top:0">Installation</h2>
 
-CLI
+Nuxt module can be installed only via CLI like NPM or Yarn:
+
+</template>
+<template #code>
+
 ```bash
 yarn add -D @stylify/nuxt-module
 npm i -D @stylify/nuxt-module
 ```
 
-## Usage
+</template>
+</docs-section>
 
-Add a buildModule into the nuxt.config.js
+<docs-section>
+<template #description>
+
+<h2 class="margin-top:0">Usage</h2>
+
+Add a buildModule into the `nuxt.config.js`:
+
+</template>
+<template #code>
+
 ```js
 buildModules: [
 	'@stylify/nuxt-module'
 ]
 ```
 
-## Configuration
+</template>
+</docs-section>
 
-By default @stylify/nuxt-module uses [Native preset](/docs/stylify/native-preset). You can change the configuration however you need.
+## Configuration
 
 If you want to configure the Stylify, you can use configuration section directly in `nuxt.config.js` or create a file `stylify.config.js` next to the nuxt.config.js. In both cases you use the same configuration scheme shown bellow.
 
@@ -50,7 +66,7 @@ const stylifyConfig = defineConfig({
 	dev: false,
 	configPath: 'stylify.config.js',
 	// Compiler config info https://stylifycss.com/docs/stylify/compiler
-	compiler: nativePreset.compiler,
+	compiler: {},
 	// When vars dir paths are set, Stylify will export variables into
 	// a file according to given path
 	cssVarsDirPath: null,
@@ -69,22 +85,14 @@ const stylifyConfig = defineConfig({
 	//		test: /\.vue$/i,
 	//		include: ['path/to/some/dir']
 	//	},
-	loaders: [],
-
-	// When options above are used inside the extend field,
-	// they extend existing configuration instead of overriding it
-	extend: {
-		// ...
-	}
+	loaders: []
 });
 ```
 
 Example for nuxt.config.js
 ```js
-{
-	// ...
+export default {
 	stylify: stylifyConfig
-	// ...
 }
 ```
 

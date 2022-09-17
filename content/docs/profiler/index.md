@@ -10,6 +10,10 @@ title: "@stylify/profiler"
 description: "Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify."
 ---
 
+<note color="orange">
+	This package was discontinued and you should no longer use it.
+</note>
+
 Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify.
 
 It provides information about the Runtime and the Compiler such as Variables list, CSS size or serialized Compilation Result.
@@ -19,7 +23,7 @@ It provides information about the Runtime and the Compiler such as Variables lis
 
 ## Installation
 
-Profiler can be used directly through CDN or installed using CLI like NPM or YARN.
+Profiler can be used directly through CDN or installed using CLI like NPM or Yarn:
 
 CLI:
 ```
