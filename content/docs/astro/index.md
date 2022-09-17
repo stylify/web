@@ -12,6 +12,8 @@ description: "@stylify/astro simplifies Stylify integration into Astri.build."
 
 Astro integration simplifies Stylify integration into the Astro.build.
 
+<stack-blitz-link link="https://stackblitz.com/edit/stylify-astro-example"></stack-blitz-link>
+
 ## Installation
 
 Integration can be installed only via CLI like NPM or Yarn:
