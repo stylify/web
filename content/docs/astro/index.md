@@ -28,10 +28,10 @@ Add a buildModule into the `astro.config.mjs`:
 
 ```js
 import { defineConfig } from 'astro/config';
-import stylifyIntegration from '@stylify/astro';
+import stylify from '@stylify/astro';
 
 export default defineConfig({
-	integrations: [stylifyIntegration()]
+	integrations: [stylify()]
 });
 ```
 
@@ -41,7 +41,7 @@ Configuration is optional. If the "bundles" option is not set, all files within 
 
 Configuration in `astro.config.mjs`:
 ```js
-stylifyIntegration({
+stylify({
 	// https://stylifycss.com/docs/unplugin#configuration
 })
 ```

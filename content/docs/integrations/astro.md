@@ -28,10 +28,10 @@ Add a buildModule into the `astro.config.mjs`:
 
 ```js
 import { defineConfig } from 'astro/config';
-import stylifyIntegration from '@stylify/astro';
+import stylify from '@stylify/astro';
 
 export default defineConfig({
-	integrations: [stylifyIntegration()]
+	integrations: [stylify()]
 });
 ```
 

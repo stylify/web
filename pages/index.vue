@@ -132,7 +132,7 @@ stylify-keyframes
 
 		<section id="quote" class="container margin-top:48px padding-top:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">Write CSS to get CSS. Avoid complexity.</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">Don't study frameworks. Focus on coding.</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%__-__220px) font-size:16px line-height:24px">
 						<p class="margin-top:0">
@@ -144,7 +144,7 @@ stylify-keyframes
 						</p>
 					</div>
 					<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
-						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:24px border-radius:200px height:100px md:height:136px width:100px md:width:136px">
+						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:24px border-radius:200px height:100px md:height:136px width:100px md:width:136px" loading="lazy" decoding="async">
 						<div class="margin-left:12px md:margin-left:0 md:margin-top:12px md:text-align:center">
 							<strong class="color:#fff">Vladimír Macháček</strong>
 							<br>Author of Stylify CSS

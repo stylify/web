@@ -171,8 +171,6 @@ export default {
 			'astro': {},
 			'nuxt': {},
 			'nuxt-module': {},
-			'profiler': {},
-			'autoprefixer': {}
 		};
 		for (const section of Object.keys(navigationSectionsConfig)) {
 			navigationItems[section] = await getNavigationSectionItems(section, navigationSectionsConfig[section]);

@@ -105,25 +105,29 @@ export default {
 			integrationLinks: [],
 			packagesLinks: [
 				{
-					navigationTitle: '@stylify/autoprefixer',
-					path: '/docs/autoprefixer'
+					navigationTitle: '@stylify/astro',
+					path: '/docs/astro'
 				},
 				{
 					navigationTitle: '@stylify/bundler',
 					path: '/docs/bundler'
 				},
 				{
+					navigationTitle: '@stylify/nuxt',
+					path: '/docs/nuxt'
+				},
+				{
 					navigationTitle: '@stylify/nuxt-module',
 					path: '/docs/nuxt-module'
 				},
 				{
-					navigationTitle: '@stylify/profiler',
-					path: '/docs/profiler'
-				},
-				{
 					navigationTitle: '@stylify/stylify',
 					path: '/docs/stylify'
-				}
+				},
+				{
+					navigationTitle: '@stylify/unplugin',
+					path: '/docs/unplugin'
+				},
 			],
 
 			communityLinks: [

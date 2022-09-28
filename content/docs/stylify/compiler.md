@@ -17,7 +17,7 @@ The Compiler is the core for generating CSS with Stylify. This tool generates CS
 <h2 class="margin-top:0">Syntax</h2>
 
 Syntax is similar to CSS `property:value` with a few differences:
-- Use `__` (two underscores) for a space and `^` (a hat) for a quote
+- Use `_` (one underscore) for a space and `^` (a hat) for a quote
 - The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
 - Screns can be combined using logical operands:
 	- **Logical AND**: `&&`
@@ -86,7 +86,7 @@ Usage:
 ```html
 <span class="color:red"></span>
 <div class="color:#000"></span>
-<div class="color:rgb(255,__255,__255)"></span>
+<div class="color:rgb(255,255,255)"></span>
 ```
 
 </template>
@@ -182,7 +182,7 @@ const compilerConfig = {
 		'button': 'padding:4px background:black color:white hover:background:grey',
 		'container': `
 			max-width:1024px
-			margin:0__auto
+			margin:0_auto
 			md:max-width:1280px
 		`,
 		// You can define multiple components in one key, just separate them by "," (comma)
@@ -284,7 +284,7 @@ Usage:
 <div class="
 	zi:2 bgc:red
 	color:lighten(#000,10)
-	content:joinText(^Custom^,^Long__Text^)
+	content:joinText(^Custom^,^Long_Text^)
 "></div>
 ```
 
@@ -406,7 +406,7 @@ stylify-plainSelectors
 
 // Pregenerate expects a string
 stylify-pregenerate
-	border-top:1px__solid__#444
+	border-top:1px_solid_#444
 /stylify-pregenerate
 
 stylify-screens

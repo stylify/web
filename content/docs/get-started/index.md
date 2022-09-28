@@ -12,7 +12,7 @@ description: "Stylify generates CSS dynamically based on what you write. Learn h
 
 Stylify generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment. It is inspired by Tailwind and Tachynos.
 
-Unlike these CSS frameworks, Stylify uses CSS like selectors `color:blue`, `font-weight:bold`, `border:2px__solid__blue`.
+Unlike these CSS frameworks, Stylify uses CSS like selectors `color:blue`, `font-weight:bold`, `border:2px_solid_blue`.
 Thanks to that, you don't have to study any framework, remember shortcuts and think about how to use which feature.
 In case you want shorter or completely different selectors like `ml-2` (margin) or `font-2xl` you can easily configure them.
 
@@ -26,7 +26,7 @@ Stylify can work with any tool. For some of them it have its own integration. If
 The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
 
 Syntax is similar to CSS `property:value` with a few differences:
-- Use `__` (two underscores) for a space and `^` (a hat) for a quote
+- Use `_` (one underscore) for a space and `^` (a hat) for a quote
 - The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
 
 ```html
@@ -145,4 +145,3 @@ Stylify ships with multiple packages. All of them can be installed using NPM or 
 For easier start with your favorite tool checkout the [integration examples](/docs/integrations).
 
 <integration-blocks />
-
