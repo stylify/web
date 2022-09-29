@@ -1,5 +1,5 @@
 <template>
-	<section class="display:flex flex-direction:column margin-bottom:32px xl:margin-left:-24px xl:max-width:calc(100%__-__24px) xl:flex-direction:row">
+	<section class="display:flex flex-direction:column margin-bottom:32px xl:margin-left:-24px xl:max-width:calc(100%_-_24px) xl:flex-direction:row">
 		<div class="xl:max-width:40% xl:min-width:40% xl:margin-left:24px">
 			<slot name="description"></slot>
 		</div>

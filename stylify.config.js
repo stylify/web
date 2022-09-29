@@ -50,12 +50,12 @@ export default defineConfig({
 			'article pre': 'margin-top:0',
 			'article a': 'color:$blue1',
 			'article table': 'margin-bottom:24px min-width:800px',
-			'article table td': 'word-break:keep-all border-bottom:1px__solid__#1e2431 padding:4px',
+			'article table td': 'word-break:keep-all border-bottom:1px_solid_#1e2431 padding:4px',
 			'article table th': 'text-align:left padding:4px',
 			'article table thead': 'position:sticky top:0 left:0 background-color:lighten($blue3,20) backdrop-filter:blur(12px)',
-			'article .note': 'margin:16px__0',
+			'article .note': 'margin:16px_0',
 			'article .note, article .note *': 'font-size:14px line-height:24px',
-			'article .example-editor': 'margin:24px__0',
+			'article .example-editor': 'margin:24px_0',
 			'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 			'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',
 			'article .nuxt-content-highlight': 'font-size:14px',
@@ -74,12 +74,12 @@ export default defineConfig({
 				lg:padding-left:24px md:padding-right:24px
 			`,
 			btn: `
-				background-color:$blue1 white-space:nowrap line-height:1 transition:background-color__0.3s,__color__0.3s cursor:pointer color:#fff text-decoration:none font-weight:bold
-				border-radius:$radius2 padding:12px__24px display:inline-flex align-items:center
+				background-color:$blue1 white-space:nowrap line-height:1 transition:background-color_0.3s,_color_0.3s cursor:pointer color:#fff text-decoration:none font-weight:bold
+				border-radius:$radius2 padding:12px_24px display:inline-flex align-items:center
 				hover:background-color:darken($blue1,10)
 			`,
 			'btn--transparent': {
-				selectors: 'background:none hover:background-color:rgba(1,__190,__254,__0.1)',
+				selectors: 'background:none hover:background-color:rgba(1,190,254,0.1)',
 				selectorsChain: 'btn'
 			}
 		}

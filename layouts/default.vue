@@ -26,7 +26,7 @@
 						</nav>
 					</section>
 				</div>
-				<section class="max-width:calc(100%__+__16px) overflow:auto margin-left:-8px margin-right:-8px display:inline-flex align-items:center position:relative">
+				<section class="max-width:calc(100%_+_16px) overflow:auto margin-left:-8px margin-right:-8px display:inline-flex align-items:center position:relative">
 					<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding-left:8px padding-right 8px font-weight:bold">
 						<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Docs</nuxt-link>
 						<nuxt-link to="/blog" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Blog</nuxt-link>
@@ -37,7 +37,7 @@
 				</section>
 				<section class="display:none lg:display:inline-flex justify-content:flex-end min-width:150px">
 					<nav class="display:flex align-items:center">
-						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px filter:brightness(0)__invert(1)" alt="" /></a>
+						<a :href="project.config.githubUrl" target="_blank" rel="noopener" title="Github" class="display:inline-flex"><img src="/images/brands/github-icon.svg" height="24" width="24" class="margin-left:12px filter:brightness(0)_invert(1)" alt="" /></a>
 						<a :href="project.config.discordUrl" target="_blank" rel="noopener" title="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="24" width="31" class="margin-left:12px" alt="" /></a>
 						<a :href="project.config.twitterUrl" target="_blank" rel="noopener" title="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="24" width="25" class="margin-left:12px" alt=""/></a>
 					</nav>
@@ -47,13 +47,13 @@
 		<main>
 			<Nuxt />
 		</main>
-		<footer class="background:lighten($blue3,20) padding:24px__0">
+		<footer class="background:lighten($blue3,20) padding:24px_0">
 			<div class="container">
 				<div class="display:flex align-items:flex-start flex-wrap:wrap margin-bottom:24px justify-content:space-between sm:flex-wrap:nowrap">
 					<hp-footer-docs-links :links="getStartedLinks" />
 					<hp-footer-docs-links :links="integrationLinks" />
 					<hp-footer-docs-links :links="packagesLinks" :titleLinkEnabled="false" title="Packages" />
-					<section class="display:flex align-items:center flex-direction:column width:100% max-width:calc(50%__-__8px) md:align-items:flex-start md:max-width:calc(25%__-__8px)">
+					<section class="display:flex align-items:center flex-direction:column width:100% max-width:calc(50%_-_8px) md:align-items:flex-start md:max-width:calc(25%_-_8px)">
 						<h3 class="margin-top:0 margin-bottom:18px font-size:14px line-height:24px">Community</h3>
 						<a
 							v-for="(communityLink, key) in communityLinks"

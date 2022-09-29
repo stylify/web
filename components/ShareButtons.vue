@@ -5,7 +5,7 @@ stylify-plainSelectors
 	"ul.share-buttons a": 'line-height:1 display:inline-flex',
 	"ul.share-buttons .sr-only": `
 		position:absolute
-		clip:rect(1px__1px__1px__1px)
+		clip:rect(1px_1px_1px_1px)
 		clip:rect(1px,1px,1px,1px)
 		padding:0
 		border:0

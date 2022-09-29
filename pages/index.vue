@@ -20,7 +20,7 @@ stylify-components
 	`,
 	'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
 	'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
-	'hp__code-editor': 'padding:12px__0 border-radius:$radius2'
+	'hp__code-editor': 'padding:12px_0 border-radius:$radius2'
 /stylify-components
 
 stylify-keyframes
@@ -36,19 +36,19 @@ stylify-keyframes
 		<section class="container margin-top:24px md:margin-top:64px">
 			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
-				Stylify uses CSS like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0__auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">plain selectors</span> to generate CSS dynamically based on what you write.
+				Stylify uses CSS like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">plain selectors</span> to generate CSS dynamically based on what you write.
 				<br>
 				💎&nbsp;Don't study Docs. Write Selectors you know. Get optimized CSS. Without framework.&nbsp;💎
 			</p>
 		</section>
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:32px">
 			<div class="hp__tab-buttons-wrapper">
-				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color__.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px__24px text-align:center display:inline-flex']">{{tabLabel}}</a>
+				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
 			<div class="padding:12px lg:padding:24px background:lighten($blue3,20)">
 				<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
 					<p class="margin-top:0 font-size:14px line-height:28px">
-						Write selectors as css <code>property:value</code>. Use <code>__</code> (two underscores) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
+						Write selectors as css <code>property:value</code>. Use <code>_</code> (one underscore) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
 					</p>
 					<div class="hp__example-editor width:100%">
 						<GetStartedSelectors />
@@ -123,10 +123,10 @@ stylify-keyframes
 				</div>
 			</div>
 			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px__solid__$blue1">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px_solid_$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
-				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px__solid__$blue1 margin-left:8px sm:margin-left:12px md:padding:12px__24px">Installation</a>
+				<a :href="'#' + filters.webalize('Installation')" class="btn btn--hp btn--transparent color:$blue1 border:2px_solid_$blue1 margin-left:8px sm:margin-left:12px md:padding:12px_24px">Installation</a>
 			</div>
 		</section>
 
@@ -134,7 +134,7 @@ stylify-keyframes
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
 				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">Don't study frameworks. Focus on coding.</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
-					<div class="max-width:724px md:width:calc(100%__-__220px) font-size:16px line-height:24px">
+					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px line-height:24px">
 						<p class="margin-top:0">
 							The thing you want is to style your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features that are great but also make the development more complex and force you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
 						</p>
@@ -155,12 +155,12 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:46px margin:45px__0 md:margin-bottom:48px">
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:46px margin:45px_0 md:margin-bottom:48px">
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
-				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px__solid__#bbe8f6 md:padding-right:12px md:margin-right:12px">
+				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px_solid_#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><a class="github-button" href="https://github.com/stylify/packages" data-size="large" data-show-count="true" aria-label="Star stylify/packages on GitHub">Star</a></div>
 					<div class="display:flex">
-						<a href="https://twitter.com/stylifycss?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px__12px border-radius:12px twitter-follow-button">
+						<a href="https://twitter.com/stylifycss?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px_12px border-radius:12px twitter-follow-button">
 							Follow @stylifycss
 						</a>
 					</div>
@@ -169,8 +169,8 @@ stylify-keyframes
 					<share-buttons url="https://stylifycss.com" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
 				</div>
 			</div>
-			<div class="slideshow width:200% height:300px md:height:280px margin:0__auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow__50s__linear__infinite column-gap:24px">
+			<div class="slideshow width:200% height:300px md:height:280px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_50s_linear_infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
 						:key="'orig-' + index"

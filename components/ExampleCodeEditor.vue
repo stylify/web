@@ -1,5 +1,5 @@
 <template>
-	<div :class="[withBorder ? 'border:1px__solid__$blue5 padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
+	<div :class="[withBorder ? 'border:1px_solid_$blue5 padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
 		<code ref="codeSlot" style="display: none;"><slot></slot></code>
 		<client-only placeholder="Loading...">
 			<div class="max-height:400px overflow:auto width:100%">

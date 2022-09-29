@@ -4,11 +4,11 @@ stylify-components
 	'integration-block': `
 		display:flex color:$grey3 flex-direction:row justify-content:center align-items:center
 		border-radius:$radius2 background:lighten($blue3,20)
-		width:calc(100%__*__1/3__-__12px) margin-bottom:12px margin-left:12px padding:12px
+		width:calc(100%_*_1/3_-_12px) margin-bottom:12px margin-left:12px padding:12px
 		text-decoration:none min-height:80px
-		sm:width:calc(100%__*__1/3__-__12px)
-		md:width:calc(100%__*__1/4__-__24px) md:margin-bottom:24px md:margin-left:24px
-		lg:padding:18px lg:width:calc(100%__*__1/5__-__24px) lg:width:calc(100%__*__1/6__-__24px)
+		sm:width:calc(100%_*_1/3_-_12px)
+		md:width:calc(100%_*_1/4_-_24px) md:margin-bottom:24px md:margin-left:24px
+		lg:padding:18px lg:width:calc(100%_*_1/5_-_24px) lg:width:calc(100%_*_1/6_-_24px)
 	`
 /stylify-components
 -->

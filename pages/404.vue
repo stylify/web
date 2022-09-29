@@ -1,7 +1,7 @@
 <template>
 	<div class="container margin-top:100px margin-bottom:100px">
 		<h2 class="font-size:48px text-align:center">Page not found.</h2>
-		<p class="text-align:center max-width:500px margin:0__auto">Ooops! The page you are looking for is probably using some other CSS framework and is still loading or it doesn't exist.</p>
+		<p class="text-align:center max-width:500px margin:0_auto">Ooops! The page you are looking for is probably using some other CSS framework and is still loading or it doesn't exist.</p>
 		<p class="text-align:center">
 			<span class="word-break:keep-all">¯\_(ツ)_/¯</span>
 		</p>

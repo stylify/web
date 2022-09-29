@@ -4,13 +4,13 @@
 			@click="toggleSidebar"
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
-				`width:100% margin-right:34px max-height:100vh overflow:auto transition:transform__0.3s__ease-in-out
+				`width:100% margin-right:34px max-height:100vh overflow:auto transition:transform_0.3s_ease-in-out
 				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
 				lg:position:sticky lg:transition:none lg:transform:translateX(0) lg:top:0 lg:max-width:220px`
 			]
 			"
 		>
-			<div class="background:$blue3 border-right:1px__solid__#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
+			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
 				<div class="text-align:right lg:display:none">
 					<a role="button" class="cursor:pointer font-size:32px display:inline-block width:32px line-height:32px">
 						<i class="icon icon-x color:$blue1 font-weight:bold"></i>
@@ -27,7 +27,7 @@
 							`display:block text-decoration:none position:sticky top:0 z-index:1`
 						]"
 					>
-						<h3 class="font-size:16px padding:8px__0 position:sticky margin:0 top:0 backdrop-filter:blur(12px) z-index:1">
+						<h3 class="font-size:16px padding:8px_0 position:sticky margin:0 top:0 backdrop-filter:blur(12px) z-index:1">
 							{{ sectionItems[0].navigationTitle }}
 						</h3>
 					</nuxt-link>
@@ -38,7 +38,7 @@
 							:to="sectionItem.path"
 							:data-super="key"
 							:class="[
-								sectionItem.navigationIconPath ? 'padding:4px__4px__4px__38px' : 'padding:4px__8px',
+								sectionItem.navigationIconPath ? 'padding:4px_4px_4px_38px' : 'padding:4px_8px',
 								`docs__aside-link color:$blue4 font-size:16px text-decoration:none
 								position:relative display:inline-flex align-items:center hover:background-color:lighten($blue3,20) border-radius:$radius1`
 							]"
@@ -50,13 +50,13 @@
 				</section>
 			</div>
 		</aside>
-		<div class="background:lighten($blue3,20) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px__0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
+		<div class="background:lighten($blue3,20) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px_0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
 			<a role="button" @click="toggleSidebar" class="cursor:pointer display:inline-flex align-items:center">
 				<i class="icon icon-menu margin-right:4px font-weight:bold color:$blue1"></i>
 				<span>Show docs navigation</span>
 			</a>
 		</div>
-		<section class="width:100% lg:width:calc(100%__-__254px) padding:0__14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
+		<section class="width:100% lg:width:calc(100%_-_254px) padding:0_14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
 			<article class="margin-bottom:24px">
 				<h1>{{ pageContent.title }}</h1>
 				<div v-if="shortcutLinks.length" class="margin-top:8px min-height:38px">
