@@ -105,6 +105,23 @@ stylify-components
 			</div>
 		</nuxt-link>
 		<nuxt-link
+			to="/docs/integrations/remix"
+			aria-label="Remix"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/remix.svg"
+					alt=""
+					height="1"
+					width="2"
+					decoding="async"
+					loading="lazy"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
 			to="/docs/integrations/qwik"
 			aria-label="Qwik"
 			class="integration-block"
