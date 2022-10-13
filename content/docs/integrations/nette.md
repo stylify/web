@@ -30,7 +30,6 @@ yarn add -D @stylify/bundler
 Next, create a file, for example `bundles.js`:
 
 ```js
-const { nativePreset } = require('@stylify/stylify');
 const { Bundler } = require('@stylify/bundler');
 
 const bundler = new Bundler({
