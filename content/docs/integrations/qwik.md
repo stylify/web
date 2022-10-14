@@ -12,7 +12,7 @@ description: "Learn how to use Stylify CSS with the Qwik Framework."
 
 Stylify can be used within the Qwik Framework using the Stylify Vite plugin.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-qwik-example"></stack-blitz-link>
+<stack-blitz-link link="stylify-qwik-example"></stack-blitz-link>
 
 ## Installation
 

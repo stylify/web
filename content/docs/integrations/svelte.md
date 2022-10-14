@@ -10,7 +10,7 @@ title: Using Stylify CSS in Svelte
 description: "Learn how to use the Stylify CSS with the Svelte."
 ---
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-svelte-vite"></stack-blitz-link>
+<stack-blitz-link link="stylify-svelte-vite"></stack-blitz-link>
 
 ## How to integrate the Stylify with Svelte and Vite.js
 

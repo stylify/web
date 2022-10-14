@@ -12,7 +12,7 @@ description: "Learn how to integrate the Stylify CSS into the Remix."
 
 Stylify can be integrated into the Remix using Bundler.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-remix-example"></stack-blitz-link>
+<stack-blitz-link link="stylify-remix-example"></stack-blitz-link>
 
 ## How to integrate the Stylify into the Remix
 

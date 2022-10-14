@@ -12,7 +12,7 @@ description: "Learn how to use Stylify CSS with the Astro."
 
 Astro integration simplifies Stylify integration into the Astro.build.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-astro-example"></stack-blitz-link>
+<stack-blitz-link link="stylify-astro-example"></stack-blitz-link>
 
 ## Installation
 
