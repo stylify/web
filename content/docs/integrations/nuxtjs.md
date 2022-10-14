@@ -12,7 +12,7 @@ description: "Learn how to use the Stylify CSS with the Nuxt.js."
 
 The integration uses Stylify packages for Nuxt 2 and Nuxt 3. Checkout the guides bellow.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-nuxtjs-template"></stack-blitz-link>
+<stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 
 ## How to integrate Stylify into the Nuxt.js v3+
 

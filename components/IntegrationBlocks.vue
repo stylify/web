@@ -21,7 +21,7 @@ stylify-components
 		</nuxt-link>
 		<nuxt-link
 			to="/docs/integrations/nextjs"
-			aria-label="Nuxt"
+			aria-label="Next.js"
 			class="integration-block"
 		>
 			<div class="integration-block__image-wrapper">
@@ -38,7 +38,7 @@ stylify-components
 		</nuxt-link>
 		<nuxt-link
 			to="/docs/integrations/reactjs"
-			aria-label="Nuxt"
+			aria-label="React.js"
 			class="integration-block"
 		>
 			<div class="integration-block__image-wrapper">
@@ -72,7 +72,7 @@ stylify-components
 		</nuxt-link>
 		<nuxt-link
 			to="/docs/integrations/nuxtjs"
-			aria-label="Nuxt"
+			aria-label="Nuxt.js"
 			class="integration-block"
 		>
 			<div class="integration-block__image-wrapper">
@@ -265,6 +265,23 @@ stylify-components
 			<div class="integration-block__image-wrapper">
 				<img
 					src="/images/brands/nette.png"
+					alt=""
+					height="1"
+					width="2"
+					decoding="async"
+					loading="lazy"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
+			to="/docs/integrations/cakephp"
+			aria-label="Cake PHP"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/cakephp.png"
 					alt=""
 					height="1"
 					width="2"

@@ -12,7 +12,7 @@ description: "Learn how to integrate the Stylify CSS into the the Next.js."
 
 Stylify can be easily integrated into the Next.js using @stylify/unplugin.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-nextjs-template"></stack-blitz-link>
+<stack-blitz-link link="stylify-nextjs-template"></stack-blitz-link>
 
 ## How to integrate the Stylify into the Next.js
 

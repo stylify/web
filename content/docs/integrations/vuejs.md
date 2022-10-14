@@ -10,7 +10,7 @@ title: Using Stylify CSS in Vue.js
 description: "Learn how to use the Stylify CSS with the Vue.js"
 ---
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-vue-vite"></stack-blitz-link>
+<stack-blitz-link link="stylify-vue-vite"></stack-blitz-link>
 
 ## How to integrate the Stylify with Vue.js and Vite.js
 

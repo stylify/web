@@ -15,7 +15,7 @@ Stylify can be used with React.js in varous ways:
 - With Vite.js (this example)
 - [Next.js](/docs/integrations/nextjs)
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-react-vite"></stack-blitz-link>
+<stack-blitz-link link="stylify-react-vite"></stack-blitz-link>
 
 ## How to integrate the Stylify with React.js and Vite.js
 

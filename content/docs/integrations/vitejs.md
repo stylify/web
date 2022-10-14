@@ -12,7 +12,7 @@ description: "Learn how to use the Stylify CSS with the Vite.js."
 
 Stylify can be integrated into the Vite.js using @stylify/bundler.
 
-<stack-blitz-link link="https://stackblitz.com/edit/stylify-vite-example"></stack-blitz-link>
+<stack-blitz-link link="stylify-vite-example"></stack-blitz-link>
 
 ## How to integrate the Stylify into the Vite.js
 
