@@ -1,4 +1,3 @@
-import path from 'path';
 import { defineConfig } from '@stylify/nuxt-module';
 
 export default defineConfig({
@@ -29,7 +28,7 @@ export default defineConfig({
 			radius1: '4px',
 			radius2: '8px'
 		},
-		plainSelectors: {
+		customSelectors: {
 			// Global
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
 			'body': 'color-scheme:dark color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
@@ -42,7 +41,7 @@ export default defineConfig({
 
 			// Articles common
 			'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
-			'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px line-height:40px md:font-size:34px md:font-size:34px line-height:54px margin-bottom:8px',
+			'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px line-height:40px md:font-size:34px line-height:54px margin-bottom:8px',
 			'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:48px margin-bottom:0',
 			'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:32px margin-bottom:0',
 			'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:24px margin-bottom:0',
@@ -78,10 +77,11 @@ export default defineConfig({
 				border-radius:$radius2 padding:12px_24px display:inline-flex align-items:center
 				hover:background-color:darken($blue1,10)
 			`,
-			'btn--transparent': {
-				selectors: 'background:none hover:background-color:rgba(1,190,254,0.1)',
-				selectorsChain: 'btn'
-			}
+			'btn--transparent': `
+				&.btn {
+					background:none hover:background-color:rgba(1,190,254,0.1)
+				}
+			`
 		}
 	}
 });

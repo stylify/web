@@ -1,9 +1,10 @@
 <!--
 stylify-components
-	'btn--hp': {
-		selectors: 'justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px',
-		selectorsChain: 'btn'
-	},
+	'btn--hp': `
+		&.btn {
+			justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px
+		}
+	`,
 	'hp__section-title': `
 		font-size:32px line-height:42px font-weight:bold margin-top:0 margin-bottom:12px
 		md:font-size:48px md:line-height:64px
@@ -36,12 +37,11 @@ stylify-keyframes
 		<section class="container margin-top:24px md:margin-top:64px">
 			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
-				Stylify uses CSS like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">plain selectors</span> to generate CSS dynamically based on what you write.
-				<br>
-				💎&nbsp;Don't study Docs. Write Selectors you know. Get optimized CSS. Without framework.&nbsp;💎
+				Stylify uses CSS like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
 			</p>
+			<div class="text-align:center line-height:32px lg:line-height:30px lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding.&nbsp;💎</div>
 		</section>
-		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:32px">
+		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px lg:padding-top:48px margin-bottom:32px">
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
@@ -62,12 +62,12 @@ stylify-keyframes
 						<GetStartedComponents />
 					</div>
 				</div>
-				<div v-show="featuresSelectedTab === 'plainSelectors'">
+				<div v-show="featuresSelectedTab === 'customSelectors'">
 					<p class="margin-top:0 font-size:14px line-height:28px">
 						Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
 					</p>
 					<div class="hp__example-editor width:100%">
-						<GetStartedPlainSelectors />
+						<GetStartedCustomSelectors />
 					</div>
 				</div>
 				<div v-show="featuresSelectedTab === 'variables'">
@@ -311,7 +311,7 @@ export default {
 		tabs: {
 			selectors: 'Use selectors you know',
 			components: 'Define components',
-			plainSelectors: 'Style anything',
+			customSelectors: 'Style anything',
 			variables: 'Use variables',
 			dynamicScreens: 'Customize screens',
 			helpers: 'Extend functionality'

@@ -58,7 +58,7 @@ bundler.bundle([
 ]);
 ```
 
-When the bundler is configured, add the path to stylify CSS in the `app/root.tsx`:
+When the bundler is configured, add the path to Stylify CSS in the `app/root.tsx`:
 
 ```jsx
 import styles from '~/styles/stylify.css';

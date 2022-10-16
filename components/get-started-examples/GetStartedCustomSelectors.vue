@@ -8,7 +8,7 @@
 <script>
 const code = `
 <!--
-stylify-plainSelectors
+stylify-customSelectors
 	'div': \`
 		text-align:center
 		line-height:1.2
@@ -16,7 +16,7 @@ stylify-plainSelectors
 		lg:font-size:34px
 	\`,
 	'div + div': 'margin-top:8px'
-/stylify-plainSelectors
+/stylify-customSelectors
 -->
 <div>Style anything easily</div>
 <div>🏖️🍹🤟</div>

@@ -12,7 +12,7 @@
 					<li><nuxt-link to="/docs/stylify/compiler#screens">Screens</nuxt-link></li>
 					<li><nuxt-link to="/docs/stylify/compiler#macros">Macros and selectors</nuxt-link></li>
 					<li><nuxt-link to="/docs/stylify/compiler#components">Components</nuxt-link></li>
-					<li><nuxt-link to="/docs/stylify/compiler#plainselectors">Global selectors</nuxt-link></li>
+					<li><nuxt-link to="/docs/stylify/compiler#customselectors">Global selectors</nuxt-link></li>
 				</ul>
 			</li>
 		</ul>

@@ -14,20 +14,20 @@ Runtime is ment to be used in a browser. Under the hood it uses Compiler. It gen
 ## Configuration
 
 ```js
-import 
+import { Runtime } from '@stylify/stylify/esm/index.min.js';
 
 const config = {
 	// Dev is passed into the Compiler too
-	// so it is not neccessary to define it there too
+	// so it is not neccessary to define it there
 	dev: false,
 	// https://stylifycss.com/docs/stylify/compiler#configuration
-	compiler: {}
-	// Default is 10 ms. This reduces the amount of compilation
+	compiler: {},
+	// Default is 10 ms. This reduces the amount of compilations
 	// when page loads or when something changes
 	repaintTimeout: null
 }
 
-new Runtime(config);
+const runtime = new Runtime(config);
 ```
 
 ## Hooks
@@ -42,7 +42,7 @@ Stylify Runtime triggers 4 hooks when used:
 You can listen to these hooks like this:
 
 ```js
-document.addEventListener('stylify:ready', (event) => {
+runtime.hooks.addListener('stylify:ready', (event) => {
 	console.log(event);
 });
 ```
@@ -73,11 +73,13 @@ Even though using the Runtime as a default setup is easier, it is recommended to
 
 Also when the Runtime is used on its own without previous template processing by compiler, you cannot rewrite (mangle) selectors.
 
-### Caveats solution
+### Solution
 In case you want to use only the Runtime and in the same time keep the website fast, you can do the following:
 
-1. Import the Runtime and the [Profiler](/docs/profiler) during development through CDN or module import.
-2. When you are ready to publish the page, export the page CSS using the Profiler. Optinally you can copy the content of the CSS file and prefix it in the [online autoprefixer](https://autoprefixer.github.io/).
-3. Remove, disable or comment the Runtime import in the page and add a path to the CSS file or its content into the page.
+1. Style your page with Stylify imported from CDN
+2. Copy the content of style element with id `stylify-css`
+3. Paste the copied CSS directly into the html file into the style element
+3. Comment or remove runtime import
+5. In case you need to prefix the CSS, you can use the [online autoprefixer](https://autoprefixer.github.io)
 
-This approach allows you to generate all the necessary CSS without using any bundler or Node.js and also doesn't slow down the page because the Runtime is not loaded..
+This approach allows you to generate all the necessary CSS without using any bundler or Node.js and also doesn't slow down the page because the Runtime is not loaded.

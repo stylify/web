@@ -1,5 +1,5 @@
 <!--
-stylify-plainSelectors
+stylify-customSelectors
 	"ul.share-buttons": 'display:flex align-items:center margin-left:-8px justify-content:center list-style:none padding:0',
 	"ul.share-buttons li": 'display:inline-flex margin-left:8px',
 	"ul.share-buttons a": 'line-height:1 display:inline-flex',
@@ -14,7 +14,7 @@ stylify-plainSelectors
 		overflow:hidden
 	`,
 	"ul.share-buttons img": 'width:32px'
-/stylify-plainSelectors
+/stylify-customSelectors
 -->
 <template>
 	<ul class="share-buttons" data-source="simplesharingbuttons.com">

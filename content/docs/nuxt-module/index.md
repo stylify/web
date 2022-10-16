@@ -20,8 +20,7 @@ Nuxt module provides seamless Stylify integration into the Nuxt.js v2+ < v3.
 <docs-section>
 <template #description>
 
-<h2 class="margin-top:0">Installation</h2>
-
+## Installation
 Nuxt module can be installed only via CLI like NPM or Yarn:
 
 </template>
@@ -38,8 +37,7 @@ npm i -D @stylify/nuxt-module
 <docs-section>
 <template #description>
 
-<h2 class="margin-top:0">Usage</h2>
-
+## Usage
 Add a buildModule into the `nuxt.config.js`:
 
 </template>

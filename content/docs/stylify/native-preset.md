@@ -62,8 +62,7 @@ Dont forget that screens can be combined using logical operands `&&` (and) and `
 <docs-section>
 <template #description>
 
-<h3 class="margin-top:0">Sorting</h3>
-
+### Sorting
 Screens are automaticaly sorted. The sorting function can be changed (see [configuration](/docs/stylify/compiler#compilation-result)).
 
 <note><template>
@@ -100,8 +99,7 @@ When passing an argument into the helper, you can use variables like `$myVariabl
 <docs-section>
 <template #description>
 
-<h4 class="margin-top:0">Lighten color</h4>
-
+#### Lighten color
 This helper expects a color in a hex or rgb format and and makes the color lighter. The color is returned in a hex format.
 
 </template>
@@ -119,8 +117,7 @@ color:lighten(^rgb(0,0,0)^,10)
 <docs-section>
 <template #description>
 
-<h4 class="margin-top:0">Darken color</h4>
-
+#### Darken color
 This helper expects a color in a hex or rgb format and and makes the color darker. The color is returned in a hex format.
 
 </template>
@@ -137,8 +134,7 @@ color:darken(^rgb(255,255,255)^,10)
 <docs-section>
 <template #description>
 
-<h4 class="margin-top:0">Color to RGB</h4>
-
+#### Color to RGB
 This helper expects a color in a hex or rgb format. It returns in the rgb format. If alpha canal is passed as second argument, it returns the rgba format.
 
 </template>

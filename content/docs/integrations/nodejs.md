@@ -22,7 +22,7 @@ You can create your own compliation process or use the [@stylify/bundler](/docs/
 
 ### Using @stylify/stylify directly
 
-For more information see [stylify documentation](/docs/stylify):
+For more information see [Stylify documentation](/docs/stylify):
 
 ```js
 import { Compiler } from '@stylify/stylify';

@@ -53,7 +53,7 @@ const config = defineConfig({
 	// Id is a file name
 	// Return true, if the file type or name should be processed
 	// Example is with html suffix
-	// By default stylify checks if the file is not in node_modules
+	// By default Stylify checks if the file is not in node_modules
 	// and also checks for a various file types
 	// listed here https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
 	transformIncludeFilter: (id) => id.endsWith('html')
@@ -65,4 +65,3 @@ let rollupPlugin = rollupPlugin(config);
 ```
 
 <where-to-next package="null" />
-
