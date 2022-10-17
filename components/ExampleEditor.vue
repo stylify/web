@@ -77,7 +77,7 @@ stylify-components
 </template>
 
 <script>
-import { Compiler, CompilationResult } from '@stylify/stylify/esm/index.js';
+import { Compiler, hooks, CompilationResult } from '@stylify/stylify/esm/index.js';
 
 export default {
 	props: {
@@ -129,19 +129,17 @@ export default {
 			editorCompiler.dev = true;
 			editorCompiler.mangleSelectors = true;
 
-			const getEditorCompilationResult = () => new CompilationResult({
-				onPrepareCssRecord: (cssRecord) => {
-					cssRecord.scope = `.${this.previewElClass} `;
-				}
+			hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
+				cssRecord.scope = `.${this.previewElClass} `;
 			});
 
-			const compilationResult = editorCompiler.compile(code, getEditorCompilationResult());
+			const compilationResult = editorCompiler.compile(code, new CompilationResult());
 
 			this.css = compilationResult.generateCss();
 			this.mangledHtml = editorCompiler.rewriteSelectors(code, compilationResult);
 
 			this.previewCode = code;
-			this.previewCss = previewCompiler.compile(code, getEditorCompilationResult()).generateCss();
+			this.previewCss = previewCompiler.compile(code, new CompilationResult()).generateCss();
 		}
 	},
 };

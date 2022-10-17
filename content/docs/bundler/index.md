@@ -79,10 +79,7 @@ const config = defineConfig({
 	cssVarsDirPath: 'path/to/vars.css',
 	sassVarsDirPath: 'path/to/vars.sass',
 	lessVarsDirPath: 'path/to/vars.less',
-	stylusVarsDirPath: 'path/to/vars.stylus',
-	onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
-	onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
-	onBundleProcessed: (data) => console.log(data.bundleConfig, data.bundleBuildCache)
+	stylusVarsDirPath: 'path/to/vars.stylus'
 });
 
 const bundler = new Bundler(config);
@@ -132,15 +129,17 @@ bundler.bundle([
 // In case you need to wait for the CSS to be generated, call this method.
 await bundler.waitOnBundlesProcessed();
 ```
+</template>
+</docs-section>
+
+
+## Files content option
+File [content options](/docs/stylify/compiler#contentoptionsprocessors) allows you to configure options directly in a file. Apart from default content options, you can use the `files` option.
 
 <docs-section>
 <template #description>
 
-<h3 class="margin-top:0">Files content option</h3>
-
-File [content options](/docs/stylify/compiler#contentoptionsprocessors) allows you to configure options directly in a file. Apart from default content options, you can use the `files` option.
-
-This option expects files paths as string When file path starts with /, it is an absolut path, otherwise is relative.
+This option expects files paths as string When file path starts with `/`, it is an absolut path, otherwise is relative.
 
 </template>
 <template #code>
@@ -150,6 +149,30 @@ stylify-files
 	/path/to/layout.html
 	path/to/template/part.html
 /stylify-files
+```
+
+</template>
+</docs-section>
+
+## Hooks
+
+Bundler extends [default hooks](/docs/stylify/compiler#hooks) and adds a few more.
+
+<docs-section>
+<template #description>
+
+- **bundler:beforeInputFileRewritten**: Before input file is rewritten
+- **bundler:beforeCssFileCreated**: Before a CSS file is created
+- **bundler:bundleProcessed**: When bundle is processed
+- **bundler:fileToProcessOpened**: Before file is processed
+
+</template>
+<template #code>
+
+```js
+import { hooks } from '@stylify/bundler';
+
+hooks.addListener('hoook:name', (options) => {});
 ```
 
 </template>

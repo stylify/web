@@ -17,8 +17,8 @@ stylify-components
 				<span>Don't study selectors</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>With the <nuxt-link to="/docs/stylify/native-preset" class="color:$blue1">Native Preset</nuxt-link> you can use native CSS <code class="white-space:nowrap">property:value</code> like <code class="white-space:nowrap">color:blue</code> as a selector.</li>
-				<li>Don't study and remember selectors. You already know them.</li>
+				<li>Use CSS <code class="white-space:nowrap">property:value</code> syntax like <code class="white-space:nowrap">color:blue</code> as a selector.</li>
+				<li>Don't waste your time by studying framework shortcuts.</li>
 			</ul>
 		</div>
 		<div class="why-stylify__block">
@@ -33,28 +33,18 @@ stylify-components
 		</div>
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
-				<i class="icon icon-pie-chart why-stylify__block-title-icon"></i>
-				<span>Get small CSS Chunks</span>
+				<i class="icon icon-settings why-stylify__block-title-icon"></i>
+				<span>Simplify your work</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>CSS can be generated for each file, page, layout or component separately.</li>
-				<li>Selector is generated only once and reused when possible.</li>
-			</ul>
-		</div>
-		<div class="why-stylify__block">
-			<h3 class="why-stylify__block-title">
-				<i class="icon icon-archive why-stylify__block-title-icon"></i>
-				<span>Minify CSS even more</span>
-			</h3>
-			<ul class="why-stylify__list">
-				<li>Shrink long selectors such as <code class="white-space:nowrap">font-weight:bold</code> to <code class="white-space:nowrap">_abc123</code>.
-				<li>Minimize your CSS even further.</li>
+				<li>Define reusable <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">Helpers</nuxt-link> and style selectors like <code class="white-space:nowrap">article > h1</code> with <nuxt-link to="/docs/stylify/compiler#customselectors" class="color:$blue1">Custom Selectors</nuxt-link>.</li>
+				<li>Variables can be injected into the CSS as CSS variables and used outside of generated CSS.</li>
 			</ul>
 		</div>
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-layout why-stylify__block-title-icon"></i>
-				<span>Style any screen</span>
+				<span>Style any device</span>
 			</h3>
 			<ul class="why-stylify__list">
 				<li>Combine screens using <nuxt-link to="/docs/stylify/compiler#logical-operands-in-screens" class="color:$blue1">logical operands</nuxt-link> like <code class="white-space:nowrap">sm&&tolg</code>, <code class="white-space:nowrap">xl||landscape</code> and <code class="white-space:nowrap">lg&&dark</code>.</li>
@@ -63,12 +53,25 @@ stylify-components
 		</div>
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
-				<i class="icon icon-settings why-stylify__block-title-icon"></i>
-				<span>Simplify your work</span>
+				<i class="icon icon-pie-chart why-stylify__block-title-icon"></i>
+				<span>Extremely small CSS Chunks</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>Define reusable <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">Helpers</nuxt-link> and style selectors like <code class="white-space:nowrap">article > h1</code> with <nuxt-link to="/docs/stylify/compiler#plainselectors" class="color:$blue1">Plain Selectors</nuxt-link>.</li>
-				<li>Variables can be injected into the CSS as CSS variables and used outside of generated CSS.</li>
+				<li>60-70% smaller CSS - result of our tests</li>
+				<li>CSS can be generated for each file, page, layout or component separately.</li>
+				<li>Selector is generated only once and reused when possible.</li>
+				<li>Selectors can be shrinked in production <code class="white-space:nowrap">.color:blue</code> => <code class="white-space:nowrap">.a</code> </li>
+			</ul>
+		</div>
+		<div class="why-stylify__block">
+			<h3 class="why-stylify__block-title">
+				<i class="icon icon-archive why-stylify__block-title-icon"></i>
+				<span>Works with any tool</span>
+			</h3>
+			<ul class="why-stylify__list">
+				<li>Stylify is standalone library.</li>
+				<li>No pre/postprocessor is required.</li>
+				<li>Works with any file format and in any environment where javascript is supported.</li>
 			</ul>
 		</div>
 	</div>
