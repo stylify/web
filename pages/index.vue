@@ -235,6 +235,7 @@ stylify-keyframes
 				</div>
 			</section>
 		</div>
+		<script async defer src="https://buttons.github.io/buttons.js"></script>
 	</div>
 </template>
 
