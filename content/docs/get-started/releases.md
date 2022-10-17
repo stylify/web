@@ -119,6 +119,9 @@ hooks.addListener('', (options) => {});
 ```
 - Now only the `await bundler.waitOnBundlesProcessed()` can be used to wait for bundler to finish bundling. The await `bundler.bundle()` is not neccessary.
 
+### @stylify/bundler
+- Unplugin exports are now `stylifyVite`, `stylifyRollup`, `stylifyWebpack`, `stylifyEsbuild`
+
 ## Upgrading from 0.3 to 0.4
 - Release: [v0.4.0](https://github.com/stylify/packages/releases/tag/v0.4.0)
 - Use only one underscore `_` (for a space character) => `border:1px_solid_blue`

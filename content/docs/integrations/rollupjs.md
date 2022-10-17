@@ -26,10 +26,10 @@ yarn add -D @stylify/unplugin
 Next, add create a configuration file `rollup.config.js`:
 
 ```js
-const { rollupPlugin } = require('@stylify/unplugin');
+const { stylifyRollup } = require('@stylify/unplugin');
 const postcss = require('rollup-plugin-postcss');
 
-const stylifyPlugin = rollupPlugin({
+const stylifyPlugin = stylifyRollup({
 	bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
 	// Optional
 	compiler: {

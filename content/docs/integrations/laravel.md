@@ -18,6 +18,47 @@ Integration example for the Laravel framework can be found in <a href="https://g
 
 ## How to integrate the Stylify into the Laravel Framework
 
+First install [Stylify unplugin](/docs/unplugin):
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+Open the `vite.config.js` and add the Stylify Plugin:
+```js
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+  bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
+  // Optional - https://stylifycss.com/docs/unplugin
+  compiler: {},
+});
+
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		stylifyPlugin,
+		laravel({
+			// Add path to generated files
+            input: ['resources/js/app.js', 'resources/css/stylify.css'],
+            refresh: true,
+        }),
+	],
+}));
+```
+
+Add the path to `resources/css/stylify.css` into the template:
+
+```html
+<head>
+	@vite('resources/css/stylify.css')
+</head>
+```
+
+Now when you run `dev` command in `package.json`, the CSS will be generated. When you run `build`, the CSS will also be mangled.
+
+## For older vesions of Laravel with Webpack
+
 First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
@@ -28,9 +69,9 @@ yarn add -D @stylify/unplugin
 Next add Stylify plugin into the `webpack.mix.js`:
 
 ```js
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
-const stylifyPlugin = webpackPlugin({
+const stylifyPlugin = stylifyWebpack({
 	bundles: [{
 		outputFile: './resources/css/homepage.css',
 		files: ['./resources/views/welcome.blade.php']

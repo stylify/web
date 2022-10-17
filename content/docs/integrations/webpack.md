@@ -27,10 +27,10 @@ Next, add the following configuration into the `webpack.config.js` file:
 
 ```js
 const path = require('path');
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
 const mode = 'development';
-const stylifyPlugin = webpackPlugin({
+const stylifyPlugin = stylifyWebpack({
 	bundles: [{
 		outputFile: './index.css',
 		files: ['./**/*.html'],

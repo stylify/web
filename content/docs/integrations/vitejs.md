@@ -29,9 +29,9 @@ Next add the following configuration into the `vite.config.js`:
 
 ```js
 import { defineConfig } from 'vite';
-import { vitePlugin } from '@stylify/unplugin';
+import { stylifyVite } from '@stylify/unplugin';
 
-const stylifyPlugin = vitePlugin({
+const stylifyPlugin = stylifyVite({
   bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
   // Optional - https://stylifycss.com/docs/unplugin
   compiler: {},

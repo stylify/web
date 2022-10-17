@@ -29,11 +29,11 @@ Now add the following configuration into the `webpack.config.js`:
 
 ```js
 const Encore = require('@symfony/webpack-encore');
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
 const cssPath = './assets/styles/index.css';
 
-const stylifyPlugin = webpackPlugin({
+const stylifyPlugin = stylifyWebpack({
 	bundles: [{ outputFile: cssPath, files: [ './templates/**/*.html.twig' ] }],
 	// Optional
 	compiler: {

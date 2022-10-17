@@ -26,9 +26,9 @@ yarn add -D @stylify/unplugin
 Next add a configuration into the `next.config.js`:
 
 ```js
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
-const stylifyPlugin = (dev) => webpackPlugin({
+const stylifyPlugin = (dev) => stylifyWebpack({
 	dev: dev,
 	bundles: [{ outputFile: './styles/stylify.css', files: ['./pages/**/*.js'] }],
 	// Optional

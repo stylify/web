@@ -33,7 +33,10 @@ Each tool has it's own documentation page:
 The configuration for unplugin is always the same for each bundler
 
 ```js
-import { unplugin, vitePlugin, rollupPlugin, defineConfig, webpackPlugin } from '@stylify/unplugin';
+import {
+	unplugin, defineConfig
+	stylifyVite, stylifyRollup, stylifyWebpack, stylifyEsbuild
+} from '@stylify/unplugin';
 
 const config = defineConfig({
 	// --- Required
@@ -59,9 +62,10 @@ const config = defineConfig({
 	transformIncludeFilter: (id) => id.endsWith('html')
 });
 
-let webpackPlugin = webpackPlugin(config);
-let vitePlugin = vitePlugin(config);
-let rollupPlugin = rollupPlugin(config);
+let webpackPlugin = stylifyWebpack(config);
+let vitePlugin = stylifyVite(config);
+let rollupPlugin = stylifyRollup(config);
+let esbuildPlugin = stylifyEsbuild(config);
 ```
 
 <where-to-next package="null" />

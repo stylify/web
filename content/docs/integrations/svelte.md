@@ -28,9 +28,9 @@ Next add the following configuration into the `vite.config.js`:
 ```js
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { vitePlugin } from '@stylify/unplugin';
+import { stylifyVite } from '@stylify/unplugin';
 
-const stylifyPlugin = vitePlugin({
+const stylifyPlugin = stylifyVite({
 	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.svelte'] }],
 	// Optional
 	compiler: {
