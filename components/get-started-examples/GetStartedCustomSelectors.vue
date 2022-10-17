@@ -14,11 +14,10 @@ stylify-customSelectors
 		line-height:1.2
 		font-size:24px
 		lg:font-size:34px
-	\`,
-	'div + div': 'margin-top:8px'
+	\`
 /stylify-customSelectors
 -->
-<div>Style anything easily</div>
+<div class="[&+div]{margin-top:8px}">Style anything easily</div>
 <div>🏖️🍹🤟</div>
 `;
 
