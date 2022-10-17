@@ -10,7 +10,7 @@ title: Using Stylify CSS in Laravel Framework
 description: "Learn how to use Stylify CSS with the Laravel Framework."
 ---
 
-Laravel integration is similar to [Webpack](/docs/integrations/webpack) configuration.
+Stylify can be integrated into the Laravel using the Stylify Vite plugin.
 
 <note><template>
 Integration example for the Laravel framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">integrations examples repository</a>.
