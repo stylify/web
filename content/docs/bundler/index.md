@@ -119,10 +119,7 @@ bundler.bundle([
 		scope: '#my-scope',
 		// Compiler config can be bundle specific
 		// https://stylifycss.com/docs/stylify/compiler#configuration
-		compiler: {},
-		onBeforeInputFileRewritten: (data) => console.log(data.filePath, data.content),
-		onBeforeCssFileCreated: (data) => console.log(data.filePath, data.content),
-		onBundleProcessed: (data) => console.log(data.bundleConfig, data.bundleBuildCache)
+		compiler: {}
 	}
 ]);
 
