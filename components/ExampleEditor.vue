@@ -68,16 +68,14 @@ stylify-components
 					`
 				]"
 			>
-				<style v-html="previewCss">
-					/* Code */
-				</style>
+				<style v-html="previewCss">/* Code */</style>
 				<div :class="[previewElClass, 'color:#fff']"><div v-html="previewCode"></div></div>
 			</div>
 		</div>
 </template>
 
 <script>
-import { Compiler, hooks, CompilationResult } from '@stylify/stylify/esm/index.js';
+import { Compiler, hooks } from '@stylify/stylify/esm/index.js';
 
 export default {
 	props: {
@@ -95,6 +93,7 @@ export default {
 		css: '',
 		mangledHtml: '',
 		previewCode: '',
+		previewCss: '',
 		selectedTab: 'editor'
 	}),
 	watch: {
@@ -133,13 +132,12 @@ export default {
 				cssRecord.scope = `.${this.previewElClass} `;
 			});
 
-			const compilationResult = editorCompiler.compile(code, new CompilationResult());
-
+			const compilationResult = editorCompiler.compile(code);
 			this.css = compilationResult.generateCss();
-			this.mangledHtml = editorCompiler.rewriteSelectors(code, compilationResult);
+			this.mangledHtml = editorCompiler.rewriteSelectors(code);
 
 			this.previewCode = code;
-			this.previewCss = previewCompiler.compile(code, new CompilationResult()).generateCss();
+			this.previewCss = previewCompiler.compile(code).generateCss();
 		}
 	},
 };
