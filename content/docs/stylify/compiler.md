@@ -248,7 +248,7 @@ Usage:
 <template #description>
 
 #### Nested syntax for custom selectors
-You can nest selectors using SCSS like syntax.
+You can nest selectors using SCSS-like syntax.
 To create the selector is the same like in CSS. To refer the upper level use the `&` character.
 To keep things simple, the only feature is nesting and chaining. The syntax is the same for `content options`. The pseudo classes like `:hover` works the same like in the example above.
 The example bellow will generate the following:
