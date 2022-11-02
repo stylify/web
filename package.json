@@ -17,6 +17,8 @@
 		"dev:swl": "yarn dev:cp && yarn dev:ulp"
 	},
 	"dependencies": {
+		"@docsearch/css": "3",
+		"@docsearch/js": "3",
 		"@nuxt/content": "^1.15",
 		"core-js": "^3.25",
 		"normalize.css": "^8.0",

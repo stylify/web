@@ -26,14 +26,17 @@
 						</nav>
 					</section>
 				</div>
-				<section class="max-width:calc(100%_+_16px) overflow:auto margin-left:-8px margin-right:-8px display:inline-flex align-items:center position:relative">
-					<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding-left:8px padding-right 8px font-weight:bold">
-						<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Docs</nuxt-link>
-						<nuxt-link to="/blog" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Blog</nuxt-link>
-						<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Playground</a>
-						<nuxt-link to="/faq" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">FAQ</nuxt-link>
-					</nav>
-					<span class="lg:display:none">&nbsp;</span>
+				<section class="flex:1 overflow:auto width:calc(100%_+_16px) justify-content:center margin-left:-8px margin-right:-8px display:inline-flex position:relative">
+					<div class="justify-content:flex-start display:flex max-width:100%">
+						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding-left:8px padding-right 8px font-weight:bold">
+							<nuxt-link to="/docs/get-started" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Docs</nuxt-link>
+							<nuxt-link to="/blog" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Blog</nuxt-link>
+							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">Playground</a>
+							<nuxt-link to="/faq" class="margin-left:24px font-size:18px color:#fff text-decoration:none hover:color:$blue1">FAQ</nuxt-link>
+							<div id="docsearch" class="minw769px:width:178px width:36px height:36px"></div>
+						</nav>
+						<span class="lg:display:none">&nbsp;</span>
+					</div>
 				</section>
 				<section class="display:none lg:display:inline-flex justify-content:flex-end min-width:150px">
 					<nav class="display:flex align-items:center">
@@ -87,6 +90,7 @@
 </template>
 
 <script>
+import docsearch from '@docsearch/js';
 import { DocsRepository } from '~/services/model';
 
 export default {
@@ -99,6 +103,15 @@ export default {
 
 		this.getStartedLinks = getStartedLinks;
 		this.integrationLinks = integrationLinks;
+	},
+	mounted: () => {
+		docsearch({
+			appId: 'MIG46WYBYC',
+			apiKey: 'b169a688c1cb51a5a1d3358ab91424d5',
+			indexName: 'stylifycss',
+			container: '#docsearch',
+			debug: false
+		});
 	},
 	data() {
 		return {
@@ -151,6 +164,8 @@ export default {
 </script>
 
 <style>
+@import '@docsearch/css';
+
 body {
 	font-family: 'Poppins', sans-serif;
 	font-size: 16px;
