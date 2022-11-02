@@ -1,15 +1,18 @@
 <template>
-	<section v-if="links.length" class="display:flex align-items:center width:100% max-width:calc(50%_-_8px) flex-direction:column md:align-items:flex-start md:width:calc(25%_-_8px)">
-		<h3 class="margin-top:0 margin-bottom:18px font-size:14px line-height:24px">
+	<section v-if="links.length" class="display:flex width:100% margin-bottom:18px align-items:center flex-direction:column md:align-items:flex-start">
+		<h3 class="margin-top:0 margin-bottom:4px font-size:16px line-height:24px">
 			<nuxt-link v-if="titleLinkEnabled" :to="links[0].dir" class="color:$grey3 hover:color:$blue1 text-decoration:none">{{ links[0].navigationTitle }}</nuxt-link>
 			<span v-else>{{ sectionTitle }}</span>
 		</h3>
-		<nuxt-link
-			v-for="(link, key) in links.slice(1)"
-			:key="key"
-			:to="link.path"
-			class="margin-bottom:8px font-size:12px line-height:21px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1"
-		>{{ link.navigationTitle }}</nuxt-link>
+		<div class="margin-left:-24px">
+			<nuxt-link
+					v-for="(link, key) in links.slice(1)"
+					:key="key"
+					:to="link.path"
+					class="margin-bottom:8px margin-left:24px font-size:14px line-height:24px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1"
+				>{{ link.navigationTitle }}
+			</nuxt-link>
+		</div>
 	</section>
 </template>
 

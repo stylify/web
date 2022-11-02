@@ -153,6 +153,18 @@ stylify-keyframes
 					</div>
 				</div>
 			</div>
+			<div>
+				<h3 class="text-align:center font-size:24px"><img src="/images/brands/youtube.svg" loading="lazy" decoding="async" width="42" height="42" class="vertical-align:middle margin-right:12px">Learn more about Stylify on our Youtube channel</h3>
+				<div class="display:flex max-width:calc(100%_+_16px) margin-left:-8px margin-right:-8px flex-direction:row margin-top:32px overflow:auto justify-content:center">
+					<div class="display:flex justify-content:flex-start max-width:100% margin-left:-24px">
+						<a v-for="video in videos" :key="video.link" :href="video.link" target="_blank" rel="noopener" class="text-decoration:none display:flex flex-direction:column min-width:300px width:300px border-radius:4px background:#1e2431 padding:12px cursor:pointer margin-left:24px">
+							<img :src="`/images/youtube/${video.image}`" loading="lazy" decoding="async" class="display:flex min-height:300px max-height:300px margin-bottom:8px object-fit:cover border-radius:4px flex:1">
+							<strong class="font-size:18px line-height:26px color:#fff">{{ video.title }}</strong>
+						</a>
+						<span>&nbsp;</span>
+					</div>
+				</div>
+			</div>
 		</section>
 
 		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:46px margin:45px_0 md:margin-bottom:48px">
@@ -316,6 +328,18 @@ export default {
 			dynamicScreens: 'Customize screens',
 			helpers: 'Extend functionality'
 		},
+		videos: [
+			{
+				image: 'style-your-website-faster.jpg',
+				title: '💎 Style your website faster',
+				link: 'https://www.youtube.com/shorts/hHOugsB045I'
+			},
+			{
+				image: 'write-css-faster.jpg',
+				title: '🔥 Write CSS for your website faster',
+				link: 'https://www.youtube.com/shorts/zlQwVlIsmlE'
+			},
+		],
 		fans: [
 			{
 				name: 'Mubashar Hashmat',

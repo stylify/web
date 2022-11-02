@@ -15,7 +15,7 @@ The code behind the NativePreset can be found in the <a href="https://github.com
 ## Inside the preset
 
 ### Predefined macro
-This macro allows you to CSS like syntax matching **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
+This macro allows you to use CSS-like syntax matching **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
 Checkout the [syntax guide](/docs/stylify/compiler#syntax).
 
 List of all available selectors can be found in the <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/default-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>

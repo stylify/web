@@ -80,7 +80,7 @@ compiler.rewriteSelectors({
 - Rename `plainSelectors` in config and in the content options to `customSelectors`
 - Each `customSelector` and `component` now accepts only a string as value.
 - Custom selectors can be now generated directly from template. See [docs](/docs/stylify/compiler#customselectors).
-- In case you used a selectors chain for components, rewrite it to the new SCSS like syntax.
+- In case you used a selectors chain for components, rewrite it to the new SCSS-like syntax.
 ```js
 // v0.4.0
 const components = {

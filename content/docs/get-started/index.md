@@ -12,7 +12,7 @@ description: "Stylify generates CSS dynamically based on what you write. Learn h
 
 Stylify generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment. It is inspired by Tailwind and Tachynos.
 
-Unlike these CSS frameworks, Stylify uses CSS like selectors `color:blue`, `font-weight:bold`, `border:2px_solid_blue`.
+Unlike these CSS frameworks, Stylify uses CSS-like selectors `color:blue`, `font-weight:bold`, `border:2px_solid_blue`.
 Thanks to that, you don't have to study any framework, remember shortcuts and think about how to use which feature.
 In case you want shorter or completely different selectors like `ml-2` (margin) or `font-2xl` you can easily configure them.
 
