@@ -100,6 +100,14 @@
 import docsearch from '@docsearch/js';
 import { DocsRepository } from '~/services/model';
 
+const dispatchEvent = (event, data) => {
+	const customEvent = typeof data !== 'undefined'
+		? new window.CustomEvent(event, {detail: data})
+		: new window.CustomEvent(event);
+
+	document.dispatchEvent(customEvent);
+}
+
 export default {
 	fetch: async function () {
 		const linksRequiredData = ['navigationTitle', 'path', 'dir'];
@@ -119,6 +127,18 @@ export default {
 			container: '#docsearch',
 			debug: false
 		});
+	},
+	watch: {
+		$route: {
+			immediate: true,
+			handler() {
+				if (typeof document === 'undefined') {
+					return;
+				}
+
+				dispatchEvent('route:changed');
+			}
+		}
 	},
 	data() {
 		return {
