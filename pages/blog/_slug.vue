@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import { BlogRepository } from '../../services/model/BlogRepository';
-import { formatDateTime } from '../../services/blogDateTimeHelper';
+import { BlogRepository } from '~/services/model/BlogRepository';
+import { formatDateTime } from '~/services/blogDateTimeHelper';
 
 const host= 'https://stylifycss.com';
 

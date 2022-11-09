@@ -19,7 +19,7 @@ const bundler = new Bundler({
 	compiler: {
 		variables: {},
 		macros: {},
-		components: {}
+		components: {},
 		// If you want to mangle selectors
 		mangleSelectors: true
 		// ...
@@ -27,7 +27,7 @@ const bundler = new Bundler({
 })
 
 bundler.bundle([
-	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.html'] }
+	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.html'] },
 	// Bundler uses https://npmjs.com/package/fast-glob
 	// You can use its glob syntax
 	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }

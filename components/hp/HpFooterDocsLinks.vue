@@ -1,6 +1,13 @@
+<!--
+stylify-components
+	'footer-docs-section': 'display:flex width:100% margin-bottom:18px align-items:center flex-direction:column md:align-items:flex-start',
+	'footer-docs-section__title': 'margin-top:0 margin-bottom:4px font-size:16px line-height:24px',
+	'footer-docs-section__link': 'margin-bottom:8px margin-left:24px font-size:14px line-height:24px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1'
+/stylify-components
+-->
 <template>
-	<section v-if="links.length" class="display:flex width:100% margin-bottom:18px align-items:center flex-direction:column md:align-items:flex-start">
-		<h3 class="margin-top:0 margin-bottom:4px font-size:16px line-height:24px">
+	<section v-if="links.length" class="footer-docs-section">
+		<h3 class="footer-docs-section__title">
 			<nuxt-link v-if="titleLinkEnabled" :to="links[0].dir" class="color:$grey3 hover:color:$blue1 text-decoration:none">{{ links[0].navigationTitle }}</nuxt-link>
 			<span v-else>{{ sectionTitle }}</span>
 		</h3>
@@ -9,7 +16,7 @@
 					v-for="(link, key) in links.slice(1)"
 					:key="key"
 					:to="link.path"
-					class="margin-bottom:8px margin-left:24px font-size:14px line-height:24px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1"
+					class="footer-docs-section__link"
 				>{{ link.navigationTitle }}
 			</nuxt-link>
 		</div>
