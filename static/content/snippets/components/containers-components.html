@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+	<style>
+		body {
+			padding: 32px;
+		}
+		div {
+			margin-bottom: 32px !important
+		}
+	</style>
+</head>
+<body>
+
+<!--
+stylify-components
+	container: `
+		padding:0_8px sm:padding:0_16px xl:padding:0
+		&--sm { max-width:640px }
+		&--md { max-width:768px }
+		&--lg { max-width:1024px }
+		&--xl { max-width:1280px }
+		&--2xl { max-width:1536px }
+		&--3xl { max-width:1920px }
+	`
+/stylify-components
+-->
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0">Container fluid</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:640px">Container 640px</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:768px">Container 768px</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:1024px">Container 1024px</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:1280px">Container 1280px</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:1536px">Container 1536px</div>
+<div class="padding:0_8px sm:padding:0_16px xl:padding:0 margin:0_auto max-width:1920px">Container 1920px</div>
+
+</body>
+</html>

@@ -7,7 +7,7 @@
 					v-model="code"
 					:highlight="highlighter"
 					:readonly="readonly"
-					class="language-html"
+					:class="`language-html ${readonly ? '[textarea]{display:none!important}' : ''}`"
 				></prism-editor>
 			</div>
 		</client-only>
@@ -47,11 +47,7 @@ export default {
 		defaultCode: {
 			immediate: true,
 			handler(code) {
-				this.code = code.replace('&amp;', '&')
-					.replace(/\s+data-v-\S+=""/g, '')
-					.replace(/&amp;/g, '&')
-					.replace(/&lt;/g, '<')
-					.replace(/&gt;/g, '>')
+				this.code = this.prepareCode(code);
 			}
 		}
 	},
@@ -60,7 +56,7 @@ export default {
 			const codeSlotContent = this.$refs.codeSlot.innerHTML.trim();
 
 			if (codeSlotContent.length) {
-				this.code = codeSlotContent;
+				this.code = this.prepareCode(codeSlotContent);
 			}
 		}
 	},
@@ -68,6 +64,16 @@ export default {
 		code: ''
 	}),
 	methods: {
+		prepareCode(code) {
+			return code.trim().replace('&amp;', '&')
+				.replace(/\s+data-v-\S+=""/g, '')
+				.replace(/&amp;/g, '&')
+				.replace(/&lt;/g, '<')
+				.replace(/&gt;/g, '>')
+				.replace(/^<script[^>]*class="code-wrapper"[^>]*>/, '')
+				.replace(/<\/script>$/, '')
+				.replace(/\n<div data-netlify-deploy(.|\s)+/, '');
+		},
 		highlighter(code) {
 			this.$emit('codeChanged', code.trim());
 			return highlightCode(code.trim(), this.lang); // languages.<insert language> to return html with markup

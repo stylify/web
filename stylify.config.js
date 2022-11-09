@@ -4,7 +4,8 @@ export default defineConfig({
 	compiler: {
 		ignoredAreas: [
 			// Ignore code areas in docs
-			/`{3}\S+([\s\S]+?)`{3}/
+			/`{3}\S+([\s\S]+?)`{3}/,
+			/<interactive-preview[^\>]*>([\s+\S]+?)<\/interactive-preview>/
 		],
 		variables: {
 			blue1: '#01befe',
@@ -71,6 +72,7 @@ export default defineConfig({
 				max-width:1280px margin-left:auto margin-right:auto padding-left:8px padding-right:8px
 				md:padding-left:12px md:padding-right:12px
 				lg:padding-left:24px md:padding-right:24px
+				&-lg { max-width:1920px }
 			`,
 			btn: `
 				background-color:$blue1 white-space:nowrap line-height:1 transition:background-color_0.3s,_color_0.3s cursor:pointer color:#fff text-decoration:none font-weight:bold

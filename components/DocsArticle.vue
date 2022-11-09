@@ -1,7 +1,7 @@
 <template>
 	<article v-if="typeof page !== 'undefined'" class="margin-bottom:24px">
 		<h1>{{ page.title }}</h1>
-		<div v-if="shortcuts" class="margin-top:8px min-height:38px">
+		<div v-if="shortcuts.length" class="margin-top:8px min-height:38px">
 			<span>Shortcuts:</span>
 			<a
 				v-for="shortcutLink in shortcuts"

@@ -1,12 +1,12 @@
 <template>
-	<div>
+	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100%">
 		<aside
 			@click="toggleSidebar"
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
-				`width:100% margin-right:34px max-height:100vh overflow:auto transition:transform_0.3s_ease-in-out
+				`width:100% max-height:100vh overflow:auto transition:transform_0.3s_ease-in-out
 				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
-				lg:position:sticky lg:transition:none lg:transform:translateX(0) lg:top:0 lg:max-width:220px`
+				lg:position:sticky lg:transition:none lg:transform:translateX(0)`
 			]
 		">
 			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
@@ -23,7 +23,7 @@
 						:to="sectionItems[0].dir"
 						:class="[
 							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:$blue4',
-							`display:block text-decoration:none position:sticky top:0 z-index:1`
+							`display:block text-decoration:none position:sticky top:0 z-index:1 [&.nuxt-link-exact-active_h3]{color:#01befe!important}`
 						]"
 					>
 						<h3 class="font-size:16px padding:8px_0 position:sticky margin:0 top:0 backdrop-filter:blur(12px) z-index:1">

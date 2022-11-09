@@ -9,46 +9,42 @@
 </template>
 
 <script>
-import { DocsRepository } from '~/services/model/DocsRepository';
+import { SnippetsRepository } from '~/services/model/SnippetsRepository';
 
 export default {
  	asyncData: async ({ $content, params, route, redirect }) => {
-		if (route.path.replace(/\/+$/, '') === '/docs') {
-			redirect('/docs/get-started');
+		if (route.path.replace(/\/+$/, '') === '/snippets') {
+			redirect('/snippets/components');
 			return;
 		}
 
 		const getNavigationSectionItems = async (section, config) => {
-			const docsRepository = new DocsRepository($content);
-			return docsRepository.findBySection({
+			const snippetsRepository = new SnippetsRepository($content);
+			return snippetsRepository.findBySection({
 				section: section,
 				only: ['navigationTitle', 'slug', 'dir', 'section', 'navigationIconPath', 'path']
 			})
 		};
 
-		let urlPath = params.pathMatch || params.slug || 'get-started';
+		let urlPath = params.pathMatch ?? params.slug ?? 'components';
 		let urlPathToArray = urlPath.split('/');
 
 		const navigationItems = {};
 		const navigationSectionsConfig = {
-			'get-started': {
+			'components': {
 				sort: ['order', 'asc']
 			},
-			'integrations': {},
-			'stylify': {},
-			'bundler': {},
-			'unplugin': {},
-			'astro': {},
-			'nuxt': {},
-			'nuxt-module': {},
+			'snippets': {},
+			'assets': {}
 		};
 		for (const section of Object.keys(navigationSectionsConfig)) {
 			navigationItems[section] = await getNavigationSectionItems(section, navigationSectionsConfig[section]);
 		}
 		const whereConditionKey = urlPathToArray.length >= 2 ? 'path' : 'slug';
-		let pageContent = await $content('docs', { deep: true})
+
+		let pageContent = await $content('snippets', { deep: true})
 			.where({
-				[whereConditionKey]: urlPathToArray.length >= 2 ? `/docs/${urlPath}` : urlPath
+				[whereConditionKey]: urlPathToArray.length >= 2 ? `/snippets/${urlPath}` : urlPath
 			})
 			.fetch();
 

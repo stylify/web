@@ -135,6 +135,39 @@ Usage:
 <docs-section>
 <template #description>
 
+### keyframes
+Keyframes in Stylify are defined with the same syntax like in the CSS.
+
+Keyfames can also be defined within a comment within a file using [content options](#contentoptionsprocessors).
+
+</template>
+<template #code>
+
+```js
+const compilerConfig = {
+	keyframes: {
+		fadeIn: 'from { opacity: 0; } to { opacity: 1; }',
+		fadeOut: 'from { opacity: 1; } to { opacity: 0; }',
+		shadowPulse: `
+			from { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2); }
+			to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+		`
+	}
+};
+```
+
+```html
+<span class="animation:fadeIn_2s_infinite">Fade In</span>
+<span class="animation:fadeOut_2s_infinite">Fade Out</span>
+<span class="animation:shadowPulse_2s_infinite">Shadow pulse</span>
+```
+
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
 ### screens
 Screens are used to generate media queries. The key can be a string or a regular expression. You can use predefined [screens](/docs/stylify/native-preset#screens) or define your own.
 
@@ -292,6 +325,7 @@ The example bellow will generate the following:
 - `[h1,h2]{margin-top:0} h1, [h1,h2]{margin-top:0} h2 { margin-top:0 }`
 
 For pseudo classes
+- `[a::after]{content:^Hello_World^} a::after {content:'Hello World'}`
 - `[a]{hover:color:steelblue} a:hover {color:steelblue}`
 - `[a:hover]{color:stelblue} a:hover {color:stelblue}`
 - `[&:hover_a]{color:stelblue}:hover a {color:stelblue}`
@@ -448,7 +482,7 @@ Some configuration options can be defined directly in the file. It's good to kee
 <template #code>
 
 ```html
-// Components expects a valid javascript object as value
+// Components expects a valid javascript object as value without surrounding brackets
 stylify-components
 	button: `font-size:24px padding:4px`,
 	'button--big': `
@@ -458,12 +492,23 @@ stylify-components
 	`
 /stylify-components
 
-// Variables expects a valid javascript object as value
+// Variables expects a valid javascript object as value without surrounding brackets
 stylify-variables
 	blue: `#01befe`
 /stylify-variables
 
-// Custom selectors expects a valid javascript object as value
+// Keyframes expects a valid javascript object as value without surrounding brackets
+stylify-keyframes
+	fadeIn: 'from { opacity: 0; } to { opacity: 1; }',
+	fadeOut: 'from { opacity: 1; } to { opacity: 0; }',
+	shadowPulse: `
+		from { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2); }
+		to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+	`
+/stylify-keyframes
+-->
+
+// Custom selectors expects a valid javascript object as value without surrounding brackets
 stylify-customSelectors
 	article: `font-size:24px`
 /stylify-customSelectors
@@ -473,6 +518,7 @@ stylify-pregenerate
 	border-top:1px_solid_#444
 /stylify-pregenerate
 
+// Screens expects a valid javascript object as value without surrounding brackets
 stylify-screens
 	'testScreen': '(min-width: 123px)',
 	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
