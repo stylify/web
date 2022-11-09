@@ -27,7 +27,13 @@ export default {
 	mounted() {
 		document.querySelectorAll('h2, h3, h4, h5, h6').forEach((title) => {
 			title.addEventListener('click', () => {
-				title.querySelector('a').click();
+				const link = title.querySelector('a');
+
+				if (!link) {
+					return;
+				}
+
+				link.click();
 			});
 		});
 

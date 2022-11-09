@@ -4,12 +4,12 @@
 			@click="toggleSidebar"
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
-				`width:100% max-height:100vh overflow:auto transition:transform_0.3s_ease-in-out
+				`width:100% max-height:100vh height:100% overflow:auto transition:transform_0.3s_ease-in-out
 				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
 				lg:position:sticky lg:transition:none lg:transform:translateX(0)`
 			]
 		">
-			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0">
+			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0 min-height:100vh">
 				<div class="text-align:right lg:display:none">
 					<a role="button" class="cursor:pointer font-size:32px display:inline-block width:32px line-height:32px">
 						<i class="icon icon-x color:$blue1 font-weight:bold"></i>
@@ -77,7 +77,7 @@ export default {
 				return;
 			}
 
-			const element = document.querySelector('aside .nuxt-link-exact-active');
+			const element = document.querySelector(`aside [href="${window.location.pathname}"]`) ?? document.querySelector('aside .nuxt-link-exact-active');
 
 			if (!element) {
 				return;
