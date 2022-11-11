@@ -78,6 +78,9 @@ stylify-components
 					</div>
 				</section>
 			</div>
+			<div class="position:fixed bottom:12px right:12px">
+				<a href="https://www.producthunt.com/posts/stylify-css?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stylify&#0045;css" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=light" alt="Stylify&#0032;CSS - Stylify&#0032;uses&#0032;CSS&#0045;like&#0032;selectors&#0032;to&#0032;generate&#0032;optimized&#0032;CSS | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+			</div>
 		</footer>
 	</div>
 </template>
