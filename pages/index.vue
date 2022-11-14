@@ -361,13 +361,6 @@ export default {
 				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
 			},
 			{
-				name: 'Phan An',
-				note: '@vuejs core team member',
-				image: 'phan-an.jpg',
-				text: `This looks super interesting!`,
-				link: 'https://twitter.com/notphanan/status/1566610354246864901'
-			},
-			{
 				name: 'Lukeshiru',
 				note: 'Webdev at Vangware',
 				image: 'lukeshiru.gif',
@@ -382,11 +375,32 @@ export default {
 				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
 			},
 			{
+				name: 'Phan An',
+				note: '@vuejs core team member',
+				image: 'phan-an.jpg',
+				text: `This looks super interesting!`,
+				link: 'https://twitter.com/notphanan/status/1566610354246864901'
+			},
+			{
 				name: 'Tomáš Pilař',
 				note: 'Co-Founder & CTO Conviu.com',
 				image: 'tomas-pilar.jpg',
 				text: `I recommend looking at stylifycss.com if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
 				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
+			},
+			{
+				name: 'Posandu Mapa',
+				note: 'Fullstack dev',
+				image: 'posandu-mapa.jpeg',
+				text: `I like how Stylify compresses the utility classes. A good Tailwind CSS alternative.`,
+				link: 'https://www.producthunt.com/products/stylify-css/reviews?review=551602'
+			},
+			{
+				name: 'Finn Guha',
+				note: 'Webdev teacher',
+				image: 'finn-guha.jpeg',
+				text: `Wow, that seems like a promising concept ! And one that seems very interesting to me personally. I am always amazed by new and unique concepts of writing CSS.`,
+				link: 'https://www.producthunt.com/posts/stylify-css?comment=2013972'
 			},
 			{
 				name: 'David Mario Licla',
@@ -407,7 +421,20 @@ export default {
 				image: 'japheth-mutai.jpg',
 				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
-			}
+			},
+			{
+				name: 'Shushant Lakhyani',
+				note: 'Just Ship It Hub',
+				image: 'shushant-lakhyani.jpeg',
+				text: `This looks cool!`,
+				link: 'https://www.producthunt.com/posts/stylify-css?comment=2014729'
+			},
+			{
+				name: 'Musa Yazlık',
+				image: 'musa-yazlik.jpg',
+				text: `Hmm. I like it. 😁`,
+				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
+			},
 		]
 	}),
 }
