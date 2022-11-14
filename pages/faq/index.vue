@@ -33,7 +33,10 @@
 					For example a selector like <code>color:red</code> is generated as <code>.color\:red{color:red}</code>. This selector can be reused.
 				</li>
 				<li>
-					When you add a component in Stylify like <code>.button</code> that needs red text, it is generated like this <code>.color\:red,.button{color:red}</code>. The selector is simply attached, reused and the <code>property:value</code> not generated again => This means smaller bundles
+					Inline styles are not responsive. You cannot ad a <code>@media query</code>. This means, you cannot have font size 12px for mobile and then change it for a desktop. Also, it is easier to toggle classes then a style attribute value.
+				</li>
+				<li>
+					When you add a component in Stylify like <code>.button</code> that needs red text, it is generated like this <code>.color\:red,.button{color:red}</code>. The selector is simply attached, reused and the <code>property:value</code> not generated again => This means smaller bundles.
 				</li>
 				<li>
 					In production, you can also minify this selectors to => <code>.a,.b{color:red}</code>. This is done even by Medium.com and Facebook.
