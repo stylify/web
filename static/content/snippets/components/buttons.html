@@ -7,12 +7,9 @@
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.js"></script>
 	<style>
-		body {
-			padding:32px;
-		}
-
 		body > * {
 			margin: 4px;
+			vertical-align: middle;
 		}
 	</style>
 </head>
@@ -20,28 +17,27 @@
 
 <!--
 stylify-variables
-	primaryColor: '#1890ff',
-	secondaryColor: '#52c41a',
-	tertiaryColor: '#faad14'
+	color: '#1890ff',
 /stylify-variables
 -->
-<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$primaryColor transition:background_0.3s hover:background:lighten($primaryColor,20) focus:background:lighten($primaryColor,20)">Button</button>
-<a href="#" class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$secondaryColor transition:background_0.3s hover:background:lighten($secondaryColor,20) focus:background:lighten($secondaryColor,20)">Anchor Secondary</a>
-<input type="submit" class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$tertiaryColor transition:background_0.3s hover:background:lighten($tertiaryColor,20) focus:background:lighten($tertiaryColor,20)" value="Input Tertiary">
+<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">Button</button>
+<a href="#" class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">Anchor button</a>
+<input type="submit" value="Input button" class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">
 
-<br><br>
-
-<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$primaryColor transition:background_0.3s hover:background:lighten($primaryColor,20) focus:background:lighten($primaryColor,20)">
+<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">
 	<span class="display:inline-flex width:20px min-width:20px font-size:24px margin-right:4px line-height:20px justify-content:center align-items:center">&plus;</span>
 	<span>With icon</span>
 </button>
-<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$primaryColor user-select:none text-decoration:none background:#fff transition:background_0.3s border:1px_solid_#79747e hover:background:colorToRgb($primaryColor,0.10) focus:background:colorToRgb($primaryColor,10)">Outline</button>
+
+<br><br>
+
+<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$color user-select:none text-decoration:none background:#fff transition:background_0.3s border:1px_solid_#79747e hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,10)">Outline</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:default line-height:20px font-size:16px user-select:none text-decoration:none border:1px_solid_#e4e0e3 background:#fff color:#aaa7ab ">Outline disabled</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:default line-height:20px font-size:16px user-select:none text-decoration:none background:#e3dfe3 color:#aaa7ab">Solid disabled</button>
 
 <br><br>
 
-<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$primaryColor user-select:none text-decoration:none background:none transition:background_0.3s hover:background:colorToRgb($primaryColor,0.10) focus:background:colorToRgb($primaryColor,0.10)">Text button</button>
+<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$color user-select:none text-decoration:none background:none transition:background_0.3s hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,0.10)">Text button</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none line-height:20px font-size:16px user-select:none text-decoration:none background:none color:#aaa7ab">Text button disabled</button>
 
 </body>

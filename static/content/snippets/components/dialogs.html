@@ -6,44 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
-	<style>
-		body {
-			padding: 32px;
-		}
-	</style>
 </head>
 <body>
+
 <!--
 stylify-variables
 	primaryColor: '#1890ff',
 	secondaryColor: '#52c41a',
-	tertiaryColor: '#faad14'
+	tertiaryColor: '#faad14',
 /stylify-variables
-
-stylify-components
-	dialog: `
-		backdrop-filter:blur(3px) position:fixed inset:0 z-index:10 background:rgba(0,0,0,0.8) display:flex justify-content:center align-items:center
-		&[hidden] { visibility:hidden }
-	`,
-	dialog__inner: 'display:flex justify-content:flex-start flex-direction:column background-color:#fff border-radius:24px overflow:hidden min-width:300px max-width:600px',
-	dialog__header: `
-		padding:24px_24px_12px_24px font-size:24px line-height:32px color:#000 font-weight:700
-		&--centered { text-align:center }
-	`,
-	dialog__content: 'color:#49454F flex:1 overflow:auto padding:12px_24px_12px_24px',
-	dialog__footer: `
-		padding:12px_24px_24px_24px display:flex align-items:center justify-content:flex-end flex-wrap:wrap gap:32px
-		&.dialog__footer--centered { justify-content:center }
-	`
-/stylify-components
 -->
-<div data-dialog="dialog1" hidden class="dialog">
-	<div class="dialog__inner">
-		<div class="dialog__header">Dialog</div>
-		<div class="dialog__content">
+<div data-dialog="dialog1" hidden class="backdrop-filter:blur(3px) position:fixed inset:0 z-index:10 background:rgba(0,0,0,0.8) display:flex justify-content:center align-items:center [&[hidden]]{visibility:hidden}">
+	<div class="display:flex justify-content:flex-start flex-direction:column background-color:#fff border-radius:24px overflow:hidden min-width:300px max-width:600px">
+		<div class="padding:24px_24px_12px_24px font-size:24px line-height:32px color:#000 font-weight:700">Dialog</div>
+		<div class="color:#49454F flex:1 overflow:auto padding:12px_24px_12px_24px">
 			A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.
 		</div>
-		<div class="dialog__footer">
+		<div class="padding:12px_24px_24px_24px display:flex align-items:center justify-content:flex-end flex-wrap:wrap gap:32px">
 			<!-- This can be buttons -->
 			<a role="button" class="color:$primaryColor">Action</a>
 			<a role="button" class="color:$primaryColor" data-close-dialog="dialog1">Close</a>
@@ -51,13 +30,13 @@ stylify-components
 	</div>
 </div>
 
-<div data-dialog="dialog2" hidden class="dialog">
-	<div class="dialog__inner">
-		<div class="dialog__header dialog__header--centered">Dialog - centered</div>
-		<div class="dialog__content">
+<div data-dialog="dialog2" hidden class="backdrop-filter:blur(3px) position:fixed inset:0 z-index:10 background:rgba(0,0,0,0.8) display:flex justify-content:center align-items:center [&[hidden]]{visibility:hidden}">
+	<div class="display:flex justify-content:flex-start flex-direction:column background-color:#fff border-radius:24px overflow:hidden min-width:300px max-width:600px">
+		<div class="padding:24px_24px_12px_24px font-size:24px line-height:32px color:#000 font-weight:700 text-align:center">Dialog - centered</div>
+		<div class="color:#49454F flex:1 overflow:auto padding:12px_24px_12px_24px">
 			A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.
 		</div>
-		<div class="dialog__footer dialog__footer--centered">
+		<div class="padding:12px_24px_24px_24px display:flex align-items:center justify-content:center flex-wrap:wrap gap:32px">
 			<!-- This can be buttons -->
 			<a role="button" class="color:$primaryColor">Action</a>
 			<a role="button" class="color:$primaryColor" data-close-dialog="dialog2">Close</a>

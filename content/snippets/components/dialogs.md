@@ -10,14 +10,12 @@ title: "Dialog Components"
 description: "Stylify CSS Dialog Components"
 ---
 
-<interactive-preview
-class="margin-bottom:48px"
+<interactive-preview class="margin-bottom:48px"
 minHeight="400px"
-description="Dialog"
-html-snippet="components/dialog"></interactive-preview>
+title="Dialog"
+html-snippet="components/dialogs"></interactive-preview>
 
 <interactive-preview
-class="margin-bottom:48px"
-minHeight="400px"
-description="Dialog - using components"
-html-snippet="components/dialog-components"></interactive-preview>
+min-height="400px"
+title="Dialog - using components"
+html-snippet="components/dialogs-components"></interactive-preview>

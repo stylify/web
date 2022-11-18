@@ -8,7 +8,7 @@ stylify-components
 		text-decoration:none min-height:80px
 		sm:width:calc(100%_*_1/3_-_12px)
 		md:width:calc(100%_*_1/4_-_24px) md:margin-bottom:24px md:margin-left:24px
-		lg:padding:18px lg:width:calc(100%_*_1/5_-_24px) lg:width:calc(100%_*_1/6_-_24px)
+		lg:padding:18px lg:width:calc(100%_*_1/6_-_24px) xl:width:calc(100%_*_1/9_-_24px)
 	`
 /stylify-components
 -->
@@ -17,7 +17,17 @@ stylify-components
 		class="display:flex flex-direction:row flex-wrap:wrap margin-left:-12px md:margin-left:-24px"
 	>
 		<nuxt-link to="/docs/integrations/browser" class="integration-block">
-			<span class="font-weight:bold word-break:keep-all sm:font-size:18px md:font-size:24px">Browser</span>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/browser.svg"
+					alt=""
+					height="1"
+					width="2"
+					decoding="async"
+					loading="lazy"
+					class="width:auto height:40px"
+				/>
+			</div>
 		</nuxt-link>
 		<nuxt-link
 			to="/docs/integrations/nextjs"

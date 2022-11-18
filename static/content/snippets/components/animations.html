@@ -7,11 +7,9 @@
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
 	<style>
-		body {
-			padding:12px;
-		}
 		span {
-			margin: 32px;
+			display: inline-flex;
+			margin: 0px 32px 32px 32px;
 		}
 	</style>
 </head>
@@ -21,14 +19,27 @@
 stylify-keyframes
 	fadeIn: 'from { opacity: 0; } to { opacity: 1; }',
 	fadeOut: 'from { opacity: 1; } to { opacity: 0; }',
+	slideFromLeft: 'from { transform: translateX(-100%); } to { transform: translateX(0) }',
+	slideFromRight: 'from { transform: translateX(100%); } to { transform: translateX(0) }',
 	shadowPulse: `
 		from { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2); }
 		to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+	`,
+	rotate: `
+		 from { transform: rotate(0); }
+		 to { transform: rotate(360deg); }
 	`
 /stylify-keyframes
 -->
 <span class="animation:fadeIn_2s_infinite">Fade In</span>
 <span class="animation:fadeOut_2s_infinite">Fade Out</span>
 <span class="animation:shadowPulse_2s_infinite">Shadow pulse</span>
+<br>
+<br>
+<span class="animation:rotate_2s_linear_infinite display:inline-block">Rotate</span>
+<br>
+<span class="animation:slideFromLeft_2s_ease-in-out_infinite display:inline-block position:relative">Slide from left to right</span>
+<br>
+<span class="animation:slideFromRight_2s_ease-in-out_infinite display:inline-block position:relative">Slide from right to left</span>
 </body>
 </html>

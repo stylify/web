@@ -189,7 +189,7 @@ export default {
 @import '@docsearch/css';
 
 body {
-	font-family: 'Poppins', sans-serif;
+	font-family: -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 }

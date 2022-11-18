@@ -10,7 +10,6 @@ title: "Animations Components"
 description: "Stylify CSS Animations Components"
 ---
 
-<interactive-preview
-class="margin-bottom:48px"
-description="Animation"
+<interactive-preview class="margin-bottom:48px"
+title="Animation"
 html-snippet="components/animations"></interactive-preview>

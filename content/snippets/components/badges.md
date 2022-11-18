@@ -10,12 +10,12 @@ title: "Badge Components"
 description: "Stylify CSS Badge Components"
 ---
 
-<interactive-preview
-class="margin-bottom:48px"
-description="Badges"
+<interactive-preview class="margin-bottom:48px"
+min-height="180"
+title="Badges"
 html-snippet="components/badges"></interactive-preview>
 
 <interactive-preview
-class="margin-bottom:48px"
-description="Badges - using components"
+min-height="180"
+title="Badges - using components"
 html-snippet="components/badges-components"></interactive-preview>

@@ -129,9 +129,25 @@ stylify-keyframes
 			</div>
 		</section>
 
+		<section id="components" class="container margin-top:48px padding-top:48px">
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
+			<div class="sm:margin-left:-24px display:flex flex-wrap:wrap">
+				<nuxt-link v-for="component in componentsList" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_24px) lg:width:calc(100%_*_1/3_-_24px) display:inline-flex flex-direction:column sm:margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
+					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
+					<h3 class="margin:8px_0_0_0 font-size:24px transition:.3s">{{ component.title }}</h3>
+				</nuxt-link>
+			</div>
+			<div class="text-align:center">
+				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
+					Checkout components
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
 		<section id="quote" class="container margin-top:48px padding-top:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💎 Don't study frameworks. Focus on coding. 💎</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding&nbsp;💎</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px line-height:24px">
 						<p class="margin-top:0">
@@ -155,13 +171,6 @@ stylify-keyframes
 			<div>
 				<h3 class="text-align:center font-size:24px"><img src="/images/brands/youtube.svg" loading="lazy" decoding="async" width="42" height="42" class="vertical-align:middle margin-right:12px">Learn more about Stylify on our Youtube channel</h3>
 				<div class="display:flex max-width:calc(100%_+_16px) margin-left:-8px margin-right:-8px flex-direction:row margin-top:32px overflow:auto justify-content:center">
-					<!-- <div class="display:flex justify-content:flex-start max-width:100% margin-left:-24px">
-						<a v-for="video in videos" :key="video.link" :href="video.link" target="_blank" rel="noopener" class="text-decoration:none display:flex flex-direction:column min-width:300px width:300px border-radius:4px background:#1e2431 padding:12px cursor:pointer margin-left:24px">
-							<img :src="`/images/youtube/${video.image}`" loading="lazy" decoding="async" class="display:flex min-height:300px max-height:300px margin-bottom:8px object-fit:cover border-radius:4px flex:1">
-							<strong class="font-size:18px line-height:26px color:#fff">{{ video.title }}</strong>
-						</a>
-						<span>&nbsp;</span>
-					</div> -->
 					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen class="max-width:100% min-height:315px height:auto"></iframe>
 				</div>
 			</div>
@@ -333,6 +342,38 @@ export default {
 				link: 'https://www.youtube.com/shorts/zlQwVlIsmlE'
 			},
 		],
+		componentsList: [
+			{
+				previewUrl: 'components/buttons.html',
+				docsUrl: 'components/buttons',
+				title: 'Buttons'
+			},
+			{
+				previewUrl: 'components/badges.html',
+				docsUrl: 'components/badges',
+				title: 'Badges'
+			},
+			{
+				previewUrl: 'components/switches.html',
+				docsUrl: 'components/switches',
+				title: 'Switches'
+			},
+			{
+				previewUrl: 'components/text-fields.html',
+				docsUrl: 'components/text-fields',
+				title: 'Text Fields'
+			},
+			{
+				previewUrl: 'components/shadows.html',
+				docsUrl: 'components/shadows',
+				title: 'Shadows'
+			},
+			{
+				previewUrl: 'components/animations.html',
+				docsUrl: 'components/animations',
+				title: 'Animations'
+			}
+		],
 		fans: [
 			{
 				name: 'Mubashar Hashmat',
@@ -341,7 +382,7 @@ export default {
 				text: `Extremely awesome 😎.`,
 				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
 			},
-            {
+			{
 				name: 'Paul⭐Bear',
 				image: 'paul-bear.jpg',
 				text: `Very cool library!`,
