@@ -27,7 +27,7 @@ export default {
 			{ name: 'theme-color', content: '#01befe' },
 			// Open Graph
 			{ hid: 'og:title', property: 'og:title', content: 'Stylify' },
-			{ hid: 'og:image', property: 'og:image', content: '/images/og-image.jpg' },
+			{ hid: 'og:image', property: 'og:image', content: '/images/og-image-v2.jpg' },
 			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
 			// Twitter Card
 			{ hid: 'twitter:title', name: 'twitter:title', content: defaultPageTitle },
@@ -40,10 +40,6 @@ export default {
 			{ rel: 'manifest', href: '/site.webmanifest' },
 			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
 			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
-			{ rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-			{ rel: 'preconnect', href: 'https://fonts.gstatic.com' },
-			{ rel: 'preload', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap', as: "font" },
-			{ rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap', loading: "eager"}
 		]
 	},
 

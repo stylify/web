@@ -7,9 +7,6 @@
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.js"></script>
 	<style>
-		body {
-			padding: 32px;
-		}
 		body > * {
 			margin: 4px;
 		}
@@ -18,22 +15,18 @@
 <body>
 <!--
 stylify-variables
-	primaryColor: '#1890ff',
-	secondaryColor: '#52c41a',
-	tertiaryColor: '#faad14'
+	color: '#1890ff'
 /stylify-variables
 
 stylify-components
 	button: `
-		display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$primaryColor user-select:none text-decoration:none background:none transition:background_0.3s hover:background:colorToRgb($primaryColor,0.10) focus:background:colorToRgb($primaryColor,0.10)
+		display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$color user-select:none text-decoration:none background:none transition:background_0.3s hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,0.10)
 		&.button--solid {
-			background:$primaryColor color:#fff hover:background:lighten($primaryColor,20) focus:background:lighten($primaryColor,20)
-			&.button--secondary { background:$secondaryColor hover:background:lighten($secondaryColor,20) focus:background:lighten($secondaryColor,20) }
-			&.button--tertiary { background:$tertiaryColor hover:background:lighten($tertiaryColor,20) focus:background:lighten($tertiaryColor,20) }
+			background:$color color:#fff hover:background:lighten($color,20) focus:background:lighten($color,20)
 			&.button--disabled { cursor:default background:#e3dfe3 color:#aaa7ab }
 		}
 		&.button--outline {
-			color:$primaryColor background:#fff border:1px_solid_#79747e hover:background:colorToRgb($primaryColor,0.10) focus:background:colorToRgb($primaryColor,10)
+			color:$color background:#fff border:1px_solid_#79747e hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,10)
 			&.button--disabled { cursor:default border:1px_solid_#e4e0e3 background:#fff color:#aaa7ab }
 		}
 		&.button--disabled { cursor:default background:none color:#aaa7ab }
@@ -42,8 +35,8 @@ stylify-components
 /stylify-components
 -->
 <button class="button button--solid">Button</button>
-<a href="#" class="button button--solid button--secondary">Anchor Secondary</a>
-<input type="submit" class="button button--solid button--tertiary" value="Input Tertiary">
+<a href="#" class="button button--solid button--secondary">Anchor button</a>
+<input type="submit" class="button button--solid button--tertiary" value="Input button">
 
 <br><br>
 

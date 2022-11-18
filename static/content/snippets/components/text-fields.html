@@ -6,11 +6,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
-	<style>
-		body {
-			padding: 32px;
-		}
-	</style>
 </head>
 <body>
 
@@ -31,22 +26,22 @@ stylify-variables
 
 <div class="position:relative display:inline-flex">
 	<textarea id="text2" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px max-height:400px resize:vertical [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&::placeholder]{color:transparent} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}"></textarea>
-	<label for="text2" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px background:#fff padding:0_4px">Textarea</label>
+	<label for="text2" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px padding:0_4px">Textarea</label>
 </div>
 
 <br><br>
 
 <!-- Disabled -->
 <div class="position:relative display:inline-flex">
-	<input id="text1" disabled type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):inalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
-	<label for="text1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input</label>
+	<input id="text3" disabled type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):inalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<label for="text3" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input - disabled</label>
 </div>
 
 <br><br>
 
 <div class="position:relative display:inline-flex">
-	<textarea id="text2" disabled placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px max-height:400px resize:vertical [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&::placeholder]{color:transparent} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}"></textarea>
-	<label for="text2" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px background:#fff padding:0_4px">Textarea</label>
+	<textarea id="text4" disabled placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px max-height:400px resize:vertical [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&::placeholder]{color:transparent} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}"></textarea>
+	<label for="text4" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px padding:0_4px">Textarea - disabled</label>
 </div>
 
 </body>

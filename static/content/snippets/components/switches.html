@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shadows</title>
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+</head>
+<body>
+
+<!--
+stylify-variables
+	color: '#1890ff',
+/stylify-variables
+-->
+<label class="display:inline-flex align-items:center flex-wrap:nowrap">
+	<span class="margin-right:4px">Outlined</span>
+	<input type="checkbox" class="
+		overflow:hidden
+		border:1px_solid_#aaa
+		background:#aaa
+		appearance:none
+		height:24px
+		width:48px
+		border-radius:24px
+		box-shadow:-24px_0_0_2px_#fff_inset,_0px_0_0px_2px_#fff_inset,0_0
+		transition:.2s_ease-in-out,.2s_ease-in-out
+		will-change:box-shadow,border-color
+		[&:checked]{box-shadow:24px_0_0_2px_#fff_inset,_0px_0_0px_2px_#fff_inset,0_0;border-color:$color;background:$color}
+	">
+</label>
+<br>
+<label class="display:inline-flex align-items:center flex-wrap:nowrap">
+	<span class="margin-right:4px">Solid</span>
+	<input type="checkbox" class="
+		overflow:hidden
+		border:1px_solid_#aaa
+		background:#aaa
+		appearance:none
+		height:24px
+		width:48px
+		border-radius:24px
+		box-shadow:-24px_0_0_2px_#fff_inset,_0px_0_0px_2px_#fff_inset,0_0
+		transition:.2s_ease-in-out,.2s_ease-in-out
+		will-change:box-shadow,border-color
+		[&:checked]{box-shadow:24px_0_0_2px_#1890ff_inset,_0px_0_0px_2px_#1890ff_inset,0_0;border-color:$color;background:#fff}
+	">
+</label>
+
+</body>
+</html>

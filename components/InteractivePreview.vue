@@ -6,7 +6,7 @@ stylify-components
 <template>
 	<div>
 		<div class="display:flex justify-content:space-between align-items:center margin-bottom:12px">
-			<div class="color:#fff font-weight:bold">{{ description }}</div>
+			<div class="color:#fff font-weight:bold">{{ title }}</div>
 			<div class="display:flex align-items:center margin-left:-4px">
 				<a role="button" @click="setTab('preview')" :class="`${selectedTab === 'preview' ? '' : 'btn--transparent'} btn interactive-preview__button`">Preview</a>
 				<a role="button" v-for="codeType in codeTypes" v-if="hasCode(codeType)" @click="setTab(codeType.toLowerCase())" :class="`${selectedTab === codeType.toLowerCase() ? '' : 'btn--transparent'} btn interactive-preview__button`">
@@ -14,8 +14,9 @@ stylify-components
 				</a>
 			</div>
 		</div>
+		<div v-if="description">{{ description }}</div>
 		<div v-if="hasCode('html')">
-			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html`" class="width:100% min-height:500px overflow:auto border-radius:4px" frameBorder="0"></iframe>
+			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
 			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" v-if="hasCode(codeType)">
 				<example-code-editor readonly :defaultCode="codeSnippet" />
 			</div>
@@ -29,10 +30,14 @@ import { Compiler, hooks } from '@stylify/stylify/esm/index.js';
 export default {
 	props: {
 		htmlSnippet: null,
+		minHeight: {
+			type: String,
+			default: '250',
+		},
+		title: String,
 		description: String
 	},
 	data: () => ({
-		//codeSnippets: {'html': 'components/containers'},
 		selectedTab: 'preview',
 		codeTypes: ['HTML', 'Vue', 'React'],
 		scopeClass: '',
@@ -81,9 +86,7 @@ export default {
 			this.previewCode = code;
 			const compiler = new Compiler({
 				variables: {
-					primaryColor: this.primaryColor,
-					secondaryColor: this.secondaryColor,
-					tertiaryColor: this.tertiaryColor
+					color: this.color
 				}
 			});
 			hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {

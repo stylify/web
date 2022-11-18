@@ -31,8 +31,9 @@ export default defineConfig({
 		},
 		customSelectors: {
 			// Global
+			html: 'color-scheme:dark',
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
-			'body': 'color-scheme:dark color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
+			'body': 'color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
 			'h1,h2,h3,h4,h5,h6': 'color:#fff',
 			img: 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
