@@ -11,11 +11,11 @@ description: "Stylify CSS Dialog Components"
 ---
 
 <interactive-preview class="margin-bottom:48px"
-minHeight="400px"
+min-height="300"
 title="Dialog"
 html-snippet="components/dialogs"></interactive-preview>
 
 <interactive-preview
-min-height="400px"
+min-height="300"
 title="Dialog - using components"
 html-snippet="components/dialogs-components"></interactive-preview>

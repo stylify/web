@@ -4,8 +4,7 @@ export default defineConfig({
 	compiler: {
 		ignoredAreas: [
 			// Ignore code areas in docs
-			/`{3}\S+([\s\S]+?)`{3}/,
-			/<interactive-preview[^\>]*>([\s+\S]+?)<\/interactive-preview>/
+			/`{3}\S+([\s\S]+?)`{3}/
 		],
 		variables: {
 			blue1: '#01befe',

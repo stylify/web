@@ -1,5 +1,5 @@
 const config = {
-	websiteRepositoryUrl: 'https://github.com/stylify/stylifycss.com',
+	websiteRepositoryUrl: 'https://github.com/stylify/web',
 
 	githubUrl: 'https://github.com/stylify',
 	discordUrl: 'https://discord.gg/NuJsk5SMDz',

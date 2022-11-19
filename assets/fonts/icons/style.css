@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'stylify';
-  src: url('~assets/fonts/icons/fonts/stylify.woff?bijkov') format('woff');
+  src: url('~assets/fonts/icons/fonts/stylify.woff?7xbq4m') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -21,6 +21,9 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-refresh-ccw:before {
+  content: "\e90d";
+}
 .icon-copy:before {
   content: "\e906";
 }

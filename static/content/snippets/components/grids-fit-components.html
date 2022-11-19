@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Shadows</title>
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+	<style>
+		div > div {
+			background: #1890ff;
+			min-height: 100px;
+		}
+	</style>
+</head>
+<body>
+
+<!--
+stylify-components
+	grid: `
+		display:grid gap:24px
+		&--200 {
+			grid-template-columns:repeat(auto-fit,minmax(250px,1fr))
+		}
+	`
+/stylify-components
+-->
+<div class="grid grid--200">
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</div>
+
+</body>
+</html>
