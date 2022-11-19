@@ -7,7 +7,7 @@ order: 0
 navigationTitle: "Components"
 
 title: "Components"
-description: "Components"
+description: "Stylify CSS Components - Buttons, Grids, Forms, Animations, Switches and a lot more."
 ---
 
 Stylify components are inspired by the [Material Design 3](https://m3.material.io/).
@@ -27,6 +27,7 @@ Components list:
 - <nuxt-link to="/snippets/components/containers">Containers</nuxt-link>
 - <nuxt-link to="/snippets/components/dialogs">Dialogs</nuxt-link>
 - <nuxt-link to="/snippets/components/dividers">Dividers</nuxt-link>
+- <nuxt-link to="/snippets/components/grids">Grids</nuxt-link>
 - <nuxt-link to="/snippets/components/shadows">Shadows</nuxt-link>
 - <nuxt-link to="/snippets/components/switches">Switches</nuxt-link>
 - <nuxt-link to="/snippets/components/text-fields">Text fields</nuxt-link>

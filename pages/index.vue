@@ -132,7 +132,7 @@ stylify-keyframes
 		<section id="components" class="container margin-top:48px padding-top:48px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
 			<div class="sm:margin-left:-24px display:flex flex-wrap:wrap">
-				<nuxt-link v-for="component in componentsList" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_24px) lg:width:calc(100%_*_1/3_-_24px) display:inline-flex flex-direction:column sm:margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
+				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_24px) lg:width:calc(100%_*_1/3_-_24px) display:inline-flex flex-direction:column sm:margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
 					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
 					<h3 class="margin:8px_0_0_0 font-size:24px transition:.3s">{{ component.title }}</h3>
 				</nuxt-link>

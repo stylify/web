@@ -5,7 +5,7 @@ stylify-components
 -->
 <template>
 	<div>
-		<div class="display:flex justify-content:space-between align-items:center margin-bottom:12px">
+		<div class="display:flex justify-content:space-between align-items:center">
 			<div class="color:#fff font-weight:bold">{{ title }}</div>
 			<div class="display:flex align-items:center margin-left:-4px">
 				<a role="button" @click="setTab('preview')" :class="`${selectedTab === 'preview' ? '' : 'btn--transparent'} btn interactive-preview__button`">Preview</a>
@@ -14,8 +14,8 @@ stylify-components
 				</a>
 			</div>
 		</div>
-		<div v-if="description">{{ description }}</div>
-		<div v-if="hasCode('html')">
+		<div v-if="description" class="margin-top:4px">{{ description }}</div>
+		<div v-if="hasCode('html')" class="margin-top:12px">
 			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
 			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" v-if="hasCode(codeType)">
 				<example-code-editor readonly :defaultCode="codeSnippet" />
