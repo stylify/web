@@ -3,18 +3,18 @@ section: integrations
 
 order: 1
 
-navigationTitle: "Svelte"
-navigationIconPath: '/images/brands/svelte.svg'
+navigationTitle: "SolidJS"
+navigationIconPath: '/images/brands/solidjs.svg'
 
-title: Using Stylify CSS in Svelte
-description: "Learn how to use the Stylify CSS with the Svelte."
+title: Using Stylify CSS in SolidJS
+description: "Learn how to use the Stylify CSS with the SolidJS."
 ---
 
-<stack-blitz-link link="stylify-svelte-vite"></stack-blitz-link>
+<stack-blitz-link link="stylifycss-solidjs-vite"></stack-blitz-link>
 
-## How to integrate the Stylify with Svelte and Vite.js
+## How to integrate the Stylify with SolidJS and Vite.js
 
-The example bellow works with the Vite - Svelte template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
+The example bellow works with the Vite - SolidJS template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
 
 First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
@@ -26,12 +26,12 @@ yarn add -D @stylify/unplugin
 Next add the following configuration into the `vite.config.js`:
 
 ```js
-import { defineConfig } from 'vite'
-import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { defineConfig } from 'vite';
 import { stylifyVite } from '@stylify/unplugin';
+import solidPlugin from 'vite-plugin-solid';
 
 const stylifyPlugin = stylifyVite({
-	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.svelte'] }],
+	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.jsx'] }],
 	// Optional
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
@@ -41,15 +41,21 @@ const stylifyPlugin = stylifyVite({
 		// https://stylifycss.com/docs/stylify/compiler#components
 		components: {},
 		// ...
-	}
+	},
 });
 
 export default defineConfig({
-	plugins: [stylifyPlugin, svelte()]
+	plugins: [stylifyPlugin, solidPlugin()],
+	server: {
+		port: 3000,
+	},
+	build: {
+		target: 'esnext',
+	},
 });
 ```
 
-Now you can add the path of the generated `src/stylify.css` into `src/main.js` file:
+Now you can add the path of the generated `src/stylify.css` into `src/index.js` file:
 
 ```js
 import './stylify.css';

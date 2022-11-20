@@ -60,7 +60,7 @@ export default {
 					window.stylifyGithubStars = starsCount;
 					self.stars = starsCount;
 				});
-			} else if (typeof stylifyGithubStarsType === 'number') {
+			} else if (stylifyGithubStarsType === 'number') {
 				self.stars = window.stylifyGithubStars;
 			} else {
 				document.addEventListener('stylify:githubStarsLoaded', (event) => {

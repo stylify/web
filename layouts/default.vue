@@ -132,6 +132,7 @@ export default {
 			integrationLinks: [],
 			componentsLinks: [],
 			packagesLinks: [
+				{},
 				{
 					navigationTitle: '@stylify/astro',
 					path: '/docs/astro'
