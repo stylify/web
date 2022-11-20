@@ -57,7 +57,7 @@ export default defineConfig({
 Now you can add the path to the generated `src/stylify.css` into `src/main.js` file:
 
 ```js
-import './assets/stylify.css';
+import './stylify.css';
 ```
 
 Now run `yarn dev`. The `src/stylify.css` file will be generated.
