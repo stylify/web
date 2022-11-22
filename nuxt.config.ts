@@ -2,8 +2,8 @@ import { highlightCode } from "./services";
 import path from 'path';
 import fg from 'fast-glob';
 
-const defaultPageTitle = 'Write CSS Faster and Efficiently. Write HTML. Get CSS.';
-const defaultPageDescription = 'Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration.';
+const defaultPageTitle = 'Write CSS Faster and Efficiently. CSS-like utilities.';
+const defaultPageDescription = 'Stylify uses CSS-like selectors to generate optimized utility-first CSS. Style your website faster. Don\'t study framework. Focus on coding.';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
@@ -26,7 +26,7 @@ export default {
 			{ name: 'msapplication-TileColor', content: '#01befe' },
 			{ name: 'theme-color', content: '#01befe' },
 			// Open Graph
-			{ hid: 'og:title', property: 'og:title', content: 'Stylify' },
+			{ hid: 'og:title', property: 'og:title', content: defaultPageTitle },
 			{ hid: 'og:image', property: 'og:image', content: '/images/og-image-v2.jpg' },
 			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
 			// Twitter Card

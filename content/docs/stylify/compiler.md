@@ -171,6 +171,10 @@ const compilerConfig = {
 ### screens
 Screens are used to generate media queries. The key can be a string or a regular expression. You can use predefined [screens](/docs/stylify/native-preset#screens) or define your own.
 
+Screns can be combined using logical operands:
+- Logical AND: &&
+- Logical OR: ||
+
 </template>
 <template #code>
 

@@ -39,7 +39,7 @@ stylify-keyframes
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
 				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
 			</p>
-			<div class="text-align:center line-height:32px lg:line-height:30px lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding.&nbsp;💎</div>
+			<div class="text-align:center line-height:32px lg:line-height:30px lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding!&nbsp;💎</div>
 		</section>
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px lg:padding-top:48px margin-bottom:32px">
 			<div class="hp__tab-buttons-wrapper">
@@ -145,9 +145,14 @@ stylify-keyframes
 			</div>
 		</section>
 
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:48px padding-top:48px" >
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
+			<div class="hp__section-content"><why-stylify /></div>
+		</section>
+
 		<section id="quote" class="container margin-top:48px padding-top:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding&nbsp;💎</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding!&nbsp;💎</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px line-height:24px">
 						<p class="margin-top:0">
@@ -239,11 +244,6 @@ stylify-keyframes
 				</div>
 			</div>
 		</div>
-
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-bottom:48px" >
-			<h2 class="hp__section-title">Why Stylify?</h2>
-			<div class="hp__section-content"><why-stylify /></div>
-		</section>
 
 		<div>
 			<section class="container display:flex flex-direction:column align-items:center margin-bottom:48px">
@@ -383,18 +383,6 @@ export default {
 				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
 			},
 			{
-				name: 'Paul⭐Bear',
-				image: 'paul-bear.jpg',
-				text: `Very cool library!`,
-				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
-			},
-			{
-				name: 'sam i am',
-				image: 'sam-i-am.jpg',
-				text: `That's nice!`,
-				link: 'https://twitter.com/sbworld/status/1518571221490749441'
-			},
-			{
 				name: 'Jean-Baptiste',
 				note: 'Creator of Ardaria',
 				image: 'jean-baptiste.jpg',
@@ -414,6 +402,13 @@ export default {
 				image: 'tom-ravn.jpg',
 				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
 				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
+			},
+			{
+				name: '蝉丸ファン',
+				note: 'Core committer of @webpack',
+				image: 'about-hiroppy.gif',
+				text: `It's similar to the Tailwind but more readable.`,
+				link: 'https://twitter.com/about_hiroppy/status/1595005062279041024'
 			},
 			{
 				name: 'Phan An',
@@ -469,6 +464,25 @@ export default {
 				image: 'shushant-lakhyani.jpeg',
 				text: `This looks cool!`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2014729'
+			},
+			{
+				name: 'Paul⭐Bear',
+				image: 'paul-bear.jpg',
+				text: `Very cool library!`,
+				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
+			},
+			{
+				name: 'sam i am',
+				image: 'sam-i-am.jpg',
+				text: `That's nice!`,
+				link: 'https://twitter.com/sbworld/status/1518571221490749441'
+			},
+			{
+				name: 'Ricardo Anaya',
+				note: 'Full Stack Developer',
+				image: 'ricardo-anaya.jpg',
+				text: `Cool!`,
+				link: 'https://twitter.com/ricky_anaya/status/1594835182632439810'
 			},
 			{
 				name: 'Musa Yazlık',

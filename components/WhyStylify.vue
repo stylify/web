@@ -10,68 +10,48 @@ stylify-components
 /stylify-components
 -->
 <template>
-	<div class="display:flex margin-left:-24px flex-wrap:wrap">
+	<div id="why-stylify-css" class="display:flex margin-left:-24px flex-wrap:wrap">
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-heart why-stylify__block-title-icon"></i>
-				<span>Don't study selectors</span>
+				<span>Write CSS faster</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>Use CSS <code class="white-space:nowrap">property:value</code> syntax like <code class="white-space:nowrap">color:blue</code> as a selector.</li>
-				<li>Don't waste your time by studying framework shortcuts.</li>
+				<li>💡 Use CSS-like selectors. Don't study framework</li>
+				<li>🔗 Define <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#customselectors" class="color:$blue1">Custom selectors</nuxt-link></li>
+				<li>🔁 Add <nuxt-link to="/docs/stylify/compiler#macros" class="color:$blue1">custom macros</nuxt-link> like <code>ml:2</code></li>
+				<li>💲 Variables can be injected into css as CSS variables</li>
+				<li>🌃 CSS <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">variables can differ for each screen</nuxt-link></li>
+				<li>🖌️ Simplify coding with <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">helpers</nuxt-link> like <code>color:lighten(#000,10)</code></li>
+				<li>🖥️ Style any device with dynamic <nuxt-link to="/docs/stylify/compiler#screens" class="color:$blue1">screens</nuxt-link></li>
+				<li>✋ You can mark areas for which CSS <nuxt-link to="/docs/stylify/compiler#ignoredareas" class="color:$blue1">should not be generated</nuxt-link></li>
 			</ul>
 		</div>
+
+		<div class="why-stylify__block">
+			<h3 class="why-stylify__block-title">
+				<i class="icon icon-layers why-stylify__block-title-icon"></i>
+				<span>Get extremely optimized CSS</span>
+			</h3>
+			<ul class="why-stylify__list">
+				<li>📦 Split bundles for page/layout/component</li>
+				<li>🧰 Selectors are minified from long <code>.color:blue</code> to short <code>.a</code></li>
+				<li>✨ No purge needed. CSS is generated only when something is matched</li>
+				<li>🔗 Components & Custom selectors are attached to utilities. No duplicated property:value</li>
+				<li>🪝 Hooks can modify CSS or output for example to wrap it to layers</li>
+			</ul>
+		</div>
+
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-layers why-stylify__block-title-icon"></i>
 				<span>Copy&paste integration</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>Stylify works with any tool: <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link>, <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/nette" class="color:$blue1">Nette</nuxt-link>, <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link>.</li>
-				<li>Generated CSS can be used within SCSS, Less and Stylus projects.</li>
-			</ul>
-		</div>
-		<div class="why-stylify__block">
-			<h3 class="why-stylify__block-title">
-				<i class="icon icon-settings why-stylify__block-title-icon"></i>
-				<span>Simplify your work</span>
-			</h3>
-			<ul class="why-stylify__list">
-				<li>Define reusable <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">Helpers</nuxt-link> and style selectors like <code class="white-space:nowrap">article > h1</code> with <nuxt-link to="/docs/stylify/compiler#customselectors" class="color:$blue1">Custom Selectors</nuxt-link>.</li>
-				<li>Variables can be injected into the CSS as CSS variables and used outside of generated CSS.</li>
-			</ul>
-		</div>
-		<div class="why-stylify__block">
-			<h3 class="why-stylify__block-title">
-				<i class="icon icon-layout why-stylify__block-title-icon"></i>
-				<span>Style any device</span>
-			</h3>
-			<ul class="why-stylify__list">
-				<li>Combine screens using <nuxt-link to="/docs/stylify/compiler#logical-operands-in-screens" class="color:$blue1">logical operands</nuxt-link> like <code class="white-space:nowrap">sm&&tolg</code>, <code class="white-space:nowrap">xl||landscape</code> and <code class="white-space:nowrap">lg&&dark</code>.</li>
-				<li>Dynamic sizes for screens such as <code class="white-space:nowrap">minw640px</code> minimizes the amount of screens.</li>
-			</ul>
-		</div>
-		<div class="why-stylify__block">
-			<h3 class="why-stylify__block-title">
-				<i class="icon icon-pie-chart why-stylify__block-title-icon"></i>
-				<span>Extremely small CSS Chunks</span>
-			</h3>
-			<ul class="why-stylify__list">
-				<li>60-70% smaller CSS - result of our tests</li>
-				<li>CSS can be generated for each file, page, layout or component separately.</li>
-				<li>Selector is generated only once and reused when possible.</li>
-				<li>Selectors can be shrinked in production <code class="white-space:nowrap">.color:blue</code> => <code class="white-space:nowrap">.a</code> </li>
-			</ul>
-		</div>
-		<div class="why-stylify__block">
-			<h3 class="why-stylify__block-title">
-				<i class="icon icon-archive why-stylify__block-title-icon"></i>
-				<span>Works with any tool</span>
-			</h3>
-			<ul class="why-stylify__list">
-				<li>Stylify is standalone library.</li>
-				<li>No pre/postprocessor is required.</li>
-				<li>Works with any file format and in any environment where javascript is supported.</li>
+				<li>🚀 Try it with frameworks like <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/astro" class="color:$blue1">Astro</nuxt-link>. <nuxt-link to="/docs/integrations/solidjs" class="color:$blue1">SolidJS</nuxt-link>, <nuxt-link to="/docs/integrations/qwik" class="color:$blue1">Qwik</nuxt-link> <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/nette" class="color:$blue1">Nette</nuxt-link>, <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link></li>
+				<li>⚒️ Works with bundlers like <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link></li>
+				<li>⛓️ Generated CSS can be used within SCSS, Less, Stylus</li>
+				<li>🎨 CSS variables can be exported into external file and reused</li>
 			</ul>
 		</div>
 	</div>
