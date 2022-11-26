@@ -6,7 +6,7 @@ order: 1
 navigationTitle: Runtime
 
 title: "Runtime"
-description: "Learn how to use the @stylify/stylify runtime and start using the Stylify in no time."
+description: "Learn how to use the @stylify/stylify runtime and start using the Stylify CSS in no time."
 ---
 
 Runtime is ment to be used in a browser. Under the hood it uses Compiler. It generates CSS from any added or changed element.
@@ -49,7 +49,7 @@ runtime.hooks.addListener('stylify:ready', (event) => {
 
 ## Cloak
 
-Every time CSS is injected into the page, Stylify searches for `.s-cloak` class and removes it.
+Every time CSS is injected into the page, Stylify CSS searches for `.s-cloak` class and removes it.
 
 This can prevent elements without generated css to be visible.
 
@@ -76,7 +76,7 @@ Also when the Runtime is used on its own without previous template processing by
 ### Solution
 In case you want to use only the Runtime and in the same time keep the website fast, you can do the following:
 
-1. Style your page with Stylify imported from CDN
+1. Style your page with Stylify CSS imported from CDN
 2. Copy the content of style element with id `stylify-css`
 3. Paste the copied CSS directly into the html file into the style element
 3. Comment or remove runtime import

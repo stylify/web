@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Dividers"
 
-title: "Dividers Components"
-description: "Stylify CSS Divider Components"
+title: "CSS Dividers Components"
+description: "Stylify CSS Divider Components. Prepared CSS dividers for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

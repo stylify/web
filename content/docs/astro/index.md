@@ -7,10 +7,10 @@ order: 0
 navigationTitle: "@stylify/astro"
 
 title: "@stylify/astro"
-description: "@stylify/astro simplifies Stylify integration into Astri.build."
+description: "@stylify/astro simplifies Stylify CSS integration into Astri.build."
 ---
 
-Astro integration simplifies Stylify integration into the Astro.build.
+Astro integration simplifies Stylify CSS integration into the Astro.build.
 
 <stack-blitz-link link="stylify-astro-example"></stack-blitz-link>
 
@@ -46,7 +46,7 @@ stylify({
 })
 ```
 
-You can also configure Stylify using custom file or `stylify.config.js` created next to the `astro.config.mjs`.
+You can also configure Stylify CSS using custom file or `stylify.config.js` created next to the `astro.config.mjs`.
 
 ```js
 import { defineConfig } from '@stylify/astro';

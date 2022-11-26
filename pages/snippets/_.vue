@@ -73,11 +73,11 @@ export default {
 		}
 	},
 	head() {
-		if (!this.pageContent) {
+		if (typeof this.pageContent === 'undefined') {
 			return;
 		}
 
-		const pageTitle = this.pageContent.title + ' | Stylify';
+		const pageTitle = this.pageContent.title + ' | Stylify CSS';
 
 		return {
 			title: pageTitle,
@@ -89,7 +89,10 @@ export default {
 				// Twitter Card
 				{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
 				{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
-			]
+			],
+			link: [
+				{ rel: 'canonical', href: `https://stylifycss.com${!this.urlPath.startsWith('snippets') ? '/snippets' : ''}/${this.urlPath}`}
+			],
 		}
 	}
 }

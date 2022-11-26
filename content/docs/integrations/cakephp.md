@@ -5,10 +5,33 @@ order: 1
 
 navigationTitle: "CakePHP"
 navigationIconPath: '/images/brands/cakephp.png'
+image: '/integrations/cakephp/header.jpg'
+ogImage: '/integrations/cakephp/og-image.jpg'
 
 title: Using Stylify CSS in CakePHP
-description: "Learn how to integrate the Stylify CSS into the CakePHP."
+description: "Learn how to integrate the Stylify CSS into the CakePHP. Code your CakePHP website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in CakePHP.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/bundler package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+CakePHP is an open-source web, rapid development framework that makes building web applications simpler,
+faster and require less code.
 
 Because CakePHP doesn't ship with any bundler, you can integrate Stylify into the CakePHP using the Bundler package.
 
@@ -16,7 +39,7 @@ Because CakePHP doesn't ship with any bundler, you can integrate Stylify into th
 Integration example for the CakePHP can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/cakephp" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
 
-## How to integrate the Stylify into the CakePHP
+## How to integrate the Stylify CSS into the CakePHP
 
 In the example bellow we will use the Bundler package on its own.
 

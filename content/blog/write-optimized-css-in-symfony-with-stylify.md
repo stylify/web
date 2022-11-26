@@ -50,9 +50,9 @@ and the homepage template `templates/hp.html.twig`.
 {% block body %} Hello World! {% endblock %}
 ```
 
-## Stylify Integration
+## Stylify CSS Integration
 
-Install Stylify universal plugin.
+Install Stylify CSS universal plugin.
 ```
 npm i @stylify/unplugin
 ```
@@ -102,7 +102,7 @@ Stylify will find the `color:blue` selector, and generate the css for it. `.colo
 
 Some code often needs to be reused accross multiple pages. It's not a good idea to have bloated templates by utilities and hardcoded units in the selectors. Let's define a `container` component and some variables.
 
-Open the `webpack.config.js` and edit the Stylify plugin config:
+Open the `webpack.config.js` and edit the Stylify CSS plugin config:
 ```js
 .addPlugin(webpackPlugin({
   // ...
@@ -133,7 +133,7 @@ and the `hp.html.twig`
 <div class="color:$textColor">Hello world!</div>
 ```
 
-Sometime, some components are used only one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify has a [content options](https://stylifycss.com/docs/stylify/compiler#contentoptionsprocessors) for that.
+Sometime, some components are used only one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify CSS has a [content options](https://stylifycss.com/docs/stylify/compiler#contentoptionsprocessors) for that.
 
 Let's add a paragraph component in the `hp.html.twig`:
 
@@ -156,7 +156,7 @@ stylify-components
 ```
 
 ## The production build
-When we run the build for production `npm run build`, Stylify automatically mangles all recognized selectors and generates optimized CSS.
+When we run the build for production `npm run build`, Stylify CSS automatically mangles all recognized selectors and generates optimized CSS.
 
 Optimized `hp.html.twig`:
 ```twig
@@ -179,7 +179,7 @@ Optimized hp css:
 The example can be also found in the [docs](https://stylifycss.com/docs/integrations/symfony).
 
 ## More configuration
-The examples above doesn't include everything Stylify can do:
+The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)

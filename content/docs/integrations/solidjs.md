@@ -5,14 +5,36 @@ order: 1
 
 navigationTitle: "SolidJS"
 navigationIconPath: '/images/brands/solidjs.svg'
+image: '/integrations/solidjs/header.jpg'
+ogImage: '/integrations/solidjs/og-image.jpg'
 
 title: Using Stylify CSS in SolidJS
-description: "Learn how to use the Stylify CSS with the SolidJS."
+description: "Learn how to use the Stylify CSS with the SolidJS. Code your SolidJS website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in SolidJS.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+SolidJS is a framework for simple and performant reactivity for building user interfaces.
 
 <stack-blitz-link link="stylifycss-solidjs-vite"></stack-blitz-link>
 
-## How to integrate the Stylify with SolidJS and Vite.js
+## How to integrate the Stylify CSS with SolidJS and Vite.js
 
 The example bellow works with the Vite - SolidJS template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
 

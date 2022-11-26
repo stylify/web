@@ -7,10 +7,10 @@ order: 1
 navigationTitle: "Icons"
 
 title: "Icons"
-description: "Links to free icons fonts"
+description: "Links to free icons fonts for your next web project."
 ---
 
-On this page, you will find a list of pages, where you can find free icons.
+On this page, you will find a list of pages, where you can find free icons for your next web project.
 
 ## Icons sets
 - [IcoMoon](https://icomoon.io/?ref=stylifycss.com)

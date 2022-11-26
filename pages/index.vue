@@ -34,6 +34,7 @@ stylify-keyframes
 -->
 <template>
 	<div>
+		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 		<section class="container margin-top:24px md:margin-top:64px">
 			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
@@ -174,7 +175,7 @@ stylify-keyframes
 				</div>
 			</div>
 			<div>
-				<h3 class="text-align:center font-size:24px"><img src="/images/brands/youtube.svg" loading="lazy" decoding="async" width="42" height="42" class="vertical-align:middle margin-right:12px">Learn more about Stylify on our Youtube channel</h3>
+				<h3 class="text-align:center font-size:24px"><img src="/images/brands/youtube.svg" loading="lazy" decoding="async" width="42" height="42" alt="" class="vertical-align:middle margin-right:12px">Learn more about Stylify on our Youtube channel</h3>
 				<div class="display:flex max-width:calc(100%_+_16px) margin-left:-8px margin-right:-8px flex-direction:row margin-top:32px overflow:auto justify-content:center">
 					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen class="max-width:100% min-height:315px height:auto"></iframe>
 				</div>
@@ -492,5 +493,28 @@ export default {
 			},
 		]
 	}),
+	head() {
+		return {
+			link: [
+				{ rel: 'canonical', href: "https://stylifycss.com"}
+			],
+			script: [
+				{
+					innerHTML: `{
+						"@context": "http://schema.org",
+						"@type": "VideoObject",
+						"name": "Style your website faster with Stylify CSS | Stylify introduction in 8 minutes | #webdevelopment",
+						"description": "Learn how to style your website faster with Stylify CSS and CSS-like utilities.  Learn how to use variables, components, custom selectors and a lot more.",
+						"thumbnailUrl": "https://i.ytimg.com/vi/GRwtXDnm5gE/default.jpg",
+						"uploadDate": "2022-11-09T12:12:45Z",
+						"duration": "PT8M5S",
+						"embedUrl": "https://www.youtube.com/embed/GRwtXDnm5gE",
+					}`,
+					type: 'application/ld+json'
+				}
+			],
+			__dangerouslyDisableSanitizers: ['script']
+		}
+	},
 }
 </script>

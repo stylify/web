@@ -68,7 +68,7 @@ export default {
 
 		return {
 			urlPath: urlPath,
-			pageContent: pageContent || null,
+			pageContent: pageContent ?? null,
 			previousPage: pageIndexInNavigation > 0
 				? navigationItems[pageContent.section][(pageIndexInNavigation - 1)]
 				: null,
@@ -77,23 +77,63 @@ export default {
 		}
 	},
 	head() {
-		if (!this.pageContent) {
+		if (typeof this.pageContent === 'undefined') {
 			return;
 		}
 
-		const pageTitle = this.pageContent.title + ' | Stylify';
+		const pageTitle = this.pageContent.title + ' | Stylify CSS';
+		const scripts = [];
+		const pageHowToSteps = this.pageContent.howToSchemaSteps ?? undefined;
+
+		if (typeof pageHowToSteps !== 'undefined') {
+			const preparedSteps = pageHowToSteps.map((step) => {
+				step.url = `https://stylifycss.com/docs${step.url}`;
+				step['@type'] = "HowToStep";
+				return step;
+			});
+			scripts.push({
+				innerHTML: `{
+					"@context": "https://schema.org",
+					"@type": "HowTo",
+					"tool": [
+						{
+							"@type": "HowToTool",
+							"name": "Stylify CSS => https://stylifycss.com"
+						}
+					],
+					"image": {
+						"@type": "ImageObject",
+						"url": "https://stylifycss.com/images${this.pageContent.image}"
+					},
+					"name": "${this.pageContent.howToSchemaTitle}",
+					"step": ${JSON.stringify(preparedSteps)}
+				}`,
+				type: 'application/ld+json'
+			});
+		}
+
+		const metaTags = [
+			{ hid: 'description', name: 'description', content: this.pageContent.description },
+			// Open Graph
+			{ hid: 'og:title', property: 'og:title', content: pageTitle },
+			{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
+			// Twitter Card
+			{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
+			{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
+		];
+
+		if (typeof this.pageContent.ogImage !== 'undefined') {
+			metaTags.push({hid: 'og:image', property: 'og:image', content: this.pageContent.ogImage})
+		}
 
 		return {
 			title: pageTitle,
-			meta: [
-				{ hid: 'description', name: 'description', content: this.pageContent.description },
-				// Open Graph
-				{ hid: 'og:title', property: 'og:title', content: pageTitle },
-				{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
-				// Twitter Card
-				{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
-				{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
-			]
+			meta: metaTags,
+			link: [
+				{ rel: 'canonical', href: `https://stylifycss.com/docs/${this.urlPath}`}
+			],
+			script: scripts,
+			__dangerouslyDisableSanitizers: ['script']
 		}
 	}
 }

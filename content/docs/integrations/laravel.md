@@ -5,18 +5,40 @@ order: 1
 
 navigationTitle: "Laravel"
 navigationIconPath: '/images/brands/laravel.svg'
+image: '/integrations/laravel/header.jpg'
+ogImage: '/integrations/laravel/og-image.jpg'
 
 title: Using Stylify CSS in Laravel Framework
-description: "Learn how to use Stylify CSS with the Laravel Framework."
+description: "Learn how to use Stylify CSS with the Laravel Framework. Code your Laravel website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Laravel.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
 
-Stylify can be integrated into the Laravel using the Stylify Vite plugin.
+Laravel is a PHP web application framework with expressive, elegant syntax.
+
+Stylify can be integrated into the Laravel using the Stylify CSS Vite plugin.
 
 <note><template>
 Integration example for the Laravel framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
 
-## How to integrate the Stylify into the Laravel Framework
+## How to integrate the Stylify CSS into the Laravel Framework
 
 First install [Stylify unplugin](/docs/unplugin):
 ```
@@ -24,7 +46,7 @@ npm i -D @stylify/unplugin
 yarn add -D @stylify/unplugin
 ```
 
-Open the `vite.config.js` and add the Stylify Plugin:
+Open the `vite.config.js` and add the Stylify CSS Plugin:
 ```js
 import { defineConfig } from 'vite';
 import { stylifyVite } from '@stylify/unplugin';
@@ -66,7 +88,7 @@ npm i -D @stylify/unplugin
 yarn add -D @stylify/unplugin
 ```
 
-Next add Stylify plugin into the `webpack.mix.js`:
+Next add Stylify CSS plugin into the `webpack.mix.js`:
 
 ```js
 const { stylifyWebpack } = require('@stylify/unplugin');

@@ -35,7 +35,7 @@ stylify-components
 							<nuxt-link to="/blog" class="navigation__link">Blog</nuxt-link>
 							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="navigation__link">Playground</a>
 							<nuxt-link to="/faq" class="navigation__link">FAQ</nuxt-link>
-							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} margin-left:24px minw769px:width:162px width:36px height:36px"></div>
+							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} [.DocSearch-Button-Keys]{display:none} margin-left:24px minw769px:width:104px width:36px height:36px"></div>
 						</nav>
 						<span class="minw1500px:display:none">&nbsp;</span>
 					</div>
@@ -66,6 +66,19 @@ stylify-components
 								rel="noopener"
 								class="footer-docs-section__link"
 							>{{ communityLink.navigationTitle }}</a>
+						</div>
+					</section>
+					<section class="footer-docs-section">
+						<h3 class="footer-docs-section__title">Other</h3>
+						<div class="margin-left:-24px">
+							<a
+								v-for="(otherLink, key) in otherLinks"
+								:key="key"
+								:href="otherLink.path"
+								target="_blank"
+								rel="noopener"
+								class="footer-docs-section__link"
+							>{{ otherLink.navigationTitle }}</a>
 						</div>
 					</section>
 				</div>
@@ -107,13 +120,29 @@ export default {
 		this.componentsLinks = componentsLinks
 	},
 	mounted: () => {
-		docsearch({
-			appId: 'MIG46WYBYC',
-			apiKey: 'b169a688c1cb51a5a1d3358ab91424d5',
-			indexName: 'stylifycss',
-			container: '#docsearch',
-			debug: false
-		});
+		const initDocSearch = (query) => {
+			docsearch({
+				appId: 'MIG46WYBYC',
+				apiKey: 'b169a688c1cb51a5a1d3358ab91424d5',
+				indexName: 'stylifycss',
+				container: '#docsearch',
+				debug: false,
+				initialQuery: query ?? ''
+			});
+
+		};
+
+		const searchParams = (new URL(window.location)).searchParams;
+		const searchParam = searchParams.get('search') ?? undefined;
+
+		if (typeof searchParam !== 'undefined') {
+			initDocSearch(searchParam);
+			setTimeout(() => {
+				document.querySelector('#docsearch button')?.click();
+			}, 100);
+		} else {
+			initDocSearch()
+		}
 	},
 	watch: {
 		$route: {
@@ -180,6 +209,17 @@ export default {
 				{
 					navigationTitle: 'Youtube',
 					path: this.project.config.youtubeUrl
+				}
+			],
+
+			otherLinks: [
+				{
+					navigationTitle: 'Media & Logo',
+					path: '/media'
+				},
+				{
+					navigationTitle: 'Mail: dev@stylifycss.com',
+					path: 'mailto:dev@stylifycss.com'
 				}
 			]
 		}

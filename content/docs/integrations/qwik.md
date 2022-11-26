@@ -5,12 +5,34 @@ order: 1
 
 navigationTitle: Qwik
 navigationIconPath: '/images/brands/qwik.svg'
+image: '/integrations/qwik/header.jpg'
+ogImage: '/integrations/qwik/og-image.jpg'
 
 title: "Using Stylify CSS in Qwik Framework"
-description: "Learn how to use Stylify CSS with the Qwik Framework."
+description: "Learn how to use Stylify CSS with the Qwik Framework. Code your Qwik website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Qwik.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
 
-Stylify can be used within the Qwik Framework using the Stylify Vite plugin.
+Qwik is reimagined JavaScript framework for the edge. No hydration, auto lazy-loading, edge-optimized.
+
+Stylify can be used within the Qwik Framework using the Stylify CSS Vite plugin.
 
 <stack-blitz-link link="stylify-qwik-example"></stack-blitz-link>
 

@@ -73,10 +73,10 @@ Let me explain: Every `property:value` you add into the CSS should also be an ut
 
 Ok, but who would want to write something like this manually? The good news is, you don't have to.
 
-## Stylify to the rescue
+## Stylify CSS to the rescue
 Exactly because of the reasons above, the [stylifycss.com](https://stylifycss.com) have been created.
 
-Here is an example, of how to create the same button with the Stylify (Checkout the HTML tab):
+Here is an example, of how to create the same button with the Stylify CSS (Checkout the HTML tab):
 
 <p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="KKQKReX" data-user="Machy8" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
   <span>See the Pen <a href="https://codepen.io/Machy8/pen/KKQKReX">

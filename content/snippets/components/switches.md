@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Switches"
 
-title: "Switches Components"
-description: "Stylify CSS Switches Components"
+title: "CSS Switches Components"
+description: "Stylify CSS Button Components. Prepared CSS switches for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

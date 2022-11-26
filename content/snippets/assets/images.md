@@ -7,10 +7,10 @@ order: 1
 navigationTitle: "Images"
 
 title: "Images"
-description: "Links to free images"
+description: "Links to free images for your next web project."
 ---
 
-On this page, you will find a list of pages, where you can find free images.
+On this page, you will find a list of pages, where you can find free images for your next web project.
 
 ## Images
 - [UnDraw](https://undraw.co/illustrations)

@@ -5,14 +5,36 @@ order: 1
 
 navigationTitle: "Svelte"
 navigationIconPath: '/images/brands/svelte.svg'
+image: '/integrations/svelte/header.jpg'
+ogImage: '/integrations/svelte/og-image.jpg'
 
 title: Using Stylify CSS in Svelte
-description: "Learn how to use the Stylify CSS with the Svelte."
+description: "Learn how to use the Stylify CSS with the Svelte. Code your Svelte website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Svelte.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.
 
 <stack-blitz-link link="stylify-svelte-vite"></stack-blitz-link>
 
-## How to integrate the Stylify with Svelte and Vite.js
+## How to integrate the Stylify CSS with Svelte and Vite.js
 
 The example bellow works with the Vite - Svelte template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
 

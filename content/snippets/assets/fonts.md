@@ -7,10 +7,10 @@ order: 1
 navigationTitle: "Fonts"
 
 title: "Fonts"
-description: "Links to free fonts"
+description: "Links to free fonts for your next web project"
 ---
 
-On this page, you will find a list of pages, where you can find free fonts.
+On this page, you will find a list of pages, where you can find free fonts for your next web project.
 
 ## Golden Ratio Typography
 Get correct line height for your font => https://grtcalculator.com

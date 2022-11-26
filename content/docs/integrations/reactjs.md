@@ -5,11 +5,32 @@ order: 1
 
 navigationTitle: "React.js"
 navigationIconPath: '/images/brands/react.png'
+image: '/integrations/reactjs/header.jpg'
+ogImage: '/integrations/reactjs/og-image.jpg'
 
 title: Using Stylify CSS in React.js
-description: "Learn how to use the Stylify CSS with the React.js."
+description: "Learn how to use the Stylify CSS with the React.js. Code your React.js website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in React.js.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
 
+React.js is a JavaScript library for building user interfaces.
 
 Stylify can be used with React.js in varous ways:
 - With Vite.js (this example)
@@ -17,7 +38,7 @@ Stylify can be used with React.js in varous ways:
 
 <stack-blitz-link link="stylify-react-vite"></stack-blitz-link>
 
-## How to integrate the Stylify with React.js and Vite.js
+## How to integrate the Stylify CSS with React.js and Vite.js
 
 The example bellow works with the Vite - React.js template. You can however use the example bellow and configure it for Svelte, Vue and any other framework you use.
 

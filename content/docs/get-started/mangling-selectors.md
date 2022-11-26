@@ -6,7 +6,7 @@ order: 3
 navigationTitle: "Mangling selectors"
 
 title: "Mangling Selectors"
-description: "How to mangle html class selectors using the Stylify Compiler."
+description: "How to mangle html class selectors using the Stylify CSS Compiler."
 ---
 
 When you want to mangle selectors, you must set the compiler option => `mangleSelectors: true`.

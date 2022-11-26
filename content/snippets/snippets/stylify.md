@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Stylify"
 
-title: "Stylify snippets"
-description: "Snippets for Stylify configuration"
+title: "Stylify CSS snippets"
+description: "Snippets for Stylify CSS configuration for rapid web development."
 ---
 
 Snippets on this page are pieces of often used configuration.
@@ -97,6 +97,25 @@ const compilerConfig = {
 				'line-height': `${pixelFontSize * 1.333 * 0.0625}rem`
 			});
 		}
+	}
+}
+```
+
+## Components
+```js
+const compilerConfig = {
+	components: {
+		// Text visually hidden but visible for screen readers
+		'sr-only': `
+			position:absolute!important
+			overflow:hidden
+			clip:rect(0_0_0_0)
+			width:1px
+			height:1px
+			margin:-1px
+			padding:0
+			border:0
+		`
 	}
 }
 ```

@@ -10,7 +10,7 @@ title: "@stylify/nuxt"
 description: ""
 ---
 
-Nuxt module provides seamless Stylify integration into the Nuxt.js v3+.
+Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v3+.
 
 <note>
 	<strong>@stylify/nuxt</strong> can be used only in Nuxt v3 and above. For Nuxt v2 checkout <nuxt-link to="/docs/nuxt-module">@stylify/nuxt-module</nuxt-link>.
@@ -48,7 +48,7 @@ const stylifyConfig = defineConfig({
 	configPath: 'stylify.config.js',
 	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {},
-	// When vars dir paths are set, Stylify will export variables into
+	// When vars dir paths are set, Stylify CSS will export variables into
 	// a file according to given path
 	cssVarsDirPath: null,
 	sassVarsDirPath: null,
