@@ -10,7 +10,7 @@ createdAt: 'July 15, 2022'
 
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src%2FApp.vue) 🎮.
 
-## 💎 Stylify Introduction
+## 💎 Stylify CSS Introduction
 [Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `._zx,._ga{color:red}`.
 
 Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks, and style the page by writing HTML and selectors 🤟.
@@ -23,7 +23,7 @@ The easiest way to Setup the Vue is using cli:
 
 This way you will get the default Vue application skeleton.
 
-## 🔌 Stylify Integration
+## 🔌 Stylify CSS Integration
 Install the [@stylify/unplugin](https://stylifycss.com/docs/unplugin) package using NPM or Yarn:
 
 ```bash
@@ -84,7 +84,7 @@ Stylify watches any change in the files that matches the mask in the bundle file
 
 If you add for example `color:blue`, the CSS will be automatically updated 🎉.
 
-Go ahead and try Stylify directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src%2FApp.vue) 💡.
+Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src%2FApp.vue) 💡.
 
 ### Components
 To avoid bloated templates with utilities, you can use
@@ -148,7 +148,7 @@ The css is shortened too:
 ```
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify can do:
+The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)

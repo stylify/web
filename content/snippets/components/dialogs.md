@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Dialogs"
 
-title: "Dialog Components"
-description: "Stylify CSS Dialog Components"
+title: "CSS Dialog Components"
+description: "Stylify CSS Dialog Components. Prepared CSS dialogs for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

@@ -5,16 +5,38 @@ order: 1
 
 navigationTitle: "Nuxt.js"
 navigationIconPath: '/images/brands/nuxtjs-icon.svg'
+image: '/integrations/nuxtjs/header.jpg'
+ogImage: '/integrations/nuxtjs/og-image.jpg'
 
 title: Using Stylify CSS in Nuxt.js
-description: "Learn how to use the Stylify CSS with the Nuxt.js."
+description: "Learn how to use the Stylify CSS with the Nuxt.js. Code your Nuxt.js website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Nuxt.js.'
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "Install @stylify/nuxt (for Nuxt v3) or @stylify/nuxt-module (for Nuxt v2) package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
 
-The integration uses Stylify packages for Nuxt 2 and Nuxt 3. Checkout the guides bellow.
+Nuxt.js is an open source framework that uses Vue.js for making web development simple and powerful.
+
+The integration uses Stylify CSS packages for Nuxt 2 and Nuxt 3. Checkout the guides bellow.
 
 <stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 
-## How to integrate Stylify into the Nuxt.js v3+
+## How to integrate Stylify CSS into the Nuxt.js v3+
 
 First install the package using CLI:
 ```
@@ -29,9 +51,9 @@ buildModules: [
 ]
 ```
 
-Now you can start using Stylify with Nuxt.js.
+Now you can start using Stylify CSS with Nuxt.js.
 
-## How to integrate Stylify into the Nuxt.js v2+ < v3
+## How to integrate Stylify CSS into the Nuxt.js v2+ < v3
 
 First install the package using CLI:
 ```
@@ -46,7 +68,7 @@ buildModules: [
 ]
 ```
 
-Now you can start using Stylify with Nuxt.js.
+Now you can start using Stylify CSS with Nuxt.js.
 
 ## Configuration
 There is a lot of options you can configure:

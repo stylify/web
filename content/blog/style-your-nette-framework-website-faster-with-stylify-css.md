@@ -14,7 +14,7 @@ For the example bellow, you can checkout the [Nette Framework Integration Exampl
 ## 🚀 Nette Introduction
 [Nette](https://nette.org/en/) is a PHP framework made by [David Grudl](https://twitter.com/DavidGrudl) and it is a great alternative to Symfony and Laravel. It has an amazing templating system called [Latte](https://latte.nette.org/) that uses similar syntax to PHP and by default has context-sensitive escaping (which no other framework has). In my opinion, it is easier to learn, because it comes with a simple structure by default, it has no dependencies and less patterns to learn.
 
-## 💎 Stylify Introduction
+## 💎 Stylify CSS Introduction
 [Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `._zx, ._ga{color:red}`.
 
 Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
@@ -26,8 +26,8 @@ The easiest way to start with Nette is to use Composer following [this guide](ht
 - To start the web run `php -S 0.0.0.0:80 -t www`
 - The web should be available at `http://localhost`
 
-## Stylify setup
-Because Nette doesn't come with any bundler neither with any javascript package by default, we are going to use the Stylify Bundler.
+## Stylify CSS setup
+Because Nette doesn't come with any bundler neither with any javascript package by default, we are going to use the Stylify CSS Bundler.
 
 Install the bundler `yarn add -D @stylify/bundler`.
 Create the `bundles.js` file in the project root with the following content:
@@ -93,7 +93,7 @@ In the `App/Presenters/Templates/Homepage/default.latte` add the following:
 </div>
 ```
 
-If you run the `yarn watch`, Stylify will generate css and will watch any file for change.
+If you run the `yarn watch`, Stylify CSS will generate css and will watch any file for change.
 
 ### Components
 To avoid bloated templates with utilities, you can configure
@@ -203,7 +203,7 @@ If you run `yarn build`, the selectors will be shrinked and the css minified:
 
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify can do:
+The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)

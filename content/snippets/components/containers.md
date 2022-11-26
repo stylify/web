@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Containers"
 
-title: "Container Components"
-description: "Stylify CSS Container Components"
+title: "CSS Container Components"
+description: "Stylify CSS Container Components. Prepared CSS containers for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

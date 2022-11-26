@@ -1,5 +1,5 @@
 ---
-title: Stylify - Dynamic utility-first CSS generator
+title: Stylify CSS - Dynamic utility-first CSS generator
 image: '/images/blog/intro/header.gif'
 ogImage: '/images/blog/intro/og-image.jpg'
 author: 'Vladimír Macháček'
@@ -23,7 +23,7 @@ It took me a year of development and I have finally released the first version �
 
 The syntax is simple: `cssProperty:value` and in case you need screens and pseudo classes `screen:pseudoClass:property:value`.
 
-In practice, the usage of the Stylify looks like this:
+In practice, the usage of the Stylify CSS looks like this:
 ```html
 <div class="font-size:24px hover:color:red md:font-size:48px">
     Hello World!
@@ -57,7 +57,7 @@ When compiled and mangled, it generates the following CSS:
 ### Another Features
 - **[Dynamic selectors](https://stylifycss.com/docs/stylify/compiler#macros)**: Define a macro and use it however you want `width:240px`, `width:10%`, `width:30rem`.
 - **[Dynamic screens](https://stylifycss.com/docs/stylify/compiler#logical-operands-in-screens)**: You can combine screens using logical operands like `||` and `&&` => `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5)` and use any value you want `minw123px:font-size:24px`.
-- **Selectors mangling**: Stylify can convert long selectors `transition:color__0.3s__ease-in-out` to `_abc123`.
+- **Selectors mangling**: Stylify CSS can convert long selectors `transition:color__0.3s__ease-in-out` to `_abc123`.
 - **Spliting CSS**: CSS can be generated for each file separately. Thanks to that you can split CSS for example for a page and layout.
 - **[Components](https://stylifycss.com/docs/stylify/compiler#components)**: Define for example a `button` with dependencies like `background:#000 color:#fff padding:24px` and use it in a whole project.
 - **[Variables](https://stylifycss.com/docs/stylify/compiler#variables)**: Define variables for repetetative values. They can be injected into code as CSS variables.

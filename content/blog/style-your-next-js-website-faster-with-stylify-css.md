@@ -23,7 +23,7 @@ The easiest way to Setup the Next.js is using cli:
 
 This way you will get the default Next.js application skeleton.
 
-## Stylify integration
+## Stylify CSS integration
 Install the [@stylify/unplugin](https://stylifycss.com/docs/unplugin) package using NPM or Yarn:
 
 ```bash
@@ -61,7 +61,7 @@ const stylifyPlugin = (dev) => webpackPlugin({
 module.exports = {
   reactStrictMode: true,
   webpack: (config, { dev }) => {
-    // Add Stylify Webpack plugin
+    // Add Stylify CSS Webpack plugin
     config.plugins.push(stylifyPlugin(dev));
     return config;
   }
@@ -92,7 +92,7 @@ export default function Home() {
 Stylify watches any change in the `js` files and generates css into the `styles/stylify.css`.
 If you add a selector like `font-size:24px` the CSS will be automatically updated 🎉.
 
-Go ahead and try Stylify directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡.
+Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡.
 
 ### Components
 Templates bloated with utility selectors are hard to read. Stylify allows you to define components directly in files, where they are used through [content options](https://stylifycss.com/docs/get-started#defining-a-component) (expects javascript object without brackets) or in the [compiler config](https://stylifycss.com/docs/get-started#defining-a-component).
@@ -160,7 +160,7 @@ The css is shortened too:
 ```
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify can do:
+The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)

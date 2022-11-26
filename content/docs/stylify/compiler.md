@@ -105,7 +105,7 @@ const compilerConfig = {
 	variables: {
 		blue: '#01befe',
 		shadow: '0 8px 32px -8px rgb(0, 0, 0, 0.2)',
-		// When variable is an object, Stylify tries to find screen for it
+		// When variable is an object, Stylify CSS tries to find screen for it
 		// You can use any screen you have defined in the screens
 		dark: { blue: 'lightblue' },
 		md: { fontSize: 24px },
@@ -136,7 +136,7 @@ Usage:
 <template #description>
 
 ### keyframes
-Keyframes in Stylify are defined with the same syntax like in the CSS.
+Keyframes in Stylify CSS are defined with the same syntax like in the CSS.
 
 Keyfames can also be defined within a comment within a file using [content options](#contentoptionsprocessors).
 
@@ -249,7 +249,7 @@ Usage:
 
 ### customSelectors
 Custom selectors allows you to write CSS selectors for elements.
-When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the Stylify selector. Checkout the examples.
+When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the Stylify CSS selector. Checkout the examples.
 
 Custom selectors can be also defined directly in files using [content options](#contentoptionsprocessors).
 
@@ -401,7 +401,7 @@ Usage:
 
 ### selectorsAreas
 In case you want to rewrite selectors in any framework specific class attribute, you must define that attribute to be matched.
-By default Stylify support a few syntaxes from Vue, React, Lit, AlpineJS and Nette. In case, some of the class attributes wasn't matched, add the selectorsAreas option with a regular expression to match it.
+By default Stylify CSS support a few syntaxes from Vue, React, Lit, AlpineJS and Nette. In case, some of the class attributes wasn't matched, add the selectorsAreas option with a regular expression to match it.
 
 </template>
 <template #code>

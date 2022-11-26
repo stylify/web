@@ -5,14 +5,36 @@ order: 1
 
 navigationTitle: "Vue"
 navigationIconPath: '/images/brands/vuejs.svg'
+image: '/integrations/vuejs/header.jpg'
+ogImage: '/integrations/vuejs/og-image.jpg'
 
 title: Using Stylify CSS in Vue.js
-description: "Learn how to use the Stylify CSS with the Vue.js"
+description: "Learn how to use the Stylify CSS with the Vue.js. Code your Vue.js website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Vue.js.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+Vue.js is Progressive JavaScript Framework.
 
 <stack-blitz-link link="stylify-vue-vite"></stack-blitz-link>
 
-## How to integrate the Stylify with Vue.js and Vite.js
+## How to integrate the Stylify CSS with Vue.js and Vite.js
 
 The example bellow works with the Vite - Vue template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
 

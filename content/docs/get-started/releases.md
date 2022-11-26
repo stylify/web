@@ -111,7 +111,7 @@ runtime.hooks.addListener('', (options) => {});
 ```
 
 ### @stylify/bundler
-- Bundler hooks are now used like bellow. Bundler hooks extends the default Stylify hooks. Checkout [Bundler hooks](/docs/bundler#hooks).
+- Bundler hooks are now used like bellow. Bundler hooks extends the default Stylify CSS hooks. Checkout [Bundler hooks](/docs/bundler#hooks).
 ```js
 import { hooks } from '@stylify/bundler';
 
@@ -143,7 +143,7 @@ const config = {
 	}
 }
 ```
-- Stylify Runtime now has only `Stylify.configure()` method. `Stylify.runtime.configure()` was removed.
+- Stylify CSS Runtime now has only `Stylify.configure()` method. `Stylify.runtime.configure()` was removed.
 
 ## Upgrading from 0.1 to 0.2
 - Release: [v0.2.1](https://github.com/stylify/packages/releases/tag/v0.2.1)

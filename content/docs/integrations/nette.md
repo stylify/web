@@ -5,10 +5,32 @@ order: 1
 
 navigationTitle: "Nette"
 navigationIconPath: '/images/brands/nette.png'
+image: '/integrations/nette/header.jpg'
+ogImage: '/integrations/nette/og-image.jpg'
 
 title: Using Stylify CSS in Nette Framework
-description: "Learn how to integrate the Stylify CSS into the Nette Framework."
+description: "Learn how to integrate the Stylify CSS into the Nette Framework. Code your Nette website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Nette.'
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "Install @stylify/bundler package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+Nette is a PHP web framework made in Czech Republic focused on fast and rapid web development.
 
 Since Nette Framework doesn't use any bundler by default. Therefore you an use onl the [Bundler](/docs/bundler) or configure bundler and use Stylify with [Webpack](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs) and etc.
 ´
@@ -16,7 +38,7 @@ Since Nette Framework doesn't use any bundler by default. Therefore you an use o
 Integration example for the Nette framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
 
-## How to integrate the Stylify into the Nette Framework
+## How to integrate the Stylify CSS into the Nette Framework
 
 In the example bellow we will use the Bundler package on its own.
 

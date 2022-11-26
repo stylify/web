@@ -1,9 +1,9 @@
 ---
-title: "Styling React App: Stylify vs Styled Components"
+title: "Styling React App: Stylify CSS vs Styled Components"
 image: '/images/blog/stylify-styled-components/header.jpg'
 ogImage: '/images/blog/stylify-styled-components/og-image.jpg'
 author: 'Vladimír Macháček'
-annotation: "Styling React App: Stylify vs Styled Components"
+annotation: "Styling React App: Stylify CSS vs Styled Components"
 createdAt: 'August 21, 2022'
 ---
 
@@ -71,7 +71,7 @@ The generated CSS looks like this:
 
 [Stylify](https://stylifycss.com/) on the other hand takes file content and generates CSS for each matched selector. Each selector is by default a utility and is generated only once.
 
-The [syntax](https://stylifycss.com/docs/stylify/compiler/#syntax) is by default native CSS `property:value`. Also, when writing values, you can use `__` (two underscores) instead of space and `^` (a hat) for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify selectors. In case you need want shorter or custom selectors, you can [add your own macros](https://stylifycss.com/docs/stylify/compiler#macros).
+The [syntax](https://stylifycss.com/docs/stylify/compiler/#syntax) is by default native CSS `property:value`. Also, when writing values, you can use `__` (two underscores) instead of space and `^` (a hat) for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify CSS selectors. In case you need want shorter or custom selectors, you can [add your own macros](https://stylifycss.com/docs/stylify/compiler#macros).
 
 The selectors can be written right away without defining a component.
 ```jsx
@@ -177,7 +177,7 @@ const Rotate = styled.div`
 `;
 ```
 
-In Stylify it looks a bit different
+In Stylify CSS it looks a bit different
 ```jsx
 /*
 stylify-keyframes

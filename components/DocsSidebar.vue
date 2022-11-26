@@ -42,7 +42,7 @@
 								position:relative display:inline-flex align-items:center hover:background-color:lighten($blue3,20) border-radius:$radius1`
 							]"
 						>
-							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px border-radius:4px padding:2px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " />
+							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px border-radius:4px padding:2px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " alt="" />
 							<span>{{ sectionItem.navigationTitle }}</span>
 						</nuxt-link>
 					</nav>

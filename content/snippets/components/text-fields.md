@@ -6,8 +6,8 @@ order: 1
 
 navigationTitle: "Text Fields"
 
-title: "Text Fields Components"
-description: "Stylify CSS Text Fields Components"
+title: "CSS Text Fields Components"
+description: "Stylify CSS Button Components. Prepared CSS text-fields for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

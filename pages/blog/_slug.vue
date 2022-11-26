@@ -78,7 +78,7 @@ export default {
 			return;
 		}
 
-		const postTitle = this.post.title + ' | Stylify';
+		const postTitle = this.post.title + ' | Stylify CSS';
 		const postAnnotation = this.post.annotation;
 		const postImage = this.post.ogImage;
 		const postCanonicalUrl = host + this.post.path

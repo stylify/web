@@ -11,7 +11,7 @@ description: "@stylify/nuxt-module provides provides seamless Stylify integratio
 ---
 
 
-Nuxt module provides seamless Stylify integration into the Nuxt.js v2+ < v3.
+Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v2+ < v3.
 
 <note>
 	<strong>@stylify/nuxt-module</strong> can be used only in Nuxt v2. For Nuxt v3 and above checkout <nuxt-link to="/docs/nuxt">@stylify/nuxt</nuxt-link>.
@@ -65,7 +65,7 @@ const stylifyConfig = defineConfig({
 	configPath: 'stylify.config.js',
 	// Compiler config info https://stylifycss.com/docs/stylify/compiler
 	compiler: {},
-	// When vars dir paths are set, Stylify will export variables into
+	// When vars dir paths are set, Stylify CSS will export variables into
 	// a file according to given path
 	cssVarsDirPath: null,
 	sassVarsDirPath: null,
@@ -77,7 +77,7 @@ const stylifyConfig = defineConfig({
 	filesMasks: [],
 	// Loaders are used during webpack build when compiler.mangleSelectors are set to true and when nuxt runs production build
 	// When a file is loaded by webpack according to defined loader, it's content
-	// will be mangled by Stylify Compiler.
+	// will be mangled by Stylify CSS Compiler.
 	// Loaders have the following structure
 	// {
 	//		test: /\.vue$/i,

@@ -6,8 +6,8 @@ order: 0
 
 navigationTitle: "Components"
 
-title: "Components"
-description: "Stylify CSS Components - Buttons, Grids, Forms, Animations, Switches and a lot more."
+title: "CSS Components"
+description: "Stylify CSS Components - Buttons, Grids, Forms, Animations, Switches and a lot more. Copy&Paste without CSS framework."
 ---
 
 Stylify components are inspired by the [Material Design 3](https://m3.material.io/).

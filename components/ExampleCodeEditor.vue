@@ -70,8 +70,6 @@ export default {
 				.replace(/&amp;/g, '&')
 				.replace(/&lt;/g, '<')
 				.replace(/&gt;/g, '>')
-				.replace(/^<script[^>]*class="code-wrapper"[^>]*>/, '')
-				.replace(/<\/script>$/, '')
 				.replace(/\n<div data-netlify-deploy(.|\s)+/, '');
 		},
 		highlighter(code) {

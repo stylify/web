@@ -5,16 +5,38 @@ order: 1
 
 navigationTitle: "Next.js"
 navigationIconPath: '/images/brands/nextjs.svg'
+image: '/integrations/nextjs/header.jpg'
+ogImage: '/integrations/nextjs/og-image.jpg'
 
 title: Using Stylify CSS in Next.js
-description: "Learn how to integrate the Stylify CSS into the the Next.js."
+description: "Learn how to integrate the Stylify CSS into the the Next.js. Code your Next.js website faster with Stylify CSS."
+howToSchemaTitle: 'How to use Stylify CSS in Next.js.'
+howToSchemaSteps: [
+	{
+		"name": "Installation",
+		"text": "Install @stylify/unplugin package using CLI like YARN or NPM.",
+		"url": "#installation",
+	},
+	{
+		"name": "Usage",
+		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuration",
+		"text": "Extend Stylify CSS configuration however you need. Configure variables, components, custom selectors and a lot more.",
+		"url": "#configuration",
+	},
+]
 ---
+
+Next.js offers you to create production grade React applications that scale.
 
 Stylify can be easily integrated into the Next.js using @stylify/unplugin.
 
 <stack-blitz-link link="stylify-nextjs-template"></stack-blitz-link>
 
-## How to integrate the Stylify into the Next.js
+## How to integrate the Stylify CSS into the Next.js
 
 First install the [@stylify/bundler](/docs/unplugin) package using NPM or Yarn:
 

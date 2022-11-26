@@ -10,7 +10,7 @@ createdAt: 'July 11, 2022'
 
 For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-svelte-vite?file=README.md,src%2FApp.svelte) 🎮.
 
-## 💎 Stylify Introduction
+## 💎 Stylify CSS Introduction
 [Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `._zx, ._ga{color:red}`.
 
 Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
@@ -23,7 +23,7 @@ The easiest way to Setup the Svelte is using cli:
 
 This way you will get the default Svelte application skeleton.
 
-## 🔌 Stylify Integration
+## 🔌 Stylify CSS Integration
 Install the [@stylify/unplugin](https://stylifycss.com/docs/unplugin) package using NPM or Yarn:
 
 ```bash
@@ -75,7 +75,7 @@ Stylify watches any change in the files that matches mask in the bundle files an
 
 If you add for example `color:blue` the CSS will be automatically updated 🎉.
 
-Go ahead and try Stylify directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-svelte-vite?file=README.md,src%2FApp.svelte) 💡.
+Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-svelte-vite?file=README.md,src%2FApp.svelte) 💡.
 
 ### Components
 To avoid bloated templates with utilities, you can use

@@ -10,7 +10,7 @@ title: "@stylify/bundler"
 description: "@stylify/bundler is a package for simple CSS generating and bundling in a project."
 ---
 
-Bundler is a package that allows you to generate CSS files for your project. Bundler is internally used within other Stylify packages.
+Bundler is a package that allows you to generate CSS files for your project. Bundler is internally used within other Stylify CSS packages.
 
 <img src="/images/docs/bundler/bundler.png" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
 
@@ -93,7 +93,7 @@ bundler.bundle([
 		outputFile: '/path/to/output.css',
 		// Files or files masks will be used for finding files
 		// from which the CSS will be generated.
-		// Internally Stylify uses https://npmjs.com/package/fast-glob
+		// Internally Stylify CSS uses https://npmjs.com/package/fast-glob
 		// for finding files.
 		files: [
 			'path/to/file.html',

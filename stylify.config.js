@@ -83,7 +83,17 @@ export default defineConfig({
 				&.btn {
 					background:none hover:background-color:rgba(1,190,254,0.1)
 				}
+			`,
+			'visually-hidden': `
+				position:absolute!important
+				overflow:hidden
+				clip:rect(0_0_0_0)
+				width:1px
+				height:1px
+				margin:-1px
+				padding:0
+				border:0
 			`
 		}
-	}
+	},
 });

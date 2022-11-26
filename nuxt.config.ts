@@ -3,7 +3,7 @@ import path from 'path';
 import fg from 'fast-glob';
 
 const defaultPageTitle = 'Write CSS Faster and Efficiently. CSS-like utilities.';
-const defaultPageDescription = 'Stylify uses CSS-like selectors to generate optimized utility-first CSS. Style your website faster. Don\'t study framework. Focus on coding.';
+const defaultPageDescription = 'Stylify CSS uses CSS-like selectors to generate optimized utility-first CSS. Style your website faster. Don\'t study framework. Focus on coding.';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
@@ -40,7 +40,35 @@ export default {
 			{ rel: 'manifest', href: '/site.webmanifest' },
 			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
 			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
-		]
+		],
+		script: [
+			{
+				innerHTML: `{
+					"@context": "https://schema.org",
+					"@type": "Organization",
+					"url": "https://www.example.com",
+					"logo": "https://stylifycss.com/images/logo/vertical.png"
+				}`,
+				type: 'application/ld+json'
+			},
+			{
+				innerHTML: `{
+					"@context": "https://schema.org",
+					"@type": "WebSite",
+					"url": "https://stylifycss.com/",
+					"potentialAction": {
+						"@type": "SearchAction",
+						"target": {
+							"@type": "EntryPoint",
+							"urlTemplate": "https://stylifycsss.com/?search={search_term_string}"
+						},
+						"query-input": "required name=search_term_string"
+					}
+				}`,
+				type: 'application/ld+json'
+			},
+		],
+		__dangerouslyDisableSanitizers: ['script']
 	},
 
 	css: [
