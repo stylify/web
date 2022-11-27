@@ -1,8 +1,8 @@
 <!--
 stylify-components
 	'footer-docs-section': 'display:flex width:100% margin-bottom:18px align-items:center flex-direction:column md:align-items:flex-start',
-	'footer-docs-section__title': 'margin-top:0 margin-bottom:4px font-size:16px line-height:24px',
-	'footer-docs-section__link': 'margin-bottom:8px margin-left:24px font-size:14px line-height:24px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1'
+	'footer-docs-section__title': 'margin-top:0 margin-bottom:4px font-size:16px',
+	'footer-docs-section__link': 'margin-bottom:8px margin-left:24px font-size:14px color:lighten($blue4,20) display:inline-block text-decoration:none hover:color:$blue1'
 /stylify-components
 -->
 <template>

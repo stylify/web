@@ -6,13 +6,13 @@ stylify-components
 		}
 	`,
 	'hp__section-title': `
-		font-size:32px line-height:42px font-weight:bold margin-top:0 margin-bottom:12px
-		md:font-size:48px md:line-height:64px
+		font-size:32px font-weight:bold margin-top:0 margin-bottom:12px
+		md:font-size:48px
 	`,
 	'hp__section-subtitle': `
-		font-size:18px line-height:32px
+		font-size:18px
 		margin-top:0 margin-bottom:24px max-width:800px
-		md:font-size:22px md:line-height:34px
+		md:font-size:22px
 	`,
 	'hp__section-content': 'word-break:break-word margin-top:24px',
 	'hp__tab-buttons-wrapper': `
@@ -20,7 +20,7 @@ stylify-components
 		overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
 	`,
 	'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
-	'hp__tab-content-list': 'margin-top:0 font-size:16px line-height:30px lg:width:50% max-width:800px',
+	'hp__tab-content-list': 'margin-top:0 font-size:16px lg:width:50% max-width:800px',
 	'hp__code-editor': 'padding:12px_0 border-radius:$radius2'
 /stylify-components
 
@@ -37,10 +37,10 @@ stylify-keyframes
 		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 		<section class="container margin-top:24px md:margin-top:64px">
 			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
-			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 line-height:32px lg:line-height:30px lg:font-size:18px">
+			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
 				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
 			</p>
-			<div class="text-align:center line-height:32px lg:line-height:30px lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding!&nbsp;💎</div>
+			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding!&nbsp;💎</div>
 		</section>
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px lg:padding-top:48px margin-bottom:32px">
 			<div class="hp__tab-buttons-wrapper">
@@ -48,7 +48,7 @@ stylify-keyframes
 			</div>
 			<div class="padding:12px lg:padding:24px background:lighten($blue3,20)">
 				<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-					<p class="margin-top:0 font-size:14px line-height:28px">
+					<p class="margin-top:0 font-size:14px">
 						Write selectors as css <code>property:value</code>. Use <code>_</code> (one underscore) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
 					</p>
 					<div class="hp__example-editor width:100%">
@@ -56,7 +56,7 @@ stylify-keyframes
 					</div>
 				</div>
 				<div v-show="featuresSelectedTab === 'components'">
-					<p class="margin-top:0 font-size:14px line-height:28px">
+					<p class="margin-top:0 font-size:14px">
 						Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
 					</p>
 					<div class="hp__example-editor width:100%">
@@ -64,7 +64,7 @@ stylify-keyframes
 					</div>
 				</div>
 				<div v-show="featuresSelectedTab === 'customSelectors'">
-					<p class="margin-top:0 font-size:14px line-height:28px">
+					<p class="margin-top:0 font-size:14px">
 						Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
 					</p>
 					<div class="hp__example-editor width:100%">
@@ -72,7 +72,7 @@ stylify-keyframes
 					</div>
 				</div>
 				<div v-show="featuresSelectedTab === 'variables'">
-					<p class="margin-top:0 font-size:14px line-height:28px">
+					<p class="margin-top:0 font-size:14px">
 						Avoid hardcoded values in templates. Use variables. Can be configurd within a template (expects an object without surounding brackets) or in a Compiler config.
 					</p>
 					<div class="hp__example-editor width:100%">
@@ -122,7 +122,7 @@ stylify-keyframes
 					<integration-blocks />
 				</div>
 			</div>
-			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px line-height:32px">
+			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px">
 				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px_solid_$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
@@ -131,11 +131,11 @@ stylify-keyframes
 		</section>
 
 		<section id="components" class="container margin-top:48px padding-top:48px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
 			<div class="sm:margin-left:-24px display:flex flex-wrap:wrap">
 				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_24px) lg:width:calc(100%_*_1/3_-_24px) display:inline-flex flex-direction:column sm:margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
 					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
-					<h3 class="margin:8px_0_0_0 font-size:24px transition:.3s">{{ component.title }}</h3>
+					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
 				</nuxt-link>
 			</div>
 			<div class="text-align:center">
@@ -147,15 +147,15 @@ stylify-keyframes
 		</section>
 
 		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:48px padding-top:48px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
 			<div class="hp__section-content"><why-stylify /></div>
 		</section>
 
 		<section id="quote" class="container margin-top:48px padding-top:48px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px line-height:42px md:font-size:48px md:line-height:64px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding!&nbsp;💎</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding!&nbsp;💎</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
-					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px line-height:24px">
+					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
 						<p class="margin-top:0">
 							The thing you want is to style your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex and forces you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
 						</p>
@@ -248,7 +248,7 @@ stylify-keyframes
 
 		<div>
 			<section class="container display:flex flex-direction:column align-items:center margin-bottom:48px">
-				<h2 class="margin-top:0 font-size:32px line-height:52px margin-bottom:18px md:font-size:60px md:line-height:90px">Go ahead, try it now!</h2>
+				<h2 class="margin-top:0 font-size:32px margin-bottom:18px md:font-size:60px">Go ahead, try it now!</h2>
 				<p class="margin-top:0 font-size:24px margin-bottom:34px">
 					Code less. Do more.
 				</p>
@@ -373,7 +373,17 @@ export default {
 				previewUrl: 'components/animations.html',
 				docsUrl: 'components/animations',
 				title: 'Animations'
-			}
+			},
+			{
+				previewUrl: 'components/grids-fit.html',
+				docsUrl: 'components/grids',
+				title: 'Grids'
+			},
+			{
+				previewUrl: 'components/messages.html',
+				docsUrl: 'components/messages',
+				title: 'Messages'
+			},
 		],
 		fans: [
 			{

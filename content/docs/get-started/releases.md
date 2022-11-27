@@ -13,6 +13,8 @@ Stylify releases, changelog and how to update from one version to another.
 
 ## Actual versions
 
+<div class="max-width:100% overflow:auto">
+
 | Project               | Status                                                       | Description                                                                          |
 | --------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------|
 | [astro]               | [![astro-status]][astro-package]                             | Integration for Astro.build                                                              |
@@ -46,6 +48,8 @@ Stylify releases, changelog and how to update from one version to another.
 [unplugin]: https://github.com/stylify/packages/tree/master/packages/unplugin
 [unplugin-status]: https://img.shields.io/npm/v/@stylify/unplugin?color=%2301befe&label=Version&style=for-the-badge
 [unplugin-package]: https://npmjs.com/package/@stylify/unplugin
+
+</div>
 
 ## Upgrading from 0.4 to 0.5
 - Release: [v0.5.0](https://github.com/stylify/packages/releases/tag/v0.5.0)
