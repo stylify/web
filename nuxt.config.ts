@@ -18,10 +18,12 @@ export default {
 		htmlAttrs: {
 			lang: 'en'
 		},
+
 		meta: [
 			{ charset: 'utf-8' },
-			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ hid: 'description', name: 'description', content: defaultPageDescription },
+			{ name: "robots", content: 'index, follow'},
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ name: 'format-detection', content: 'telephone=no' },
 			{ name: 'msapplication-TileColor', content: '#01befe' },
 			{ name: 'theme-color', content: '#01befe' },
@@ -60,7 +62,7 @@ export default {
 						"@type": "SearchAction",
 						"target": {
 							"@type": "EntryPoint",
-							"urlTemplate": "https://stylifycsss.com/?search={search_term_string}"
+							"urlTemplate": "https://stylifycss.com/?search={search_term_string}"
 						},
 						"query-input": "required name=search_term_string"
 					}

@@ -104,7 +104,7 @@
 			</faq>
 
 			<faq>
-				<faq-question>Stylify CSS a just another CSS framework?</faq-question>
+				<faq-question>Is Stylify CSS a CSS framework?</faq-question>
 				<faq-answer>
 					<ul>
 						<li>Stylify CSS is not a CSS framework. It is a library that generates CSS for your web project dynamically based on what you write.</li>

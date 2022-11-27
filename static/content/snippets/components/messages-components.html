@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js"></script>
+	<style>
+		body > div {
+			max-width: 600px;
+		}
+	</style>
+</head>
+<body>
+
+<!--
+stylify-variables
+	color: '#1890ff',
+/stylify-variables
+
+stylify-components
+	message: `
+		display:block will-change:max-height transition:max-height_.3s max-height:100px
+		&[hidden] { max-height:0 overflow:hidden }
+		&--outlined {
+			.message__inner { background:none border:1px_solid_$color }
+			.message__content { color:#000 }
+			.message__hide-button { color:$color hover:background:colorToRgb($color,0.2) }
+		}
+	`,
+	'message__inner': 'color:#fff background:$color display:flex justify-content:space-between padding:8px_12px align-items:center color:#222 border:1px_solid_$color font-size:14px line-height:24px border-radius:4px',
+	'message__content': 'display:flex color:#fff',
+	'message__hide-button': 'hover:background:lighten($color,25) color:#fff font-size:24px margin-top:1px cursor:pointer transition:background_0.3s border-radius:50% display:inline-flex font-size:20px margin-left:4px width:20px min-width:20px line-height:20px height:20px justify-content:center align-items:center'
+
+/stylify-components
+-->
+
+<div class="message">
+	<div class="message__inner">
+		<div class="message__content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.</div>
+	</div>
+</div>
+
+<br>
+
+<div class="message message--outlined">
+	<div class="message__inner">
+		<div class="message__content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.</div>
+	</div>
+</div>
+
+<br>
+
+<div class="message">
+	<div class="message__inner">
+		<div class="message__content">
+			<span class="margin-right:8px display:inline-flex">💡</span>
+			<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.</span>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<div class="message-1 message">
+	<div class="message__inner">
+		<div class="message__content">
+			<span class="margin-right:8px display:inline-flex">💡</span>
+			<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.</span>
+		</div>
+		<a role="button" data-hide=".message-1" class="message__hide-button">&times;</a>
+	</div>
+</div>
+
+<br>
+
+<div class="message-2 message message--outlined">
+	<div class="message__inner">
+		<div class="message__content">
+			<span class="margin-right:8px display:inline-flex">💡</span>
+			<span>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Etiam quis quam.</span>
+		</div>
+		<a role="button" data-hide=".message-2" class="message__hide-button">&times;</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	const hideElement = (element) => {
+		element.hidden = true;
+	};
+
+	document.querySelectorAll('[data-hide]').forEach((element) => {
+		element.addEventListener('click', () => {
+			hideElement(document.querySelector(element.dataset.hide));
+		});
+	});
+</script>
+
+</body>
+</html>

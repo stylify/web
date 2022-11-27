@@ -11,7 +11,7 @@
 		">
 			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0 min-height:100vh">
 				<div class="text-align:right lg:display:none">
-					<a role="button" class="cursor:pointer font-size:32px display:inline-block width:32px line-height:32px">
+					<a role="button" class="cursor:pointer font-size:32px display:inline-block width:32px">
 						<i class="icon icon-x color:$blue1 font-weight:bold"></i>
 					</a>
 				</div>

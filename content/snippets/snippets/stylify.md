@@ -119,3 +119,37 @@ const compilerConfig = {
 	}
 }
 ```
+
+## Hooks
+
+```js
+import { hooks } from '@stylify/stylify';
+
+/*
+	This hook listens for a new font-size match and adds correct line height.
+	Therefore you don't have to add the line height.
+*/
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
+		return;
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remCorrection = 0.0625;
+
+	// Adjust the font correction numbers bellow to fit your needs
+	const smallFontSizeCorrection = 1.6;
+	const largeFontSizeCorrection = 1.2;
+	// The 32 is for font-size:32px. Larger fonts like titles might not need
+	// as big line height as 16px or 18px within an article.
+	const fontCorrection = pixelFontSize > 32 ? largeFontSizeCorrection : smallFontSizeCorrection;
+
+	// This adds the line height and overrides font size into rem unit.
+	selectorProperties.addMultiple({
+		'font-size': `${pixelFontSize * remCorrection}rem`,
+		'line-height': `${pixelFontSize * fontCorrection * remCorrection}rem`
+	});
+});
+```

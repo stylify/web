@@ -1,4 +1,20 @@
+import { hooks } from '@stylify/stylify';
 import { defineConfig } from '@stylify/nuxt-module';
+
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
+		return;
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+
+	selectorProperties.addMultiple({
+		'font-size': `${pixelFontSize * 0.0625}rem`,
+		'line-height': `${pixelFontSize * (pixelFontSize > 32 ? 1.2 : 1.6) * 0.0625}rem`
+	});
+});
 
 export default defineConfig({
 	compiler: {
@@ -32,7 +48,7 @@ export default defineConfig({
 			// Global
 			html: 'color-scheme:dark',
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
-			'body': 'color:$blue4 background-color:$blue3 font-size:16px line-height:28px',
+			'body': 'color:$blue4 background-color:$blue3 font-size:16px',
 			'h1,h2,h3,h4,h5,h6': 'color:#fff',
 			img: 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
@@ -41,10 +57,10 @@ export default defineConfig({
 			'.prism-editor-wrapper *': 'font-size:14px line-height:1',
 
 			// Articles common
-			'article': 'margin-top:0 font-size:16px line-height:28px word-break:break-word',
-			'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px line-height:40px md:font-size:34px line-height:54px margin-bottom:8px',
-			'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px line-height:44px margin-top:48px margin-bottom:0',
-			'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px line-height:36px margin-top:32px margin-bottom:0',
+			'article': 'margin-top:0 font-size:16px word-break:break-word',
+			'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
+			'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px margin-top:48px margin-bottom:0',
+			'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px margin-top:32px margin-bottom:0',
 			'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:24px margin-bottom:0',
 			'article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p': 'margin-top:0',
 			'article pre': 'margin-top:0',
@@ -54,7 +70,7 @@ export default defineConfig({
 			'article table th': 'text-align:left padding:4px',
 			'article table thead': 'position:sticky top:0 left:0 background-color:lighten($blue3,20) backdrop-filter:blur(12px)',
 			'article .note': 'margin:16px_0',
-			'article .note, article .note *': 'font-size:14px line-height:24px',
+			'article .note, article .note *': 'font-size:14px',
 			'article .example-editor': 'margin:24px_0',
 			'article * a[href^="#"][aria-hidden=true]': 'display:inline-block font-size:18px visibility:hidden padding:4px line-height:1 position:absolute top:50% text-decoration:none left:-24px transform:translateY(-50%)',
 			'article h2:hover > a[href^="#"][aria-hidden=true], article h3:hover > a[href^="#"][aria-hidden=true], article h4:hover > a[href^="#"][aria-hidden=true]': 'visibility:visible',

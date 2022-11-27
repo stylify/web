@@ -7,7 +7,7 @@ order: 1
 navigationTitle: "Badges"
 
 title: "CSS Badges Components"
-description: "Stylify CSS badges Components. Prepared CSS badges for your next web project. Copy&Paste, without CSS framework."
+description: "Stylify CSS Badges Components. Prepared CSS badges for your next web project. Copy&Paste, without CSS framework."
 ---
 
 <interactive-preview class="margin-bottom:48px"

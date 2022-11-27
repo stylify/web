@@ -1,3 +1,21 @@
+<!--
+stylify-components
+	'blog-post__footer-link': `
+		color:$blue1
+		text-decoration:none
+		display:inline-flex
+		align-items:center
+		max-width:320px
+		span {
+			display:-webkit-box
+			webkit-line-clamp:2
+			webkit-box-orient:vertical
+			max-height:52px
+			overflow:hidden
+		}
+	`
+/stylify-components
+-->
 <template>
 	<div class="container margin-top:60px margin-bottom:60px">
 		<div class="max-width:800px margin-left:auto margin-right:auto">
@@ -12,7 +30,7 @@
 
 			<article class="margin-bottom:24px">
 				<div class="margin-bottom:12px color:$grey4">{{ getPostCreatedAtDate(post.createdAt) }}</div>
-				<img :src="post.image" alt="" loading="eager" width="800" height="400" class="filter:brightness(0.9) width:100% height:auto max-height:400px object-fit:cover">
+				<img :src="post.image" alt="" loading="eager" width="800" height="400" class="filter:brightness(0.9) width:100% height:auto max-height:400px object-fit:cover margin-bottom:12px md:margin-bottom:24px">
 				<h1>{{ post.title }}</h1>
 				<p>{{ post.annotation }}</p>
 				<hr>
@@ -32,7 +50,7 @@
 					<nuxt-link
 						v-if="previousPost"
 						:to="previousPost.path"
-						class="color:$blue1 text-decoration:none display:inline-flex align-items:center line-height:1 max-width:320px"
+						class="blog-post__footer-link"
 					>
 						<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
 						<span>{{ previousPost.title }} </span>
@@ -40,7 +58,7 @@
 					<nuxt-link
 						v-if="!previousPost && !nextPost"
 						to="/blog"
-						class="color:$blue1 text-decoration:none display:inline-flex align-items:center line-height:1 max-width:320px"
+						class="blog-post__footer-link"
 					>
 						<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
 						<span>Go back to blog</span>
@@ -50,7 +68,7 @@
 					<nuxt-link
 						v-if="nextPost"
 						:to="nextPost.path"
-						class="color:$blue1 text-decoration:none display:inline-flex align-items:center line-height:1 max-width:320px"
+						class="blog-post__footer-link"
 					>
 						<span>{{ nextPost.title }}</span>
 						<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>

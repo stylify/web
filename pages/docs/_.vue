@@ -123,7 +123,7 @@ export default {
 		];
 
 		if (typeof this.pageContent.ogImage !== 'undefined') {
-			metaTags.push({hid: 'og:image', property: 'og:image', content: this.pageContent.ogImage})
+			metaTags.push({hid: 'og:image', property: 'og:image', content: `/images${this.pageContent.ogImage}`})
 		}
 
 		return {

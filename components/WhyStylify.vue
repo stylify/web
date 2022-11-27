@@ -4,7 +4,7 @@ stylify-components
 		margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px
 		width:100% sm:width:calc(50%_-_24px) lg:width:calc(100%_*_1/3_-_24px) border-radius:$radius2
 	`,
-	'why-stylify__block-title': 'margin:0 font-size:22px line-height:38px display:flex flex-direction:row align-items:center',
+	'why-stylify__block-title': 'margin:0 font-size:22px display:flex flex-direction:row align-items:center',
 	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
 	'why-stylify__list': 'margin-bottom:0 margin-top:4px padding-left:24px color:lighten($blue4,20)'
 /stylify-components
@@ -37,8 +37,9 @@ stylify-components
 				<li>📦 Split bundles for page/layout/component</li>
 				<li>🧰 Selectors are minified from long <code>.color:blue</code> to short <code>.a</code></li>
 				<li>✨ No purge needed. CSS is generated only when something is matched</li>
-				<li>🔗 Components & Custom selectors are attached to utilities. No duplicated property:value</li>
+				<li>🔗 Components & Custom selectors are attached to utilities. No duplicated <code>property:value</code></li>
 				<li>🪝 Hooks can modify CSS or output for example to wrap it to layers</li>
+				<li>👀 Mangled (hidden/unreadable) HTML classes in production (if mangled)</li>
 			</ul>
 		</div>
 
