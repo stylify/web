@@ -49,7 +49,7 @@ The solution I see as a better way of writing the CSS for our button is **mixing
 
 .font-size\:16px, .button { font-size: 16px }
 
-.padding\:8px__24px, .button { padding: 8px 24px }
+.padding\:8px_24px, .button { padding: 8px 24px }
 
 .background\:\#2196f3, .button { background: #2196f3 }
 

@@ -22,24 +22,17 @@ npm i -D @stylify/unplugin
 And the vite.config.js:
 ```js
 const stylifyPlugin = vitePlugin({
-    transformIncludeFilter: (id) => {
-        return id.endsWith('js') || id.endsWith('jsx');
-    },
-    bundles: [{
-        outputFile: './src/stylify.css',
-        files: ['./src/**/*.js', './src/**/*.jsx'],
-    }],
-    extend: {
-        bundler: {
-            compiler: {
-                selectorsAreas: [
-                    '(?:^|\\s+)className="([^"]+)"',
-                    '(?:^|\\s+)className=\'([^\']+)\'',
-                    '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-                ]
-            }
-        }
-    }
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.js', './src/**/*.jsx'],
+	}],
+	compiler: {
+		selectorsAreas: [
+			'(?:^|\\s+)className="([^"]+)"',
+			'(?:^|\\s+)className=\'([^\']+)\'',
+			'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
+		]
+	}
 });
 
 export default defineConfig({
@@ -71,7 +64,7 @@ The generated CSS looks like this:
 
 [Stylify](https://stylifycss.com/) on the other hand takes file content and generates CSS for each matched selector. Each selector is by default a utility and is generated only once.
 
-The [syntax](https://stylifycss.com/docs/stylify/compiler/#syntax) is by default native CSS `property:value`. Also, when writing values, you can use `__` (two underscores) instead of space and `^` (a hat) for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify CSS selectors. In case you need want shorter or custom selectors, you can [add your own macros](https://stylifycss.com/docs/stylify/compiler#macros).
+The [syntax](https://stylifycss.com/docs/stylify/compiler/#syntax) is by default native CSS `property:value`. Also, when writing values, you can use `_` (underscore) instead of space and `^` (a hat) for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify CSS selectors. In case you need want shorter or custom selectors, you can [add your own macros](https://stylifycss.com/docs/stylify/compiler#macros).
 
 The selectors can be written right away without defining a component.
 ```jsx
@@ -187,7 +180,7 @@ stylify-keyframes
   `
 /stylify-keyframes
 */
-<div class="animation:rotate__2s__linear__infinite"></div>
+<div class="animation:rotate_2s_linear_infinite"></div>
 ```
 A simple animation example:
 <img src="/images/blog/stylify-styled-components/stylify-keyframes.gif" width="851" height="402" loading="lazy" decoding="async" class="object-fit:cover max-width:100% height:auto">

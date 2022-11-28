@@ -24,6 +24,8 @@ In this Article I will show you how to use it in the Nuxt.js 🤟.
 
 ## Installation
 
+This article is for Nuxt V2. If you use Nuxt 3, [check guide for Nuxt 3](https://stylifycss.com/docs/integrations/nuxtjs#how-to-integrate-stylify-css-into-the-nuxtjs-v3).
+
 Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that symplifies the integration process to minimum:
 
 ```

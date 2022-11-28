@@ -95,11 +95,12 @@ Because of the maintainability and the fact that code above could be used on mul
 For the example above, I am using the following initialization that can be found on the [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html) (It is in the index.js and it is slightly changed in order to work in that environment):
 
 ```js
-import { Compiler, nativePreset } from '@stylify/stylify';
+import { Compiler } from '@stylify/stylify';
 
 const content = '';
 
-const compiler = new Compiler(nativePreset.compiler);
+const config = {};
+const compiler = new Compiler(config);
 const compilationResult = compiler.compile(content);
 const css = compilationResult.generateCss();
 const mangledContent = compiler.rewriteSelectors(content, compilationResult);
@@ -107,7 +108,7 @@ const mangledContent = compiler.rewriteSelectors(content, compilationResult);
 
 Let's add the shadow variable first into the compiler config:
 ```js
-nativePreset.compiler.variables: {
+config.variables: {
 	shadow: '0 2px 8px #000'
 };
 ```
@@ -117,7 +118,7 @@ When the variable is defined, we can use it like this: `box-shadow:$shadow`.
 The Native Preset is not required. You can define your own selectors. For example for the margin it would look like this:
 
 ```js
-nativePreset.compiler.macros['m:(\\S+?)'] = (macroMatch, cssProperties) => {
+config.macros['m:(\\S+?)'] = ({macroMatch, cssProperties}) => {
 	cssProperties.add('margin', macroMatch.getCapture(0));
 };
 ```
@@ -127,7 +128,7 @@ When the macro is defined, it can be used with custom values like `m:24px` and `
 If multiple and the same selectors should be used on multiple places, it is a good practice to define a component for them in order to simplify the maintainability and readability:
 
 ```js
-nativePreset.compiler.components = {
+config.components = {
 	'gallery-image__wrapper': `
 		display:inline-flex
 		position:relative
@@ -157,7 +158,7 @@ nativePreset.compiler.components = {
 It is also a good practice to add the `box-sizing:border-box` to prevent the wtf moments somewhere in the future:
 
 ```js
-nativePreset.compiler.plainSelectors: {
+config.customSelectors: {
 	'*': 'box-sizing:border-box'
 };
 ```

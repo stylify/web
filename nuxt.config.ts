@@ -2,8 +2,8 @@ import { highlightCode } from "./services";
 import path from 'path';
 import fg from 'fast-glob';
 
-const defaultPageTitle = 'Write CSS Faster and Efficiently. CSS-like utilities.';
-const defaultPageDescription = 'Stylify CSS uses CSS-like selectors to generate optimized utility-first CSS. Style your website faster. Don\'t study framework. Focus on coding.';
+const defaultPageTitle = 'Code your website faster with CSS-like utilities | Stylify CSS';
+const defaultPageDescription = 'Stylify CSS uses CSS-like selectors to generate optimized utility-first CSS. Code your website faster. Don\'t study CSS framework. Focus on coding.';
 const isProduction = process.env.NODE_ENV === 'production';
 
 export default {
