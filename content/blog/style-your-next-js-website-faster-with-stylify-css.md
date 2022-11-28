@@ -100,7 +100,7 @@ Templates bloated with utility selectors are hard to read. Stylify allows you to
 ```jsx
 /*
 stylify-components
-  container: 'max-width:800px margin:0__auto'
+  container: 'max-width:800px margin:0_auto'
 /stylify-components
 */
 export default function Home() {
@@ -123,7 +123,7 @@ stylify-variables
 /stylify-variables
 
 stylify-components
-  container: 'max-width:$containerWidth margin:0__auto'
+  container: 'max-width:$containerWidth margin:0_auto'
 /stylify-components
 */
 export default function Home() {

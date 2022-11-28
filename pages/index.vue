@@ -157,7 +157,7 @@ stylify-keyframes
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
 						<p class="margin-top:0">
-							The thing you want is to style your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex and forces you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
+							The thing you want is to code your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex and forces you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
 						</p>
 						<p class="margin:0">
 							Stylify goes against the grain and uses CSS-like selectors you already know. It's like writing pure CSS directly into the markup without the need of switching between files and figuring out the names for selectors. If you know CSS, you know how to use Stylify.

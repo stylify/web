@@ -100,7 +100,7 @@ components directly in files, where they are used through [content options](http
 ```jsx
 /*
 stylify-components
-  container: 'max-width:800px margin:0__auto',
+  container: 'max-width:800px margin:0_auto',
   title: 'text-align:center margin-top:100px font-size:42px'
 /stylify-components
 */
@@ -124,7 +124,7 @@ stylify-variables
 /stylify-variables
 
 stylify-components
-  container: 'max-width:$containerWidth margin:0__auto',
+  container: 'max-width:$containerWidth margin:0_auto',
   title: 'text-align:center margin-top:100px font-size:$titleFontSize'
 /stylify-components
 */

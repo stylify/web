@@ -60,15 +60,14 @@ npm i @stylify/unplugin
 Update the `webpack.config.js`. Import Stylify, add plugin and the `hp` style entry.
 
 ```js
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 const path = require('path');
 // ...
 const layoutCssPath = './assets/styles/layout.css';
 const homepageCssPath = './assets/styles/homepage.css';
 
 Encore
-  .addPlugin(webpackPlugin({
-    transformIncludeFilter: (id) => id.endsWith('twig') || id.endsWith('.php'),
+  .addPlugin(stylifyWebpack({
     bundles: [
         { outputFile: layoutCssPath, files: [
             './templates/base.html.twig'
@@ -104,21 +103,17 @@ Some code often needs to be reused accross multiple pages. It's not a good idea 
 
 Open the `webpack.config.js` and edit the Stylify CSS plugin config:
 ```js
-.addPlugin(webpackPlugin({
-  // ...
-  extend: {
-    bundler: {
-      compiler: {
-        variables: {
-          containerSize: '800px',
-          textColor: 'blue'
-        },
-        components: {
-          container: 'max-width:$containerSize margin:0__auto'
-        }
-      }
-    }
-  }
+.addPlugin(stylifyWebpack({
+	// ...
+	compiler: {
+		variables: {
+			containerSize: '800px',
+			textColor: 'blue'
+		},
+		components: {
+			container: 'max-width:$containerSize margin:0__auto'
+		}
+	}
 }));
 ```
 

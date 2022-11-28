@@ -74,7 +74,7 @@ If you copy the code bellow into the `src/App.vue` and run `yarn dev` you will g
 
 ```html
 <template>
-  <div class="max-width:800px margin:0__auto">
+  <div class="max-width:800px margin:0_auto">
     <h1 class="text-align:center margin-top:100px font-size:42px">Hello World!🤩</h1>
   </div>
 </template>
@@ -93,7 +93,7 @@ components directly in files, where they are used through [content options](http
 ```html
 <!--
 stylify-components
-  container: 'max-width:800px margin:0__auto',
+  container: 'max-width:800px margin:0_auto',
   title: 'text-align:center margin-top:100px font-size:42px'
 /stylify-components
 -->
@@ -115,7 +115,7 @@ stylify-variables
 /stylify-variables
 
 stylify-components
-  container: 'max-width:$containerWidth margin:0__auto',
+  container: 'max-width:$containerWidth margin:0_auto',
   title: 'text-align:center margin-top:100px font-size:$titleFontSize'
 /stylify-components
 -->

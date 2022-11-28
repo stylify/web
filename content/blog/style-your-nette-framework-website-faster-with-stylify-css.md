@@ -103,7 +103,7 @@ First, let's add the global `container` component. Open the `bundles.js`, and th
 
 ```js
 nativePreset.compiler.components = {
-    container: 'max-width:1024px margin:0__auto'
+    container: 'max-width:1024px margin:0_auto'
 }
 
 const bundler = new Bundler({ /*...*/ });

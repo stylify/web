@@ -30,14 +30,14 @@ In practice, the usage of the Stylify CSS looks like this:
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
 ```
-Because some values can contain a space and a quote, I have decided to add a special syntax. When writting a selector its value should contain a space, you can use `__`(two underscores) and for a quote `^` (hat).
+Because some values can contain a space and a quote, I have decided to add a special syntax. When writting a selector its value should contain a space, you can use `_`(underscore) and for a quote `^` (hat).
 
 This allows you to write selectors like this:
 
 ```html
 <div class="
- border:12px__solid__steelblue
- font-family:^Arial^,__sans-serif
+ border:12px_solid_steelblue
+ font-family:^Arial^,_sans-serif
 ">
   Hello World!
 </div>
@@ -57,7 +57,7 @@ When compiled and mangled, it generates the following CSS:
 ### Another Features
 - **[Dynamic selectors](https://stylifycss.com/docs/stylify/compiler#macros)**: Define a macro and use it however you want `width:240px`, `width:10%`, `width:30rem`.
 - **[Dynamic screens](https://stylifycss.com/docs/stylify/compiler#logical-operands-in-screens)**: You can combine screens using logical operands like `||` and `&&` => `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5)` and use any value you want `minw123px:font-size:24px`.
-- **Selectors mangling**: Stylify CSS can convert long selectors `transition:color__0.3s__ease-in-out` to `_abc123`.
+- **Selectors mangling**: Stylify CSS can convert long selectors `transition:color_0.3s_ease-in-out` to `_abc123`.
 - **Spliting CSS**: CSS can be generated for each file separately. Thanks to that you can split CSS for example for a page and layout.
 - **[Components](https://stylifycss.com/docs/stylify/compiler#components)**: Define for example a `button` with dependencies like `background:#000 color:#fff padding:24px` and use it in a whole project.
 - **[Variables](https://stylifycss.com/docs/stylify/compiler#variables)**: Define variables for repetetative values. They can be injected into code as CSS variables.
