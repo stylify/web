@@ -21,18 +21,11 @@ npm i -D @stylify/unplugin
 
 And the vite.config.js:
 ```js
-const stylifyPlugin = vitePlugin({
+const stylifyPlugin = stylifyVite({
 	bundles: [{
 		outputFile: './src/stylify.css',
 		files: ['./src/**/*.js', './src/**/*.jsx'],
-	}],
-	compiler: {
-		selectorsAreas: [
-			'(?:^|\\s+)className="([^"]+)"',
-			'(?:^|\\s+)className=\'([^\']+)\'',
-			'(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-		]
-	}
+	}]
 });
 
 export default defineConfig({
@@ -199,7 +192,7 @@ const GlobalStyle = createGlobalStyle`
 </React.Fragment>
 ```
 
-In Stylify, the same thing is achieved using [plain selectors](https://stylifycss.com/docs/stylify/compiler/#plainselectors). The selectors are directly injected into the generated CSS file.
+In Stylify, the same thing is achieved using [plain selectors](https://stylifycss.com/docs/stylify/compiler/#customselectors). The selectors are directly injected into the generated CSS file.
 ```jsx
 /*
 stylify-plainSelectors

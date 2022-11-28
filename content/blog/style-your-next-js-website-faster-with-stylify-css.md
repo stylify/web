@@ -34,28 +34,15 @@ npm i @stylify/unplugin
 Open the `next.config.js` and copy the following content into it:
 
 ```js
-const { webpackPlugin } = require('@stylify/unplugin');
+const { stylifyWebpack } = require('@stylify/unplugin');
 
-const stylifyPlugin = (dev) => webpackPlugin({
+const stylifyPlugin = (dev) => stylifyWebpack({
     dev: dev,
-    transformIncludeFilter: (id) => id.endsWith('js'),
-    bundles: [{
-        outputFile: './styles/stylify.css',
-        // Generate CSS from all js files
-        files: ['./pages/**/*.js'],
-    }],
-    extend: {
-        bundler: {
-            compiler: {
-                selectorsAreas: [
-                    // For selecting className="selector"
-                    '(?:^|\\s+)className="([^"]+)"',
-                    '(?:^|\\s+)className=\'([^\']+)\'',
-                    '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-                ]
-            }
-        }
-    }
+	bundles: [{
+		outputFile: './styles/stylify.css',
+		// Generate CSS from all js files
+		files: ['./pages/**/*.js'],
+	}]
 });
 
 module.exports = {
@@ -162,7 +149,7 @@ The css is shortened too:
 ## Configure anything you need
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

@@ -36,12 +36,9 @@ Open the `vite.config.js` and copy the following content into it:
 ```js
 import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
-import { vitePlugin } from '@stylify/unplugin';
+import { stylifyVite } from '@stylify/unplugin';
 
-const stylifyPlugin = vitePlugin({
-	transformIncludeFilter: (id) => {
-		return id.endsWith('svelte');
-	},
+const stylifyPlugin = stylifyVite({
 	bundles: [{
 		outputFile: './src/stylify.css',
 		files: ['./src/**/*.svelte'],
@@ -141,7 +138,7 @@ The css is shortened too:
 ## Configure anything you need
 The examples above doesn't include everything Stylify can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

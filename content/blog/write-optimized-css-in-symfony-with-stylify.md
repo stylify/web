@@ -176,7 +176,7 @@ The example can be also found in the [docs](https://stylifycss.com/docs/integrat
 ## More configuration
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

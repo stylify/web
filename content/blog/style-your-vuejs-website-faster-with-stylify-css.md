@@ -36,24 +36,15 @@ Open the `vite.config.js` and copy the following content into it:
 ```js
 import { defineConfig } from 'vite';
 import vue from '@vitejs/plugin-vue';
-import { vitePlugin } from '@stylify/unplugin';
+import { stylifyVite } from '@stylify/unplugin';
 
-const stylifyPlugin = vitePlugin({
-  transformIncludeFilter: (id) => id.endsWith('vue'),
-  bundles: [
-    {
-      files: ['./src/**/*.vue'],
-      outputFile: './src/assets/stylify.css',
-    },
-  ],
-  extend: {
-    bundler: {
-      compiler: {
-        // Match v-bind:class and :class attributes
-        selectorsAreas: ['(?:^|\\s+)(?:v-bind)?:class="([^"]+)"'],
-      },
-    },
-  },
+const stylifyPlugin = stylifyVite({
+	bundles: [
+		{
+			files: ['./src/**/*.vue'],
+			outputFile: './src/assets/stylify.css',
+		},
+	]
 });
 
 export default defineConfig(() => ({
@@ -150,7 +141,7 @@ The css is shortened too:
 ## Configure anything you need
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

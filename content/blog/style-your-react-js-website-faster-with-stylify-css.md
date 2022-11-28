@@ -36,30 +36,14 @@ Open the `vite.config.js` and copy the following content into it:
 ```js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import { vitePlugin } from '@stylify/unplugin';
+import { stylifyVite } from '@stylify/unplugin';
 
-const stylifyPlugin = vitePlugin({
-    transformIncludeFilter: (id) => {
-		// Process only js, jsx, ts, tsx,
-		return id.endsWith('js') || id.endsWith('ts') || id.endsWith('tsx') || id.endsWith('jsx');
-	},
+const stylifyPlugin = stylifyVite({
     bundles: [{
 		// Create only one bundle for whole project => stylify.css
         outputFile: './src/stylify.css',
         files: ['./src/**/*.js', './src/**/*.ts', './src/**/*.jsx', './src/**/*.tsx'],
-    }],
-    extend: {
-        bundler: {
-            compiler: {
-                selectorsAreas: [
-					// To find class attributes
-                    '(?:^|\\s+)className="([^"]+)"',
-                    '(?:^|\\s+)className=\'([^\']+)\'',
-                    '(?:^|\\s+)className=\\{`((?:.|\n)+)`\\}'
-                ]
-            }
-        }
-    }
+    }]
 });
 
 export default defineConfig({
@@ -164,7 +148,7 @@ The css is shortened too:
 ## Configure anything you need
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

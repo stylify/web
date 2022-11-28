@@ -17,7 +17,7 @@ The problem with writing CSS manually is that it is slow. It's also easy to end 
 Because of this I have created the [stylifycss.com](https://stylifycss.com):
 - It generates utility-first CSS dynamicly based on what I write
 - The selectors are the same like like in pure CSS
-- There are just two rules. `__` instead of a space and `^` instead of a quote.
+- There are just two rules. `_` instead of a space and `^` instead of a quote.
 - And there are multiple other features like code splitting, selectors minification, dynamic screens, on demand generated CSS and etc. Feel free to checkout the [Stylify docs](https://stylifycss.com)
 
 In this Article I will show you how to use it in the Nuxt.js 🤟.
@@ -49,7 +49,7 @@ Open the `pages/index.vue` directory and copy the following content into it.
 
 ```html
 <template>
-	<div class="max-width:1024px margin:0__auto">
+	<div class="max-width:1024px margin:0_auto">
 		<h1 class="font-size:24px lg:font-size:32px text-align:center">
 			Hello World 🥳!
 		</h1>
@@ -92,11 +92,9 @@ Create the `stylify.config.js`:
 
 ```js
 export default {
-	extend: {
-		compiler: {
-			components: {
-				container: 'max-width:1024px margin:0__auto',
-			}
+	compiler: {
+		components: {
+			container: 'max-width:1024px margin:0_auto',
 		}
 	}
 };
@@ -106,12 +104,10 @@ Sometime it is necessary to style elements globally. It can be done using **plai
 
 ```js
 export default {
-	extend: {
-		compiler: {
-			// ...
-			plainSelectors: {
-				'*': 'font-family:arial font-size:16px'
-			}
+	compiler: {
+		// ...
+		plainSelectors: {
+			'*': 'font-family:arial font-size:16px'
 		}
 	}
 };
@@ -121,12 +117,10 @@ Variables are used almost in every code. In CSS it is not different. So lets add
 
 ```js
 export default {
-	extend: {
-		compiler: {
-			// ...
-			variables: {
-				'titleColor': 'steelblue'
-			}
+	compiler: {
+		// ...
+		variables: {
+			'titleColor': 'steelblue'
 		}
 	}
 };
@@ -171,7 +165,7 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 .container{
 	max-width:1024px
 }
-.margin\:0__auto,
+.margin\:0_auto,
 .container{
 	margin:0 auto
 }

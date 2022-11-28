@@ -38,18 +38,16 @@ const { Bundler } = require('@stylify/bundler');
 
 // Detect watch mode
 const watchFiles = process.argv[process.argv.length - 1] === '--w';
-
-// Mangle selectors for production
-nativePreset.compiler.mangleSelectors = !watchFiles;
-
-// Match n:class attributes
-nativePreset.compiler.selectorsAreas = [
-    '(?:^|\\s+)n:class="([^"]+)"',
-    '(?:^|\\s+)n:class=\'([^\']+)\''
-];
-
 const bundler = new Bundler({
-	compiler: nativePreset.compiler,
+	compiler: {
+		// Mangle selectors for production
+		mangleSelectors: !watchFiles,
+		// Match n:class attributes
+		selectorsAreas: [
+			'(?:^|\\s+)n:class="([^"]+)"',
+			'(?:^|\\s+)n:class=\'([^\']+)\''
+		]
+	},
 	watchFiles: watchFiles
 });
 
@@ -205,7 +203,7 @@ If you run `yarn build`, the selectors will be shrinked and the css minified:
 ## Configure anything you need
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)
+- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more

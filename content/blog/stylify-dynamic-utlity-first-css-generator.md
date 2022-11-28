@@ -61,7 +61,7 @@ When compiled and mangled, it generates the following CSS:
 - **Spliting CSS**: CSS can be generated for each file separately. Thanks to that you can split CSS for example for a page and layout.
 - **[Components](https://stylifycss.com/docs/stylify/compiler#components)**: Define for example a `button` with dependencies like `background:#000 color:#fff padding:24px` and use it in a whole project.
 - **[Variables](https://stylifycss.com/docs/stylify/compiler#variables)**: Define variables for repetetative values. They can be injected into code as CSS variables.
-- **[Plain selectors](https://stylifycss.com/docs/stylify/compiler#plainselectors)**: Allows you to style selectors like `article > h1`.
+- **[Plain selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)**: Allows you to style selectors like `article > h1`.
 - **[Helpers](https://stylifycss.com/docs/stylify/compiler#helpers)**: Can be used when the CSS is generated for example for recalculating units and etc.
 
 ## Seamless Integration
