@@ -35,14 +35,14 @@ stylify-keyframes
 <template>
 	<div>
 		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
-		<section class="container margin-top:24px md:margin-top:64px">
-			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:24px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
+		<section class="container margin-top:24px md:margin-top:34px">
+			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
 				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
 			</p>
-			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste your time by studying a framework. Focus on coding!&nbsp;💎</div>
+			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Focus on coding!&nbsp;💎</div>
 		</section>
-		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px lg:padding-top:48px margin-bottom:32px">
+		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
@@ -113,7 +113,7 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section class="container margin-bottom:24px md:margin-bottom:48px">
+		<section class="container margin-bottom:24px md:margin-bottom:32px">
 			<div>
 				<p class="hp__section-subtitle">
 					Start using Stylify with your favorite tool in a minute.
@@ -130,10 +130,21 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section id="components" class="container margin-top:48px padding-top:48px">
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
+			<p class="text-align:center max-width:1000px margin:0_auto">
+				Stylify primarily tries to solve two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization</strong>.
+				<br><strong>The CSS-like</strong> syntax is used to skip the process of studying random shortcuts and selectors. It's like writting CSS.
+				<br><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.
+				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way&nbsp;👇.
+			</p>
+			<div class="hp__section-content"><why-stylify /></div>
+		</section>
+
+		<section id="components" class="container margin-top:32px padding-top:32px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
-			<div class="sm:margin-left:-24px display:flex flex-wrap:wrap">
-				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_24px) lg:width:calc(100%_*_1/3_-_24px) display:inline-flex flex-direction:column sm:margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
+			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
+				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
 					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
 					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
 				</nuxt-link>
@@ -146,12 +157,7 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:48px padding-top:48px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
-			<div class="hp__section-content"><why-stylify /></div>
-		</section>
-
-		<section id="quote" class="container margin-top:48px padding-top:48px">
+		<section id="quote" class="container margin-top:32px padding-top:32px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
 				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding!&nbsp;💎</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
@@ -197,7 +203,7 @@ stylify-keyframes
 				</div>
 			</div>
 			<div class="slideshow width:200% height:300px md:height:280px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_50s_linear_infinite column-gap:24px">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:24px">
 					<a
 						v-for="(fan, index) in fans"
 						:key="'orig-' + index"
@@ -247,7 +253,7 @@ stylify-keyframes
 		</div>
 
 		<div>
-			<section class="container display:flex flex-direction:column align-items:center margin-bottom:48px">
+			<section class="container display:flex flex-direction:column align-items:center margin-bottom:32px">
 				<h2 class="margin-top:0 font-size:32px margin-bottom:18px md:font-size:60px">Go ahead, try it now!</h2>
 				<p class="margin-top:0 font-size:24px margin-bottom:34px">
 					Code less. Do more.
