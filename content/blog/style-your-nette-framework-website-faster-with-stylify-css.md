@@ -100,8 +100,10 @@ components directly in files, where they are used using [content options](https:
 First, let's add the global `container` component. Open the `bundles.js`, and the following:
 
 ```js
-nativePreset.compiler.components = {
-    container: 'max-width:1024px margin:0_auto'
+const compilerConfig = {
+	components: {
+		container: 'max-width:1024px margin:0_auto'
+	}
 }
 
 const bundler = new Bundler({ /*...*/ });

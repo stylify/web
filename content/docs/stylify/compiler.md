@@ -72,7 +72,7 @@ Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,2
 ```js
 const compilerConfig = {
 	macros: {
-		'color:(\\S+?)': (macroMatch, cssProperties) => {
+		'color:(\\S+?)': ({macroMatch, cssProperties}) => {
 			// color:blue => will create => color: blue
 			// You can also use addMultiple({})
 			cssProperties.add('color', macroMatch.getCapture(0));
@@ -376,8 +376,8 @@ const compilerConfig = {
 		joinText(...texts) => '"' + texts.join(' ') + '"'
 	},
 	macros: {
-		'(bgc|zi):(\\S+?)': function (macroMatch, cssProperties) {
-			const property = this.helpers.shortcut(macroMatch.getCapture(0));
+		'(bgc|zi):(\\S+?)': ({helpers, macroMatch, cssProperties}) => {
+			const property = helpers.shortcut(macroMatch.getCapture(0));
 			macroMatch.add(property, cssProperties.getCapture(1));
 		}
 	}

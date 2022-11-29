@@ -12,7 +12,7 @@ Style your Next.js website faster, more efficiently and intuitively with [Stylif
 For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
 ## Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `_zx, _ga{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
 With Stylify, you can get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
 
@@ -37,21 +37,21 @@ Open the `next.config.js` and copy the following content into it:
 const { stylifyWebpack } = require('@stylify/unplugin');
 
 const stylifyPlugin = (dev) => stylifyWebpack({
-    dev: dev,
+	dev: dev,
 	bundles: [{
-		outputFile: './styles/stylify.css',
 		// Generate CSS from all js files
 		files: ['./pages/**/*.js'],
+		outputFile: './styles/stylify.css',
 	}]
 });
 
 module.exports = {
-  reactStrictMode: true,
-  webpack: (config, { dev }) => {
-    // Add Stylify CSS Webpack plugin
-    config.plugins.push(stylifyPlugin(dev));
-    return config;
-  }
+	reactStrictMode: true,
+	webpack: (config, { dev }) => {
+		// Add Stylify CSS Webpack plugin
+		config.plugins.push(stylifyPlugin(dev));
+		return config;
+	}
 }
 ```
 
@@ -128,8 +128,8 @@ When we run the production build using `yarn build` + `yarn start`, the jsx mark
 ```jsx
 export default function Home() {
   return (
-    <div className="_7tcrv">
-      <div className="_ro073">Hello World!</div>
+    <div className="a">
+      <div className="b">Hello World!</div>
     </div>
   )
 }
@@ -141,17 +141,16 @@ The css is shortened too:
     --blue: #4682b4;
     --containerWidth: 800px
 }
-._ro073 {color: #4682b4}
-._7tcrv,._bcda8 { max-width: 800px }
-._7tcrv,._m0vnad { margin: 0 auto }
+.b {color: #4682b4}
+.a,.c { max-width: 800px }
+.a,.d { margin: 0 auto }
 ```
 
 ## Configure anything you need
 The examples above doesn't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
+- Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
-- And a lot more
+- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
 
 Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

@@ -119,7 +119,7 @@ In case you want to add a custom selector, for example a shorter variant for `ma
 ```js
 const compilerConfig = {
 	macros: {
-		'ml:(\\S+?)': (macroMatch, cssProperties) => {
+		'ml:(\\S+?)': ({macroMatch, cssProperties}) => {
 			// ml:24px => will create => margin-left: 24px
 			cssProperties.add('margin-left', macroMatch.getCapture(0));
 		}
