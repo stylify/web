@@ -87,7 +87,7 @@ export default defineConfig({
 			container: `
 				max-width:1280px margin-left:auto margin-right:auto padding-left:8px padding-right:8px
 				md:padding-left:12px md:padding-right:12px
-				lg:padding-left:24px md:padding-right:24px
+				lg:padding-left:24px lg:padding-right:24px
 				&-lg { max-width:1920px }
 			`,
 			btn: `

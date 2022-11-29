@@ -1,8 +1,8 @@
 <!--
 stylify-components
 	'why-stylify__block': `
-		margin-left:24px margin-bottom:24px background:lighten($blue3,20) padding:12px
-		width:100% sm:width:calc(50%_-_24px) lg:width:calc(100%_*_1/3_-_24px) lg:margin-bottom:0 border-radius:$radius2
+		margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px
+		width:100% sm:width:calc(50%_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:margin-bottom:0 border-radius:$radius2
 	`,
 	'why-stylify__block-title': 'margin:0 font-size:22px display:flex flex-direction:row align-items:center',
 	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
@@ -10,7 +10,7 @@ stylify-components
 /stylify-components
 -->
 <template>
-	<div id="why-stylify-css" class="display:flex margin-left:-24px flex-wrap:wrap">
+	<div id="why-stylify-css" class="display:flex margin-left:-12px flex-wrap:wrap">
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-heart why-stylify__block-title-icon"></i>
@@ -38,7 +38,7 @@ stylify-components
 				<li>🧰 Selectors are minified from long <code>.color:blue</code> to short <code>.a</code></li>
 				<li>✨ No purge needed. CSS is generated only when something is matched</li>
 				<li>🔗 Components & Custom selectors are attached to utilities. No duplicated <code>property:value</code></li>
-				<li>🪝 Hooks can modify CSS or output for example wrap it to CSS layers</li>
+				<li>🪝 Hooks can modify CSS or output for example wrap it in CSS layers</li>
 				<li>👀 Mangled (hidden/unreadable) HTML classes in production (if mangled)</li>
 			</ul>
 		</div>

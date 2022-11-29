@@ -11,7 +11,7 @@ stylify-components
 				padding-bottom:24px justify-content:space-between align-items:center container container-lg
 				minw1500px:flex-direction:row
 			">
-				<div class="display:flex flex-direction:column sm:flex-direction:row align-items:center margin-bottom:24px width:100% minw1500px:width:auto minw1500px:margin-bottom:0 justify-content:space-between">
+				<div class="display:flex flex-direction:column sm:flex-direction:row align-items:center margin-bottom:12px width:100% minw1500px:width:auto minw1500px:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex minw1500px:min-width:300px align-items:center margin-bottom:12px sm:margin-bottom:0">
 						<nuxt-link to="/" class="text-decoration:none display:flex maxw400px:width:112px maxw400px:height:auto" aria-label="Homepage">
 							<svg width="150" height="45" viewBox="0 0 661 202" fill="none">

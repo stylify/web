@@ -11,17 +11,18 @@ stylify-components
 	`,
 	'hp__section-subtitle': `
 		font-size:18px
-		margin-top:0 margin-bottom:24px max-width:800px
+		margin-top:0 margin-bottom:12px max-width:800px
 		md:font-size:22px
 	`,
-	'hp__section-content': 'word-break:break-word margin-top:24px',
+	'hp__section-content': 'word-break:break-word margin-top:12px',
 	'hp__tab-buttons-wrapper': `
 		padding-left:12px padding-top:12px margin-left:-12px display:flex flex-wrap:nowrap
 		overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
 	`,
 	'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
 	'hp__tab-content-list': 'margin-top:0 font-size:16px lg:width:50% max-width:800px',
-	'hp__code-editor': 'padding:12px_0 border-radius:$radius2'
+	'hp__code-editor': 'padding:12px_0 border-radius:$radius2',
+	'hp__info-boxes': '> div {border:1px_solid_#1e2431 padding:8px border-radius:4px}'
 /stylify-components
 
 stylify-keyframes
@@ -36,11 +37,31 @@ stylify-keyframes
 	<div>
 		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 		<section class="container margin-top:24px md:margin-top:34px">
-			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:56px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
+			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:48px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
 			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
-				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
+				Stylify is a library that uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
 			</p>
-			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Focus on coding!&nbsp;💎</div>
+			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Stay with CSS. Focus on coding!&nbsp;💎</div>
+		</section>
+		<section class="container margin-top:32px margin-bottom:24px">
+			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
+			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
+				<div>
+					<span class="font-size:24px margin-right:8px">🔁</span>
+					<span>
+						<a href="#installation" class="color:$blue1">Install Stylify CSS</a>.
+						<br>Write CSS-like selectors into class attributes.
+					</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">📦</span>
+					<span>CSS is automatically generated into CSS files.</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">🚀</span>
+					<span>In production, CSS and HTML gets optimized: minified, selectors are mangled <code class="white-space:nowrap">.color-blue</code> => <code class="white-space:nowrap">.a</code> and properties are chained.</span>
+				</div>
+			</div>
 		</section>
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
 			<div class="hp__tab-buttons-wrapper">
@@ -85,7 +106,7 @@ stylify-keyframes
 							<li><strong>Use custom values for screens</strong>: <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code></li>
 							<li><strong>Combine screens with logicl operands</strong>: <code>sm&&tolg</code> or <code>sm||tolg</code></li>
 						</ul>
-						<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+						<div class="max-width:800px lg:margin-left:12px lg:width:50%">
 							<example-code-editor
 								class="hp__code-editor"
 								:defaultCode="dynamicScreensDefaultCode"
@@ -100,7 +121,7 @@ stylify-keyframes
 							<li>Helpers are called when a selector is found.</li>
 							<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
 						</ul>
-						<div class="max-width:800px lg:margin-left:24px lg:width:50%">
+						<div class="max-width:800px lg:margin-left:12px lg:width:50%">
 							<example-code-editor
 								class="hp__code-editor"
 								:defaultCode="helpersDefaultCode"
@@ -113,17 +134,17 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section class="container margin-bottom:24px md:margin-bottom:32px">
-			<div>
-				<p class="hp__section-subtitle">
-					Start using Stylify with your favorite tool in a minute.
-				</p>
+		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
+			<div class="margin-bottom:24px">
+				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
+					Start using Stylify CSS with your favorite tool in a minute.
+				</h3>
 				<div class="hp__section-content">
 					<integration-blocks />
 				</div>
 			</div>
-			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px md:margin-left:-24px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px md:margin-left:24px border:2px_solid_$blue1">
+			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px border:2px_solid_$blue1">
 					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
 				<nuxt-link to="/docs/integrations" class="btn btn--hp btn--transparent color:$blue1 border:2px_solid_$blue1 margin-left:8px sm:margin-left:12px md:padding:12px_24px">Installation</nuxt-link>
@@ -131,13 +152,15 @@ stylify-keyframes
 		</section>
 
 		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
 			<p class="text-align:center max-width:1000px margin:0_auto">
-				Stylify primarily tries to solve two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization</strong>.
-				<br><strong>The CSS-like</strong> syntax is used to skip the process of studying random shortcuts and selectors. It's like writting CSS.
-				<br><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.
-				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way&nbsp;👇.
+				Stylify primarily tries to solve two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
+				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way.
 			</p>
+			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
+				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writting CSS. Therefore is easy to switch between Stylify and CSS.</div>
+				<div><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.</div>
+			</div>
 			<div class="hp__section-content"><why-stylify /></div>
 		</section>
 
@@ -171,7 +194,7 @@ stylify-keyframes
 						</p>
 					</div>
 					<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
-						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:24px border-radius:200px height:100px md:height:136px width:100px md:width:136px" loading="lazy" decoding="async">
+						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:12px border-radius:200px height:100px md:height:136px width:100px md:width:136px" loading="lazy" decoding="async">
 						<div class="margin-left:12px md:margin-left:0 md:margin-top:12px md:text-align:center">
 							<strong class="color:#fff">Vladimír Macháček</strong>
 							<br>Author of Stylify CSS
@@ -188,7 +211,7 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:46px margin:45px_0 md:margin-bottom:48px">
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0 md:margin-bottom:48px">
 			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
 				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px_solid_#bbe8f6 md:padding-right:12px md:margin-right:12px">
 					<div class="display:flex height:28px margin-right:12px width:100px"><GithubButton /></div>
@@ -203,7 +226,7 @@ stylify-keyframes
 				</div>
 			</div>
 			<div class="slideshow width:200% height:300px md:height:280px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:24px">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
 					<a
 						v-for="(fan, index) in fans"
 						:key="'orig-' + index"
@@ -253,9 +276,9 @@ stylify-keyframes
 		</div>
 
 		<div>
-			<section class="container display:flex flex-direction:column align-items:center margin-bottom:32px">
-				<h2 class="margin-top:0 font-size:32px margin-bottom:18px md:font-size:60px">Go ahead, try it now!</h2>
-				<p class="margin-top:0 font-size:24px margin-bottom:34px">
+			<section class="container display:flex flex-direction:column align-items:center margin-bottom:32px padding-bottom:32px">
+				<h2 class="margin-top:0 font-size:32px margin-bottom:4px md:font-size:60px">Go ahead, try it now!</h2>
+				<p class="margin-top:0 font-size:24px margin-bottom:12px">
 					Code less. Do more.
 				</p>
 				<div>
