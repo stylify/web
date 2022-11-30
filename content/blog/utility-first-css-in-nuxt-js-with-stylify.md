@@ -1,37 +1,39 @@
 ---
-title: Utility-First CSS in Nuxt.js with Stylify
+title: Style your Nuxt.js faster with Stylify CSS
 image: '/images/blog/stylify-nuxt/stylify-nuxt.jpg'
 ogImage: '/images/blog/stylify-nuxt/stylify-nuxt-og-image.jpg'
 author: 'Vladimír Macháček'
-annotation: 'Utility-First CSS using pure CSS selectors. Style your Nuxt.js app quickly, seamlessly and without thinking.'
+annotation: 'Style your Nuxt.js website faster, with Stylify CSS-like utilities.'
 createdAt: February 12, 2022
 ---
 
-Nuxt.js is an amazing tool to build SPA and SSR applications using Vue.js.
-When you want to style it, you can use various frameworks and preprocessors.
+Style your Nuxt.JS app quickly and easily with [Stylify](https://stylifycss.com) CSS-like utilities and avoid studying a framework or switching between tags using.
 
-I personally prefer pure CSS or SCSS instead of utility-first frameworks. Even though the syntax is a bit longer than, somehow named and shortened selectors.
+## Introduction
+[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-The problem with writing CSS manually is that it is slow. It's also easy to end up with duplicate CSS `property:value` in various selectors which causes the CSS size to grow.
-
-Because of this I have created the [stylifycss.com](https://stylifycss.com):
-- It generates utility-first CSS dynamicly based on what I write
-- The selectors are the same like like in pure CSS
-- There are just two rules. `_` instead of a space and `^` instead of a quote.
-- And there are multiple other features like code splitting, selectors minification, dynamic screens, on demand generated CSS and etc. Feel free to checkout the [Stylify docs](https://stylifycss.com)
-
-In this Article I will show you how to use it in the Nuxt.js 🤟.
+✨CSS-like selectors
+💎No framework to study
+💡Less time spent in docs
+🧰Mangled & Extremely small CSS
+🤘No purge needed
+🚀Components, Variables, Custom selectors
+📦It can generate multiple CSS bundles
 
 ## Installation
 
-This article is for Nuxt V2. If you use Nuxt 3, [check guide for Nuxt 3](https://stylifycss.com/docs/integrations/nuxtjs#how-to-integrate-stylify-css-into-the-nuxtjs-v3).
+For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.
 
 Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that symplifies the integration process to minimum:
 
+For Nuxt v3
+```
+yarn add @stylify/nuxt
+```
+
+For Nuxt v2
 ```
 yarn add @stylify/nuxt-module
-
-npm i @stylify/nuxt-module
 ```
 
 When the Stylify CSS is installed add the Nuxt Module into the `buildModules` section in `nuxt.config.js`.
@@ -100,13 +102,13 @@ export default {
 };
 ```
 
-Sometime it is necessary to style elements globally. It can be done using **plainSelectors**:
+Sometime it is necessary to style elements globally. It can be done using **customSelectors**:
 
 ```js
 export default {
 	compiler: {
 		// ...
-		plainSelectors: {
+		customSelectors: {
 			'*': 'font-family:arial font-size:16px'
 		}
 	}
@@ -143,8 +145,8 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 
 **Mangled HTML**
 ```html
-<div class="_7tcrv">
-	<h1 class="_88io">Hello World 🥳!</h1>
+<div class="a">
+	<h1 class="b">Hello World 🥳!</h1>
 </div>
 ```
 
@@ -196,37 +198,37 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 	--titleColor: steelblue;
 }
 *,
-._1go3 {
+.c {
 	font-family: arial
 }
 *,
-._h0jma {
+.d {
 	font-size: 16px
 }
-._0plj4,
-._7tcrv {
+.e,
+.a {
 	max-width: 1024px
 }
-._m0vnad,
-._7tcrv {
+.f,
+.a {
 	margin: 0 auto
 }
-._emdk,
-._88io {
+.g,
+.b {
 	color: steelblue
 }
-._h1et7,
-._88io {
+.h,
+.b {
 	font-size: 24px
 }
-._1vegb8,
-._88io {
+.i,
+.b {
 	text-align: center
 }
 
 @media (min-width: 1024px) {
-	._rorab,
-	._88io {
+	.j,
+	.b {
 		font-size: 32px
 	}
 }

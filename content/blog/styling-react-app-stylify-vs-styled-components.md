@@ -195,9 +195,9 @@ const GlobalStyle = createGlobalStyle`
 In Stylify, the same thing is achieved using [plain selectors](https://stylifycss.com/docs/stylify/compiler/#customselectors). The selectors are directly injected into the generated CSS file.
 ```jsx
 /*
-stylify-plainSelectors
+stylify-customSelectors
    button: 'color:red'
-/stylify-plainSelectors
+/stylify-customSelectors
 */
 <button></button>
 ```
