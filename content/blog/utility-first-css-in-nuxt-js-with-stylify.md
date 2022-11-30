@@ -155,84 +155,42 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 
 **Generated CSS**
 ```css
-:root {
---titleColor: steelblue;
-}
-*,
-.font-family\:arial{
-	font-family:arial
-}
-*,
-.font-size\:16px{
-	font-size:16px
-}
-.max-width\:1024px,
-.container{
-	max-width:1024px
-}
-.margin\:0_auto,
-.container{
-	margin:0 auto
-}
+:root {--titleColor: steelblue;}
+*,.font-family\:arial{ font-family:arial }
+*, .font-size\:16px{ font-size:16px }
+.max-width\:1024px, .container{ max-width:1024px }
+.margin\:0_auto, .container{ margin:0 auto }
 .color\:\$titleColor,
-.title{
-	color:steelblue
-}
-.font-size\:24px,
-.title{
-	font-size:24px
-}
-.text-align\:center,
-.title{
-	text-align:center
-}
+.title{ color:steelblue }
+.font-size\:24px, .title{ font-size:24px }
+.text-align\:center, .title{ text-align:center }
 
 @media (min-width: 1024px) {
-.lg\:font-size\:32px,
-.title{
-	font-size:32px
-}
+.lg\:font-size\:32px,.title{ font-size:32px }
 }
 ```
 
 **Mangled CSS**
 ```css
-:root {
-	--titleColor: steelblue;
-}
-*,
-.c {
-	font-family: arial
-}
-*,
-.d {
-	font-size: 16px
-}
-.e,
-.a {
-	max-width: 1024px
-}
-.f,
-.a {
-	margin: 0 auto
-}
-.g,
-.b {
-	color: steelblue
-}
-.h,
-.b {
-	font-size: 24px
-}
-.i,
-.b {
-	text-align: center
-}
+:root { --titleColor: steelblue; }*,
+.c { font-family: arial }
+*, .d { font-size: 16px }
+.e,.a { max-width: 1024px }
+.f,.a { margin: 0 auto }
+.g,.b { color: steelblue }
+.h,.b { font-size: 24px }
+.i,.b { text-align: center }
 
 @media (min-width: 1024px) {
-	.j,
-	.b {
-		font-size: 32px
-	}
+.j,.b {font-size: 32px}
 }
 ```
+
+## Configure anything you need
+The examples above doesn't include everything Stylify CSS can do:
+- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
+- Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
+- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
+- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
+
+Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
