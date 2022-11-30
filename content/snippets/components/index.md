@@ -7,15 +7,15 @@ order: 0
 navigationTitle: "Components"
 
 title: "CSS Components"
-description: "Stylify CSS Components - Buttons, Grids, Forms, Animations, Switches and a lot more. Copy&Paste without CSS framework."
+description: "Stylify CSS Components - Buttons, Grids, Forms, Animations, Switches and a lot more. Copy&Paste without a CSS framework."
 ---
 
 Stylify components are inspired by the [Material Design 3](https://m3.material.io/).
 
-Components proportions are taken from their [community figma file](https://www.figma.com/file/DJMWYdOn4HyZ9GQqrGZfXD/Material-3-Design-Kit-(Community)?node-id=47909%3A2).
+Components' proportions are taken from their [community figma file](https://www.figma.com/file/DJMWYdOn4HyZ9GQqrGZfXD/Material-3-Design-Kit-(Community)?node-id=47909%3A2).
 
 <note><template>
-	Components expects, that you have some kind of "reset" included in your page.
+	Components expect that you have some kind of a "reset" stylesheet included in your page.
 	For example [Normalize.css](https://necolas.github.io/normalize.css/).
 	Also the `box-sizing:border-box` should be added on all elements.
 </template></note>
