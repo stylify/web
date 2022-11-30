@@ -39,6 +39,9 @@ yarn add @stylify/nuxt-module
 When the Stylify CSS is installed add the Nuxt Module into the `buildModules` section in `nuxt.config.js`.
 ```js
 buildModules: [
+	// For Nuxt v3
+	'@stylify/nuxt'
+	// For Nuxt v2
 	'@stylify/nuxt-module'
 ]
 ```
