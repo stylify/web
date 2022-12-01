@@ -55,7 +55,7 @@ const prefixesMap = new PrefixesGenerator().createPrefixesMap(compilationResult)
 // 3. Add the following hooks
 // Compiler receives CompilationResult as second argument, that can be empty but configured
 // there is a hook onPrepareCssRecord, in which we add another hook onAddProperty
-// this makes shure, that when a property is added, all related prefixes are added.
+// this makes sure, that when a property is added, all related prefixes are added.
 // See https://stylifycss.com/docs/stylify/compiler for more information about hooks.
 const prefixer = new Prefixer(prefixesMap);
 let compilationResult = new Compiler(nativePreset.compiler).compile(
