@@ -26,7 +26,7 @@ Components' proportions are taken from their [community figma file](https://www.
 - In case you plan to use it in multiple places, you might want to checkout the `component` version of the component that uses Stylify CSS component definition. This way you are not going to have bloated templates with utilities.
 - Feel free to change the proportion like margin, padding, width, height, font-size, line-height, etc
 - All components mostly use CSS flexbox or CSS Grid. In case you change the display type, make sure to check the alignment of the internal elements.
-- Some components uses JavaScript (for example dialog), so make suure to copy it too, or write your own.
+- Some components uses JavaScript (for example dialog), so make sure to copy it too, or write your own.
 
 ## Components list:
 - <nuxt-link to="/snippets/components/animations">Animations</nuxt-link>

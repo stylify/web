@@ -109,6 +109,10 @@ export default defineConfig({
 				margin:-1px
 				padding:0
 				border:0
+			`,
+			badge: `
+				min-height:36px display:inline-flex align-items:center white-space:nowrap padding:4px font-size:14px
+				color:#fff border:2px_solid_#f1f1f1 border-radius:4px text-decoration:none transition:background_0.3s hover:background:rgba(255,255,255,0.2)
 			`
 		}
 	},
