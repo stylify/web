@@ -21,7 +21,7 @@ Get correct line height for your font => https://grtcalculator.com
 - [Font Space](https://www.fontspace.com)
 
 ## Fonts optimization
-When loading custom font, you should checkout the following optimization tricks:
+When loading custom font, you should check out the following optimization tricks:
 - Try to avoid importing various font sizes: 300,400,700 should be enough for most cases
 - You may want to download the font and host it from your own server. It's faster then using external CDN.
 - Use woff or woff2. Avoid SVG fonts

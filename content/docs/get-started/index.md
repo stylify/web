@@ -42,7 +42,7 @@ lg:hover:color:blue => blue color after hover from selected screen
 
 ## Screens usage
 Stylify has predefined shortcuts like `sm`, `md`, `lg` and dynamic screens such as `minw`, `maxw`, `rng`. Dynamic screens are flexible and the generated media query depends on the value you choose when using them.
-Checkout the [full list](/docs/stylify/native-preset#screens). All generated screens are [automaticaly sorted](/docs/stylify/compiler#logical-operands-in-screens).
+Check out the [full list](/docs/stylify/native-preset#screens). All generated screens are [automaticaly sorted](/docs/stylify/compiler#logical-operands-in-screens).
 
 
 <!-- stylify-ignore -->
@@ -128,7 +128,7 @@ const compilerConfig = {
 ```
 
 ## More Configuration
-Checkout the [compiler](/docs/stylify/compiler) for more configuration options.
+Check out the [compiler](/docs/stylify/compiler) for more configuration options.
 
 ## Stylify CSS Packages
 Stylify ships with multiple packages. All of them can be installed using NPM or YARN. Stylify CSS and Profiler can also be used directly through CDN:
@@ -142,6 +142,6 @@ Stylify ships with multiple packages. All of them can be installed using NPM or 
 
 ## Try Stylify CSS with your favorite tool!
 
-For easier start with your favorite tool checkout the [integration examples](/docs/integrations).
+For easier start with your favorite tool check out the [integration examples](/docs/integrations).
 
 <integration-blocks />

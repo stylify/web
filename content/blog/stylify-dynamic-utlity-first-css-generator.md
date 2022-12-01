@@ -30,7 +30,7 @@ In practice, the usage of the Stylify CSS looks like this:
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
 ```
-Because some values can contain a space and a quote, I have decided to add a special syntax. When writting a selector its value should contain a space, you can use `_`(underscore) and for a quote `^` (hat).
+Because some values can contain a space and a quote, I have decided to add a special syntax. When writing a selector its value should contain a space, you can use `_`(underscore) and for a quote `^` (hat).
 
 This allows you to write selectors like this:
 
@@ -69,4 +69,4 @@ Stylify can be integrated easily into frameworks like [Next.js](https://stylifyc
 
 For easier integration there is a [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) for Nuxt.js and a [@stylify/bundler](https://stylifycss.com/docs/bundler) that can be used with already mentioned Rollup.js and Webpack or in any other tool.
 
-When integrating into an existing project, it is possible to generate CSS for each page separately (even for small components) and [slowly rewrite the website](https://stylifycss.com/docs/get-started/migrating-to-stylify) without increasing it's size or breaking anything.
+When integrating into an existing project, it is possible to generate CSS for each page separately (even for small components) and [slowly rewrite the website](https://stylifycss.com/docs/get-started/migrating-to-stylify) without increasing its size or breaking anything.

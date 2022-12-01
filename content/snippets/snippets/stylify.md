@@ -139,7 +139,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const pixelFontSize = Number(pixelUnit.slice(0,-2));
 	const remCorrection = 0.0625;
 
-	// Adjust the font correction numbers bellow to fit your needs
+	// Adjust the font correction numbers below to fit your needs
 	const smallFontSizeCorrection = 1.6;
 	const largeFontSizeCorrection = 1.2;
 	// The 32 is for font-size:32px. Larger fonts like titles might not need

@@ -32,7 +32,7 @@ howToSchemaSteps: [
 
 Nuxt.js is an open source framework that uses Vue.js for making web development simple and powerful.
 
-The integration uses Stylify CSS packages for Nuxt 2 and Nuxt 3. Checkout the guides bellow.
+The integration uses Stylify CSS packages for Nuxt 2 and Nuxt 3. Check out the guides below.
 
 <stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 

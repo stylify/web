@@ -7,14 +7,14 @@ order: 0
 navigationTitle: "@stylify/profiler"
 
 title: "@stylify/profiler"
-description: "Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify."
+description: "Profiler is a tool its purpose is to show you some information about what is happening under the hood when you use the Stylify."
 ---
 
 <note color="orange">
 	This package was discontinued and you should no longer use it.
 </note>
 
-Profiler is a tool it's purpose is to show you some information about what is happening under the hood when you use the Stylify.
+Profiler is a tool whose purpose is to show you some information about what is happening under the hood when you use the Stylify.
 
 It provides information about the Runtime and the Compiler such as Variables list, CSS size or serialized Compilation Result.
 
@@ -85,7 +85,7 @@ Under the hood profiler uses [Preact.js](https://preactjs.com/) for viewing data
 
 When creating an extension you can use [pre-styled elements](https://github.com/stylify/packages/tree/master/packages/profiler/src/styledElements).
 
-Bellow is an example of a simple extension:
+Below is an example of a simple extension:
 ```js
 import { Card, CardTitle, ProfilerExtensionPropsInterface, preact, utils } from '@stylify/profiler';
 
@@ -138,7 +138,7 @@ You can provide the data for the extension as follows:
 </script>
 ```
 
-Extension can be added into the profiler like this:
+Extension can be added to the profiler like this:
 
 ```js
 import { Profiler } from '@stylify/profiler';

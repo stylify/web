@@ -158,7 +158,7 @@ stylify-keyframes
 				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way.
 			</p>
 			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
-				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writting CSS. Therefore is easy to switch between Stylify and CSS.</div>
+				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writing CSS. Therefore is easy to switch between Stylify and CSS.</div>
 				<div><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.</div>
 			</div>
 			<div class="hp__section-content"><why-stylify /></div>
@@ -174,7 +174,7 @@ stylify-keyframes
 			</div>
 			<div class="text-align:center">
 				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
-					Checkout components
+					Check out components
 					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
 			</div>

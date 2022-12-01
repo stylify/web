@@ -21,7 +21,7 @@ Style your SolidJS app quickly and easily without CSS-in-JS using [Stylify CSS](
 📦It can generate multiple CSS bundles
 
 ## Installation
-Install Stylify using cli:
+Install Stylify using CLI:
 ```
 npm i -D @stylify/unplugin
 yarn add -D @stylify/unplugin
@@ -79,7 +79,7 @@ function App() {
 export default App;
 ```
 
-In production, you will get optimized CSS and mangled html:
+In production, you will get optimized CSS and mangled HTML:
 ```html
 <h1 class="p u">Hello World!</h1>
 ```
@@ -93,12 +93,12 @@ In production, you will get optimized CSS and mangled html:
 Go ahead and try [Stylify CSS + SolidJS on Stackblitz](https://stackblitz.com/edit/stylifycss-solidjs-vite?file=src%2FApp.jsx).
 
 ## Configuration
-The examples above doesn't include everything Stylify can do:
+The examples above don't include everything Stylify can do:
 - Define [components](https://stylifycss.com/docs/stylify/compiler#components)
 - Add [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Configure [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- Configure [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - And a lot more
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

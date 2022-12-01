@@ -10,7 +10,7 @@ createdAt: 'June 14, 2022'
 From anoying switching between files to flawless coding. Learn how to improve the coding experience in your Symfony Web Application in 5 minutes 🚀.
 
 ## Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `_zx, _ga{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with component selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
 With Stylify, you can stay in the Twig templates or PHP files, write selectors and get smallest CSS chunks possible for each page separately 🤟.
 
@@ -81,7 +81,7 @@ Encore
   // ...
 ```
 
-Change `app.css` in `assets/app.js` to 'layout.css' and add the css link into the `hp.html.twig`.
+Change `app.css` in `assets/app.js` to 'layout.css' and add the CSS link into the `hp.html.twig`.
 
 ```twig
 {% block stylesheets %}
@@ -97,7 +97,7 @@ When the setup is finished edit the `hp.html.twig`
 ```
 and run `npm run dev`.
 
-Stylify will find the `color:blue` selector, and generate the css for it. `.color\:blue{color:blue}` into the `homepage.css`.
+Stylify will find the `color:blue` selector, and generate the CSS for it. `.color\:blue{color:blue}` into the `homepage.css`.
 
 Some code often needs to be reused accross multiple pages. It's not a good idea to have bloated templates by utilities and hardcoded units in the selectors. Let's define a `container` component and some variables.
 
@@ -162,7 +162,7 @@ Optimized `hp.html.twig`:
 {% endblock %}
 ```
 
-Optimized hp css:
+Optimized hp CSS:
 ```css
 ._ghd5j{color:blue}
 ._h0jma,
@@ -174,11 +174,11 @@ Optimized hp css:
 The example can be also found in the [docs](https://stylifycss.com/docs/integrations/symfony).
 
 ## More configuration
-The examples above doesn't include everything Stylify CSS can do:
+The examples above don't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

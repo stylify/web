@@ -3,8 +3,8 @@
 		<h2>Where to go next?</h2>
 		<ul>
 			<li>🚀 Learn <nuxt-link to="/docs/get-started">how to get started</nuxt-link></li>
-			<li v-if="package === 'unplugin'">🔌 Checkout <nuxt-link to="/docs/unplugin">@stylify/unplugin configuration</nuxt-link></li>
-			<li v-else-if="package === 'bundler'">🔌 Checkout <nuxt-link to="/docs/bundler">@stylify/bundler configuration</nuxt-link></li>
+			<li v-if="package === 'unplugin'">🔌 Check out <nuxt-link to="/docs/unplugin">@stylify/unplugin configuration</nuxt-link></li>
+			<li v-else-if="package === 'bundler'">🔌 Check out <nuxt-link to="/docs/bundler">@stylify/bundler configuration</nuxt-link></li>
 			<li>
 				⚙️ Or configure Stylify right away:
 				<ul>

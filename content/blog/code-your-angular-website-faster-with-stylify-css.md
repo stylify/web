@@ -21,15 +21,14 @@ Style your Angular app quickly and easily with [Stylify CSS](https://stylifycss.
 📦It can generate multiple CSS bundles
 
 ## Installation
-
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First, install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler
 yarn add -D @stylify/bundler
 ```
 
-Also for the watch mode, we need to run two paralel tasks. This can be solved using concurrently:
+Also for the watch mode, we need to run two parallel tasks. This can be solved using concurrently:
 ```
 yarn add -D concurrently
 npm i concurrently
@@ -58,14 +57,14 @@ const bundler = new Bundler({
 
 // This bundles all CSS into one file
 // You can configure the Bundler to bundle CSS for each page separately
-// See bundler link bellow
+// See bundler link below
 bundler.bundle([
 	{
 		files: ['./src/**/*.html', './src/**/*.ts'],
 		outputFile: './src/styles.css',
 	},
 
-	// You can also split css for each component
+	// You can also split CSS for each component
 	// You can map files within the components using content comment option
 	// https://stylifycss.com/docs/bundler#files-content-option
 	// Stylify takes that option and searches for defined files. If defined file
@@ -81,7 +80,7 @@ bundler.bundle([
 
 ```
 
-If you don't use splitting and everything will not bundled into the `styles.css`, then don't forget to add paths to css files.
+If you don't define multiple bundles, everything will be bundled into the `styles.css`. If you define multiple bundles, don't forget to add paths to those generated files into Angular components.
 
 The last step is to add scripts into the `package.json`:
 
@@ -94,7 +93,7 @@ The last step is to add scripts into the `package.json`:
 }
 ```
 
-In production, you will get optimized CSS and mangled html:
+In production, you will get optimized CSS and mangled HTML:
 ```html
 <h1 class="font-size:24px color:#dd0031 font-family:arial">
 Hello World!
@@ -111,12 +110,12 @@ Hello World!
 Go ahead and try [Stylify CSS + Angular on Stackblitz](https://stackblitz.com/edit/stylifycss-angular-example?file=src%2Fapp%2Fapp.component.html).
 
 ## Configuration
-The examples above doesn't include everything Stylify can do:
+The examples above don't include everything Stylify can do:
 - Define [components](https://stylifycss.com/docs/stylify/compiler#components)
 - Add [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Configure [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- Configure [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - And a lot more
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

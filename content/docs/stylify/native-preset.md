@@ -15,15 +15,15 @@ The code behind the NativePreset can be found in the <a href="https://github.com
 ## Inside the preset
 
 ### Predefined macro
-This macro allows you to use CSS-like syntax matching **678 CSS properties** available in Chrome, Safari, Mozila, Opera and Edge.
-Checkout the [syntax guide](/docs/stylify/compiler#syntax).
+This macro allows you to use CSS-like syntax matching **678 CSS properties** available in Chrome, Safari, Mozilla, Opera and Edge.
+Check out the [syntax guide](/docs/stylify/compiler#syntax).
 
 List of all available selectors can be found in the <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/default-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>
 
 ### Screens
 There are static shortcuts like `tosm, sm, md, ...` and dynamic screens like `minw, maxw, rng, ...` that generates media queries based on the value you choose when using them. The values and units you use are up to you.
 
-Dont forget that screens can be combined using logical operands `&&` (and) and `||` (or) like `maxw320px&&maxh667px:color:blue`.
+Don't forget that screens can be combined using logical operands `&&` (and) and `||` (or) like `maxw320px&&maxh667px:color:blue`.
 
 <div class="max-width:100% overflow:auto">
 

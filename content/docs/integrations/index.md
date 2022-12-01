@@ -9,7 +9,7 @@ title: "Integrations"
 description: "Learn how to integrate Stylify CSS into Vue.js, Nuxt.js, Next.js or Symfony framework or Webpack. Style your website faster."
 ---
 
-Stylify can be easily integrated into various tools. Bellow is a list of tools that are included inside here in the docs.
+Stylify can be easily integrated into various tools. Below is a list of tools that are included inside here in the docs.
 
 If you haven't found your favorite tool, let us know. You are also more than welcome to extend the documentation.
 

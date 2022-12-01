@@ -25,7 +25,7 @@ If you take a closer look, you can see, that they are using atomic CSS and they 
 
 I have also found an article [Rebuilding our tech stack for the new Facebook.com](https://engineering.fb.com/2020/05/08/web/facebook-redesign/) from Facebook itself in which they explain what have they changed for the new Facebook version. What the article also says is that they have been loading over 400 kB of compressed CSS and before switching to Atomic CSS.
 
-From my experience, writting CSS manually is just slow and time consuming. Component frameworks are great until you start transforming every component. The Tailwind's JIT is close enough, but I don't like when I have to remember or search for the selector I want to use. I also need smaller chunks and integrate it into existing projects without increasing their size.
+From my experience, writing CSS manually is just slow and time consuming. Component frameworks are great until you start transforming every component. The Tailwind's JIT is close enough, but I don't like when I have to remember or search for the selector I want to use. I also need smaller chunks and integrate it into existing projects without increasing their size.
 
 So the objective was clear. Create a tool that will be able to:
 - Generate CSS separately according to content
@@ -48,9 +48,9 @@ Stylify ships with the [native preset](https://stylifycss.com/docs/stylify/nativ
 
 ## Write HTML. Get CSS. Mangle selectors. All automagically.
 
-The example bellow and all its code can be found and edited on the [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html).
+The example below and all its code can be found and edited on the [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html).
 
-In the example bellow there is a code for simple gallery image:
+In the example below there is a code for simple gallery image:
 ```html
 <div class="
 	display:inline-flex
@@ -182,6 +182,6 @@ Under the hood the Stylify optimizes the CSS in the following ways:
 2. It tries to reuse the selectors as much as possible
 3. It transforms the long selectors like `font-weight:bold ` into the short ones `_ab12`
 
-Bellow is an image from StackBlitz with the processed and optimized output. The css (without new lines and spaces) has only **0.78kb**:
+Below is an image from StackBlitz with the processed and optimized output. The CSS (without new lines and spaces) has only **0.78kb**:
 
 <img src="/images/blog/stylify-facebook/processed-html.jpg" alt="" loading="lazy" width="856" height="506">

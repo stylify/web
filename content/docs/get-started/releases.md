@@ -101,7 +101,7 @@ const components = {
 	`
 };
 ```
-- Hooks are now used like bellow. Checkout [Stylify hooks](/docs/stylify/compiler#hooks).
+- Hooks are now used like below. Check out [Stylify hooks](/docs/stylify/compiler#hooks).
 ```js
 import { hooks } from '@stylify/stylify';
 
@@ -115,7 +115,7 @@ runtime.hooks.addListener('', (options) => {});
 ```
 
 ### @stylify/bundler
-- Bundler hooks are now used like bellow. Bundler hooks extends the default Stylify CSS hooks. Checkout [Bundler hooks](/docs/bundler#hooks).
+- Bundler hooks are now used like below. Bundler hooks extends the default Stylify CSS hooks. Check out [Bundler hooks](/docs/bundler#hooks).
 ```js
 import { hooks } from '@stylify/bundler';
 
@@ -138,7 +138,7 @@ hooks.addListener('', (options) => {});
 - Move everything from `extend` object to the root:
 ```js
 const config = {
-	// All configuration options from extend object bellow move here.
+	// All configuration options from extend object below move here.
 	// The compiler is just example.
 	compiler: {},
 	// Extend keyword was removed

@@ -45,7 +45,7 @@ npm i -D @stylify/bundler
 yarn add -D @stylify/bundler
 ```
 
-Also for the watch mode, we need to run two paralel tasks. This can be solved using concurrently:
+Also for the watch mode, we need to run two parallel tasks. This can be solved using concurrently:
 ```
 yarn add -D concurrently
 npm i concurrently
@@ -74,7 +74,7 @@ const bundler = new Bundler({
 
 // This bundles all CSS into one file
 // You can configure the Bundler to bundle CSS for each page separately
-// See bundler link bellow
+// See bundler link below
 bundler.bundle([
   { files: ['./app/**/*.tsx'], outputFile: './app/styles/stylify.css' },
 ]);
