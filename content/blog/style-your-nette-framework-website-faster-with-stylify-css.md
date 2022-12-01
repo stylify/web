@@ -9,15 +9,15 @@ createdAt: 'July 9, 2022'
 
 Style your Nette Framework website faster with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get generated CSS with advanced optimization for production.
 
-For the example bellow, you can checkout the [Nette Framework Integration Example](https://github.com/stylify/integrations-examples/tree/master/nette).
+For the example below, you can check out the [Nette Framework Integration Example](https://github.com/stylify/integrations-examples/tree/master/nette).
 
 ## 🚀 Nette Introduction
-[Nette](https://nette.org/en/) is a PHP framework made by [David Grudl](https://twitter.com/DavidGrudl) and it is a great alternative to Symfony and Laravel. It has an amazing templating system called [Latte](https://latte.nette.org/) that uses similar syntax to PHP and by default has context-sensitive escaping (which no other framework has). In my opinion, it is easier to learn, because it comes with a simple structure by default, it has no dependencies and less patterns to learn.
+[Nette](https://nette.org/en/) is a PHP framework made by [David Grudl](https://twitter.com/DavidGrudl) and it is a great alternative to Symfony and Laravel. It has an amazing templating system called [Latte](https://latte.nette.org/) that uses a similar syntax to PHP and by default has context-sensitive escaping (which no other framework has). In my opinion, it is easier to learn, because it comes with a simple structure by default, it has no dependencies and fewer patterns to learn.
 
 ## 💎 Stylify CSS Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `._zx, ._ga{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with component selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
-Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
+Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writing HTML and selectors 🤟.
 
 ## Nette installation
 The easiest way to start with Nette is to use Composer following [this guide](https://doc.nette.org/en/quickstart/getting-started):
@@ -27,7 +27,7 @@ The easiest way to start with Nette is to use Composer following [this guide](ht
 - The web should be available at `http://localhost`
 
 ## Stylify CSS setup
-Because Nette doesn't come with any bundler neither with any javascript package by default, we are going to use the Stylify CSS Bundler.
+Because Nette doesn't come with any bundler nor with any javascript package by default, we are going to use the Stylify CSS Bundler.
 
 Install the bundler `yarn add -D @stylify/bundler`.
 Create the `bundles.js` file in the project root with the following content:
@@ -66,7 +66,7 @@ This config above will generate two bundles:
 - `Layout` - used globally
 - `Homepage` - only for the homepage
 
-We could of course generate css for the whole project into one file. But it would make the css unnecessary larger.
+We could of course generate CSS for the whole project into one file. But it would make the CSS unnecessary larger.
 
 Now open the `package.json` file and add the following scripts:
 
@@ -77,7 +77,7 @@ Now open the `package.json` file and add the following scripts:
 }
 ```
 
-The last step is to edit the templates. Open the `App/Presenters/Templates/@layout.latte` and add the link to layout css file:
+The last step is to edit the templates. Open the `App/Presenters/Templates/@layout.latte` and add the link to the layout CSS file:
 ```html
 <link rel="stylesheet" href="/static/css/layout.css">
 ```
@@ -91,7 +91,7 @@ In the `App/Presenters/Templates/Homepage/default.latte` add the following:
 </div>
 ```
 
-If you run the `yarn watch`, Stylify CSS will generate css and will watch any file for change.
+If you run the `yarn watch`, Stylify CSS will generate CSS and will watch any file for change.
 
 ### Components
 To avoid bloated templates with utilities, you can configure
@@ -114,7 +114,7 @@ Now we can use it in the whole project. In our case, we add it to the layout:
 <main class="container">{include content}</main>
 ```
 
-In the homepage, we can add a local component for the title using content options:
+On the homepage, we can add a local component for the title using content options:
 
 ```html
 {*
@@ -129,7 +129,7 @@ In the homepage, we can add a local component for the title using content option
 ```
 
 ### Variables
-It's always a good idea to have a clean and flexible code without hardcoded values. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined the same way as components. Let's modify the title component:
+It's always a good idea to have clean and flexible code without hardcoded values. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components. Let's modify the title component:
 
 ```html
 {*
@@ -176,7 +176,7 @@ stylify-files
 The content in the `./_content.latte` is automatically processed by the bundler.
 
 ## 🔥 Production build:
-If you run `yarn build`, the selectors will be shrinked and the css minified:
+If you run `yarn build`, the selectors will be shrunk and the CSS minified:
 
 `@layout.latte`:
 ```html
@@ -203,11 +203,11 @@ If you run `yarn build`, the selectors will be shrinked and the css minified:
 
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify CSS can do:
+The examples above don't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

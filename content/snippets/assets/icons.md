@@ -32,7 +32,7 @@ On this page, you will find a list of pages, where you can find free icons for y
 
 ## Icons optimization
 When adding icons to your page, you might consider some optimization steps:
-- If you need icons like `arrow left` or `arrow right`, you might want to take one icon and use the css to rotate the icon into the direction you need. This way, you can have one icon for various directions
-- When you need to load various icons, checkout some applications like [IcoMoon](https://icomoon.io). This app can merge various icons into one font. It can improve the page performance, because there is less requests. Also the font can is more flexible then embeding a link to each icon
-- Icons should be in the SVG format. Try to avoid JPG or PNG. It is because of the svg size can be changed easily without getting blurred.
-- If the icon is a direct path but can be lazyload, you should add the `loading="lazy"` and the `decoding="async"` attribute. This allows the browser to continue rendering the page and decode images asynchronously.
+- If you need icons like `arrow left` or `arrow right`, you might want to take one icon and use the CSS to rotate the icon in the direction you need. This way, you can have one icon for various directions
+- When you need to load various icons, check out some applications like [IcoMoon](https://icomoon.io). This app can merge various icons into one font. It can improve page performance because there are fewer requests. Also, the font is more flexible than embedding a link to each icon
+- Icons should be in the SVG format. Try to avoid JPG or PNG. It is because SVG size can be changed easily without getting blurred.
+- If the icon is a direct path but can be lazyloaded, you should add the `loading="lazy"` and the `decoding="async"` attribute. This allows the browser to continue rendering the page and decode images asynchronously.

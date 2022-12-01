@@ -36,7 +36,7 @@ SolidJS is a framework for simple and performant reactivity for building user in
 
 ## How to integrate the Stylify CSS with SolidJS and Vite.js
 
-The example bellow works with the Vite - SolidJS template. You can however use the example bellow and configure it for React.js, Vue and any other framework you use.
+The example below works with the Vite - SolidJS template. You can however use the example below and configure it for React.js, Vue and any other framework you use.
 
 First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 

@@ -51,9 +51,9 @@ runtime.hooks.addListener('stylify:ready', (event) => {
 
 Every time CSS is injected into the page, Stylify CSS searches for `.s-cloak` class and removes it.
 
-This can prevent elements without generated css to be visible.
+This can prevent elements without generated CSS to be visible.
 
-You must add the CSS bellow into the page first:
+You must add the CSS below into the page first:
 
 ```css
 .s-cloak {
@@ -78,7 +78,7 @@ In case you want to use only the Runtime and in the same time keep the website f
 
 1. Style your page with Stylify CSS imported from CDN
 2. Copy the content of style element with id `stylify-css`
-3. Paste the copied CSS directly into the html file into the style element
+3. Paste the copied CSS directly into the HTML file into the style element
 3. Comment or remove runtime import
 5. In case you need to prefix the CSS, you can use the [online autoprefixer](https://autoprefixer.github.io)
 

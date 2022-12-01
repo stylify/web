@@ -41,7 +41,7 @@ Integration example for the CakePHP can be found in <a href="https://github.com/
 
 ## How to integrate the Stylify CSS into the CakePHP
 
-In the example bellow we will use the Bundler package on its own.
+In the example below we will use the Bundler package on its own.
 
 Because there is no package.json, we need to creat it:
 ```
@@ -79,7 +79,7 @@ const bundler = new Bundler({
 
 // This bundles all CSS into one file
 // You can configure the Bundler to bundle CSS for each page separately
-// See bundler link bellow
+// See bundler link below
 bundler.bundle([
   { files: ['./templates/**/*.php', './src/**/*.php'], outputFile: './webroot/css/stylify.css' },
 ]);

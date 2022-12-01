@@ -62,7 +62,7 @@ const compilerConfig = {
 <template #description>
 
 ### macros
-Macros are used to match selectors and generate css according to the match. The key inside the object can be a string or a regular expression.
+Macros are used to match selectors and generate CSS according to the match. The key inside the object can be a string or a regular expression.
 
 Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,255)` => `ab`.
 
@@ -119,7 +119,7 @@ const compilerConfig = {
 	// This is great for example for switching between light and dark mode.
 	replaceVariablesByCssVariables: false,
 	// By default, variables are automatically injected into the generated CSS as CSS variables.
-	// You can change this behavior by setting the option bellow to false
+	// You can change this behavior by setting the option below to false
 	injectVariablesIntoCss: true
 };
 ```
@@ -249,7 +249,7 @@ Usage:
 
 ### customSelectors
 Custom selectors allows you to write CSS selectors for elements.
-When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the Stylify CSS selector. Checkout the examples.
+When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the Stylify CSS selector. Check out the examples.
 
 Custom selectors can be also defined directly in files using [content options](#contentoptionsprocessors).
 
@@ -288,7 +288,7 @@ Usage:
 You can nest selectors using SCSS-like syntax.
 To create the selector is the same like in CSS. To refer the upper level use the `&` character.
 To keep things simple, the only feature is nesting and chaining. The syntax is the same for `content options`. The pseudo classes like `:hover` works the same like in the example above.
-The example bellow will generate the following:
+The example below will generate the following:
 - `header { width:800px }`
 - `header nav { font-size:14px }`
 - `header.fixed {}`
@@ -324,7 +324,7 @@ const compilerConfig = {
 <template #description>
 
 Custom selectors can be also written directly into the class attributes. The syntax is the following `[selector]{macros}`. Instead of a space use the `_` underscore. For a quote, use `^`. And to split different macros use `;`.
-The example bellow will generate the following:
+The example below will generate the following:
 - `.docs [.docs_&]{font-size:14px;color:#222} {font-size:14px; color:#222}`
 - `[h1,h2]{margin-top:0} h1, [h1,h2]{margin-top:0} h2 { margin-top:0 }`
 
@@ -610,9 +610,9 @@ Stylify has a hookable system that allows you to modifie extend the functionalit
 - **compiler:compilationResultConfigured**: Triggered when compilation result is ready
 - **compiler:newMacroMatch**: This hook is triggered when a macro is matched within the content
 - **compiler:processContentOption:\[option\]**: Triggerd when processing content option. The `[option]` must be replaced by the name of content option like `customOption` if ou want to process your own options
-- **compilationResult:configureCssRecord**: This hook is called when css record is created. You can for example set the scope
-- **cssRecord:addProperty**: This is called right before the css `property:value` is added.
-- **cssRecord:cssGenerated**: Triggered when the css was generated
+- **compilationResult:configureCssRecord**: This hook is called when CSS record is created. You can for example set the scope
+- **cssRecord:addProperty**: This is called right before the CSS `property:value` is added.
+- **cssRecord:cssGenerated**: Triggered when the CSS was generated
 
 </template>
 <template #code>

@@ -40,7 +40,7 @@ Integration example for the Nette framework can be found in <a href="https://git
 
 ## How to integrate the Stylify CSS into the Nette Framework
 
-In the example bellow we will use the Bundler package on its own.
+In the example below we will use the Bundler package on its own.
 
 First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
@@ -82,7 +82,7 @@ And the last step is to add scripts into the `package.json`:
 }
 ```
 
-Now you can add a link for generated css into the `@layout.latte`:
+Now you can add a link for generated CSS into the `@layout.latte`:
 
 ```html
 <link rel="stylesheet" href="/static/css/index.css">

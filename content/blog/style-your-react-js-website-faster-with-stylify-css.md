@@ -8,15 +8,15 @@ createdAt: 'July 6, 2022'
 ---
 [Stylify](https://stylifycss.com) + React.js + Vite.js. Style your React.js website faster with Stylify. Don't study selectors and syntax. Use pure CSS syntax and get generated CSS with advanced optimization for production.
 
-For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) 🎮.
+For easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) 🎮.
 
 ## 💎 Stylify CSS Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `._zx, ._ga{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with components selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
-Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
+Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writing HTML and selectors 🤟.
 
 ## 🚀 React.js Setup
-The easiest way to Setup the React.js is using cli:
+The easiest way to Setup the React.js is using CLI:
 - Run `yarn create vite app`
 - Select `react` or `react-ts`
 - Then `cd app`
@@ -51,7 +51,7 @@ export default defineConfig({
 });
 ```
 
-The last step, open the `src/main.jsx` and add path to `stylify.css`:
+The last step, open the `src/main.jsx` and add the path to `stylify.css`:
 
 ```jsx
 // ...
@@ -59,7 +59,7 @@ import './stylify.css'
 ```
 
 ## Styling the website
-If yout copy the code bellow into the `src/App.jsx` and run `yarn dev` you will get a styled `Hello World! 🎉` text:
+If you copy the code below into the `src/App.jsx` and run `yarn dev` you will get a styled `Hello World! 🎉` text:
 
 ```jsx
 export default function App() {
@@ -71,7 +71,7 @@ export default function App() {
 }
 ```
 
-Stylify watches any change in the files that matches mask in the bundle files and generates css into the `src/stylify.css`.
+Stylify watches any change in the files that matches mask in the bundle files and generates CSS into the `src/stylify.css`.
 
 If you add for example `color:blue` the CSS will be automatically updated 🎉.
 
@@ -98,7 +98,7 @@ export default function App() {
 ```
 
 ### Variables
-If you like clean code, you also want avoid hardcoded values in selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined the same way as components:
+If you like clean code, you also want to avoid hardcoded values in selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components:
 
 ```jsx
 /*
@@ -123,7 +123,7 @@ export default function App() {
 ```
 
 ## Building for production
-If you run `yarn build` + `yarn preview`, the jsx markup will be mangled to this:
+If you run `yarn build` + `yarn preview`, the JSX markup will be mangled into this:
 
 ```jsx
 export default function App() {
@@ -135,7 +135,7 @@ export default function App() {
 }
 ```
 
-The css is shortened too:
+The CSS is shortened too:
 ```css
 :root {--titleFontSize: 42px;--containerWidth: 800px;}
 ._bcda8,._7tcrv{max-width:800px}
@@ -146,11 +146,11 @@ The css is shortened too:
 ```
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify CSS can do:
+The examples above don't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

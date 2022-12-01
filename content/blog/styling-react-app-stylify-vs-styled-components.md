@@ -207,7 +207,7 @@ The Styled Components doe's a good job when it comes to optimization as it autom
 
 Stylify doesn't work that way.
 It generates CSS files according to your configuration and you have to tell the app when the CSS should be loaded.
-You can configure a bundle for each `page/component/layout` separately. Even though you can split the CSS however you want, thanks to the utilities/components combination the CSS size is going to be relatively small as the selectors are generated only once. So sometimes it makes sense to have only Front + Admin CSS.  Stylify website has less then `20 Kb` and other websites are between `30-50 Kb`.
+You can configure a bundle for each `page/component/layout` separately. Even though you can split the CSS however you want, thanks to the utilities/components combination the CSS size is going to be relatively small as the selectors are generated only once. So sometimes it makes sense to have only Front + Admin CSS. Stylify website has less than `20 Kb` and other websites are between `30-50 Kb`.
 One more feature is, that it doesn't slow down the app because the CSS is generated before the app is initialized.
 
 ## Thanks for help!

@@ -9,15 +9,15 @@ createdAt: 'June 28, 2022'
 
 Style your Next.js website faster, more efficiently and intuitively with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get automatically generated CSS with advanced optimization for production.
 
-For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
+For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
 ## Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to css `property:value`. Defined utilities are combined with components selectors and in production minified to bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
+[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with components selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
-With Stylify, you can get very small bundles, generate additional lazyloaded CSS chunks and style the page by writting HTML and selectors 🤟.
+With Stylify, you can get very small bundles, generate additional lazyloaded CSS chunks and style the page by writing HTML and selectors 🤟.
 
 ## Next.js setup
-The easiest way to Setup the Next.js is using cli:
+The easiest way to Setup the Next.js is using CLI:
 - Run `yarn create next-app`
 - Select your project name
 
@@ -55,7 +55,7 @@ module.exports = {
 }
 ```
 
-The last step, open the `pages/_app.js` and add path to `stylify.css`:
+The last step, open the `pages/_app.js` and add the path to `stylify.css`:
 
 ```jsx
 // ...
@@ -69,14 +69,15 @@ export default MyApp;
 ```
 
 ## Styling the website
-If yout copy the code bellow into the `pages/index.js` and run `yarn dev` you will get a styled `Hello World!` text:
+If you copy the code below into the `pages/index.js` and run `yarn dev` you will get a styled `Hello World!` text:
 
 ```jsx
 export default function Home() {
   return <div className="color:blue">Hello World!</div>;
 }
 ```
-Stylify watches any change in the `js` files and generates css into the `styles/stylify.css`.
+
+Stylify watches any change in the `js` files and generates CSS into the `styles/stylify.css`.
 If you add a selector like `font-size:24px` the CSS will be automatically updated 🎉.
 
 Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡.
@@ -100,7 +101,7 @@ export default function Home() {
 ```
 
 ### Variables
-It's a good practice to avoid hardcoded values in the selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined the same way as components:
+It's a good practice to avoid hardcoded values in the selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components:
 
 ```jsx
 /*
@@ -123,7 +124,7 @@ export default function Home() {
 ```
 
 ## The production build
-When we run the production build using `yarn build` + `yarn start`, the jsx markup will be mangled to this:
+When we run the production build using `yarn build` + `yarn start`, the JSX markup will be mangled into this:
 
 ```jsx
 export default function Home() {
@@ -135,7 +136,7 @@ export default function Home() {
 }
 ```
 
-The css is shortened too:
+The CSS is shortened too:
 ```css
 :root {
     --blue: #4682b4;
@@ -147,10 +148,10 @@ The css is shortened too:
 ```
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify CSS can do:
+The examples above don't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
+- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.

@@ -7,7 +7,7 @@ annotation: 'Style buttons in React quickly with Stylify CSS. Its like writing C
 createdAt: 'October 10, 2022'
 ---
 
-Checkout how to style a button quickly using only utilities and then clean the template using [components](https://stylifycss.com/docs/get-started#defining-a-component). Learn why the output in production can be 50% and more smaller🔥.
+Check out how to style a button quickly using only utilities and then clean the template using [components](https://stylifycss.com/docs/get-started#defining-a-component). Learn why the output in production can be 50% and smaller🔥.
 
 ## The Code
 Here is the code behind the button:
@@ -117,7 +117,8 @@ When you allow [Stylify](https://stylifycss.com) to mangle selectors, then the o
 .x{min-height:24px}
 .a:hover span:first-of-type,.y{transform:scale(1.5)}
 ```
-Also the selectors in JSX are minified
+
+Also, the selectors in JSX are minified
 ```jsx
 <button
   className="c d e f g h i j k l m n a b"
@@ -133,7 +134,7 @@ CSS size:
 - Dev: **1101 bytes**
 - Production: **556 bytes**
 
-The size savings are around **50%** (The size is similar in gzipped mode). If we take the mangled html, the difference will be even bigger.
+The size savings are around **50%** (The size is similar in gzipped mode). If we take the mangled HTML, the difference will be even bigger.
 
 ## Template cleanup
 What if we have a lot of utilities and want to move them out of the template? With [Stylify](https://stylifycss.com) you can do that using reusable components. They can be defined within a comment (expects js object without surrounding brackets) in the file where they are used or in a global config.
@@ -192,8 +193,8 @@ In production, the components are also mangled.
 ## Syntax explanation
 In the example above, you can see Stylify using CSS-like selectors. With a few differences.
 - `_` within a selector is used instead of a space
-- `[span]{display:inline-flex}` is inline custom selector. This allows you to style custom selectors.
-- `&` inside `[&:hover_span:first-of-type]` always refers to upper level like in SCSS
+- `[span]{display:inline-flex}` is an inline custom selector. This allows you to style custom selectors.
+- `&` inside `[&:hover_span:first-of-type]` always refers to an upper level like in SCSS
 - The indented syntax in components is also like in SCSS. Except, to keep things simple, it supports only nesting and chaining
 ```html
 span {
@@ -204,5 +205,5 @@ span {
 }
 ```
 
-## Checkout Stackblitz Playground
+## Check out Stackblitz Playground
 You can try the playground on [Stackblitz](https://stackblitz.com/edit/stylify-react-like-button-example?file=src%2FLikeButton.jsx).

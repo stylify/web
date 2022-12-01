@@ -72,7 +72,7 @@ import './global.css';
 ```
 
 ## Split bundles for each page
-Bundles can be also configured for each page separately. With this approach, you can get the smallest css possible. For example:
+Bundles can be also configured for each page separately. With this approach, you can get the smallest CSS possible. For example:
 
 ```js
 bundles: [

@@ -38,7 +38,7 @@ Integration example for the Symfony framework can be found in <a href="https://g
 
 ## How to integrate the Stylify CSS into the Symfony Framework
 
-The example bellow uses `symfony/skeleton` and ads a few composer packages according to the getting started tutorial: `twig, annotations, @symfony/webpack-encore`.
+The example below uses `symfony/skeleton` and ads a few composer packages according to the getting started tutorial: `twig, annotations, @symfony/webpack-encore`.
 
 First install the [@stylify/unplugin](/docs/unplugin) package using CLI:
 

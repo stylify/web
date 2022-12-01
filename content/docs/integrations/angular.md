@@ -37,7 +37,7 @@ Stylify can be integrated into the Angular using Bundler.
 <stack-blitz-link link="stylifycss-angular-example"></stack-blitz-link>
 
 <note><template>
-In case you use any kind of bundler like Webpack, Vite, Rollup or ESbuild, go and checkout the guide for <nuxt-link to="/docs/unplugin">@stylify/unplugin</nuxt-link> that can be easily integrated into these tools.
+In case you use any kind of bundler like Webpack, Vite, Rollup or ESbuild, go and check out the guide for <nuxt-link to="/docs/unplugin">@stylify/unplugin</nuxt-link> that can be easily integrated into these tools.
 </template></note>
 
 ## How to integrate the Stylify CSS into the Angular
@@ -49,7 +49,7 @@ npm i -D @stylify/bundler
 yarn add -D @stylify/bundler
 ```
 
-Also for the watch mode, we need to run two paralel tasks. This can be solved using concurrently:
+Also for the watch mode, we need to run two parallel tasks. This can be solved using concurrently:
 ```
 yarn add -D concurrently
 npm i concurrently
@@ -78,14 +78,14 @@ const bundler = new Bundler({
 
 // This bundles all CSS into one file
 // You can configure the Bundler to bundle CSS for each page separately
-// See bundler link bellow
+// See bundler link below
 bundler.bundle([
 	{
 		files: ['./src/**/*.html', './src/**/*.ts'],
 		outputFile: './src/styles.css',
 	},
 
-	// You can also split css for each component
+	// You can also split CSS for each component
 	// You can map files within the components using content comment option
 	// https://stylifycss.com/docs/bundler#files-content-option
 	// Stylify takes that option and searches for defined files. If defined file
@@ -101,7 +101,7 @@ bundler.bundle([
 
 ```
 
-If you don't use splitting and everything will not bundled into the `styles.css`, then don't forget to add paths to css files.
+If you don't use splitting and everything will not bundled into the `styles.css`, then don't forget to add paths to CSS files.
 
 The last step is to add scripts into the `package.json`:
 

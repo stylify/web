@@ -6,12 +6,12 @@ order: 3
 navigationTitle: "Mangling selectors"
 
 title: "Mangling Selectors"
-description: "How to mangle html class selectors using the Stylify CSS Compiler."
+description: "How to mangle HTML class selectors using the Stylify CSS Compiler."
 ---
 
 When you want to mangle selectors, you must set the compiler option => `mangleSelectors: true`.
 
-The example bellow is for a case when you would want to do some custom compilation.
+The example below is for a case when you would want to do some custom compilation.
 Packages like [@stylify/bundler](/docs/bundler), [@stylify/unplugin](/docs/unplugin), [@stylify/nuxt](/docs/nuxt), [@stylify/astro](/docs/astro) uses the same process internaly (automaticaly).
 
 ```js

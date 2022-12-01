@@ -59,4 +59,4 @@ export default defineConfig({
 
 ## Configuration
 
-Checkout the [@stylify/astro](/docs/astro#configuration) package.
+Check out the [@stylify/astro](/docs/astro#configuration) package.

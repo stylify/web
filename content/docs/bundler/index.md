@@ -66,12 +66,12 @@ const config = defineConfig({
 	// watching files for a change
 	watchFiles: false,
 	// Bundles can be defined directly when the instance is created
-	// The bundle configuration is shown bellow in bundler.bundle() method
+	// The bundle configuration is shown below in bundler.bundle() method
 	// The bundle() method must be called to initiate the bundling process
 	bundles: [],
 	// If file path is provided in the following options
 	// variables from the Compiler config will be exported into those files
-	// so you can reuse them inside css, scss and etc.
+	// so you can reuse them inside CSS, scss and etc.
 	// -----------
 	// CSS variables are by default injected into the generated CSS.
 	// You can change this behavior by configuring compiler
@@ -106,10 +106,10 @@ bundler.bundle([
 		id: 'my-bundle-id',
 		// When true, selectors in given files will be mangled
 		// If this option is set to true and rewriteSelectorsInFiles is false
-		// it will only mangle css selectors
+		// it will only mangle CSS selectors
 		mangleSelectors: false,
 		// Can disable rewriting selectors inside a file when you want to just
-		// mangle css but not files
+		// mangle CSS but not files
 		rewriteSelectorsInFiles: false,
 		// When you want to generate CSS only for a specific part of page or don't want to
 		// break other CSS in the project. Good for components and open source plugins

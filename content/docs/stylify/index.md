@@ -19,7 +19,7 @@ Stylify core size is around <strong>20 Kb</strong>. When a [Native Preset](/docs
 
 Stylify is a core package for all other packages. It consist of Compiler, Runtime and a Native preset.
 
-Learn [how to get started with Stylify](/docs/get-started) or checkout [how to integrate Stylify CSS into an existing project](/docs/get-started/migrating-to-stylify) will help.
+Learn [how to get started with Stylify](/docs/get-started) or check out [how to integrate Stylify CSS into an existing project](/docs/get-started/migrating-to-stylify) will help.
 
 ## Installation
 Stylify can be used through CDN or installed via CLI like Yarn or NPM.
@@ -39,6 +39,6 @@ yarn add -D @stylify/stylify
 
 ## Usage
 
-Bellow is a list of guides on how to use Stylify CSS along with multiple tools. If you haven't found adequate guide, you are more then welcome to extend Stylify CSS docs.
+Below is a list of guides on how to use Stylify CSS along with multiple tools. If you haven't found an adequate guide, you are more than welcome to extend Stylify CSS docs.
 
 <integration-blocks />

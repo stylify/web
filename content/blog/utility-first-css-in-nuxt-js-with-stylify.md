@@ -12,19 +12,18 @@ Style your Nuxt.JS app quickly and easily with [Stylify](https://stylifycss.com)
 ## Introduction
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-✨CSS-like selectors
-💎No framework to study
-💡Less time spent in docs
-🧰Mangled & Extremely small CSS
-🤘No purge needed
-🚀Components, Variables, Custom selectors
-📦It can generate multiple CSS bundles
+- ✨CSS-like selectors
+- 💎No framework to study
+- 💡Less time spent in docs
+- 🧰Mangled & Extremely small CSS
+- 🤘No purge needed
+- 🚀Components, Variables, Custom selectors
+- 📦It can generate multiple CSS bundles
 
 ## Installation
+For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.
 
-For easier start, you can checkout the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.
-
-Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that symplifies the integration process to minimum:
+Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that simplifies the integration process to a minimum:
 
 For Nuxt v3
 ```
@@ -46,7 +45,7 @@ buildModules: [
 ]
 ```
 
-And that's it. Now you can start using the [Stylify](https://stylifycss.com) to style your Nuxt.js app 🤩.
+And that's it. Now you can start using [Stylify](https://stylifycss.com) to style your Nuxt.js app 🤩.
 
 ## First CSS
 
@@ -66,14 +65,14 @@ Congratulations, you have styled your first page!
 
 ## Cleanup and Configuration
 
-When the amount of selectors in utility-first approach starts to increase, it can turn into an enormous, unreadable mess from which the backend engineers cries by day and night when they see it.
+When the amount of selectors in the utility-first approach starts to increase, it can turn into an enormous, unreadable mess from which the backend engineers cries by day and night when they see it.
 
-Therefore we have components. Components can be defined on three places:
+Therefore we have components. Components can be defined in three places:
 - In a file where they are used
 - In the `stylify.config.js` file
 - Inside a `nuxt.config.js` in the Stylify section
 
-Let's define add the title component into the index.vue as it is used only here.
+Let's define the title component into the index.vue as it is used only here.
 
 ```html
 <!--
@@ -105,7 +104,7 @@ export default {
 };
 ```
 
-Sometime it is necessary to style elements globally. It can be done using **customSelectors**:
+Sometimes it is necessary to style elements globally. It can be done using **customSelectors**:
 
 ```js
 export default {
@@ -187,10 +186,10 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 ```
 
 ## Configure anything you need
-The examples above doesn't include everything Stylify CSS can do:
+The examples above don't include everything Stylify CSS can do:
 - You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
 - Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
 - Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [own macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
+- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
 
-Feel free to [checkout the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
