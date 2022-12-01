@@ -6,6 +6,15 @@ const defaultPageTitle = 'Code your website faster with CSS-like utilities | Sty
 const defaultPageDescription = 'Stylify CSS uses CSS-like selectors to generate optimized utility-first CSS. Code your website faster. Don\'t study CSS framework. Focus on coding.';
 const isProduction = process.env.NODE_ENV === 'production';
 
+const excludedRoutes = [
+	'/docs/autoprefixer',
+	'/docs/autoprefixer/',
+	'/404',
+	'/404/',
+	'/docs/profiler',
+	'/docs/profiler/'
+];
+
 export default {
 	server: {
 		host: '0.0.0.0'
@@ -122,9 +131,28 @@ export default {
 	stylelint: {
 		allowEmptyInput: true
 	},
-
+	trailingSlash: false,
 	sitemap: {
 		hostname: 'https://stylifycss.com',
+		exclude: excludedRoutes,
+		routes: async () => {
+			const { $content } = require("@nuxt/content");
+			const files = await $content({ deep: true }).only(["path"]).fetch();
+
+			const routes = files
+				.map((file: any) => {
+					let path  = file.path;
+					path = path.replace(/\/index$/, '');
+					path = path.replace('\/$', '');
+
+					return path;
+				})
+				.filter((path: any) => {
+					return !excludedRoutes.includes(path);
+				});
+
+			return routes;
+		}
 	},
 
 	plugins: [
