@@ -1,10 +1,4 @@
 <!--
-stylify-components
-	badge: `
-		display:inline-flex align-items:center white-space:nowrap padding:4px font-size:14px
-		color:#fff border:1px_solid_#f1f1f1 border-radius:4px text-decoration:none transition:background_0.3s hover:background:rgba(255,255,255,0.2)
-	`
-/stylify-components
 stylify-keyframes
 	rotate: `
 		 from { transform: rotate(0); }
