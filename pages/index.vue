@@ -547,7 +547,7 @@ export default {
 						"thumbnailUrl": "https://i.ytimg.com/vi/GRwtXDnm5gE/default.jpg",
 						"uploadDate": "2022-11-09T12:12:45Z",
 						"duration": "PT8M5S",
-						"embedUrl": "https://www.youtube.com/embed/GRwtXDnm5gE",
+						"embedUrl": "https://www.youtube.com/embed/GRwtXDnm5gE"
 					}`,
 					type: 'application/ld+json'
 				}
