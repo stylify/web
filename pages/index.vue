@@ -37,9 +37,9 @@ stylify-keyframes
 	<div>
 		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 		<section class="container md:margin-top:24px lg:margin-top:34px">
-			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:48px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px xl:font-size:100px text-transform:uppercase">Write CSS Faster</h2>
-			<p class="max-width:980px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
-				Stylify is a library that uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <span class="color:$blue1 font-family:monospace">variables</span>, <span class="color:$blue1 font-family:monospace">components</span>, <span class="color:$blue1 font-family:monospace">custom selectors</span> to generate CSS dynamically based on what you write.
+			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:48px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px text-transform:uppercase">Write CSS Faster</h2>
+			<p class="max-width:840px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
+				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate CSS dynamically based on what you write.
 			</p>
 			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Stay with CSS. Focus on coding!&nbsp;💎</div>
 		</section>
@@ -48,34 +48,14 @@ stylify-keyframes
 				<GithubButton />
 				<GithubButton type="sponsor" />
 			</span>
-			<span class="display:flex gap:12px align-items:center">
+			<span class="display:flex flex-wrap:wrap gap:12px justify-content:center align-items:center">
 				<strong class="badge cursor:default pointer-events:none">
 					17k+/year packages downloads
 				</strong>
 				<a href="https://www.producthunt.com/posts/stylify-css?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stylify&#0045;css" target="_blank" class="pointer-events:none border:2px_solid_#f1f1f1 border-radius:4px display:inline-flex align-items:center" rel="noopener nofollow"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=dark" alt="Stylify&#0032;CSS - Stylify&#0032;uses&#0032;CSS&#0045;like&#0032;selectors&#0032;to&#0032;generate&#0032;optimized&#0032;CSS | Product Hunt" style="width: auto; height: 32px;" width="250" height="54" loading="lazy" decoding="async" /></a>
 			</span>
 		</div>
-		<section class="container margin-top:52px margin-bottom:24px">
-			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
-			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
-				<div>
-					<span class="font-size:24px margin-right:8px">🔁</span>
-					<span>
-						<a href="#installation" class="color:$blue1">Install Stylify CSS</a>.
-						<br>Write CSS-like selectors into class attributes.
-					</span>
-				</div>
-				<div>
-					<span class="font-size:24px margin-right:8px">📦</span>
-					<span>CSS is automatically generated into CSS files.</span>
-				</div>
-				<div>
-					<span class="font-size:24px margin-right:8px">🚀</span>
-					<span>In production, CSS and HTML get optimized: minified, selectors are mangled <code class="white-space:nowrap">.color-blue</code> => <code class="white-space:nowrap">.a</code> and properties are chained.</span>
-				</div>
-			</div>
-		</section>
-		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
+<!-- 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
@@ -144,8 +124,35 @@ stylify-keyframes
 					</div>
 				</div>
 			</div>
-		</section>
+		</section> -->
 
+		<section :id="filters.webalize('Features')" class="container margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
+			<div class="max-width:100% display:flex flex-direction:column align-items:flex-start">
+				<div class="hp__example-editor width:100%">
+					<GetStartedSelectorsHp />
+				</div>
+			</div>
+		</section>
+		<section class="container margin-top:32px margin-bottom:32px">
+			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
+			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
+				<div>
+					<span class="font-size:24px margin-right:8px">🔁</span>
+					<span>
+						<a href="#installation" class="color:$blue1">Install Stylify CSS</a>.
+						<br>Write CSS-like selectors into class attributes.
+					</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">📦</span>
+					<span>CSS is automatically generated into CSS files.</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">🚀</span>
+					<span>In production, CSS and HTML get optimized: minified, selectors are mangled <code class="white-space:nowrap">.color-blue</code> => <code class="white-space:nowrap">.a</code> and properties are chained.</span>
+				</div>
+			</div>
+		</section>
 		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
 			<div class="margin-bottom:24px">
 				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">

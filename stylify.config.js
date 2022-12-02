@@ -54,7 +54,7 @@ export default defineConfig({
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
 			'::selection': 'color:#fff background:$blue1',
-			'.prism-editor-wrapper *': 'font-size:14px line-height:1',
+			'.prism-editor-wrapper *': 'font-size:16px line-height:1',
 
 			// Articles common
 			'article': 'margin-top:0 font-size:16px word-break:break-word',

@@ -14,6 +14,10 @@ const code = `
 	transition:.3s
 	hover:transform:scale(1.5)
 ">
+	<!--
+		Write selectors as CSS property:value
+		Use _ for a space and ^ for quote
+	-->
 	Edit me 😎!
 </div>
 `;
