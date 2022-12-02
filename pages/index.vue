@@ -164,7 +164,7 @@ stylify-keyframes
 		</section>
 
 		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">💡&nbsp;Why Stylify?&nbsp;💡</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Why Stylify?&nbsp;💡</h2>
 			<p class="text-align:center max-width:1000px margin:0_auto">
 				Stylify primarily tries to solve two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
 				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way.
@@ -177,7 +177,7 @@ stylify-keyframes
 		</section>
 
 		<section id="components" class="container margin-top:32px padding-top:32px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">🎨&nbsp;Use prepared components&nbsp;🎨</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components&nbsp;🎨</h2>
 			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
 				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
 					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
@@ -194,7 +194,7 @@ stylify-keyframes
 
 		<section id="quote" class="container margin-top:32px padding-top:32px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">💎&nbsp;Don't study frameworks. Focus on coding!&nbsp;💎</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!&nbsp;💎</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
 						<p class="margin-top:0">
