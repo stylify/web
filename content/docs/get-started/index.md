@@ -46,7 +46,7 @@ Check out the [full list](/docs/stylify/native-preset#screens). All generated sc
 
 
 <!-- stylify-ignore -->
-<example-editor layout="column">
+<example-editor layout="column" class="min-height:220px">
 <div class="font-size:12px minw768px:font-size:32px lg:font-size:24px">
 	Screens
 </div>
@@ -56,7 +56,7 @@ Check out the [full list](/docs/stylify/native-preset#screens). All generated sc
 Screens can also be combined using logical operands: **Logical AND**: `&&`, **Logical OR**: `||`
 
 <!-- stylify-ignore -->
-<example-editor layout="column">
+<example-editor layout="column" class="min-height:220px">
 <div class="lg||landscape:color:orange sm&&dark:color:grey lg&&dark:color:white">
 	Combined screens
 </div>

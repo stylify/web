@@ -22,7 +22,7 @@ stylify-components
 			<div
 				:class="[
 					layout === 'column' ? 'md:width:100%' : 'width:100% max-width:100% md:width:50% md:min-width:50%',
-					`background:lighten($blue3,20) display:flex margin-bottom:24px md:margin-bottom:0 md:align-self:stretch`
+					`background:lighten($blue3,20) display:flex md:align-self:stretch`
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
@@ -63,7 +63,7 @@ stylify-components
 				:class="[
 					layout === 'column' ? 'md:width:100% border-bottom:1px_solid_$blue5' : 'width:100% border-bottom:1px_solid_$blue5 md:border-bottom:0 md:border-left:1px_solid_$blue5 md:width:50% md:min-width:50%',
 					`min-height:100px max-height:400px overflow:auto display:flex
-					align-items:center justify-content:center padding:24px
+					align-items:center justify-content:center padding:12px
 					md:align-self:stretch
 					`
 				]"
