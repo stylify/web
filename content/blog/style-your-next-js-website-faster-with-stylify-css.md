@@ -3,18 +3,22 @@ title: 🚀 Style your Next.js website faster with Stylify CSS
 image: '/images/blog/stylify-next/header.jpg'
 ogImage: '/images/blog/stylify-next/og-image.jpg'
 author: 'Vladimír Macháček'
-annotation: "Style your Next.js website faster, more efficiently and intuitively with Stylify."
+annotation: "Code your Next.js website faster with Stylify CSS-like utilities. Don't study CSS-in-JS or CSS framework. Focus on coding. Let Stylify CSS do the rest."
 createdAt: 'June 28, 2022'
 ---
-
-Style your Next.js website faster, more efficiently and intuitively with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get automatically generated CSS with advanced optimization for production.
 
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
 ## Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with components selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
+Stylify CSS is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write. In production, utilities are minified from `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
 
-With Stylify, you can get very small bundles, generate additional lazyloaded CSS chunks and style the page by writing HTML and selectors 🤟.
+- ✨CSS-like selectors
+- 💎No framework to study
+- 💡Less time spent in docs
+- 🧰Mangled & Extremely small CSS
+- 🤘No purge needed
+- 🚀Components, Variables, Custom selectors
+- 📦It can generate multiple CSS bundles
 
 ## Next.js setup
 The easiest way to Setup the Next.js is using CLI:
