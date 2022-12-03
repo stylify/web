@@ -3,7 +3,7 @@ title: 'Code your Astro.build website faster with Stylify CSS'
 image: '/images/blog/stylify-astro/header.jpg'
 ogImage: '/images/blog/stylify-astro/og-image.jpg'
 author: 'Vladimír Macháček'
-annotation: 'Code your Astro.build website faster with Stylify CSS. Use CSS-like utilities. Don't study CSS framework.'
+annotation: "Code your Astro.build website faster with Stylify CSS. Use CSS-like utilities. Don't study CSS framework."
 createdAt: 'December 3, 2022'
 ---
 
