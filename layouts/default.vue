@@ -26,9 +26,9 @@ stylify-components
 						<LayoutHeaderSocialIcons />
 					</section>
 				</div>
-				<section class="flex:1 overflow:auto width:calc(100%_+_16px) justify-content:center margin-left:-8px margin-right:-8px display:inline-flex position:relative">
+				<div class="flex:1 overflow:auto width:calc(100%_+_16px) justify-content:center margin-left:-8px margin-right:-8px display:inline-flex position:relative">
 					<div class="justify-content:flex-start display:flex max-width:100%">
-						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px font-weight:bold align-items:center">
+						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px font-weight:bold align-items:center" role="navigation">
 							<nuxt-link to="/docs/get-started" class="navigation__link">Docs</nuxt-link>
 							<nuxt-link to="/snippets/components" class="navigation__link">Components & Snippets</nuxt-link>
 							<nuxt-link :to="`/#${filters.webalize('Why Stylify?')}`" class="navigation__link">Why Stylify?</nuxt-link>
@@ -39,16 +39,16 @@ stylify-components
 						</nav>
 						<span class="minw1500px:display:none">&nbsp;</span>
 					</div>
-				</section>
+				</div>
 				<section class="display:none minw1500px:display:inline-flex minw1500px:min-width:300px justify-content:flex-end min-width:150px">
 					<LayoutHeaderSocialIcons />
 				</section>
 			</div>
 		</header>
-		<main>
+		<main role="main">
 			<Nuxt />
 		</main>
-		<footer class="background:lighten($blue3,20) padding:24px_0">
+		<footer class="background:lighten($blue3,20) padding:24px_0" role="contentinfo">
 			<div class="container">
 				<div class="display:flex align-items:flex-start flex-direction:column margin-bottom:12px">
 					<hp-footer-docs-links :links="getStartedLinks" />

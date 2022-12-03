@@ -16,7 +16,7 @@ const code = `
 ">
 	<!--
 		Write selectors as CSS property:value
-		Use _ for a space and ^ for quote
+		Use _ for a space and ^ for a quote
 	-->
 	Edit me 😎!
 </div>
