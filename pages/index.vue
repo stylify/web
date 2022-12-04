@@ -93,7 +93,28 @@ stylify-keyframes
 				</div>
 			</div>
 		</section>
-
+		<section id="quote" class="container margin-top:32px padding-top:32px margin-bottom:64px">
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!</h2>
+			<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
+				<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
+					<p class="margin-top:0">
+						As a developer you want to code your website easily, quickly and without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex, forces you to study syntax, randomly named selectors and how to use which feature (which you will forget after a week of holiday 🍹).
+					</p>
+					<p class="margin:0">
+						Stylify focuses on simplicity and uses CSS-like selectors you already know. It's like writing pure CSS directly into the markup without the need of switching between files and figuring out the names for selectors. If you know CSS, you know how to use Stylify.
+						<br>If you try Stylify, you will find out that preprocessors and short selectors are unnecessary.
+					</p>
+				</div>
+				<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
+					<iframe width="310" height="185" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen class="max-width:100%"></iframe>
+					<div class="margin-left:12px md:margin-left:0 margin-top:8px md:margin-top:12px md:text-align:center">
+						<strong class="color:#fff">Vladimír Macháček</strong>
+						<br>Author of Stylify CSS
+						<br>Webdev at <a href="https://slevomat.cz" class="color:$blue1" target="_blank">Slevomat.cz</a>
+					</div>
+				</div>
+			</div>
+		</section>
 		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0">
 			<div class="slideshow width:200% height:230px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
 				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
@@ -157,24 +178,8 @@ stylify-keyframes
 			<div class="hp__section-content"><why-stylify /></div>
 		</section>
 
-		<section id="components" class="container margin-top:32px padding-top:32px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components</h2>
-			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
-				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
-					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
-					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
-				</nuxt-link>
-			</div>
-			<div class="text-align:center">
-				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
-					Check out components
-					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-				</nuxt-link>
-			</div>
-		</section>
-
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Components. Variables. Global Styles. Everything.</h2>
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Ready for large scale projects</h2>
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
@@ -237,48 +242,21 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section id="quote" class="container margin-top:32px padding-top:32px margin-bottom:64px">
-			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!</h2>
-				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
-					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
-						<p class="margin-top:0">
-							The thing you want is to code your website easily, and quickly without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex and forces you to study syntax, random named selectors, and how to use which feature (which you will forget after a week of holiday).
-						</p>
-						<p class="margin:0">
-							Stylify goes against the grain and uses CSS-like selectors you already know. It's like writing pure CSS directly into the markup without the need of switching between files and figuring out the names for selectors. If you know CSS, you know how to use Stylify.
-							<br>If you try Stylify, you will find out that preprocessors and short selectors in frameworks are unnecessary.
-						</p>
-					</div>
-					<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
-						<img src="/images/machacek.jpg" alt="" width="200" height="200" class="md:margin-left:12px border-radius:200px height:100px md:height:136px width:100px md:width:136px" loading="lazy" decoding="async">
-						<div class="margin-left:12px md:margin-left:0 md:margin-top:12px md:text-align:center">
-							<strong class="color:#fff">Vladimír Macháček</strong>
-							<br>Author of Stylify CSS
-							<br>Webdev at <a href="https://slevomat.cz" class="color:$blue1" target="_blank">Slevomat.cz</a>
-						</div>
-					</div>
-				</div>
+		<section id="components" class="container margin-top:32px padding-top:32px margin-bottom:32px">
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components</h2>
+			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
+				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
+					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
+					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
+				</nuxt-link>
 			</div>
-			<div>
-				<h3 class="text-align:center font-size:24px"><img src="/images/brands/youtube.svg" loading="lazy" decoding="async" width="42" height="42" alt="" class="vertical-align:middle margin-right:12px">Learn more about Stylify on our Youtube channel</h3>
-				<div class="display:flex max-width:calc(100%_+_16px) margin-left:-8px margin-right:-8px flex-direction:row margin-top:32px overflow:auto justify-content:center">
-					<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen class="max-width:100% min-height:315px height:auto"></iframe>
-				</div>
+			<div class="text-align:center">
+				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
+					Check out components
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
 			</div>
 		</section>
-
-		<div>
-			<section class="container display:flex flex-direction:column align-items:center margin-bottom:32px padding-bottom:32px">
-				<h2 class="margin-top:0 font-size:32px margin-bottom:4px md:font-size:60px">Go ahead, try it now!</h2>
-				<p class="margin-top:0 font-size:24px margin-bottom:12px">
-					Code less. Do more.
-				</p>
-				<div>
-					<nuxt-link to="/docs/get-started" class="btn btn--hp">Get started!</nuxt-link>
-				</div>
-			</section>
-		</div>
 	</div>
 </template>
 

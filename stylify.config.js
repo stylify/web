@@ -12,7 +12,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 
 	selectorProperties.addMultiple({
 		'font-size': `${pixelFontSize * 0.0625}rem`,
-		'line-height': `${pixelFontSize * (pixelFontSize > 32 ? 1.2 : 1.6) * 0.0625}rem`
+		'line-height': `${pixelFontSize * (pixelFontSize >= 32 ? 1.2 : 1.6) * 0.0625}rem`
 	});
 });
 
