@@ -8,7 +8,7 @@ stylify-keyframes
 -->
 <template>
 	<div class="display:inline-flex">
-		<a v-if="type === 'stars'" href="https://github.com/stylify/packages" class="badge" rel="noopener" target="_blank">
+		<a v-if="type === 'stars'" href="https://github.com/stylify/packages" class="badge min-width:84px" rel="noopener" target="_blank">
 			<img src="/images/brands/github-icon.svg" class="margin-right:4px" width="24" height="24" loading="lazy" alt="" />
 			<strong>
 				<span class="min-width:24px display:inline-flex justify-content:center align-items:center">

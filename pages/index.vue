@@ -35,39 +35,150 @@ stylify-keyframes
 -->
 <template>
 	<div>
-		<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
-		<section class="container md:margin-top:24px lg:margin-top:34px">
-			<h2 class="color:#fff letter-spacing:-1.5px margin-top:0 font-size:48px text-align:center margin-bottom:12px md:font-size:64px line-height:1 lg:font-size:72px text-transform:uppercase">Write CSS Faster</h2>
-			<p class="max-width:840px margin-left:auto margin-right:auto text-align:center margin-top:0 lg:font-size:18px">
-				Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate CSS dynamically based on what you write.
-			</p>
-			<div class="text-align:center lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Stay with CSS. Focus on coding!&nbsp;💎</div>
-		</section>
-		<div class="container display:flex gap:12px margin-top:24px justify-content:center flex-wrap:wrap align-items:center">
-			<span class="display:flex gap:12px align-items:center">
-				<GithubButton />
-				<GithubButton type="sponsor" />
-			</span>
-			<span class="display:flex flex-wrap:wrap gap:12px justify-content:center align-items:center">
-				<strong class="badge cursor:default pointer-events:none">
-					17k+/year packages downloads
-				</strong>
-				<a href="https://www.producthunt.com/posts/stylify-css?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stylify&#0045;css" target="_blank" class="pointer-events:none border:2px_solid_#f1f1f1 border-radius:4px display:inline-flex align-items:center" rel="noopener nofollow"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=dark" alt="Stylify&#0032;CSS - Stylify&#0032;uses&#0032;CSS&#0045;like&#0032;selectors&#0032;to&#0032;generate&#0032;optimized&#0032;CSS | Product Hunt" style="width: auto; height: 32px;" width="250" height="54" loading="lazy" decoding="async" /></a>
-			</span>
+		<div class="container md:margin-top:24px lg:margin-top:48px margin-bottom:64px tomd:flex-direction:column display:flex md:display:grid md:grid-template-columns:1fr_1fr xl:grid-template-columns:55%_45% gap:24px justify-content:space-between align-items:center">
+			<div class="md:max-width:640px">
+				<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
+				<section class="">
+					<h2 class="color:#fff text-align:center md:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw400px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
+					<p class="max-width:840px text-align:center md:text-align:left margin-left:auto margin-right:auto margin-top:0 lg:font-size:18px">
+						Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
+					</p>
+					<div class="text-align:center md:text-align:left lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Use CSS. Focus on coding!&nbsp;💎</div>
+				</section>
+				<div class="display:none lg:display:flex gap:12px margin-top:12px justify-content:center flex-wrap:wrap align-items:center md:justify-content:flex-start">
+					<GithubButton />
+					<a href="https://www.producthunt.com/posts/stylify-css?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-stylify&#0045;css" target="_blank" class="pointer-events:none border:2px_solid_#f1f1f1 border-radius:4px display:inline-flex align-items:center" rel="noopener nofollow"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=dark" alt="Stylify&#0032;CSS - Stylify&#0032;uses&#0032;CSS&#0045;like&#0032;selectors&#0032;to&#0032;generate&#0032;optimized&#0032;CSS | Product Hunt" style="width: auto; height: 32px;" width="250" height="54" loading="lazy" decoding="async" /></a>
+				</div>
+				<div class="max-width:100% flex-wrap:wrap margin-top:12px md:margin-top:24px gap:8px sm:gap:12px display:flex flex-direction:row align-items:center justify-content:center md:justify-content:flex-start font-size:18px">
+					<nuxt-link to="/docs/get-started" class="btn border:2px_solid_$blue1 md:padding:16px_24px">
+						Get started
+						<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg) width:18px height:18px"></i>
+					</nuxt-link>
+					<nuxt-link to="/docs/integrations" class="btn btn--transparent color:$blue1 border:2px_solid_$blue1 md:padding:16px_24px">Installation</nuxt-link>
+				</div>
+			</div>
+			<div class="width:100% md:width:auto">
+				<GetStartedSelectorsHp />
+			</div>
 		</div>
-<!-- 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
+
+		<section class="container margin-top:32px margin-bottom:32px">
+			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
+			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
+				<div>
+					<span class="font-size:24px margin-right:8px">📥</span>
+					<span>
+						<a href="#installation" class="color:$blue1">Install Stylify CSS</a>.
+						<br>Write CSS-like selectors into class attributes.
+						<br>Additionally configure <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/get-started#adding-macros" class="color:$blue1">Macros</nuxt-link>.
+					</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">📦</span>
+					<span>CSS is automatically generated into CSS files.</span>
+				</div>
+				<div>
+					<span class="font-size:24px margin-right:8px">🚀</span>
+					<span>In production, CSS and HTML are optimized and selectors minified <code class="white-space:nowrap">.color:blue</code> => <code class="white-space:nowrap">.a</code>.</span>
+				</div>
+			</div>
+		</section>
+		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
+			<div class="margin-bottom:24px">
+				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
+					Start using Stylify CSS with your favorite tool in a minute.
+				</h3>
+				<div class="hp__section-content">
+					<integration-blocks />
+				</div>
+			</div>
+		</section>
+
+		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0">
+			<div class="slideshow width:200% height:230px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
+				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
+					<a
+						v-for="(fan, index) in fans"
+						:key="'orig-' + index"
+						:href="fan.link"
+						target="blank"
+						rel="noopener nofollow"
+						class="
+						text-decoration:none color:$blue4
+						width:320px
+						display:inline-flex flex-direction:column flex-shrink:0 height:230px
+						background:lighten($blue3,20) padding:12px border-radius:4px
+					"
+					>
+						<div class="display:flex align-items:center margin-bottom:12px">
+							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
+							<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
+								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
+								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
+							</div>
+						</div>
+						<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
+					</a>
+					<a
+						v-for="(fan, index) in fans"
+						:key="'copy-' + index"
+						:href="fan.link"
+						target="blank"
+						rel="noopener nofollow"
+						class="
+						text-decoration:none color:$blue4
+						width:320px
+						display:inline-flex flex-direction:column flex-shrink:0 height:230px
+						background:lighten($blue3,20) padding:12px border-radius:4px
+					"
+					>
+						<div class="display:flex align-items:center margin-bottom:12px">
+							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
+							<div class="margin-left:12px display:flex flex-direction:column align-items:flex-start">
+								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
+								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
+							</div>
+						</div>
+						<div class="font-size:14px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Why Stylify?</h2>
+			<p class="text-align:center max-width:1000px margin:0_auto">
+				Stylify focuses on two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
+			</p>
+			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
+				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writing CSS. Therefore is easy to switch between Stylify and CSS.</div>
+				<div><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.</div>
+			</div>
+			<div class="hp__section-content"><why-stylify /></div>
+		</section>
+
+		<section id="components" class="container margin-top:32px padding-top:32px">
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components</h2>
+			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
+				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
+					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
+					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
+				</nuxt-link>
+			</div>
+			<div class="text-align:center">
+				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
+					Check out components
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
+		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Components. Variables. Global Styles. Everything.</h2>
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
 			</div>
 			<div class="padding:12px lg:padding:24px background:lighten($blue3,20)">
-				<div v-show="featuresSelectedTab === 'selectors'" class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-					<p class="margin-top:0 font-size:14px">
-						Write selectors as css <code>property:value</code>. Use <code>_</code> (one underscore) instead of a space and <code>^</code> (hat) instead of a quote. You can also define your own selectors.
-					</p>
-					<div class="hp__example-editor width:100%">
-						<GetStartedSelectors />
-					</div>
-				</div>
 				<div v-show="featuresSelectedTab === 'components'">
 					<p class="margin-top:0 font-size:14px">
 						Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
@@ -124,84 +235,11 @@ stylify-keyframes
 					</div>
 				</div>
 			</div>
-		</section> -->
-
-		<section :id="filters.webalize('Features')" class="container margin-left:auto margin-right:auto padding-top:24px margin-bottom:24px">
-			<div class="max-width:100% display:flex flex-direction:column align-items:flex-start">
-				<div class="hp__example-editor width:100%">
-					<GetStartedSelectorsHp />
-				</div>
-			</div>
-		</section>
-		<section class="container margin-top:32px margin-bottom:32px">
-			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
-			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
-				<div>
-					<span class="font-size:24px margin-right:8px">🔁</span>
-					<span>
-						<a href="#installation" class="color:$blue1">Install Stylify CSS</a>.
-						<br>Write CSS-like selectors into class attributes.
-					</span>
-				</div>
-				<div>
-					<span class="font-size:24px margin-right:8px">📦</span>
-					<span>CSS is automatically generated into CSS files.</span>
-				</div>
-				<div>
-					<span class="font-size:24px margin-right:8px">🚀</span>
-					<span>In production, CSS and HTML get optimized: minified, selectors are mangled <code class="white-space:nowrap">.color-blue</code> => <code class="white-space:nowrap">.a</code> and properties are chained.</span>
-				</div>
-			</div>
-		</section>
-		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
-			<div class="margin-bottom:24px">
-				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
-					Start using Stylify CSS with your favorite tool in a minute.
-				</h3>
-				<div class="hp__section-content">
-					<integration-blocks />
-				</div>
-			</div>
-			<div class="max-width:100% margin-left:-8px sm:margin-left:-12px display:flex flex-direction:row align-items:center justify-content:center text-align:center font-size:18px">
-				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-left:8px sm:margin-left:12px border:2px_solid_$blue1">
-					Get started <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-				</nuxt-link>
-				<nuxt-link to="/docs/integrations" class="btn btn--hp btn--transparent color:$blue1 border:2px_solid_$blue1 margin-left:8px sm:margin-left:12px md:padding:12px_24px">Installation</nuxt-link>
-			</div>
 		</section>
 
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Why Stylify?&nbsp;💡</h2>
-			<p class="text-align:center max-width:1000px margin:0_auto">
-				Stylify primarily tries to solve two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
-				<br>Apart from that, it brings useful features that will help you to code your project in a flexible and scalable way.
-			</p>
-			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
-				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writing CSS. Therefore is easy to switch between Stylify and CSS.</div>
-				<div><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.</div>
-			</div>
-			<div class="hp__section-content"><why-stylify /></div>
-		</section>
-
-		<section id="components" class="container margin-top:32px padding-top:32px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components&nbsp;🎨</h2>
-			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
-				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">
-					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
-					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
-				</nuxt-link>
-			</div>
-			<div class="text-align:center">
-				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
-					Check out components
-					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-				</nuxt-link>
-			</div>
-		</section>
-
-		<section id="quote" class="container margin-top:32px padding-top:32px">
+		<section id="quote" class="container margin-top:32px padding-top:32px margin-bottom:64px">
 			<div class="max-width:1280px margin-left:auto margin-right:auto">
-				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!&nbsp;💎</h2>
+				<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!</h2>
 				<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 					<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
 						<p class="margin-top:0">
@@ -230,70 +268,6 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0 md:margin-bottom:48px">
-			<div class="display:flex justify-content:center align-items:center flex-direction:column md:flex-direction:row margin-bottom:24px">
-				<div class="height:34px display:flex align-items:center justify-content:center md:border-right:2px_solid_#bbe8f6 md:padding-right:12px md:margin-right:12px">
-					<div class="display:flex height:40px margin-right:12px width:84px"><GithubButton /></div>
-					<div class="display:flex">
-						<a href="https://twitter.com/stylifycss?ref_src=twsrc%5Etfw" target="_blank" rel="noopener nofollow" class="text-decoration:none line-height:1 font-size:12px background:#1d9bf0 color:#fff padding:8px_12px border-radius:12px twitter-follow-button">
-							Follow @stylifycss
-						</a>
-					</div>
-				</div>
-				<div class="text-align:center">
-					<share-buttons url="https://stylifycss.com" title="Write CSS Faster and Efficiently. Write HTML. Get CSS." description="Stylify generates optimized utility-first CSS dynamicly based on what you write. Write HTML. Get CSS. No more unwanted CSS. No more unnecessary configuration." />
-				</div>
-			</div>
-			<div class="slideshow width:200% height:300px md:height:280px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
-					<a
-						v-for="(fan, index) in fans"
-						:key="'orig-' + index"
-						:href="fan.link"
-						target="blank"
-						rel="noopener nofollow"
-						class="
-						text-decoration:none color:$blue4
-						width:320px
-						display:inline-flex flex-direction:column flex-shrink:0 height:230px
-						background:lighten($blue3,20) padding:12px border-radius:4px
-					"
-					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
-								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
-								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
-							</div>
-						</div>
-						<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
-					</a>
-					<a
-						v-for="(fan, index) in fans"
-						:key="'copy-' + index"
-						:href="fan.link"
-						target="blank"
-						rel="noopener nofollow"
-						class="
-						text-decoration:none color:$blue4
-						width:320px
-						display:inline-flex flex-direction:column flex-shrink:0 height:230px
-						background:lighten($blue3,20) padding:12px border-radius:4px
-					"
-					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<div class="margin-left:12px display:flex flex-direction:column align-items:flex-start">
-								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
-								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
-							</div>
-						</div>
-						<div class="font-size:14px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
-					</a>
-				</div>
-			</div>
-		</div>
-
 		<div>
 			<section class="container display:flex flex-direction:column align-items:center margin-bottom:32px padding-bottom:32px">
 				<h2 class="margin-top:0 font-size:32px margin-bottom:4px md:font-size:60px">Go ahead, try it now!</h2>
@@ -301,7 +275,7 @@ stylify-keyframes
 					Code less. Do more.
 				</p>
 				<div>
-					<nuxt-link to="/docs/get-started" class="btn">Get started!</nuxt-link>
+					<nuxt-link to="/docs/get-started" class="btn btn--hp">Get started!</nuxt-link>
 				</div>
 			</section>
 		</div>
@@ -367,17 +341,16 @@ export default {
 	data: () => ({
 
 		// Features tabs
-		featuresSelectedTab: 'selectors',
+		featuresSelectedTab: 'components',
 		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
 		helpersDefaultCode: helpersDefaultCode,
 
 		tabs: {
-			selectors: 'Use selectors you know',
-			components: 'Define components',
-			customSelectors: 'Style anything',
-			variables: 'Use variables',
-			dynamicScreens: 'Customize screens',
-			helpers: 'Extend functionality'
+			components: 'Define Components',
+			customSelectors: 'Style any element',
+			variables: 'Use Variables',
+			dynamicScreens: 'Customize Screens',
+			helpers: 'Extend Functionality'
 		},
 		videos: [
 			{
