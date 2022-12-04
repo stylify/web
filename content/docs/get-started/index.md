@@ -10,11 +10,12 @@ title: "Get Started"
 description: "Stylify generates CSS dynamically based on what you write. Learn how to use it!"
 ---
 
-Stylify generates CSS dynamically based on what you write. It can be used directly in the browser or in a Node.js environment. It is inspired by Tailwind and Tachynos.
+Stylify is a library that uses CSS-like selectors to generate optimized utility-first CSS on demand.
+Sylify processes content (of a file for example), finds class selectors and generates CSS for them. Then it does some optimization and generates CSS files.
 
-Unlike these CSS frameworks, Stylify CSS uses CSS-like selectors `color:blue`, `font-weight:bold`, `border:2px_solid_blue`.
-Thanks to that, you don't have to study any framework, remember shortcuts and think about how to use which feature.
-In case you want shorter or completely different selectors like `ml-2` (margin) or `font-2xl` you can easily configure them.
+All you have to do in order to start using Stylify is to install it and write CSS-like selectors into class attributes. No configuration required. You don't have to create any CSS files, add any configuration or study anything. If you know CSS a bit, you already know, how to use Stylify.
+
+However, if you want, you can use other features like Variables, Components, Macros and Custom selectors. More about them below.
 
 ## Installation
 
@@ -25,7 +26,7 @@ Stylify can work with any tool. For some of them it have its own integration. If
 ## Quick start
 The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
 
-Syntax is similar to CSS `property:value` with a few differences:
+<nuxt-link to="/docs/stylify/compiler#syntax">Syntax</nuxt-link> is similar to CSS `property:value` with a few differences:
 - Use `_` (one underscore) for a space and `^` (a hat) for a quote
 - The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
 
@@ -41,7 +42,7 @@ lg:hover:color:blue => blue color after hover from selected screen
 <!-- /stylify-ignore -->
 
 ## Screens usage
-Stylify has predefined shortcuts like `sm`, `md`, `lg` and dynamic screens such as `minw`, `maxw`, `rng`. Dynamic screens are flexible and the generated media query depends on the value you choose when using them.
+Stylify has predefined shortcuts like `sm`, `md`, `lg` and dynamic screens such as `minw`, `maxw`, `rng`. <nuxt-link to="/docs/stylify/compiler#screens">Dynamic screens</nuxt-link> are flexible and the generated media query depends on the value you choose when using them.
 Check out the [full list](/docs/stylify/native-preset#screens). All generated screens are [automaticaly sorted](/docs/stylify/compiler#logical-operands-in-screens).
 
 
@@ -75,9 +76,9 @@ const compilerConfig = {
 ```
 
 ## Adding a Variable
-It's not a good practice to have hardcoded values in the code. Therefore you can define Variables.
+It's not a good practice to have hardcoded values in the code. Therefore you can <nuxt-link to="/docs/stylify/compiler#variables">define Variables</nuxt-link>.
 
-Variable can be defined in a content (expects an object without surounding brackets) when used localy where it is used or in a compiler config, when used globally.
+Variable can be defined in a content (expects an object without surounding brackets) when used localy or in a compiler config, when used globally.
 
 <get-started-variables layout="column"></get-started-variables>
 
@@ -93,9 +94,7 @@ const compilerConfig = {
 ```
 
 ## Defining a Component
-When we want to reuse a piece of code, for example for a button without duplicating classes, we can define a component like this:
-
-Variable can be defined in a content (expects an object without surounding brackets) when used localy (one file / a few pages) or in a compiler config, when used globally.
+When we want to reuse a piece of code, for example for a button without duplicating classes, we can <nuxt-link to="/docs/stylify/compiler#components">define a component</nuxt-link>. Component can be defined in a content (expects an object without surounding brackets) when used localy (one file / a few pages) or in a compiler config, when used globally.
 
 <get-started-components layout="column"></get-started-components>
 
@@ -114,8 +113,9 @@ const compilerConfig = {
 };
 ```
 
-## Custom selectors
-In case you want to add a custom selector, for example a shorter variant for `margin-left` like `ml`, you can do that as follows:
+## Adding Macros
+In case you want to add for example a shorter variant for `margin-left` like `ml`, you can <nuxt-link to="/docs/stylify/compiler#macros">add macro</nuxt-link> as in example below.
+
 ```js
 const compilerConfig = {
 	macros: {
@@ -125,6 +125,26 @@ const compilerConfig = {
 		}
 	}
 };
+```
+
+## Custom selectors
+Styling elements globally can be done using <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>.
+Syntax is folllowing `[css selectors]{stylify selectors split by ;}`.
+The `&` character always reffers to upper level like in SCSS.
+For a space use the `_` (underscore) and for a quote `^` a hat character.
+
+```html
+<!-- Every <a> is going to have blue color -->
+<div class="[a]{color:blue}">
+	<!-- When the cursor is over the link, only the label is going to be underlined -->
+	<a href="#" class="
+		hover:text-decoration:none
+		[&:hover_.label]{text-decoration:underline;font-weight:bold}
+	">
+		<span class="icon">&plus;</span>
+		<span class="label">Blue link</span>
+	</a>
+</div>
 ```
 
 ## More Configuration

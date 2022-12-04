@@ -21,7 +21,7 @@ stylify-components
 					width="2"
 					decoding="async"
 					loading="lazy"
-					class="width:auto height:40px"
+					class="width:auto height:40px max-width:100px"
 				/>
 			</div>
 		</nuxt-link>
