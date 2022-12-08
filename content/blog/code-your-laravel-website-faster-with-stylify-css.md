@@ -37,7 +37,6 @@ const stylifyPlugin = stylifyVite({
 	bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
 	// Optional - https://stylifycss.com/docs/unplugin
 	compiler: {
-		mangleSelectors: !isDev,
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},
 		// https://stylifycss.com/docs/stylify/compiler#macros
