@@ -3,7 +3,7 @@ title: Write optimized CSS in Symfony with Stylify
 image: '/images/blog/stylify-symfony/header.jpg'
 ogImage: '/images/blog/stylify-symfony/og-image-v2.jpg'
 author: 'Vladimír Macháček'
-annotation: "Stay in Twig and PHP files, write HTML and get optimized CSS. Learn how to write optimized CSS in a Symfony web application in a minute."
+annotation: "Stay in Twig and PHP files, use CSS-like utilities to get optimized CSS. Learn how to write optimized CSS in a Symfony web app with Stylify CSS."
 createdAt: 'June 14, 2022'
 ---
 
