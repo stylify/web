@@ -34,6 +34,19 @@ So the objective was clear. Create a tool that will be able to:
 - Use native CSS `properties:values` as selectors by default
 - Work on its own without bundlers, frameworks and post/preprocessors
 
+## Introduction
+[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+
+- ✨ CSS-like selectors
+- 💎 No framework to study
+- 💡 Less time spent in docs
+- 🧰 Mangled & Extremely small CSS
+- 🤘 No purge needed
+- 🚀 Components, Variables, Custom selectors
+- 📦 It can generate multiple CSS bundles
+
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
+
 ## Atomic CSS with Stylify
 Stylify ships with the [native preset](https://stylifycss.com/docs/stylify/native-preset) in which the selectors are the same like CSS `property:value`. Thanks to that I don't have to remember or search for selectors. The Native Preset is optional and you can define your own selectors. It also provides the following features:
 - **Small chunks**: it can generate CSS for each file, component, layout separately

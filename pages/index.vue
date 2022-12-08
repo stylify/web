@@ -169,7 +169,8 @@ stylify-keyframes
 		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Why Stylify?</h2>
 			<p class="text-align:center max-width:1000px margin:0_auto">
-				Stylify focuses on two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
+				Stylify primarily focuses on two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
+				<br>Go ahead and check out <nuxt-link to="/docs/get-started/why-stylify-css" class="color:$blue1">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 			</p>
 			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
 				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writing CSS. Therefore is easy to switch between Stylify and CSS.</div>

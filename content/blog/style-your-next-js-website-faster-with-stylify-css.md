@@ -10,15 +10,17 @@ createdAt: 'June 28, 2022'
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
 ## Introduction
-Stylify CSS is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write. In production, utilities are minified from `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
+[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-- ✨CSS-like selectors
-- 💎No framework to study
-- 💡Less time spent in docs
-- 🧰Mangled & Extremely small CSS
-- 🤘No purge needed
-- 🚀Components, Variables, Custom selectors
-- 📦It can generate multiple CSS bundles
+- ✨ CSS-like selectors
+- 💎 No framework to study
+- 💡 Less time spent in docs
+- 🧰 Mangled & Extremely small CSS
+- 🤘 No purge needed
+- 🚀 Components, Variables, Custom selectors
+- 📦 It can generate multiple CSS bundles
+
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 
 ## Next.js setup
 The easiest way to Setup the Next.js is using CLI:

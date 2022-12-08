@@ -12,13 +12,15 @@ Style your Nuxt.JS app quickly and easily with [Stylify](https://stylifycss.com)
 ## Introduction
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-- ✨CSS-like selectors
-- 💎No framework to study
-- 💡Less time spent in docs
-- 🧰Mangled & Extremely small CSS
-- 🤘No purge needed
-- 🚀Components, Variables, Custom selectors
-- 📦It can generate multiple CSS bundles
+- ✨ CSS-like selectors
+- 💎 No framework to study
+- 💡 Less time spent in docs
+- 🧰 Mangled & Extremely small CSS
+- 🤘 No purge needed
+- 🚀 Components, Variables, Custom selectors
+- 📦 It can generate multiple CSS bundles
+
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 
 ## Installation
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.

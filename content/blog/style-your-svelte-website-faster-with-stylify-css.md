@@ -11,9 +11,17 @@ createdAt: 'July 11, 2022'
 For easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-svelte-vite?file=README.md,src%2FApp.svelte) 🎮.
 
 ## 💎 Stylify CSS Introduction
-[Stylify](https://stylifycss.com) generates CSS dynamically based on what you write. The syntax is similar to CSS `property:value`. Defined utilities are combined with component selectors and in production minified to the bare minimum like `.color\:red,.button {color:red}` to `.a,.b{color:red}`.
+[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-Stylify allows you to get very small bundles, generate additional lazyloaded CSS chunks and style the page by writing HTML and selectors 🤟.
+- ✨ CSS-like selectors
+- 💎 No framework to study
+- 💡 Less time spent in docs
+- 🧰 Mangled & Extremely small CSS
+- 🤘 No purge needed
+- 🚀 Components, Variables, Custom selectors
+- 📦 It can generate multiple CSS bundles
+
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 
 ## 🚀 Svelte Setup
 The easiest way to Setup the Svelte is using CLI:

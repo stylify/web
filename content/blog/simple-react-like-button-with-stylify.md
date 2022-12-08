@@ -9,6 +9,19 @@ createdAt: 'October 10, 2022'
 
 Check out how to style a button quickly using only utilities and then clean the template using [components](https://stylifycss.com/docs/get-started#defining-a-component). Learn why the output in production can be 50% and smaller🔥.
 
+## Introduction
+[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+
+- ✨ CSS-like selectors
+- 💎 No framework to study
+- 💡 Less time spent in docs
+- 🧰 Mangled & Extremely small CSS
+- 🤘 No purge needed
+- 🚀 Components, Variables, Custom selectors
+- 📦 It can generate multiple CSS bundles
+
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
+
 ## The Code
 Here is the code behind the button:
 ```jsx

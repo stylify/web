@@ -18,6 +18,9 @@ createdAt: 'December 8, 2022'
 - 🚀 Components, Variables, Custom selectors
 - 📦 It can generate multiple CSS bundles
 
+Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
+
+
 ## Installation
 This article uses Laravel with Vite. For older versions with Webpack, check out <nuxt-link to="/docs/integrations/laravel#for-older-vesions-of-laravel-with-webpack">this guide</nuxt-link>.
 
