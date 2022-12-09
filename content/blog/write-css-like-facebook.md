@@ -101,7 +101,7 @@ The result of the code above will look like this:
 
 The code above would look almost the same if it would be written in pure CSS. Only the `box-shadow` uses the `__` (two underscores) instead of a space.
 
-Because of the maintainability and the fact that code above could be used on multiple places, it is necessary to make it more reusable. So let's define some components, macros and variables!
+Because of the maintainability and the fact that code above could be used in multiple places, it is necessary to make it more reusable. So let's define some components, macros and variables!
 
 ### Cleanup and Configuration
 
@@ -138,7 +138,7 @@ config.macros['m:(\\S+?)'] = ({macroMatch, cssProperties}) => {
 
 When the macro is defined, it can be used with custom values like `m:24px` and `md:m:48px`.
 
-If multiple and the same selectors should be used on multiple places, it is a good practice to define a component for them in order to simplify the maintainability and readability:
+If multiple and the same selectors should be used in multiple places, it is a good practice to define a component for them in order to simplify the maintainability and readability:
 
 ```js
 config.components = {

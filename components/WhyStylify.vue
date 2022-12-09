@@ -8,7 +8,7 @@
 		<div class="hp__info-boxes text-align:left margin-top:8px font-size:14px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
 			<div>
 				<strong class="color:#fff">Problems when writing CSS</strong>
-				<br>Splitting CSS, clearing unused classes, duplicates in CSS property:value, duplicated media queries, unnecessary selectors chaining, counterintuitive nesting in preprocessors, unnecessary high CSS specificity, maintaining selectors that are modified on multiple places, creating self-explanatory selectors for cases where you need to style only one element and change only it's margin, combining files so only used CSS is imported, CSS files organization and naming, minifying selectors in CSS+HTML, etc.
+				<br>Splitting CSS, clearing unused classes, duplicates in CSS property:value, duplicated media queries, unnecessary selectors chaining, counterintuitive nesting in preprocessors, unnecessary high CSS specificity, maintaining selectors that are modified in multiple places, creating self-explanatory selectors for cases where you need to style only one element and change only it's margin, combining files so only used CSS is imported, CSS files organization and naming, minifying selectors in CSS+HTML, etc.
 			</div>
 			<div>
 				<strong class="color:#fff">How Stylify CSS solves this?</strong>
