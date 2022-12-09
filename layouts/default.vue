@@ -31,7 +31,7 @@ stylify-components
 						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px font-weight:bold align-items:center" role="navigation">
 							<nuxt-link to="/docs/get-started" class="navigation__link">Docs</nuxt-link>
 							<nuxt-link to="/snippets/components" class="navigation__link">Components & Snippets</nuxt-link>
-							<nuxt-link :to="`/#${filters.webalize('Why Stylify?')}`" class="navigation__link">Why Stylify?</nuxt-link>
+							<nuxt-link to="/docs/get-started/why-stylify-css" class="navigation__link">Why Stylify?</nuxt-link>
 							<nuxt-link to="/blog" class="navigation__link">Blog</nuxt-link>
 							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="navigation__link">Playground</a>
 							<nuxt-link to="/faq" class="navigation__link">FAQ</nuxt-link>

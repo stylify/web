@@ -43,7 +43,7 @@ stylify-keyframes
 					<p class="max-width:840px text-align:center md:text-align:left margin-left:auto margin-right:auto margin-top:0 lg:font-size:18px">
 						Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
 					</p>
-					<div class="text-align:center md:text-align:left lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Use CSS. Focus on coding!&nbsp;💎</div>
+					<div class="text-align:center md:text-align:left lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Use CSS syntax you know. Focus on coding!&nbsp;💎</div>
 				</section>
 				<div class="display:none lg:display:flex gap:12px margin-top:12px justify-content:center flex-wrap:wrap align-items:center md:justify-content:flex-start">
 					<GithubButton />
@@ -62,7 +62,7 @@ stylify-keyframes
 			</div>
 		</div>
 
-		<section class="container margin-top:32px margin-bottom:32px">
+		<section id="how-it-works" class="container margin-top:32px margin-bottom:32px">
 			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
 			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
 				<div>
@@ -82,6 +82,9 @@ stylify-keyframes
 					<span>In production, CSS and HTML are optimized and selectors minified <code class="white-space:nowrap">.color:blue</code> => <code class="white-space:nowrap">.a</code>.</span>
 				</div>
 			</div>
+		</section>
+		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px margin-bottom:32px">
+			<why-stylify textAlign="center" />
 		</section>
 		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
 			<div class="margin-bottom:24px">
@@ -166,17 +169,12 @@ stylify-keyframes
 			</div>
 		</div>
 
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px padding-top:32px" >
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Why Stylify?</h2>
+		<section :id="filters.webalize('Features')" class="container margin-top:32px padding-top:32px" >
+			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Features</h2>
 			<p class="text-align:center max-width:1000px margin:0_auto">
-				Stylify primarily focuses on two problems. <strong>Syntax for utilities</strong> and <strong>CSS output optimization and scalability</strong>.
-				<br>Go ahead and check out <nuxt-link to="/docs/get-started/why-stylify-css" class="color:$blue1">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
+				<br>Go ahead and <nuxt-link to="/docs/get-started/why-stylify-css" class="color:$blue1">check out all features and why you should give it a try!</nuxt-link>
 			</p>
-			<div class="hp__info-boxes margin-top:8px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
-				<div><strong>The CSS-like</strong> syntax is used to stick with the native CSS as much as possible and skip the process of studying random shortcuts and selectors. It's almost like writing CSS. Therefore is easy to switch between Stylify and CSS.</div>
-				<div><strong>Optimization process</strong> then shortens selectors in HTML and CSS, chains selectors to minimize duplicate properties, let's you split CSS bundles however you need and a lot more.</div>
-			</div>
-			<div class="hp__section-content"><why-stylify /></div>
+			<div class="hp__section-content"><stylify-features /></div>
 		</section>
 
 		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
