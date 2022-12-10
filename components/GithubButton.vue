@@ -11,10 +11,7 @@ stylify-keyframes
 		<a v-if="type === 'stars'" href="https://github.com/stylify/packages" class="badge min-width:84px" rel="noopener" target="_blank">
 			<img src="/images/brands/github-icon.svg" class="margin-right:4px" width="24" height="24" loading="lazy" alt="" />
 			<strong>
-				<span class="min-width:24px display:inline-flex justify-content:center align-items:center">
-					<span v-if="stars">{{ stars }}</span>
-					<i v-else class="icon icon-refresh-ccw display:inline-flex animation:rotate_4s_linear_infinite"></i>
-				</span>&nbsp;⭐
+				<span class="min-width:24px display:inline-flex justify-content:center align-items:center">{{ stars }}</span>&nbsp;⭐
 			</strong>
 		</a>
 		<a v-if="type === 'sponsor'" href="https://github.com/sponsors/Machy8" class="badge" rel="noopener" target="_blank">
@@ -26,7 +23,7 @@ stylify-keyframes
 <script>
 export default {
 	data: () => ({
-		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : 0
+		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : '---'
 	}),
 	props: {
 		type: {
