@@ -38,11 +38,16 @@ stylify-keyframes
 		<div class="container md:margin-top:24px lg:margin-top:48px margin-bottom:64px tomd:flex-direction:column display:flex md:display:grid md:grid-template-columns:1fr_1fr xl:grid-template-columns:55%_45% gap:24px justify-content:space-between align-items:center">
 			<div class="md:max-width:640px">
 				<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
-				<section class="">
+				<section class="margin-bottom:24px lg:font-size:18px">
 					<h2 class="color:#fff text-align:center md:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw400px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
-					<p class="max-width:840px text-align:center md:text-align:left margin-left:auto margin-right:auto margin-top:0 lg:font-size:18px">
-						Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
-					</p>
+					<div class="max-width:840px margin:0_auto">
+						<p class="text-align:center md:text-align:left margin-top:0">
+							Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
+						</p>
+						<p>
+							Stylify may look like inline styles. Why not use them? Because they are not responsive and can't be <a href="#why-stylify" class="color:$blue1">efficiently optimized</a>.
+						</p>
+					</div>
 					<div class="text-align:center md:text-align:left lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Use CSS syntax you know. Focus on coding!&nbsp;💎</div>
 				</section>
 				<div class="display:none lg:display:flex gap:12px margin-top:12px justify-content:center flex-wrap:wrap align-items:center md:justify-content:flex-start">
@@ -62,7 +67,7 @@ stylify-keyframes
 			</div>
 		</div>
 
-		<section id="how-it-works" class="container margin-top:32px margin-bottom:32px">
+		<section id="how-it-works" class="scroll-margin-top:50px container margin-top:32px margin-bottom:32px">
 			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
 			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
 				<div>
@@ -83,10 +88,10 @@ stylify-keyframes
 				</div>
 			</div>
 		</section>
-		<section :id="filters.webalize('Why Stylify?')" class="container margin-top:32px margin-bottom:32px">
+		<section :id="filters.webalize('Why Stylify?')" class="scroll-margin-top:50px container margin-top:32px margin-bottom:32px">
 			<why-stylify textAlign="center" />
 		</section>
-		<section id="installation" class="container margin-bottom:24px md:margin-bottom:32px">
+		<section id="installation" class="scroll-margin-top:50px container margin-bottom:24px md:margin-bottom:32px">
 			<div class="margin-bottom:24px">
 				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
 					Start using Stylify CSS with your favorite tool in a minute.
@@ -96,7 +101,7 @@ stylify-keyframes
 				</div>
 			</div>
 		</section>
-		<section id="quote" class="container margin-top:32px padding-top:32px margin-bottom:64px">
+		<section id="quote" class="scroll-margin-top:50px container margin-top:32px padding-top:32px margin-bottom:64px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!</h2>
 			<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 				<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
@@ -118,7 +123,7 @@ stylify-keyframes
 				</div>
 			</div>
 		</section>
-		<div :id="filters.webalize('Fans')" class="max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0">
+		<div :id="filters.webalize('Fans')" class="scroll-margin-top:50px max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0">
 			<div class="slideshow width:200% height:230px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
 				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
 					<a
@@ -169,7 +174,7 @@ stylify-keyframes
 			</div>
 		</div>
 
-		<section :id="filters.webalize('Features')" class="container margin-top:32px padding-top:32px" >
+		<section :id="filters.webalize('Features')" class="scroll-margin-top:50px container margin-top:32px padding-top:32px" >
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:12px md:font-size:48px text-align:center margin-top:0">Features</h2>
 			<p class="text-align:center max-width:1000px margin:0_auto">
 				<br>Go ahead and <nuxt-link to="/docs/get-started/why-stylify-css" class="color:$blue1">check out all features and why you should give it a try!</nuxt-link>
@@ -177,7 +182,7 @@ stylify-keyframes
 			<div class="hp__section-content"><stylify-features /></div>
 		</section>
 
-		<section :id="filters.webalize('Features')" class="max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
+		<section :id="filters.webalize('Features')" class="scroll-margin-top:50px max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Ready for large scale projects</h2>
 			<div class="hp__tab-buttons-wrapper">
 				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="featuresSelectedTab = tab" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
@@ -241,7 +246,7 @@ stylify-keyframes
 			</div>
 		</section>
 
-		<section id="components" class="container margin-top:32px padding-top:32px margin-bottom:32px">
+		<section id="components" class="scroll-margin-top:50px container margin-top:32px padding-top:32px margin-bottom:32px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components</h2>
 			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
 				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px border-radius:8px [&:hover_h3]{color:$blue1}">

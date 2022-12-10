@@ -24,17 +24,9 @@ stylify-keyframes
 </template>
 
 <script>
-
-const triggerCustomEvent = (eventName, eventData) => {
-	const event = typeof eventData !== 'undefined'
-		? new window.CustomEvent(eventName, {detail: eventData})
-		: new window.CustomEvent(eventName);
-	document.dispatchEvent(event);
-}
-
 export default {
 	data: () => ({
-		stars: 0
+		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : 0
 	}),
 	props: {
 		type: {
@@ -42,26 +34,18 @@ export default {
 			default: 'stars'
 		}
 	},
-	mounted() {
+	created() {
 		if (typeof document !== 'undefined' && this.type === 'stars') {
 			const self = this;
 			const stylifyGithubStarsType = typeof window.stylifyGithubStars;
 
-			if (stylifyGithubStarsType === 'undefined') {
-				window.stylifyGithubStars = fetch('https://api.github.com/repos/stylify/packages').then(async (response) => {
-					const starsCount = (await response.json()).stargazers_count;
-					triggerCustomEvent('stylify:githubStarsLoaded', starsCount);
-					window.stylifyGithubStars = starsCount;
-					self.stars = starsCount;
-				});
-			} else if (stylifyGithubStarsType === 'number') {
+			if (stylifyGithubStarsType === 'number') {
 				self.stars = window.stylifyGithubStars;
 			} else {
 				document.addEventListener('stylify:githubStarsLoaded', (event) => {
 					self.stars = event.detail;
 				});
 			}
-
 		}
 	},
 }

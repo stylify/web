@@ -2,8 +2,8 @@
 	<div :style="`text-align:${textAlign}`">
 		<h2 class="margin-bottom:8px">Why Stylify CSS?</h2>
 		<p>
-			To style websites we need CSS. Writing CSS in optimized way is not easy. It requires skills.
-			<br> Stylify may look like inline styles. Why not use them? Because they cannot be efficiently optimized.
+			To style websites we need CSS. Writing CSS in optimized way is not easy. It requires skills and a lot of time.
+			<br> Stylify may look like inline styles. Why not use them? Because they are not responsive and can't be efficiently optimized.
 		</p>
 		<div class="hp__info-boxes text-align:left margin-top:8px font-size:14px display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px">
 			<div>
@@ -21,7 +21,10 @@
 <script>
 export default {
 	props: {
-		textAlign: 'left'
+		textAlign: {
+			type: String,
+			default: 'left'
+		}
 	}
 }
 </script>

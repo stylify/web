@@ -102,6 +102,21 @@ import { dispatchEvent } from '~/services/customEvent';
 import { DocsRepository } from '~/services/model/DocsRepository';
 import { SnippetsRepository } from '~/services/model/SnippetsRepository';
 
+const triggerCustomEvent = (eventName, eventData) => {
+	const event = typeof eventData !== 'undefined'
+		? new window.CustomEvent(eventName, {detail: eventData})
+		: new window.CustomEvent(eventName);
+	document.dispatchEvent(event);
+}
+
+if (process.client) {
+	window.stylifyGithubStars = fetch('https://api.github.com/repos/stylify/packages').then(async (response) => {
+		const starsCount = (await response.json()).stargazers_count;
+		triggerCustomEvent('stylify:githubStarsLoaded', starsCount);
+		window.stylifyGithubStars = starsCount;
+	});
+}
+
 export default {
 	fetch: async function () {
 		const linksRequiredData = ['navigationTitle', 'path', 'dir'];

@@ -51,6 +51,8 @@ export default {
 			{ rel: 'manifest', href: '/site.webmanifest' },
 			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
 			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
+			{ rel: 'preconnect', href: 'https://api.github.com'},
+			{ rel: 'dns-prefetch', href: 'https://api.github.com'}
 		],
 		script: [
 			{

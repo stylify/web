@@ -57,11 +57,12 @@ export default defineConfig({
 			'.prism-editor-wrapper *': 'font-size:14px line-height:1',
 
 			// Articles common
+			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',
 			'article': 'margin-top:0 font-size:16px word-break:break-word',
-			'article h1': 'scroll-margin-top:50px cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
-			'article h2': 'scroll-margin-top:50px cursor:pointer position:relative font-size:26px margin-top:48px margin-bottom:0',
-			'article h3': 'scroll-margin-top:50px cursor:pointer position:relative font-size:20px margin-top:32px margin-bottom:0',
-			'article h4': 'scroll-margin-top:50px cursor:pointer position:relative margin-top:24px margin-bottom:0',
+			'article h1': 'cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
+			'article h2': 'cursor:pointer position:relative font-size:26px margin-top:48px margin-bottom:0',
+			'article h3': 'cursor:pointer position:relative font-size:20px margin-top:32px margin-bottom:0',
+			'article h4': 'cursor:pointer position:relative margin-top:24px margin-bottom:0',
 			'article h1 + p, article h2 + p, article h3 + p, article h4 + p, article h5 + p': 'margin-top:0',
 			'article pre': 'margin-top:0',
 			'article a': 'color:$blue1',
