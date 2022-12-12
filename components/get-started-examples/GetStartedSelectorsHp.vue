@@ -1,5 +1,5 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:451px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:451px lg:min-height:468px">
 		{{ code }}
 	</example-editor>
 </template>
