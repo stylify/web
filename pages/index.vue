@@ -59,7 +59,7 @@ stylify-keyframes
 					<span class="tolg:display:none"><GithubButton /></span>
 				</div>
 			</div>
-			<div class="width:100% margin-top:24px md:width:auto max-width:640px lg:margin-top:0 lg:max-width:auto">
+			<div class="width:100% margin-top:24px lg:width:auto max-width:640px lg:margin-top:0 lg:max-width:auto">
 				<GetStartedSelectorsHp />
 			</div>
 		</div>

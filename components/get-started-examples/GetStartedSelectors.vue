@@ -6,16 +6,22 @@
 
 <script>
 const code = `
-<div class="
-	font-size:32px
-	minw1280px:font-size:48px
-	color:#f1f1f1
-	padding:4px_8px
-	transition:.3s
-	hover:transform:scale(1.5)
+<button class="
+  background:none
+  padding:12px
+  font-weight:bold
+  border-radius:4px
+  font-size:32px
+  transition:.3s
+  cursor:pointer
+  border:1px_solid_#01befe
+  hover:background:#01befe
+  hover:border-color:darken(#01befe,30)
+  md:padding:18px_24px
+  lg:font-size:48px
 ">
-	Edit me 😎!
-</div>
+  Edit Me 😎!
+</button>
 `;
 
 export default {

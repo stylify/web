@@ -1,25 +1,31 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:400px lg:min-height:498px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:400px">
 		{{ code }}
 	</example-editor>
 </template>
 
 <script>
 const code = `
-<!--
-	Edit me 🤩!
-	Write selectors as CSS property:value
-	Use _ for a space and ^ for a quote
--->
-<div class="
-	display:grid
-	gap:12px
-	grid-template-columns:repeat(auto-fit,minmax(50px,1fr))
-	[img]{border-radius:8px;object-fit:cover;transition:.3s}
+<button class="
+  background:none
+  padding:12px
+  font-weight:bold
+  border-radius:4px
+  font-size:32px
+  transition:.3s
+  cursor:pointer
+  border:1px_solid_#01befe
+  hover:background:#01befe
+  hover:border-color:darken(#01befe,30)
+  md:padding:18px_24px
+  lg:font-size:48px
 ">
-	<img src="/images/hp/mountains.jpg" class="hover:border-radius:24px">
-	<img src="/images/hp/maldives.jpg" class="hover:border-radius:24px_82px">
-</div>
+  <!--
+  	Write selectors as CSS property:value
+  	Use _ for a space and ^ for a quote
+  -->
+  Edit Me 😎!
+</button>
 `;
 
 export default {
