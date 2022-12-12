@@ -1,24 +1,24 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:366px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:400px lg:min-height:498px">
 		{{ code }}
 	</example-editor>
 </template>
 
 <script>
 const code = `
+<!--
+	Edit me 🤩!
+	Write selectors as CSS property:value
+	Use _ for a space and ^ for a quote
+-->
 <div class="
-	font-size:32px
-	minw1280px:font-size:48px
-	color:#f1f1f1
-	padding:4px_8px
-	transition:.3s
-	hover:transform:scale(1.5)
+	display:grid
+	gap:12px
+	grid-template-columns:repeat(auto-fit,minmax(50px,1fr))
+	[img]{border-radius:8px;object-fit:cover;transition:.3s}
 ">
-	<!--
-		Write selectors as CSS property:value
-		Use _ for a space and ^ for a quote
-	-->
-	Edit me 😎!
+	<img src="/images/hp/mountains.jpg" class="hover:border-radius:24px">
+	<img src="/images/hp/maldives.jpg" class="hover:border-radius:24px_82px">
 </div>
 `;
 
