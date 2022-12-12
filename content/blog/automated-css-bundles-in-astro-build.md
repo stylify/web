@@ -100,8 +100,8 @@ const stylifyIntegration = stylify({
 hooks.addListener('bundler:fileToProcessOpened', (data) => {
   let { content, filePath } = data;
 
-  // 3.1 Only for root files
-  if (data.isRoot) {
+  // 3.1 Only for layout and page files
+  if (filePath.includes('/pages/') || filePath.includes('/layouts/')) {
     const cssFileName = path.parse(filePath).name;
     const cssFilePathImport = `import '/${stylesDir}/${getFileCssLayerName(
       filePath
@@ -172,8 +172,8 @@ export default {
 The code above is split into 5 steps:
 1. It finds all pages in `src/pages` and all layouts in `src/layouts` and calls the `createBundles` to create bundles configuration for us with the correct layer name and output file.
 2. The Stylify integration is initialized and CSS layers order is configured so it will generate the order only into a file, that has the `layout` CSS layer name.
-3. `bundler:fileToProcessOpened` hook is added. This hook has two parts. One part is done, when this file is a root type and the another for every opened file.
- - The `isRoot` means, that it is not a nested file detected through content options or was not added through another hook as a dependency (a component for example) of this file. When a root file is opened, it checks, whether it contains a path to CSS file and if not, it adds it to the head of the file.
+3. `bundler:fileToProcessOpened` hook is added. This hook has two parts. One part is done, when this file is a layout or page and the another for every opened file.
+ - When a layout or a page file is opened, it checks, whether it contains a path to CSS file and if not, it adds it to the head of the file.
  - For all other files, it tries to check for `imports`. If any component import is found, it maps it as a dependency (these components are not root files). This way it can map a whole components dependency tree automatically so you just keep adding/removing them and the CSS is generated correctly
 4. When Bundler is initialized we can start watching for newly added files within the `layout` and `pages` directory. Every time a new file is added, we create a new Bundle.
 5. The Stylify Integration is added to the Astro config.
