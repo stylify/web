@@ -11,14 +11,17 @@ description: "Stylify CSS configuration snippets for Astro.build integration for
 ---
 
 ## Automated CSS bundles
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" loading="lazy" fetchpriority="low" class="width:100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 The snippet belows allows you to automatically split bundles for each `page` and `layout`.
 
 It works in the following steps:
 1. It finds all pages in `src/pages` and all layouts in `src/layouts` and calls the `createBundles` to create bundles configuration for us with the correct layer name and output file.
 2. The Stylify integration is initialized and CSS layers order is configured so it will generate the order only into a file, that has the `layout` CSS layer name.
-3. `bundler:fileToProcessOpened` hook is added. This hook has two parts. One part is done, when this file is a layout or a page and the another for every opened file.
+3. <nuxt-link to="/docs/bundler#hooks">bundler:fileToProcessOpened</nuxt-link> hook is added. This hook has two parts. One part is done, when this file is a layout or a page and the another for every opened file.
  - When a layout or a page file is opened, it checks, whether it contains a path to CSS file and if not, it adds it to the head of the file.
- - For all other files, it tries to check for `imports`. If any component import is found, it maps it as a dependency (these components are not root files). This way it can map a whole components dependency tree automatically so you just keep adding/removing them and the CSS is generated correctly
+ - For all other files, it tries to check for `imports`. If any component import is found, it maps it as a dependency. This way it can map a whole components dependency tree automatically so you just keep adding/removing them and the CSS is generated correctly
 4. When Bundler is initialized we can start watching for newly added files within the `layout` and `pages` directory. Every time a new file is added, we create a new Bundle.
 5. The Stylify Integration is added to the Astro config.
 

@@ -10,6 +10,10 @@ createdAt: 'December 11, 2022'
 
 Utility-first CSS bundles can be very small. But what if, we could make them even smaller? Split them for each page/layout for example? Some pages might not styles from another page. Learn how to split CSS bundles in Astro. build automatically using Stylify CSS.
 
+## Video Guide
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" class="width:100%" frameborder="0" loading="lazy" fetchpriority="low" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 ## Stylify CSS introduction
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
@@ -172,9 +176,9 @@ export default {
 The code above is split into 5 steps:
 1. It finds all pages in `src/pages` and all layouts in `src/layouts` and calls the `createBundles` to create bundles configuration for us with the correct layer name and output file.
 2. The Stylify integration is initialized and CSS layers order is configured so it will generate the order only into a file, that has the `layout` CSS layer name.
-3. `bundler:fileToProcessOpened` hook is added. This hook has two parts. One part is done, when this file is a layout or page and the another for every opened file.
+3. <nuxt-link to="/docs/bundler#hooks">bundler:fileToProcessOpened</nuxt-link> hook is added. This hook has two parts. One part is done, when this file is a layout or page and the another for every opened file.
  - When a layout or a page file is opened, it checks, whether it contains a path to CSS file and if not, it adds it to the head of the file.
- - For all other files, it tries to check for `imports`. If any component import is found, it maps it as a dependency (these components are not root files). This way it can map a whole components dependency tree automatically so you just keep adding/removing them and the CSS is generated correctly
+ - For all other files, it tries to check for `imports`. If any component import is found, it maps it as a dependency. This way it can map a whole components dependency tree automatically so you just keep adding/removing them and the CSS is generated correctly
 4. When Bundler is initialized we can start watching for newly added files within the `layout` and `pages` directory. Every time a new file is added, we create a new Bundle.
 5. The Stylify Integration is added to the Astro config.
 

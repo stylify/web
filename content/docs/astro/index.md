@@ -55,3 +55,6 @@ export default defineConfig({
 	// https://stylifycss.com/docs/unplugin#configuration
 });
 ```
+
+## Configuration Snippets
+You can also use <nuxt-link to="/snippets/snippets/astro">configuration snippets</nuxt-link> for the Astro application to speed up the setup.
