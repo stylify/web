@@ -44,11 +44,8 @@ stylify-keyframes
 						<p class="margin-top:0">
 							Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
 						</p>
-						<p>
-							Stylify may look like inline styles. Why not use them? Because they are not responsive and can't be <a href="#why-stylify" class="color:$blue1">efficiently optimized</a>.
-						</p>
 					</div>
-					<div class="text-align:center lg:text-align:left lg:font-size:18px">💎&nbsp;Don't waste time studying a CSS framework. Use CSS syntax you know. Focus on coding!&nbsp;💎</div>
+					<div class="text-align:center lg:text-align:left lg:font-size:18px">Don't waste time studying a CSS framework.<br>Use CSS syntax you know. Focus on coding!&nbsp;💎</div>
 				</section>
 				<div class="max-width:100% flex-wrap:wrap margin-top:12px md:margin-top:24px gap:8px sm:gap:12px display:flex flex-direction:row align-items:center justify-content:center lg:justify-content:flex-start font-size:18px">
 					<nuxt-link to="/docs/get-started" class="btn border:2px_solid_$blue1 sm:padding:20px_24px lg:padding:20px_24px">
@@ -59,11 +56,14 @@ stylify-keyframes
 					<span class="tolg:display:none"><GithubButton /></span>
 				</div>
 			</div>
-			<div class="width:100% margin-top:24px lg:width:auto max-width:640px lg:margin-top:0 lg:max-width:auto">
+			<div class="width:100% margin-top:24px lg:width:auto max-width:640px lg:margin-top:0 lg:max-width:none">
 				<GetStartedSelectorsHp />
 			</div>
 		</div>
 		<div id="features" class="container">
+			<p class="text-align:center">
+				Stylify may look like inline styles. Why not use them? Because they are not responsive and can't be <a href="#why-stylify" class="color:$blue1">efficiently optimized</a>.
+			</p>
 			<stylify-features />
 		</div>
 		<section id="how-it-works" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
@@ -79,7 +79,10 @@ stylify-keyframes
 				</div>
 				<div>
 					<span class="font-size:24px margin-right:8px">📦</span>
-					<span>CSS is automatically generated into CSS files.</span>
+					<span>
+						CSS is automatically generated into CSS files.
+						<br>Multiples CSS bundles can be configured.
+					</span>
 				</div>
 				<div>
 					<span class="font-size:24px margin-right:8px">🚀</span>

@@ -1,5 +1,5 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:451px lg:min-height:468px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:450px">
 		{{ code }}
 	</example-editor>
 </template>
@@ -15,16 +15,16 @@ const code = `
   transition:.3s
   cursor:pointer
   border:1px_solid_#01befe
+
   hover:background:#01befe
   hover:border-color:darken(#01befe,30)
-  md:padding:18px_24px
-  lg:font-size:48px
+  md:padding:12px_24px
 ">
   <!--
   	Write selectors as CSS property:value
   	Use _ for a space and ^ for a quote
   -->
-  Edit Me 😎!
+  Edit Me 🏝️!
 </button>
 `;
 
