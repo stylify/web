@@ -69,6 +69,14 @@ const config = defineConfig({
 	// The bundle configuration is shown below in bundler.bundle() method
 	// The bundle() method must be called to initiate the bundling process
 	bundles: [],
+	// This configures CSS layers order and export
+	cssLayersOrder: {
+		// This will generate @layer layout,page;
+		order: 'layout, page',
+		// This tells Stylify to export the above layers order
+		// only into bundles, that has layout CSS layer
+		exportLayer: ['layout']
+	},
 	// If file path is provided in the following options
 	// variables from the Compiler config will be exported into those files
 	// so you can reuse them inside CSS, scss and etc.
@@ -119,7 +127,9 @@ bundler.bundle([
 		scope: '#my-scope',
 		// Compiler config can be bundle specific
 		// https://stylifycss.com/docs/stylify/compiler#configuration
-		compiler: {}
+		compiler: {},
+		// If layer is configured, css will be wrapped into @layer <name> {}
+		cssLayer: 'page'
 	}
 ]);
 
@@ -158,6 +168,7 @@ Bundler extends [default hooks](/docs/stylify/compiler#hooks) and adds a few mor
 <docs-section>
 <template #description>
 
+- **bundler:initialized**: When the bundler instance is created
 - **bundler:beforeInputFileRewritten**: Before input file is rewritten
 - **bundler:beforeCssFileCreated**: Before a CSS file is created
 - **bundler:bundleProcessed**: When bundle is processed

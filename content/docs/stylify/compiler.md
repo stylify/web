@@ -434,18 +434,6 @@ Note that matching tags or areas using regular expressions is not reliable in so
 
 </template>
 <template #code>
-
-```js
-const compilerConfig = {
-	selectorsAreas: [
-		// Vue.js
-		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
-		// React
-		'(?:^|\\s+)className="([^"]+)"'
-	]
-};
-```
-
 Usage
 ```html
 <!-- stylify-ignore -->
@@ -480,7 +468,7 @@ const compilerConfig = {
 <template #description>
 
 ### contentOptionsProcessors
-Some configuration options can be defined directly in the file. It's good to keep the definition of for example a component with its HTML.
+Some configuration options can be defined directly in a file. It's good to keep the definition of for example a component with its HTML.
 
 </template>
 <template #code>
@@ -531,22 +519,17 @@ stylify-screens
 
 Adding custom content option processor
 ```js
-const compilerConfig = {
-	contentOptionsProcessors: {
-		// Content options is an object of already matched options.
-		// OptionMatch value is the matched value of your option
-		// stylify-myOption optionMatchValue /stylify-myOption
-		myOption: (contentOptions, optionMatchValue) => {
-			// Process the option value ...
+import { hooks } from '@stylify/stylify'
 
-			contentOptions.myOptionData = optionMatchValue;
-			// You must return the contentOptions object
-			return contentOptions;
-		}
-	};
-}
+// You can use Stylify compiler to get any option
+hooks.addListener('compiler:processContentOption:myOption', ({
+	contentOptions,
+	option,
+	value
+}) => {
+
+});
 ```
-
 </template>
 </docs-section>
 
