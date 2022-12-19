@@ -24,7 +24,7 @@ stylify-keyframes
 				"
 			>
 				<div class="display:flex align-items:center margin-bottom:12px">
-					<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
+					<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" loading="lazy" fetchpriority="low" width="50" height="50">
 					<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
 						<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
@@ -46,7 +46,7 @@ stylify-keyframes
 				"
 			>
 				<div class="display:flex align-items:center margin-bottom:12px">
-					<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
+					<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" loading="lazy" width="50" height="50">
 					<div class="margin-left:12px display:flex flex-direction:column align-items:flex-start">
 						<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>

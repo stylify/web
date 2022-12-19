@@ -17,7 +17,8 @@
 		</div>
 		<div>
 			<div v-show="featuresSelectedTab === 'selectors'">
-				<GetStartedSelectorsHp />
+				<img v-if="!mounted" src="/images/hp/selectors-loading-placeholder.jpg" height="478" class="width:100% height:478px object-fit:cover object-position:left" loading="eager" fetchpriority="high" />
+				<GetStartedSelectorsHp v-else />
 			</div>
 			<div v-show="featuresSelectedTab === 'components'">
 				<GetStartedComponentsHp />
@@ -41,6 +42,7 @@
 <script>
 export default {
 	data: () => ({
+		mounted: false,
 		// Features tabs
 		featuresSelectedTab: 'selectors',
 
@@ -60,5 +62,8 @@ export default {
 			this.featuresSelectedTab = tab;
 		}
 	},
+	mounted() {
+		this.mounted = true;
+	}
 }
 </script>

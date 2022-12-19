@@ -19,8 +19,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px max-width:100px"
 				/>
 			</div>
@@ -36,8 +36,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -53,8 +53,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -70,8 +70,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -87,8 +87,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -104,8 +104,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -121,8 +121,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -138,8 +138,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -155,8 +155,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -172,8 +172,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -189,8 +189,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -206,8 +206,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -223,8 +223,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -240,8 +240,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -257,8 +257,8 @@ stylify-components
 					alt=""
 					height="60"
 					width="90"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -274,8 +274,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:100% height:40px object-fit:contain"
 				/>
 			</div>
@@ -291,8 +291,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -308,8 +308,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>
@@ -325,8 +325,8 @@ stylify-components
 					alt=""
 					height="1"
 					width="2"
-					decoding="async"
 					loading="lazy"
+					fetchpriority="low"
 					class="width:auto height:40px"
 				/>
 			</div>

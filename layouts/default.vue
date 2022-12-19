@@ -117,6 +117,7 @@ if (process.client) {
 	});
 }
 
+
 export default {
 	fetch: async function () {
 		const linksRequiredData = ['navigationTitle', 'path', 'dir'];
