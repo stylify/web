@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'stylify';
-  src: url('~assets/fonts/icons/fonts/stylify.woff?7xbq4m') format('woff');
+  src: url('~assets/fonts/icons/fonts/stylify.woff?26zksy') format('woff');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -62,4 +62,22 @@
 }
 .icon-archive:before {
   content: "\e908";
+}
+.icon-crosshair:before {
+  content: "\e912";
+}
+.icon-target:before {
+  content: "\e913";
+}
+.icon-monitor:before {
+  content: "\e90e";
+}
+.icon-link1:before {
+  content: "\e90f";
+}
+.icon-smartphone:before {
+  content: "\e910";
+}
+.icon-dollar-sign:before {
+  content: "\e911";
 }

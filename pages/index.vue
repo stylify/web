@@ -5,37 +5,12 @@ stylify-components
 			justify-content:center font-size:16px md:min-width:230px padding:12px sm:padding:24px sm:font-size:24px
 		}
 	`,
-	'hp__section-title': `
-		font-size:32px font-weight:bold margin-top:0 margin-bottom:12px
-		md:font-size:48px
-	`,
-	'hp__section-subtitle': `
-		font-size:18px
-		margin-top:0 margin-bottom:12px max-width:800px
-		md:font-size:22px
-	`,
-	'hp__section-content': 'word-break:break-word margin-top:12px',
-	'hp__tab-buttons-wrapper': `
-		padding-left:12px padding-top:12px margin-left:-12px display:flex flex-wrap:nowrap
-		overflow:auto md:margin-left:-16px lg:margin-left:-12px lg:margin-right:0
-	`,
-	'hp__tab-content': 'display:flex flex-direction:column lg:flex-direction:row',
-	'hp__tab-content-list': 'margin-top:0 font-size:16px lg:width:50% max-width:800px',
-	'hp__code-editor': 'padding:12px_0 border-radius:$radius2',
 	'hp__info-boxes': '> div {border:1px_solid_#1e2431 padding:8px border-radius:4px}'
 /stylify-components
-
-stylify-keyframes
-	slideshow: `
-		100% {
-			transform: translateX(-50%);
-		}
-	`
-/stylify-keyframes
 -->
 <template>
 	<div>
-		<div class="container lg:margin-top:24px lg:margin-top:48px margin-bottom:64px tolg:flex-direction:column display:flex lg:display:grid lg:grid-template-columns:1fr_1fr xl:grid-template-columns:48%_48% gap:2% justify-content:space-between align-items:center">
+		<div class="container lg:margin-top:24px lg:margin-top:48px margin-bottom:64px tolg:flex-direction:column display:flex lg:display:grid lg:grid-template-columns:1fr_1fr xl:grid-template-columns:48%_48% gap:2% justify-content:space-between tolg:align-items:center">
 			<div class="md:max-width:640px">
 				<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 				<section class="margin-bottom:24px lg:font-size:18px">
@@ -45,7 +20,13 @@ stylify-keyframes
 							Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
 						</p>
 					</div>
-					<div class="text-align:center lg:text-align:left lg:font-size:18px">Don't waste time studying a CSS framework.<br>Use CSS syntax you know. Focus on coding!&nbsp;💎</div>
+					<div>
+						✅ Syntax you already know. Don't waste time studying CSS framework.
+						<br>✅ Less switching between HTML/CSS files
+						<br>✅ Automagic and Extremely tunned CSS optimization
+						<br>✅ Simple CSS Bundles splitting for Layouts/Pages
+						<br>✅ Easily Configurable and Extensible
+					</div>
 				</section>
 				<div class="max-width:100% flex-wrap:wrap margin-top:12px md:margin-top:24px gap:8px sm:gap:12px display:flex flex-direction:row align-items:center justify-content:center lg:justify-content:flex-start font-size:18px">
 					<nuxt-link to="/docs/get-started" class="btn border:2px_solid_$blue1 sm:padding:20px_24px lg:padding:20px_24px">
@@ -57,7 +38,7 @@ stylify-keyframes
 				</div>
 			</div>
 			<div class="width:100% margin-top:24px lg:width:auto max-width:640px lg:margin-top:0 lg:max-width:none">
-				<GetStartedSelectorsHp />
+				<HpCodeExamples />
 			</div>
 		</div>
 		<div id="features" class="container">
@@ -98,7 +79,7 @@ stylify-keyframes
 				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
 					Start using Stylify CSS with your favorite tool in a minute.
 				</h3>
-				<div class="hp__section-content">
+				<div class="margin-top:12px">
 					<integration-blocks />
 				</div>
 			</div>
@@ -126,128 +107,12 @@ stylify-keyframes
 			</div>
 		</section>
 		<div :id="filters.webalize('Fans')" class="scroll-margin-top:50px max-width:100% overflow:hidden margin-top:0 padding-top:32px margin:32px_0">
-			<div class="slideshow width:200% height:230px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-				<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
-					<a
-						v-for="(fan, index) in fans"
-						:key="'orig-' + index"
-						:href="fan.link"
-						target="blank"
-						rel="noopener nofollow"
-						class="
-						text-decoration:none color:$blue4
-						width:320px
-						display:inline-flex flex-direction:column flex-shrink:0 height:230px
-						background:lighten($blue3,20) padding:12px border-radius:4px
-					"
-					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
-								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
-								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
-							</div>
-						</div>
-						<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
-					</a>
-					<a
-						v-for="(fan, index) in fans"
-						:key="'copy-' + index"
-						:href="fan.link"
-						target="blank"
-						rel="noopener nofollow"
-						class="
-						text-decoration:none color:$blue4
-						width:320px
-						display:inline-flex flex-direction:column flex-shrink:0 height:230px
-						background:lighten($blue3,20) padding:12px border-radius:4px
-					"
-					>
-						<div class="display:flex align-items:center margin-bottom:12px">
-							<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" decoding="async" loading="lazy" width="50" height="50">
-							<div class="margin-left:12px display:flex flex-direction:column align-items:flex-start">
-								<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
-								<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
-							</div>
-						</div>
-						<div class="font-size:14px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
-					</a>
-				</div>
-			</div>
+			<HpFansCarousel />
 		</div>
-
-		<section id="ready-for-everything" class="scroll-margin-top:50px max-width:1280px margin-left:auto margin-right:auto margin-top:32px padding-top:32px margin-bottom:32px">
-			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Ready for large scale projects</h2>
-			<div class="hp__tab-buttons-wrapper">
-				<a v-for="(tabLabel, tab) in tabs" :key="tab" :data-id="tab" role="button" v-on:click="(event) => setFeaturedTab(event, tab)" :class="[featuresSelectedTab === tab ? 'background:lighten($blue3,20) border-top-color:$blue1 color:#fff' : 'border-color:transparent color:$blue4', 'transition:border-color_.3s margin-right:1px font-weight:bold white-space:nowrap cursor:pointer border-top-width:8px border-top-style:solid padding:12px_24px text-align:center display:inline-flex']">{{tabLabel}}</a>
-			</div>
-			<div class="padding:12px lg:padding:24px background:lighten($blue3,20)">
-				<div v-show="featuresSelectedTab === 'components'">
-					<p class="margin-top:0 font-size:14px">
-						Don't bloat your templates with utilities and duplicates. Components can be defined in a template (expects an object without surounding brackets) or in a Compiler config.
-					</p>
-					<div class="hp__example-editor width:100%">
-						<GetStartedComponents />
-					</div>
-				</div>
-				<div v-show="featuresSelectedTab === 'customSelectors'">
-					<p class="margin-top:0 font-size:14px">
-						Style any element with plain selectors. Can be configured within a template (expects an object without surounding brackets) or in a Compiler config.
-					</p>
-					<div class="hp__example-editor width:100%">
-						<GetStartedCustomSelectors />
-					</div>
-				</div>
-				<div v-show="featuresSelectedTab === 'variables'">
-					<p class="margin-top:0 font-size:14px">
-						Avoid hardcoded values in templates. Use variables. Can be configurd within a template (expects an object without surounding brackets) or in a Compiler config.
-					</p>
-					<div class="hp__example-editor width:100%">
-						<GetStartedVariables />
-					</div>
-				</div>
-				<div v-show="featuresSelectedTab === 'dynamicScreens'">
-					<div class="hp__tab-content">
-						<ul class="hp__tab-content-list">
-							<li><strong>Use custom values for screens</strong>: <code>mw450px</code> and <code class="white-space:nowrap">rng640px-1024px</code></li>
-							<li><strong>Combine screens with logicl operands</strong>: <code>sm&&tolg</code> or <code>sm||tolg</code></li>
-						</ul>
-						<div class="max-width:800px lg:margin-left:12px lg:width:50%">
-							<example-code-editor
-								class="hp__code-editor"
-								:defaultCode="dynamicScreensDefaultCode"
-								readonly
-							/>
-						</div>
-					</div>
-				</div>
-				<div v-show="featuresSelectedTab === 'helpers'">
-					<div class="hp__tab-content">
-						<ul class="hp__tab-content-list">
-							<li>Helpers are called when a selector is found.</li>
-							<li>They are great for recalculating units, converting colors to different type, replacing words in selectors and etc.</li>
-						</ul>
-						<div class="max-width:800px lg:margin-left:12px lg:width:50%">
-							<example-code-editor
-								class="hp__code-editor"
-								:defaultCode="helpersDefaultCode"
-								lang="js"
-								readonly
-							/>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
 		<section id="components" class="scroll-margin-top:50px container margin-top:32px padding-top:32px margin-bottom:32px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Use prepared components</h2>
-			<div class="sm:margin-left:-12px display:flex flex-wrap:wrap">
-				<nuxt-link v-for="component in componentsList" :key="component.docsUrl" :to="`/snippets/${component.docsUrl}`" class="text-decoration:none width:100% sm:width:calc(100%_*_1/2_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:width:calc(100%_*_1/4_-_12px) display:inline-flex flex-direction:column sm:margin-left:12px margin-bottom:12px border-radius:8px [&:hover_h3]{color:$blue1}">
-					<iframe :src="`/content/snippets/${component.previewUrl}`" class="width:100% overflow:hidden border-radius:4px" frameBorder="0" loading="lazy"></iframe>
-					<h3 class="margin:8px_0_0_0 font-size:18px line-height:1!important transition:.3s">{{ component.title }}</h3>
-				</nuxt-link>
-			</div>
+			<ComponentsPreviewGrid />
 			<div class="text-align:center">
 				<nuxt-link to="/snippets/components" class="btn btn--hp margin-top:12px">
 					Check out components
@@ -259,254 +124,7 @@ stylify-keyframes
 </template>
 
 <script>
-import ExampleCodeEditor from '~/components/ExampleCodeEditor.vue';
-
-const dynamicScreensDefaultCode = `
-<div class="
-	lg:font-size:24px
-	sm&&tolg:font-size:32px
-	lg&&dark:color:#fff
-	rng640px-1024px:padding:48px
-	mw450px:overflow:auto
-"></div>`.trim();
-
-let helpersDefaultCode = `
-new Compiler({
-	helpers: {
-		textPropertyType(value) {
-			if (value === 'bold') {
-				return 'font-weight';
-			} else if (value === 'italic') {
-				return 'font-style'
-			} else if (value.includes('$')) {
-				return 'color';
-			}
-		},
-	},
-	macros: {
-		'text:(\\\\S+)': ({macroMatch, selectorProperties}) => {
-			const property = helpers.textPropertyType(
-				macroMatch.getCapture(0)
-			);
-			selectorProperties.add(
-				property, macroMatch.getCapture(0)
-			);
-		}
-	}
-});`.trim();
-
-const variablesExampleCode = `
-<!--
-stylify-variables
-	fontSize: '24px',
-	fontSizeLg: '32px',
-	textShadow: '0 4px 8px #379adf'
-/stylify-variables
--->
-<div class="
-	font-size:$fontSize
-	lg:font-size:$fontSizeLg
-	text-shadow:$textShadow
-">
-	Seamless coding 🏄‍♀️
-</div>
-`;
-
 export default {
-	components: { ExampleCodeEditor },
-	data: () => ({
-
-		// Features tabs
-		featuresSelectedTab: 'components',
-		dynamicScreensDefaultCode: dynamicScreensDefaultCode,
-		helpersDefaultCode: helpersDefaultCode,
-
-		tabs: {
-			components: 'Define Components',
-			customSelectors: 'Style any element',
-			variables: 'Use Variables',
-			dynamicScreens: 'Customize Screens',
-			helpers: 'Extend Functionality'
-		},
-		videos: [
-			{
-				image: 'style-your-website-faster.jpg',
-				title: '💎 Style your website faster',
-				link: 'https://www.youtube.com/shorts/hHOugsB045I'
-			},
-			{
-				image: 'write-css-faster.jpg',
-				title: '🔥 Write CSS for your website faster',
-				link: 'https://www.youtube.com/shorts/zlQwVlIsmlE'
-			},
-		],
-		componentsList: [
-			{
-				previewUrl: 'components/buttons.html',
-				docsUrl: 'components/buttons',
-				title: 'Buttons'
-			},
-			{
-				previewUrl: 'components/badges.html',
-				docsUrl: 'components/badges',
-				title: 'Badges'
-			},
-			{
-				previewUrl: 'components/switches.html',
-				docsUrl: 'components/switches',
-				title: 'Switches'
-			},
-			{
-				previewUrl: 'components/text-fields.html',
-				docsUrl: 'components/text-fields',
-				title: 'Text Fields'
-			},
-			{
-				previewUrl: 'components/shadows.html',
-				docsUrl: 'components/shadows',
-				title: 'Shadows'
-			},
-			{
-				previewUrl: 'components/animations.html',
-				docsUrl: 'components/animations',
-				title: 'Animations'
-			},
-			{
-				previewUrl: 'components/grids-fit.html',
-				docsUrl: 'components/grids',
-				title: 'Grids'
-			},
-			{
-				previewUrl: 'components/messages.html',
-				docsUrl: 'components/messages',
-				title: 'Messages'
-			},
-		],
-		fans: [
-			{
-				name: 'Mubashar Hashmat',
-				note: 'Manager at Scorp',
-				image: 'mubashar-hashmat.jpg',
-				text: `Extremely awesome 😎.`,
-				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
-			},
-			{
-				name: 'Jean-Baptiste',
-				note: 'Creator of Ardaria',
-				image: 'jean-baptiste.jpg',
-				text: `Interesting project! Keep going guyz 💪`,
-				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
-			},
-			{
-				name: 'Lukeshiru',
-				note: 'Webdev at Vangware',
-				image: 'lukeshiru.gif',
-				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
-				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
-			},
-			{
-				name: 'Tom Ravn',
-				note: 'Webdeveloper & SysAdmin',
-				image: 'tom-ravn.jpg',
-				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
-				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
-			},
-			{
-				name: '蝉丸ファン',
-				note: 'Core committer of @webpack',
-				image: 'about-hiroppy.gif',
-				text: `It's similar to the Tailwind but more readable.`,
-				link: 'https://twitter.com/about_hiroppy/status/1595005062279041024'
-			},
-			{
-				name: 'Phan An',
-				note: '@vuejs core team member',
-				image: 'phan-an.jpg',
-				text: `This looks super interesting!`,
-				link: 'https://twitter.com/notphanan/status/1566610354246864901'
-			},
-			{
-				name: 'Tomáš Pilař',
-				note: 'Co-Founder & CTO Conviu.com',
-				image: 'tomas-pilar.jpg',
-				text: `I recommend looking at stylifycss.com if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
-				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
-			},
-			{
-				name: 'Posandu Mapa',
-				note: 'Fullstack dev',
-				image: 'posandu-mapa.jpeg',
-				text: `I like how Stylify compresses the utility classes. A good Tailwind CSS alternative.`,
-				link: 'https://www.producthunt.com/products/stylify-css/reviews?review=551602'
-			},
-			{
-				name: 'Finn Guha',
-				note: 'Webdev teacher',
-				image: 'finn-guha.jpeg',
-				text: `Wow, that seems like a promising concept ! And one that seems very interesting to me personally. I am always amazed by new and unique concepts of writing CSS.`,
-				link: 'https://www.producthunt.com/posts/stylify-css?comment=2013972'
-			},
-			{
-				name: 'David Mario Licla',
-				note: 'Front-End dev at Forma',
-				image: 'david-mario-licla.jpeg',
-				text: '🤯 Did you know that there is an alternative to TailwindCSS but only using CSS properties? Look it\'s called Stylify!',
-				link: 'https://www.linkedin.com/posts/davidmariolc_sab%C3%ADas-que-existe-una-alternativa-a-tailwindcss-activity-6912058924682604544-ImsK?utm_source=linkedin_share&utm_medium=member_desktop_web'
-			},
-			{
-				name: 'Ahmad Tahir',
-				note: 'Fullstack Dev',
-				image: 'ahmad-tahir.jpg',
-				text: `Wow this looks neat 💯. I'll be checking it out.`,
-				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
-			},
-			{
-				name: 'Japheth Mutai',
-				image: 'japheth-mutai.jpg',
-				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
-				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
-			},
-			{
-				name: 'Shushant Lakhyani',
-				note: 'Just Ship It Hub',
-				image: 'shushant-lakhyani.jpeg',
-				text: `This looks cool!`,
-				link: 'https://www.producthunt.com/posts/stylify-css?comment=2014729'
-			},
-			{
-				name: 'Paul⭐Bear',
-				image: 'paul-bear.jpg',
-				text: `Very cool library!`,
-				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
-			},
-			{
-				name: 'sam i am',
-				image: 'sam-i-am.jpg',
-				text: `That's nice!`,
-				link: 'https://twitter.com/sbworld/status/1518571221490749441'
-			},
-			{
-				name: 'Ricardo Anaya',
-				note: 'Full Stack Developer',
-				image: 'ricardo-anaya.jpg',
-				text: `Cool!`,
-				link: 'https://twitter.com/ricky_anaya/status/1594835182632439810'
-			},
-			{
-				name: 'Musa Yazlık',
-				image: 'musa-yazlik.jpg',
-				text: `Hmm. I like it. 😁`,
-				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
-			},
-		]
-	}),
-	methods: {
-		setFeaturedTab(event, tab) {
-			const el = event.target;
-			el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
-			this.featuresSelectedTab = tab;
-		}
-	},
 	head() {
 		return {
 			link: [

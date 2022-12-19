@@ -8,6 +8,8 @@
 <script>
 const code = `
 <!--
+https://stylifycss.com/docs/get-started#defining-a-component
+
 stylify-components
 	label: \`
 		display:flex

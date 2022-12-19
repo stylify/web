@@ -1,11 +1,17 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:450px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:478px">
 		{{ code }}
 	</example-editor>
 </template>
 
 <script>
 const code = `
+<!--
+https://stylifycss.com/docs/get-started#quick-start
+
+Write selectors as CSS property:value
+Use _ for a space and ^ for a quote
+-->
 <button class="
   background:none
   padding:12px
@@ -20,10 +26,6 @@ const code = `
   hover:border-color:darken(#01befe,30)
   md:padding:12px_24px
 ">
-  <!--
-  	Write selectors as CSS property:value
-  	Use _ for a space and ^ for a quote
-  -->
   Edit Me 🏝️!
 </button>
 `;
@@ -32,7 +34,7 @@ export default {
 	props: {
 		layout: {
 			type: String,
-			default: 'row'
+			default: "column",
 		}
 	},
 	data: () => ({

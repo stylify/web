@@ -8,6 +8,8 @@
 <script>
 const code = `
 <!--
+https://stylifycss.com/docs/get-started#custom-selectors
+
 stylify-customSelectors
 	'div': \`
 		text-align:center

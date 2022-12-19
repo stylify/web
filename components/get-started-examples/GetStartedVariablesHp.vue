@@ -7,6 +7,8 @@
 <script>
 const code = `
 <!--
+https://stylifycss.com/docs/get-started#adding-a-variable
+
 stylify-variables
 	fontSize: '24px',
 	fontSizeLg: '32px',

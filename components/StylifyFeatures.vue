@@ -14,44 +14,44 @@ stylify-components
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-heart why-stylify__block-title-icon"></i>
-				<span>Write CSS faster</span>
+				<span>Code faster</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>💡 Use CSS-like selectors. Don't study framework</li>
-				<li>🔗 Define <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#customselectors" class="color:$blue1">Custom selectors</nuxt-link></li>
-				<li>🔁 Add <nuxt-link to="/docs/stylify/compiler#macros" class="color:$blue1">custom macros</nuxt-link> like <code>ml:2</code></li>
-				<li>💲 Variables can be injected into CSS as CSS variables</li>
-				<li>🌃 CSS <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">variables can differ for each screen</nuxt-link></li>
-				<li>🖌️ Use <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">helpers</nuxt-link> like <code>color:lighten(#000,10)</code></li>
-				<li>🖥️ Style any device with dynamic <nuxt-link to="/docs/stylify/compiler#screens" class="color:$blue1">screens</nuxt-link></li>
+				<li>💎 Use CSS-like selectors. Don't study framework</li>
+				<li>💎 Define <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">Variables</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#components" class="color:$blue1">Components</nuxt-link>, <nuxt-link to="/docs/stylify/compiler#customselectors" class="color:$blue1">Custom selectors</nuxt-link></li>
+				<li>💎 Add <nuxt-link to="/docs/stylify/compiler#macros" class="color:$blue1">custom macros</nuxt-link> like <code>ml:2</code></li>
+				<li>💎 Variables can be injected into CSS as CSS variables</li>
+				<li>💎 CSS <nuxt-link to="/docs/stylify/compiler#variables" class="color:$blue1">variables can differ for each screen</nuxt-link></li>
+				<li>💎 Use <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">helpers</nuxt-link> like <code>color:lighten(#000,10)</code></li>
+				<li>💎 Style any device with dynamic <nuxt-link to="/docs/stylify/compiler#screens" class="color:$blue1">screens</nuxt-link></li>
 			</ul>
 		</div>
 
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
-				<i class="icon icon-layers why-stylify__block-title-icon"></i>
+				<i class="icon icon-archive why-stylify__block-title-icon"></i>
 				<span>Get extremely optimized CSS</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>📦 Split bundles for page/layout/component</li>
-				<li>🧰 Selectors minification<code>.color:blue</code> => <code>.a</code></li>
-				<li>✨ No purge needed. CSS is generated on demand</li>
-				<li>🔗 Almost zero duplicated <code>property:value</code></li>
-				<li>✋ Mark areas that <nuxt-link to="/docs/stylify/compiler#ignoredareas" class="color:$blue1">should not be processed</nuxt-link></li>
-				<li>🪝 Use hooks to extend functionality</li>
+				<li>💎 Split bundles for page/layout/component</li>
+				<li>💎 Selectors minification<code>.color:blue</code> => <code>.a</code></li>
+				<li>💎 No purge needed. CSS is generated on demand</li>
+				<li>💎 Almost zero duplicated <code>property:value</code></li>
+				<li>💎 Mark areas that <nuxt-link to="/docs/stylify/compiler#ignoredareas" class="color:$blue1">should not be processed</nuxt-link></li>
+				<li>💎 Use hooks to extend functionality</li>
 			</ul>
 		</div>
 
 		<div class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-layers why-stylify__block-title-icon"></i>
-				<span>Copy&paste integration</span>
+				<span>Copy&Paste Integration</span>
 			</h3>
 			<ul class="why-stylify__list">
-				<li>🚀 Works with any framework like <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/astro" class="color:$blue1">Astro</nuxt-link>. <nuxt-link to="/docs/integrations/solidjs" class="color:$blue1">SolidJS</nuxt-link>, <nuxt-link to="/docs/integrations/qwik" class="color:$blue1">Qwik</nuxt-link> <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link></li>
-				<li>⚒️ Integrable into bundlers like <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link></li>
-				<li>⛓️ Generated CSS can be used within SCSS, Less, Stylus</li>
-				<li>🎨 CSS variables can be exported into external file</li>
+				<li>💎 Works with any framework like <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/astro" class="color:$blue1">Astro</nuxt-link>. <nuxt-link to="/docs/integrations/solidjs" class="color:$blue1">SolidJS</nuxt-link>, <nuxt-link to="/docs/integrations/qwik" class="color:$blue1">Qwik</nuxt-link> <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link></li>
+				<li>💎 Integrable into bundlers like <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link></li>
+				<li>💎 Generated CSS can be used within SCSS, Less, Stylus</li>
+				<li>💎 CSS variables can be exported into external file</li>
 			</ul>
 		</div>
 	</div>

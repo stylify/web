@@ -28,7 +28,7 @@ export default {
 	props: {
 		layout: {
 			type: String,
-			default: 'row'
+			default: "column",
 		}
 	},
 	data: () => ({
