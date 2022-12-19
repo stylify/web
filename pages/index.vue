@@ -14,19 +14,19 @@ stylify-components
 			<div class="md:max-width:640px">
 				<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 				<section class="margin-bottom:24px lg:font-size:18px">
-					<h2 class="color:#fff text-align:center lg:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw400px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
+					<h2 class="color:#fff text-align:center lg:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw450px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
 					<div class="max-width:840px margin:0_auto text-align:center lg:text-align:left">
 						<p class="margin-top:0">
 							Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
 						</p>
 					</div>
-					<div>
-						✅ Syntax you already know. Don't waste time studying CSS framework.
-						<br>✅ Less switching between HTML/CSS files
-						<br>✅ Automagic and Extremely tunned CSS optimization
-						<br>✅ Simple CSS Bundles splitting for Layouts/Pages
-						<br>✅ Easily Configurable and Extensible
-					</div>
+					<ul class="padding-left:0 [li:before]{content:^✅^;position:absolute;left:0} [li]{padding-left:28px;position:relative;list-style:none}">
+						<li>Syntax you already know. Don't waste time studying CSS framework</li>
+						<li>Less switching between HTML/CSS files</li>
+						<li>Automagic and Extremely tunned CSS optimization</li>
+						<li>Simple CSS Bundles splitting for Layouts/Pages</li>
+						<li>Easily Configurable and Extensible</li>
+					</ul>
 				</section>
 				<div class="max-width:100% flex-wrap:wrap margin-top:12px md:margin-top:24px gap:8px sm:gap:12px display:flex flex-direction:row align-items:center justify-content:center lg:justify-content:flex-start font-size:18px">
 					<nuxt-link to="/docs/get-started" class="btn border:2px_solid_$blue1 sm:padding:20px_24px lg:padding:20px_24px">
@@ -97,7 +97,10 @@ stylify-components
 					</p>
 				</div>
 				<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
-					<iframe width="310" height="185" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" allowfullscreen class="max-width:100%"></iframe>
+					<a role="button" v-if="!videoOpened" @click="videoOpened = true" class="cursor:pointer">
+						<img src="/images/hp/youtube-video-preview.png" width="310" height="185" loading="lazy" fetchpriority="low" class="object-fit:cover">
+					</a>
+					<div v-else v-html="youtubeIframe"></div>
 					<div class="margin-left:12px md:margin-left:0 margin-top:8px md:margin-top:12px md:text-align:center">
 						<strong class="color:#fff">Vladimír Macháček</strong>
 						<br>Author of Stylify CSS
@@ -125,6 +128,10 @@ stylify-components
 
 <script>
 export default {
+	data: () => ({
+		videoOpened: false,
+		youtubeIframe: `<iframe width="310" height="185" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" fetchpriority="low" allowfullscreen class="max-width:100%"></iframe>`
+	}),
 	head() {
 		return {
 			link: [

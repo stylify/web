@@ -88,14 +88,20 @@ export default {
 			default: false
 		}
 	},
-	data: () => ({
-		code: '',
-		css: '',
-		mangledHtml: '',
-		previewCode: '',
-		previewCss: '',
-		selectedTab: 'editor'
-	}),
+	data: () => {
+		const previewClass = `stylify-preview-${Date.now().toString(36) + Math.random().toString(36).substring(2)}`;
+
+		return {
+			code: '',
+			css: '',
+			previewElClass: previewClass,
+			previewElRegExp: new RegExp('\\.' + previewClass, 'g'),
+			mangledHtml: '',
+			previewCode: '',
+			previewCss: '',
+			selectedTab: 'editor'
+		}
+	},
 	watch: {
 		code: {
 			immediate: true,
@@ -103,11 +109,6 @@ export default {
 				this.setPreviewCode(code);
 			}
 		}
-	},
-	created() {
-		this.code = '';
-		this.previewElClass = 'stylify-preview-' + this._uid;
-		this.previewElRegExp = new RegExp('\\.' + this.previewElClass, 'g');
 	},
 	mounted() {
 		if (typeof this.$refs.codeSlot !== 'undefined') {
