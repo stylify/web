@@ -40,7 +40,6 @@ pre[class*="language-"] {
 	hyphens: none;
 }
 
-/* Code blocks */
 .prism-editor__editor,
 .code-editor__wrapper,
 pre[class*="language-"] {
@@ -59,6 +58,7 @@ pre[class*="language-"] {
 .prism-editor-wrapper .prism-editor__container {
 	max-height: 100%;
 	min-height: 100%;
+	min-width: max-content;
 	overflow: auto;
 }
 
@@ -68,10 +68,10 @@ pre[class*="language-"] {
 
 .prism-editor-wrapper .prism-editor__textarea {
 	word-break: keep-all;
-	white-space: nowrap;
+	white-space: inherit;
+	display: inherit;
 }
 
-/* Inline code */
 :not(pre) > code[class*="language-"] {
 	padding: 0.1em;
 	border-radius: 0.3em;

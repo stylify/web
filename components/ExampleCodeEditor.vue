@@ -65,7 +65,7 @@ export default {
 	}),
 	methods: {
 		prepareCode(code) {
-			return code.trim().replace('&amp;', '&')
+			return code.replace('&amp;', '&')
 				.replace(/\s+data-v-\S+=""/g, '')
 				.replace(/&amp;/g, '&')
 				.replace(/&lt;/g, '<')
@@ -73,8 +73,8 @@ export default {
 				.replace(/\n<div data-netlify-deploy(.|\s)+/, '');
 		},
 		highlighter(code) {
-			this.$emit('codeChanged', code.trim());
-			return highlightCode(code.trim(), this.lang); // languages.<insert language> to return html with markup
+			this.$emit('codeChanged', code);
+			return highlightCode(code, this.lang); // languages.<insert language> to return html with markup
 		},
 	},
 };
