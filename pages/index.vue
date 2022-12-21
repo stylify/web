@@ -47,7 +47,17 @@ stylify-components
 			</p>
 			<stylify-features />
 		</div>
-		<section id="how-it-works" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
+		<section id="installation" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
+			<div class="margin-bottom:24px">
+				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
+					Start using Stylify CSS with your favorite tool in a minute.
+				</h3>
+				<div class="margin-top:12px">
+					<integration-blocks />
+				</div>
+			</div>
+		</section>
+		<!-- <section id="how-it-works" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
 			<h2 class="text-align:center margin-bottom:8px">How it works?</h2>
 			<div class="[>div]{display:inline-flex;align-items:center;justify-content:center} hp__info-boxes font-size:14px display:grid md:grid-template-columns:repeat(3,1fr) gap:12px">
 				<div>
@@ -70,19 +80,9 @@ stylify-components
 					<span>In production, CSS and HTML are optimized and selectors minified <code class="white-space:nowrap">.color:blue</code> => <code class="white-space:nowrap">.a</code>.</span>
 				</div>
 			</div>
-		</section>
+		</section> -->
 		<section :id="filters.webalize('Why Stylify?')" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
 			<why-stylify textAlign="center" />
-		</section>
-		<section id="installation" class="scroll-margin-top:50px container margin-top:42px margin-bottom:42px">
-			<div class="margin-bottom:24px">
-				<h3 class="font-size:24px margin-bottom:4px color:#fff text-align:center">
-					Start using Stylify CSS with your favorite tool in a minute.
-				</h3>
-				<div class="margin-top:12px">
-					<integration-blocks />
-				</div>
-			</div>
 		</section>
 		<section id="quote" class="scroll-margin-top:50px container margin-top:32px padding-top:32px">
 			<h2 class="font-size:32px margin-bottom:12px md:margin-bottom:24px md:font-size:48px text-align:center margin-top:0">Don't study frameworks. Focus on coding!</h2>

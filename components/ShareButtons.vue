@@ -18,6 +18,7 @@ stylify-customSelectors
 -->
 <template>
 	<ul class="share-buttons" data-source="simplesharingbuttons.com">
+		<li><GithubButton /></li>
 		<li><a :href="`https://www.facebook.com/sharer/sharer.php?u=${postUrl}&quote=${postTitle}`" title="Share on Facebook" target="_blank" rel="noopener"><img width="32" height="32" loading="lazy" alt="Share on Facebook" src="/images/share-icons/Facebook.svg" /></a></li>
 		<li><a :href="`https://twitter.com/intent/tweet?source=${postUrl}&text=${postTitle}:+${postUrl}&via=stylifycss`" target="_blank" rel="noopener" title="Tweet"><img width="32" height="32" loading="lazy" alt="Tweet" src="/images/share-icons/Twitter.svg" /></a></li>
 		<li><a :href="`http://www.tumblr.com/share?v=3&u=${postUrl}&quote=${postTitle}&s=`" target="_blank" rel="noopener" title="Post to Tumblr"><img width="32" height="32" loading="lazy" alt="Post to Tumblr" src="/images/share-icons/Tumblr.svg" /></a></li>

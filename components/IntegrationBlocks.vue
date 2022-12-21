@@ -43,6 +43,23 @@ stylify-components
 			</div>
 		</nuxt-link>
 		<nuxt-link
+			to="/docs/integrations/nuxtjs"
+			aria-label="Nuxt.js"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/nuxtjs.svg"
+					alt=""
+					height="1"
+					width="2"
+					loading="lazy"
+					fetchpriority="low"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
 			to="/docs/integrations/reactjs"
 			aria-label="React.js"
 			class="integration-block"
@@ -84,23 +101,6 @@ stylify-components
 			<div class="integration-block__image-wrapper">
 				<img
 					src="/images/brands/angular.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/nuxtjs"
-			aria-label="Nuxt.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/nuxtjs.svg"
 					alt=""
 					height="1"
 					width="2"

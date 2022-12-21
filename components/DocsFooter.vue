@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<hr class="margin-bottom:24px">
-		<div class="text-align:center">
+		<div class="display:flex align-items:center justify-content:center">
 			<a
 				:href="`${project.config.websiteRepositoryUrl}/edit/master/content${page.path}${page.extension}`"
 				target="_blank"
@@ -33,6 +33,8 @@
 				<i class="icon icon-edit margin-right:8px"></i>
 				<span>Edit this page on Github</span>
 			</a>
+			<span class="margin:0_12px">|</span>
+			<GithubButton />
 		</div>
 	</div>
 </template>

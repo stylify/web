@@ -59,6 +59,7 @@ export default defineConfig({
 			// Articles common
 			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',
 			'article': 'margin-top:0 font-size:16px word-break:break-word',
+			'article iframe, article img': 'max-width:100%',
 			'article h1': 'cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
 			'article h2': 'cursor:pointer position:relative font-size:26px margin-top:48px margin-bottom:0',
 			'article h3': 'cursor:pointer position:relative font-size:20px margin-top:32px margin-bottom:0',

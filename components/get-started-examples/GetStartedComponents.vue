@@ -1,5 +1,5 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" class="min-height:366px">
+	<example-editor :layout="layout" :showHtml="true" class="min-height:400px">
 		{{ code }}
 	</example-editor>
 </template>
@@ -9,18 +9,18 @@
 const code = `
 <!--
 stylify-components
-	label: \`
-		display:flex
-		line-height:1.2
-		font-size:32px
-		align-items:center
-	\`,
-	'label-icon': 'lg:font-size:48px margin-left:8px',
+	'image': \`
+		height:100px
+		width:auto
+		border-radius:4px
+		transition:.3s
+		margin:0_8px
+		hover:scale:1.1
+	\`
 /stylify-components
 -->
-<span class="label">
-	Components time!<span class="label-icon">🎉</span>
-</span>
+<img src="/images/p1.jpg" class="image">
+<img src="/images/p2.jpg" class="image">
 `;
 
 export default {

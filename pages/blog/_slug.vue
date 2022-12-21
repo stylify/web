@@ -40,6 +40,12 @@ stylify-components
 				<hr>
 				<nuxt-content :document="post" />
 			</article>
+
+			<div>
+				<strong class="font-size:26px color:#fff">Give as Feedback!</strong>
+				<div>Do you like Stylify CSS? Let us know by starring our repo&nbsp;<GithubButton class="margin-left:8px vertical-align:middle" /></div>
+			</div>
+
 			<hr class="margin-top:24px">
 			<div class="text-align:center">
 				<share-buttons :url="host + post.path" :title="post.title" :description="post.annotation" :image="post.ogImage" />

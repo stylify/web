@@ -1,5 +1,5 @@
 <template>
-	<example-editor :layout="layout" :showHtml="true" class="min-height:366px">
+	<example-editor :layout="layout" :showHtml="true" layout="column" class="min-height:395px">
 		{{ code }}
 	</example-editor>
 </template>
@@ -8,18 +8,18 @@
 const code = `
 <!--
 stylify-variables
-	fontSize: '24px',
-	fontSizeLg: '32px',
-	textShadow: '0 4px 8px #379adf'
+	height: '120px',
+	radius: '4px',
+	scale: '1.1'
 /stylify-variables
 -->
-<div class="
-	font-size:$fontSize
-	lg:font-size:$fontSizeLg
-	text-shadow:$textShadow
+<img src="/images/p3.jpg" class="
+	width:auto
+	transition:.3s
+	height:$height
+	border-radius:$radius
+	hover:scale:$scale
 ">
-	Seamless coding 🏄‍♀️
-</div>
 `;
 
 export default {

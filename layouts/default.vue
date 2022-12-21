@@ -86,6 +86,8 @@ stylify-components
 				<section class="display:flex flex-direction:column justify-content:center align-items:center md:flex-direction:row md:justify-content:space-between">
 					<LayoutLogoLink />
 					<div class="text-align:center color:lighten($blue4,20) md:text-align:left">
+						<GithubButton />
+						<br>
 						Released under the MIT license
 						<br>
 						Copyright @ {{ new Date().getFullYear() }} Vladimír Macháček
