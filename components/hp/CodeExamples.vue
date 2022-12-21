@@ -17,23 +17,23 @@
 		</div>
 		<div>
 			<div v-show="featuresSelectedTab === 'selectors'">
-				<img v-if="!mounted" src="/images/hp/selectors-loading-placeholder-v2.jpg" height="478" class="width:100% height:478px object-fit:cover object-position:left" loading="eager" fetchpriority="high" />
-				<GetStartedSelectorsHp v-else />
+				<img v-if="!mounted" src="/images/hp/selectors-loading-placeholder-v3.jpg" height="400" class="width:100% height:400px object-fit:cover object-position:left" loading="eager" fetchpriority="high" />
+				<GetStartedSelectors v-else />
 			</div>
 			<div v-show="featuresSelectedTab === 'components'">
-				<GetStartedComponentsHp />
+				<GetStartedComponents />
 			</div>
 			<div v-show="featuresSelectedTab === 'customSelectors'">
-				<GetStartedCustomSelectorsHp />
+				<GetStartedCustomSelectors />
 			</div>
 			<div v-show="featuresSelectedTab === 'variables'">
-				<GetStartedVariablesHp />
+				<GetStartedVariables />
 			</div>
 			<div v-show="featuresSelectedTab === 'dynamicScreens'">
-				<GetStartedScreensHp />
+				<GetStartedScreens />
 			</div>
 			<div v-show="featuresSelectedTab === 'helpers'">
-				<GetStartedHelpersHp />
+				<GetStartedHelpers />
 			</div>
 		</div>
 	</div>

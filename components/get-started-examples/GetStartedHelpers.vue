@@ -10,6 +10,15 @@
 <script>
 
 const code = `
+/*
+https://stylifycss.com/docs/stylify/compiler#helpers
+
+Helpers can be used within selectors or macros.
+For example color:lighten(#000,10) is helper
+for lightening color.
+
+You can define your own easily within helpers option.
+*/
 new Compiler({
 	helpers: {
 		textPropertyType(value) {

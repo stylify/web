@@ -9,16 +9,17 @@
 const code = `
 <!--
 stylify-customSelectors
-	'div': \`
-		text-align:center
-		line-height:1.2
-		font-size:24px
-		lg:font-size:34px
+	img: \`
+		height:100px
+		width:auto
+		border-radius:4px
+		transition:.3s
+		hover:scale:1.1
 	\`
 /stylify-customSelectors
 -->
-<div class="[&+div]{margin-top:8px}">Style anything easily</div>
-<div>🏖️🍹🤟</div>
+<img src="/images/p3.jpg" class="[&+img]{margin-left:8px}">
+<img src="/images/p4.jpg">
 `;
 
 export default {
