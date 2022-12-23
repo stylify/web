@@ -14,8 +14,3 @@ description: "Stylify CSS Badges Components. Prepared CSS badges for your next w
 min-height="180"
 title="Badges"
 html-snippet="components/badges"></interactive-preview>
-
-<interactive-preview
-min-height="180"
-title="Badges - using components"
-html-snippet="components/badges-components"></interactive-preview>

@@ -13,7 +13,3 @@ description: "Stylify CSS Container Components. Prepared CSS containers for your
 <interactive-preview class="margin-bottom:48px"
 title="Containers"
 html-snippet="components/containers"></interactive-preview>
-
-<interactive-preview
-title="Containers - using components"
-html-snippet="components/containers-components"></interactive-preview>

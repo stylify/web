@@ -15,8 +15,3 @@ min-height="300"
 title="Messages"
 description="If you use shadow from shadow components and a fixed position, it can be used as an alert for example on top/bottom side of the window."
 html-snippet="components/messages"></interactive-preview>
-
-<interactive-preview
-min-height="180"
-title="Messages - using components"
-html-snippet="components/messages-components"></interactive-preview>

@@ -14,8 +14,3 @@ description: "Stylify CSS Dialog Components. Prepared CSS dialogs for your next 
 min-height="300"
 title="Dialog"
 html-snippet="components/dialogs"></interactive-preview>
-
-<interactive-preview
-min-height="300"
-title="Dialog - using components"
-html-snippet="components/dialogs-components"></interactive-preview>

@@ -5,19 +5,27 @@ stylify-components
 -->
 <template>
 	<div>
-		<div class="display:flex justify-content:space-between align-items:center">
-			<div class="color:#fff font-weight:bold">{{ title }}</div>
-			<div class="display:flex align-items:center margin-left:-4px">
-				<a role="button" @click="setTab('preview')" :class="`${selectedTab === 'preview' ? '' : 'btn--transparent'} btn interactive-preview__button`">Preview</a>
-				<a role="button" v-for="codeType in codeTypes" v-if="hasCode(codeType)" @click="setTab(codeType.toLowerCase())" :class="`${selectedTab === codeType.toLowerCase() ? '' : 'btn--transparent'} btn interactive-preview__button`">
-					{{codeType}}
-				</a>
+		<div class="display:flex justify-content:space-between align-items:center flex-wrap:wrap white-space:nowrap">
+			<div class="color:#fff font-weight:bold margin-right:24px white-space:nowrap margin-bottom:8px">{{ title }}</div>
+			<div class="display:flex align-items:center margin-left:-4px overflow:auto margin-bottom:8px">
+				<a role="button" @click="(event) => setTab(event, 'preview')" :class="`${selectedTab === 'preview' ? '' : 'btn--transparent'} btn interactive-preview__button`">Preview</a>
+				<span v-for="codeType in codeTypes">
+					<a role="button" v-if="hasCode(codeType)" @click="(event) => setTab(event, codeType.toLowerCase())" :class="`${selectedTab === codeType.toLowerCase() ? '' : 'btn--transparent'} btn interactive-preview__button`">
+						{{codeType}}
+					</a>
+					<a role="button" v-if="hasCode(codeType)" @click="(event) => setTab(event, `${codeType.toLowerCase()}components`)" :class="`${selectedTab === `${codeType.toLowerCase()}components` ? '' : 'btn--transparent'} btn interactive-preview__button`">
+						{{codeType}} (components)
+					</a>
+				</span>
 			</div>
 		</div>
 		<div v-if="description" class="margin-top:4px">{{ description }}</div>
 		<div v-if="hasCode('html')" class="margin-top:12px">
 			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
-			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" v-if="hasCode(codeType)">
+			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" :key="codeType" v-if="hasCode(codeType)">
+				<example-code-editor readonly :defaultCode="codeSnippet" />
+			</div>
+			<div v-for="codeType in codeTypes" v-show="selectedTab === `${codeType.toLowerCase()}components`" :key="`${codeType}components`" v-if="hasCode(codeType)">
 				<example-code-editor readonly :defaultCode="codeSnippet" />
 			</div>
 		</div>
@@ -73,12 +81,19 @@ export default {
 				return;
 			}
 
-			const snippetPath = this[`${codeType.toLowerCase()}Snippet`]
-			const response = await fetch(`/content/snippets/${snippetPath}.html`);
+			const isComponentsExample = codeType.endsWith('components');
+			const codeTypeSuffix = isComponentsExample ? '-components' : '';
+			if (codeType.endsWith('components')) {
+				codeType = codeType.replace(/components$/, '');
+			}
+
+			const snippetPath = this[`${codeType.toLowerCase()}Snippet`];
+
+			const response = await fetch(`/content/snippets/${snippetPath}${codeTypeSuffix}.html`);
 			let snippetDocument = await response.text();
-			const snippet = snippetDocument.match(/<body>([\s\S]+)<\/body>/)[1];
+			const snippet = snippetDocument.match(/<body>([\s\S]+)<\/body>/)[1].trim();
 			this.codeSnippet = snippet;
-			this.loadedCodeSnippets[codeType] = snippet;
+			this.loadedCodeSnippets[`${codeType}${codeTypeSuffix}`] = snippet;
 		}
 	},
 	methods: {
@@ -95,7 +110,9 @@ export default {
 			const css = compiler.compile(code).generateCss();
 			this.previewCss = css;
 		},
-		setTab(name) {
+		setTab(event, name) {
+			const el = event.target;
+			el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
 			this.selectedTab = name.toLowerCase();
 		},
 		hasCode(codeType) {

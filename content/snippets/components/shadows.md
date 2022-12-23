@@ -14,8 +14,3 @@ description: "Stylify CSS Shadows Components. Prepared CSS shadows for your next
 min-height="100"
 title="Shadows"
 html-snippet="components/shadows"></interactive-preview>
-
-<interactive-preview
-title="Shadows - components"
-min-height="100"
-html-snippet="components/shadows-components"></interactive-preview>

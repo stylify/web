@@ -13,7 +13,3 @@ description: "Stylify CSS Button Components. Prepared CSS text-fields for your n
 <interactive-preview class="margin-bottom:48px"
 title="Text fields"
 html-snippet="components/text-fields"></interactive-preview>
-
-<interactive-preview
-title="Text fields - using components"
-html-snippet="components/text-fields-components"></interactive-preview>
