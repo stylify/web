@@ -28,7 +28,7 @@ stylify-components
 			</div>
 			<div class="text-align:center margin-top:24px">
 				<nuxt-link to="/docs/integrations" class="btn btn--hp margin-top:12px">
-					Checkout integrations
+					Check out integrations
 					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
 			</div>

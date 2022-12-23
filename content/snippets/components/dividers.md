@@ -13,7 +13,3 @@ description: "Stylify CSS Divider Components. Prepared CSS dividers for your nex
 <interactive-preview class="margin-bottom:48px"
 title="Dividers"
 html-snippet="components/dividers"></interactive-preview>
-
-<interactive-preview
-title="Dividers - using components"
-html-snippet="components/dividers-components"></interactive-preview>

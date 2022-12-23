@@ -1,8 +1,16 @@
+<!--
+stylify-customSelectors
+	'.readonly-prism-editor .prism-editor-wrapper .prism-editor__container': 'min-width:100%'
+/stylify-customSelectors
+-->
 <template>
 	<div :class="[withBorder ? 'border:1px_solid_$blue5 padding:4px border-radius:4px' : '', 'code-editor__wrapper min-height:48px display:flex width:100%']">
 		<code ref="codeSlot" style="display: none;"><slot></slot></code>
 		<client-only placeholder="Loading...">
-			<div class="max-height:400px overflow:auto width:100%">
+			<div :class="[
+				readonly ? 'readonly-prism-editor' : '',
+				'max-height:400px overflow:auto width:100%'
+			]">
 				<prism-editor
 					v-model="code"
 					:highlight="highlighter"

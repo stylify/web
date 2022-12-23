@@ -55,7 +55,7 @@
 		</div>
 		<div class="text-align:center margin-top:24px">
 			<nuxt-link to="/docs/get-started/why-stylify-css" class="btn btn--hp margin-top:12px">
-				Learn more about features
+				Discover more features
 				<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 			</nuxt-link>
 		</div>
