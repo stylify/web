@@ -51,10 +51,10 @@ stylify-components
 		<footer class="background:lighten($blue3,20) padding:24px_0" role="contentinfo">
 			<div class="container">
 				<div class="display:flex align-items:flex-start flex-direction:column margin-bottom:12px">
-					<hp-footer-docs-links :links="getStartedLinks" />
-					<hp-footer-docs-links :links="integrationLinks" />
-					<hp-footer-docs-links :links="componentsLinks" />
-					<hp-footer-docs-links :links="packagesLinks" :titleLinkEnabled="false" title="Packages" />
+					<footer-docs-links :links="getStartedLinks" />
+					<footer-docs-links :links="integrationLinks" />
+					<footer-docs-links :links="componentsLinks" />
+					<footer-docs-links :links="packagesLinks" :titleLinkEnabled="false" title="Packages" />
 					<section class="footer-docs-section">
 						<h3 class="footer-docs-section__title">Community</h3>
 						<div class="margin-left:-24px">
@@ -244,6 +244,10 @@ export default {
 
 <style>
 @import '@docsearch/css';
+
+html {
+	font-size: 62.5%;
+}
 
 body {
 	font-family: -apple-system, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';

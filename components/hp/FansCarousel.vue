@@ -133,6 +133,13 @@ export default {
 				link: 'https://www.linkedin.com/posts/davidmariolc_sab%C3%ADas-que-existe-una-alternativa-a-tailwindcss-activity-6912058924682604544-ImsK?utm_source=linkedin_share&utm_medium=member_desktop_web'
 			},
 			{
+				name: 'Yousuf Iqbal',
+				note: 'Full Stack Developer',
+				image: 'yousuf-iqbal.jpg',
+				text: 'This is awesome. Almost zero learning curve 👍!',
+				link: 'https://twitter.com/yousufiqbal_dev/status/1605883118359019523'
+			},
+			{
 				name: 'Ahmad Tahir',
 				note: 'Fullstack Dev',
 				image: 'ahmad-tahir.jpg',
@@ -151,6 +158,12 @@ export default {
 				image: 'shushant-lakhyani.jpeg',
 				text: `This looks cool!`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2014729'
+			},
+			{
+				name: 'Mukesh',
+				image: 'mukesh.jpg',
+				text: 'Seems cool ✌️✌️✌️',
+				link: 'https://twitter.com/mukezhz/status/1605579574460289025'
 			},
 			{
 				name: 'Paul⭐Bear',
