@@ -8,7 +8,7 @@ stylify-components
 	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
 	'why-stylify__list': `
 		font-size:14px margin-bottom:0 margin-top:4px padding-left:0 color:lighten($blue4,20)
-		li:before {content:^💎^;position:absolute;left:0;}
+		li:before {content:^⚡️^;position:absolute;left:0;}
 		li {list-style:none;padding-left:24px;position:relative}
 	`
 /stylify-components

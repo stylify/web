@@ -9,10 +9,11 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	}
 
 	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
 
 	selectorProperties.addMultiple({
-		'font-size': `${pixelFontSize * 0.0625}rem`,
-		'line-height': `${pixelFontSize * (pixelFontSize >= 32 ? 1.2 : 1.6) * 0.0625}rem`
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
 	});
 });
 
@@ -48,7 +49,7 @@ export default defineConfig({
 			// Global
 			html: 'color-scheme:dark',
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
-			'body': 'color:$blue4 background-color:$blue3 font-size:16px',
+			'body': 'font-size:16px color:$blue4 background-color:$blue3',
 			'h1,h2,h3,h4,h5,h6': 'color:#fff',
 			img: 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
