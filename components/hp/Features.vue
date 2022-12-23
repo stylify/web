@@ -2,12 +2,12 @@
 	<section id="features" class="container">
 		<div class="
 			md:display:grid gap:24px md:grid-template-columns:repeat(2,calc(50%_-_12px))
-			[section]{tomd:margin-bottom:24px}
+			[section:not(:last-of-type)]{tomd:margin-bottom:48px}
 			[p]{text-align:center}
 			[p:first-of-type]{margin-top:0}
 		">
 			<section id="installation">
-				<h2 class="hp-section-title">Almost Zero Learning Curve</h2>
+				<h2 class="hp-section-title">Almost Zero Learning&nbsp;Curve</h2>
 				<div class="max-width:600px margin-left:auto margin-right:auto">
 					<p>
 						If you know CSS, you already know, how to use Stylify&nbsp;CSS.
@@ -15,7 +15,7 @@
 					</p>
 					<example-code-editor readonly :defaultCode="selectorsExampleSnippet" />
 					<p>
-						Global selectors are similar to <code>h1 { color:blue }</code>.
+						Global selectors are similar to <code class="white-space:nowrap">h1 { color:blue }</code>.
 					</p>
 					<example-code-editor readonly :defaultCode="globalSelectorsExampleSnippet" />
 				</div>
