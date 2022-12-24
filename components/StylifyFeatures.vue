@@ -2,7 +2,8 @@
 stylify-components
 	'why-stylify__block': `
 		margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px
-		width:100% sm:width:calc(50%_-_12px) lg:width:calc(100%_*_1/3_-_12px) lg:margin-bottom:0 border-radius:$radius2
+		width:100% sm:width:calc(50%_-_12px) border-radius:$radius2
+		lg:width:calc(100%_*_1/3_-_12px) lg:margin-bottom:0
 	`,
 	'why-stylify__block-title': 'margin:0 font-size:22px display:flex flex-direction:row align-items:center',
 	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
@@ -15,7 +16,7 @@ stylify-components
 -->
 <template>
 	<div id="why-stylify-css" class="display:flex margin-left:-12px flex-wrap:wrap [ul]{list-style:none;padding-left:0}">
-		<div class="why-stylify__block">
+		<section id="faster-coding" class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-heart why-stylify__block-title-icon"></i>
 				<span>Code faster</span>
@@ -29,12 +30,12 @@ stylify-components
 				<li>Use <nuxt-link to="/docs/stylify/compiler#helpers" class="color:$blue1">helpers</nuxt-link> like <code>color:lighten(#000,10)</code></li>
 				<li>Style any device with dynamic <nuxt-link to="/docs/stylify/compiler#screens" class="color:$blue1">screens</nuxt-link></li>
 			</ul>
-		</div>
+		</section>
 
-		<div class="why-stylify__block">
+		<section id="output-optimization" class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-archive why-stylify__block-title-icon"></i>
-				<span>Get extremely optimized CSS</span>
+				<span>Get extremely optimized CSS output</span>
 			</h3>
 			<ul class="why-stylify__list">
 				<li>Split bundles for page/layout/component</li>
@@ -44,9 +45,9 @@ stylify-components
 				<li>Mark areas that <nuxt-link to="/docs/stylify/compiler#ignoredareas" class="color:$blue1">should not be processed</nuxt-link></li>
 				<li>Use hooks to extend functionality</li>
 			</ul>
-		</div>
+		</section>
 
-		<div class="why-stylify__block">
+		<section id="copypaste-integration"  class="why-stylify__block">
 			<h3 class="why-stylify__block-title">
 				<i class="icon icon-layers why-stylify__block-title-icon"></i>
 				<span>Copy&Paste Integration</span>
@@ -55,8 +56,8 @@ stylify-components
 				<li>Works with any framework like <nuxt-link to="/docs/integrations/nuxtjs" class="color:$blue1">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/nextjs" class="color:$blue1">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/astro" class="color:$blue1">Astro</nuxt-link>. <nuxt-link to="/docs/integrations/solidjs" class="color:$blue1">SolidJS</nuxt-link>, <nuxt-link to="/docs/integrations/qwik" class="color:$blue1">Qwik</nuxt-link> <nuxt-link to="/docs/integrations/symfony" class="color:$blue1">Symfony</nuxt-link>, <nuxt-link to="/docs/integrations/laravel" class="color:$blue1">Laravel</nuxt-link></li>
 				<li>Integrable into bundlers like <nuxt-link to="/docs/integrations/webpack" class="color:$blue1">Webpack</nuxt-link>, <nuxt-link to="/docs/integrations/rollupjs" class="color:$blue1">Rollup</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs" class="color:$blue1">Vite.js</nuxt-link></li>
 				<li>Generated CSS can be used within SCSS, Less, Stylus</li>
-				<li>CSS variables can be exported into external file</li>
+				<li>CSS variables can be exported into an external file</li>
 			</ul>
-		</div>
+		</section>
 	</div>
 </template>

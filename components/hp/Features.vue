@@ -1,8 +1,8 @@
 <template>
 	<section id="features" class="container">
 		<div class="
-			md:display:grid gap:24px md:grid-template-columns:repeat(2,calc(50%_-_12px))
-			[section:not(:last-of-type)]{tomd:margin-bottom:48px}
+			row-gap:48px display:grid grid-template-columns:100%
+			md:column-gap:24px md:grid-template-columns:repeat(2,calc(50%_-_12px)) md:row-gap:64px
 			[p]{text-align:center}
 			[p:first-of-type]{margin-top:0}
 		">
