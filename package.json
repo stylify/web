@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"private": true,
 	"scripts": {
-		"dev": "nuxt",
+		"dev": "node --inspect=0.0.0.0:9229 node_modules/.bin/nuxt --depth 10",
 		"build": "nuxt build",
 		"start": "nuxt start",
 		"generate": "nuxt generate",
@@ -11,10 +11,8 @@
 		"lint:style": "stylelint \"**/*.{vue,css}\" --ignore-path .gitignore",
 		"lint:fix": "stylelint --fix",
 		"lint": "yarn lint:js && yarn lint:style",
-		"dev:cp": "node scripts/copy-stylify-packages.js --verbose",
 		"dev:ulp": "node scripts/use-stylify-from-folder.js --verbose",
-		"dev:urp": "node scripts/use-stylify-from-registry.js --verbose",
-		"dev:swl": "yarn dev:cp && yarn dev:ulp"
+		"dev:urp": "node scripts/use-stylify-from-registry.js --verbose"
 	},
 	"dependencies": {
 		"@docsearch/css": "3",
@@ -41,6 +39,7 @@
 		"eslint-plugin-nuxt": "^4.0",
 		"eslint-plugin-vue": "^9.4",
 		"fast-glob": "^3.2",
+		"fs-extra": "^11.1.0",
 		"stylelint": "^14.11",
 		"stylelint-config-standard": "^28.0"
 	}

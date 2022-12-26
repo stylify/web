@@ -1,39 +1,26 @@
-const { Console } = require('console');
 const { spawn } = require("child_process");
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 
 const rootDir = path.join(__dirname, '..');
-console.log("Reading package.json");
-const packageJsonPath = path.join(rootDir, 'package.json');
-let projectPackageJsonContent = fs.readFileSync(packageJsonPath).toString();
 
-console.log("Rewriting package.json");
-projectPackageJsonContent = projectPackageJsonContent.replace(/"@stylify\/(\S+)": "[^"]+"/g, (fullMatch, packageName) => {
-	return `"@stylify/${packageName}": "file:./stylify-packages/${packageName}"`;
-});
-fs.writeFileSync(packageJsonPath, projectPackageJsonContent);
+const stylifyPackagesDir = path.join(rootDir, '..', '/stylify/packages');
+const stylifyPackageDir = path.join(stylifyPackagesDir, 'stylify');
+const bundlerPackageDir = path.join(stylifyPackagesDir, 'bundler');
+const nuxtPackageDir = path.join(stylifyPackagesDir, 'nuxt');
 
-const yarnLockFilePath = path.join(rootDir, 'yarn.lock');
-if (fs.existsSync(yarnLockFilePath)) {
-	console.log("Removing yarn.lock");
-	fs.unlinkSync(path.join(rootDir, 'yarn.lock'));
-}
+const nodeModulesDir =  path.join(rootDir, 'node_modules/@stylify');
+const bundlerNodeModuleDir = path.join(nodeModulesDir, 'bundler');
+const nuxtNodeModuleDir = path.join(nodeModulesDir, 'nuxt-module');
+const stylifyNodeModuleDir = path.join(nodeModulesDir, 'stylify');
 
-console.log("Removing node modules/@stylify");
-fs.rmdirSync(path.join(rootDir, 'node_modules', '@stylify'), { recursive: true });
 
-console.log("Installing packages");
-const installation = spawn("yarn", ["install"]);
+console.log("Copying build files");
+fs.copySync(path.join(stylifyPackageDir, 'lib'), path.join(stylifyNodeModuleDir, 'lib'));
+fs.copySync(path.join(stylifyPackageDir, 'lib'), path.join(stylifyNodeModuleDir, 'lib'));
 
-installation.stdout.on('data', (data) => {
-  console.log(`stdout: ${data}`);
-});
+fs.copySync(path.join(bundlerPackageDir, 'lib'), path.join(bundlerNodeModuleDir, 'lib'));
+fs.copySync(path.join(bundlerPackageDir, 'esm'), path.join(bundlerNodeModuleDir, 'esm'));
 
-installation.on('close', (code) => {
-  console.log(`child process close all stdio with code ${code}`);
-});
-
-installation.on('exit', (code) => {
-  console.log(`child process exited with code ${code}`);
-});
+fs.copySync(path.join(nuxtPackageDir, 'lib'), path.join(nuxtNodeModuleDir, 'lib'));
+fs.copySync(path.join(nuxtPackageDir, 'esm'), path.join(nuxtNodeModuleDir, 'esm'));
