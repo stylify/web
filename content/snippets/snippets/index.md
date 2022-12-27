@@ -6,10 +6,10 @@ order: 0
 navigationTitle: "Snippets"
 
 title: "Snippets"
-description: "Stylify CSS Snippets - Predefined configuration, examples and a lot more to simplifie web development."
+description: "Stylify CSS Snippets - Predefined configuration, examples and a lot more to simplify web development."
 ---
 
-In this Snippets section you can find guides, configuration and examples for Stylify CSS, frameworks and tools.
+In this Snippets section, you can find guides, configuration and examples for Stylify CSS, frameworks and tools.
 You can copy these snippets and paste them into your application to quickly setup your dev environment.
 
 Integrations:
