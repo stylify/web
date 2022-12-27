@@ -16,13 +16,13 @@ stylify-components
 <template>
 	<div class="[section]{scroll-margin-top:50px} [>_section]{margin-top:48px;margin-bottom:48px;md:margin-top:64px;md:margin-bottom:64px;lg:margin-top:84px;lg:margin-bottom:84px}">
 		<hp-header />
-
+<!--
 		<section id="why-stylify" class="container text-align:center">
 			<h2 class="hp-section-title">
 				Why Stylify instead of CSS or inline styles?
 			</h2>
 			<div class="font-size:20px [a]{color:$blue1}">Because of <nuxt-link to="/docs/get-started/why-stylify-css#problems-stylify-css-tries-to-solve">fewer CSS headaches</nuxt-link>, <nuxt-link to="/docs/get-started/why-stylify-css#faster-coding">faster coding</nuxt-link>, and <nuxt-link to="/docs/get-started/why-stylify-css#output-optimization">extremely optimized output</nuxt-link>&nbsp;💎.</div>
-		</section>
+		</section> -->
 
 		<hp-features />
 

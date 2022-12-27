@@ -540,7 +540,7 @@ hooks.addListener('compiler:processContentOption:myOption', ({
 Compilation result can be created or configured and passed into the Compiler as a second argument. By this approach, you can change the compilation behavior and extend the functionality.
 
 <note>
-Be aware that if you modifie compilation result or create a new one with a wrong configuration, you can break the whole compilation process.
+Be aware that if you modify compilation result or create a new one with a wrong configuration, you can break the whole compilation process.
 </note>
 
 </template>
@@ -583,7 +583,7 @@ hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
 
 ## Hooks
 
-Stylify has a hookable system that allows you to modifie extend the functionality.
+Stylify has a hookable system that allows you to modify extend the functionality.
 
 <docs-section>
 <template #description>

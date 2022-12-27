@@ -11,7 +11,7 @@ description: "Stylify generates CSS dynamically based on what you write. Learn h
 ---
 
 Stylify is a library that uses CSS-like selectors to generate optimized utility-first CSS on demand.
-Sylify processes content (of a file for example), finds class selectors and generates CSS for them. Then it does some optimization and generates CSS files.
+Stylify processes content (of a file for example), finds class selectors and generates CSS for them. Then it does some optimization and generates CSS files.
 
 All you have to do in order to start using Stylify is to install it and write CSS-like selectors into class attributes. No configuration required. You don't have to create any CSS files, add any configuration or study anything. If you know CSS a bit, you already know, how to use Stylify.
 

@@ -55,7 +55,7 @@ export default defineConfig({
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
 			'::selection': 'color:#fff background:$blue1',
-			'.prism-editor-wrapper *': 'font-size:14px line-height:1',
+			'.prism-editor-wrapper *': 'font-size:16px line-height:1',
 
 			// Articles common
 			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',
@@ -116,7 +116,8 @@ export default defineConfig({
 			badge: `
 				min-height:36px display:inline-flex align-items:center white-space:nowrap padding:4px font-size:14px
 				color:#fff border:2px_solid_#f1f1f1 border-radius:4px text-decoration:none transition:background_0.3s hover:background:rgba(255,255,255,0.2)
-			`
+			`,
+			'link': 'color:$blue1 display:inline-flex align-items:center'
 		}
 	},
 });
