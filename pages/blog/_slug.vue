@@ -17,8 +17,8 @@ stylify-components
 /stylify-components
 -->
 <template>
-	<div class="container margin-top:60px margin-bottom:60px">
-		<div class="max-width:800px margin-left:auto margin-right:auto">
+	<div class="container tolg:flex-direction:column display:flex margin-bottom:48px md:margin-top:48px">
+		<div class="width:100% max-width:800px lg:max-width:calc(100%_-_432px) margin-left:auto margin-right:auto">
 			<nuxt-link
 				v-if="!previousPost && !nextPost"
 				to="/blog"
@@ -81,6 +81,25 @@ stylify-components
 					</nuxt-link>
 				</div>
 			</div>
+		</div>
+		<div class="padding-top:12px lg:margin-left:24px lg:max-width:408px max-height:100%">
+			<section class="top:8px lg:position:sticky ">
+				<h2 class="text-align:center">Other Articles</h2>
+				<div class="gap:12px display:grid grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+					<nuxt-link
+						v-for="(post, key) in newPosts"
+						:to="post.path"
+						:key="key"
+						class="display:flex flex-direction:column color:$blue4 text-decoration:none border-radius:4px overflow:hidden"
+					>
+						<img :src="post.image" width="400" height="200" alt="" class="filter:brightness(0.9) width:100% height:200px object-fit:cover border-radius:4px border:1px_solid_$grey3" loading="lazy" fetchpriority="low">
+						<div class="padding-top:12px">
+							<div class="color:$blue4">{{ getPostCreatedAtDate(post.createdAt) }}</div>
+							<h3 class="margin-top:0 margin-bottom:4px font-size:18px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:84px">{{ post.title }}</h3>
+						</div>
+					</nuxt-link>
+				</div>
+			</section>
 		</div>
 	</div>
 </template>
@@ -171,8 +190,15 @@ export default {
 			.only(['title', 'path'])
 			.sortBy('createdAt', 'asc')
 			.surround(params.slug)
-			.fetch()
-		return { post, previousPost, nextPost };
+			.fetch();
+
+		const newPosts = await blogRepository.createQueryBuilder().sortBy('createdAt', 'desc')
+			.only(['path', 'image', 'title', 'createdAt', 'annotation'])
+			.where({ title: { $ne: post.title }})
+			.limit(3)
+			.fetch();
+
+		return { post, previousPost, nextPost, newPosts };
 	},
 	mounted() {
 		document.querySelectorAll('h2, h3, h4, h5, h6').forEach((title) => {
