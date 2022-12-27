@@ -116,7 +116,7 @@ const config = {
 
 const bundlesSplittingExampleSnippet = `
 const bundles = [
-	{ files: [ 'templates/**/*.html', outputFile: 'global.css']},
+	{ files: [ 'templates/**/*.html' ], outputFile: 'global.css'},
 
 	{ files: [ 'layout.html' ], outputFile: 'layout.css' },
 	{ files: [ 'index.html' ], outputFile: 'index.css' }
