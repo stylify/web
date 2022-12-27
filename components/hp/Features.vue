@@ -78,7 +78,7 @@ const cssOutputExampleSnippet = `
 .c:hover {color:lightblue}
 
 @media (min-width: 1024px) {
-  .d{ font-size: 23px }
+  .d{ font-size: 32px }
 }
 `.trim();
 
