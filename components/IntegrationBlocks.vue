@@ -10,7 +10,7 @@ stylify-components
 -->
 <template>
 	<div
-		class="display:grid grid-template-columns:repeat(auto-fit,minmax(112px,1fr)) gap:12px"
+		class="display:grid grid-template-columns:repeat(auto-fit,minmax(70px,1fr)) md:grid-template-columns:repeat(auto-fit,minmax(112px,1fr)) gap:12px"
 	>
 		<nuxt-link to="/docs/integrations/browser" class="integration-block">
 			<div class="integration-block__image-wrapper">
@@ -21,7 +21,7 @@ stylify-components
 					width="2"
 					loading="lazy"
 					fetchpriority="low"
-					class="width:auto height:40px max-width:100px"
+					class="width:100% height:40px max-width:100px"
 				/>
 			</div>
 		</nuxt-link>

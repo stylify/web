@@ -21,7 +21,7 @@ stylify-components
 			<h2 class="hp-section-title">
 				Why Stylify instead of CSS or inline styles?
 			</h2>
-			<div class="font-size:20px [a]{color:$blue1}">Because of <nuxt-link to="/docs/get-started/why-stylify-css#problems-stylify-css-tries-to-solve">fewer CSS headaches</nuxt-link>, <nuxt-link to="/docs/get-started/why-stylify-css#faster-coding">faster coding</nuxt-link>, and <nuxt-link to="/docs/get-started/why-stylify-css#output-optimization">extremely optimized output</nuxt-link>&nbsp;💎.</div>
+			<div class="md:font-size:20px [a]{color:$blue1}">Because of <nuxt-link to="/docs/get-started/why-stylify-css#problems-stylify-css-tries-to-solve">fewer CSS headaches</nuxt-link>, <nuxt-link to="/docs/get-started/why-stylify-css#faster-coding">faster coding</nuxt-link>, and <nuxt-link to="/docs/get-started/why-stylify-css#output-optimization">extremely optimized output</nuxt-link>&nbsp;💎.</div>
 		</section>
 
 		<hp-features />
