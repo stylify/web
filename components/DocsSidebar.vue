@@ -1,5 +1,5 @@
 <template>
-	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100%">
+	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100% position:sticky top:0 left:0 z-index:1">
 		<aside
 			@click="toggleSidebar"
 			:class="[
@@ -49,7 +49,7 @@
 				</section>
 			</div>
 		</aside>
-		<div class="background:lighten($blue3,20) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px_0 position:sticky lg:display:none margin-top:-24px margin-bottom:24px text-align:center">
+		<div class="background:colorToRgb(#1e2431,0.8) backdrop-filter:blur(12px) z-index:1 top:0 padding:8px_0 position:sticky lg:display:none margin-bottom:24px text-align:center">
 			<a role="button" @click="toggleSidebar" class="cursor:pointer display:inline-flex align-items:center">
 				<i class="icon icon-menu margin-right:4px font-weight:bold color:$blue1"></i>
 				<span>Show docs navigation</span>
