@@ -11,10 +11,14 @@ code {
 	background: #222e40
 }
 
+pre {
+	border: 1px solid var(--blue5);
+}
+
 pre code {
 	padding: 0;
 	color: #fff;
-	background: var(--blue6)
+	background: var(--blue6);
 }
 
 .prism-editor__editor,

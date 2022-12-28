@@ -23,13 +23,14 @@ export default defineConfig({
 			// Ignore code areas in docs
 			/`{3}\S+([\s\S]+?)`{3}/
 		],
+		// #0f172a
 		variables: {
 			blue1: '#01befe',
 			blue2: '#f2fcff',
 			blue3: '#0a101d',
 			blue4: '#99a6b8',
 			blue5: '#36425b',
-			blue6: '#1a2331',
+			blue6: '#0e1526cc',
 
 			orange1: '#fe9901',
 			orange2: '#fff9f2',
@@ -55,7 +56,7 @@ export default defineConfig({
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
 			'::selection': 'color:#fff background:$blue1',
-			'.prism-editor-wrapper *': 'font-size:16px line-height:1',
+			'.prism-editor-wrapper *': 'font-size:14px line-height:24px',
 
 			// Articles common
 			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',
