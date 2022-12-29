@@ -13,13 +13,13 @@ For an easier start, you can check out the [Stylify Stackblitz playground](https
 ## 💎 Stylify CSS Introduction
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-- ✨ CSS-like selectors
-- 💎 No framework to study
-- 💡 Less time spent in docs
-- 🧰 Mangled & Extremely small CSS
-- 🤘 No purge needed
-- 🚀 Components, Variables, Custom selectors
-- 📦 It can generate multiple CSS bundles
+- ✅ CSS-like selectors
+- ✅ No framework to study
+- ✅ Less time spent in docs
+- ✅ Mangled & Extremely small CSS
+- ✅ No CSS purge needed
+- ✅ Components, Variables, Custom selectors
+- ✅ It can generate multiple CSS bundles
 
 Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 

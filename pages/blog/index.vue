@@ -19,7 +19,7 @@
 				<div class="padding-top:12px">
 					<div class="color:$blue4">{{ getPostCreatedAtDate(post.createdAt) }}</div>
 					<h2 class="margin-top:0 margin-bottom:4px font-size:18px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:84px">{{ post.title }}</h2>
-					<p class="margin-bottom:0 margin-top:4px font-size:16px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:72px">{{ post.annotation }}</p>
+					<p class="margin-bottom:0 margin-top:4px font-size:16px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:74px">{{ post.annotation }}</p>
 				</div>
 			</nuxt-link>
 		</div>

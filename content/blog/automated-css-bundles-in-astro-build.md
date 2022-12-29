@@ -17,13 +17,13 @@ Utility-first CSS bundles can be very small. But what if, we could make them eve
 ## Stylify CSS introduction
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
-- ✨ CSS-like selectors
-- 💎 No framework to study
-- 💡 Less time spent in docs
-- 🧰 Mangled & Extremely small CSS
-- 🤘 No purge needed
-- 🚀 Components, Variables, Custom selectors
-- 📦 It can generate multiple CSS bundles
+- ✅ CSS-like selectors
+- ✅ No framework to study
+- ✅ Less time spent in docs
+- ✅ Mangled & Extremely small CSS
+- ✅ No CSS purge needed
+- ✅ Components, Variables, Custom selectors
+- ✅ It can generate multiple CSS bundles
 
 Also we have a page about [what problems Stylify CSS solves and why you should give it a try!](https://stylifycss.com/docs/get-started/why-stylify-css)
 
