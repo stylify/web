@@ -1,7 +1,7 @@
 ---
 section: get-started
 
-order: 3
+order: 4
 
 navigationTitle: "Mangling selectors"
 

@@ -1,7 +1,7 @@
 ---
 section: get-started
 
-order: 2
+order: 1
 
 navigationTitle: "Why Stylify?"
 
