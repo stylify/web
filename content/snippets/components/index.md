@@ -36,6 +36,7 @@ Components' proportions are taken from their [community figma file](https://www.
 - <nuxt-link to="/snippets/components/dialogs">Dialogs</nuxt-link>
 - <nuxt-link to="/snippets/components/dividers">Dividers</nuxt-link>
 - <nuxt-link to="/snippets/components/grids">Grids</nuxt-link>
+- <nuxt-link to="/snippets/components/lists">Lists</nuxt-link>
 - <nuxt-link to="/snippets/components/messages">Messages</nuxt-link>
 - <nuxt-link to="/snippets/components/shadows">Shadows</nuxt-link>
 - <nuxt-link to="/snippets/components/switches">Switches</nuxt-link>

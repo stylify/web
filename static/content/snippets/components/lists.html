@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lists</title>
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script>
+ -->	<style id="stylify-css">.font-size\:62\,5\%{font-size:62,5%}.padding-left\:0{padding-left:0}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.\[li\:before\]\{content\:\^\✅\^\;position\:absolute\;left\:0\} li:before,.content\:\^\✅\^{content:'✅'}.\[li\:before\]\{content\:\^\✅\^\;position\:absolute\;left\:0\} li:before,.\[li\:before\]\{position\:absolute\;left\:0\} li:before,.position\:absolute{position:absolute}.\[li\:before\]\{content\:\^\✅\^\;position\:absolute\;left\:0\} li:before,.\[li\:before\]\{position\:absolute\;left\:0\} li:before,.left\:0{left:0}.\[li\:last\-of\-type\]\{margin\-bottom\:0\} li:last-of-type,.margin-bottom\:0{margin-bottom:0}.\[li\]\{padding\-left\:28px\;margin\-bottom\:4px\;position\:relative\;list\-style\:none\} li,.padding-left\:28px{padding-left:28px}.\[li\]\{padding\-left\:28px\;margin\-bottom\:4px\;position\:relative\;list\-style\:none\} li,.margin-bottom\:4px{margin-bottom:4px}.\[li\]\{padding\-left\:28px\;margin\-bottom\:4px\;position\:relative\;list\-style\:none\} li,.position\:relative{position:relative}.\[li\]\{padding\-left\:28px\;margin\-bottom\:4px\;position\:relative\;list\-style\:none\} li,.list-style\:none{list-style:none}.\[li\:nth\-child\(odd\)\:before\]\{content\:\^\🍎\^\} li:nth-child(odd):before,.content\:\^\�\�\^{content:'🍎'}.\[li\:nth\-child\(even\)\:before\]\{content\:\^\🥑\^\} li:nth-child(even):before,.content\:\^\🥑\^{content:'🥑'}.\[li\.pros\:before\]\{content\:\^\👍\^\} li.pros:before,.content\:\^\👍\^{content:'👍'}.\[li\.cons\:before\]\{content\:\^\👎\^\} li.cons:before,.content\:\^\👎\^{content:'👎'}</style>
+</head>
+<body>
+
+<ul class="
+	padding-left:0
+	[li:before]{content:^✅^;position:absolute;left:0}
+	[li:last-of-type]{margin-bottom:0}
+	[li]{padding-left:28px;margin-bottom:4px;position:relative;list-style:none}
+">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<ul class="
+	padding-left:0
+	[li]{padding-left:28px;margin-bottom:4px;position:relative;list-style:none}
+	[li:last-of-type]{margin-bottom:0}
+	[li:before]{position:absolute;left:0}
+	[li:nth-child(odd):before]{content:^🍎^}
+	[li:nth-child(even):before]{content:^🥑^}
+">
+	<li>Odd item</li>
+	<li>Even item</li>
+	<li>Odd item</li>
+	<li>Even item</li>
+</ul>
+
+<ul class="
+	padding-left:0
+	[li]{padding-left:28px;margin-bottom:4px;position:relative;list-style:none}
+	[li:last-of-type]{margin-bottom:0}
+	[li:before]{position:absolute;left:0}
+	[li.pros:before]{content:^👍^}
+	[li.cons:before]{content:^👎^}
+">
+	<li class="pros">Pros (.pros)</li>
+	<li class="cons">Cons (.cons)</li>
+</ul>
+
+</body>
+</html>

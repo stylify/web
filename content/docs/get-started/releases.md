@@ -1,7 +1,7 @@
 ---
 section: get-started
 
-order: 4
+order: 5
 
 navigationTitle: "Releases & Updating"
 

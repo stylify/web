@@ -12,6 +12,12 @@ description: "Stylify CSS Grids Components. Prepared CSS grids for your next web
 
 <interactive-preview class="margin-bottom:48px"
 min-height="180"
-title="Responsive grid"
+title="Responsive Grid"
 description="Responsive grid with minimum column width."
 html-snippet="components/grids-fit"></interactive-preview>
+
+<interactive-preview class="margin-bottom:48px"
+min-height="180"
+title="Fixed Columns Count"
+description="Responsive grid with fixed columns count."
+html-snippet="components/grids-columns"></interactive-preview>
