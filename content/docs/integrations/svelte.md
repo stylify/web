@@ -32,9 +32,60 @@ howToSchemaSteps: [
 
 Svelte is a radical new approach to building user interfaces. Whereas traditional frameworks like React and Vue do the bulk of their work in the browser, Svelte shifts that work into a compile step that happens when you build your app.
 
-<stack-blitz-link link="stylify-svelte-vite"></stack-blitz-link>
+You can use Stylify CSS with SvelteKit or with Vite + Svelte App. Below are guides for both scenarios.
+
+## How to integrate the Stylify CSS with SvelteKit
+
+
+<stack-blitz-link link="stylify-sveltekit-example"></stack-blitz-link>
+
+First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+Next add the following configuration into the `vite.config.js`:
+
+```js
+import { sveltekit } from '@sveltejs/kit/vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.svelte'],
+	}]
+});
+
+const config = {
+	plugins: [
+		stylifyPlugin,
+		sveltekit(),
+	]
+};
+
+export default config;
+```
+
+The last step, create `src/routes/+layout.svelte` with the following content `stylify.css`:
+
+```html
+<script>
+	import '../stylify.css';
+</script>
+
+<slot />
+```
+
+In case, you have created more bundles, for example for pages, you have to add paths to those generated CSS files into correct Svelte files.
+
+Now run `yarn dev`. The `src/stylify.css` file will be generated.
 
 ## How to integrate the Stylify CSS with Svelte and Vite.js
+
+<stack-blitz-link link="stylify-svelte-vite"></stack-blitz-link>
 
 The example below works with the Vite - Svelte template. You can however use the example below and configure it for React.js, Vue and any other framework you use.
 
