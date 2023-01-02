@@ -28,8 +28,9 @@ stylify-components
 				<div class="width:100% display:flex flex-direction:column">
 					<div class="padding:8px_12px_0_12px background:$blue6 font-weight:bold color:$blue4 white-space:nowrap overflow-x:auto">
 						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Editor</a>
-						<a role="button" v-on:click="selectedTab = 'css'" :class="[selectedTab === 'css' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production CSS</a>
-						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'mangledHtml'" :class="[selectedTab === 'mangledHtml' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production HTML</a>
+						<a role="button" v-on:click="selectedTab = 'devCss'" :class="[selectedTab === 'devCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Dev CSS</a>
+						<a role="button" v-on:click="selectedTab = 'productionCss'" :class="[selectedTab === 'productionCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production CSS</a>
+						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'productionHtml'" :class="[selectedTab === 'productionHtml' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production HTML</a>
 					</div>
 					<div class="display:flex flex:1">
 						<code ref="codeSlot" hidden><slot></slot></code>
@@ -42,8 +43,16 @@ stylify-components
 						></example-code-editor>
 						<example-code-editor
 							class="content-visibility:auto height:100% padding:12px_0 display:flex justify-content:center"
-							v-show="selectedTab === 'css'"
-							:defaultCode="css.replace(previewElRegExp, '')"
+							v-show="selectedTab === 'devCss'"
+							:defaultCode="devCss.replace(previewElRegExp, '')"
+							:withBorder=false
+							lang="css"
+							readonly
+						/>
+						<example-code-editor
+							class="content-visibility:auto height:100% padding:12px_0 display:flex justify-content:center"
+							v-show="selectedTab === 'productionCss'"
+							:defaultCode="productionCss.replace(previewElRegExp, '')"
 							:withBorder=false
 							lang="css"
 							readonly
@@ -51,8 +60,8 @@ stylify-components
 						<example-code-editor
 							class="content-visibility:auto height:100% padding:12px_0 display:flex justify-content:center"
 							v-if="showHtml"
-							v-show="selectedTab === 'mangledHtml'"
-							:defaultCode="mangledHtml"
+							v-show="selectedTab === 'productionHtml'"
+							:defaultCode="productionHtml"
 							:withBorder=false
 							readonly
 						/>
@@ -93,10 +102,11 @@ export default {
 
 		return {
 			code: '',
-			css: '',
+			devCss: '',
+			productionCss: '',
 			previewElClass: previewClass,
 			previewElRegExp: new RegExp('\\.' + previewClass, 'g'),
-			mangledHtml: '',
+			productionHtml: '',
 			previewCode: '',
 			previewCss: '',
 			selectedTab: 'editor'
@@ -123,19 +133,22 @@ export default {
 			this.selectedTab = tab;
 		},
 		setPreviewCode(code) {
-			const editorCompiler = new Compiler();
-			const previewCompiler = new Compiler();
-
-			editorCompiler.dev = true;
-			editorCompiler.mangleSelectors = true;
+			const previewCompiler = new Compiler({ dev: true });
+			const editorCompiler = new Compiler({
+				dev: true,
+				mangleSelectors: true
+			});
 
 			hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
 				cssRecord.scope = `.${this.previewElClass} `;
 			});
 
 			const compilationResult = editorCompiler.compile(code);
-			this.css = compilationResult.generateCss();
-			this.mangledHtml = editorCompiler.rewriteSelectors(code);
+			const previewCss = previewCompiler.compile(code).generateCss();
+
+			this.devCss = previewCss;
+			this.productionCss = compilationResult.generateCss();
+			this.productionHtml = editorCompiler.rewriteSelectors(code);
 
 			this.previewCode = code;
 			this.previewCss = previewCompiler.compile(code).generateCss();

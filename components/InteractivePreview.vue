@@ -21,7 +21,7 @@ stylify-components
 		</div>
 		<div v-if="description" class="margin-top:4px">{{ description }}</div>
 		<div v-if="hasCode('html')" class="margin-top:12px">
-			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
+			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html?${iframeUid}`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
 			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" :key="codeType" v-if="hasCode(codeType)">
 				<example-code-editor readonly :defaultCode="codeSnippet" />
 			</div>
@@ -46,6 +46,7 @@ export default {
 		description: String
 	},
 	data: () => ({
+		iframeUid: Date.now().toString(36) + Math.random().toString(36).substring(2),
 		selectedTab: 'preview',
 		codeTypes: ['HTML', 'Vue', 'React'],
 		scopeClass: '',
