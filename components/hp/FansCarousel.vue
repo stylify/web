@@ -126,6 +126,20 @@ export default {
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2013972'
 			},
 			{
+				name: 'Rin',
+				note: 'Full-Stack Developer',
+				image: 'rin.jpg',
+				text: `Immediately interested when I read features on documentation, give a shot with Astro and absolutely love it.`,
+				link: 'https://twitter.com/rrrriiiiiinnnn/status/1609084128242331660'
+			},
+			{
+				name: 'Toheeb Ogunbiyi',
+				note: 'Web-UI Engineer',
+				image: 'toheeb.jpg',
+				text: `Utility on steroids, I love this! No weird utility names, almost same as CSS. Chars as class names on production. Colocation of states within the rule makes a lot of sense too. This makes up for readability compared to others.`,
+				link: 'https://twitter.com/ToheebDotCom/status/1608710082157760514'
+			},
+			{
 				name: 'David Mario Licla',
 				note: 'Front-End dev at Forma',
 				image: 'david-mario-licla.jpeg',
