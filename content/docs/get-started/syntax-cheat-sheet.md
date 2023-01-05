@@ -19,8 +19,10 @@ If you haven't found the selector you were looking for, let us know, and we will
 </note>
 
 ## Special characters
-When creating a selector, use `_` (underscore) instead of a space and `^` for a quote.
-This applies for any form of selector.
+- When creating a selector, use `_` (underscore) instead of space and `^` for a quote. This applies to any form of a selector.
+- To preserve an underscore or a hat character, use `\` (backslash) => `\_`.
+
+- If you defined variables, you can use them within selectors. Just add `$` before the variable.
 
 ## Selectors
 
@@ -43,6 +45,21 @@ content:^✅^
 hover:color:blue
 👉 .color\:blue:hover {}
 
+<!--
+Wrap classes into pseudo-classes group.
+The example below is a shortcut for
+hover:color:red + hover:font-weight:bold.
+-->
+hover:{color:red;font-weight:bold}
+👉 hover\:\{color\:red;font-weight:bold\}:hover {}
+
+<!-- The same as above but also with screen -->
+md:hover:{color:red;font-weight:bold}
+👇
+@media (min-width: 1024px) {
+	md\:hover\:\{color\:red;font-weight:bold\}:hover {}
+}
+
 lg:hover:color:blue
 👇
 @media (min-width: 1024px) {
@@ -64,12 +81,12 @@ minw640px&&maxw1023px:color:blue
 
 ## Custom Selectors
 
-Custom selectors have the following pattern:
+- Custom selectors have the following pattern:
 ```
 [css selectors]{stylify selectors split by ;}
 ```
 
-When the `&` character is used within class attribute, it refers to current element.
+- When the `&` character is used within class attribute, it refers to current element.
 
 Below are examples for custom selectors within `class` attribute:
 ```html
@@ -95,6 +112,10 @@ Below are examples for custom selectors within `class` attribute:
 [&+div]{margin-left:12px}
 👉 .\[\&\+div\]\{margin\-left\:12px\}+div {}
 
+<!-- Preserving _ (underscore) using \ before _ -->
+[.custom\_\_section]{color:blue}
+👉 .\[\.custom\_\_section\]\{color\:blue\} .custom__section {}
+
 [li:nth-of-type(even)]{color:blue}
 👉 .\[li\:nth\-of\-type\(even\)\]\{color\:blue\} li:nth-of-type(even) {}
 
@@ -110,9 +131,9 @@ Below are examples for custom selectors within `class` attribute:
 👉 .\[\:not\(summary\)\]\{opacity\:O\} :not(summary) {}
 ```
 
-The nested syntax is similar to SCSS and the actual submitted CSS-nesting module (in proposal).
+- The nested syntax is similar to SCSS and the actual submitted CSS-nesting module (in proposal).
 
-The `&` character always refers to the upper level.
+- The `&` character always refers to the upper level.
 
 Here are equialents written within Stylify CSS nesting syntax:
 ```js

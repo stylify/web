@@ -17,7 +17,7 @@ const stylifyNodeModuleDir = path.join(nodeModulesDir, 'stylify');
 
 console.log("Copying build files");
 fs.copySync(path.join(stylifyPackageDir, 'lib'), path.join(stylifyNodeModuleDir, 'lib'));
-fs.copySync(path.join(stylifyPackageDir, 'lib'), path.join(stylifyNodeModuleDir, 'lib'));
+fs.copySync(path.join(stylifyPackageDir, 'esm'), path.join(stylifyNodeModuleDir, 'esm'));
 
 fs.copySync(path.join(bundlerPackageDir, 'lib'), path.join(bundlerNodeModuleDir, 'lib'));
 fs.copySync(path.join(bundlerPackageDir, 'esm'), path.join(bundlerNodeModuleDir, 'esm'));

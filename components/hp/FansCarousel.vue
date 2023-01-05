@@ -9,7 +9,7 @@ stylify-keyframes
 -->
 <template>
 	<div class="slideshow width:200% height:230px margin:0_auto position:relative transform:translate3d(0,0,0) overflow:hidden">
-		<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_70s_linear_infinite column-gap:12px">
+		<div class="display:flex justify-content:center flex-direction:row align-items:flex-start position:absolute top:0 left:0 height:100% transform:translate3d(0,0,0) animation:slideshow_90s_linear_infinite column-gap:12px">
 			<a
 				v-for="(fan, index) in fans"
 				:key="'orig-' + index"

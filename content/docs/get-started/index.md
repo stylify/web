@@ -28,13 +28,18 @@ The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pe
 
 <nuxt-link to="/docs/stylify/compiler#syntax">Syntax</nuxt-link> is similar to CSS `property:value` with a few differences:
 - Use `_` (one underscore) for a space and `^` (a hat) for a quote
+- To preserver underscore or a hat character, use `\` (backslash) => `\_`
 - The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
+- You can group selectors to make them a bit shorter: `<screen>:<pseudo classes>:{<multiple properties split by ; >}`
 
 ```html
 color:blue => blue color
 hover:color:blue => blue color after hover
 lg:color:blue => blue color for from selected screen
 lg:hover:color:blue => blue color after hover from selected screen
+
+hover:{color:blue;font-weight:bold} # Shortcut for multiple selectors
+lg:hover:{color:blue;font-weight:bold} # The same but also for screen
 ```
 
 <!-- stylify-ignore -->
