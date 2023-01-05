@@ -57,6 +57,12 @@ export default defineConfig({
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
 			'::selection': 'color:#fff background:$blue1',
 			'.prism-editor-wrapper *': 'font-size:14px line-height:24px',
+			'li': `
+				p {
+					&:first-of-type { margin-top:0 }
+					&:last-of-type { margin-bottom:0 }
+				}
+			`,
 
 			// Articles common
 			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',

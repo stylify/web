@@ -23,7 +23,7 @@ stylify-keyframes
 <script>
 export default {
 	data: () => ({
-		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : '248'
+		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : '258'
 	}),
 	props: {
 		type: {
