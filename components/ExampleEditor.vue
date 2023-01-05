@@ -133,25 +133,28 @@ export default {
 			this.selectedTab = tab;
 		},
 		setPreviewCode(code) {
-			const previewCompiler = new Compiler({ dev: true });
-			const editorCompiler = new Compiler({
-				dev: true,
-				mangleSelectors: true
-			});
+			try {
+				const previewCompiler = new Compiler({ dev: true });
+				const editorCompiler = new Compiler({
+					dev: true,
+					mangleSelectors: true
+				});
 
-			hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
-				cssRecord.scope = `.${this.previewElClass} `;
-			});
+				hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
+					cssRecord.scope = `.${this.previewElClass} `;
+				});
 
-			const compilationResult = editorCompiler.compile(code);
-			const previewCss = previewCompiler.compile(code).generateCss();
+				const compilationResult = editorCompiler.compile(code);
+				const previewCss = previewCompiler.compile(code).generateCss();
 
-			this.devCss = previewCss;
-			this.productionCss = compilationResult.generateCss();
-			this.productionHtml = editorCompiler.rewriteSelectors(code);
+				this.devCss = previewCss;
+				this.productionCss = compilationResult.generateCss();
+				this.productionHtml = editorCompiler.rewriteSelectors(code);
 
-			this.previewCode = code;
-			this.previewCss = previewCompiler.compile(code).generateCss();
+				this.previewCode = code.replace(/\\([^\\]+)/g, (fullMatch, followingCharacter) => followingCharacter);
+				this.previewCss = previewCompiler.compile(code).generateCss();
+			} catch (error) {
+			}
 		}
 	},
 };
