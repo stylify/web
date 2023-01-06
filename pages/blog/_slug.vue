@@ -82,8 +82,8 @@ stylify-components
 				</div>
 			</div>
 		</div>
-		<div class="padding-top:12px lg:margin-left:24px lg:max-width:408px max-height:100%">
-			<section class="top:8px lg:position:sticky ">
+		<div class="padding-top:12px lg:margin-left:24px lg:max-width:408px max-height:calc(100%_-_$stickyHeaderMargin)">
+			<section class="top:calc($stickyHeaderMargin_+_12px) lg:position:sticky">
 				<h2 class="text-align:center">Other Articles</h2>
 				<div class="gap:12px display:grid grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
 					<nuxt-link

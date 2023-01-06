@@ -44,7 +44,9 @@ export default defineConfig({
 			shadow2: '0 2px 12px rgba(0, 0, 0, 0.25)',
 
 			radius1: '4px',
-			radius2: '8px'
+			radius2: '8px',
+
+			stickyHeaderMargin: '62px'
 		},
 		customSelectors: {
 			// Global

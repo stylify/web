@@ -1,12 +1,12 @@
 <template>
-	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100% position:sticky top:0 left:0 z-index:1">
+	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100% position:sticky top:52px left:0 z-index:4 lg:z-index:1">
 		<aside
 			@click="toggleSidebar"
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
 				`width:100% max-height:100vh height:100% overflow:auto transition:transform_0.3s_ease-in-out
 				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
-				lg:position:sticky lg:transition:none lg:transform:translateX(0)`
+				lg:{position:sticky;transition:none;transform:translateX(0);top:$stickyHeaderMargin;max-height:calc(100vh_-_$stickyHeaderMargin)}`
 			]
 		">
 			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0 min-height:100vh">
@@ -23,10 +23,10 @@
 						:to="sectionItems[0].dir"
 						:class="[
 							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:$blue4',
-							`display:block text-decoration:none position:sticky top:0 z-index:1 [&.nuxt-link-exact-active_h3]{color:#01befe!important}`
+							`display:block text-decoration:none position:sticky top:-2px z-index:1 [&.nuxt-link-exact-active_h3]{color:#01befe!important}`
 						]"
 					>
-						<h3 class="font-size:16px padding:8px_0 position:sticky margin:0 top:0 backdrop-filter:blur(12px) z-index:1">
+						<h3 class="font-size:16px padding:8px_0 margin:0 backdrop-filter:blur(12px) z-index:1">
 							{{ sectionItems[0].navigationTitle }}
 						</h3>
 					</nuxt-link>

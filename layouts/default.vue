@@ -5,11 +5,16 @@ stylify-components
 -->
 <template>
 	<div>
-		<header>
+		<header class="
+			background:rgba(10,16,29,0.9) backdrop-filter:blur(8px) border-bottom:1px_solid_transparent
+			border-color:$blue5 position:sticky top:-110px z-index:3
+			sm:top:-55px minw1500px:top:0
+		">
 			<div class="
-				display:flex flex-direction:column justify-content:center padding-top:12px lg:padding-top:24px
-				padding-bottom:24px justify-content:space-between align-items:center container container-lg
+				display:flex flex-direction:column justify-content:center padding-top:8px padding-bottom:8px
+				justify-content:space-between align-items:center container container-lg
 				minw1500px:flex-direction:row
+				lg:padding-top:8px
 			">
 				<div class="display:flex flex-direction:column sm:flex-direction:row align-items:center margin-bottom:12px width:100% minw1500px:width:auto minw1500px:margin-bottom:0 justify-content:space-between">
 					<section class="display:flex minw1500px:min-width:300px align-items:center margin-bottom:12px sm:margin-bottom:0">
@@ -28,13 +33,13 @@ stylify-components
 				</div>
 				<div class="flex:1 overflow:auto width:calc(100%_+_16px) justify-content:center margin-left:-8px margin-right:-8px display:inline-flex position:relative">
 					<div class="justify-content:flex-start display:flex max-width:100%">
-						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px font-weight:bold align-items:center" role="navigation">
-							<nuxt-link to="/docs/get-started" class="navigation__link">Docs</nuxt-link>
-							<nuxt-link to="/snippets/components" class="navigation__link">Components & Snippets</nuxt-link>
-							<nuxt-link to="/docs/get-started/why-stylify-css" class="navigation__link">Why Stylify?</nuxt-link>
-							<nuxt-link to="/blog" class="navigation__link">Blog</nuxt-link>
+						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding:0_8px font-weight:bold align-items:center lg:padding:0" role="navigation">
+							<nuxt-link to="/docs/get-started" class="js-main-nav-link navigation__link">Docs</nuxt-link>
+							<nuxt-link to="/snippets/components" class="js-main-nav-link navigation__link">Components & Snippets</nuxt-link>
+							<nuxt-link to="/docs/get-started/why-stylify-css" class="js-main-nav-link navigation__link">Why Stylify?</nuxt-link>
+							<nuxt-link to="/blog" class="js-main-nav-link navigation__link">Blog</nuxt-link>
 							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="navigation__link">Playground</a>
-							<nuxt-link to="/faq" class="navigation__link">FAQ</nuxt-link>
+							<nuxt-link to="/faq" class="js-main-nav-link navigation__link">FAQ</nuxt-link>
 							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} [.DocSearch-Button-Keys]{display:none} margin-left:24px minw769px:width:104px width:36px height:36px"></div>
 						</nav>
 						<span class="minw1500px:display:none">&nbsp;</span>
@@ -119,7 +124,6 @@ if (process.client) {
 	});
 }
 
-
 export default {
 	fetch: async function () {
 		const linksRequiredData = ['navigationTitle', 'path', 'dir'];
@@ -134,7 +138,7 @@ export default {
 		this.integrationLinks = integrationLinks;
 		this.componentsLinks = componentsLinks
 	},
-	mounted: () => {
+	mounted() {
 		const initDocSearch = (query) => {
 			docsearch({
 				appId: 'MIG46WYBYC',
@@ -158,6 +162,24 @@ export default {
 		} else {
 			initDocSearch()
 		}
+
+		const scrollNavElementIntoView = (event) => {
+			let previousScrollTopPosition = document.documentElement.scrollTop;
+			setTimeout(() => {
+				if (document.documentElement.scrollTop !== previousScrollTopPosition) {
+					scrollNavElementIntoView(event);
+					return;
+				}
+
+				event.target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+			}, 200);
+		}
+
+		document.querySelectorAll('.js-main-nav-link').forEach((link) => {
+			link.addEventListener('click', (event) => {
+				scrollNavElementIntoView(event);
+			})
+		});
 	},
 	watch: {
 		$route: {
