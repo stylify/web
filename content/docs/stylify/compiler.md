@@ -172,8 +172,8 @@ const compilerConfig = {
 Screens are used to generate media queries. The key can be a string or a regular expression. You can use predefined [screens](/docs/stylify/native-preset#screens) or define your own.
 
 Screns can be combined using logical operands:
-- Logical AND: &&
-- Logical OR: ||
+- **Logical AND**: `&&`
+- **Logical OR**: `||`
 
 </template>
 <template #code>
@@ -230,7 +230,16 @@ const compilerConfig = {
 			&.btn {
 				font-size:48px
 			}
-		`
+		`,
+		// Dynamic components
+		// When the function has a callback, it accepts matches from regular expression
+		// variables, helpers and if is dev environment.
+		// This way you can define component, that returns selectors based on matches
+		// from regular expression.
+		'title(?:--(\\S+))?': ({ matches, variables, helpers, dev }) => {
+			const color = matches[1] ?? '#000';
+			return `font-size:24px${color ? ` color:${color}` : ''}`;
+		},
 	}
 };
 ```
@@ -239,6 +248,10 @@ Usage:
 ```html
 <span class="button"></span>
 <div class="container"></div>
+<!-- Dynamic Components -->
+<div class="title"></div>
+<div class="title--#06f">
+<div class="title--$red">
 ```
 
 </template>

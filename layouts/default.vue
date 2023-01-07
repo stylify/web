@@ -6,7 +6,7 @@ stylify-components
 <template>
 	<div>
 		<header class="
-			background:rgba(10,16,29,0.9) backdrop-filter:blur(8px) border-bottom:1px_solid_transparent
+			background:rgba(10,16,29,0.8) backdrop-filter:blur(8px) border-bottom:1px_solid_transparent
 			border-color:$blue5 position:sticky top:-110px z-index:3
 			sm:top:-55px minw1500px:top:0
 		">
