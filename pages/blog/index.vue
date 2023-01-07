@@ -1,5 +1,5 @@
 <template>
-	<section class="container md:margin-top:48px margin-bottom:48px">
+	<section class="container margin-top:24px margin-bottom:48px md:margin-top:48px">
 		<h1 class="text-align:center font-size:48px margin-bottom:24px margin-top:0">Blog</h1>
 		<div class="display:flex flex-direction:column flex-wrap:wrap sm:margin-left:-24px sm:flex-direction:row">
 			<nuxt-link

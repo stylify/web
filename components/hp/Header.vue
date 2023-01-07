@@ -1,5 +1,10 @@
 <template>
-	<div class="container lg:margin-top:24px lg:margin-top:48px margin-bottom:64px tolg:flex-direction:column display:flex lg:display:grid lg:grid-template-columns:1fr_1fr xl:grid-template-columns:48%_48% gap:2% justify-content:space-between tolg:align-items:center">
+	<div class="
+		container margin-top:24px margin-bottom:64px display:flex gap:2% justify-content:space-between
+		tolg:{flex-direction:column;align-items:center}
+		lg:{margin-top:48px;display:grid;grid-template-columns:1fr_1fr}
+		xl:grid-template-columns:48%_48%
+	">
 		<div class="md:max-width:640px">
 			<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 			<section class="margin-bottom:24px lg:font-size:18px">

@@ -81,7 +81,7 @@ const compilerConfig = {
 ```
 
 ## Adding a Variable
-It's not a good practice to have hardcoded values in the code. Therefore you can <nuxt-link to="/docs/stylify/compiler#variables">define Variables</nuxt-link>.
+It's not a good practice to have hardcoded values in the code. Therefore you can <nuxt-link to="/docs/stylify/compiler#variables">define variables</nuxt-link>.
 
 Variable can be defined in a content (expects an object without surounding brackets) when used localy or in a compiler config, when used globally.
 

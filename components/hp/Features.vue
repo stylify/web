@@ -101,24 +101,32 @@ const config = {
 	variables: {
 		primary: '#01befe',
 		titleFontSize: '24px',
+		// Variables based on color scheme dark/light
 		dark: {
 			primary: '#fff'
 		},
+		// Variables based on screen size
 		'minw640px': {
 			titleFontSize: 38px
 		}
 	},
 	components: {
-		'title': 'font-size:24px margin-bottom:12px'
+		'section': 'max-width:1240px margin:0_auto_24px_auto',
+		// Dynamic components
+		'title(?:--(\\\\S+))?': ({ matches, variables, helpers, dev }) => {
+			const color = matches[1] ?? '#000';
+			return \`font-size:24px\${color ? \` color:\${color}\` : ''}\`;
+		},
 	},
 	customSelectors: {
-		'*': 'box-sizing:border-box'
+		'*': 'box-sizing:border-box',
+		'h1,h2': 'margin-top:0 margin-bottom:12px md:margin-bottom:24px'
 	},
 	macros: {
 		'ml:(\\S+?)': ({macroMatch, cssProperties}) => {
-            // ml:24px => will create => margin-left: 24px
-            cssProperties.add('margin-left', macroMatch.getCapture(0));
-        }
+			// ml:24px => will create => margin-left: 24px
+			cssProperties.add('margin-left', macroMatch.getCapture(0));
+		}
 	},
 }
 `.trim();
@@ -151,7 +159,6 @@ stylify-components
 const hooksOptionsExampleSnippet = `
 // This hook example converts px font size
 // to REM and automatically calculates line height.
-
 import {hooks} from '@stylify/stylify';
 
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
