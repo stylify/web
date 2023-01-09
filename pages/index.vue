@@ -48,6 +48,8 @@ stylify-components
 
 		<hp-components />
 
+		<hp-material-theme-guide />
+
 		<hp-quote />
 
 	</div>
