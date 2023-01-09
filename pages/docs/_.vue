@@ -11,6 +11,8 @@
 <script>
 import { DocsRepository } from '~/services/model/DocsRepository';
 
+const host= 'https://stylifycss.com';
+
 export default {
  	asyncData: async ({ $content, params, route, redirect }) => {
 		if (route.path.replace(/\/+$/, '') === '/docs') {
@@ -123,7 +125,9 @@ export default {
 		];
 
 		if (typeof this.pageContent.ogImage !== 'undefined') {
-			metaTags.push({hid: 'og:image', property: 'og:image', content: `/images${this.pageContent.ogImage}`})
+			const ogImage = `${host}/images${this.pageContent.ogImage}`;
+			metaTags.push({ hid: 'twitter:image:src', name: 'twitter:image:src', content:  ogImage });
+			metaTags.push({hid: 'og:image', property: 'og:image', content: ogImage})
 		}
 
 		return {

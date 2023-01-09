@@ -4,7 +4,7 @@ section: snippets
 
 order: 1
 
-ogImage: '/snippets/material-theme/og-image.jpg'
+ogImage: '/snippets/material-theme/og-image-v2.jpg'
 
 navigationTitle: "Material Theme"
 
