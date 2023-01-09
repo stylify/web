@@ -79,7 +79,7 @@ export default {
 
 		const pageTitle = this.pageContent.title + ' | Stylify CSS';
 
-		return {
+		const headData = {
 			title: pageTitle,
 			meta: [
 				{ hid: 'description', name: 'description', content: this.pageContent.description },
@@ -93,7 +93,13 @@ export default {
 			link: [
 				{ rel: 'canonical', href: `https://stylifycss.com${!this.urlPath.startsWith('snippets') ? '/snippets' : ''}/${this.urlPath}`}
 			],
+		};
+
+		if (typeof this.pageContent.ogImage !== 'undefined') {
+			headData.meta.push({hid: 'og:image', property: 'og:image', content: `/images${this.pageContent.ogImage}`})
 		}
+
+		return headData;
 	}
 }
 </script>

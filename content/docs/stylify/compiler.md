@@ -135,6 +135,45 @@ Usage:
 <docs-section>
 <template #description>
 
+
+### externalVariables
+In case you have some CSS variables defined elsewhere than in the Stylify config, you can mark them add them as external.
+
+<note>
+External variables cannot be used within helpers because their value cannot be accessed and processed.
+</note
+
+</template>
+<template #code>
+
+```js
+const compilerConfig = {
+	externalVariables: [
+		// Simple string check
+		'some-color',
+		// Define callback to specify more flexible check.
+		// This will for example mark every variable that starts with md-
+		// as external.
+		(variable) => variable.startsWith('md-') ? true : undefined
+	],
+};
+```
+
+Usage:
+```html
+<span class="
+	color:$some-color
+	background:$md-sys-color-primary
+	border-color:$md-sys-color-tertiary
+"></span>
+```
+
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
 ### keyframes
 Keyframes in Stylify CSS are defined with the same syntax like in the CSS.
 

@@ -54,7 +54,7 @@ export default defineConfig({
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
 			'body': 'font-size:16px color:$blue4 background-color:$blue3',
 			'h1,h2,h3,h4,h5,h6': 'color:#fff',
-			img: 'max-width:100% object-fit:contain',
+			'img,video': 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
 			'::selection': 'color:#fff background:$blue1',
