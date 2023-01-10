@@ -20,6 +20,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 export default defineConfig({
 	compiler: {
 		ignoredAreas: [
+			/\b((?:docs__aside|js-main-nav)-link)/,
 			// Ignore code areas in docs
 			/`{3}\S+([\s\S]+?)`{3}/
 		],

@@ -24,10 +24,7 @@ stylify-components
 			<div class="md:font-size:20px [a]{color:$blue1}">Because of <nuxt-link to="/docs/get-started/why-stylify-css#problems-stylify-css-tries-to-solve">fewer CSS headaches</nuxt-link>, <nuxt-link to="/docs/get-started/why-stylify-css#faster-coding">faster coding</nuxt-link>, and <nuxt-link to="/docs/get-started/why-stylify-css#output-optimization">extremely optimized output</nuxt-link>&nbsp;💎.</div>
 		</section>
 
-		<section class="max-width:100% overflow:hidden">
-			<h2 class="visually-hidden">They talked about Stylify CSS</h2>
-			<HpFansCarousel />
-		</section>
+		<HpFans />
 
 		<hp-features />
 

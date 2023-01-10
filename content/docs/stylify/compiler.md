@@ -247,6 +247,10 @@ When defining a component, you can also use [nested syntax](#nested-syntax-for-c
 
 Components can be also defined directly in files using [content options](#contentoptionsprocessors).
 
+<note>
+When you define a component or macro like <code>link</code> this selector can have a collision in production with selector like <code>sidebar-link</code>, when mangling selectors. This selector will be replaced as <code>a</code> (for link) and <code>sidebar-a</code> (for section). You can prevent this behavior by configuring sidebar-section in <a href="#ignoredareas">ignoredAreas</a> option.
+</note>
+
 </template>
 <template #code>
 
@@ -486,7 +490,9 @@ Note that matching tags or areas using regular expressions is not reliable in so
 
 </template>
 <template #code>
+
 Usage
+
 ```html
 <!-- stylify-ignore -->
 Everything inside will be ignored
@@ -526,6 +532,7 @@ Some configuration options can be defined directly in a file. It's good to keep 
 <template #code>
 
 ```html
+<!--
 // Components expects a valid javascript object as value without surrounding brackets
 stylify-components
 	button: `font-size:24px padding:4px`,
@@ -550,7 +557,7 @@ stylify-keyframes
 		to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
 	`
 /stylify-keyframes
--->
+
 
 // Custom selectors expects a valid javascript object as value without surrounding brackets
 stylify-customSelectors
@@ -567,6 +574,7 @@ stylify-screens
 	'testScreen': '(min-width: 123px)',
 	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
 /stylify-screens
+-->
 ```
 
 Adding custom content option processor
