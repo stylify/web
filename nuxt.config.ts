@@ -42,7 +42,8 @@ export default {
 			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
 			// Twitter Card
 			{ hid: 'twitter:title', name: 'twitter:title', content: defaultPageTitle },
-			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription }
+			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription },
+			{ hid: 'twitter:site', name: 'twitter:site', content: '@stylifycss' },
 		],
 		link: [
 			{ rel: 'apple-touch-icon', sizes: "180x180", href: '/images/favicon/apple-touch-icon.png?v2' },

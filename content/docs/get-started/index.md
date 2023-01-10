@@ -118,6 +118,11 @@ const compilerConfig = {
 };
 ```
 
+<note>
+When you define a component or macro like <code>link</code> this selector can have a collision in production with selector like <code>sidebar-link</code>, when mangling selectors. Check out components documentation for <nuxt-link to="/docs/stylify/compiler#components">more info</nuxt-link>.
+</note>
+
+
 ## Adding Macros
 In case you want to add for example a shorter variant for `margin-left` like `ml`, you can <nuxt-link to="/docs/stylify/compiler#macros">add macro</nuxt-link> as in example below.
 

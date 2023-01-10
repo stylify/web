@@ -14,6 +14,10 @@ When you want to mangle selectors, you must set the compiler option => `mangleSe
 The example below is for a case when you would want to do some custom compilation.
 Packages like [@stylify/bundler](/docs/bundler), [@stylify/unplugin](/docs/unplugin), [@stylify/nuxt](/docs/nuxt), [@stylify/astro](/docs/astro) uses the same process internaly (automaticaly).
 
+<note>
+When you define a component or macro like <code>link</code> this selector can have a collision in production with selector like <code>sidebar-link</code>, when mangling selectors. Check out components documentation for <nuxt-link to="/docs/stylify/compiler#components">more info</nuxt-link>.
+</note>
+
 ```js
 import { Compiler } from '@stylify/stylify';
 
