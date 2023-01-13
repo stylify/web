@@ -10,20 +10,21 @@
 				:href="fan.link"
 				target="blank"
 				rel="noopener nofollow"
-				class="
+				:class="`
 					text-decoration:none color:$blue4 width:100%
 					display:inline-flex flex-direction:column
 					background:lighten($blue3,20) padding:12px border-radius:4px
-				"
+					${fan.text ? '' : 'align-items:center justify-content:center'}
+				`"
 			>
-				<div class="display:flex align-items:center margin-bottom:12px">
-					<img :src="`/images/hp/fans/${fan.image}`" class="border-radius:50%" alt="" loading="lazy" fetchpriority="low" width="50" height="50">
+				<div class="display:flex align-items:center">
+					<img :src="`/images/hp/fans/${fan.image}`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
 					<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
 						<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
 					</div>
 				</div>
-				<div class="font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
+				<div v-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
 			</a>
 		</div>
 		<a @click="() => toggled = !toggled" :class="`
@@ -71,6 +72,34 @@ export default {
 				image: 'phan-an.jpg',
 				text: `This looks super interesting!`,
 				link: 'https://twitter.com/notphanan/status/1566610354246864901'
+			},
+			{
+				name: 'One of the Top Front-End Tools Of 2022',
+				note: 'By Louis Lazaris',
+				image: 'smashing-magazine.png',
+				link: 'https://www.smashingmagazine.com/2023/01/top-frontend-tools-2022/#stylify-https-stylifycss-com/'
+			},
+			{
+				name: 'Mentioned in TLDR.tech newsletter',
+				image: 'tldr.png',
+				link: 'https://tldr.tech/tech/2022-11-11'
+			},
+			{
+				name: 'One of the Best Tailwind CSS Alternatives for 2023',
+				image: 'larainfo.svg',
+				link: 'https://larainfo.com/blogs/best-tailwind-css-alternatives-for-2023'
+			},
+			{
+				name: 'Mentioned in Jamstacked newsletter',
+				note: 'By Brian Rinaldi',
+				image: 'jamlogo.png',
+				link: 'https://jamstack.email/issues/72'
+			},
+			{
+				name: 'Mentioned in Feature Newsletter',
+				note: 'By Gabriel Nunes',
+				image: 'feature-newsletter.webp',
+				link: 'https://codecon.substack.com/p/44-para-ser-mais-que-senior-voce'
 			},
 			{
 				name: 'Lukeshiru',
@@ -156,11 +185,11 @@ export default {
 				link: 'https://twitter.com/CodigoDeMarras/status/1612801313942769664'
 			},
 			{
-				name: 'Mubashar Hashmat',
-				note: 'Manager at Scorp',
-				image: 'mubashar-hashmat.jpg',
-				text: `Extremely awesome 😎.`,
-				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
+				name: 'Ahmed Zougari',
+				note: 'React developer',
+				image: 'ahmed-zougari.jpeg',
+				text: `StylifyCSS is like Tailwind framework but easier to learn and read.`,
+				link: 'https://www.linkedin.com/feed/update/urn:li:activity:7019319987689410560?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7019319987689410560%29'
 			},
 			{
 				name: 'Jean-Baptiste',
@@ -170,9 +199,16 @@ export default {
 				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
 			},
 			{
+				name: 'Mubashar Hashmat',
+				note: 'Manager at Scorp',
+				image: 'mubashar-hashmat.jpg',
+				text: `Extremely awesome 😎.`,
+				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
+			},
+			{
 				name: 'Xavi',
 				image: 'xavi.jpg',
-				text: `Awesome, i'll try it later.`,
+				text: `Awesome, I'll try it later.`,
 				link: 'https://twitter.com/IbraXavi/status/1612859833023172611'
 			},
 			{
@@ -212,6 +248,13 @@ export default {
 				image: 'musa-yazlik.jpg',
 				text: `Hmm. I like it. 😁`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
+			},
+			{
+				name: 'Ryuse',
+				note: 'Frontend developer',
+				image: 'ryuse.jpg',
+				text: `Interesting`,
+				link: 'https://twitter.com/Ryuse45551970/status/1612622469369569282'
 			},
 		]
 	})

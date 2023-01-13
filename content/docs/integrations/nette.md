@@ -91,3 +91,11 @@ Now you can add a link for generated CSS into the `@layout.latte`:
 You can customize the build above however you want.
 
 <where-to-next package="bundler" />
+
+## Trade Offs
+If you use custom selector in Nette class attribute like the one below, you will probably need to wrap it into the `n:class="''"`. It is, because Nette matches the custom selectors as Macro. Single quotes prevents that.
+
+```html
+<div n:class="'[div]{width:240px}'"></div>
+<div n:class="'md:{width:320px}'"></div>
+```
