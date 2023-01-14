@@ -1,26 +1,31 @@
 ---
-slug: 'material-theme'
-section: snippets
-
-order: 1
-
-ogImage: '/snippets/material-theme/og-image-v3.jpg'
-
-navigationTitle: "Material Theme"
-
-title: "Material Theme Builder (Material You) generated theme integration"
-description: "Learn how to start using generated Material Theme (Material You) with Stylify CSS in a minute."
+title: 'Using Material Theme from Material Theme Builder in Stylify CSS'
+image: '/images/blog/stylify-material-theme/header.jpg'
+ogImage: '/images/blog/stylify-material-theme/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation: 'Learn how to use generated Material Theme from Material Theme Builder in Stylify CSS and increase your productivity in a minute.'
+createdAt: 'January 14, 2023'
 ---
 
-<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+[Material Theme Builder](https://m3.material.io/theme-builder#/custom) is a tool with which you can easily generate Material Theme color palettes and typography sizes for your website.
+
+Features:
+- Theme colors can be generated from an uploaded image or by using their color picker.
+- Configured theme can be exported into Theme.kt, XML, Dart, CSS and DSP.
+- There is a nice preview of each color and a simple explanation how it should be used.
+
+This guide explains how to generate Material Theme, how to export it into CSS file and how to use it in Stylify CSS.
+
+<video autoplay muted loop>
 	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
 </video>
 
-If you plan to use Material Theme on your website, you might want to generate a color palette and theme using [Material Theme Builder](https://m3.material.io/theme-builder#/custom).
+## Playground
+Stylify has prepared playground with Vite.js. You can check out the configuration and use it within your project.
+
+The vite plugin configuration can be used within all integrations. This means for example Next.js, Nuxt.js, SvelteKit, Vite.js, Webpack and any other.
 
 <stack-blitz-link link="stylify-material-theme-example"></stack-blitz-link>
-
-Material Theme Builder generates CSS files containing variables for light/dark mode for your project. It allows you to set up your desired color palette in no time. Below is a guide on how to generate a theme and how to integrate it into Stylify CSS.
 
 ## How to get a custom Material Theme
 Generating the desired theme with the Material Theme Builder is simple:
@@ -45,10 +50,7 @@ To finish the configuration process, you have to configure Stylify, so it knows,
 ### With Unplugin
 This part is for `@stylify/unplugin` exports: `stylifyVite`, `stylifyWebpack`, `stylifyEsbuild` and `stylifyRollup`.
 
-If you use unplugin in your project (Next.js, Nuxt.js, SvelteKit, Vite, Webpack, Rollup or any other), this guide is what you are looking for.
-
-So in case you use one of them in your project, this is the configuration for it:
-
+If you use the Unplugin in your project (Next.js, Nuxt.js, SvelteKit, Vite, Webpack, Rollup or any other), this guide is what you are looking for:
 ```js
 const stylifyConfig = {
 	compiler: {
@@ -75,7 +77,7 @@ stylifyEsbuild(stylifyConfig);
 ```
 
 ### Astro integration
-The config is the same like for unplugin.
+The config is the same like for Unplugin.
 
 ```js
 stylify(stylifyConfig);
@@ -141,3 +143,6 @@ const stylifyConfig = {
 	}
 }
 ```
+
+## Credits
+A big thanks go to [Oscar Lito M Pablo](https://twitter.com/FlipOneUp) that came up with the idea to make this guide.

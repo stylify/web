@@ -17,13 +17,19 @@ All you have to do in order to start using Stylify is to install it and write CS
 
 However, if you want, you can use other features like Variables, Components, Macros and Custom selectors. More about them below.
 
+Stylify CSS doesn't ship with any "Fancy Pants" shortcuts, color themes and predefined typography. You might be asking why, so here are a few explanations for start:
+- **Shortcuts**: They are hard to remember and impractical. Yes, using them means less typing and shorter class attributes for the cost of studying syntax (which is easy to forget) and increased complexity.
+- **Color palettes**: Stylify doesn't provide any because they doesn't match design needs in most cases and you have to get them from project designer, downloaded theme or generate them on your own using some tool like <nuxt-link to="/snippets/snippets/material-theme">Material Theme Builder</nuxt-link>.
+- **Typography**: The same as color palettes. You can find some <nuxt-link to="/snippets/assets/fonts">typography tools and assets</nuxt-link> and <nuxt-link to="/snippets/snippets/stylify#variables">typography snippets</nuxt-link> in Stlyify docs.
+- To sum it up, the goal is to stick as much as possible with the native CSS syntax without unnecessary predefined configuration that is practically useless and overvalued.
+
 ## Installation
 
 Stylify can work with any tool. For some of them it have its own integration. If you havent found your favorite let us know.
 
 <integration-blocks></integration-blocks>
 
-## Quick start
+## Quick Start
 The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
 
 <nuxt-link to="/docs/stylify/compiler#syntax">Syntax</nuxt-link> is similar to CSS `property:value` with a few differences:
@@ -46,7 +52,7 @@ lg:hover:{color:blue;font-weight:bold} # The same but also for screen
 <get-started-selectors layout="column"></get-started-selectors>
 <!-- /stylify-ignore -->
 
-## Screens usage
+## Screens Usage
 Stylify has predefined shortcuts like `sm`, `md`, `lg` and dynamic screens such as `minw`, `maxw`, `rng`. <nuxt-link to="/docs/stylify/compiler#screens">Dynamic screens</nuxt-link> are flexible and the generated media query depends on the value you choose when using them.
 Check out the [full list](/docs/stylify/native-preset#screens). All generated screens are [automaticaly sorted](/docs/stylify/compiler#logical-operands-in-screens).
 
@@ -156,6 +162,18 @@ For a space use the `_` (underscore) and for a quote `^` a hat character.
 	</a>
 </div>
 ```
+
+## Prepared Components
+Are you looking for some prearanged components? We have you covered!
+
+<ComponentsPreviewGrid></ComponentsPreviewGrid>
+
+## Material Theme Integration guide
+If you are looking for some color palettes, <nuxt-link to="/snippets/snippets/material-theme"></nuxt-link> on how to use Material Theme Builder to easily generate Material Theme for your next project.
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
 
 ## More Configuration
 Check out the [compiler](/docs/stylify/compiler) for more configuration options.
