@@ -85,6 +85,12 @@ export default {
 				link: 'https://tldr.tech/tech/2022-11-11'
 			},
 			{
+				name: 'Mentioned by Remix.run maintainer as a tool for generating CSS for Remix',
+				note: 'By Chance Strickland',
+				image: 'remix.svg',
+				link: 'https://github.com/remix-run/remix/discussions/4631#discussioncomment-4172687'
+			},
+			{
 				name: 'One of the Best Tailwind CSS Alternatives for 2023',
 				image: 'larainfo.svg',
 				link: 'https://larainfo.com/blogs/best-tailwind-css-alternatives-for-2023'
@@ -164,6 +170,12 @@ export default {
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
 			},
 			{
+				name: 'Oscar Lito M Pablo',
+				image: 'oscar-lito-m-pablo.png',
+				text: 'We now can easily integrate/use in @stylifycss by @8machy any Material Design 3 ("Material You") @materialdesign themes generated using the new Material Theme Builder! Saves a lot of time!',
+				link: 'https://twitter.com/FlipOneUp/status/1612936955062550528'
+			},
+			{
 				name: 'Yousuf Iqbal',
 				note: 'Full Stack Developer',
 				image: 'yousuf-iqbal.jpg',
@@ -197,6 +209,12 @@ export default {
 				image: 'jean-baptiste.jpg',
 				text: `Interesting project! Keep going guyz 💪`,
 				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
+			},
+			{
+				name: 'Ngmi',
+				image: 'ngmi.jpg',
+				text: `I'm notoriously bad with CSS, giving this a try 👾.`,
+				link: 'https://twitter.com/ngmisl/status/1611429779789737984'
 			},
 			{
 				name: 'Mubashar Hashmat',

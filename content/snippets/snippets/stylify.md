@@ -32,7 +32,7 @@ const compilerConfig = {
 		`,
 		// Sets default size for font
 		// Pretty font rendering
-		body: 'font-size:1.6rem -webkit-font-smoothing:antialiased'
+		body: 'font-size:1.6rem webkit-font-smoothing:antialiased'
 	}
 }
 ```
@@ -78,6 +78,11 @@ const compilerConfig = {
 		font81: '8.1rem',
 		font94: '9.4rem',
 		font108: '10.8rem',
+
+		// Fonts stack
+		systemFontStack: `-apple-system,'Segoe_UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica_Neue',Arial,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol'`,
+		georgiaFontStack: `Georgia,serif`,
+		monospaceFontStack: `Consolas,'Courier_New',monospace`
 	}
 }
 ```
@@ -137,7 +142,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	}
 
 	const pixelFontSize = Number(pixelUnit.slice(0,-2));
-	const remCorrection = 0.0625;
+	const remFontSize = pixelFontSize / 10;
 
 	// Adjust the font correction numbers below to fit your needs
 	const smallFontSizeCorrection = 1.6;
@@ -148,8 +153,8 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 
 	// This adds the line height and overrides font size into rem unit.
 	selectorProperties.addMultiple({
-		'font-size': `${pixelFontSize * remCorrection}rem`,
-		'line-height': `${pixelFontSize * fontCorrection * remCorrection}rem`
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * fontCorrection}rem`
 	});
 });
 ```

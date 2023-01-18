@@ -169,7 +169,7 @@ Are you looking for some prearanged components? We have you covered!
 <ComponentsPreviewGrid></ComponentsPreviewGrid>
 
 ## Material Theme Integration guide
-If you are looking for some color palettes, <nuxt-link to="/snippets/snippets/material-theme"></nuxt-link> on how to use Material Theme Builder to easily generate Material Theme for your next project.
+If you are looking for some color palettes, <nuxt-link to="/snippets/snippets/material-theme">there is a guide</nuxt-link> on how to use Material Theme Builder to easily generate Material Theme for your next project.
 
 <video autoplay muted loop class="width:100% height:auto border-radius:8px">
 	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
