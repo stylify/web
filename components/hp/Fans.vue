@@ -91,9 +91,20 @@ export default {
 				link: 'https://github.com/remix-run/remix/discussions/4631#discussioncomment-4172687'
 			},
 			{
+				name: 'Mentioned in Web Tools Weekly as one of the Top 30 Tools of 2022',
+				image: 'web-tools-weekly.png',
+				link: 'https://mailchi.mp/webtoolsweekly/web-tools-493'
+			},
+			{
 				name: 'One of the Best Tailwind CSS Alternatives for 2023',
 				image: 'larainfo.svg',
 				link: 'https://larainfo.com/blogs/best-tailwind-css-alternatives-for-2023'
+			},
+			{
+				name: 'Mentioned as one of the Top 7 Web dev tools that will make your life EASY',
+				note: 'By Pritesh Kiri',
+				image: 'pritesh-kiri.jpg',
+				link: 'https://twitter.com/PriteshKiri/status/1608795151782285313'
 			},
 			{
 				name: 'Mentioned in Jamstacked newsletter',
@@ -273,6 +284,13 @@ export default {
 				image: 'ryuse.jpg',
 				text: `Interesting`,
 				link: 'https://twitter.com/Ryuse45551970/status/1612622469369569282'
+			},
+			{
+				name: 'Thiago Teles',
+				note: 'Fullstack developer at Scriptcase',
+				image: 'thiago-teles.jpeg',
+				text: 'Nice',
+				link: 'https://app.daily.dev/posts/XZXtpLlp8#c-YTfJ1_iN6'
 			},
 		]
 	})
