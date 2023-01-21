@@ -3,7 +3,7 @@
 		container position:relative
 	`">
 		<h2 class="visually-hidden">They talked about Stylify CSS</h2>
-		<div :class="`${toggled ? 'max-height:5000px' : 'max-height:550px lg:max-height:450px'} will-change:max-height transition:.4s overflow:hidden display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px`">
+		<div :class="`${toggled ? 'max-height:6000px' : 'max-height:550px lg:max-height:450px'} will-change:max-height transition:.4s overflow:hidden display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px`">
 			<a
 				v-for="(fan, index) in fans"
 				:key="'orig-' + index"
@@ -78,6 +78,11 @@ export default {
 				note: 'By Louis Lazaris',
 				image: 'smashing-magazine.png',
 				link: 'https://www.smashingmagazine.com/2023/01/top-frontend-tools-2022/#stylify-https-stylifycss-com/'
+			},
+			{
+				name: 'One of the Top Development Languages on Product Hunt',
+				image: 'product-hunt.jpg',
+				link: 'https://www.producthunt.com/topics/development-language'
 			},
 			{
 				name: 'Mentioned in TLDR.tech newsletter',
