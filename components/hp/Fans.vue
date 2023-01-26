@@ -90,6 +90,12 @@ export default {
 				link: 'https://tldr.tech/tech/2022-11-11'
 			},
 			{
+				name: 'Mentioned in This Week In React newsletter',
+				note: 'By Sébastien Lorber',
+				image: 'this-week-in-react.png',
+				link: 'https://thisweekinreact.com/newsletter/124'
+			},
+			{
 				name: 'Mentioned by Remix.run maintainer as a tool for generating CSS for Remix',
 				note: 'By Chance Strickland',
 				image: 'remix.svg',
