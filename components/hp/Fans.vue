@@ -271,6 +271,12 @@ export default {
 				link: 'https://twitter.com/sbworld/status/1518571221490749441'
 			},
 			{
+				name: 'Mugiwara Superfly',
+				image: 'mugiwara-superfly.jpg',
+				text: `Wow wow wow`,
+				link: 'https://twitter.com/i_amsuperfly/status/1618178850869108739'
+			},
+			{
 				name: 'Ricardo Anaya',
 				note: 'Full Stack Developer',
 				image: 'ricardo-anaya.jpg',
