@@ -38,7 +38,7 @@ buildModules: [
 
 If you want to configure the Stylify, you can use configuration section directly in `nuxt.config.js` or create a file `stylify.config.js` next to the `nuxt.config.js`. In both cases you use the same configuration scheme shown below.
 
-The code part below should be used inside the `nuxt.config.js` or inside the `stylify.config.js`:
+The code part below should be used inside the `nuxt.config.js` or inside the `stylify.config.js` or `stylify.config.mjs`:
 
 ```js
 import { defineConfig } from '@stylify/nuxt';
@@ -60,6 +60,10 @@ const stylifyConfig = defineConfig({
 	filesMasks: []
 });
 ```
+
+<note>
+In case you use <code>stylify.config.ts</code>, you cannot use <nuxt-link to="/docs/stylify/compiler#hooks">hooks </nuxt-link>. It is because Nuxt compiles that file and hooks will work with a different instance of hooks manager than the dev server. Therefore, they cannot listen to triggered hooks on a dev server and will be useless.
+</note>
 
 Example for nuxt.config.js
 ```js

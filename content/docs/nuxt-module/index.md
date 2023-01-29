@@ -87,6 +87,10 @@ const stylifyConfig = defineConfig({
 });
 ```
 
+<note>
+In case you use <code>stylify.config.ts</code>, you cannot use <nuxt-link to="/docs/stylify/compiler#hooks">hooks </nuxt-link>. It is because Nuxt compiles that file and hooks will work with a different instance of hooks manager than the dev server. Therefore, they cannot listen to triggered hooks on a dev server and will be useless.
+</note>
+
 Example for nuxt.config.js
 ```js
 export default {

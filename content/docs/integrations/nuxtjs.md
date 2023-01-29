@@ -53,6 +53,10 @@ buildModules: [
 
 Now you can start using Stylify CSS with Nuxt.js.
 
+<note>
+For some unknown reason, the CSS is not reloaded when an error is triggered within the Nuxt (syntax, duplicated attributes). If that happens, just hit save within the nuxt config file or restart the dev server.
+</note>
+
 ## How to integrate Stylify CSS into the Nuxt.js v2+ < v3
 
 First install the package using CLI:
