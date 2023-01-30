@@ -161,7 +161,7 @@ export default {
 				name: 'Finn Guha',
 				note: 'Webdev teacher',
 				image: 'finn-guha.jpeg',
-				text: `Wow, that seems like a promising concept ! And one that seems very interesting to me personally. I am always amazed by new and unique concepts of writing CSS.`,
+				text: `Wow, that seems like a promising concept! And one that seems very interesting to me personally. I am always amazed by new and unique concepts of writing CSS.`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2013972'
 			},
 			{
@@ -186,16 +186,30 @@ export default {
 				link: 'https://twitter.com/rrrriiiiiinnnn/status/1609084128242331660'
 			},
 			{
-				name: 'Japheth Mutai',
-				image: 'japheth-mutai.jpg',
-				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
-				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
+				name: 'Michael Andreuzza',
+				note: 'UI Designer & Front end dev',
+				image: 'michael-andreuzza.jpg',
+				text: `I like that mangling feature. I was using a library that uglifies the code exactly like that..very useful for some cases.`,
+				link: 'https://twitter.com/Mike_Andreuzza/status/1606995345694941185'
 			},
 			{
 				name: 'Oscar Lito M Pablo',
 				image: 'oscar-lito-m-pablo.png',
 				text: 'We now can easily integrate/use in @stylifycss by @8machy any Material Design 3 ("Material You") @materialdesign themes generated using the new Material Theme Builder! Saves a lot of time!',
 				link: 'https://twitter.com/FlipOneUp/status/1612936955062550528'
+			},
+			{
+				name: 'David Teren',
+				note: 'Tech Lead & Ruby and Rails Dev',
+				image: 'david-teren.jpg',
+				text: `It's one of the tools that enables me to create entirely reactive web, iOS and Android apps with little JS.`,
+				link: 'https://twitter.com/davidteren/status/1608449486950391810'
+			},
+			{
+				name: 'Japheth Mutai',
+				image: 'japheth-mutai.jpg',
+				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
+				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
 			},
 			{
 				name: 'Yousuf Iqbal',
@@ -294,6 +308,13 @@ export default {
 				image: 'musa-yazlik.jpg',
 				text: `Hmm. I like it. 😁`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
+			},
+			{
+				name: 'Rajesh Khadka',
+				note: 'Tech Lead & Ruby and Rails Dev',
+				image: 'rajesh-khadka.jpg',
+				text: `May be next tailwind css. 🙃`,
+				link: 'https://twitter.com/rajeshkhadka200/status/1620060216493764608'
 			},
 			{
 				name: 'Ryuse',
