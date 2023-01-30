@@ -16,9 +16,9 @@
 			></a>
 		</div>
 		<div>
-			<div v-show="featuresSelectedTab === 'selectors'">
-				<img v-if="!mounted" src="/images/hp/selectors-loading-placeholder-v4.jpg" height="512" class="width:100% height:512px object-fit:cover object-position:left" loading="eager" fetchpriority="high" />
-				<GetStartedSelectors v-else />
+			<div v-show="featuresSelectedTab === 'selectors'" class="display:flex flex-direction:column">
+				<img v-show="!mounted" src="/images/hp/selectors-loading-placeholder-v4.jpg" height="513" class="width:100% height:513px object-fit:cover object-position:left" loading="eager" fetchpriority="high" />
+				<GetStartedSelectors v-show="mounted" />
 			</div>
 			<div v-show="featuresSelectedTab === 'components'">
 				<GetStartedComponents />
