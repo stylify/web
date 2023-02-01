@@ -6,7 +6,7 @@ stylify-components
 <template>
 	<div>
 		<div class="display:flex justify-content:space-between align-items:center flex-wrap:wrap white-space:nowrap">
-			<div class="color:#fff font-weight:bold margin-right:24px white-space:nowrap margin-bottom:8px">{{ title }}</div>
+			<div class="color:#fefefe font-weight:bold margin-right:24px white-space:nowrap margin-bottom:8px">{{ title }}</div>
 			<div class="display:flex align-items:center margin-left:-4px overflow:auto margin-bottom:8px">
 				<a role="button" @click="(event) => setTab(event, 'preview')" :class="`${selectedTab === 'preview' ? '' : 'btn--transparent'} btn interactive-preview__button`">Preview</a>
 				<span v-for="codeType in codeTypes">

@@ -27,10 +27,10 @@ stylify-components
 			>
 				<div class="width:100% display:flex flex-direction:column">
 					<div class="padding:8px_12px_0_12px background:$blue6 font-weight:bold color:$blue4 white-space:nowrap overflow-x:auto">
-						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Editor</a>
-						<a role="button" v-on:click="selectedTab = 'devCss'" :class="[selectedTab === 'devCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Dev CSS</a>
-						<a role="button" v-on:click="selectedTab = 'productionCss'" :class="[selectedTab === 'productionCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production CSS</a>
-						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'productionHtml'" :class="[selectedTab === 'productionHtml' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fff', 'code-editor__button']" >Production HTML</a>
+						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Editor</a>
+						<a role="button" v-on:click="selectedTab = 'devCss'" :class="[selectedTab === 'devCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Dev CSS</a>
+						<a role="button" v-on:click="selectedTab = 'productionCss'" :class="[selectedTab === 'productionCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Production CSS</a>
+						<a v-if="showHtml" role="button" v-on:click="selectedTab = 'productionHtml'" :class="[selectedTab === 'productionHtml' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Production HTML</a>
 					</div>
 					<div class="display:flex flex:1">
 						<code ref="codeSlot" hidden><slot></slot></code>
@@ -78,7 +78,7 @@ stylify-components
 				]"
 			>
 				<style v-html="previewCss">/* Code */</style>
-				<div :class="[previewElClass, 'color:#fff']"><div v-html="previewCode"></div></div>
+				<div :class="[previewElClass, 'color:#fefefe']"><div v-html="previewCode"></div></div>
 			</div>
 		</div>
 </template>

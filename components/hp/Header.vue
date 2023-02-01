@@ -8,7 +8,7 @@
 		<div class="md:max-width:640px">
 			<h1 class="visually-hidden">Stylifycss.com - Write CSS faster</h1>
 			<section class="margin-bottom:24px lg:font-size:18px">
-				<h2 class="color:#fff text-align:center lg:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw450px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
+				<h2 class="color:#fefefe text-align:center lg:text-align:left letter-spacing:-1.5px margin-top:0 font-size:34px minw450px:font-size:48px margin-bottom:12px xl:font-size:64px text-transform:uppercase">Write CSS Faster</h2>
 				<div class="max-width:840px margin:0_auto text-align:center lg:text-align:left">
 					<p class="margin-top:0">
 						Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.

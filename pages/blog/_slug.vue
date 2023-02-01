@@ -42,7 +42,7 @@ stylify-components
 			</article>
 
 			<div>
-				<strong class="font-size:26px color:#fff">Give as Feedback!</strong>
+				<strong class="font-size:26px color:#fefefe">Give as Feedback!</strong>
 				<div>Do you like Stylify CSS? Let us know by starring our repo&nbsp;<GithubButton class="margin-left:8px vertical-align:middle" /></div>
 			</div>
 

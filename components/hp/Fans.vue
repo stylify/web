@@ -20,7 +20,7 @@
 				<div class="display:flex align-items:center">
 					<img :src="`/images/hp/fans/${fan.image}`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
 					<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
-						<strong class="font-size:18px color:#fff">{{ fan.name }}</strong>
+						<strong class="font-size:18px color:#fefefe">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
 					</div>
 				</div>

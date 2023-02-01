@@ -1,6 +1,6 @@
 <!--
 stylify-components
-	navigation__link: 'margin-left:24px color:#fff text-decoration:none hover:color:$blue1'
+	navigation__link: 'margin-left:24px color:#fefefe text-decoration:none hover:color:$blue1'
 /stylify-components
 -->
 <template>

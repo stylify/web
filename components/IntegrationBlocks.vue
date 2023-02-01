@@ -247,6 +247,23 @@ stylify-components
 			</div>
 		</nuxt-link>
 		<nuxt-link
+			to="/docs/integrations/esbuild"
+			aria-label="Esbuild"
+			class="integration-block"
+		>
+			<div class="integration-block__image-wrapper">
+				<img
+					src="/images/brands/esbuild.svg"
+					alt=""
+					height="1"
+					width="2"
+					loading="lazy"
+					fetchpriority="low"
+					class="width:auto height:40px"
+				/>
+			</div>
+		</nuxt-link>
+		<nuxt-link
 			to="/docs/integrations/nodejs"
 			aria-label="Node.js"
 			class="integration-block"
