@@ -19,7 +19,7 @@ howToSchemaSteps: [
 	},
 	{
 		"name": "Usage",
-		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"text": "Add Stylify CSS build module into rollup.config.mjs.",
 		"url": "#usage",
 	},
 	{
@@ -72,6 +72,6 @@ export default {
 };
 ```
 
-Now you can run build command. This will generate the `stylify.css` and mangle selectors in files, if selected.
+Now you can run build command. This will generate the `stylify.css` and mangle selectors in files, if configured.
 
 <where-to-next />

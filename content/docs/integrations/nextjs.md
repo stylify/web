@@ -19,7 +19,7 @@ howToSchemaSteps: [
 	},
 	{
 		"name": "Usage",
-		"text": "Add Stylify CSS build module into astro.config.mjs.",
+		"text": "Add Stylify CSS build module into next.config.js.",
 		"url": "#usage",
 	},
 	{

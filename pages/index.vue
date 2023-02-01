@@ -49,10 +49,29 @@ stylify-components
 
 		<hp-quote />
 
+		<section class="container">
+			<h2 class="hp-section-title">Latest Blog Posts</h2>
+			<div class="display:flex flex-direction:column flex-wrap:wrap sm:margin-left:-24px sm:flex-direction:row">
+				<BlogPostListItem
+					v-for="(post, key) in posts"
+					:post="post"
+					:key="key"
+				/>
+			</div>
+			<div class="text-align:center margin-top:24px">
+				<nuxt-link to="/blog" class="btn btn--hp margin-top:12px">
+					Check out more articles
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
 	</div>
 </template>
 
 <script>
+import { BlogRepository } from '~/services/model/BlogRepository';
+
 export default {
 	head() {
 		return {
@@ -77,5 +96,13 @@ export default {
 			__dangerouslyDisableSanitizers: ['script']
 		}
 	},
+	async asyncData({ $content }) {
+        const blogRepository = new BlogRepository($content);
+        const posts = await blogRepository.createQueryBuilder().sortBy("createdAt", "desc")
+            .only(["path", "image", "title", "createdAt", "annotation"])
+			.limit(3)
+            .fetch();
+        return { posts };
+    },
 }
 </script>

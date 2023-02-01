@@ -17,7 +17,7 @@
 				</a>
 				<div v-else v-html="youtubeIframe"></div>
 				<div class="margin-left:12px md:margin-left:0 margin-top:8px md:margin-top:12px text-align:center">
-					<strong class="color:#fff">Vladimír Macháček</strong>
+					<strong class="color:#fefefe">Vladimír Macháček</strong>
 					<br>Author of Stylify&nbsp;CSS
 					<br>Webdev at <a href="https://slevomat.cz" class="color:$blue1" target="_blank">Slevomat.cz</a>
 				</div>

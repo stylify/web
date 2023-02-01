@@ -3,7 +3,7 @@
 		<h1 class="font-size:48px">Frequently Asked Questions</h1>
 		<p class="margin-bottom:24px">Below are frequently asked questions about Stylify CSS and its ecosystem.</p>
 
-		<article class="[summary]{font-size:18px;font-weight:bold;color:#fff;cursor:pointer} [details]{margin-bottom:24px}">
+		<article class="[summary]{font-size:18px;font-weight:bold;color:#fefefe;cursor:pointer} [details]{margin-bottom:24px}">
 			<faq>
 				<faq-question>Why to use CSS-like selectors <code>property:value</code> instead of shortcuts?</faq-question>
 				<faq-answer>
