@@ -7,7 +7,7 @@ annotation: "Style your Nette Framework website faster and intuitively with Styl
 createdAt: 'July 9, 2022'
 ---
 
-Style your Nette Framework website faster with [Stylify](https://stylifycss.com). Don't study selectors and syntax. Use pure CSS syntax and get generated CSS with advanced optimization for production.
+Style your Nette Framework website faster with <nuxt-link to="/">Stylify</nuxt-link>. Don't study selectors and syntax. Use pure CSS syntax and get generated CSS with advanced optimization for production.
 
 For the example below, you can check out the [Nette Framework Integration Example](https://github.com/stylify/integrations-examples/tree/master/nette).
 
@@ -15,7 +15,7 @@ For the example below, you can check out the [Nette Framework Integration Exampl
 [Nette](https://nette.org/en/) is a PHP framework made by [David Grudl](https://twitter.com/DavidGrudl) and it is a great alternative to Symfony and Laravel. It has an amazing templating system called [Latte](https://latte.nette.org/) that uses a similar syntax to PHP and by default has context-sensitive escaping (which no other framework has). In my opinion, it is easier to learn, because it comes with a simple structure by default, it has no dependencies and fewer patterns to learn.
 
 ## 💎 Stylify CSS Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -103,7 +103,7 @@ If you run the `yarn watch`, Stylify CSS will generate CSS and will watch any fi
 
 ### Components
 To avoid bloated templates with utilities, you can configure
-components directly in files, where they are used using [content options](https://stylifycss.com/docs/get-started#defining-a-component) (expects javascript object without brackets) or in the [compiler config](https://stylifycss.com/docs/get-started#defining-a-component).
+components directly in files, where they are used using <nuxt-link to="/docs/get-started#defining-a-component">content options</nuxt-link> (expects javascript object without brackets) or in the <nuxt-link to="/docs/get-started#defining-a-component">compiler config</nuxt-link>.
 
 First, let's add the global `container` component. Open the `bundles.js`, and the following:
 
@@ -137,7 +137,7 @@ On the homepage, we can add a local component for the title using content option
 ```
 
 ### Variables
-It's always a good idea to have clean and flexible code without hardcoded values. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components. Let's modify the title component:
+It's always a good idea to have clean and flexible code without hardcoded values. <nuxt-link to="/docs/get-started#adding-a-variable">Variables</nuxt-link> can be defined in the same way as components. Let's modify the title component:
 
 ```html
 {*
@@ -212,10 +212,10 @@ If you run `yarn build`, the selectors will be shrunk and the CSS minified:
 
 ## Configure anything you need
 The examples above don't include everything Stylify CSS can do:
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
+- Style <nuxt-link to="/docs/stylify/compiler#customselectors">global selectors</nuxt-link>
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.

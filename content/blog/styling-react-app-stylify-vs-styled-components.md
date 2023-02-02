@@ -7,12 +7,12 @@ annotation: "Styling React App: Stylify CSS vs Styled Components"
 createdAt: 'August 21, 2022'
 ---
 
-[Stylify](https://stylifycss.com/) generates utility-first CSS based on what you write. It works with any framework and with any tool. Styled Components is a library for styling React components.
+<nuxt-link to="/">Stylify</nuxt-link> generates utility-first CSS based on what you write. It works with any framework and with any tool. Styled Components is a library for styling React components.
 
 This article is not about which tool is better but about comparing approaches when styling the app with these tools.
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -27,7 +27,7 @@ Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what
 ## Setup
 For all the examples below, I am going to use the vite-react setup.
 
-[Stylify](https://stylifycss.com/) requires the installation and a bit of configuration. It's because the CSS is generated during a build before the app is initialized:
+<nuxt-link to="/">Stylify</nuxt-link> requires the installation and a bit of configuration. It's because the CSS is generated during a build before the app is initialized:
 ```
 npm i -D @stylify/unplugin
 ```
@@ -68,9 +68,9 @@ The generated CSS looks like this:
 .sc-bdVaJa {} .knKEua{color:blue;font-weight:bold;}
 ```
 
-[Stylify](https://stylifycss.com/) on the other hand takes file content and generates CSS for each matched selector. Each selector is by default a utility and is generated only once.
+<nuxt-link to="/">Stylify</nuxt-link> on the other hand takes file content and generates CSS for each matched selector. Each selector is by default a utility and is generated only once.
 
-The [syntax](https://stylifycss.com/docs/stylify/compiler/#syntax) is by default native CSS `property:value`. Also, when writing values, you can use `_` (underscore) instead of space and `^` (a hat) for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify CSS selectors. In case you need want shorter or custom selectors, you can [add your own macros](https://stylifycss.com/docs/stylify/compiler#macros).
+The <nuxt-link to="/docs/stylify/compiler/#syntax">syntax</nuxt-link>is by default native CSS `property:value`. Also, when writing values, you can use `_` (underscore) instead of space and `^` for a quote. It is similar to Tailwind, but without having to learn and remember the custom selectors and shortcuts. If you know CSS you already know the Stylify CSS selectors. In case you need want shorter or custom selectors, you can <nuxt-link to="/docs/stylify/compiler#macros">add your own macros</nuxt-link>.
 
 The selectors can be written right away without defining a component.
 ```jsx
@@ -83,7 +83,7 @@ CSS output:
 .font-weight\:bold {font-weight:bold}
 ```
 
-However, nobody wants bloated templates with utilities. Sometimes the [components](https://stylifycss.com/docs/stylify/compiler#components) are necessary. They can be defined globally in a config or locally in a file (through [content options](https://stylifycss.com/docs/stylify/compiler/#contentoptionsprocessors)), where they are used. In the file, it expects a javascript object without the surrounding brackets. The definition is recommended within comments because almost any file format can handle comments. In [Stylify](https://stylifycss.com/) the component is a CSS class and it can be used on any element:
+However, nobody wants bloated templates with utilities. Sometimes the <nuxt-link to="/docs/stylify/compiler#components">components</nuxt-link> are necessary. They can be defined globally in a config or locally in a file (through <nuxt-link to="/docs/stylify/compiler/#contentoptionsprocessors)">content options</nuxt-link>, where they are used. In the file, it expects a javascript object without the surrounding brackets. The definition is recommended within comments because almost any file format can handle comments. In <nuxt-link to="/">Stylify</nuxt-link> the component is a CSS class and it can be used on any element:
 ```jsx
 /*
 stylify-components
@@ -120,7 +120,7 @@ const Title = styled.div`
 `;
 ```
 
-With Stylify, you can use [predefined screens or dynamic ones](https://stylifycss.com/docs/stylify/compiler/#screens):
+With Stylify, you can use <nuxt-link to="/docs/stylify/compiler/#screens">predefined screens or dynamic ones</nuxt-link>:
 ```jsx
 /*
 stylify-components
@@ -143,7 +143,7 @@ const Title = styled.div`
 `;
 ```
 
-Stylify allows you to define [variables](https://stylifycss.com/docs/stylify/compiler/#variables) and then use them within the selectors:
+Stylify allows you to define <nuxt-link to="/docs/stylify/compiler/#variables">variables</nuxt-link> and then use them within the selectors:
 ```jsx
 /*
 stylify-variables
@@ -205,7 +205,7 @@ const GlobalStyle = createGlobalStyle`
 </React.Fragment>
 ```
 
-In Stylify, the same thing is achieved using [plain selectors](https://stylifycss.com/docs/stylify/compiler/#customselectors). The selectors are directly injected into the generated CSS file.
+In Stylify, the same thing is achieved using <nuxt-link to="/docs/stylify/compiler/#customselectors">plain selectors</nuxt-link>. The selectors are directly injected into the generated CSS file.
 ```jsx
 /*
 stylify-customSelectors

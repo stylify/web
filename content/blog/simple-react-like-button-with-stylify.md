@@ -7,10 +7,10 @@ annotation: 'Style buttons in React quickly with Stylify CSS. Its like writing C
 createdAt: 'October 10, 2022'
 ---
 
-Check out how to style a button quickly using only utilities and then clean the template using [components](https://stylifycss.com/docs/get-started#defining-a-component). Learn why the output in production can be 50% and smaller🔥.
+Check out how to style a button quickly using only utilities and then clean the template using <nuxt-link to="/docs/get-started#defining-a-component">components</nuxt-link>. Learn why the output in production can be 50% and smaller🔥.
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -104,7 +104,7 @@ The generated CSS for example above:
 .transform\:scale\(1\.5\){transform: scale(1.5)}
 ```
 ## Production build - 50% smaller
-When you allow [Stylify](https://stylifycss.com) to mangle selectors, then the output looks like this:
+When you allow <nuxt-link to="/">Stylify</nuxt-link> to mangle selectors, then the output looks like this:
 ```css
 .c{color:#222}
 .d{font-weight:bold}
@@ -150,7 +150,7 @@ CSS size:
 The size savings are around **50%** (The size is similar in gzipped mode). If we take the mangled HTML, the difference will be even bigger.
 
 ## Template cleanup
-What if we have a lot of utilities and want to move them out of the template? With [Stylify](https://stylifycss.com) you can do that using reusable components. They can be defined within a comment (expects js object without surrounding brackets) in the file where they are used or in a global config.
+What if we have a lot of utilities and want to move them out of the template? With <nuxt-link to="/">Stylify</nuxt-link> you can do that using reusable components. They can be defined within a comment (expects js object without surrounding brackets) in the file where they are used or in a global config.
 
 ```jsx
 // ...
