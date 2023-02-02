@@ -398,3 +398,8 @@ bundler.bundle();
 
 await bundler.waitOnBundlesProcessed();
 ```
+
+## Let us know what you think!
+Do you have any other best practices you use? Is there anything missing in the docs? Doe's anything need more explanation?
+
+Also, a big thanks go to [Posandu Mapa](https://twitter.com/Posandu) for his cooperation on this article!

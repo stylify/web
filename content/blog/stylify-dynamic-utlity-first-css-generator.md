@@ -19,7 +19,7 @@ Because I have could not find any, I have created my own.
 ## From Idea to Project
 
 It took me a year of development and I have finally released the first version 🎉.
-<nuxt-link to="/">Stylify</nuxt-link> is a library that comes with a <nuxt-link to="/docs/stylify/native-preset">Native Preset</nuxt-link>** that can match 678 (probably all)** CSS properties from `Chrome, Mozilla, Opera, Safari and Edge`. The size is less than **28 kB**.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that comes with a <nuxt-link to="/docs/stylify/native-preset">Native Preset</nuxt-link> **that can match 678 (probably all)** CSS properties from `Chrome, Mozilla, Opera, Safari and Edge`. The size is less than **28 kB**.
 
 The syntax is simple: `cssProperty:value` and in case you need screens and pseudo classes `screen:pseudoClass:property:value`.
 
