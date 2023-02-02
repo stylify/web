@@ -1,4 +1,5 @@
 import { highlightCode } from "./services";
+import { BlogRepository } from './services/model/BlogRepository';
 import path from 'path';
 import fg from 'fast-glob';
 import fs from 'fs';
@@ -142,7 +143,10 @@ export default {
 	hooks: {
 		'generate:before': async () => {
 			const { $content } = require("@nuxt/content");
-			const files = await $content({ deep: true }).only(["path", "annotation", "title"]).fetch();
+			const blogRepository = new BlogRepository($content);
+			const files = await blogRepository.createQueryBuilder().sortBy("createdAt", "desc")
+				.only(["path", "annotation", "title"])
+				.fetch();
 
 			const postItems: string[] = [];
 

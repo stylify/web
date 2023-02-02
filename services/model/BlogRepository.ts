@@ -1,4 +1,3 @@
-import { $content } from "@nuxt/content";
 import { contentFunc } from "@nuxt/content/types/content";
 import { FetchReturn, QueryBuilder } from "@nuxt/content/types/query-builder";
 
