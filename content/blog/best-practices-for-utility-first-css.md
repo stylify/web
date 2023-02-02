@@ -1,7 +1,7 @@
 ---
 title: 'Best practices for utility-first CSS'
-image: '/images/blog/best-practices/header.jpg'
-ogImage: '/images/blog/best-practices/og-image.jpg'
+image: '/images/blog/best-practices/header-v2.jpg'
+ogImage: '/images/blog/best-practices/og-image-v2.jpg'
 author: 'Vladimír Macháček'
 annotation: 'Learn how to use Utility-First CSS effectively to style your website while avoiding bloated templates and maintenance difficulties.'
 createdAt: 'February 2, 2023'
