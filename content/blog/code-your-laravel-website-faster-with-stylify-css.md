@@ -8,7 +8,7 @@ createdAt: 'December 8, 2022'
 ---
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -96,11 +96,11 @@ You can also check out our <a href="https://github.com/stylify/integrations-exam
 
 ## Configuration
 The examples above don't include everything Stylify can do:
-- Define [components](https://stylifycss.com/docs/stylify/compiler#components)
-- Add [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Configure [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
+- Define <nuxt-link to="/docs/stylify/compiler#components">components</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>
+- Configure <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for margin-left
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
 - And a lot more
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.

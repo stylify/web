@@ -66,7 +66,7 @@ There are fewer duplicated properties
 Ok, but who would want to write something like this manually? The good news is, you don't have to.
 
 ## Stylify CSS to the rescue
-Exactly because of the reasons above, [stylifycss.com](https://stylifycss.com) have been created.
+Exactly because of the reasons above, <nuxt-link to="/">stylifycss.com</nuxt-link> have been created.
 
 Here is an example, of how to create the same button with the Stylify CSS (Check out the HTML tab):
 
@@ -78,7 +78,7 @@ Here is an example, of how to create the same button with the Stylify CSS (Check
 <script async defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
 
 
-The CSS selectors can also be minified [when used in node.js](https://stylifycss.com/docs/stylify/compiler#usage):
+The CSS selectors can also be minified <nuxt-link to="/docs/stylify/compiler#usage">when used in node.js</nuxt-link>:
 
 ```html
 <button class="a"></button>
@@ -95,5 +95,5 @@ The CSS selectors can also be minified [when used in node.js](https://stylifycss
 </style>
 ```
 
-In case you also take the time and separate your CSS for layout and each page separately ([which is easy to do with Stylify](https://stylifycss.com/docs/bundler#installation)) you can have a really small CSS chunk for each of your pages.
+In case you also take the time and separate your CSS for layout and each page separately (<nuxt-link to="/docs/bundler#installation">which is easy to do with Stylify</nuxt-link>) you can have a really small CSS chunk for each of your pages.
 You also don't have to care about duplicates and the selectors get minified automatically.

@@ -10,7 +10,7 @@ createdAt: 'June 28, 2022'
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮.
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -30,7 +30,7 @@ The easiest way to Setup the Next.js is using CLI:
 This way you will get the default Next.js application skeleton.
 
 ## Stylify CSS integration
-Install the [@stylify/unplugin](https://stylifycss.com/docs/unplugin) package using NPM or Yarn:
+Install the <nuxt-link to="/docs/unplugin">@stylify/unplugin</nuxt-link> package using NPM or Yarn:
 
 ```bash
 yarn add @stylify/unplugin
@@ -89,7 +89,7 @@ If you add a selector like `font-size:24px` the CSS will be automatically update
 Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡.
 
 ### Components
-Templates bloated with utility selectors are hard to read. Stylify allows you to define components directly in files, where they are used through [content options](https://stylifycss.com/docs/get-started#defining-a-component) (expects javascript object without brackets) or in the [compiler config](https://stylifycss.com/docs/get-started#defining-a-component).
+Templates bloated with utility selectors are hard to read. Stylify allows you to define components directly in files, where they are used through <nuxt-link to="/docs/get-started#defining-a-component">content options</nuxt-link> (expects javascript object without brackets) or in the <nuxt-link to="/docs/get-started#defining-a-component">compiler config</nuxt-link>.
 
 ```jsx
 /*
@@ -107,7 +107,7 @@ export default function Home() {
 ```
 
 ### Variables
-It's a good practice to avoid hardcoded values in the selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components:
+It's a good practice to avoid hardcoded values in the selectors. <nuxt-link to="/docs/get-started#adding-a-variable">Variables</nuxt-link> can be defined in the same way as components:
 
 ```jsx
 /*
@@ -155,9 +155,9 @@ The CSS is shortened too:
 
 ## Configure anything you need
 The examples above don't include everything Stylify CSS can do:
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
+- Style <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for `margin-left`
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.

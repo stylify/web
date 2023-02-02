@@ -1,6 +1,7 @@
 import { highlightCode } from "./services";
 import path from 'path';
 import fg from 'fast-glob';
+import fs from 'fs';
 
 const defaultPageTitle = 'Code your website faster with CSS-like utilities | Stylify CSS';
 const defaultPageDescription = 'Stylify CSS uses CSS-like selectors to generate optimized utility-first CSS. Code your website faster. Don\'t study CSS framework. Focus on coding.';
@@ -14,6 +15,8 @@ const excludedRoutes = [
 	'/docs/profiler',
 	'/docs/profiler/'
 ];
+
+const domain = 'https://stylifycss.com';
 
 export default {
 	server: {
@@ -53,7 +56,8 @@ export default {
 			{ rel: 'mask-icon', href: '/images/favicon/safari-pinned-tab.svg', color: "#01befe" },
 			{ rel: 'shortcut icon', href: "/images/favicon/favicon.ico?v2"},
 			{ rel: 'preconnect', href: 'https://api.github.com'},
-			{ rel: 'dns-prefetch', href: 'https://api.github.com'}
+			{ rel: 'dns-prefetch', href: 'https://api.github.com'},
+			{ rel: 'alternate', type: 'application/rss+xml', title: 'Stylify CSS blog posts RSS feed.', href: '/rss/blog.rss'}
 		],
 		script: [
 			{
@@ -61,7 +65,7 @@ export default {
 					"@context": "https://schema.org",
 					"@type": "Organization",
 					"url": "https://www.example.com",
-					"logo": "https://stylifycss.com/images/logo/vertical.png"
+					"logo": "${domain}/images/logo/vertical.png"
 				}`,
 				type: 'application/ld+json'
 			},
@@ -69,12 +73,12 @@ export default {
 				innerHTML: `{
 					"@context": "https://schema.org",
 					"@type": "WebSite",
-					"url": "https://stylifycss.com/",
+					"url": "${domain}",
 					"potentialAction": {
 						"@type": "SearchAction",
 						"target": {
 							"@type": "EntryPoint",
-							"urlTemplate": "https://stylifycss.com/?search={search_term_string}"
+							"urlTemplate": "${domain}/?search={search_term_string}"
 						},
 						"query-input": "required name=search_term_string"
 					}
@@ -134,9 +138,56 @@ export default {
 	stylelint: {
 		allowEmptyInput: true
 	},
+
+	hooks: {
+		'generate:before': async () => {
+			const { $content } = require("@nuxt/content");
+			const files = await $content({ deep: true }).only(["path", "annotation", "title"]).fetch();
+
+			const postItems: string[] = [];
+
+			files.forEach((file: any) => {
+				let { path, title, annotation }  = file;
+				path = path.replace(/\/index$/, '');
+				path = path.replace('\/$', '');
+
+				const item = `
+					<item>
+						<title>${title}</title>
+						<link>${domain}/${path}</link>
+						<guid>${domain}/${path}</guid>
+						<description>${annotation}</description>
+					</item>
+				`.trim();
+
+				postItems.push(item);
+			});
+
+			const postsXml = `
+				<?xml version="1.0" encoding="UTF-8" ?>
+				<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+					<channel>
+						<title>Stylify CSS</title>
+						<link>${domain}</link>
+						<atom:link href="${domain}/rss/blog.rss" rel="self" type="application/rss+xml"/>
+						<description>Stylify is a library that CSS uses CSS-like selectors to generate optimized utility-first CSS. Code your website faster. Don't study CSS framework. Focus on coding.</description>
+						<image>
+							<url>${domain}/images/og-image-v2.jpg</url>
+							<link>${domain}</link>
+							<title>Stylify CSS</title>
+						</image>
+						${postItems.join('\n')}
+					</channel>
+				</rss>
+			`.trim();
+
+			fs.writeFileSync('static/rss/blog.rss', postsXml);
+		}
+	},
+
 	trailingSlash: false,
 	sitemap: {
-		hostname: 'https://stylifycss.com',
+		hostname: domain,
 		exclude: excludedRoutes,
 		routes: async () => {
 			const { $content } = require("@nuxt/content");
@@ -167,5 +218,4 @@ export default {
 		id: isProduction ? 'UA-215428942-1' : null,
 		storage: 'none'
 	}
-
 }

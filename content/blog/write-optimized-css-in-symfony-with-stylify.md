@@ -9,7 +9,7 @@ createdAt: 'June 14, 2022'
 
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -137,7 +137,7 @@ and the `hp.html.twig`:
 <div class="color:$textColor">Hello world!</div>
 ```
 
-Sometime, some components are used only in one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify CSS has [content options](https://stylifycss.com/docs/stylify/compiler#contentoptionsprocessors) for that.
+Sometime, some components are used only in one place. It doesn't make sense to define them in the `webpack.config.js`. We can also define components, variables and etc directly in the file where they are used. Stylify CSS has <nuxt-link to="/docs/stylify/compiler#contentoptionsprocessors">content options</nuxt-link> for that.
 
 Let's add a paragraph component in the `hp.html.twig`:
 
@@ -180,14 +180,14 @@ Optimized hp CSS:
 @media (min-width: 768px) {.d,.b{margin:24px 0}}
 ```
 
-The example can be also found in the [docs](https://stylifycss.com/docs/integrations/symfony).
+The example can be also found in the <nuxt-link to="/docs/integrations/symfony">docs</nuxt-link>.
 
 ## More configuration
 The examples above don't include everything Stylify CSS can do:
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
+- Style <nuxt-link to="/docs/stylify/compiler#customselectors">global selectors</nuxt-link>
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.

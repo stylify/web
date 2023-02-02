@@ -6,12 +6,12 @@ author: 'Vladimír Macháček'
 annotation: "Style your Vue website faster and intuitively with Stylify."
 createdAt: 'July 15, 2022'
 ---
-[Stylify](https://stylifycss.com) + Vue + Vite. Style your Vue website faster with Stylify. Don't study selectors, syntax and documentation. Use pure CSS syntax and get generated CSS with advanced optimization for production.
+<nuxt-link to="/">Stylify</nuxt-link> + Vue + Vite. Style your Vue website faster with Stylify. Don't study selectors, syntax and documentation. Use pure CSS syntax and get generated CSS with advanced optimization for production.
 
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-vitejs-vue-template?devtoolsheight=33&file=src%2FApp.vue) 🎮.
 
 ## 💎 Stylify CSS Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -32,7 +32,7 @@ The easiest way to Setup the Vue is using CLI:
 This way you will get the default Vue application skeleton.
 
 ## 🔌 Stylify CSS Integration
-Install the [@stylify/unplugin](https://stylifycss.com/docs/unplugin) package using NPM or Yarn:
+Install the <nuxt-link to="/docs/unplugin">@stylify/unplugin</nuxt-link> package using NPM or Yarn:
 
 ```bash
 yarn add @stylify/unplugin
@@ -87,7 +87,7 @@ Go ahead and try Stylify CSS directly on [Stackblitz.com](https://stackblitz.com
 
 ### Components
 To avoid bloated templates with utilities, you can use
-components directly in files, where they are used through [content options](https://stylifycss.com/docs/get-started#defining-a-component) (expects javascript object without brackets) or in the [compiler config](https://stylifycss.com/docs/get-started#defining-a-component).
+components directly in files, where they are used through <nuxt-link to="/docs/get-started#defining-a-component">content options</nuxt-link> (expects javascript object without brackets) or in the <nuxt-link to="/docs/get-started#defining-a-component">compiler config</nuxt-link>.
 
 ```html
 <!--
@@ -104,7 +104,7 @@ stylify-components
 ```
 
 ### Variables
-If you like clean code, you also want to avoid hardcoded values in selectors. [Variables](https://stylifycss.com/docs/get-started#adding-a-variable) can be defined in the same way as components:
+If you like clean code, you also want to avoid hardcoded values in selectors. <nuxt-link to="/docs/get-started#adding-a-variable">Variables</nuxt-link> can be defined in the same way as components:
 
 ```html
 <!--
@@ -148,10 +148,10 @@ The CSS is shortened too:
 
 ## Configure anything you need
 The examples above don't include everything Stylify CSS can do:
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [global selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for margin-left
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
+- Style <nuxt-link to="/docs/stylify/compiler#customselectors">global selectors</nuxt-link>
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for margin-left
 - And a lot more
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.

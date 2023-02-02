@@ -19,7 +19,7 @@ Because I have could not find any, I have created my own.
 ## From Idea to Project
 
 It took me a year of development and I have finally released the first version 🎉.
-[Stylify](https://stylifycss.com) is a library that comes with a [Native Preset](https://stylifycss.com/docs/stylify/native-preset) that can match **678 (probably all)** CSS properties from `Chrome, Mozilla, Opera, Safari and Edge`. The size is less than **28 kB**.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that comes with a <nuxt-link to="/docs/stylify/native-preset">Native Preset</nuxt-link> **that can match 678 (probably all)** CSS properties from `Chrome, Mozilla, Opera, Safari and Edge`. The size is less than **28 kB**.
 
 The syntax is simple: `cssProperty:value` and in case you need screens and pseudo classes `screen:pseudoClass:property:value`.
 
@@ -55,18 +55,18 @@ When compiled and mangled, it generates the following CSS:
 ```
 
 ### Another Features
-- **[Dynamic selectors](https://stylifycss.com/docs/stylify/compiler#macros)**: Define a macro and use it however you want `width:240px`, `width:10%`, `width:30rem`.
-- **[Dynamic screens](https://stylifycss.com/docs/stylify/compiler#logical-operands-in-screens)**: You can combine screens using logical operands like `||` and `&&` => `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5)` and use any value you want `minw123px:font-size:24px`.
+- **<nuxt-link to="/docs/stylify/compiler#macros">Dynamic selectors</nuxt-link>**: Define a macro and use it however you want `width:240px`, `width:10%`, `width:30rem`.
+- **<nuxt-link to="/docs/stylify/compiler#logical-operands-in-screens)**: You can combine screens using logical operands like `||` and `&&` => `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5">Dynamic screens</nuxt-link>` and use any value you want `minw123px:font-size:24px`.
 - **Selectors mangling**: Stylify CSS can convert long selectors `transition:color_0.3s_ease-in-out` to `_abc123`.
 - **Spliting CSS**: CSS can be generated for each file separately. Thanks to that you can split CSS for example for a page and layout.
-- **[Components](https://stylifycss.com/docs/stylify/compiler#components)**: Define for example a `button` with dependencies like `background:#000 color:#fff padding:24px` and use it in a whole project.
-- **[Variables](https://stylifycss.com/docs/stylify/compiler#variables)**: Define variables for repetetative values. They can be injected into code as CSS variables.
-- **[Plain selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)**: Allows you to style selectors like `article > h1`.
-- **[Helpers](https://stylifycss.com/docs/stylify/compiler#helpers)**: Can be used when the CSS is generated for example for recalculating units and etc.
+- **<nuxt-link to="/docs/stylify/compiler#components">Components</nuxt-link>**: Define for example a `button` with dependencies like `background:#000 color:#fff padding:24px` and use it in a whole project.
+- **<nuxt-link to="/docs/stylify/compiler#variables">Variables</nuxt-link>**: Define variables for repetetative values. They can be injected into code as CSS variables.
+- **<nuxt-link to="/docs/stylify/compiler#customselectors">Plain selectors</nuxt-link>**: Allows you to style selectors like `article > h1`.
+- **<nuxt-link to="/docs/stylify/compiler#helpers">Helpers</nuxt-link>**: Can be used when the CSS is generated for example for recalculating units and etc.
 
 ## Seamless Integration
-Stylify can be integrated easily into frameworks like [Next.js](https://stylifycss.com/docs/integrations/nextjs), [Nuxt.js](https://stylifycss.com/docs/integrations/nuxtjs), [Vite.js](https://stylifycss.com/docs/integrations/vitejs), [Symfony Framework](https://stylifycss.com/docs/integrations/symfony), [Nette Framework](https://stylifycss.com/docs/integrations/nette), [Laravel](https://stylifycss.com/docs/integrations/laravel) and etc. Also it works great along with [Webpack](https://stylifycss.com/docs/integrations/webpack) and [Rollup.js](https://stylifycss.com/docs/integrations/rollupjs).
+Stylify can be integrated easily into frameworks like <nuxt-link to="/docs/integrations/nextjs">Next.js</nuxt-link>, <nuxt-link to="/docs/integrations/nuxtjs">Nuxt.js</nuxt-link>, <nuxt-link to="/docs/integrations/vitejs">Vite.js</nuxt-link>, <nuxt-link to="/docs/integrations/symfony">Symfony Framework</nuxt-link>, <nuxt-link to="/docs/integrations/nette">Nette Framework</nuxt-link>, <nuxt-link to="/docs/integrations/laravel">Laravel</nuxt-link> and etc. Also it works great along with <nuxt-link to="/docs/integrations/webpack">Webpack</nuxt-link> and <nuxt-link to="/docs/integrations/rollupjs">Rollup.js</nuxt-link>.
 
-For easier integration there is a [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) for Nuxt.js and a [@stylify/bundler](https://stylifycss.com/docs/bundler) that can be used with already mentioned Rollup.js and Webpack or in any other tool.
+For easier integration there is a <nuxt-link to="/docs/nuxt-module">@stylify/nuxt-module</nuxt-link> for Nuxt.js and a <nuxt-link to="/docs/bundler">@stylify/bundler</nuxt-link> that can be used with already mentioned Rollup.js and Webpack or in any other tool.
 
-When integrating into an existing project, it is possible to generate CSS for each page separately (even for small components) and [slowly rewrite the website](https://stylifycss.com/docs/get-started/migrating-to-stylify) without increasing its size or breaking anything.
+When integrating into an existing project, it is possible to generate CSS for each page separately (even for small components) and <nuxt-link to="/docs/get-started/migrating-to-stylify">slowly rewrite the website</nuxt-link> without increasing its size or breaking anything.

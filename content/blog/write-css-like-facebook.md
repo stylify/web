@@ -35,7 +35,7 @@ So the objective was clear. Create a tool that will be able to:
 - Work on its own without bundlers, frameworks and post/preprocessors
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -48,7 +48,7 @@ So the objective was clear. Create a tool that will be able to:
 Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 
 ## Atomic CSS with Stylify
-Stylify ships with the [native preset](https://stylifycss.com/docs/stylify/native-preset) in which the selectors are the same like CSS `property:value`. Thanks to that I don't have to remember or search for selectors. The Native Preset is optional and you can define your own selectors. It also provides the following features:
+Stylify ships with the <nuxt-link to="/docs/stylify/native-preset">native preset</nuxt-link> in which the selectors are the same like CSS `property:value`. Thanks to that I don't have to remember or search for selectors. The Native Preset is optional and you can define your own selectors. It also provides the following features:
 - **Small chunks**: it can generate CSS for each file, component, layout separately
 - **No pregenerated CSS**: the CSS is generated only if a component or selector is found in the content
 - Internaly combines and reuses selectors as much as possible to keep the CSS small

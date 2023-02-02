@@ -7,10 +7,10 @@ annotation: 'Style your Nuxt.js website faster, with Stylify CSS-like utilities.
 createdAt: February 12, 2022
 ---
 
-Style your Nuxt.JS app quickly and easily with [Stylify](https://stylifycss.com) CSS-like utilities and avoid studying a framework or switching between tags using.
+Style your Nuxt.JS app quickly and easily with <nuxt-link to="/">Stylify</nuxt-link> CSS-like utilities and avoid studying a framework or switching between tags using.
 
 ## Introduction
-[Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
+<nuxt-link to="/">Stylify</nuxt-link> is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 - ✅ CSS-like selectors
 - ✅ No framework to study
@@ -25,7 +25,7 @@ Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what
 ## Installation
 For an easier start, you can check out the [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.
 
-Stylify provides [@stylify/nuxt-module](https://stylifycss.com/docs/nuxt-module) that simplifies the integration process to a minimum:
+Stylify provides <nuxt-link to="/docs/nuxt-module">@stylify/nuxt-module</nuxt-link> that simplifies the integration process to a minimum:
 
 For Nuxt v3
 ```
@@ -47,7 +47,7 @@ buildModules: [
 ]
 ```
 
-And that's it. Now you can start using [Stylify](https://stylifycss.com) to style your Nuxt.js app 🤩.
+And that's it. Now you can start using <nuxt-link to="/">Stylify</nuxt-link> to style your Nuxt.js app 🤩.
 
 ## First CSS
 
@@ -189,9 +189,9 @@ Stylify generates stylify.css into the assets directory. The CSS reuses each sel
 
 ## Configure anything you need
 The examples above don't include everything Stylify CSS can do:
-- You can map [nested files](https://stylifycss.com/docs/bundler#files-content-option) in the template
-- Style [custom selectors](https://stylifycss.com/docs/stylify/compiler#customselectors)
-- Define [custom screens](https://stylifycss.com/docs/stylify/compiler#screens)
-- Add [your macros](https://stylifycss.com/docs/stylify/compiler#macros) like `ml:20px` for `margin-left`
+- You can map <nuxt-link to="/docs/bundler#files-content-option">nested files</nuxt-link> in the template
+- Style <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>
+- Define <nuxt-link to="/docs/stylify/compiler#screens">custom screens</nuxt-link>
+- Add <nuxt-link to="/docs/stylify/compiler#macros">your macros</nuxt-link> like `ml:20px` for `margin-left`
 
-Feel free to [check out the docs](https://stylifycss.com/docs/get-started) to learn more 💎.
+Feel free to <nuxt-link to="/docs/get-started">check out the docs</nuxt-link> to learn more 💎.
