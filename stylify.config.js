@@ -54,7 +54,6 @@ export default defineConfig({
 			html: 'color-scheme:dark',
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
 			'body': 'font-size:16px color:$blue4 background-color:$blue3',
-			'h1,h2,h3,h4,h5,h6': 'color:#fff',
 			'img,video': 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
@@ -68,7 +67,7 @@ export default defineConfig({
 			`,
 
 			// Articles common
-			'h1, h2, h3, h4, h5, h6': 'scroll-margin-top:50px',
+			'h1,h2,h3,h4,h5,h6': 'color:#fefefe scroll-margin-top:80px',
 			'article': 'margin-top:0 font-size:16px word-break:break-word',
 			'article iframe, article img': 'max-width:100%',
 			'article h1': 'cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
