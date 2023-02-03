@@ -24,7 +24,7 @@
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
 					</div>
 				</div>
-				<div v-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)">{{ fan.text }}</div>
+				<div v-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)" v-html="fan.text"></div>
 			</a>
 		</div>
 		<a @click="() => toggled = !toggled" :class="`
@@ -118,6 +118,18 @@ export default {
 				link: 'https://twitter.com/PriteshKiri/status/1608795151782285313'
 			},
 			{
+				name: 'Mentioned in Svelte newsletter',
+				note: 'By Dani Sandoval',
+				image: 'svelte.svg',
+				link: 'https://svelte.dev/blog/whats-new-in-svelte-february-2023'
+			},
+			{
+				name: 'Mentioned in Symfony newsletter',
+				note: 'By Javier Eguiluz',
+				image: 'symfony.png',
+				link: 'https://symfony.com/blog/a-week-of-symfony-808-20-26-june-2022'
+			},
+			{
 				name: 'Mentioned in Jamstacked newsletter',
 				note: 'By Brian Rinaldi',
 				image: 'jamlogo.png',
@@ -128,6 +140,13 @@ export default {
 				note: 'By Gabriel Nunes',
 				image: 'feature-newsletter.webp',
 				link: 'https://codecon.substack.com/p/44-para-ser-mais-que-senior-voce'
+			},
+			{
+				name: 'Yoav Ganbar',
+				note: 'Engineer at Builder.io and QwikDev',
+				image: 'yoav-gangbar.jpg',
+				text: `Write plain CSS just in a class?<br>Fair enough, I'm intrigued.`,
+				link: 'https://twitter.com/HamatoYogi/status/1571724628321796099'
 			},
 			{
 				name: 'Lukeshiru',
