@@ -4,9 +4,11 @@
 			@click="toggleSidebar"
 			:class="[
 				sidebarVisible ? 'transform:translateX(0)' : 'transform:translateX(-100%)',
-				`width:100% max-height:100vh height:100% overflow:auto transition:transform_0.3s_ease-in-out
-				position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
-				lg:{position:sticky;transition:none;transform:translateX(0);top:$stickyHeaderMargin;max-height:calc(100vh_-_$stickyHeaderMargin)}`
+				`
+					width:100% max-height:100vh height:100% overflow:auto transition:transform_0.3s_ease-in-out
+					position:fixed top:0 left:0 backdrop-filter:blur(12px) z-index:2 padding-right:8px
+					lg:{position:sticky;transition:none;transform:translateX(0);top:$stickyHeaderMargin;max-height:calc(100vh_-_$stickyHeaderMargin)}
+				`
 			]
 		">
 			<div class="background:$blue3 border-right:1px_solid_#666 max-width:240px padding:24px lg:padding:0 lg:border-right:0 min-height:100vh">
@@ -47,6 +49,7 @@
 						</nuxt-link>
 					</nav>
 				</section>
+				<div class="position:sticky bottom:0 background:#0a101d z-index:2"><Affiliate type="docsSidebar" /></div>
 			</div>
 		</aside>
 		<a

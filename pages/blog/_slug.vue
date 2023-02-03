@@ -81,6 +81,7 @@ stylify-components
 					</nuxt-link>
 				</div>
 			</div>
+			<div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div>
 		</div>
 		<div class="padding-top:12px lg:margin-left:24px lg:max-width:408px max-height:calc(100%_-_$stickyHeaderMargin)">
 			<section class="top:calc($stickyHeaderMargin_+_12px) lg:position:sticky">
@@ -185,7 +186,7 @@ export default {
   	},
 	async asyncData({ $content, params}) {
 		const blogRepository = new BlogRepository($content);
-		const post = await blogRepository.findOneBySlug(params.slug);
+		let post = await blogRepository.findOneBySlug(params.slug);
 		const [previousPost, nextPost] = await blogRepository.createQueryBuilder()
 			.only(['title', 'path'])
 			.sortBy('createdAt', 'asc')
@@ -197,6 +198,18 @@ export default {
 			.where({ title: { $ne: post.title }})
 			.limit(3)
 			.fetch();
+
+		let titleIndex = null;
+		let bodyChildren = post.body.children;
+
+		for (let i = 0; i < bodyChildren.length; i++) {
+			const children = bodyChildren[i];
+			if (children.tag === 'h2') {
+				console.log(children);
+				titleIndex = i;
+				break;
+			}
+		}
 
 		return { post, previousPost, nextPost, newPosts };
 	},

@@ -24,18 +24,19 @@
 		</div>
 		<hr class="margin-bottom:24px">
 		<div class="display:flex align-items:center justify-content:center">
-			<a
-				:href="`${project.config.websiteRepositoryUrl}/edit/master/content${page.path}${page.extension}`"
-				target="_blank"
-				rel="noopener"
-				class="color:$blue1 text-decoration:none line-height:1"
-			>
-				<i class="icon icon-edit margin-right:8px"></i>
-				<span>Edit this page on Github</span>
-			</a>
-			<span class="margin:0_12px">|</span>
-			<GithubButton />
+				<a
+					:href="`${project.config.websiteRepositoryUrl}/edit/master/content${page.path}${page.extension}`"
+					target="_blank"
+					rel="noopener"
+					class="color:$blue1 text-decoration:none line-height:1"
+				>
+					<i class="icon icon-edit margin-right:8px"></i>
+					<span>Edit this page on Github</span>
+				</a>
+				<span class="margin:0_12px">|</span>
+				<GithubButton />
 		</div>
+		<div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div>
 	</div>
 </template>
 
