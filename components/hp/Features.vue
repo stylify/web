@@ -123,9 +123,9 @@ const config = {
 		'h1,h2': 'margin-top:0 margin-bottom:12px md:margin-bottom:24px'
 	},
 	macros: {
-		'ml:(\\S+?)': ({macroMatch, cssProperties}) => {
+		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
 			// ml:24px => will create => margin-left: 24px
-			cssProperties.add('margin-left', macroMatch.getCapture(0));
+			selectorProperties.add('margin-left', macroMatch.getCapture(0));
 		}
 	},
 }

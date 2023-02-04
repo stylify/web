@@ -131,8 +131,8 @@ When the variable is defined, we can use it like this: `box-shadow:$shadow`.
 The Native Preset is not required. You can define your own selectors. For example for the margin it would look like this:
 
 ```js
-config.macros['m:(\\S+?)'] = ({macroMatch, cssProperties}) => {
-	cssProperties.add('margin', macroMatch.getCapture(0));
+config.macros['m:(\\S+?)'] = ({macroMatch, selectorProperties}) => {
+	selectorProperties.add('margin', macroMatch.getCapture(0));
 };
 ```
 
