@@ -58,6 +58,7 @@ const cssPath = './assets/styles/index.css';
 const stylifyPlugin = stylifyWebpack({
 	bundles: [{ outputFile: cssPath, files: [ './templates/**/*.html.twig' ] }],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

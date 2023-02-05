@@ -99,6 +99,7 @@ const stylifyPlugin = stylifyWebpack({
 		files: ['./resources/views/welcome.blade.php']
 	}],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

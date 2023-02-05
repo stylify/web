@@ -54,9 +54,18 @@ import { defineConfig } from 'vite';
 import { stylifyVite } from '@stylify/unplugin';
 
 const stylifyPlugin = stylifyVite({
-  bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
-  // Optional - https://stylifycss.com/docs/unplugin
-  compiler: {},
+	bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
+	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
 });
 
 export default defineConfig(({ mode }) => ({

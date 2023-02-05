@@ -54,10 +54,20 @@ const config = defineConfig({
 	// Default is null. If null value is detected
 	// the plugin tries to detect the environment
 	dev: null,
-	// https://stylifycss.com/docs/stylify/compiler#configuration
-	compiler: {},
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
 	// See https://stylifycss.com/docs/bundler#configuration
-	bundler: {},
+	bundler: {
+		bundles: []
+	},
 	// Id is a file name
 	// Return true, if the file type or name should be processed
 	// Example is with HTML suffix

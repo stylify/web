@@ -57,9 +57,10 @@ import react from '@vitejs/plugin-react'
 import { stylifyVite } from '@stylify/unplugin';
 
 const stylifyPlugin = stylifyVite({
-    bundles: [{outputFile: './src/stylify.css', files: ['./src/**'] }],
+	bundles: [{outputFile: './src/stylify.css', files: ['./src/**'] }],
 	// Optional
-    compiler: {
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
+	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},
 		// https://stylifycss.com/docs/stylify/compiler#macros

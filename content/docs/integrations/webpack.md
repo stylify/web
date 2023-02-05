@@ -59,6 +59,7 @@ const stylifyPlugin = stylifyWebpack({
 		rewriteSelectorsInFiles: mode === 'production'
 	}],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

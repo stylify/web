@@ -54,6 +54,7 @@ const stylifyPlugin = (dev) => stylifyWebpack({
 	dev: dev,
 	bundles: [{ outputFile: './styles/stylify.css', files: ['./pages/**/*.js'] }],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

@@ -53,8 +53,9 @@ import vue from '@vitejs/plugin-vue';
 import { stylifyVite } from '@stylify/unplugin';
 
 const stylifyPlugin = stylifyVite({
-    bundles: [{ files: ['./src/**'], outputFile: './src/stylify.css' }],
-    // Optional - https://stylifycss.com/docs/unplugin
+	bundles: [{ files: ['./src/**'], outputFile: './src/stylify.css' }],
+	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

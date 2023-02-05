@@ -51,6 +51,7 @@ import { Compiler } from '@stylify/stylify';
 
 const content = '';
 
+// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 const compiler = new Compiler({
 	// https://stylifycss.com/docs/stylify/compiler#variables
 	variables: {},

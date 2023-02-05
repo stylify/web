@@ -47,7 +47,15 @@ const stylifyConfig = defineConfig({
 	dev: false,
 	configPath: 'stylify.config.js',
 	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
-	compiler: {},
+	compiler: {
+		// https://stylifycss.com/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
 	// When vars dir paths are set, Stylify CSS will export variables into
 	// a file according to given path
 	cssVarsDirPath: null,

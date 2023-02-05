@@ -106,6 +106,7 @@ import { stylifyVite } from '@stylify/unplugin';
 const stylifyPlugin = stylifyVite({
 	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.svelte'] }],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

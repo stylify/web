@@ -54,6 +54,7 @@ const postcss = require('rollup-plugin-postcss');
 const stylifyPlugin = stylifyRollup({
 	bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

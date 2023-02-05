@@ -57,6 +57,7 @@ const { Bundler } = require('@stylify/bundler');
 const bundler = new Bundler({
 	watchFiles: process.argv[process.argv.length - 1] === '--w',
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},

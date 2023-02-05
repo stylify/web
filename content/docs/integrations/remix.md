@@ -60,8 +60,8 @@ const isDev = process.argv[process.argv.length - 1] === '--w';
 const bundler = new Bundler({
 	watchFiles: isDev,
 	// Optional
+	// Compiler config info https://stylifycss.com/docs/stylify/compiler#configuration
 	compiler: {
-		mangleSelectors: !isDev,
 		// https://stylifycss.com/docs/stylify/compiler#variables
 		variables: {},
 		// https://stylifycss.com/docs/stylify/compiler#macros
