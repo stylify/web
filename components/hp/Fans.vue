@@ -3,7 +3,7 @@
 		container position:relative
 	`">
 		<h2 class="visually-hidden">They talked about Stylify CSS</h2>
-		<div :class="`${toggled ? 'max-height:6000px' : 'max-height:550px lg:max-height:450px'} will-change:max-height transition:.4s overflow:hidden display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px`">
+		<div :class="`${toggled ? 'max-height:8000px' : 'max-height:550px lg:max-height:450px'} will-change:max-height transition:.4s overflow:hidden display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px`">
 			<a
 				v-for="(fan, index) in fans"
 				:key="'orig-' + index"
@@ -18,13 +18,14 @@
 				`"
 			>
 				<div class="display:flex align-items:center">
-					<img :src="`/images/hp/fans/${fan.image}`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
-					<div class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
+					<img v-if="fan.image" :src="`/images/hp/fans/${fan.image}`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
+					<div v-if="(typeof htmlContent === 'undefined')" class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
 						<strong class="font-size:18px color:#fefefe">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
 					</div>
 				</div>
-				<div v-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)" v-html="fan.text"></div>
+				<div v-if="(typeof fan.htmlContent !== 'undefined')" v-html="fan.htmlContent" class="display:flex"></div>
+				<div v-else-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)" v-html="fan.text"></div>
 			</a>
 		</div>
 		<a @click="() => toggled = !toggled" :class="`
@@ -72,6 +73,10 @@ export default {
 				image: 'phan-an.jpg',
 				text: `This looks super interesting!`,
 				link: 'https://twitter.com/notphanan/status/1566610354246864901'
+			},
+			{
+				htmlContent: '<img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=light" alt="" loading="lazy" fetchpriority="low" style="width:100%; height:68px">',
+				link: 'https://www.smashingmagazine.com/2023/01/top-frontend-tools-2022/#stylify-https-stylifycss-com/'
 			},
 			{
 				name: 'One of the Top Front-End Tools Of 2022',
