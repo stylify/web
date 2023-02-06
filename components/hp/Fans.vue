@@ -76,7 +76,7 @@ export default {
 			},
 			{
 				htmlContent: '<img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=366602&theme=light" alt="" loading="lazy" fetchpriority="low" style="width:100%; height:68px">',
-				link: 'https://www.smashingmagazine.com/2023/01/top-frontend-tools-2022/#stylify-https-stylifycss-com/'
+				link: 'https://www.producthunt.com/products/stylify-css#stylify-css'
 			},
 			{
 				name: 'One of the Top Front-End Tools Of 2022',
