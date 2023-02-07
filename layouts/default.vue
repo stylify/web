@@ -157,10 +157,9 @@ export default {
 		};
 
 		const stickyLinksElement = document.querySelector('.js-sticky-links');
-		const headerHeight = document.querySelector('.js-header').clientHeight;
 
 		const checkStickyLinksVisibility = () => {
-			if (window.scrollY >= headerHeight) {
+			if (window.scrollY >= 200) {
 				if (!stickyLinksElement.classList.contains('s-visible')) {
 					stickyLinksElement.classList.add('s-visible');
 				}
