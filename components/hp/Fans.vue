@@ -315,10 +315,30 @@ export default {
 				link: 'https://twitter.com/sbworld/status/1518571221490749441'
 			},
 			{
+				name: 'Musa Yazlık',
+				image: 'musa-yazlik.jpg',
+				text: `Hmm. I like it. 😁`,
+				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
+			},
+			{
+				name: 'Eze Chukwuemeka',
+				note: 'Tech Support',
+				image: 'eze-chukwuemeka.jpg',
+				text: `I love this`,
+				link: 'https://twitter.com/EzeChuk92/status/1622842527702212608'
+			},
+			{
 				name: 'Mugiwara Superfly',
 				image: 'mugiwara-superfly.jpg',
 				text: `Wow wow wow`,
 				link: 'https://twitter.com/i_amsuperfly/status/1618178850869108739'
+			},
+			{
+				name: 'G-Wok',
+				note: 'Web3 Developer ',
+				image: 'g-wok.jpg',
+				text: `Looks cool`,
+				link: 'https://twitter.com/wannabelon/status/1622820105842204673'
 			},
 			{
 				name: 'Ricardo Anaya',
@@ -326,12 +346,6 @@ export default {
 				image: 'ricardo-anaya.jpg',
 				text: `Cool!`,
 				link: 'https://twitter.com/ricky_anaya/status/1594835182632439810'
-			},
-			{
-				name: 'Musa Yazlık',
-				image: 'musa-yazlik.jpg',
-				text: `Hmm. I like it. 😁`,
-				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
 			},
 			{
 				name: 'Rajesh Khadka',

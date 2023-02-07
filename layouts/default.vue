@@ -124,6 +124,11 @@ const triggerCustomEvent = (eventName, eventData) => {
 if (process.client) {
 	window.stylifyGithubStars = fetch('https://api.github.com/repos/stylify/packages').then(async (response) => {
 		const starsCount = (await response.json()).stargazers_count;
+
+		if (typeof starsCount === 'undefined') {
+			return;
+		}
+
 		triggerCustomEvent('stylify:githubStarsLoaded', starsCount);
 		window.stylifyGithubStars = starsCount;
 	});
@@ -171,7 +176,14 @@ export default {
 		};
 
 		checkStickyLinksVisibility();
-		document.addEventListener('scroll', checkStickyLinksVisibility, {passive: true});
+
+		const scrollEventActions = () => {
+			this.stickyLinksVisible = document.documentElement.scrollTop >= 200;
+		}
+
+		document.addEventListener('scroll', function(e) {
+			scrollEventActions();
+		}, {passive: true});
 
 		const searchParams = (new URL(window.location)).searchParams;
 		const searchParam = searchParams.get('search') ?? undefined;
