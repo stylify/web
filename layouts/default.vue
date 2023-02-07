@@ -6,7 +6,6 @@ stylify-components
 <template>
 	<div>
 		<header class="
-			js-header
 			background:rgba(10,16,29,0.8) backdrop-filter:blur(8px) border-bottom:1px_solid_transparent
 			border-color:$blue5 position:sticky top:-110px z-index:3
 			sm:top:-55px minw1500px:top:0
@@ -101,7 +100,7 @@ stylify-components
 				</section>
 			</div>
 		</footer>
-		<div :class="`js-sticky-links position:fixed bottom:-50px [&.s-visible]{bottom:12px} transition:.3s will-change:bottom display:flex align-items:center gap:8px z-index:1 right:12px lg:display:none ${stickyLinksVisible ? 's-visible' : ''}`">
+		<div :class="`position:fixed bottom:-50px [&.s-visible]{bottom:12px} transition:.3s will-change:bottom display:flex align-items:center gap:8px z-index:1 right:12px lg:display:none ${stickyLinksVisible ? 's-visible' : ''}`">
 			<GithubButton />
 			<GithubButton type="sponsor" />
 		</div>
@@ -161,28 +160,14 @@ export default {
 
 		};
 
-		const stickyLinksElement = document.querySelector('.js-sticky-links');
-
 		const checkStickyLinksVisibility = () => {
-			if (window.scrollY >= 200) {
-				if (!stickyLinksElement.classList.contains('s-visible')) {
-					stickyLinksElement.classList.add('s-visible');
-				}
-
-				return;
-			}
-
-			stickyLinksElement.classList.remove('s-visible');
+			this.stickyLinksVisible = document.documentElement.scrollTop >= 200;
 		};
 
 		checkStickyLinksVisibility();
 
-		const scrollEventActions = () => {
-			this.stickyLinksVisible = document.documentElement.scrollTop >= 200;
-		}
-
 		document.addEventListener('scroll', function(e) {
-			scrollEventActions();
+			checkStickyLinksVisibility();
 		}, {passive: true});
 
 		const searchParams = (new URL(window.location)).searchParams;
