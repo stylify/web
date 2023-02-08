@@ -271,6 +271,13 @@ export default {
 				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
 			},
 			{
+				name: 'Darryl Yeo',
+				NOTE: 'frontend dev',
+				image: 'darryl-yeo.jpg',
+				text: `This make so much more sense than Tailwind.`,
+				link: 'https://twitter.com/darryl__yeo/status/1623003865485389825'
+			},
+			{
 				name: 'Ngmi',
 				image: 'ngmi.jpg',
 				text: `I'm notoriously bad with CSS, giving this a try 👾.`,

@@ -101,8 +101,8 @@ stylify-components
 			</div>
 		</footer>
 		<div :class="`position:fixed bottom:-50px [&.s-visible]{bottom:12px} transition:.3s will-change:bottom display:flex align-items:center gap:8px z-index:1 right:12px lg:display:none ${stickyLinksVisible ? 's-visible' : ''}`">
-			<GithubButton />
 			<GithubButton type="sponsor" />
+			<GithubButton class="bounce-animation" />
 		</div>
 	</div>
 </template>

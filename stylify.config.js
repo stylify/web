@@ -49,6 +49,25 @@ export default defineConfig({
 
 			stickyHeaderMargin: '62px'
 		},
+		keyframes: {
+			bounce: `
+				from, 20%, 53%, 80%, to {
+					transform: translate3d(0, 0, 0);
+					animation-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+				}
+				40%, 43% {
+					transform: translate3d(0, -19px, 0);
+					animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+				}
+				70% {
+					transform: translate3d(0, -10px, 0);
+					animation-timing-function: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+				}
+				90% {
+					transform: translate3d(0, -4px, 0);
+				}
+			`
+		},
 		customSelectors: {
 			// Global
 			html: 'color-scheme:dark',
@@ -95,6 +114,14 @@ export default defineConfig({
 			'.docs__aside-link.nuxt-link-active': 'font-weight:bold color:$blue1 background-color:lighten($blue3,20)'
 		},
 		components: {
+			'bounce-animation': `
+				animation-name:bounce
+				animation-duration:2s
+				animation-timing-function:cubic-bezier(0.32,0.31,0.18,0.96)
+				animation-delay:10s
+				animation-iteration-count:3
+				animation-fill-mode:forwards
+			`,
 			// Global
 			container: `
 				max-width:1280px margin-left:auto margin-right:auto padding-left:8px padding-right:8px
