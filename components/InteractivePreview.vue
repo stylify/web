@@ -19,7 +19,7 @@ stylify-components
 				</span>
 			</div>
 		</div>
-		<div v-if="description" class="margin-top:4px">{{ description }}</div>
+		<div v-if="description" class="margin-top:4px" v-html="description"></div>
 		<div v-if="hasCode('html')" class="margin-top:12px">
 			<iframe v-show="selectedTab === 'preview'" :src="`/content/snippets/${htmlSnippet}.html?${iframeUid}`" class="width:100% overflow:auto border-radius:4px" :style="`min-height:${minHeight}px`" frameBorder="0"></iframe>
 			<div v-for="codeType in codeTypes" v-show="selectedTab === codeType.toLowerCase()" :key="codeType" v-if="hasCode(codeType)">

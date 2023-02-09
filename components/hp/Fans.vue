@@ -1,7 +1,5 @@
 <template>
-	<section :class="`
-		container position:relative
-	`">
+	<section class="container position:relative">
 		<h2 class="visually-hidden">They talked about Stylify CSS</h2>
 		<div :class="`${toggled ? 'max-height:8000px' : 'max-height:550px lg:max-height:450px'} will-change:max-height transition:.4s overflow:hidden display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:12px`">
 			<a
