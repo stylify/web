@@ -145,6 +145,11 @@ export default {
 				link: 'https://codecon.substack.com/p/44-para-ser-mais-que-senior-voce'
 			},
 			{
+				name: 'Mentioned in JSter newsletter as a tool for Writing CSS',
+				image: 'jster.png',
+				link: 'https://jster.net/blog/jster-189/'
+			},
+			{
 				name: 'Yoav Ganbar',
 				note: 'Engineer at Builder.io and QwikDev',
 				image: 'yoav-gangbar.jpg',
@@ -178,6 +183,13 @@ export default {
 				image: 'tom-ravn.jpg',
 				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
 				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
+			},
+			{
+				name: 'Reegan Rajasekar',
+				note: 'Full Stack Web Developer ',
+				image: 'reegan-rajasekar.jpg',
+				text: `I just thought it's just another css library like tailwind. But Twitter recommend this every time. So i just checked what is this . But now I feel it's awesome. bcz it gives utility classes like tailwind but it uses css like class names . I gonna use this in my next projects.`,
+				link: 'https://twitter.com/ReeganRajasekar/status/1623976021371531264'
 			},
 			{
 				name: 'Finn Guha',

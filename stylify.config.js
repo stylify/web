@@ -118,7 +118,7 @@ export default defineConfig({
 				animation-name:bounce
 				animation-duration:2s
 				animation-timing-function:cubic-bezier(0.32,0.31,0.18,0.96)
-				animation-delay:10s
+				animation-delay:4s
 				animation-iteration-count:3
 				animation-fill-mode:forwards
 			`,
