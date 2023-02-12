@@ -205,7 +205,6 @@ export default {
 		for (let i = 0; i < bodyChildren.length; i++) {
 			const children = bodyChildren[i];
 			if (children.tag === 'h2') {
-				console.log(children);
 				titleIndex = i;
 				break;
 			}

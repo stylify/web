@@ -57,9 +57,7 @@ const getOutputFileName = (file) => {
   const parsedFile = path.parse(file);
   const fileName = parsedFile.name.toLowerCase();
   const dirNameCleanupRegExp = new RegExp(`${pagesDir}|${layoutsDir}|\\W`, 'g');
-  console.log(parsedFile.dir);
   const dir = parsedFile.dir.replace(dirNameCleanupRegExp, '');
-  console.log(dir);
   return `${dir.length ? `${dir}-` : ''}${fileName}.css`;
 };
 

@@ -23,27 +23,13 @@ stylify-keyframes
 <script>
 export default {
 	data: () => ({
-		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : '324'
+		stars: process.client && typeof window?.stylifyGithubStars === 'number' ? window.stylifyGithubStars : '325'
 	}),
 	props: {
 		type: {
 			type: String,
 			default: 'stars'
 		}
-	},
-	created() {
-		if (typeof document !== 'undefined' && this.type === 'stars') {
-			const self = this;
-			const stylifyGithubStarsType = typeof window.stylifyGithubStars;
-
-			if (stylifyGithubStarsType === 'number') {
-				self.stars = window.stylifyGithubStars;
-			} else {
-				document.addEventListener('stylify:githubStarsLoaded', (event) => {
-					self.stars = event.detail;
-				});
-			}
-		}
-	},
+	}
 }
 </script>
