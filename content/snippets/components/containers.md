@@ -11,5 +11,6 @@ description: "Stylify CSS Container Components. Prepared CSS containers for your
 ---
 
 <interactive-preview class="margin-bottom:48px"
+min-height="310"
 title="Containers"
 html-snippet="components/containers"></interactive-preview>

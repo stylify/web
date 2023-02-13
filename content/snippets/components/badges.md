@@ -11,6 +11,6 @@ description: "Stylify CSS Badges Components. Prepared CSS badges for your next w
 ---
 
 <interactive-preview class="margin-bottom:48px"
-min-height="180"
+min-height="200"
 title="Badges"
 html-snippet="components/badges"></interactive-preview>

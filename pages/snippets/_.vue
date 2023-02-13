@@ -3,6 +3,7 @@
 		<DocsSidebar :items="navigationItems" :urlPath="urlPath" ref="sidebar" />
 		<DocsContent>
 			<DocsArticle :page="pageContent ?? undefined" />
+			<SnippetsHowToUseComponents v-if="isComponentsPage" class="lg:max-width:calc(100%_-_224px)" />
 			<DocsFooter :page="pageContent ?? undefined" :nextPage="nextPage ?? undefined" :previousPage="previousPage ?? undefined" />
 		</DocsContent>
 	</DocsContainer>
@@ -66,6 +67,7 @@ export default {
 
 		return {
 			urlPath: urlPath,
+			isComponentsPage: urlPath.includes('components'),
 			pageContent: pageContent || null,
 			previousPage: pageIndexInNavigation > 0
 				? navigationItems[pageContent.section][(pageIndexInNavigation - 1)]

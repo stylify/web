@@ -11,5 +11,6 @@ description: "Stylify CSS Button Components. Prepared CSS text-fields for your n
 ---
 
 <interactive-preview class="margin-bottom:48px"
+min-height="320"
 title="Text fields"
 html-snippet="components/text-fields"></interactive-preview>

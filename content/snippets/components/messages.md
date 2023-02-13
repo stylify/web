@@ -11,7 +11,7 @@ description: "Stylify CSS Messags Components. Prepared CSS messages for your nex
 ---
 
 <interactive-preview class="margin-bottom:48px"
-min-height="300"
+min-height="400"
 title="Messages"
 description="If you use shadow from shadow components and a fixed position, it can be used as an alert for example on top/bottom side of the window."
 html-snippet="components/messages"></interactive-preview>

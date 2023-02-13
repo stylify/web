@@ -1,5 +1,5 @@
 <template>
-	<div v-if="typeof page !== 'undefined'">
+	<div v-if="(typeof page !== 'undefined')" class="lg:max-width:calc(100%_-_224px)">
 		<div class="display:flex justify-content:space-between margin-bottom:24px">
 			<div>
 				<nuxt-link

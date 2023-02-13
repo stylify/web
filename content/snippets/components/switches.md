@@ -14,3 +14,8 @@ description: "Stylify CSS Button Components. Prepared CSS switches for your next
 min-height="100"
 title="Switches"
 html-snippet="components/switches"></interactive-preview>
+
+<interactive-preview class="margin-bottom:48px"
+min-height="100"
+title="Checkboxes"
+html-snippet="components/checkboxes"></interactive-preview>

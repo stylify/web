@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-behavior:smooth [*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script>
- -->	<style>
-		body {
-			font-family:arial,sans-serif;
-			height:500px;
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #2666eb;
+			--gradientTo: #37b7f7;
+		}
+		.content {
+			padding-bottom: 400px;
 		}
 	</style>
-	<style id="stylify-css">:root {--color: #6750A4;}.scroll-behavior\:smooth{scroll-behavior:smooth}.font-size\:62\,5\%{font-size:62,5%}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.scroll-to-top-button,.position\:fixed{position:fixed}.scroll-to-top-button,.bottom\:0{bottom:0}.scroll-to-top-button,.right\:24px{right:24px}.scroll-to-top-button,.text-decoration\:none{text-decoration:none}.scroll-to-top-button,.font-size\:42px{font-size:42px}.scroll-to-top-button,.transform\:translateY\(100px\){transform:translateY(100px)}.scroll-to-top-button,.width\:50px{width:50px}.scroll-to-top-button,.height\:50px{height:50px}.scroll-to-top-button,.display\:inline-flex{display:inline-flex}.scroll-to-top-button,.align-items\:center{align-items:center}.scroll-to-top-button,.justify-content\:center{justify-content:center}.scroll-to-top-button,.border-radius\:50px{border-radius:50px}.scroll-to-top-button,.font-weight\:700{font-weight:700}.scroll-to-top-button,.cursor\:pointer{cursor:pointer}.scroll-to-top-button,.color\:\#fff{color:#fff}.scroll-to-top-button,.user-select\:none{user-select:none}.scroll-to-top-button,.background\:\$color{background:#6750A4}.scroll-to-top-button,.transition\:\.3s{transition:.3s}.scroll-to-top-button,.box-shadow\:0_4px_8px_rgba\(0\,0\,0\,0\.16\)\,0_4px_8px_rgba\(0\,0\,0\,0\.23\){box-shadow:0 4px 8px rgba(0,0,0,0.16),0 4px 8px rgba(0,0,0,0.23)}.scroll-to-top-button,.will-change\:transform\,background-color{will-change:transform,background-color}.scroll-to-top-button:hover,.scroll-to-top-button:focus,.background\:lighten\(\$color\,20\){background:#7b64b8}.scroll-to-top-button.s-visible,.transform\:translateY\(-24px\){transform:translateY(-24px)}</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 Scroll down to see the button
 
@@ -68,5 +71,4 @@ document.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
 document.addEventListener("DOMContentLoaded", toggleScrollToTopButton);
 </script>
 
-</body>
-</html>
+</div></div></body></html>

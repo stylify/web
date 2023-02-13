@@ -1,25 +1,29 @@
 <!DOCTYPE html>
-<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
  -->	<style>
-		body > * {
-			margin: 4px;
-			vertical-align: middle;
+		.content-wrapper > * {
+			margin:8px;
+		}
+		:root {
+			--gradientFrom: #2666eb;
+			--gradientTo: #37b7f7;
 		}
 	</style>
-	<style id="stylify-css">:root {--color: #6750A4;}.hover\:background\:lighten\(\$color\,20\):hover{background:#7b64b8}.focus\:background\:lighten\(\$color\,20\):focus{background:#7b64b8}.hover\:background\:colorToRgb\(\$color\,0\.10\):hover{background:rgba(103,80,164,0.1)}.focus\:background\:colorToRgb\(\$color\,0\.10\):focus{background:rgba(103,80,164,0.1)}.font-size\:62\,5\%{font-size:62,5%}.display\:inline-flex{display:inline-flex}.align-items\:center{align-items:center}.padding\:12px_24px{padding:12px 24px}.border-radius\:24px{border-radius:24px}.white-space\:nowrap{white-space:nowrap}.line-height\:24px{line-height:24px}.border\:none{border:none}.font-weight\:700{font-weight:700}.letter-spacing\:0\.1px{letter-spacing:0.1px}.outline\:none{outline:none}.cursor\:pointer{cursor:pointer}.line-height\:20px{line-height:20px}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.color\:\#fff{color:#fff}.user-select\:none{user-select:none}.text-decoration\:none{text-decoration:none}.background\:\$color{background:#6750A4}.transition\:background_0\.3s{transition:background 0.3s}.width\:20px{width:20px}.min-width\:20px{min-width:20px}.font-size\:24px{font-size:24px}.margin-right\:4px{margin-right:4px}.justify-content\:center{justify-content:center}.color\:\$color{color:#6750A4}.background\:\#fff{background:#fff}.border\:1px_solid_\#79747e{border:1px solid #79747e}.cursor\:default{cursor:default}.border\:1px_solid_\#e4e0e3{border:1px solid #e4e0e3}.color\:\#aaa7ab{color:#aaa7ab}.background\:\#e3dfe3{background:#e3dfe3}.background\:none{background:none}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}</style>
+	<style id="stylify-css">:root {--color: #37b7f7;}.hover\:background\:lighten\(\$color\,20\):hover{background:#4bcbff}.focus\:background\:lighten\(\$color\,20\):focus{background:#4bcbff}.hover\:background\:colorToRgb\(\$color\,0\.10\):hover{background:rgba(55,183,247,0.1)}.focus\:background\:colorToRgb\(\$color\,0\.10\):focus{background:rgba(55,183,247,0.1)}.display\:inline-flex{display:inline-flex}.align-items\:center{align-items:center}.padding\:12px_24px{padding:12px 24px}.border-radius\:24px{border-radius:24px}.white-space\:nowrap{white-space:nowrap}.line-height\:24px{line-height:24px}.border\:none{border:none}.font-weight\:700{font-weight:700}.letter-spacing\:0\.1px{letter-spacing:0.1px}.outline\:none{outline:none}.cursor\:pointer{cursor:pointer}.line-height\:20px{line-height:20px}.font-size\:16px{font-size:16px}.color\:\#fff{color:#fff}.user-select\:none{user-select:none}.text-decoration\:none{text-decoration:none}.background\:\$color{background:#37b7f7}.transition\:background_0\.3s{transition:background 0.3s}.width\:20px{width:20px}.min-width\:20px{min-width:20px}.font-size\:24px{font-size:24px}.margin-right\:4px{margin-right:4px}.justify-content\:center{justify-content:center}.color\:\$color{color:#37b7f7}.background\:\#fff{background:#fff}.border\:1px_solid_\#79747e{border:1px solid #79747e}.cursor\:default{cursor:default}.border\:1px_solid_\#e4e0e3{border:1px solid #e4e0e3}.color\:\#aaa7ab{color:#aaa7ab}.background\:\#e3dfe3{background:#e3dfe3}.background\:none{background:none}</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 <!--
-stylify-variables
-	color: '#6750A4',
-/stylify-variables
+	stylify-variables
+		color: '#37b7f7'
+	/stylify-variables
 -->
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">Button</button>
 <a href="#" class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">Anchor button</a>
@@ -30,16 +34,15 @@ stylify-variables
 	<span>With icon</span>
 </button>
 
-<br><br>
+<br>
 
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$color user-select:none text-decoration:none background:#fff transition:background_0.3s border:1px_solid_#79747e hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,0.10)">Outline</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:default line-height:20px font-size:16px user-select:none text-decoration:none border:1px_solid_#e4e0e3 background:#fff color:#aaa7ab ">Outline disabled</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:default line-height:20px font-size:16px user-select:none text-decoration:none background:#e3dfe3 color:#aaa7ab">Solid disabled</button>
 
-<br><br>
+<br>
 
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:$color user-select:none text-decoration:none background:none transition:background_0.3s hover:background:colorToRgb($color,0.10) focus:background:colorToRgb($color,0.10)">Text button</button>
 <button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none line-height:20px font-size:16px user-select:none text-decoration:none background:none color:#aaa7ab">Text button disabled</button>
 
-</body>
-</html>
+</div></div></body></html>

@@ -19,7 +19,7 @@ However, if you want, you can use other features like Variables, Components, Mac
 
 Stylify CSS doesn't ship with any "Fancy Pants" shortcuts, color themes and predefined typography. You might be asking why, so here are a few explanations for start:
 - **Shortcuts**: They are hard to remember and impractical. Yes, using them means less typing and shorter class attributes for the cost of studying syntax (which is easy to forget) and increased complexity.
-- **Color palettes**: Stylify doesn't provide any because they doesn't match design needs in most cases and you have to get them from project designer, downloaded theme or generate them on your own using some tool like <nuxt-link to="/snippets/snippets/material-theme">Material Theme Builder</nuxt-link>.
+- **Color palettes**: Stylify doesn't provide any because they doesn't match design needs in most cases. When working on a project, you will also have to get them from project designer, downloaded theme or generate them on your own using some tool like <nuxt-link to="/snippets/snippets/material-theme">Material Theme Builder</nuxt-link>.
 - **Typography**: The same as color palettes. You can find some <nuxt-link to="/snippets/assets/fonts">typography tools and assets</nuxt-link> and <nuxt-link to="/snippets/snippets/stylify#variables">typography snippets</nuxt-link> in Stlyify docs.
 - To sum it up, the goal is to stick as much as possible with the native CSS syntax without unnecessary predefined configuration that is practically useless and overvalued.
 
@@ -30,20 +30,23 @@ Stylify can work with any tool. For some of them it have its own integration. If
 <integration-blocks></integration-blocks>
 
 ## Quick Start
-The easiest way to start is to try our the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
+The easiest way to start is to play within the editors below or copy the examples and test it within the <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
 
 <nuxt-link to="/docs/stylify/compiler#syntax">Syntax</nuxt-link> is similar to CSS `property:value` with a few differences:
 - Use `_` (one underscore) for a space and `^` (a hat) for a quote
 - To preserver underscore or a hat character, use `\` (backslash) => `\_`
 - The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
-- You can group selectors to make them a bit shorter: `<screen>:<pseudo classes>:{<multiple properties split by ; >}`
 
 ```html
 color:blue => blue color
 hover:color:blue => blue color after hover
 lg:color:blue => blue color for from selected screen
 lg:hover:color:blue => blue color after hover from selected screen
+```
 
+When a lot of properties repeats for the same screen or pseudo class, you can group them like in the example below. The syntax is `<screen>:<pseudo classes>:{stylify selectors split by ;}`
+
+```
 hover:{color:blue;font-weight:bold} # Shortcut for multiple selectors
 lg:hover:{color:blue;font-weight:bold} # The same but also for screen
 ```
@@ -130,7 +133,7 @@ When you define a component or macro like <code>link</code> this selector can ha
 
 
 ## Adding Macros
-In case you want to add for example a shorter variant for `margin-left` like `ml`, you can <nuxt-link to="/docs/stylify/compiler#macros">add macro</nuxt-link> as in example below.
+In case you want to add for example a shorter variant for `margin-left` like `ml`, you can <nuxt-link to="/docs/stylify/compiler#macros">add macro</nuxt-link> as in the example below.
 
 ```js
 const compilerConfig = {
@@ -146,7 +149,7 @@ const compilerConfig = {
 ## Custom selectors
 Styling elements globally can be done using <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>.
 Syntax is folllowing `[css selectors]{stylify selectors split by ;}`.
-The `&` character always reffers to upper level like in SCSS.
+The `&` character always reffers to current element like in SCSS.
 For a space use the `_` (underscore) and for a quote `^` a hat character.
 
 ```html
@@ -175,8 +178,8 @@ If you are looking for some color palettes, <nuxt-link to="/snippets/snippets/ma
 	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
 </video>
 
-## More Configuration
-Check out the [compiler](/docs/stylify/compiler) for more configuration options.
+## Advanced Configuration
+Check out the [compiler](/docs/stylify/compiler) for more configuration options. The Compiler Config is reusable and the same for all packages listed below.
 
 ## Stylify CSS Packages
 Stylify ships with multiple packages. All of them can be installed using NPM or YARN. Stylify CSS and Profiler can also be used directly through CDN:

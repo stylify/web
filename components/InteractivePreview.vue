@@ -13,7 +13,7 @@ stylify-components
 					<a role="button" v-if="hasCode(codeType)" @click="(event) => setTab(event, codeType.toLowerCase())" :class="`${selectedTab === codeType.toLowerCase() ? '' : 'btn--transparent'} btn interactive-preview__button`">
 						{{codeType}}
 					</a>
-					<a role="button" v-if="hasCode(codeType)" @click="(event) => setTab(event, `${codeType.toLowerCase()}components`)" :class="`${selectedTab === `${codeType.toLowerCase()}components` ? '' : 'btn--transparent'} btn interactive-preview__button`">
+					<a role="button" v-if="!withoutComponents && hasCode(codeType)" @click="(event) => setTab(event, `${codeType.toLowerCase()}components`)" :class="`${selectedTab === `${codeType.toLowerCase()}components` ? '' : 'btn--transparent'} btn interactive-preview__button`">
 						{{codeType}} (components)
 					</a>
 				</span>
@@ -40,7 +40,11 @@ export default {
 		htmlSnippet: null,
 		minHeight: {
 			type: String,
-			default: '250',
+			default: '300',
+		},
+		withoutComponents: {
+			type: Boolean,
+			default: false,
 		},
 		title: String,
 		description: String
@@ -84,15 +88,15 @@ export default {
 
 			const isComponentsExample = codeType.endsWith('components');
 			const codeTypeSuffix = isComponentsExample ? '-components' : '';
+
 			if (codeType.endsWith('components')) {
 				codeType = codeType.replace(/components$/, '');
 			}
 
 			const snippetPath = this[`${codeType.toLowerCase()}Snippet`];
-
 			const response = await fetch(`/content/snippets/${snippetPath}${codeTypeSuffix}.html`);
 			let snippetDocument = await response.text();
-			const snippet = snippetDocument.match(/<body>([\s\S]+)<\/body>/)[1].trim();
+			const snippet = snippetDocument.match(/<body><div class="content"><div class="content-wrapper">([\s\S]+)<\/div><\/div><\/body>/)[1].trim();
 			this.codeSnippet = snippet;
 			this.loadedCodeSnippets[`${codeType}${codeTypeSuffix}`] = snippet;
 		}
