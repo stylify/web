@@ -526,7 +526,7 @@ const compilerConfig = {
 <template #description>
 
 ### contentOptionsProcessors
-Some configuration options can be defined directly in a file. It's good to keep the definition of for example a component with its HTML.
+Some configuration options can be defined directly in a file using `content options`. It's good to keep the definition of for example a component with its HTML.
 
 </template>
 <template #code>

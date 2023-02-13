@@ -11,6 +11,7 @@ description: "Stylify CSS Button Components. Prepared CSS buttons for your next 
 ---
 
 <interactive-preview class="margin-bottom:48px"
+min-height="250"
 title="Buttons"
 html-snippet="components/buttons"></interactive-preview>
 

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Shadows</title>
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script>
- -->	<style id="stylify-css">.font-size\:62\,5\%{font-size:62,5%}.display\:grid{display:grid}.gap\:24px{gap:24px}.grid-template-columns\:repeat\(2\,minmax\(0\,1fr\)\){grid-template-columns:repeat(2,minmax(0,1fr))}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}@media (min-width: 640px) {.sm\:grid-template-columns\:repeat\(4\,minmax\(0\,1fr\)\){grid-template-columns:repeat(4,minmax(0,1fr))}}@media (min-width: 768px) {.md\:grid-template-columns\:repeat\(6\,minmax\(0\,1fr\)\){grid-template-columns:repeat(6,minmax(0,1fr))}}@media (min-width: 1024px) {.lg\:grid-template-columns\:repeat\(8\,minmax\(0\,1fr\)\){grid-template-columns:repeat(8,minmax(0,1fr))}}</style>
- 	<style>
-		div > div {
-			background: #6750A4;
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
+ -->	<style>
+		:root {
+			--gradientFrom: #F292ED;
+			--gradientTo: #F36364;
+		}
+
+		.content > div {
+			width:100%;
+		}
+		.content-wrapper > div > div {
+			background: #F36364;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -20,15 +28,15 @@
 			min-height: 100px;
 		}
 	</style>
+	<style id="stylify-css">.display\:grid{display:grid}.gap\:24px{gap:24px}.grid-template-columns\:repeat\(2\,minmax\(0\,1fr\)\){grid-template-columns:repeat(2,minmax(0,1fr))}@media (min-width: 640px) {.sm\:grid-template-columns\:repeat\(4\,minmax\(0\,1fr\)\){grid-template-columns:repeat(4,minmax(0,1fr))}}@media (min-width: 768px) {.md\:grid-template-columns\:repeat\(5\,minmax\(0\,1fr\)\){grid-template-columns:repeat(5,minmax(0,1fr))}}</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 <div class="
 	display:grid gap:24px
 	grid-template-columns:repeat(2,minmax(0,1fr))
 	sm:grid-template-columns:repeat(4,minmax(0,1fr))
-	md:grid-template-columns:repeat(6,minmax(0,1fr))
-	lg:grid-template-columns:repeat(8,minmax(0,1fr))
+	md:grid-template-columns:repeat(5,minmax(0,1fr))
 ">
 	<div>1</div>
 	<div>2</div>
@@ -42,5 +50,4 @@
 	<div>10</div>
 </div>
 
-</body>
-</html>
+</div></div></body></html>

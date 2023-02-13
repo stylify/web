@@ -183,7 +183,7 @@ export default {
 			],
 			__dangerouslyDisableSanitizers: ['script']
 		}
-  	},
+	},
 	async asyncData({ $content, params}) {
 		const blogRepository = new BlogRepository($content);
 		let post = await blogRepository.findOneBySlug(params.slug);

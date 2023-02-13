@@ -1,26 +1,51 @@
 <!DOCTYPE html>
-<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script> -->
-	<style id="stylify-css">:root {--green: #52c41a;--red: #52c41a;}.font-size\:62\,5\%{font-size:62,5%}.position\:relative{position:relative}.display\:inline-flex{display:inline-flex}.padding\:12px{padding:12px}.border\:2px_solid_\#000{border:2px solid #000}.border-radius\:4px{border-radius:4px}.min-height\:40px{min-height:40px}.position\:absolute{position:absolute}.top\:50\%{top:50%}.transform\:translateY\(-50\%\){transform:translateY(-50%)}.max-width\:calc\(100\%_-_16px\){max-width:calc(100% - 16px)}.will-change\:top{will-change:top}.transition\:top_0\.2s\,background_0\.2s{transition:top 0.2s,background 0.2s}.left\:8px{left:8px}.padding\:0_4px{padding:0 4px}.max-height\:400px{max-height:400px}.resize\:vertical{resize:vertical}.transition\:top_0\.2s{transition:top 0.2s}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.\[\&\:\:placeholder\]\{color\:transparent\}::placeholder,.color\:transparent{color:transparent}.\[\&\:not\(\:placeholder\-shown\)\:valid\]\{border\-color\:\$green\}:not(:placeholder-shown):valid,.border-color\:\$green{border-color:#52c41a}.\[\&\:not\(\:placeholder\-shown\)\:inalid\]\{border\-color\:\$red\}:not(:placeholder-shown):inalid,.\[\&\:not\(\:placeholder\-shown\)\:invalid\]\{border\-color\:\$red\}:not(:placeholder-shown):invalid,.border-color\:\$red{border-color:#52c41a}.\[\&\:focus\+label\,\&\:not\(\:placeholder\-shown\)\+label\]\{top\:0\;background\:\#fff\}:focus+label,.\[\&\:focus\+label\,\&\:not\(\:placeholder\-shown\)\+label\]\{top\:0\;background\:\#fff\}:not(:placeholder-shown)+label,.top\:0{top:0}.\[\&\:focus\+label\,\&\:not\(\:placeholder\-shown\)\+label\]\{top\:0\;background\:\#fff\}:focus+label,.\[\&\:focus\+label\,\&\:not\(\:placeholder\-shown\)\+label\]\{top\:0\;background\:\#fff\}:not(:placeholder-shown)+label,.background\:\#fff{background:#fff}.\[\&\:disabled\]\{border\-color\:\#e3dfe3\}:disabled,.border-color\:\#e3dfe3{border-color:#e3dfe3}.\[\&\:disabled\+label\]\{color\:\#aaa7ab\}:disabled+label,.color\:\#aaa7ab{color:#aaa7ab}</style>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
+ -->	<style>
+		:root {
+			--gradientFrom: #f97819;
+			--gradientTo: #fcd24c;
+		}
+	</style>
+	<style id="stylify-css">:root {--green: #52c41a;--red: #b3261e;}.position\:relative{position:relative}.display\:inline-flex{display:inline-flex}.padding\:12px{padding:12px}.border\:2px_solid_\#000{border:2px solid #000}.border-radius\:4px{border-radius:4px}.min-height\:40px{min-height:40px}.position\:absolute{position:absolute}.top\:50\%{top:50%}.transform\:translateY\(-50\%\){transform:translateY(-50%)}.max-width\:calc\(100\%_-_16px\){max-width:calc(100% - 16px)}.will-change\:top{will-change:top}.transition\:top_0\.2s\,background_0\.2s{transition:top 0.2s,background 0.2s}.left\:8px{left:8px}.padding\:0_4px{padding:0 4px}.display\:flex{display:flex}.width\:100\%{width:100%}.\[\&\:focus\+label\,\&\:not\(\:placeholder-shown\)\+label\]\{top\:0\;background\:\#fff\}:focus+label,.\[\&\:focus\+label\,\&\:not\(\:placeholder-shown\)\+label\]\{top\:0\;background\:\#fff\}:not(:placeholder-shown)+label,.background\:\#fff{background:#fff}.max-height\:400px{max-height:400px}.resize\:vertical{resize:vertical}.transition\:top_0\.2s{transition:top 0.2s}.\[\&\:\:placeholder\]\{color\:transparent\}::placeholder{color:transparent}.\[\&\:not\(\:placeholder-shown\)\:valid\]\{border-color\:\$green\}:not(:placeholder-shown):valid,.\[\&\:valid\]\{border-color\:\$green\}:valid{border-color:#52c41a}.\[\&\:not\(\:placeholder-shown\)\:invalid\]\{border-color\:\$red\}:not(:placeholder-shown):invalid{border-color:#b3261e}.\[\&\:focus\+label\,\&\:not\(\:placeholder-shown\)\+label\]\{top\:0\;background\:\#fff\}:focus+label,.\[\&\:focus\+label\,\&\:not\(\:placeholder-shown\)\+label\]\{top\:0\;background\:\#fff\}:not(:placeholder-shown)+label{top:0}.\[\&\:disabled\]\{border-color\:\#e3dfe3\}:disabled{border-color:#e3dfe3}.\[\&\:disabled\+label\]\{color\:\#aaa7ab\}:disabled+label{color:#aaa7ab}</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 <!--
 stylify-variables
 	green: '#52c41a',
-	red: '#52c41a',
+	red: '#b3261e',
 /stylify-variables
  -->
 
 <!-- Valid/invalid --->
 <div class="position:relative display:inline-flex">
-	<input id="text1" type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):inalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<input id="text1" type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
 	<label for="text1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input</label>
+</div>
+
+<br><br>
+
+<div class="position:relative display:flex">
+	<input id="date1" type="date" placeholder="Date" required class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&:valid]{border-color:$green} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<label for="date1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Date</label>
+</div>
+
+<br><br>
+
+<div class="position:relative display:flex">
+	<select id="option1" required class="background:#fff width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&:valid]{border-color:$green} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+		<option value="">---</option>
+		<option value="1">First</option>
+		<option value="2">Second</option>
+	</select>
+	<label for="option1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Select</label>
 </div>
 
 <br><br>
@@ -34,7 +59,7 @@ stylify-variables
 
 <!-- Disabled -->
 <div class="position:relative display:inline-flex">
-	<input id="text3" disabled type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):inalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<input id="text3" disabled type="text" placeholder="Label" class="padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
 	<label for="text3" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input - disabled</label>
 </div>
 
@@ -45,5 +70,4 @@ stylify-variables
 	<label for="text4" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px padding:0_4px">Textarea - disabled</label>
 </div>
 
-</body>
-</html>
+</div></div></body></html>

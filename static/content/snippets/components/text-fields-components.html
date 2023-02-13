@@ -1,32 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" class="[*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script> -->
-	<style id="stylify-css">:root {--green: #52c41a;--red: #52c41a;}.font-size\:62\,5\%{font-size:62,5%}.resize\:vertical{resize:vertical}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.field,.padding\:12px{padding:12px}.field,.border\:2px_solid_\#000{border:2px solid #000}.field,.border-radius\:4px{border-radius:4px}.field,.min-height\:40px{min-height:40px}.field::placeholder,.color\:transparent{color:transparent}.field:not(:placeholder-shown):valid,.border-color\:\$green{border-color:#52c41a}.field:not(:placeholder-shown):inalid,.border-color\:\$red{border-color:#52c41a}.field:focus+label,.field:not(:placeholder-shown)+label,.top\:0{top:0}.field:focus+label,.field:not(:placeholder-shown)+label,.field__label,.background\:\#fff{background:#fff}.field:disabled,.border-color\:\#e3dfe3{border-color:#e3dfe3}.field:disabled + label,.color\:\#aaa7ab{color:#aaa7ab}.field__label,.position\:absolute{position:absolute}.field__label,.top\:50\%{top:50%}.field__label,.transform\:translateY\(-50\%\){transform:translateY(-50%)}.field__label,.max-width\:calc\(100\%_-_16px\){max-width:calc(100% - 16px)}.field__label,.will-change\:top{will-change:top}.field__label,.transition\:top_0\.2s{transition:top 0.2s}.field__label,.left\:8px{left:8px}.field__label,.padding\:0_4px{padding:0 4px}.field__wrapper,.position\:relative{position:relative}.field__wrapper,.display\:inline-flex{display:inline-flex}</style>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #f97819;
+			--gradientTo: #fcd24c;
+		}
+	</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 <!--
 stylify-variables
 	green: '#52c41a',
-	red: '#52c41a',
+	red: '#b3261e',
 /stylify-variables
 
 stylify-components
-	field: `
-		padding:12px border:2px_solid_#000 border-radius:4px min-height:40px
+	'field': `
+		padding:12px width:100% background:#fff border:2px_solid_#000 border-radius:4px min-height:40px
+	`,
+	field--text: `
 		&::placeholder { color:transparent }
 		&:not(:placeholder-shown):valid { border-color:$green }
-		&:not(:placeholder-shown):inalid { border-color:$red }
+		&:not(:placeholder-shown):invalid { border-color:$red }
 		&:focus+label, &:not(:placeholder-shown)+label { top:0 background:#fff }
 		&:disabled {
 			border-color:#e3dfe3
 			+ label { color:#aaa7ab}
 		}
+	`,
+	'field--date': `
+		&:valid { border-color:$green }
+		&:focus+label, &:not(:placeholder-shown)+label { top:0 background:#fff }
+	`,
+	'field--select': `
+		&:valid { border-color:$green }
+		&:focus+label, &:not(:placeholder-shown)+label { top:0 background:#fff }
 	`,
 	field__label: 'position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px background:#fff padding:0_4px',
 	field__wrapper: 'position:relative display:inline-flex'
@@ -35,14 +51,32 @@ stylify-components
 
 <!-- Valid/invalid --->
 <div class="field__wrapper">
-	<input id="text1" type="text" placeholder="Label" class="field">
+	<input id="text1" type="text" placeholder="Label" class="field field--text">
 	<label for="text1" class="field__label">Input</label>
 </div>
 
 <br><br>
 
 <div class="field__wrapper">
-	<textarea id="text2" placeholder="Label" class="field resize:vertical"></textarea>
+	<input id="date1" type="date" placeholder="Date" required class="field field--date">
+	<label for="date1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Date</label>
+</div>
+
+<br><br>
+
+<div class="field__wrapper">
+	<select id="option1" required class="field field--select">
+		<option value="">---</option>
+		<option value="1">First</option>
+		<option value="2">Second</option>
+	</select>
+	<label for="option1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Select</label>
+</div>
+
+<br><br>
+
+<div class="field__wrapper">
+	<textarea id="text2" placeholder="Label" class="field field--text resize:vertical"></textarea>
 	<label for="text2" class="field__label">Textarea</label>
 </div>
 
@@ -50,17 +84,16 @@ stylify-components
 
 <!-- Disabled -->
 <div class="field__wrapper">
-	<input id="text3" disabled type="text" placeholder="Label" class="field field--disabled">
+	<input id="text3" disabled type="text" placeholder="Label" class="field field--text">
 	<label for="text3" class="field__label">Input - Disabled</label>
 </div>
 
 <br><br>
 
 <div class="field__wrapper">
-	<textarea id="text4" disabled placeholder="Label" class="field field--disabled resize:vertical"></textarea>
+	<textarea id="text4" disabled placeholder="Label" class="field field--text resize:vertical"></textarea>
 	<label for="text4" class="field__label">Textarea - Disabled</label>
 </div>
 
 
-</body>
-</html>
+</div></div></body></html>

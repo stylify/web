@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-behavior:smooth [*]{box-sizing:border-box} font-size:62,5% [body]{font-family:arial;font-size:16px}">
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
-<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.5/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
  -->	<style>
-		body {
-			font-family:arial,sans-serif;
-			height:500px;
+		:root {
+			--gradientFrom: #2666eb;
+			--gradientTo: #37b7f7;
+		}
+		.content {
+			padding-bottom: 400px;
 		}
 	</style>
-	<style id="stylify-css">:root {--color: #6750A4;}.scroll-behavior\:smooth{scroll-behavior:smooth}.font-size\:62\,5\%{font-size:62,5%}.position\:fixed{position:fixed}.bottom\:0{bottom:0}.right\:24px{right:24px}.text-decoration\:none{text-decoration:none}.font-size\:42px{font-size:42px}.transform\:translateY\(100px\){transform:translateY(100px)}.width\:50px{width:50px}.height\:50px{height:50px}.display\:inline-flex{display:inline-flex}.align-items\:center{align-items:center}.justify-content\:center{justify-content:center}.border-radius\:50px{border-radius:50px}.font-weight\:700{font-weight:700}.cursor\:pointer{cursor:pointer}.color\:\#fff{color:#fff}.user-select\:none{user-select:none}.background\:\$color{background:#6750A4}.transition\:\.3s{transition:.3s}.box-shadow\:0_4px_8px_rgba\(0\,0\,0\,0\.16\)\,0_4px_8px_rgba\(0\,0\,0\,0\.23\){box-shadow:0 4px 8px rgba(0,0,0,0.16),0 4px 8px rgba(0,0,0,0.23)}.will-change\:transform\,background-color{will-change:transform,background-color}.\[\*\]\{box\-sizing\:border\-box\} *,.box-sizing\:border-box{box-sizing:border-box}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-family\:arial{font-family:arial}.\[body\]\{font\-family\:arial\;font\-size\:16px\} body,.font-size\:16px{font-size:16px}.\[\&\:hover\,\&\:focus\]\{background\:lighten\(\$color\,20\)\}:hover,.\[\&\:hover\,\&\:focus\]\{background\:lighten\(\$color\,20\)\}:focus,.background\:lighten\(\$color\,20\){background:#7b64b8}.\[\&\.s\-visible\]\{transform\:translateY\(\-24px\)\}.s-visible,.transform\:translateY\(-24px\){transform:translateY(-24px)}</style>
+	<style id="stylify-css">:root {--color: #2666eb;}.position\:fixed{position:fixed}.bottom\:0{bottom:0}.right\:24px{right:24px}.text-decoration\:none{text-decoration:none}.font-size\:42px{font-size:42px}.transform\:translateY\(100px\){transform:translateY(100px)}.width\:50px{width:50px}.height\:50px{height:50px}.display\:inline-flex{display:inline-flex}.align-items\:center{align-items:center}.justify-content\:center{justify-content:center}.border-radius\:50px{border-radius:50px}.font-weight\:700{font-weight:700}.cursor\:pointer{cursor:pointer}.color\:\#fff{color:#fff}.user-select\:none{user-select:none}.background\:\$color{background:#2666eb}.transition\:\.3s{transition:.3s}.box-shadow\:0_4px_8px_rgba\(0\,0\,0\,0\.16\)\,0_4px_8px_rgba\(0\,0\,0\,0\.23\){box-shadow:0 4px 8px rgba(0,0,0,0.16),0 4px 8px rgba(0,0,0,0.23)}.will-change\:transform\,background-color{will-change:transform,background-color}.\[\&\:hover\,\&\:focus\]\{background\:lighten\(\$color\,20\)\}:hover,.\[\&\:hover\,\&\:focus\]\{background\:lighten\(\$color\,20\)\}:focus{background:#3a7aff}.\[\&\.s-visible\]\{transform\:translateY\(-24px\)\}.s-visible{transform:translateY(-24px)}</style>
 </head>
-<body>
+<body><div class="content"><div class="content-wrapper">
 
 Scroll down to see the button
 
 <!--
 stylify-variables
-	color: '#6750A4',
+	color: '#2666eb',
 /stylify-variables
 -->
 <a role="button" id="scroll-to-top-button" class="
@@ -42,27 +46,26 @@ stylify-variables
 </a>
 
 <script type="text/javascript">
-// Adjust this to your needs
-// It can be for example a height of page header
-const minScrollTop = 50;
-const scrollToTopButton = document.querySelector('#scroll-to-top-button');
-scrollToTopButton.addEventListener('click', () => {
-	window.scrollTo(0, 0);
-});
+	// Adjust this to your needs
+	// It can be for example a height of page header
+	const minScrollTop = 50;
+	const scrollToTopButton = document.querySelector('#scroll-to-top-button');
+	scrollToTopButton.addEventListener('click', () => {
+		window.scrollTo(0, 0);
+	});
 
-const toggleScrollToTopButton = () => {
-	let scrollTopPosition = document.documentElement.scrollTop;
+	const toggleScrollToTopButton = () => {
+		let scrollTopPosition = document.documentElement.scrollTop;
 
-	if (scrollTopPosition > minScrollTop) {
-		scrollToTopButton.classList.add('s-visible');
-	} else {
-		scrollToTopButton.classList.remove('s-visible');
+		if (scrollTopPosition > minScrollTop) {
+			scrollToTopButton.classList.add('s-visible');
+		} else {
+			scrollToTopButton.classList.remove('s-visible');
+		}
 	}
-}
 
-document.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
-document.addEventListener("DOMContentLoaded", toggleScrollToTopButton);
+	document.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
+	document.addEventListener("DOMContentLoaded", toggleScrollToTopButton);
 </script>
 
-</body>
-</html>
+</div></div></body></html>

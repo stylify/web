@@ -1,5 +1,5 @@
 <template>
-	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100% position:sticky top:52px left:0 z-index:4 lg:z-index:1">
+	<div class="lg:margin-right:34px lg:max-width:220px lg:width:100% left:0 z-index:4 lg:z-index:1">
 		<aside
 			@click="toggleSidebar"
 			:class="[

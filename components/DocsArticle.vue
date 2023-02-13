@@ -1,19 +1,36 @@
 <template>
-	<article v-if="typeof page !== 'undefined'" class="margin-bottom:24px">
-		<h1 class="margin-bottom:24px">{{ page.title }}</h1>
-		<div v-if="shortcuts.length" class="margin-top:8px min-height:38px">
-			<span>Shortcuts:</span>
-			<a
-				v-for="shortcutLink in shortcuts"
-				:key="shortcutLink.label"
-				:href="shortcutLink.link"
-				class="color:$blue4 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px"
-			>
-				{{ shortcutLink.label }}
-			</a>
+	<div class="lg:{gap:24px;grid-template-columns:calc(100%_-_224px)_200px;display:grid}">
+		<article v-if="(typeof page !== 'undefined')" class="max-width:100% margin-bottom:24px">
+			<h1 class="margin-bottom:24px">{{ page.title }}</h1>
+			<div v-if="shortcuts.length" class="margin-top:8px min-height:38px md:display:none">
+				<span>Shortcuts:</span>
+				<a
+					v-for="shortcutLink in shortcuts"
+					:key="shortcutLink.label"
+					:href="shortcutLink.link"
+					class="color:$blue4 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px"
+				>
+					{{ shortcutLink.label }}
+				</a>
+			</div>
+			<nuxt-content :document="page" />
+		</article>
+		<div class="tolg:display:none min-height:100% width:200px">
+			<aside v-if="shortcuts.length" class="position:sticky top:$stickyHeaderMargin max-height:calc(100vh_-_$stickyHeaderMargin) left:0 heivht:100vh">
+				<strong class="color:#f1f1f1">Shortcuts:</strong>
+				<div class="display:flex flex-direction:column gap:4px margin-top:12px overflow:auto max-height:calc(100vh_-_$stickyHeaderMargin_-_30px)">
+					<a
+						v-for="shortcutLink in shortcuts"
+						:key="shortcutLink.label"
+						:href="shortcutLink.link"
+						class="color:$blue4 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px"
+					>
+						{{ shortcutLink.label }}
+					</a>
+				</div>
+			</aside>
 		</div>
-		<nuxt-content :document="page" />
-	</article>
+	</div>
 </template>
 
 <script>

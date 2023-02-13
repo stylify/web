@@ -11,6 +11,6 @@ description: "Stylify CSS Shadows Components. Prepared CSS shadows for your next
 ---
 
 <interactive-preview class="margin-bottom:48px"
-min-height="100"
+min-height="180"
 title="Shadows"
 html-snippet="components/shadows"></interactive-preview>

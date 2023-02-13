@@ -7,7 +7,7 @@ const rootDir = path.join(__dirname, '..');
 const stylifyPackagesDir = path.join(rootDir, '..', '/stylify/packages');
 const stylifyPackageDir = path.join(stylifyPackagesDir, 'stylify');
 const bundlerPackageDir = path.join(stylifyPackagesDir, 'bundler');
-const nuxtPackageDir = path.join(stylifyPackagesDir, 'nuxt');
+const nuxtPackageDir = path.join(stylifyPackagesDir, 'nuxt-module');
 
 const nodeModulesDir =  path.join(rootDir, 'node_modules/@stylify');
 const bundlerNodeModuleDir = path.join(nodeModulesDir, 'bundler');

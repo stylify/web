@@ -23,5 +23,7 @@ stylifyVite({
 ```
 
 <interactive-preview class="margin-bottom:48px"
+min-height="250"
 title="Animation"
+without-components
 html-snippet="components/animations"></interactive-preview>
