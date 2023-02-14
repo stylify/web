@@ -83,14 +83,18 @@ export default {
 
 		const canonicalUrl = `https://stylifycss.com${!this.urlPath.startsWith('snippets') ? '/snippets' : ''}/${this.urlPath}`;
 		const pageTitle = this.pageContent.title + ' | Stylify CSS';
+		const pageDescription = this.pageContent.description;
 		const metaTags = [
-			{ hid: 'description', name: 'description', content: this.pageContent.description },
+			{ hid: 'description', name: 'description', content: pageDescription },
 			// Open Graph
 			{ hid: 'og:title', property: 'og:title', content: pageTitle },
-			{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
+			{ hid: 'og:type', property: 'og:type', content: 'article' },
+			{ hid: 'og:url', property: 'og:url', content: canonicalUrl},
+			{ hid: 'og:description', property: 'og:description', content: pageDescription },
 			// Twitter Card
+			{ hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
 			{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
-			{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
+			{ hid: 'twitter:description', name: 'twitter:description', content: pageDescription }
 		];
 
 		const headData = {
