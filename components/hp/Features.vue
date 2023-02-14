@@ -1,7 +1,7 @@
 <!--
 stylify-components
 	'features-section': `
-		display:grid grid-template-columns:100% md:grid-template-columns:calc(50%_-_12px)_calc(50%_-_12px) gap:24px align-items:center
+		scroll-margin-top:100px display:grid grid-template-columns:100% md:grid-template-columns:calc(50%_-_12px)_calc(50%_-_12px) gap:24px align-items:center
 		h2 { text-align:center font-size:32px margin-top:0 margin-bottom:8px md:text-align:left }
 		p { text-align:center margin-bottom:0 md:text-align:left }
 	`
