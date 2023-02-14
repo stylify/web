@@ -14,13 +14,19 @@
 						Stylify uses CSS-like selectors <span class="color:$blue1 font-family:monospace">color:blue</span>, <span class="color:$blue1 font-family:monospace">width:640px</span>, <span class="color:$blue1 font-family:monospace">margin:0_auto</span> along with <nuxt-link to="/docs/get-started#adding-a-variable" class="color:$blue1 font-family:monospace">variables</nuxt-link>, <nuxt-link to="/docs/get-started#defining-a-component" class="color:$blue1 font-family:monospace">components</nuxt-link>, <nuxt-link to="/docs/get-started#custom-selectors" class="color:$blue1 font-family:monospace">custom selectors</nuxt-link> to generate optimized CSS dynamically based on what you write.
 					</p>
 				</div>
-				<ul class="padding-left:0 [li:before]{content:^✅^;position:absolute;left:0} [li]{padding-left:28px;position:relative;list-style:none}">
-					<li>Syntax you already know. Don't waste time studying CSS framework.</li>
+				<ul class="
+					padding-left:0
+					[a]{color:$blue1}
+					[li:before]{content:^✅^;position:absolute;left:0}
+					[li]{padding-left:28px;position:relative;list-style:none}
+				">
+					<li><a href="#zero-learning-curve">Zero Learning Curve</a>. Don't waste time studying CSS framework</li>
 					<li>Less switching between HTML/CSS files</li>
-					<li>Automagic and Extremely tunned CSS optimization</li>
-					<li>Simple CSS Bundles splitting for Layouts/Pages</li>
-					<li>Easily Configurable and Extensible</li>
-					<li>Prepared components</li>
+					<li>Automagic and <a href="#optimization">Extremely Tunned CSS Optimization</a></li>
+					<li>Simple CSS <a href="#bundles-splitting">Bundles Splitting</a> for Layouts/Pages</li>
+					<li>Easily <a href="#configuration">Configurable and Extensible</a></li>
+					<li>Seamless <a href="#installation">Installation</a></li>
+					<li>Prepared, Copy&Paste, <a href="#components">Headless Components</a></li>
 				</ul>
 			</section>
 			<div class="max-width:100% flex-wrap:wrap margin-top:12px md:margin-top:24px gap:8px sm:gap:12px display:flex flex-direction:row align-items:center justify-content:center lg:justify-content:flex-start font-size:18px">

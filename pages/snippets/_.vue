@@ -3,7 +3,7 @@
 		<DocsSidebar :items="navigationItems" :urlPath="urlPath" ref="sidebar" />
 		<DocsContent>
 			<DocsArticle :page="pageContent ?? undefined" />
-			<SnippetsHowToUseComponents v-if="isComponentsPage" class="lg:max-width:calc(100%_-_224px)" />
+			<SnippetsHowToUseComponents v-if="isComponentsPage" class="margin-bottom:24px lg:max-width:calc(100%_-_224px)" />
 			<DocsFooter :page="pageContent ?? undefined" :nextPage="nextPage ?? undefined" :previousPage="previousPage ?? undefined" />
 		</DocsContent>
 	</DocsContainer>
@@ -81,26 +81,34 @@ export default {
 			return;
 		}
 
+		const canonicalUrl = `https://stylifycss.com${!this.urlPath.startsWith('snippets') ? '/snippets' : ''}/${this.urlPath}`;
 		const pageTitle = this.pageContent.title + ' | Stylify CSS';
+		const metaTags = [
+			{ hid: 'description', name: 'description', content: this.pageContent.description },
+			// Open Graph
+			{ hid: 'og:title', property: 'og:title', content: pageTitle },
+			{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
+			// Twitter Card
+			{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
+			{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
+		];
 
 		const headData = {
 			title: pageTitle,
-			meta: [
-				{ hid: 'description', name: 'description', content: this.pageContent.description },
-				// Open Graph
-				{ hid: 'og:title', property: 'og:title', content: pageTitle },
-				{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
-				// Twitter Card
-				{ hid: 'twitter:title', name: 'twitter:title', content: pageTitle },
-				{ hid: 'twitter:description', name: 'twitter:description', content: this.pageContent.description }
-			],
+			meta: metaTags,
 			link: [
-				{ rel: 'canonical', href: `https://stylifycss.com${!this.urlPath.startsWith('snippets') ? '/snippets' : ''}/${this.urlPath}`}
+				{ rel: 'canonical', href: canonicalUrl}
 			],
 		};
 
-		if (typeof this.pageContent.ogImage !== 'undefined') {
-			const ogImage = `${host}/images${this.pageContent.ogImage}`;
+		let pageImage = this.pageContent.ogImage ?? null;
+
+		if (!pageImage && this.isComponentsPage) {
+			pageImage = '/snippets/components/og-image.jpg';
+		}
+
+		if (pageImage) {
+			const ogImage = `${host}/images${pageImage}`;
 			headData.meta.push({ hid: 'twitter:image:src', name: 'twitter:image:src', content:  ogImage });
 			headData.meta.push({hid: 'og:image', property: 'og:image', content: ogImage})
 		}

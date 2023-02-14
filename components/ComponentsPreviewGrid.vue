@@ -8,55 +8,106 @@
 </template>
 
 <script>
+const components = [
+	{
+		previewUrl: 'components/animations.html',
+		docsUrl: 'components/animations',
+		title: 'Animations'
+	},
+	{
+		previewUrl: 'components/badges.html',
+		docsUrl: 'components/badges',
+		title: 'Badges'
+	},
+	{
+		previewUrl: 'components/buttons.html',
+		docsUrl: 'components/buttons',
+		title: 'Buttons'
+	},
+	{
+		previewUrl: 'components/containers.html',
+		docsUrl: 'components/containers',
+		title: 'Containers'
+	},
+	{
+		previewUrl: 'components/dialogs.html',
+		docsUrl: 'components/dialogs',
+		title: 'Dialogs'
+	},
+	{
+		previewUrl: 'components/dividers.html',
+		docsUrl: 'components/dividers',
+		title: 'Dividers'
+	},
+	{
+		previewUrl: 'components/sign-in-form.html',
+		docsUrl: 'components/forms',
+		title: 'Forms'
+	},
+	{
+		previewUrl: 'components/grids-fit.html',
+		docsUrl: 'components/grids',
+		title: 'Grids'
+	},
+	{
+		previewUrl: 'components/lists.html',
+		docsUrl: 'components/lists',
+		title: 'Lists'
+	},
+	{
+		previewUrl: 'components/messages.html',
+		docsUrl: 'components/messages',
+		title: 'Messages'
+	},
+	{
+		previewUrl: 'components/shadows.html',
+		docsUrl: 'components/shadows',
+		title: 'Shadows'
+	},
+	{
+		previewUrl: 'components/switches.html',
+		docsUrl: 'components/switches',
+		title: 'Switches'
+	},
+	{
+		previewUrl: 'components/text-fields.html',
+		docsUrl: 'components/text-fields',
+		title: 'Text Fields'
+	},
+];
+
 export default {
-	data: () => ({
-		componentsList: [
-			{
-				previewUrl: 'components/buttons.html',
-				docsUrl: 'components/buttons',
-				title: 'Buttons'
-			},
-			{
-				previewUrl: 'components/badges.html',
-				docsUrl: 'components/badges',
-				title: 'Badges'
-			},
-			{
-				previewUrl: 'components/switches.html',
-				docsUrl: 'components/switches',
-				title: 'Switches'
-			},
-			{
-				previewUrl: 'components/text-fields.html',
-				docsUrl: 'components/text-fields',
-				title: 'Text Fields'
-			},
-			{
-				previewUrl: 'components/shadows.html',
-				docsUrl: 'components/shadows',
-				title: 'Shadows'
-			},
-			{
-				previewUrl: 'components/animations.html',
-				docsUrl: 'components/animations',
-				title: 'Animations'
-			},
-			{
-				previewUrl: 'components/grids-columns.html',
-				docsUrl: 'components/grids',
-				title: 'Grids'
-			},
-			{
-				previewUrl: 'components/messages.html',
-				docsUrl: 'components/messages',
-				title: 'Messages'
-			},
-			{
-				previewUrl: 'components/sign-in-form.html',
-				docsUrl: 'components/forms',
-				title: 'Forms'
-			},
-		],
-	})
+	props: {
+		selected: {
+			type: Array,
+			default: [
+				'components/buttons',
+				'components/badges',
+				'components/switches',
+				'components/text-fields',
+				'components/shadows',
+				'components/animations',
+				'components/grids',
+				'components/messages',
+				'components/forms'
+			]
+		}
+	},
+	computed: {
+		componentsList() {
+			if (!this.selected.length) {
+				return components;
+			}
+
+			const selectedComponents = [];
+
+			for (const docsUrl of this.selected) {
+				console.log(docsUrl);
+				selectedComponents.push(components.find((component) => component.docsUrl === docsUrl ));
+			}
+
+			return selectedComponents;
+		}
+	}
 }
 </script>
