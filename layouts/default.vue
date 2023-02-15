@@ -1,6 +1,6 @@
 <!--
 stylify-components
-	navigation__link: 'margin-left:24px color:#fefefe text-decoration:none hover:color:$blue1'
+	navigation__link: 'margin-left:12px minw1600px:margin-left:24px color:#fefefe text-decoration:none hover:color:$blue1'
 /stylify-components
 -->
 <template>
@@ -33,7 +33,7 @@ stylify-components
 				</div>
 				<div class="flex:1 overflow:auto width:calc(100%_+_16px) justify-content:center margin-left:-8px margin-right:-8px display:inline-flex position:relative">
 					<div class="justify-content:flex-start display:flex max-width:100%">
-						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-24px padding:0_8px font-weight:bold align-items:center lg:padding:0" role="navigation">
+						<nav class="display:flex flex-wrap:nowrap white-space:nowrap margin-left:-12px minw1600px:margin-left:-24px padding:0_8px font-weight:bold align-items:center lg:padding:0" role="navigation">
 							<nuxt-link to="/docs/get-started" class="js-main-nav-link navigation__link">Docs</nuxt-link>
 							<nuxt-link to="/snippets/components" class="js-main-nav-link navigation__link">Components & Snippets</nuxt-link>
 							<nuxt-link to="/docs/get-started/why-stylify-css" class="js-main-nav-link navigation__link">Why Stylify?</nuxt-link>
@@ -41,7 +41,7 @@ stylify-components
 							<nuxt-link to="/blog" class="js-main-nav-link navigation__link">Blog</nuxt-link>
 							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="navigation__link">Playground</a>
 							<nuxt-link to="/faq" class="js-main-nav-link navigation__link">FAQ</nuxt-link>
-							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} [.DocSearch-Button-Keys]{display:none} margin-left:24px minw769px:width:104px width:36px height:36px"></div>
+							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} [.DocSearch-Button-Keys]{display:none} margin-left:12px minw769px:width:104px minw1600px:margin-left:24px width:36px height:36px"></div>
 						</nav>
 						<span class="minw1500px:display:none">&nbsp;</span>
 					</div>

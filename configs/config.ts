@@ -5,7 +5,9 @@ const config = {
 	discordUrl: 'https://discord.gg/NuJsk5SMDz',
 	twitterUrl: 'https://twitter.com/stylifycss',
 	redditUrl: 'https://reddit.com/r/stylifycss',
-	youtubeUrl: 'https://www.youtube.com/channel/UCnZIG2UbOkYzwVl8nLGRFJA'
+	youtubeUrl: 'https://www.youtube.com/channel/UCnZIG2UbOkYzwVl8nLGRFJA',
+	facebookUrl: 'https://www.facebook.com/stylifycss/',
+	instagramUrl: 'https://www.instagram.com/stylifycss/'
 };
 
 
