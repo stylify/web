@@ -15,7 +15,7 @@
 <script>
 export default {
 	head() {
-		const pageDescription = 'Check out projects that uses Stylify CSS.';
+		const pageDescription = 'Check out projects that use Stylify CSS.';
 		const pageTitle = 'Showcase | Stylify CSS';
 
 		return {
