@@ -8,7 +8,7 @@
 			<div class="color:#f1f1f1 opacity:0 padding:12px background:rgba(0,0,0,0.5) transition:.3s will-change:opacity backdrop-filter:blur(5px) position:absolute inset:0 display:flex align-items:center justify-content:center flex-direction:column">
 				<div class="md:font-size:20px text-align:center"><strong>{{ item.name }}{{ item.description ? ` - ${item.description}` : '' }}</strong></div>
 				<div v-if="(typeof item.techStack !== 'undefined')">
-					<span>Techstack:</span>
+					<span>Tech Stack:</span>
 					<div class="display:flex flex-wrap:wrap gap:8px">
 						<img v-for="stackImage in item.techStack" :src="`/images/brands/${stackImage}`" :key="stackName" alt="" width="80px" height="40px" loading="lazy" fetchpriority="low" class="padding:8px border-radius:8px background:#1e2431 max-height:40px max-width:80px height:auto width:100% display:flex">
 					</div>
