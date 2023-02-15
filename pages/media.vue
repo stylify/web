@@ -1,7 +1,7 @@
 <template>
 	<section class="container margin-bottom:48px">
-		<h1 class="font-size:48px">Stylify logo</h1>
-		<p class="margin-bottom:42px max-width:800px">The following are assets that represent the Stylify CSS brand. All assets are considered open-source contributions and should be used according to open standards and licensing rules. In case of any question about usage, alignment, editing, feel free to contact us via e-mail <a href="mailto:dev@stylifycss.com" class="color:$blue1">dev@stylifycss.com</a> or through Discord.</p>
+		<h1 class="font-size:48px text-align:center margin-bottom:0">Stylify logo</h1>
+		<p class="max-width:800px margin:0_auto_42px_auto text-align:center font-size:20px">The following are assets that represent the Stylify CSS brand. All assets are considered open-source contributions and should be used according to open standards and licensing rules. In case of any question about usage, alignment, editing, feel free to contact us via e-mail <a href="mailto:dev@stylifycss.com" class="color:$blue1">dev@stylifycss.com</a> or through Discord.</p>
 		<div class="display:grid md:grid-template-columns:50%_50% gap:24px">
 			<div v-for="logo in logos" :key="logo.name">
 				<h2 class="margin-top:0 margin-bottom:8px">{{ logo.label }}</h2>

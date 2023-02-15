@@ -37,6 +37,7 @@ stylify-components
 							<nuxt-link to="/docs/get-started" class="js-main-nav-link navigation__link">Docs</nuxt-link>
 							<nuxt-link to="/snippets/components" class="js-main-nav-link navigation__link">Components & Snippets</nuxt-link>
 							<nuxt-link to="/docs/get-started/why-stylify-css" class="js-main-nav-link navigation__link">Why Stylify?</nuxt-link>
+							<nuxt-link to="/showcase" class="js-main-nav-link navigation__link">Showcase</nuxt-link>
 							<nuxt-link to="/blog" class="js-main-nav-link navigation__link">Blog</nuxt-link>
 							<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="_blank" rel="noopener" class="navigation__link">Playground</a>
 							<nuxt-link to="/faq" class="js-main-nav-link navigation__link">FAQ</nuxt-link>
@@ -252,6 +253,10 @@ export default {
 				{
 					navigationTitle: 'Media & Logo',
 					path: '/media'
+				},
+				{
+					navigationTitle: 'Showcase',
+					path: '/showcase'
 				},
 				{
 					navigationTitle: 'Mail: dev@stylifycss.com',

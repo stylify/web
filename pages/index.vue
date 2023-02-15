@@ -26,6 +26,8 @@ stylify-components
 
 		<HpFans />
 
+		<hp-quote />
+
 		<hp-features />
 
 		<section id="installation" class="container">
@@ -43,11 +45,14 @@ stylify-components
 			</div>
 		</section>
 
+		<section id="showcase" class="container text-align:center">
+			<h2 class="hp-section-title">Showcase</h2>
+			<ShowcaseList />
+		</section>
+
 		<hp-components />
 
 		<hp-material-theme-guide />
-
-		<hp-quote />
 
 		<section class="container">
 			<h2 class="hp-section-title">Latest Blog Posts</h2>
@@ -70,17 +75,18 @@ stylify-components
 </template>
 
 <script>
+import ShowcaseList from '~/components/ShowcaseList.vue';
 import { BlogRepository } from '~/services/model/BlogRepository';
 
 export default {
-	head() {
-		return {
-			link: [
-				{ rel: 'canonical', href: "https://stylifycss.com"}
-			],
-			script: [
-				{
-					innerHTML: `{
+    head() {
+        return {
+            link: [
+                { rel: "canonical", href: "https://stylifycss.com" }
+            ],
+            script: [
+                {
+                    innerHTML: `{
 						"@context": "http://schema.org",
 						"@type": "VideoObject",
 						"name": "Style your website faster with Stylify CSS | Stylify introduction in 8 minutes | #webdevelopment",
@@ -90,19 +96,20 @@ export default {
 						"duration": "PT8M5S",
 						"embedUrl": "https://www.youtube.com/embed/GRwtXDnm5gE"
 					}`,
-					type: 'application/ld+json'
-				}
-			],
-			__dangerouslyDisableSanitizers: ['script']
-		}
-	},
-	async asyncData({ $content }) {
+                    type: "application/ld+json"
+                }
+            ],
+            __dangerouslyDisableSanitizers: ["script"]
+        };
+    },
+    async asyncData({ $content }) {
         const blogRepository = new BlogRepository($content);
         const posts = await blogRepository.createQueryBuilder().sortBy("createdAt", "desc")
             .only(["path", "image", "title", "createdAt", "annotation"])
-			.limit(3)
+            .limit(3)
             .fetch();
         return { posts };
     },
+    components: { ShowcaseList }
 }
 </script>
