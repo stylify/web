@@ -1,7 +1,7 @@
 <template>
 	<section class="container margin-top:24px margin-bottom:48px md:margin-top:48px">
 		<h1 class="font-size:48px text-align:center margin:0">Showcase</h1>
-		<p class="margin-bottom:42px margin-top:0 font-size:20px text-align:center">Check out projects that uses Stylify CSS.</p>
+		<p class="margin-bottom:42px margin-top:0 font-size:20px text-align:center">Check out projects that use Stylify CSS.</p>
 		<ShowcaseList />
 		<div class="margin-top:42px text-align:center">
 			<a href="https://github.com/stylify/web/blob/master/components/ShowcaseList.vue" target="_blank" rel="noopener nofollow" class="btn btn--hp">
