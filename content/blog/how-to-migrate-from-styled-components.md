@@ -94,8 +94,9 @@ The production output of the CSS will be similar to the example of the component
 <div class="a b c"></div>
 ```
 
-##💲Variables
+## 💲Variables
 When you need to pass a color into the component using props, then instead of doing this `color: ${props => props.textColor};`, you can use native CSS variables:
+
 ```html
 <div
   style={{ '--localTextColor': props.textColor }}
