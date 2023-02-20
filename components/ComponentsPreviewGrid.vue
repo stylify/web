@@ -80,7 +80,7 @@ export default {
 	props: {
 		selected: {
 			type: Array,
-			default: [
+			default: () => [
 				'components/buttons',
 				'components/badges',
 				'components/switches',

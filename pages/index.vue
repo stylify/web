@@ -26,6 +26,17 @@ stylify-components
 
 		<HpFans />
 
+		<section id="showcase" class="container text-align:center">
+			<h2 class="hp-section-title">Showcase</h2>
+			<ShowcaseList :limit="3" />
+			<div class="text-align:center margin-top:24px">
+				<nuxt-link to="/showcase" class="btn btn--hp margin-top:12px">
+					Check out other projects
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
 		<hp-quote />
 
 		<hp-features />
@@ -43,11 +54,6 @@ stylify-components
 					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
 			</div>
-		</section>
-
-		<section id="showcase" class="container text-align:center">
-			<h2 class="hp-section-title">Showcase</h2>
-			<ShowcaseList />
 		</section>
 
 		<hp-components />
@@ -71,11 +77,26 @@ stylify-components
 			</div>
 		</section>
 
+		<div class="container margin-bottom:64px">
+			<div class="hp-section-title color:#f1f1f1 font-weight:bold">Latest Updates</div>
+			<NewsletterForm />
+		</div>
+
+		<section class="container">
+			<h2 class="hp-section-title">Go ahead. Give it a try!</h2>
+			<div class="md:font-size:20px text-align:center margin-bottom:24px max-width:600px margin-left:auto margin-right:auto">Try it now in the browser or at prepared Stack Blitz playgrounds for Vue, React, Next.js, Nuxt.js, Lit, Svelte and a other tools.</div>
+			<div class="text-align:center margin-top:24px">
+				<nuxt-link to="/docs/get-started" class="btn btn--hp margin-top:12px">
+					Get started
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
 	</div>
 </template>
 
 <script>
-import ShowcaseList from '~/components/ShowcaseList.vue';
 import { BlogRepository } from '~/services/model/BlogRepository';
 
 export default {
@@ -110,6 +131,5 @@ export default {
             .fetch();
         return { posts };
     },
-    components: { ShowcaseList }
 }
 </script>

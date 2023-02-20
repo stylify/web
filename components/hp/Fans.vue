@@ -26,7 +26,7 @@
 				<div v-else-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)" v-html="fan.text"></div>
 			</a>
 		</div>
-		<a @click="() => toggled = !toggled" :class="`
+		<a @click="() => toggled = !toggled" role="button" :class="`
 			display:flex align-items:flex-end justify-content:center width:100% left:0
 			${toggled ? 'position:sticky bottom:50px height:64px' : 'height:200px position:absolute bottom:0 background:linear-gradient(0deg,rgba(10,16,29,1)_40%,rgba(0,0,0,0)_100%)'}
 		`">
@@ -91,6 +91,11 @@ export default {
 				name: 'Mentioned in TLDR.tech newsletter',
 				image: 'tldr.png',
 				link: 'https://tldr.tech/tech/2022-11-11'
+			},
+			{
+				name: 'Mentioned in Codrops newsletter',
+				image: 'codrops.jpg',
+				link: 'https://tympanus.net/codrops/collective/collective-738/'
 			},
 			{
 				name: 'Mentioned in This Week In React newsletter',
@@ -240,6 +245,20 @@ export default {
 				link: 'https://twitter.com/davidteren/status/1608449486950391810'
 			},
 			{
+				name: 'Reza Qorbani',
+				note: 'CTO & Co-Founder at QualiaID',
+				image: 'reza-qorbani.jpg',
+				text: `I didn’t know about Stylify! Looks amazing! I love feathers such as minify Class Names which is missing from Tailwind 👍.`,
+				link: 'https://app.daily.dev/posts/cEQLGBMZz#c-labxJvUuO'
+			},
+			{
+				name: 'Arif Uddin',
+				note: 'Software Developer at BitCode',
+				image: 'arif-uddin.jpeg',
+				text: `Wish I know this library before. I can save my 1-month of work in our company, we did the mangling optimization for our product.`,
+				link: 'https://github.com/stylify/packages/issues/192#issuecomment-1434795596'
+			},
+			{
 				name: 'Japheth Mutai',
 				image: 'japheth-mutai.jpg',
 				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
@@ -292,6 +311,12 @@ export default {
 				image: 'ngmi.jpg',
 				text: `I'm notoriously bad with CSS, giving this a try 👾.`,
 				link: 'https://twitter.com/ngmisl/status/1611429779789737984'
+			},
+			{
+				name: 'Miles Pernicious',
+				image: 'miles-pernicious.png',
+				text: `Looks pretty cool so far 🤩.`,
+				link: 'https://discord.com/channels/856160715508547614/986624830860328971/1076967890722492547'
 			},
 			{
 				name: 'Mubashar Hashmat',
