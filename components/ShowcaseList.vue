@@ -1,6 +1,6 @@
 <template>
 	<div class="display:grid gap:24px grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
-		<a v-for="item in items" :href="`${item.url}?ref=stylifycss.com`" target="_blank" rel="noopener nofollow" class="
+		<a v-for="item in itemsList" :href="`${item.url}?ref=stylifycss.com`" target="_blank" rel="noopener nofollow" class="
 			position:relative text-decoration:none border:1px_solid_#1e2431 border-radius:8px overflow:hidden
 			[&:hover>div]{opacity:1}
 		">
@@ -20,8 +20,30 @@
 
 <script>
 export default {
+	props: {
+		limit: {
+			type: Number,
+			default: null
+		}
+	},
+	computed: {
+		itemsList() {
+			if (this.limit === null) {
+				return this.items;
+			}
+
+			return this.items.slice(0, this.limit);
+		}
+	},
 	data: () => ({
 		items: [
+			{
+				name: 'Conviu',
+				img: 'conviucom.jpg',
+				url: 'https://conviu.cz',
+				description: 'A tool that helps Czech e-commerce platforms to increase sales.',
+				techStack: ['symfony.svg'],
+			},
 			{
 				name: 'Zsht.cz',
 				img: 'zshtcz.jpg',

@@ -114,6 +114,17 @@ export default defineConfig({
 			'.docs__aside-link.nuxt-link-active': 'font-weight:bold color:$blue1 background-color:lighten($blue3,20)'
 		},
 		components: {
+			'field__wrapper': 'position:relative display:flex',
+			'field': `
+				width:100% padding:12px border-radius:4px min-height:50px background:#fff color:$blue3 outline:none
+				&:focus+label, &:not(:placeholder-shown)+label { top:0 background:#fff }
+			`,
+			'field__label': 'position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px font-weight:bold',
+			'field-pair-rounded': `
+				display:flex flex-direction:column sm:flex-direction:row justify-content:center align-items:stretch
+				[type="submit"] { justify-content:center text-align:center font-size:20px sm:margin-left:-116px }
+				[type="email"] { border-color:transparent flex:1 border-radius:50px padding:0_24px outline:none display:flex border-color:transparent width:100% tosm:margin-bottom:12px sm:width:calc(100%_-_131px) sm:padding-right:130px }
+			`,
 			'bounce-animation': `
 				animation-name:bounce
 				animation-duration:2s
