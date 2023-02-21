@@ -94,6 +94,93 @@ Usage:
 <docs-section>
 <template #description>
 
+### selectorsPrefix
+This option allows you to set for example `u-` (as utility) prefix. This prefix will be joined with macros during matching.
+
+Thanks to this feature you can use Stylify within your existing application without collision with already existing selectors.
+
+</template>
+<template #code>
+
+```js
+const compilerConfig = {
+	selectorsPrefix: 'u-'
+};
+```
+
+And in the code:
+```html
+<div class="
+	u-color:blue
+	hover:u-color:red
+	[a]{u-color:blue}
+"></div>
+```
+
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+### mangleSelectors
+If the mangle selectors option is set to true, the selectors in CSS will be mangled from long to short.
+
+This only configures the Compilation Result so it generates minified CSS selectors. To rewrite selectors in files, you need to call `compiler.rewriteSelectors(content)` method.
+
+The `rewriteSelectors` method is executed automatically within the Unplugin, Bundler, Astro, Nuxt and Nuxt Module packages. You have to call it only, if you want to work with the Compiler directly.
+
+</template>
+<template #code>
+
+```js
+const compilerConfig = {
+	mangleSelectors: true
+};
+```
+
+```js
+const compiler = new Compiler(config);
+
+compiler.rewriteSelectors(content);
+```
+
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
+### mangledSelectorsPrefix
+This prefix is added before all mangled selectors. You can use any non-numeric character, for example `_` (an underscore).
+
+This feature prevents collision of mangled selectors with those you may already have in your application. Use it only, when there is such collision.
+
+</template>
+<template #code>
+
+```js
+const compilerConfig = {
+	mangledSelectorsPrefix: '_'
+};
+```
+
+```html
+<div class="color:blue"></div>
+
+<!-- With configuration -->
+<div class="_a"></div>
+
+<!-- Without configuration -->
+<div class="a"></div>
+```
+
+</template>
+</docs-section>
+
+<docs-section>
+<template #description>
+
 ### variables
 Variables can be used in a selector or accessed inside a macro.
 
