@@ -181,6 +181,8 @@ If you are looking for some color palettes, <nuxt-link to="/snippets/snippets/ma
 ## Advanced Configuration
 Check out the [compiler](/docs/stylify/compiler) for more configuration options. The Compiler Config is reusable and the same for all packages listed below.
 
+In case you want to use Stylify within the browser directly, you should check out the [Runtime](/docs/stylify/runtime) documentation.
+
 ## Stylify CSS Packages
 Stylify ships with multiple packages. All of them can be installed using NPM or YARN. Stylify CSS and Profiler can also be used directly through CDN:
 
