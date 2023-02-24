@@ -19,7 +19,7 @@ export default {
 	head: {
 		title: 'Page not found | Stylify',
 		meta: [
-			{ name: 'robots', content: 'noindex, nofollow' },
+			{ hid: 'robots', name: 'robots', content: 'noindex, nofollow' },
 		]
 	}
 }

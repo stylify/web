@@ -143,6 +143,8 @@ export default {
 			title: postTitle,
 			meta: [
 				{ hid: 'description', name: 'description', content: postAnnotation },
+				{ hid: 'robots', name: "robots", content: 'max-image-preview:large, index, follow'},
+
 				// Open Graph
 				{ hid: 'og:title', property: 'og:title', content: postTitle },
 				{ hid: 'og:type', property: 'og:type', content: 'article' },

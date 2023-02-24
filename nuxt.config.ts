@@ -35,7 +35,7 @@ export default {
 		meta: [
 			{ charset: 'utf-8' },
 			{ hid: 'description', name: 'description', content: defaultPageDescription },
-			{ name: "robots", content: 'index, follow'},
+			{ hid: 'robots', name: "robots", content: 'index, follow'},
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 			{ name: 'format-detection', content: 'telephone=no' },
 			{ name: 'msapplication-TileColor', content: '#01befe' },

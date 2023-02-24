@@ -27,6 +27,7 @@ export default {
             title: pageTitle,
             meta: [
                 { hid: "description", name: "description", content: pageDescription },
+	
                 // Open Graph
                 { hid: "og:title", property: "og:title", content: pageTitle },
                 { hid: "og:description", property: "og:description", content: pageDescription },
