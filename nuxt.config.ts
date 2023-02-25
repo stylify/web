@@ -18,6 +18,7 @@ const excludedRoutes = [
 ];
 
 const domain = 'https://stylifycss.com';
+const defaultOgImage = `${domain}/images/og-image-v2.jpg`;
 
 export default {
 	server: {
@@ -31,7 +32,6 @@ export default {
 		htmlAttrs: {
 			lang: 'en'
 		},
-
 		meta: [
 			{ charset: 'utf-8' },
 			{ hid: 'description', name: 'description', content: defaultPageDescription },
@@ -42,9 +42,10 @@ export default {
 			{ name: 'theme-color', content: '#01befe' },
 			// Open Graph
 			{ hid: 'og:title', property: 'og:title', content: defaultPageTitle },
-			{ hid: 'og:image', property: 'og:image', content: '/images/og-image-v2.jpg' },
+			{ hid: 'og:image', property: 'og:image', content: defaultOgImage },
 			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
 			// Twitter Card
+			{ hid: 'twitter:image:src', name: 'twitter:image:src', content: defaultOgImage },
 			{ hid: 'twitter:title', name: 'twitter:title', content: defaultPageTitle },
 			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription },
 			{ hid: 'twitter:site', name: 'twitter:site', content: '@stylifycss' },

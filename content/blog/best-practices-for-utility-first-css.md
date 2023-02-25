@@ -11,9 +11,9 @@ Utility-First CSS is a modern and flexible approach to styling website.
 
 However, it temps developers to "step on the gas", turn on the heavy metal and write literally everything into class attributes in completely random order. This ends up with a class long like Route 50 and coding turns into a "Sherlock Holmes experience".
 
-This guide is a list of useful lessons learned while working and testing Utility-First CSS. It's goal is to help you use Utility-First CSS effectively while eliminating the issues mentioned below.
+This guide is a list of useful lessons learned while working and testing utility-first CSS. Its goal is to help you use utility-first CSS effectively while eliminating the issues mentioned below.
 
-Even though this guide is focused primarily on Stylify CSS, there are links to Tailwind documentation for similar technology/approach and all tips explained in this guide can be used within any other Utility-First CSS framework that supports similar features.
+Even though this guide is focused primarily on Stylify CSS, there are links to Tailwind documentation for similar technology/approach and all tips explained in this guide can be used within any other utility-first CSS framework that supports similar features.
 
 ## Utility-First CSS Pros and Cons
 Below is a list of a few pros and cons you will probably encounter, when working with Stylify CSS or Tailwind CSS. I have explained them more in a detail in <nuxt-link to="/docs/get-started/why-stylify-css">why Stylify post</nuxt-link>.
@@ -29,7 +29,7 @@ Cons:
 - Some elements that should work as components (buttons for example) are defined as elements with duplicated class attributes, which can cause harder maintenance
 - Values for properties like `color`, `border` and `margin` are often hardcoded within the template
 
-Now when we know at least some positives/negatives while using Utility-First CSS, let's take a look at the negatives and let's try to solve them.
+Now when we know at least some positives/negatives while using utility-first CSS, let's take a look at the negatives and let's try to solve them.
 
 ## How to align and sort selectors
 To improve class attribute readability, order your selectors from the smallest media query/screen/container, to largest:

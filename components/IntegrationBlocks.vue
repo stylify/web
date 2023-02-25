@@ -1,352 +1,112 @@
-<!--
-stylify-components
-	'integration-block__image-wrapper': `max-height:40px max-width:100%`,
-	'integration-block': `
-		display:flex color:$grey3 flex-direction:row justify-content:center align-items:center
-		border-radius:$radius2 background:lighten($blue3,20)
-		padding:8px text-decoration:none min-height:60px
-	`
-/stylify-components
--->
 <template>
-	<div
-		class="display:grid grid-template-columns:repeat(auto-fit,minmax(70px,1fr)) md:grid-template-columns:repeat(auto-fit,minmax(112px,1fr)) gap:12px"
-	>
-		<nuxt-link to="/docs/integrations/browser" class="integration-block">
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/browser.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:100% height:40px max-width:100px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/nextjs"
-			aria-label="Next.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/nextjs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/nuxtjs"
-			aria-label="Nuxt.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/nuxtjs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/reactjs"
-			aria-label="React.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/react.png"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/vuejs"
-			aria-label="Vue.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/vuejs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/angular"
-			aria-label="Vue.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/angular.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/astro"
-			aria-label="Astro"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/astro.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/remix"
-			aria-label="Remix"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/remix.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/solidjs"
-			aria-label="SolidJS"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/solidjs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/qwik"
-			aria-label="Qwik"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/qwik.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/svelte"
-			aria-label="Svelte"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/svelte.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/vitejs"
-			aria-label="Vite"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/vitejs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/webpack"
-			aria-label="Webpack"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/webpack.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/rollupjs"
-			aria-label="Rollup"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/rollupjs.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/esbuild"
-			aria-label="Esbuild"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/esbuild.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/nodejs"
-			aria-label="Node.js"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/nodejs.svg"
-					alt=""
-					height="60"
-					width="90"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/symfony"
-			aria-label="Symfony"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/symfony.png"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:100% height:40px object-fit:contain"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/laravel"
-			aria-label="Laravel"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/laravel.svg"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/nette"
-			aria-label="Nette"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/nette.png"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-		<nuxt-link
-			to="/docs/integrations/cakephp"
-			aria-label="Cake PHP"
-			class="integration-block"
-		>
-			<div class="integration-block__image-wrapper">
-				<img
-					src="/images/brands/cakephp.png"
-					alt=""
-					height="1"
-					width="2"
-					loading="lazy"
-					fetchpriority="low"
-					class="width:auto height:40px"
-				/>
-			</div>
-		</nuxt-link>
-	</div>
+	<BrandLinkBlocks :items="items" />
 </template>
+
+<script>
+export default {
+	data: () => ({
+		items: [
+			{
+				slug: 'integrations/browser',
+				image: 'brands/browser.svg',
+				label: 'Browser'
+			},
+			{
+				slug: 'integrations/nextjs',
+				image: 'brands/nextjs.svg',
+				label: 'Next.js'
+			},
+			{
+				slug: 'integrations/nuxtjs',
+				image: 'brands/nuxtjs.svg',
+				label: 'Nuxt.js'
+			},
+			{
+				slug: 'integrations/reactjs',
+				image: 'brands/react.png',
+				label: 'React'
+			},
+			{
+				slug: 'integrations/vuejs',
+				image: 'brands/vuejs.svg',
+				label: 'Vuejs'
+			},
+			{
+				slug: 'integrations/angular',
+				image: 'brands/angular.svg',
+				label: 'Angular'
+			},
+			{
+				slug: 'integrations/svelte',
+				image: 'brands/svelte.svg',
+				label: 'Svelte'
+			},
+			{
+				slug: 'integrations/astro',
+				image: 'brands/astro.svg',
+				label: 'Astro'
+			},
+			{
+				slug: 'integrations/remix',
+				image: 'brands/remix.svg',
+				label: 'Remix'
+			},
+			{
+				slug: 'integrations/solidjs',
+				image: 'brands/solidjs.svg',
+				label: 'SolidJS'
+			},
+			{
+				slug: 'integrations/qwik',
+				image: 'brands/qwik.svg',
+				label: 'Qwik'
+			},
+			{
+				slug: 'integrations/vitejs',
+				image: 'brands/vitejs.svg',
+				label: 'ViteJS'
+			},
+			{
+				slug: 'integrations/webpack',
+				image: 'brands/webpack.svg',
+				label: 'Webpack'
+			},
+			{
+				slug: 'integrations/rollupjs',
+				image: 'brands/rollupjs.svg',
+				label: 'Rollup'
+			},
+			{
+				slug: 'integrations/esbuild',
+				image: 'brands/esbuild.svg',
+				label: 'Esbuild'
+			},
+			{
+				slug: 'integrations/nodejs',
+				image: 'brands/nodejs.svg',
+				label: 'NodeJS'
+			},
+			{
+				slug: 'integrations/symfony',
+				image: 'brands/symfony.png',
+				label: 'NodeJS'
+			},
+			{
+				slug: 'integrations/laravel',
+				image: 'brands/laravel.svg',
+				label: 'Laravel'
+			},
+			{
+				slug: 'integrations/nette',
+				image: 'brands/nette.png',
+				label: 'Nette'
+			},
+			{
+				slug: 'integrations/cakephp',
+				image: 'brands/cakephp.png',
+				label: 'Cake PHP'
+			},
+		]
+	})
+}
+</script>

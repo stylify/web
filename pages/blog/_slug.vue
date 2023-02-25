@@ -91,11 +91,11 @@ stylify-components
 						v-for="(post, key) in newPosts"
 						:to="post.path"
 						:key="key"
-						class="display:flex flex-direction:column color:$blue4 text-decoration:none border-radius:4px overflow:hidden"
+						class="display:flex flex-direction:column color:$grey5 text-decoration:none border-radius:4px overflow:hidden"
 					>
 						<img :src="post.image" width="400" height="200" alt="" class="filter:brightness(0.9) width:100% height:200px object-fit:cover border-radius:4px border:1px_solid_$grey3" loading="lazy" fetchpriority="low">
 						<div class="padding-top:12px">
-							<div class="color:$blue4">{{ getPostCreatedAtDate(post.createdAt) }}</div>
+							<div class="color:$grey5">{{ getPostCreatedAtDate(post.createdAt) }}</div>
 							<h3 class="margin-top:0 margin-bottom:4px font-size:18px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:84px">{{ post.title }}</h3>
 						</div>
 					</nuxt-link>

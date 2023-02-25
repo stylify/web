@@ -8,7 +8,7 @@
 				role="button"
 				v-on:click="(event) => setFeaturedTab(event, tab)"
 				:class="[
-					featuresSelectedTab === tab ? 'color:$blue1' : 'color:$blue4',
+					featuresSelectedTab === tab ? 'color:$blue1' : 'color:$grey5',
 					'transition:.3s font-weight:bold white-space:nowrap cursor:pointer margin-right:16px text-align:center display:inline-flex',
 					'[i]{font-size:24px} [span]{font-size:14px}'
 				]"

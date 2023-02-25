@@ -15,14 +15,14 @@ You can try the examples in this article in the [Playground On Stackblitz](https
 [Stylify](https://stylifycss.com) is a library that uses CSS-like selectors to generate optimized utility-first CSS based on what you write.
 
 Features:
-✅ Build module. No runtime script.
-✅ CSS-like selectors
-✅ No framework to study
-✅ Less time spent in docs
-✅ Mangled & Extremely small CSS
-✅ No CSS purge needed
-✅ Components, Variables, Custom selectors
-✅ It can generate multiple CSS bundles
+- ✅ Build module. No runtime script.
+- ✅ CSS-like selectors
+- ✅ No framework to study
+- ✅ Less time spent in docs
+- ✅ Mangled & Extremely small CSS
+- ✅ No CSS purge needed
+- ✅ Components, Variables, Custom selectors
+- ✅ It can generate multiple CSS bundles
 
 ## 🔗 Components
 In Emotion, components are often defined this way:
@@ -199,7 +199,7 @@ stylify-variables
   secondary: '#444'
 /stylify-variables
 -->
-<div class="color:primary"></div>
+<div class="color:$primary"></div>
 ```
 
 In Compiler Config:

@@ -9,21 +9,21 @@
 				target="blank"
 				rel="noopener nofollow"
 				:class="`
-					text-decoration:none color:$blue4 width:100%
+					text-decoration:none color:$grey5 width:100%
 					display:inline-flex flex-direction:column
 					background:lighten($blue3,20) padding:12px border-radius:4px
 					${fan.text ? '' : 'align-items:center justify-content:center'}
 				`"
 			>
 				<div class="display:flex align-items:center">
-					<img v-if="fan.image" :src="`/images/hp/fans/${fan.image}`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
+					<img v-if="fan.image" :src="`/images/hp/fans/${fan.image}?v2`" :class="fan.text ? 'border-radius:50%' : ''" alt="" loading="lazy" fetchpriority="low" :width="fan.text ? 50 : 80" :height="fan.text ? 50 : 80">
 					<div v-if="(typeof fan.htmlContent === 'undefined')" class="margin-left:12px display:flex flex-direction:column justify-content:flex-start">
 						<strong class="font-size:18px color:#fefefe">{{ fan.name }}</strong>
 						<span v-if="typeof fan.note !== 'undefined'" class="font-size:14px">{{ fan.note }}</span>
 					</div>
 				</div>
 				<div v-if="(typeof fan.htmlContent !== 'undefined')" v-html="fan.htmlContent" class="display:flex"></div>
-				<div v-else-if="fan.text" class="margin-top:12px font-size:14px color:lighten($blue4,20)" v-html="fan.text"></div>
+				<div v-else-if="fan.text" class="margin-top:12px font-size:14px color:lighten($grey5,20)" v-html="fan.text"></div>
 			</a>
 		</div>
 		<a @click="() => toggled = !toggled" role="button" :class="`
@@ -45,18 +45,18 @@ export default {
 		toggled: false,
 		fans: [
 			{
-				name: 'Jorge Baumann.js',
-				note: 'Full Stack Developer at One Beyond',
-				image: 'jorge-baumann.jpg',
-				text: `
-					[🔧] Do you know Stylify? It's an alternative to Tailwind #CSS that goes one step further.
-					🔤 Known syntax
-					📈 No learning curve
-					👩‍💻 Write normal CSS in classes
-					⚛️ Supports variables and components
-					🗜️ Works with Webpack, Rollup or Vite
-				`,
-				link: 'https://twitter.com/baumannzone/status/1612751229016326144'
+				name: 'Lukeshiru',
+				note: 'Webdev at Vangware',
+				image: 'lukeshiru.gif',
+				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
+				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
+			},
+			{
+				name: 'Yoav Ganbar',
+				note: 'Engineer at Builder.io and QwikDev',
+				image: 'yoav-gangbar.webp',
+				text: `Write plain CSS just in a class?<br>Fair enough, I'm intrigued.`,
+				link: 'https://twitter.com/HamatoYogi/status/1571724628321796099'
 			},
 			{
 				name: '蝉丸ファン',
@@ -68,7 +68,7 @@ export default {
 			{
 				name: 'Phan An',
 				note: '@vuejs core team member',
-				image: 'phan-an.jpg',
+				image: 'phan-an.webp',
 				text: `This looks super interesting!`,
 				link: 'https://twitter.com/notphanan/status/1566610354246864901'
 			},
@@ -79,28 +79,28 @@ export default {
 			{
 				name: 'One of the Top Front-End Tools Of 2022',
 				note: 'By Louis Lazaris',
-				image: 'smashing-magazine.png',
+				image: 'smashing-magazine.webp',
 				link: 'https://www.smashingmagazine.com/2023/01/top-frontend-tools-2022/#stylify-https-stylifycss-com/'
 			},
 			{
 				name: 'One of the Top Development Languages on Product Hunt',
-				image: 'product-hunt.jpg',
+				image: 'product-hunt.webp',
 				link: 'https://www.producthunt.com/topics/development-language'
 			},
 			{
 				name: 'Mentioned in TLDR.tech newsletter',
-				image: 'tldr.png',
+				image: 'tldr.webp',
 				link: 'https://tldr.tech/tech/2022-11-11'
 			},
 			{
 				name: 'Mentioned in Codrops newsletter',
-				image: 'codrops.jpg',
+				image: 'codrops.webp',
 				link: 'https://tympanus.net/codrops/collective/collective-738/'
 			},
 			{
 				name: 'Mentioned in This Week In React newsletter',
 				note: 'By Sébastien Lorber',
-				image: 'this-week-in-react.png',
+				image: 'this-week-in-react.webp',
 				link: 'https://thisweekinreact.com/newsletter/124'
 			},
 			{
@@ -111,7 +111,7 @@ export default {
 			},
 			{
 				name: 'Mentioned in Web Tools Weekly as one of the Top 30 Tools of 2022',
-				image: 'web-tools-weekly.png',
+				image: 'web-tools-weekly.webp',
 				link: 'https://mailchi.mp/webtoolsweekly/web-tools-493'
 			},
 			{
@@ -122,7 +122,7 @@ export default {
 			{
 				name: 'Mentioned as one of the Top 7 Web dev tools that will make your life EASY',
 				note: 'By Pritesh Kiri',
-				image: 'pritesh-kiri.jpg',
+				image: 'pritesh-kiri.webp',
 				link: 'https://twitter.com/PriteshKiri/status/1608795151782285313'
 			},
 			{
@@ -134,13 +134,13 @@ export default {
 			{
 				name: 'Mentioned in Symfony newsletter',
 				note: 'By Javier Eguiluz',
-				image: 'symfony.png',
+				image: 'symfony.webp',
 				link: 'https://symfony.com/blog/a-week-of-symfony-808-20-26-june-2022'
 			},
 			{
 				name: 'Mentioned in Jamstacked newsletter',
 				note: 'By Brian Rinaldi',
-				image: 'jamlogo.png',
+				image: 'jamlogo.webp',
 				link: 'https://jamstack.email/issues/72'
 			},
 			{
@@ -151,262 +151,290 @@ export default {
 			},
 			{
 				name: 'Mentioned in JSter newsletter as a tool for Writing CSS',
-				image: 'jster.png',
+				image: 'jster.webp',
 				link: 'https://jster.net/blog/jster-189/'
 			},
 			{
-				name: 'Yoav Ganbar',
-				note: 'Engineer at Builder.io and QwikDev',
-				image: 'yoav-gangbar.jpg',
-				text: `Write plain CSS just in a class?<br>Fair enough, I'm intrigued.`,
-				link: 'https://twitter.com/HamatoYogi/status/1571724628321796099'
-			},
-			{
-				name: 'Lukeshiru',
-				note: 'Webdev at Vangware',
-				image: 'lukeshiru.gif',
-				text: `It's like Tailwind's JIT, but without having to learn new classnames, and following a really simple set of "rules". Great library!`,
-				link: 'https://dev.to/machy8/stylifydev-dynamic-css-generator-1cbe'
+				name: 'Jorge Baumann.js',
+				note: 'Full Stack Developer at One Beyond',
+				image: 'jorge-baumann.webp',
+				text: `
+					[🔧] Do you know Stylify? It's an alternative to Tailwind #CSS that goes one step further.
+					🔤 Known syntax
+					📈 No learning curve
+					👩‍💻 Write normal CSS in classes
+					⚛️ Supports variables and components
+					🗜️ Works with Webpack, Rollup or Vite
+				`,
+				link: 'https://twitter.com/baumannzone/status/1612751229016326144'
 			},
 			{
 				name: 'Tomáš Pilař',
 				note: 'Co-Founder & CTO Conviu.com',
-				image: 'tomas-pilar.jpg',
+				image: 'tomas-pilar.webp',
 				text: `I recommend looking at stylifycss.com if you don't know that tool yet 👍. Launched on the first try with Symfony and it works like a charm! 👏`,
 				link: 'https://twitter.com/TomasPilaru/status/1494635502930169884'
 			},
 			{
 				name: 'Posandu Mapa',
 				note: 'Fullstack dev',
-				image: 'posandu-mapa.jpeg',
+				image: 'posandu-mapa.webp',
 				text: `I like how Stylify compresses the utility classes. A good Tailwind CSS alternative.`,
 				link: 'https://www.producthunt.com/products/stylify-css/reviews?review=551602'
 			},
 			{
 				name: 'Tom Ravn',
 				note: 'Webdeveloper & SysAdmin',
-				image: 'tom-ravn.jpg',
+				image: 'tom-ravn.webp',
 				text: 'Have you heard about Stylify? Similar framework as #TailwindCSS. I guess when you finally learn #CSS using Tailwind you can go level deeper and use Stylify, you will basically write pure CSS into #html.😆',
 				link: 'https://twitter.com/TomR4vn/status/1518493107817431040'
 			},
 			{
 				name: 'Reegan Rajasekar',
 				note: 'Full Stack Web Developer ',
-				image: 'reegan-rajasekar.jpg',
+				image: 'reegan-rajasekar.webp',
 				text: `I just thought it's just another css library like tailwind. But Twitter recommend this every time. So i just checked what is this . But now I feel it's awesome. bcz it gives utility classes like tailwind but it uses css like class names . I gonna use this in my next projects.`,
 				link: 'https://twitter.com/ReeganRajasekar/status/1623976021371531264'
 			},
 			{
 				name: 'Finn Guha',
 				note: 'Webdev teacher',
-				image: 'finn-guha.jpeg',
+				image: 'finn-guha.webp',
 				text: `Wow, that seems like a promising concept! And one that seems very interesting to me personally. I am always amazed by new and unique concepts of writing CSS.`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2013972'
 			},
 			{
 				name: 'David Mario Licla',
 				note: 'Front-End dev at Forma',
-				image: 'david-mario-licla.jpeg',
+				image: 'david-mario-licla.webp',
 				text: '🤯 Did you know that there is an alternative to TailwindCSS but only using CSS properties? Look it\'s called Stylify!',
 				link: 'https://www.linkedin.com/posts/davidmariolc_sab%C3%ADas-que-existe-una-alternativa-a-tailwindcss-activity-6912058924682604544-ImsK?utm_source=linkedin_share&utm_medium=member_desktop_web'
 			},
 			{
 				name: 'Toheeb Ogunbiyi',
 				note: 'Web-UI Engineer',
-				image: 'toheeb.jpg',
+				image: 'toheeb.webp',
 				text: `Utility on steroids, I love this! No weird utility names, almost same as CSS. Chars as class names on production. Colocation of states within the rule makes a lot of sense too. This makes up for readability compared to others.`,
 				link: 'https://twitter.com/ToheebDotCom/status/1608710082157760514'
 			},
 			{
 				name: 'Rin',
 				note: 'Full-Stack Developer',
-				image: 'rin.jpg',
+				image: 'rin.webp',
 				text: `Immediately interested when I read features on documentation, give a shot with Astro and absolutely love it.`,
 				link: 'https://twitter.com/rrrriiiiiinnnn/status/1609084128242331660'
 			},
 			{
 				name: 'Michael Andreuzza',
 				note: 'UI Designer & Front end dev',
-				image: 'michael-andreuzza.jpg',
+				image: 'michael-andreuzza.webp',
 				text: `I like that mangling feature. I was using a library that uglifies the code exactly like that..very useful for some cases.`,
 				link: 'https://twitter.com/Mike_Andreuzza/status/1606995345694941185'
 			},
 			{
 				name: 'Oscar Lito M Pablo',
-				image: 'oscar-lito-m-pablo.png',
+				image: 'oscar-lito-m-pablo.webp',
 				text: 'We now can easily integrate/use in @stylifycss by @8machy any Material Design 3 ("Material You") @materialdesign themes generated using the new Material Theme Builder! Saves a lot of time!',
 				link: 'https://twitter.com/FlipOneUp/status/1612936955062550528'
 			},
 			{
 				name: 'David Teren',
 				note: 'Tech Lead & Ruby and Rails Dev',
-				image: 'david-teren.jpg',
+				image: 'david-teren.webp',
 				text: `It's one of the tools that enables me to create entirely reactive web, iOS and Android apps with little JS.`,
 				link: 'https://twitter.com/davidteren/status/1608449486950391810'
 			},
 			{
 				name: 'Reza Qorbani',
 				note: 'CTO & Co-Founder at QualiaID',
-				image: 'reza-qorbani.jpg',
+				image: 'reza-qorbani.webp',
 				text: `I didn’t know about Stylify! Looks amazing! I love feathers such as minify Class Names which is missing from Tailwind 👍.`,
 				link: 'https://app.daily.dev/posts/cEQLGBMZz#c-labxJvUuO'
 			},
 			{
 				name: 'Arif Uddin',
 				note: 'Software Developer at BitCode',
-				image: 'arif-uddin.jpeg',
+				image: 'arif-uddin.webp',
 				text: `Wish I know this library before. I can save my 1-month of work in our company, we did the mangling optimization for our product.`,
 				link: 'https://github.com/stylify/packages/issues/192#issuecomment-1434795596'
 			},
 			{
 				name: 'Japheth Mutai',
-				image: 'japheth-mutai.jpg',
+				image: 'japheth-mutai.webp',
 				text: `Well, I guess we all need to follow @stylifycss to reduce our #CSS related nerve attacks 😂😂.`,
 				link: 'https://twitter.com/ItsDevMutai/status/1495784770646728713'
 			},
 			{
+				name: 'Muhi Masri',
+				note: 'Frontend Engineer',
+				image: 'muhi-masri.webp',
+				text: 'Just came across #stylifycss, which uses CSS-like selectors to generate optimized utility-first CSS dynamically. Excited to try it out!',
+				link: 'https://twitter.com/muhimasri/status/1629186359784079360'
+			},
+			{
 				name: 'Yousuf Iqbal',
 				note: 'Full Stack Developer',
-				image: 'yousuf-iqbal.jpg',
+				image: 'yousuf-iqbal.webp',
 				text: 'This is awesome. Almost zero learning curve 👍!',
 				link: 'https://twitter.com/yousufiqbal_dev/status/1605883118359019523'
 			},
 			{
+				name: 'Ahmad Alfy',
+				note: 'Engineering @robustastudio',
+				image: 'ahmad-alfy.webp',
+				text: 'It gives more freedom than the strictly confined design system in Tailwind.',
+				link: 'https://twitter.com/ahmadalfy/status/1629980620037275650'
+			},
+			{
 				name: 'Ahmad Tahir',
 				note: 'Fullstack Dev',
-				image: 'ahmad-tahir.jpg',
+				image: 'ahmad-tahir.webp',
 				text: `Wow this looks neat 💯. I'll be checking it out.`,
 				link: 'https://twitter.com/AhmadBMTahir/status/1531256572629987328'
 			},
 			{
 				name: 'Código de Marras',
 				note: 'Frontend Developer',
-				image: 'codigo-de-marras.jpg',
+				image: 'codigo-de-marras.webp',
 				text: `It's interesting, an alternative to having everything in a single file...`,
 				link: 'https://twitter.com/CodigoDeMarras/status/1612801313942769664'
 			},
 			{
 				name: 'Ahmed Zougari',
 				note: 'React developer',
-				image: 'ahmed-zougari.jpeg',
+				image: 'ahmed-zougari.webp',
 				text: `StylifyCSS is like Tailwind framework but easier to learn and read.`,
 				link: 'https://www.linkedin.com/feed/update/urn:li:activity:7019319987689410560?updateEntityUrn=urn%3Ali%3Afs_feedUpdate%3A%28V2%2Curn%3Ali%3Aactivity%3A7019319987689410560%29'
 			},
 			{
 				name: 'Jean-Baptiste',
 				note: 'Creator of Ardaria',
-				image: 'jean-baptiste.jpg',
+				image: 'jean-baptiste.webp',
 				text: `Interesting project! Keep going guyz 💪`,
 				link: 'https://twitter.com/JB_Briant/status/1589131258441129984'
 			},
 			{
 				name: 'Darryl Yeo',
 				NOTE: 'frontend dev',
-				image: 'darryl-yeo.jpg',
+				image: 'darryl-yeo.webp',
 				text: `This make so much more sense than Tailwind.`,
 				link: 'https://twitter.com/darryl__yeo/status/1623003865485389825'
 			},
 			{
 				name: 'Ngmi',
-				image: 'ngmi.jpg',
+				image: 'ngmi.webp',
 				text: `I'm notoriously bad with CSS, giving this a try 👾.`,
 				link: 'https://twitter.com/ngmisl/status/1611429779789737984'
 			},
 			{
 				name: 'Miles Pernicious',
-				image: 'miles-pernicious.png',
+				image: 'miles-pernicious.webp',
 				text: `Looks pretty cool so far 🤩.`,
 				link: 'https://discord.com/channels/856160715508547614/986624830860328971/1076967890722492547'
 			},
 			{
 				name: 'Mubashar Hashmat',
 				note: 'Manager at Scorp',
-				image: 'mubashar-hashmat.jpg',
+				image: 'mubashar-hashmat.webp',
 				text: `Extremely awesome 😎.`,
 				link: 'https://twitter.com/MubasharHashmat/status/1491036188152832003'
 			},
 			{
 				name: 'Xavi',
-				image: 'xavi.jpg',
+				image: 'xavi.webp',
 				text: `Awesome, I'll try it later.`,
 				link: 'https://twitter.com/IbraXavi/status/1612859833023172611'
 			},
 			{
 				name: 'Shushant Lakhyani',
 				note: 'Just Ship It Hub',
-				image: 'shushant-lakhyani.jpeg',
+				image: 'shushant-lakhyani.webp',
 				text: `This looks cool!`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2014729'
 			},
 			{
+				name: 'Sibasish',
+				note: 'Web Developer',
+				image: 'sibasish.webp',
+				text: `@stylifycss = @tailwindcss - all the goodness of utility classes.`,
+				link: 'https://twitter.com/smsibasish/status/1609987804217638912'
+			},
+			{
 				name: 'Mukesh',
-				image: 'mukesh.jpg',
+				image: 'mukesh.webp',
 				text: 'Seems cool ✌️✌️✌️',
 				link: 'https://twitter.com/mukezhz/status/1605579574460289025'
 			},
 			{
 				name: 'Paul⭐Bear',
-				image: 'paul-bear.jpg',
+				image: 'paul-bear.webp',
 				text: `Very cool library!`,
 				link: 'https://twitter.com/Paulstryd/status/1493327596020457480'
 			},
 			{
 				name: 'sam i am',
-				image: 'sam-i-am.jpg',
+				image: 'sam-i-am.webp',
 				text: `That's nice!`,
 				link: 'https://twitter.com/sbworld/status/1518571221490749441'
 			},
 			{
 				name: 'Musa Yazlık',
-				image: 'musa-yazlik.jpg',
+				image: 'musa-yazlik.webp',
 				text: `Hmm. I like it. 😁`,
 				link: 'https://www.producthunt.com/posts/stylify-css?comment=2015470'
 			},
 			{
 				name: 'Eze Chukwuemeka',
 				note: 'Tech Support',
-				image: 'eze-chukwuemeka.jpg',
+				image: 'eze-chukwuemeka.webp',
 				text: `I love this`,
 				link: 'https://twitter.com/EzeChuk92/status/1622842527702212608'
 			},
 			{
 				name: 'Mugiwara Superfly',
-				image: 'mugiwara-superfly.jpg',
+				image: 'mugiwara-superfly.webp',
 				text: `Wow wow wow`,
 				link: 'https://twitter.com/i_amsuperfly/status/1618178850869108739'
 			},
 			{
-				name: 'G-Wok',
-				note: 'Web3 Developer ',
-				image: 'g-wok.jpg',
-				text: `Looks cool`,
-				link: 'https://twitter.com/wannabelon/status/1622820105842204673'
-			},
-			{
-				name: 'Ricardo Anaya',
-				note: 'Full Stack Developer',
-				image: 'ricardo-anaya.jpg',
-				text: `Cool!`,
-				link: 'https://twitter.com/ricky_anaya/status/1594835182632439810'
-			},
-			{
 				name: 'Rajesh Khadka',
 				note: 'Tech Lead & Ruby and Rails Dev',
-				image: 'rajesh-khadka.jpg',
+				image: 'rajesh-khadka.webp',
 				text: `May be next tailwind css. 🙃`,
 				link: 'https://twitter.com/rajeshkhadka200/status/1620060216493764608'
 			},
 			{
+				name: 'G-Wok',
+				note: 'Web3 Developer ',
+				image: 'g-wok.webp',
+				text: `Looks cool`,
+				link: 'https://twitter.com/wannabelon/status/1622820105842204673'
+			},
+			{
+				name: 'Alfred Chadá',
+				note: 'Chief Technical Officer',
+				image: 'alfred-chada.jpg',
+				text: `Nice work`,
+				link: 'https://www.facebook.com/groups/code.opensource/posts/1160434988011479/?comment_id=1209948463060131'
+			},
+			{
+				name: 'Ricardo Anaya',
+				note: 'Full Stack Developer',
+				image: 'ricardo-anaya.webp',
+				text: `Cool!`,
+				link: 'https://twitter.com/ricky_anaya/status/1594835182632439810'
+			},
+			{
 				name: 'Ryuse',
 				note: 'Frontend developer',
-				image: 'ryuse.jpg',
+				image: 'ryuse.webp',
 				text: `Interesting`,
 				link: 'https://twitter.com/Ryuse45551970/status/1612622469369569282'
 			},
 			{
 				name: 'Thiago Teles',
 				note: 'Fullstack developer at Scriptcase',
-				image: 'thiago-teles.jpeg',
+				image: 'thiago-teles.webp',
 				text: 'Nice',
 				link: 'https://app.daily.dev/posts/XZXtpLlp8#c-YTfJ1_iN6'
 			},

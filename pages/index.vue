@@ -43,7 +43,7 @@ stylify-components
 
 		<section id="installation" class="container">
 			<h2 class="hp-section-title">
-				Start using Stylify CSS with your favorite tool in a minute.
+				Start using Stylify CSS with your favorite tool in a minute
 			</h2>
 			<div class="margin-top:12px">
 				<integration-blocks />
@@ -51,6 +51,21 @@ stylify-components
 			<div class="text-align:center margin-top:24px">
 				<nuxt-link to="/docs/integrations" class="btn btn--hp margin-top:12px">
 					Check out integrations
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</nuxt-link>
+			</div>
+		</section>
+
+		<section id="migration-guides" class="container">
+			<h2 class="hp-section-title">
+				Migrate from other CSS frameworks and CSS-in-JS libraries to Stylify easily
+			</h2>
+			<div class="margin-top:12px">
+				<migration-blocks />
+			</div>
+			<div class="text-align:center margin-top:24px">
+				<nuxt-link to="/docs/migration" class="btn btn--hp margin-top:12px">
+					Learn more
 					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
 				</nuxt-link>
 			</div>

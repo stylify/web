@@ -9,8 +9,8 @@ title: "Best practices for utility-first CSS"
 description: "How to use utility-first CSS. Learn when to use which feature to get the maximum of this approach."
 ---
 
-This guide is a list of useful lessons learned while working and testing Utility-First CSS.
-It's goal is to help you use Utility-First CSS effectively while eliminating the issues mentioned below.
+This guide is a list of useful lessons learned while working and testing utility-first CSS.
+It's goal is to help you use utility-first CSS effectively while eliminating the issues mentioned below.
 
 ## How to align and sort selectors
 Order your selectors from the smallest media query/screen/container, to largest.

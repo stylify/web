@@ -26,7 +26,7 @@ stylify-components
 				]"
 			>
 				<div class="width:100% display:flex flex-direction:column">
-					<div class="padding:8px_12px_0_12px background:$blue6 font-weight:bold color:$blue4 white-space:nowrap overflow-x:auto">
+					<div class="padding:8px_12px_0_12px background:$blue6 font-weight:bold color:$grey5 white-space:nowrap overflow-x:auto">
 						<a role="button" v-on:click="selectedTab = 'editor'" :class="[selectedTab === 'editor' ? 'border-color:$blue1 color:$blue1' : 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Editor</a>
 						<a role="button" v-on:click="selectedTab = 'devCss'" :class="[selectedTab === 'devCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Dev CSS</a>
 						<a role="button" v-on:click="selectedTab = 'productionCss'" :class="[selectedTab === 'productionCss' ? 'border-color:$blue1 color:$blue1': 'border-bottom-color:transparent color:#fefefe', 'code-editor__button']" >Production CSS</a>
