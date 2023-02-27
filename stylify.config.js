@@ -40,6 +40,7 @@ export default defineConfig({
 			grey2: '#222',
 			grey3: '#e5e7eb',
 			grey4: '#71717a',
+			grey5: '#cecfd2',
 
 			shadow1: 'rgb(99 99 99 / 20%) 0px 2px 8px 0px',
 			shadow2: '0 2px 12px rgba(0, 0, 0, 0.25)',
@@ -72,7 +73,7 @@ export default defineConfig({
 			// Global
 			html: 'color-scheme:dark',
 			'*': 'box-sizing:border-box scroll-behavior:smooth',
-			'body': 'font-size:16px color:$blue4 background-color:$blue3',
+			'body': 'font-size:16px color:$grey5 background-color:$blue3',
 			'img,video': 'max-width:100% object-fit:contain',
 			textarea: 'outline:none',
 			hr: 'border:0 height:1px background:lighten($blue3,40)',
@@ -88,7 +89,7 @@ export default defineConfig({
 			// Articles common
 			'h1,h2,h3,h4,h5,h6': 'color:#fefefe scroll-margin-top:80px',
 			'article': 'margin-top:0 font-size:16px word-break:break-word',
-			'article iframe, article img': 'max-width:100%',
+			'article iframe, article img': 'max-width:100% filter:brightness(.8)_contrast(1.2)',
 			'article h1': 'cursor:pointer margin-top:0 font-size:30px md:font-size:34px margin-bottom:8px',
 			'article h2': 'cursor:pointer position:relative font-size:26px margin-top:48px margin-bottom:0',
 			'article h3': 'cursor:pointer position:relative font-size:20px margin-top:32px margin-bottom:0',
@@ -135,7 +136,7 @@ export default defineConfig({
 			`,
 			// Global
 			container: `
-				max-width:1280px margin-left:auto margin-right:auto padding-left:8px padding-right:8px
+				max-width:1280px margin-left:auto scroll-margin-top:50px margin-right:auto padding-left:8px padding-right:8px
 				md:padding-left:12px md:padding-right:12px
 				lg:padding-left:24px lg:padding-right:24px
 				&-lg { max-width:1920px }

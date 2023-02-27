@@ -26,6 +26,7 @@
 					<li>Simple CSS <a href="#bundles-splitting">Bundles Splitting</a> for Layouts/Pages</li>
 					<li>Easily <a href="#configuration">Configurable and Extensible</a></li>
 					<li>Seamless <a href="#installation">Installation</a></li>
+					<li><a href="#migration-guides">Migration guides</a> from other frameworks and libraries</li>
 					<li>Prepared, Copy&Paste, <a href="#components">Headless Components</a></li>
 				</ul>
 			</section>

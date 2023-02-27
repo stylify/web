@@ -37,6 +37,7 @@ export default {
 				sort: ['order', 'asc']
 			},
 			'integrations': {},
+			'migration': {},
 			'stylify': {},
 			'bundler': {},
 			'unplugin': {},

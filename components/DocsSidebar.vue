@@ -18,13 +18,13 @@
 					</a>
 				</div>
 				<div>
-					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge"></a>
+					<a href="https://github.com/stylify/packages/releases" target="_blank" rel="noopener"><img alt="" width="146" height="28" src="https://img.shields.io/github/v/tag/stylify/packages?color=%2301befe&label=Version&style=for-the-badge" loading="lazy" fetchpriority="low"></a>
 				</div>
 				<section v-for="(sectionItems, sectionName) in items" :key="sectionName" class="margin-bottom:12px">
 					<nuxt-link
 						:to="sectionItems[0].dir"
 						:class="[
-							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:$blue4',
+							urlPath === sectionItems[0].slug ? 'color:$blue1' : 'color:$grey5',
 							`display:block text-decoration:none position:sticky top:-2px z-index:1 [&.nuxt-link-exact-active_h3]{color:#01befe!important}`
 						]"
 					>
@@ -40,11 +40,11 @@
 							:data-super="key"
 							:class="[
 								sectionItem.navigationIconPath ? 'padding:4px_4px_4px_38px' : 'padding:4px_8px',
-								`docs__aside-link color:$blue4 font-size:16px text-decoration:none
+								`docs__aside-link color:$grey5 font-size:16px text-decoration:none
 								position:relative display:inline-flex align-items:center hover:background-color:lighten($blue3,20) border-radius:$radius1`
 							]"
 						>
-							<img v-if="sectionItem.navigationIconPath" loading="lazy" :src="sectionItem.navigationIconPath" class="max-width:24px border-radius:4px padding:2px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " alt="" />
+							<img v-if="sectionItem.navigationIconPath" loading="lazy" fetchpriority="low" :src="sectionItem.navigationIconPath" class="max-width:24px border-radius:4px padding:2px max-height:30px position:absolute left:4px top:50% transform:translateY(-50%) " alt="" />
 							<span>{{ sectionItem.navigationTitle }}</span>
 						</nuxt-link>
 					</nav>

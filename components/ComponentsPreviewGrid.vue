@@ -102,7 +102,6 @@ export default {
 			const selectedComponents = [];
 
 			for (const docsUrl of this.selected) {
-				console.log(docsUrl);
 				selectedComponents.push(components.find((component) => component.docsUrl === docsUrl ));
 			}
 

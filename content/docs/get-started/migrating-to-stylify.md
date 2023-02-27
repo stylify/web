@@ -9,16 +9,24 @@ title: "Migrating to Stylify"
 description: "How to import Stylify CSS into an existing project."
 ---
 
-If you are about to integrate the Stylify CSS into an existing project you should start by rewriting small pieces of your application to minimize the integration errors and carefully remove all unused rewritten pieces of CSS.
+Stylify CSS can be easily integrated into existing projects and it is also easy to switch from your actual CSS framework or library to Stylify.
 
-<note><template>
-Don't worry about increasing the CSS size in your application by switching to Stylify. Stylify CSS doesn't ship with any predefined CSS and it will generate only that CSS that matches the selectors you use. So if you write nothing, nothing will be generated.<br><br>
-Stylify can also generate CSS for each bundle separately so you can create small chunks of CSS and load them only when needed.
-</template></note>
+Thanks to the simple syntax and intuitive configuration, the integration is flawless.
 
-The recommended steps you should follow are the following:
-1. Pick a small (or non critical) piece of your application.
-2. Create a bundle for that piece of application using [@stylify/bundler](/docs/bundler).
-3. Rewrite the CSS of that selected part.
-4. Import the bundle CSS and remove the unused rewritten CSS.
-5. If all the previous steps are done, mangle selectors during a production build and repeat the process until everything is rewritten.
+## Migration Guides
+
+Pick the tool from which you want to migrate to Stylify CSS. There are also tips on how to solve issues like [incorrect CSS specificity](/docs/migration#solving-css-specificity-problems) or [selectors naming collision](/docs/migration#solving-selectors-collisions).
+
+<migration-blocks></migration-blocks>
+
+## Integrate Stylify into your favorite tool
+
+<integration-blocks></integration-blocks>
+
+<where-to-go-next title="Get Started" />
+
+## Speed up development with prepared Headless CSS Components
+
+Copy&Paste, unstyled components inspired by the Material Design V3.
+
+<components-preview-grid />

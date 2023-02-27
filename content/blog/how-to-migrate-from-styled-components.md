@@ -8,7 +8,7 @@ createdAt: 'February 16, 2023'
 ---
 
 Say goodbye to CSS-in-JS and Runtime scripts for injecting and compiling CSS and hello to lightning-fast coding with
-<nuxt-link to="/">Stylify Utility-First CSS</nuxt-link>. As a React frontend engineer, you know the importance of efficient, streamlined solutions that don't sacrifice style or functionality. And that's exactly what Stylify offers.
+<nuxt-link to="/">Stylify utility-first CSS</nuxt-link>. As a React frontend engineer, you know the importance of efficient, streamlined solutions that don't sacrifice style or functionality. And that's exactly what Stylify offers.
 
 Migrating from Styled Components CSS-in-JS solution is a breeze with Stylify. And because it has no runtime, you can expect snappier performance.
 

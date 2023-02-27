@@ -38,12 +38,12 @@ minw740px||landscape:color:blue => for min width or landscape
 </template>
 </docs-section>
 
-## Configuration
+## Compiler Configuration
 
 <docs-section>
 <template #description>
 
-### dev
+## dev
 If dev is set to true, the generated CSS will contain new lines and spaces to be more readable, selectors in generated CSS will not be mangled and if any variable is missing, only a warning will be shown in the console.
 
 </template>
@@ -61,7 +61,7 @@ const compilerConfig = {
 <docs-section>
 <template #description>
 
-### macros
+## macros
 Macros are used to match selectors and generate CSS according to the match. The key inside the object can be a string or a regular expression.
 
 Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,255)` => `ab`.
@@ -94,7 +94,7 @@ Usage:
 <docs-section>
 <template #description>
 
-### selectorsPrefix
+## selectorsPrefix
 This option allows you to set for example `u-` (as utility) prefix. This prefix will be joined with macros during matching.
 
 Thanks to this feature you can use Stylify within your existing application without collision with already existing selectors.
@@ -123,7 +123,7 @@ And in the code:
 <docs-section>
 <template #description>
 
-### mangleSelectors
+## mangleSelectors
 If the mangle selectors option is set to true, the selectors in CSS will be mangled from long to short.
 
 This only configures the Compilation Result so it generates minified CSS selectors. To rewrite selectors in files, you need to call `compiler.rewriteSelectors(content)` method.
@@ -151,7 +151,7 @@ compiler.rewriteSelectors(content);
 <docs-section>
 <template #description>
 
-### mangledSelectorsPrefix
+## mangledSelectorsPrefix
 This prefix is added before all mangled selectors. You can use any non-numeric character, for example `_` (an underscore).
 
 This feature prevents collision of mangled selectors with those you may already have in your application. Use it only, when there is such collision.
@@ -181,7 +181,7 @@ const compilerConfig = {
 <docs-section>
 <template #description>
 
-### variables
+## variables
 Variables can be used in a selector or accessed inside a macro.
 
 </template>
@@ -223,7 +223,7 @@ Usage:
 <template #description>
 
 
-### externalVariables
+## externalVariables
 In case you have some CSS variables defined elsewhere than in the Stylify config, you can mark them add them as external.
 
 <note>
@@ -261,7 +261,7 @@ Usage:
 <docs-section>
 <template #description>
 
-### keyframes
+## keyframes
 Keyframes in Stylify CSS are defined with the same syntax like in the CSS.
 
 Keyfames can also be defined within a comment within a file using [content options](#contentoptionsprocessors).
@@ -294,7 +294,7 @@ const compilerConfig = {
 <docs-section>
 <template #description>
 
-### screens
+## screens
 Screens are used to generate media queries. The key can be a string or a regular expression. You can use predefined [screens](/docs/stylify/native-preset#screens) or define your own.
 
 Screns can be combined using logical operands:
@@ -328,7 +328,7 @@ Usage:
 <docs-section>
 <template #description>
 
-### components
+## components
 Components can decrease the amount of selectors in a template. They can be defined in the file where they are used or in the config. When defined using content-option, it expects javascript object without surrounding brackets.
 When defining a component, you can also use [nested syntax](#nested-syntax-for-custom-selectors)
 
@@ -390,7 +390,7 @@ Usage:
 <docs-section>
 <template #description>
 
-### customSelectors
+## customSelectors
 Custom selectors allows you to write CSS selectors for elements.
 When configuring pseudo class for direct element, you can use the pseudo class directly. When the selector is not direct, then the pseudo class should be on the selector and not in the Stylify CSS selector. Check out the examples.
 
@@ -427,7 +427,7 @@ Usage:
 <docs-section>
 <template #description>
 
-#### Nested syntax for custom selectors
+### Nested syntax for custom selectors
 You can nest selectors using SCSS-like syntax.
 To create the selector is the same like in CSS. To refer the upper level use the `&` character.
 To keep things simple, the only feature is nesting and chaining. The syntax is the same for `content options`. The pseudo classes like `:hover` works the same like in the example above.
@@ -499,7 +499,7 @@ For pseudo classes
 <docs-section>
 <template #description>
 
-### helpers
+## helpers
 Helpers are functions that can be called when a selector is matched and its properties are being generated.
 
 </template>
@@ -542,7 +542,7 @@ Usage:
 <docs-section>
 <template #description>
 
-### selectorsAreas
+## selectorsAreas
 In case you want to rewrite selectors in any framework specific class attribute, you must define that attribute to be matched.
 By default Stylify CSS support a few syntaxes from Vue, React, Lit, AlpineJS and Nette. In case, some of the class attributes wasn't matched, add the selectorsAreas option with a regular expression to match it.
 
@@ -566,7 +566,7 @@ const compilerConfig = {
 <docs-section>
 <template #description>
 
-### ignoredAreas
+## ignoredAreas
 In case you need to mark a code to be ignored during compilatio, you can use ignored areas.
 
 `stylify-ignore` and `stylify-runtime-ignore` are by default areas you can use to remove content from compilation.
@@ -612,7 +612,7 @@ const compilerConfig = {
 <docs-section>
 <template #description>
 
-### contentOptionsProcessors
+## contentOptionsProcessors
 Some configuration options can be defined directly in a file using `content options`. It's good to keep the definition of for example a component with its HTML.
 
 </template>
@@ -683,7 +683,7 @@ hooks.addListener('compiler:processContentOption:myOption', ({
 <docs-section>
 <template #description>
 
-### Compilation Result
+## Compilation Result
 Compilation result can be created or configured and passed into the Compiler as a second argument. By this approach, you can change the compilation behavior and extend the functionality.
 
 <note>
@@ -713,7 +713,7 @@ const compilationResult = new CompilationResult({
 <docs-section>
 <template #description>
 
-### CSS Record
+## CSS Record
 Css record can be accessed only through a hook `compilationResult:configureCssRecord`. The CSS record is responsible for keeping the CSS tree and how the selectors are joined, managed and etc.
 
 </template>

@@ -1,6 +1,6 @@
 <template>
 	<section>
-		<h2>Where to go next?</h2>
+		<h2>{{ title }}</h2>
 		<ul>
 			<li>🚀 Learn <nuxt-link to="/docs/get-started">how to get started</nuxt-link></li>
 			<li v-if="package === 'unplugin'">🔌 Check out <nuxt-link to="/docs/unplugin">@stylify/unplugin configuration</nuxt-link></li>
@@ -22,6 +22,10 @@
 <script>
 export default {
 	props: {
+		title: {
+			type: String,
+			default: 'Where to go next?'
+		},
 		package: {
 			type: String,
 			default: 'unplugin'

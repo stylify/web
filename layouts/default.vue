@@ -59,6 +59,7 @@ stylify-components
 				<div class="display:flex align-items:flex-start flex-direction:column margin-bottom:12px">
 					<footer-docs-links :links="getStartedLinks" />
 					<footer-docs-links :links="integrationLinks" />
+					<footer-docs-links :links="migrationLinks" />
 					<footer-docs-links :links="componentsLinks" />
 					<footer-docs-links :links="packagesLinks" :titleLinkEnabled="false" title="Packages" />
 					<section class="footer-docs-section">
@@ -91,7 +92,7 @@ stylify-components
 				<hr class="margin-bottom:12px">
 				<section class="display:flex flex-direction:column justify-content:center align-items:center md:flex-direction:row md:justify-content:space-between">
 					<LayoutLogoLink />
-					<div class="text-align:center color:lighten($blue4,20) md:text-align:left">
+					<div class="text-align:center color:lighten($grey5,20) md:text-align:left">
 						<GithubButton />
 						<br>
 						Released under the MIT license
@@ -121,10 +122,12 @@ export default {
 
 		const getStartedLinks = await docsRepository.findBySection({ section: 'get-started', only: linksRequiredData });
 		const integrationLinks = await docsRepository.findBySection({ section: 'integrations', only: linksRequiredData });
+		const migrationLinks = await docsRepository.findBySection({ section: 'migration', only: linksRequiredData });
 		const componentsLinks = await snippetsRepository .findBySection({ section: 'components', only: linksRequiredData });
 
 		this.getStartedLinks = getStartedLinks;
 		this.integrationLinks = integrationLinks;
+		this.migrationLinks = migrationLinks;
 		this.componentsLinks = componentsLinks
 	},
 	mounted() {
@@ -197,6 +200,7 @@ export default {
 			stickyLinksVisible: false,
 			getStartedLinks: [],
 			integrationLinks: [],
+			migrationLinks: [],
 			componentsLinks: [],
 			packagesLinks: [
 				{},

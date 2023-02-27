@@ -15,14 +15,14 @@
 
 const affiliateOptions = [
 	{
-		imageSrc: 'wedos.jpg',
+		imageSrc: 'wedos.webp',
 		imageWidth: '50',
 		imageHeight: '50',
 		text: '<strong>NoLimit Wehosting for $2/month</strong>.<br>Code <strong>WN231XKD9O</strong>',
 		link: 'https://www.wedos.cz/webhosting?ap=nrgRt3'
 	},
 	{
-		imageSrc: 'wedos.jpg',
+		imageSrc: 'wedos.webp',
 		imageWidth: '50',
 		imageHeight: '50',
 		text: '<strong>50% discount on .EU, .ONLINE, .STORE, .TECH, .SITE, .WEBSITE, .SPACE, .FUN domains</strong>.<br>Code <strong>DM231Z2LGY</strong>',
