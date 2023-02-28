@@ -23,12 +23,12 @@
 
 <script>
 const customSelectorsExample = `
-<div className="[.button_.icon]{font-size:14px}">
-	<button className="
+<div class="[.button_.icon]{font-size:14px}">
+	<button class="
 		[.icon]{color:#fff;border-radius:12px}
 		[&+button]{margin-left:24px}
 	">
-		<i className="icon"></i>
+		<i class="icon"></i>
 	</button>
 	<button></button>
 <div>
@@ -49,9 +49,9 @@ const compilerConfig = {
 `.trim();
 
 const globalConfigUsage = `
-<div className="buttons-wrapper">
-	<button className="button">
-		<i className="icon"></i>
+<div class="buttons-wrapper">
+	<button class="button">
+		<i class="icon"></i>
 	</button>
 	<button></button>
 <div>

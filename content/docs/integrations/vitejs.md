@@ -81,4 +81,6 @@ import './stylify.css';
 
 If you use the Vite.js commands now you will get the `stylify.css` file generated.
 
+<docs-unplugin-build-info></docs-unplugin-build-info>
+
 <where-to-next />

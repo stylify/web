@@ -81,4 +81,6 @@ Now you can use the generated bundle in the symfony app:
 {{ encore_entry_link_tags('index.css') }}
 ```
 
+<docs-unplugin-build-info></docs-unplugin-build-info>
+
 <where-to-next />

@@ -136,4 +136,6 @@ There is a lot of options you can configure:
 - [@stylify/unplugin](/docs/unplugin)
 - [Compiler config](/docs/stylify/compiler)
 
+<docs-unplugin-build-info></docs-unplugin-build-info>
+
 <where-to-next />

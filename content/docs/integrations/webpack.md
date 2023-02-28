@@ -91,4 +91,6 @@ module.exports = {
 
 Now add the generated `index.css` file into the `index.js` entry file.
 
+<docs-production-build bundler="Webpack"></docs-production-build>
+
 <where-to-next />

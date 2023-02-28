@@ -90,4 +90,6 @@ export default MyApp;
 
 Now you can use the Next.js commands to build your assets. In production, it will mangle selectors.
 
+<docs-unplugin-build-info bundler="Next"></docs-unplugin-build-info>
+
 <where-to-next />

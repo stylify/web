@@ -96,7 +96,7 @@ stylelint: {
 ```
 
 ### Build config
-It is possible that the build will fail because it is not configured to use modern ES6 features.
+The build may fail because it is not configured to use modern ES6 features.
 You can fix it by setting the transpile option in the `nuxt.config.js`:
 
 ```js

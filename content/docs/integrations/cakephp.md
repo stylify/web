@@ -43,6 +43,7 @@ Integration example for the CakePHP can be found in <a href="https://github.com/
 
 In the example below we will use the Bundler package on its own.
 
+## Installation
 Because there is no package.json, we need to creat it:
 ```
 yarn init
@@ -56,6 +57,7 @@ npm i -D @stylify/bundler
 yarn add -D @stylify/bundler
 ```
 
+## Usage
 Next, create a file, for example `stylify.js` in the root:
 
 ```js

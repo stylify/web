@@ -13,7 +13,7 @@
 
 <script>
 const selectors = `
-<div className="
+<div class="
 	color:blue
 	font-weight:bold
 	md:color:red
@@ -23,7 +23,7 @@ const selectors = `
 `.trim();
 
 const selectorsGroup = `
-<div className="
+<div class="
 	hover:{color:blue;text-decoration:underline}
 	md:hover:{transform:scale(1.1);left:4px}
 "></div>
