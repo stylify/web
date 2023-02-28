@@ -118,4 +118,7 @@ Now when you run `yarn dev`, the CSS files will be generated. In production, the
 
 You can customize the build above however you want.
 
+## Custom Webpack Build
+If you decide to use Custom Builder like `@angular-builders/custom-webpack`, check out [Webpack Guide](/docs/integrations/webpack)
+
 <where-to-next package="bundler" />

@@ -35,6 +35,7 @@ The main goal of the Esbuild bundler project is to bring about a new era of buil
 
 ## How to integrate the Stylify CSS into the Esbuild
 
+## Installation
 First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
@@ -42,6 +43,7 @@ npm i -D @stylify/unplugin
 yarn add -D @stylify/unplugin
 ```
 
+## Usage
 Next, add create a configuration file `esbuild.config.js`:
 
 ```js

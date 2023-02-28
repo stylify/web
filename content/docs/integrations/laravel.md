@@ -119,4 +119,6 @@ mix.webpackConfig({
 
 Now you can use the commands for laravel mix.
 
+<docs-unplugin-build-info></docs-unplugin-build-info>
+
 <where-to-next />
