@@ -10,7 +10,7 @@
 				<div v-if="(typeof item.techStack !== 'undefined')">
 					<span>Tech Stack:</span>
 					<div class="display:flex flex-wrap:wrap gap:8px">
-						<img v-for="stackImage in item.techStack" :src="`/images/brands/${stackImage}`" :key="stackName" alt="" width="80px" height="40px" loading="lazy" fetchpriority="low" class="padding:8px border-radius:8px background:#1e2431 max-height:40px max-width:80px height:auto width:100% display:flex">
+						<img v-for="stackImage in item.techStack" :src="`/images/brands/${stackImage}`" :key="stackImage" alt="" width="80px" height="40px" loading="lazy" fetchpriority="low" class="padding:8px border-radius:8px background:#1e2431 max-height:40px max-width:80px height:auto width:100% display:flex">
 					</div>
 				</div>
 			</div>
@@ -50,6 +50,13 @@ export default {
 				url: 'https://zsht.cz',
 				description: 'Czech School website',
 				techStack: ['wordpress.svg'],
+			},
+			{
+				name: 'MilesPernicious.com',
+				img: 'milesperniciouscom.jpg',
+				url: 'https://www.milespernicious.com/',
+				description: 'Personal Blog',
+				techStack: ['astro.svg'],
 			},
 			{
 				name: 'FSuminho',
