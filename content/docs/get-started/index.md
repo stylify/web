@@ -34,14 +34,17 @@ The easiest way to start is to play within the editors below or copy the example
 
 <nuxt-link to="/docs/stylify/compiler#syntax">Syntax</nuxt-link> is similar to CSS `property:value` with a few differences:
 - Use `_` (one underscore) for a space and `^` (a hat) for a quote
-- To preserver underscore or a hat character, use `\` (backslash) => `\_`
-- The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional.
+- To preserver underscore or a hat character, use `\` (a backslash) => `\_`
+- For vendor prefixes `-webkit`, `-moz`, do not add `-` (a hyphen) at the beginning
+- The default syntax pattern is `<screen>:<pseudo classes>:<property>:<value>`. Sceens and pseudo classes are optional
 
 ```html
 color:blue => blue color
 hover:color:blue => blue color after hover
 lg:color:blue => blue color for from selected screen
 lg:hover:color:blue => blue color after hover from selected screen
+
+webkit-font-smoothing:antialiased
 ```
 
 When a lot of properties repeats for the same screen or pseudo class, you can group them like in the example below. The syntax is `<screen>:<pseudo classes>:{stylify selectors split by ;}`
@@ -104,6 +107,42 @@ const compilerConfig = {
 		fontSizeLg: '32px',
 		textShadow: '0 4px 8px #379adf'
 	}
+};
+```
+
+### CSS variables
+When you want to turn on CSS variables, just add `replaceVariablesByCssVariables` in stylify config. This will replace variable by a CSS variable instead of it's value.
+
+<note>
+CSS variables will be enabled by default in the upcoming 0.6 version.
+</note>
+
+Stylify tries to be strict by default. When the CSS variables are enabled, you might want to set [external variables](/docs/stylify/compiler#externalvariables), to inform Stylify, that some variables exists but are external. If you don't want to configure all of them, you can disable the warning completely.
+
+<note>
+A good practice is to for example load the file content of a theme, parse the content by a regular expression to match all possible CSS variables and pass matched names into the external variables array.
+You can also use a function to check if a variable used within a selector matches some pattern like <code>md-</code> for Material Theme. If so, it will be matched as external. This way you don't have to parse any files and check for names.
+</note>
+
+In a compiler config:
+```js
+const compilerConfig = {
+	// Enable CSS variables
+	replaceVariablesByCssVariables: true,
+	// Set external variables
+	externalVariables: [
+		// Simple string check
+		'some-color',
+		// Define callback to specify more flexible check.
+		// This will for example mark every variable that starts with md-
+		// as external.
+		(variable) => variable.startsWith('md-') ? true : undefined
+	],
+	// Disable undefined variable error
+	// 'silent' => disables warning completely
+	// 'warn' => is default for development
+	// 'error' => is default for production
+	undefinedVariableWarningLevel: 'silent'
 };
 ```
 

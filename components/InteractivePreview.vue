@@ -96,7 +96,8 @@ export default {
 			const snippetPath = this[`${codeType.toLowerCase()}Snippet`];
 			const response = await fetch(`/content/snippets/${snippetPath}${codeTypeSuffix}.html`);
 			let snippetDocument = await response.text();
-			const snippet = snippetDocument.match(/<body><div class="content"><div class="content-wrapper">([\s\S]+)<\/div><\/div><\/body>/)[1].trim();
+
+			const snippet = snippetDocument.match(/<div class="content"><div class="content-wrapper">([\s\S]+)<\/div><\/div>/)[1].trim();
 			this.codeSnippet = snippet;
 			this.loadedCodeSnippets[`${codeType}${codeTypeSuffix}`] = snippet;
 		}

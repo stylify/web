@@ -87,10 +87,11 @@ export default {
 		const pageTitle = this.pageContent.title + ' | Stylify CSS';
 		const scripts = [];
 		const pageHowToSteps = this.pageContent.howToSchemaSteps ?? undefined;
+		const canonicalUrl =  `https://stylifycss.com/docs/${this.urlPath}`;
 
 		if (typeof pageHowToSteps !== 'undefined') {
 			const preparedSteps = pageHowToSteps.map((step) => {
-				step.url = `https://stylifycss.com/docs${step.url}`;
+				step.url = `${canonicalUrl}${step.url}`;
 				step['@type'] = "HowToStep";
 				return step;
 			});
@@ -118,6 +119,7 @@ export default {
 		const metaTags = [
 			{ hid: 'description', name: 'description', content: this.pageContent.description },
 			// Open Graph
+			{ hid: 'og:url', property: 'og:url', content: canonicalUrl},
 			{ hid: 'og:title', property: 'og:title', content: pageTitle },
 			{ hid: 'og:description', property: 'og:description', content: this.pageContent.description },
 			// Twitter Card
@@ -127,6 +129,7 @@ export default {
 
 		if (typeof this.pageContent.ogImage !== 'undefined') {
 			const ogImage = `${host}/images${this.pageContent.ogImage}`;
+			metaTags.push({ hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' });
 			metaTags.push({ hid: 'twitter:image:src', name: 'twitter:image:src', content:  ogImage });
 			metaTags.push({hid: 'og:image', property: 'og:image', content: ogImage})
 		}
@@ -135,7 +138,7 @@ export default {
 			title: pageTitle,
 			meta: metaTags,
 			link: [
-				{ rel: 'canonical', href: `https://stylifycss.com/docs/${this.urlPath}`}
+				{ rel: 'canonical', href: canonicalUrl}
 			],
 			script: scripts,
 			__dangerouslyDisableSanitizers: ['script']
