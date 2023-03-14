@@ -32,7 +32,7 @@ body {
 	background: -webkit-linear-gradient(45deg, var(--gradientFrom) 0%, var(--gradientTo) 100%);
 }
 .content-wrapper {
-	max-width: 800px;
+	max-width: 100%;
 	position:static;
 	background: #fff;
 	border-radius:12px;
@@ -41,4 +41,10 @@ body {
 .content-wrapper > * {
 	margin: 4px;
 	vertical-align: middle;
+}
+
+@media (min-width: 800px) {
+	.content-wrapper {
+		max-width: 800px;
+	}
 }

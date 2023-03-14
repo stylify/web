@@ -19,16 +19,19 @@ If you haven't found the selector you were looking for, let us know, and we will
 </note>
 
 ## Special characters
-- When creating a selector, use `_` (underscore) instead of space and `^` for a quote. This applies to any form of a selector.
-- To preserve an underscore or a hat character, use `\` (backslash) => `\_`.
-
-- If you defined variables, you can use them within selectors. Just add `$` before the variable.
+- When creating a selector, use `_` (underscore) instead of space and `^` for a quote. This applies to any form of a selector
+- To preserve an underscore or a hat character, use `\` (a backslash) => `\_`
+- For vendor prefixes `-webkit`, `-moz`, do not add `-` (a hyphen) at the beginning
+- If you defined variables, you can use them within selectors. Just add `$` before the variable
 
 ## Selectors
 
 ```html
 color:blue
 👉 .color\:blue {}
+
+webkit-font-smoothing:antialiased
+👉 .webkit-font-smoothing\:antialiased {}
 
 <!-- Using variable $blue -->
 color:$blue

@@ -222,7 +222,6 @@ Usage:
 <docs-section>
 <template #description>
 
-
 ## externalVariables
 In case you have some CSS variables defined elsewhere than in the Stylify config, you can mark them add them as external.
 
@@ -243,6 +242,12 @@ const compilerConfig = {
 		// as external.
 		(variable) => variable.startsWith('md-') ? true : undefined
 	],
+	// If you have a lot of external variables and you don't want to bother by mapping them,
+	// you can change the warning level
+	// 'silent' => disables warning completely
+	// 'warn' => is default for development
+	// 'error' => is default for production
+	undefinedVariableWarningLevel: 'silent'
 };
 ```
 

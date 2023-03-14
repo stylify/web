@@ -20,6 +20,11 @@ const components = [
 		title: 'Badges'
 	},
 	{
+		previewUrl: 'components/breadcrumb.html',
+		docsUrl: 'components/breadcrumb',
+		title: 'Breadcrumb'
+	},
+	{
 		previewUrl: 'components/buttons.html',
 		docsUrl: 'components/buttons',
 		title: 'Buttons'

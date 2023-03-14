@@ -10,8 +10,9 @@ title: "@stylify/nuxt-module"
 description: "@stylify/nuxt-module provides provides seamless Stylify integration into the Nuxt.js."
 ---
 
-
 Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v2+ < v3.
+
+<stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 
 <note>
 	<strong>@stylify/nuxt-module</strong> can be used only in Nuxt v2. For Nuxt v3 and above check out <nuxt-link to="/docs/nuxt">@stylify/nuxt</nuxt-link>.

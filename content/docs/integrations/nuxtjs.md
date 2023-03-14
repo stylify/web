@@ -34,9 +34,9 @@ Nuxt.js is an open source framework that uses Vue.js for making web development 
 
 The integration uses Stylify CSS packages for Nuxt 2 and Nuxt 3. Check out the guides below.
 
-<stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
-
 ## How to integrate Stylify CSS into the Nuxt.js v3+
+
+<stack-blitz-link link="stylify-nuxt3"></stack-blitz-link>
 
 First install the package using CLI:
 ```
@@ -58,6 +58,8 @@ For some unknown reason, the CSS is not reloaded when an error is triggered with
 </note>
 
 ## How to integrate Stylify CSS into the Nuxt.js v2+ < v3
+
+<stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 
 First install the package using CLI:
 ```
