@@ -1,5 +1,4 @@
 ---
-slug: 'text-fields'
 section: components
 
 order: 1

@@ -1,5 +1,4 @@
 ---
-slug: 'shadows'
 section: components
 
 order: 1

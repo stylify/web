@@ -1,5 +1,4 @@
 ---
-slug: 'buttons'
 section: components
 
 order: 1

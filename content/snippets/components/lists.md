@@ -1,5 +1,4 @@
 ---
-slug: lists
 section: components
 
 order: 1
