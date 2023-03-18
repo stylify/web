@@ -39,8 +39,6 @@ stylify-components
 
 		<hp-quote />
 
-		<hp-features />
-
 		<section id="installation" class="container">
 			<h2 class="hp-section-title">
 				Start using Stylify CSS with your favorite tool in a minute
@@ -72,6 +70,8 @@ stylify-components
 		</section>
 
 		<hp-components />
+
+		<hp-features />
 
 		<hp-material-theme-guide />
 
