@@ -1,5 +1,4 @@
 ---
-slug: 'breadcrumb'
 section: components
 
 order: 1

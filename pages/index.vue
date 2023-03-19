@@ -19,7 +19,7 @@ stylify-components
 
 		<section id="why-stylify" class="container text-align:center">
 			<h2 class="hp-section-title">
-				Why Stylify instead of CSS or inline styles?
+				Why Stylify instead of pure CSS or Inline Styles?
 			</h2>
 			<div class="md:font-size:20px [a]{color:$blue1}">Because of <nuxt-link to="/docs/get-started/why-stylify-css#problems-stylify-css-tries-to-solve">fewer CSS headaches</nuxt-link>, <nuxt-link to="/docs/get-started/why-stylify-css#faster-coding">faster coding</nuxt-link>, and <nuxt-link to="/docs/get-started/why-stylify-css#output-optimization">extremely optimized output</nuxt-link>&nbsp;💎.</div>
 		</section>
@@ -39,39 +39,49 @@ stylify-components
 
 		<hp-quote />
 
-		<hp-features />
+		<div class="
+			container display:grid gap:24px row-gap:48px md:row-gap:64px grid-template-columns:repeat(auto-fit,minmax(500px,1fr))
+			[section]{display:flex;flex-direction:column}
+			[section>div:first-of-type]{flex:1}
+		">
+			<section id="installation">
+				<div>
+					<h2 class="hp-section-title">
+						Start using Stylify CSS with your favorite tool in a minute
+					</h2>
+					<div class="margin-top:12px">
+						<integration-blocks />
+					</div>
+				</div>
+				<div class="text-align:center margin-top:24px">
+					<nuxt-link to="/docs/integrations" class="btn btn--hp margin-top:12px">
+						Check out integrations
+						<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+					</nuxt-link>
+				</div>
+			</section>
 
-		<section id="installation" class="container">
-			<h2 class="hp-section-title">
-				Start using Stylify CSS with your favorite tool in a minute
-			</h2>
-			<div class="margin-top:12px">
-				<integration-blocks />
-			</div>
-			<div class="text-align:center margin-top:24px">
-				<nuxt-link to="/docs/integrations" class="btn btn--hp margin-top:12px">
-					Check out integrations
-					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-				</nuxt-link>
-			</div>
-		</section>
-
-		<section id="migration-guides" class="container">
-			<h2 class="hp-section-title">
-				Migrate from other CSS frameworks and CSS-in-JS libraries to Stylify easily
-			</h2>
-			<div class="margin-top:12px">
-				<migration-blocks />
-			</div>
-			<div class="text-align:center margin-top:24px">
-				<nuxt-link to="/docs/migration" class="btn btn--hp margin-top:12px">
-					Learn more
-					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-				</nuxt-link>
-			</div>
-		</section>
+			<section id="migration-guides" class="display:flex flex-direction:column">
+				<div>
+					<h2 class="hp-section-title">
+						Migrate from other CSS frameworks and CSS-in-JS libraries to Stylify easily
+					</h2>
+					<div class="margin-top:12px">
+						<migration-blocks />
+					</div>
+				</div>
+				<div class="text-align:center margin-top:24px">
+					<nuxt-link to="/docs/migration" class="btn btn--hp margin-top:12px">
+						Learn more
+						<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+					</nuxt-link>
+				</div>
+			</section>
+		</div>
 
 		<hp-components />
+
+		<hp-features />
 
 		<hp-material-theme-guide />
 

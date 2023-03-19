@@ -1,5 +1,4 @@
 ---
-slug: 'badges'
 section: components
 
 order: 1

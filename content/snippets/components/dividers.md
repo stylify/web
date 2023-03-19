@@ -1,5 +1,4 @@
 ---
-slug: 'dividers'
 section: components
 
 order: 1

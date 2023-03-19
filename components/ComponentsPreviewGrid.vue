@@ -45,6 +45,11 @@ const components = [
 		title: 'Dividers'
 	},
 	{
+		previewUrl: 'components/faq.html',
+		docsUrl: 'components/faq',
+		title: 'FAQ'
+	},
+	{
 		previewUrl: 'components/sign-in-form.html',
 		docsUrl: 'components/forms',
 		title: 'Forms'
@@ -63,6 +68,16 @@ const components = [
 		previewUrl: 'components/messages.html',
 		docsUrl: 'components/messages',
 		title: 'Messages'
+	},
+	{
+		previewUrl: 'components/mobile-navigation.html',
+		docsUrl: 'components/mobile-navigation',
+		title: 'Mobile navigation'
+	},
+	{
+		previewUrl: 'components/navigation-with-overflow.html',
+		docsUrl: 'components/navigation-with-overflow',
+		title: 'Navigation with overflow'
 	},
 	{
 		previewUrl: 'components/shadows.html',
@@ -87,7 +102,7 @@ export default {
 			type: Array,
 			default: () => [
 				'components/buttons',
-				'components/badges',
+				'components/mobile-navigation',
 				'components/switches',
 				'components/text-fields',
 				'components/shadows',

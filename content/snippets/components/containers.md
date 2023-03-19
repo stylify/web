@@ -1,5 +1,4 @@
 ---
-slug: 'containers'
 section: components
 
 order: 1

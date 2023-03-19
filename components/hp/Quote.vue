@@ -4,11 +4,10 @@
 		<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
 			<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
 				<p class="margin-top:0">
-					As a developer you want to code your website easily, quickly and without spending much time in Docs. Frameworks, CSS-in-JS libs, and Preprocessors have a lot of features, that are great, but also makes the development more complex, forces you to study syntax, randomly named selectors and how to use which feature (which you will forget after a week of holiday 🍹).
+					As a developer, you want to code your website easily, quickly, and without spending too much time in docs. Frameworks, CSS-in-JS libraries, and preprocessors have many great features, but they also make development more complex, forcing you to study syntax, randomly named selectors, and how to use different features (which you may forget after a week of holiday 🍹).
 				</p>
 				<p class="margin:0">
-					Stylify focuses on simplicity and uses CSS-like selectors you already know. It's like writing pure CSS directly into the markup without the need of switching between files and figuring out the names for selectors. If you know CSS, you know how to use Stylify.
-					<br>If you try Stylify, you will find out that preprocessors and short selectors are unnecessary.
+					Stylify focuses on simplicity and uses CSS-like selectors that you already know. It's like writing pure CSS directly into the markup without the need to switch between files and figure out the names for selectors. If you know CSS, you know how to use Stylify. By trying Stylify, you will find that preprocessors and short selectors are unnecessary.
 				</p>
 			</div>
 			<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">

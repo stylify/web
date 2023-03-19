@@ -1,5 +1,4 @@
 ---
-slug: 'messages'
 section: components
 
 order: 1

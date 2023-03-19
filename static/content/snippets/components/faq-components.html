@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/static/content/snippets/components/iframe.css?v2">
+<!--   	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.22/dist/stylify.min.js" async defer fetchpriority="low"></script>
+ -->	<style>
+		:root {
+			--gradientFrom: #FF5858;
+			--gradientTo: #FFC8C8;
+		}
+		.content-wrapper {
+			width:100%;
+			max-width: 400px;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#FF5858'
+/stylify-variables
+
+stylify-components
+	'faq-list': 'display:flex flex-direction:column gap:24px',
+	'faq-list__item': 'margin:0 background:#fff padding:12px md:padding:24px border-radius:8px border:1px_solid_#eee',
+	'faq-list__item-summary': `
+		position:relative display:flex align-items:center font-size:16px gap:12px outline:none cursor:pointer
+		sm:font-size:20px
+		&::marker { content:^^ }
+	`,
+	'faq-list__item-summary-icon': 'transition:.3s will-change:transform',
+	'faq-list__item-answer': 'transition:.5s will-change:max-height max-height:0 overflow:hidden',
+	'faq-list__item-anwer-content': 'margin-top:12px font-size:16px'
+/stylify-components
+-->
+<section>
+	<h2 class="text-align:center">Frequently Asked Questions</h2>
+
+	<div class="faq-list">
+		<figure class="faq-list__item">
+			<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="
+				[&[open]:not(.s-closing)>div]{max-height:200px}
+				[&[open]:not(.s-closing)>summary_svg]{transform:rotate(-90deg)}
+			">
+				<summary itemprop="name" class="
+					position:relative display:flex align-items:center justify-content:space-between font-size:16px sm:font-size:20px outline:none
+					[&::marker]{content:^^} cursor:pointer
+				">
+					<strong>Lorem ipsum dolor sit amet</strong>
+					<svg height="18" width="18" version="1.1" viewBox="0 0 185.343 185.343" class="transform:rotate(90deg) faq-list__item-summary-icon">
+						<g>
+							<path fill="#000" d="M51.707,185.343c-2.741,0-5.493-1.044-7.593-3.149c-4.194-4.194-4.194-10.981,0-15.175    l74.352-74.347L44.114,18.32c-4.194-4.194-4.194-10.987,0-15.175c4.194-4.194,10.987-4.194,15.18,0l81.934,81.934    c4.194,4.194,4.194,10.987,0,15.175l-81.934,81.939C57.201,184.293,54.454,185.343,51.707,185.343z"/>
+						</g>
+					</svg>
+				</summary>
+				<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-list__item-answer">
+					<div itemprop="text" class="faq-list__item-anwer-content">
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis condimentum augue id magna semper rutrum. Integer tempor. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+					</div>
+				</div>
+			</details>
+		</figure>
+
+		<figure class="faq-list__item">
+			<details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="
+				[&[open]:not(.s-closing)>div]{max-height:200px}
+				[&[open]:not(.s-closing)>summary_svg]{transform:rotate(90deg)}
+			">
+				<summary itemprop="name" class="faq-list__item-summary">
+					<svg height="18" width="18" version="1.1" viewBox="0 0 185.343 185.343" class="faq-list__item-summary-icon">
+						<g>
+							<path fill="#000" d="M51.707,185.343c-2.741,0-5.493-1.044-7.593-3.149c-4.194-4.194-4.194-10.981,0-15.175    l74.352-74.347L44.114,18.32c-4.194-4.194-4.194-10.987,0-15.175c4.194-4.194,10.987-4.194,15.18,0l81.934,81.934    c4.194,4.194,4.194,10.987,0,15.175l-81.934,81.939C57.201,184.293,54.454,185.343,51.707,185.343z"/>
+						</g>
+					</svg>
+					<strong>Lorem ipsum dolor sit amet</strong>
+				</summary>
+				<div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer" class="faq-list__item-answer">
+					<div itemprop="text" class="faq-list__item-anwer-content">
+						Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis condimentum augue id magna semper rutrum. Integer tempor. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?
+					</div>
+				</div>
+			</details>
+		</figure>
+	</div>
+</section>
+
+<script>
+// This javascript is necessary for the animation only.
+// Closing animation without javascript doesn't work on details element
+// because everything is hidden immediately.
+document.addEventListener('click', (event) => {
+	const clickedElement = event.target;
+
+	if (!clickedElement.matches('summary') && !clickedElement.closest('summary')) {
+		return;
+	}
+
+	const details = clickedElement.closest('details');
+
+	if (!details.hasAttribute('open')) {
+		return;
+	}
+
+	event.preventDefault();
+
+	details.classList.add('s-closing');
+
+	setTimeout(() => {
+		details.removeAttribute('open');
+		details.classList.remove('s-closing');
+	// Time in this timeout must be the same as for the transition on the answer
+	}, 500);
+});
+
+</script>
+
+</div></div></body></html>

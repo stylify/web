@@ -1,5 +1,4 @@
 ---
-slug: 'animations'
 section: components
 
 order: 1

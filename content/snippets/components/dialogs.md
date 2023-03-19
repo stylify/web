@@ -1,5 +1,4 @@
 ---
-slug: 'dialogs'
 section: components
 
 order: 1

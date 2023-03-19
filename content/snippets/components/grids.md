@@ -1,5 +1,4 @@
 ---
-slug: 'grids'
 section: components
 
 order: 1

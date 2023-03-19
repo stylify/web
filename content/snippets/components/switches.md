@@ -1,5 +1,4 @@
 ---
-slug: 'switches'
 section: components
 
 order: 1

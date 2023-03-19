@@ -1,5 +1,4 @@
 ---
-slug: 'forms'
 section: components
 
 order: 1
