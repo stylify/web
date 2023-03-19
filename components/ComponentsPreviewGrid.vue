@@ -71,7 +71,7 @@ const components = [
 	},
 	{
 		previewUrl: 'components/mobile-navigation.html',
-		docsUrl: 'components/mobile-navigation',
+		docsUrl: 'components/navigations',
 		title: 'Mobile navigation'
 	},
 	{
@@ -102,7 +102,7 @@ export default {
 			type: Array,
 			default: () => [
 				'components/buttons',
-				'components/mobile-navigation',
+				'components/navigations',
 				'components/switches',
 				'components/text-fields',
 				'components/shadows',
