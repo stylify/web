@@ -1,6 +1,6 @@
 <template>
-	<div :class="`${limit < 6 ? 'padding:0_8px overflow:auto margin:0_-8px md:margin:0_-12px lg:margin:0_-24px xl:margin:0 lg:padding:0' : ''}`">
-		<div :class="`${limit < 6 ? ' toxl:{grid-auto-flow:column;min-width:max-content}' : ''} display:grid gap:24px grid-template-columns:repeat(auto-fit,minmax(300px,1fr))`">
+	<div :class="`${showCarousel ? 'padding:0_8px overflow:auto margin:0_-8px md:margin:0_-12px lg:margin:0_-24px xl:margin:0 lg:padding:0' : ''}`">
+		<div :class="`${showCarousel ? ' toxl:{grid-auto-flow:column;min-width:max-content}' : ''} display:grid gap:24px grid-template-columns:repeat(auto-fit,minmax(300px,1fr))`">
 			<a v-for="item in itemsList" :href="`${item.url}?ref=stylifycss.com`" target="_blank" rel="noopener nofollow" class="
 				position:relative text-decoration:none border:1px_solid_#1e2431 border-radius:8px overflow:hidden
 				[&:hover>div]{opacity:1}
@@ -29,6 +29,9 @@ export default {
 		}
 	},
 	computed: {
+		showCarousel() {
+			return this.limit !== null && this.limit <= 6;
+		},
 		itemsList() {
 			if (this.limit === null) {
 				return this.items;
