@@ -7,7 +7,7 @@ order: 0
 navigationTitle: "@stylify/nuxt"
 
 title: "@stylify/nuxt"
-description: ""
+description: "Stylify Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v3+."
 ---
 
 Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v3+.

@@ -7,7 +7,7 @@ order: 0
 navigationTitle: "Migration Guides"
 
 title: "How to migrate to Stylify CSS from other CSS frameworks and libraries"
-description: ""
+description: "Learn how to easily migrate to Stylify CSS from other CSS frameworks and CSS-in-JS libraries."
 ---
 
 ## Choose your migration guide

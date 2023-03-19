@@ -7,7 +7,7 @@ order: 0
 navigationTitle: "@stylify/unplugin"
 
 title: "@stylify/unplugin"
-description: ""
+description: "Stylify Unplugin is a universal plugin for Webpack, Vite.js and Rollup.js and ESbuild."
 ---
 
 Unplugin is a universal plugin for Webpack, Vite.js and Rollup.js and ESbuild.<br>
