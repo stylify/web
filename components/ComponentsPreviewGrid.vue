@@ -45,6 +45,11 @@ const components = [
 		title: 'Dividers'
 	},
 	{
+		previewUrl: 'components/faq.html',
+		docsUrl: 'components/faq',
+		title: 'FAQ'
+	},
+	{
 		previewUrl: 'components/sign-in-form.html',
 		docsUrl: 'components/forms',
 		title: 'Forms'
