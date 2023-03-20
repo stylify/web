@@ -32,7 +32,7 @@ howToSchemaSteps: [
 
 Nette is a PHP web framework made in Czech Republic focused on fast and rapid web development.
 
-Since Nette Framework doesn't use any bundler by default. Therefore you an use onl the [Bundler](/docs/bundler) or configure bundler and use Stylify with [Webpack](/docs/integrations/webpack) or [Rollup.js](/docs/integrations/rollupjs) and etc.
+Nette Framework doesn't use any bundler by default. Therefore you can use the Stylify [Bundler](/docs/bundler) directly or use Stylify through [Webpack](/docs/integrations/webpack), [Rollup.js](/docs/integrations/rollupjs), [Vite](/docs/integrations/vitejs), etc.
 ´
 <note><template>
 Integration example for the Nette framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">integrations examples repository</a>.
