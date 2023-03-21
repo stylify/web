@@ -38,7 +38,7 @@ Stylify can be easily integrated into the Next.js using @stylify/unplugin.
 
 ## How to integrate the Stylify CSS into the Next.js
 
-First install the [@stylify/bundler](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/bundler](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

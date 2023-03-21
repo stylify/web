@@ -21,7 +21,7 @@ createdAt: 'December 29, 2022'
 Also we have a page about <nuxt-link to="/docs/get-started/why-stylify-css">what problems Stylify CSS solves and why you should give it a try!</nuxt-link>
 
 ## Installation
-Because Remix doesn't have any plugins support yet (2022), we need to use <nuxt-link to="/docs/bundler">Stylify CSS Bundler</nuxt-link> directly. First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+Because Remix doesn't have any plugins support yet (2022), we need to use <nuxt-link to="/docs/bundler">Stylify CSS Bundler</nuxt-link> directly. First, install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler

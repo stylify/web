@@ -38,7 +38,7 @@ Vue.js is Progressive JavaScript Framework.
 
 The example below works with the Vite - Vue template. You can however use the example below and configure it for React.js, Vue and any other framework you use.
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

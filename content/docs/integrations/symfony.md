@@ -40,7 +40,7 @@ Integration example for the Symfony framework can be found in <a href="https://g
 
 The example below uses `symfony/skeleton` and ads a few composer packages according to the getting started tutorial: `twig, annotations, @symfony/webpack-encore`.
 
-First install the [@stylify/unplugin](/docs/unplugin) package using CLI:
+First, install the [@stylify/unplugin](/docs/unplugin) package using CLI:
 
 ```
 npm i -D @stylify/unplugin
