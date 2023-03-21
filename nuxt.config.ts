@@ -46,6 +46,7 @@ export default {
 			{ hid: 'og:description', property: 'og:description', content: defaultPageDescription },
 			// Twitter Card
 			{ hid: 'twitter:image:src', name: 'twitter:image:src', content: defaultOgImage },
+			{ hid: 'twitter:card', name: 'twitter:card', content: 'summary_large_image' },
 			{ hid: 'twitter:title', name: 'twitter:title', content: defaultPageTitle },
 			{ hid: 'twitter:description', name: 'twitter:description', content: defaultPageDescription },
 			{ hid: 'twitter:site', name: 'twitter:site', content: '@stylifycss' },
