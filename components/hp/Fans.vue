@@ -346,6 +346,12 @@ export default {
 				link: 'https://twitter.com/IbraXavi/status/1612859833023172611'
 			},
 			{
+				name: 'Lucas',
+				image: 'lukas.webp',
+				text: `Good job. I’ll give it a try !`,
+				link: 'https://app.daily.dev/posts/cEQLGBMZz#c-y5O1T8LUU'
+			},
+			{
 				name: 'Shushant Lakhyani',
 				note: 'Just Ship It Hub',
 				image: 'shushant-lakhyani.webp',
