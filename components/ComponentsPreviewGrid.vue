@@ -10,6 +10,26 @@
 <script>
 const components = [
 	{
+		previewUrl: 'components/article-list1.html',
+		docsUrl: 'components/articles',
+		title: 'Articles List - Type 1'
+	},
+	{
+		previewUrl: 'components/article-list2.html',
+		docsUrl: 'components/articles',
+		title: 'Articles List - Type 2'
+	},
+	{
+		previewUrl: 'components/article-list3.html',
+		docsUrl: 'components/articles',
+		title: 'Articles List - Type 3'
+	},
+	{
+		previewUrl: 'components/article-detail.html',
+		docsUrl: 'components/articles',
+		title: 'Articles - Detail'
+	},
+	{
 		previewUrl: 'components/animations.html',
 		docsUrl: 'components/animations',
 		title: 'Animations'
@@ -76,8 +96,13 @@ const components = [
 	},
 	{
 		previewUrl: 'components/navigation-with-overflow.html',
-		docsUrl: 'components/navigation-with-overflow',
+		docsUrl: 'components/navigations',
 		title: 'Navigation with overflow'
+	},
+	{
+		previewUrl: 'components/paginations.html',
+		docsUrl: 'components/paginations',
+		title: 'Paginations'
 	},
 	{
 		previewUrl: 'components/shadows.html',
@@ -105,9 +130,9 @@ export default {
 				'components/navigations',
 				'components/switches',
 				'components/text-fields',
-				'components/shadows',
-				'components/animations',
-				'components/grids',
+				'components/paginations',
+				'components/articles',
+				'components/dialogs',
 				'components/messages',
 				'components/forms'
 			]
