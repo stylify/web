@@ -38,7 +38,7 @@ Integration example for the Webpack can be found in <a href="https://github.com/
 
 ## How to integrate the Stylify CSS into the Webpack
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

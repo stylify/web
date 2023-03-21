@@ -38,7 +38,7 @@ The integration uses Stylify CSS packages for Nuxt 2 and Nuxt 3. Check out the g
 
 <stack-blitz-link link="stylify-nuxt3"></stack-blitz-link>
 
-First install the package using CLI:
+First, install the package using CLI:
 ```
 npm i -D @stylify/nuxt
 yarn add -D @stylify/nuxt
@@ -61,7 +61,7 @@ For some unknown reason, the CSS is not reloaded when an error is triggered with
 
 <stack-blitz-link link="stylify-nuxtjs-template"></stack-blitz-link>
 
-First install the package using CLI:
+First, install the package using CLI:
 ```
 npm i -D @stylify/nuxt-module
 yarn add -D @stylify/nuxt-module

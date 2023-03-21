@@ -42,7 +42,7 @@ Stylify can be used with React.js in varous ways:
 
 The example below works with the Vite - React.js template. You can however use the example below and configure it for Svelte, Vue and any other framework you use.
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

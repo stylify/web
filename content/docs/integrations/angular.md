@@ -42,7 +42,7 @@ In case you use any kind of bundler like Webpack, Vite, Rollup or ESbuild, go an
 
 ## How to integrate the Stylify CSS into the Angular
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First, install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css?v3">
+<!-- 	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+ -->	<style>
+		.content-wrapper {
+			width: 100%;
+		}
+		:root {
+			--gradientFrom: #cad0ff;
+			--gradientTo: #e3e3e3;
+		}
+	</style>
+	<style id="stylify-css">.font-size\:32px{font-size:32px}.margin-top\:0{margin-top:0}.text-align\:center{text-align:center}.article-list{display:grid}.article-list{row-gap:32px}.article-list{column-gap:24px}.article-list{grid-template-columns:repeat(auto-fit,minmax(276px,1fr))}.article-list__item,.article-list__item-content,.article-list__item-author{display:flex}.article-list__item{position:relative}.article-list__item{overflow:hidden}.article-list__item,.article-list__item-content{flex-direction:column}.article-list__item{color:#fff}.article-list__item{text-decoration:none}.article-list__item{transition:.3s}.article-list__item,.article-list__item-image{border-radius:12px}.article-list__item:hover h3{text-decoration:underline}.article-list__item-image,.article-list__item-content{width:100%}.article-list__item-image{height:100%}.article-list__item-image{object-fit:cover}.article-list__item-content{justify-content:flex-end}.article-list__item-content,.article-list__item-author{gap:8px}.article-list__item-content{position:absolute}.article-list__item-content{bottom:0}.article-list__item-content{left:0}.article-list__item-content{min-height:60%}.article-list__item-content{background:linear-gradient(0,rgba(0,0,0,.5) 50%,rgba(255,255,255,0) 100%)}.article-list__item-content{padding:8px}.article-list__item-title{font-size:24px}.article-list__item-title{margin:0}.article-list__item-author{align-items:center}.article-list__item-author img{border-radius:50px}.article-list__item-author span{font-size:16px}@media (min-width: 768px) {.article-list__item-content{padding:12px}}</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-components
+	'article-list': 'display:grid row-gap:32px column-gap:24px grid-template-columns:repeat(auto-fit,minmax(276px,1fr))',
+	'article-list__item': `
+		display:flex position:relative overflow:hidden flex-direction:column color:#fff text-decoration:none transition:.3s border-radius:12px
+		&:hover h3 { text-decoration:underline }
+	`,
+	'article-list__item-image': 'width:100% height:100% border-radius:12px object-fit:cover',
+	'article-list__item-content': 'display:flex flex-direction:column justify-content:flex-end gap:8px position:absolute bottom:0 left:0 width:100% min-height:60% background:linear-gradient(0,rgba(0,0,0,.5)_50%,rgba(255,255,255,0)_100%) padding:8px md:padding:12px',
+	'article-list__item-title': 'font-size:24px margin:0',
+	'article-list__item-author': `
+		display:flex align-items:center gap:8px
+		img { border-radius:50px }
+		span { font-size:16px }
+	`,
+	'article-list__item-description': 'font-size:16px line-height:24px display:-webkit-box webkit-line-clamp:3 webkit-box-orient:vertical overflow:hidden max-height:72px'
+/stylify-components
+-->
+
+<section>
+	<h2 class="font-size:32px margin-top:0 text-align:center">Latest Blog Posts</h2>
+	<div class="article-list">
+		<a href="#" class="article-list__item">
+			<img src="/images/snippets/components/picture1.jpg" width="2" height="1" class="article-list__item-image">
+			<div class="article-list__item-content">
+				<h3 class="article-list__item-title">Lorem ipsum dolor sit amet</h3>
+				<div class="article-list__item-author">
+					<img src="/images/snippets/components/person1.jpg" width="24" height="24" loading="lazy" fetchpriority="low">
+					<span>Article Author</span>
+				</div>
+			</div>
+		</a>
+
+		<a href="#" class="article-list__item">
+			<img src="/images/snippets/components/picture2.jpg" width="2" height="1" class="article-list__item-image">
+			<div class="article-list__item-content">
+				<h3 class="article-list__item-title">Lorem ipsum dolor sit amet</h3>
+				<div class="article-list__item-author">
+					<img src="/images/snippets/components/person1.jpg" width="24" height="24" loading="lazy" fetchpriority="low">
+					<span>Article Author</span>
+				</div>
+			</div>
+		</a>
+	</div>
+</section>
+
+</div></div></body></html>

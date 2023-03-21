@@ -38,7 +38,7 @@ Integration example for the Rollup.js can be found in <a href="https://github.co
 
 ## How to integrate the Stylify CSS into the Rollup.js
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

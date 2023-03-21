@@ -38,7 +38,7 @@ Stylify can be integrated into the Remix using Bundler.
 
 ## How to integrate the Stylify CSS into the Remix
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First, install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler

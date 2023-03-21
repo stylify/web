@@ -40,7 +40,7 @@ Stylify can be integrated into the Vite.js using @stylify/bundler.
 
 The example below works with the Vite template. You can however use the example below and configure it for Svelte, React, Vue, Angular, Lit and any other framework you want.
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

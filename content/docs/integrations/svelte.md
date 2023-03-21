@@ -39,7 +39,7 @@ You can use Stylify CSS with SvelteKit or with Vite + Svelte App. Below are guid
 
 <stack-blitz-link link="stylify-sveltekit-example"></stack-blitz-link>
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin
@@ -89,7 +89,7 @@ Now run `yarn dev`. The `src/stylify.css` file will be generated.
 
 The example below works with the Vite - Svelte template. You can however use the example below and configure it for React.js, Vue and any other framework you use.
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

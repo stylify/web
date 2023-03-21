@@ -81,7 +81,7 @@ Now when you run `dev` command in `package.json`, the CSS will be generated. Whe
 
 ## For older vesions of Laravel with Webpack
 
-First install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
+First, install the [@stylify/unplugin](/docs/unplugin) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/unplugin

@@ -13,13 +13,13 @@ description: "Learn how to integrate the Stylify CSS into the Nette Framework. C
 howToSchemaTitle: 'How to use Stylify CSS in Nette.'
 howToSchemaSteps: [
 	{
-		"name": "Stylify CSS installatiom",
+		"name": "Stylify CSS installation",
 		"text": "Install @stylify/bundler package using CLI like YARN or NPM.",
 		"url": "#installation",
 	},
 	{
 		"name": "Usage",
-		"text": "Next, create a file, for example bundles.js.",
+		"text": "Next, create a file, for example, bundles.js.",
 		"url": "#usage",
 	},
 	{
@@ -30,26 +30,26 @@ howToSchemaSteps: [
 ]
 ---
 
-Nette is a PHP web framework made in Czech Republic focused on fast and rapid web development.
+Nette is a PHP web framework made in the Czech Republic focused on fast and rapid web development.
 
 Nette Framework doesn't use any bundler by default. Therefore you can use the Stylify [Bundler](/docs/bundler) directly or use Stylify through [Webpack](/docs/integrations/webpack), [Rollup.js](/docs/integrations/rollupjs), [Vite](/docs/integrations/vitejs), etc.
 
 <note><template>
-Integration example for the Nette framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">integrations examples repository</a>.
+An Integration example for the Nette framework can be found in <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">integrations examples repository</a>.
 </template></note>
 
 ## How to integrate the Stylify CSS into the Nette Framework
 
 In the example below we will use the Bundler package on its own.
 
-First install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
+First, install the [@stylify/bundler](/docs/bundler) package using NPM or Yarn:
 
 ```
 npm i -D @stylify/bundler
 yarn add -D @stylify/bundler
 ```
 
-Next, create a file, for example `bundles.js`:
+Next, create a file, for example, `bundles.js`:
 
 ```js
 const { Bundler } = require('@stylify/bundler');
@@ -94,7 +94,7 @@ You can customize the build above however you want.
 <where-to-next package="bundler" />
 
 ## Trade Offs
-If you use custom selector in Nette class attribute like the one below, you will probably need to wrap it into the `n:class="''"`. It is, because Nette matches the custom selectors as Macro. Single quotes prevents that.
+If you use a custom selector in the Nette class attribute like the one below, you will probably need to wrap it into the `n:class="''"`. It is because Nette matches the custom selectors as Macro. Single quotes prevent that.
 
 ```html
 <div n:class="'[div]{width:240px}'"></div>
