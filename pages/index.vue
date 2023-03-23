@@ -40,7 +40,7 @@ stylify-components
 		<hp-quote />
 
 		<div class="
-			container display:grid gap:24px row-gap:48px md:row-gap:64px grid-template-columns:repeat(auto-fit,minmax(500px,1fr))
+			container display:grid gap:24px row-gap:48px md:row-gap:64px grid-template-columns:1fr md:grid-template-columns:repeat(auto-fit,minmax(500px,1fr))
 			[section]{display:flex;flex-direction:column}
 			[section>div:first-of-type]{flex:1}
 		">

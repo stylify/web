@@ -49,8 +49,8 @@
 						</nuxt-link>
 					</nav>
 				</section>
-				<div class="position:sticky bottom:0 background:#0a101d z-index:2"><Affiliate type="docsSidebar" /></div>
-			</div>
+<!-- 				<div class="position:sticky bottom:0 background:#0a101d z-index:2"><Affiliate type="docsSidebar" /></div>
+ -->			</div>
 		</aside>
 		<a
 			role="button"

@@ -8,16 +8,16 @@ stylify-components
 		<header class="
 			background:rgba(10,16,29,0.8) backdrop-filter:blur(8px) border-bottom:1px_solid_transparent
 			border-color:$blue5 position:sticky top:-110px z-index:3
-			sm:top:-55px minw1500px:top:0
+			sm:top:-55px minw1380px:top:0
 		">
 			<div class="
 				display:flex flex-direction:column justify-content:center padding-top:8px padding-bottom:8px
 				justify-content:space-between align-items:center container container-lg
-				minw1500px:flex-direction:row
+				minw1380px:flex-direction:row
 				lg:padding-top:8px
 			">
-				<div class="display:flex flex-direction:column sm:flex-direction:row align-items:center margin-bottom:12px width:100% minw1500px:width:auto minw1500px:margin-bottom:0 justify-content:space-between">
-					<section class="display:flex minw1500px:min-width:300px align-items:center margin-bottom:12px sm:margin-bottom:0">
+				<div class="display:flex flex-direction:column sm:flex-direction:row align-items:center margin-bottom:12px width:100% minw1380px:width:auto minw1380px:margin-bottom:0 justify-content:space-between">
+					<section class="display:flex minw1380px:min-width:300px align-items:center margin-bottom:12px sm:margin-bottom:0">
 						<nuxt-link to="/" class="text-decoration:none display:flex maxw400px:width:112px maxw400px:height:auto" aria-label="Homepage">
 							<svg width="150" height="45" viewBox="0 0 661 202" fill="none">
 								<path d="M233.975 136.98C223.335 136.98 214.655 134.693 207.935 130.12C201.308 125.453 197.995 118.873 197.995 110.38C197.995 109.54 198.088 108.28 198.275 106.6H223.195C222.915 110.147 223.755 112.947 225.715 115C227.675 117.053 230.662 118.08 234.675 118.08C238.315 118.08 241.162 117.287 243.215 115.7C245.362 114.113 246.435 111.873 246.435 108.98C246.435 105.993 245.082 103.567 242.375 101.7C239.762 99.8333 235.655 97.7333 230.055 95.4C224.642 93.16 220.208 91.06 216.755 89.1C213.395 87.0467 210.455 84.2933 207.935 80.84C205.415 77.3867 204.155 73.0467 204.155 67.82C204.062 61.38 205.648 55.78 208.915 51.02C212.182 46.26 216.708 42.62 222.495 40.1C228.282 37.58 234.908 36.32 242.375 36.32C249.095 36.32 255.068 37.3933 260.295 39.54C265.522 41.5933 269.582 44.6267 272.475 48.64C275.368 52.56 276.815 57.2267 276.815 62.64C276.815 64.04 276.768 65.0667 276.675 65.72H251.195C251.288 65.3467 251.335 64.7867 251.335 64.04C251.335 61.4267 250.402 59.3267 248.535 57.74C246.762 56.06 244.288 55.22 241.115 55.22C237.755 55.22 235.002 56.06 232.855 57.74C230.802 59.3267 229.775 61.52 229.775 64.32C229.775 67.12 231.082 69.5 233.695 71.46C236.308 73.3267 240.368 75.52 245.875 78.04C251.382 80.56 255.862 82.8933 259.315 85.04C262.862 87.1867 265.895 90.08 268.415 93.72C270.935 97.2667 272.195 101.653 272.195 106.88C272.195 112.667 270.655 117.847 267.575 122.42C264.495 126.993 260.062 130.587 254.275 133.2C248.488 135.72 241.722 136.98 233.975 136.98ZM315.485 109.12C315.392 109.587 315.345 110.193 315.345 110.94C315.345 112.62 315.812 113.833 316.745 114.58C317.772 115.327 319.405 115.7 321.645 115.7H330.185L326.545 136H314.365C298.685 136 290.845 129.42 290.845 116.26C290.845 114.3 291.078 111.827 291.545 108.84L297.145 77.76H287.625L291.125 57.88H300.645L304.005 38.84H327.945L324.585 57.88H340.265L336.765 77.76H321.085L315.485 109.12ZM372.52 57.88L382.04 106.74L408.64 57.88H434.54L365.24 173.1H339.48L364.4 133.34L345.92 57.88H372.52ZM472.617 32.4L454.277 136H430.337L448.677 32.4H472.617ZM499.926 49.76C496.193 49.76 493.206 48.78 490.966 46.82C488.819 44.7667 487.746 42.2 487.746 39.12C487.746 34.92 489.379 31.3267 492.646 28.34C495.913 25.3533 499.879 23.86 504.546 23.86C508.279 23.86 511.219 24.8867 513.366 26.94C515.513 28.9 516.586 31.4667 516.586 34.64C516.586 38.7467 514.953 42.2933 511.686 45.28C508.419 48.2667 504.499 49.76 499.926 49.76ZM510.286 57.88L496.566 136H472.626L486.346 57.88H510.286ZM569.515 46.68C564.942 46.4 561.582 47.0533 559.435 48.64C557.382 50.2267 555.982 53.0733 555.235 57.18L555.095 57.88H567.975L564.475 77.76H551.595L541.375 136H517.295L527.515 77.76H518.835L522.335 57.88H531.015L531.435 55.64C533.208 46.0267 537.268 38.7467 543.615 33.8C550.055 28.76 558.595 26.24 569.235 26.24C570.915 26.24 572.175 26.2867 573.015 26.38L569.515 46.68ZM598.004 57.88L607.524 106.74L634.124 57.88H660.024L590.724 173.1H564.964L589.884 133.34L571.404 57.88H598.004Z" fill="white"/>
@@ -27,7 +27,7 @@ stylify-components
 							</svg>
 						</nuxt-link>
 					</section>
-					<section class="display:inline-flex justify-content:flex-end min-width:150px transform:scale(0.9) minw1500px:display:none">
+					<section class="display:inline-flex justify-content:flex-end min-width:150px transform:scale(0.9) minw1380px:display:none">
 						<LayoutHeaderSocialIcons />
 					</section>
 				</div>
@@ -43,10 +43,10 @@ stylify-components
 							<nuxt-link to="/faq" class="js-main-nav-link navigation__link">FAQ</nuxt-link>
 							<div id="docsearch" class="[.DocSearch-Button]{margin-left:0;margin-right:0} [.DocSearch-Button-Keys]{display:none} margin-left:12px minw769px:width:104px minw1600px:margin-left:24px width:36px height:36px"></div>
 						</nav>
-						<span class="minw1500px:display:none">&nbsp;</span>
+						<span class="minw1380px:display:none">&nbsp;</span>
 					</div>
 				</div>
-				<section class="display:none minw1500px:display:inline-flex minw1500px:min-width:300px justify-content:flex-end min-width:150px">
+				<section class="display:none minw1380px:display:inline-flex minw1380px:min-width:300px justify-content:flex-end min-width:150px">
 					<LayoutHeaderSocialIcons />
 				</section>
 			</div>
