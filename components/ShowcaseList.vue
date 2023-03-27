@@ -46,7 +46,7 @@ export default {
 				name: 'Conviu',
 				img: 'conviucom.jpg',
 				url: 'https://conviu.cz',
-				description: 'A tool that helps Czech e-commerce platforms to increase sales.',
+				description: 'A tool that helps Czech e-commerce platforms to increase sales',
 				techStack: ['symfony.svg'],
 			},
 			{
@@ -62,6 +62,13 @@ export default {
 				url: 'https://www.milespernicious.com/',
 				description: 'Personal Blog',
 				techStack: ['astro.svg'],
+			},
+			{
+				name: 'PoStopachSilverA.cz',
+				img: 'postopachsilvera.jpg',
+				url: 'https://postopachsilvera.cz/',
+				description: 'Website for a charity run',
+				techStack: ['svelte.svg'],
 			},
 			{
 				name: 'FSuminho',
