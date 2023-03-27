@@ -29,9 +29,9 @@ npm i @stylify/nuxt
 
 ## Usage
 
-Add a buildModule into the `nuxt.config.js`:
+Add a module into the `nuxt.config.js`:
 ```js
-buildModules: [
+modules: [
 	'@stylify/nuxt'
 ]
 ```

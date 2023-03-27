@@ -19,7 +19,7 @@ howToSchemaSteps: [
 	},
 	{
 		"name": "Usage",
-		"text": "Add Stylify CSS build module into nuxt.config.js.",
+		"text": "Add Stylify CSS module into nuxt.config.js.",
 		"url": "#usage",
 	},
 	{
@@ -46,7 +46,7 @@ yarn add -D @stylify/nuxt
 
 Than add a build module into the `nuxt.config.js` build modules section:
 ```js
-buildModules: [
+modules: [
 	'@stylify/nuxt'
 ]
 ```
@@ -54,7 +54,7 @@ buildModules: [
 Now you can start using Stylify CSS with Nuxt.js.
 
 <note>
-For some unknown reason, the CSS is not reloaded when an error is triggered within the Nuxt (syntax, duplicated attributes). If that happens, just hit save within the nuxt config file or restart the dev server.
+For some unknown reason, the CSS is not reloaded when an error is triggered within the Nuxt (syntax, duplicated attributes). If that happens, just hit save within the Nuxt config file or restart the dev server.
 </note>
 
 ## How to integrate Stylify CSS into the Nuxt.js v2+ < v3
