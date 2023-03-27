@@ -55,7 +55,7 @@ import { stylifyVite } from '@stylify/unplugin';
 const stylifyPlugin = stylifyVite({
 	bundles: [{
 		outputFile: './src/stylify.css',
-		files: ['./src/**/*.svelte'],
+		files: ['./src/**/*.{svelte,html}'],
 	}]
 });
 
@@ -135,6 +135,9 @@ Now run `yarn dev`. The `src/stylify.css` file will be generated.
 There is a lot of options you can configure:
 - [@stylify/unplugin](/docs/unplugin)
 - [Compiler config](/docs/stylify/compiler)
+
+## Other tips
+In case you use the Stylify group syntax like `[h1,h2]{color:blue}`, svelte will match the `{color` as variable. To avoid that, use the syntax with curly brackets and template literals for class attributes <code>class={\` [h1,h2]{color:blue} \`}</code>
 
 <docs-unplugin-build-info></docs-unplugin-build-info>
 
