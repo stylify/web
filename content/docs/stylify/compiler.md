@@ -479,8 +479,8 @@ The example below will generate the following:
 For pseudo classes
 - `[a::after]{content:^Hello_World^} a::after {content:'Hello World'}`
 - `[a]{hover:color:steelblue} a:hover {color:steelblue}`
-- `[a:hover]{color:stelblue} a:hover {color:stelblue}`
-- `[&:hover_a]{color:stelblue}:hover a {color:stelblue}`
+- `[a:hover]{color:steelblue} a:hover {color:steelblue}`
+- `[&:hover_a]{color:steelblue}:hover a {color:steelblue}`
 
 
 </template>
@@ -492,8 +492,8 @@ For pseudo classes
 	[h1,h2]{margin-top:0}
 
 	[a]{hover:color:steelblue}
-	[a:hover]{color:stelblue}
-	[&:hover_a]{color:stelblue}
+	[a:hover]{color:steelblue}
+	[&:hover_a]{color:steelblue}
 "></article>
 ```
 

@@ -188,7 +188,7 @@ const compilerConfig = {
 ## Custom selectors
 Styling elements globally can be done using <nuxt-link to="/docs/stylify/compiler#customselectors">custom selectors</nuxt-link>.
 Syntax is folllowing `[css selectors]{stylify selectors split by ;}`.
-The `&` character always reffers to current element like in SCSS.
+The `&` character always refers to current element like in SCSS.
 For a space use the `_` (underscore) and for a quote `^` a hat character.
 
 ```html
