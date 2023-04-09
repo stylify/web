@@ -1,39 +1,41 @@
 {
+  "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "target": "ES2018",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "lib": [
-      "ESNext",
-      "ESNext.AsyncIterable",
-      "DOM"
-    ],
-    "esModuleInterop": true,
-    "allowJs": true,
-    "sourceMap": true,
-    "strict": true,
-    "noEmit": true,
-    "experimentalDecorators": true,
+    "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "~/*": [
-        "./*"
+      "@layouts/*": [
+        "src/layouts/*"
       ],
-      "@/*": [
-        "./*"
+      "@mainLayout": [
+        "src/layouts/MainLayout.astro"
+      ],
+	  "@pageNotFoundLayout": [
+        "src/layouts/PageNotFoundLayout.astro"
+      ],
+      "@projectConfig": [
+        "src/config.ts"
+      ],
+	  "@serverHelpers": [
+        "src/serverHelpers.ts"
+      ],
+	  "@clientHelpers": [
+        "src/clientHelpers.ts"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@public/*": [
+        "public/*"
+      ],
+	  "@assets/*": ["src/assets/*"],
+      "@content": [
+        "src/content.ts"
+      ],
+      "@images/*": [
+        "public/images/*"
       ]
     },
-    "types": [
-		"@nuxt/types",
-		"@nuxt/content",
-		"@types/prismjs",
-		"@types/node"
-    ]
-  },
-  "exclude": [
-    "node_modules",
-	"stylify-packages",
-    ".nuxt",
-    "dist"
-  ]
+    "jsxImportSource": "solid-js"
+  }
 }

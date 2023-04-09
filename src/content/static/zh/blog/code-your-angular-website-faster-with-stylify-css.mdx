@@ -1,0 +1,124 @@
+---
+title: "用Stylify CSS更快编写Angular网站代码"
+image: '/images/blog/stylify-angular/header.jpg'
+ogImage: '/images/blog/stylify-angular/og-image.jpg'
+author: Vladimír Macháček
+annotation: '用Stylify CSS更快编写Angular网站代码'
+createdAt: 'November 28, 2022'
+---
+
+使用[Stylify CSS](/)可以快速、轻松地给你的Angular应用程序设计样式。为大型页面拆分CSS，或者为整个应用创建一个捆绑包，获得极小的CSS。
+
+## 介绍
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了什么问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 安装
+首先，使用NPM或Yarn安装[@stylify/bundler](/zh/docs/bundler)软件包：
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+同样对于观察模式，我们需要运行两个并行任务。这可以用并发的方式来解决：
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+接下来，创建一个文件，例如`stylify.js`：
+
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// 可选
+	compiler: {
+		mangleSelectors: !isDev,
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+});
+
+// 这将所有的CSS捆绑到一个文件中
+// 你可以配置捆绑器，为每个页面单独捆绑CSS。
+// 见下面的捆绑器链接
+bundler.bundle([
+	{
+		files: ['./src/**/*.html', './src/**/*.ts'],
+		outputFile: './src/styles.css',
+	},
+
+	// 你也可以为每个组件分割CSS
+	// 你可以使用内容注释选项来映射组件内的文件
+	// https://stylifycss.com/en/docs/bundler#files-content-option
+	// Stylify接受该选项并搜索定义的文件。如果定义的文件
+	// 也有一个选项，ID也会检查这些文件，如此反复。
+	// 这样，它就可以映射所有的文件和所有的依赖关系。
+	/*
+	{
+		files: ['./src/app/app.component.*'],
+		outputFile: './src/app/app.component.css',
+	},
+	*/
+]);
+
+```
+
+如果你没有定义多个bundles，所有的东西都会被捆绑到`styles.css`中。如果你定义了多个bundles，别忘了将这些生成的文件的路径添加到Angular组件中。
+
+最后一步是在`package.json`中添加脚本：
+
+```javascript
+"scripts": {
+	"dev": "concurrently 'yarn stylify.dev' 'ng serve -c development'",
+	"prod": "yarn stylify.build & ng serve",
+	"stylify.build": "node stylify.js",
+	"stylify.dev": "node stylify.js --w"
+}
+```
+
+在生产中，你将得到优化的CSS和纠结的HTML：
+```html
+<h1 class="font-size:24px color:#dd0031 font-family:arial">
+你好，世界!
+</h1>
+```
+
+```css
+.a{font-size:24px}
+.b{color:#dd0031}
+.c{font-family:arial}
+```
+
+## Stackblitz Playground
+继续尝试[Stylify CSS + Angular on Stackblitz](https://stackblitz.com/edit/stylifycss-angular-example?file=src%2Fapp%2Fapp.component.html)。
+
+## 配置
+上面的例子并不包括Stylify能做的一切：
+- 定义[组件](/zh/docs/stylify/compiler#components)
+- 添加[自定义选择器](/zh/docs/stylify/compiler#customselectors)
+- 配置[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`用于`margin-left`。
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

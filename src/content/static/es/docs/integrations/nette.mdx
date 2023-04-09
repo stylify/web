@@ -1,0 +1,102 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Nette"
+navigationIconPath: '/images/brands/nette.png'
+image: '/integrations/nette/header.jpg'
+ogImage: '/integrations/nette/og-image.jpg'
+
+title: Uso de Stylify CSS en Nette Framework
+description: "Aprende a integrar el CSS de Stylify en Nette Framework. Codifica tu web Nette más rápido con Stylify CSS"
+howToSchemaTitle: "Cómo usar Stylify CSS en Nette"
+howToSchemaSteps: [
+	{
+		"name": "Instalación de Stylify CSS",
+		"text": "Instalar paquete @stylify/bundler usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "A continuación, crea un archivo, por ejemplo, bundles.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Nette es un framework web PHP hecho en la República Checa centrado en el desarrollo web rápido y ágil.
+
+Nette Framework no utiliza ningún bundler por defecto. Por lo tanto puedes usar el [Bundler](/es/docs/bundler) de Stylify directamente o usar Stylify a través de [Webpack](/es/docs/integrations/webpack), [Rollup.js](/es/docs/integrations/rollupjs), [Vite](/es/docs/integrations/vitejs), etc.
+
+<Note>Un ejemplo de integración para el framework Nette se puede encontrar en <a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">repositorio de ejemplos de integraciones</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en el framework de Nette.
+
+En el siguiente ejemplo utilizaremos el paquete Bundler por sí solo.
+
+Primero, instala el paquete [@stylify/bundler](/es/docs/bundler) usando NPM o Yarn:
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+A continuación, crea un archivo, por ejemplo, `bundles.js`:
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const bundler = new Bundler({
+	watchFiles: process.argv[process.argv.length - 1] === '--w',
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+bundler.bundle([{
+	files: ['./app/Presenters/templates/**/*.latte'], outputFile: './www/static/css/index.css'
+}]);
+```
+
+Y el último paso es añadir los scripts en el `package.json`:
+
+```javascript
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
+}
+```
+
+Ahora puedes añadir un enlace para el CSS generado en el `@layout.latte`:
+
+```html
+<link rel="stylesheet" href="/static/css/index.css">
+```
+
+Puedes personalizar la construcción de arriba como quieras.
+
+## Desventajas
+Si utiliza un selector personalizado en el atributo de clase de Nette como el que se muestra a continuación, probablemente tendrá que envolverlo en `n:class="''"`. Esto se debe a que Nette hace coincidir los selectores personalizados como macro. Las comillas simples lo evitan.
+
+```html
+<div n:class="'[div]{width:240px}'"></div>
+<div n:class="'md:{width:320px}'"></div>
+```
+
+<WhereToNext packageName="bundler" />

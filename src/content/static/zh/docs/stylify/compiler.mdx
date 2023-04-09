@@ -1,0 +1,776 @@
+---
+section: stylify
+
+order: 1
+
+navigationTitle: 编译器
+
+title: "编译器"
+description: "Stylify Compiler是一个生成CSS的工具，可以处理选择器，还有很多其他的功能。"
+---
+import DocsSection from '@components/DocsSection.astro';
+import Note from '@components/Note.astro';
+
+编译器是用Stylify生成CSS的核心。这个工具可以生成CSS并重写（mangles）选择器。另外，当你需要添加变量、组件、自定义宏等时，你可以在编译器的配置中完成。
+
+<DocsSection>
+<div slot="description">
+
+## 语法
+语法与CSS的`property:value`相似，但有一些区别：
+- 使用`_`（一个下划线）表示空格，`^`（一个帽子）表示引号。
+- 默认的语法模式是`<屏幕>:<伪类>:<属性>:<值>`。屏幕和伪类是可选的。
+- 屏幕可以使用逻辑操作数进行组合：
+	- **逻辑和**： `&&`
+	- **逻辑OR**： `||`
+
+</div>
+<div slot="code">
+
+```html
+color:blue => 蓝色
+hover:color:blue => 悬停后为蓝色
+lg:color:blue => 选中屏幕时为蓝色
+lg:hover:color:blue => 从选定的屏幕悬停后的蓝色
+
+lg&&dark:color:red => 大屏幕和喜欢深色的颜色模式。
+minw740px||landscape:color:blue =>最小宽度或横向
+```
+
+</div>
+</DocsSection>
+
+## 编译器配置
+
+<DocsSection>
+<div slot="description">
+
+## dev
+如果dev被设置为 "true"，生成的CSS将包含新的行和空格，以提高可读性，生成的CSS中的选择器不会被篡改，如果缺少任何变量，在控制台中只显示一个警告。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	dev: true
+};
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## macros
+宏用于匹配选择器并根据匹配结果生成CSS。对象里面的键可以是一个字符串或一个正则表达式。
+
+如果启用的话，每个匹配的选择器都会被自动处理： `color:rgb(255,255,255)` => `ab`.
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	macros: {
+		'color:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			// color:blue => will create => color: blue
+			// 你也可以使用addMultiple({})
+			selectorProperties.add('color', macroMatch.getCapture(0));
+		},
+	},
+};
+```
+
+使用方法：
+```html
+<span class="color:red"></span>
+<div class="color:#000"></span>
+<div class="color:rgb(255,255,255)"></span>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## selectorsPrefix
+这个选项允许你设置例如 "u-"（作为效用）前缀。这个前缀将在匹配过程中与宏连接。
+
+由于这个功能，你可以在你现有的应用程序中使用Stylify，而不会与已有的选择器发生冲突。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	selectorsPrefix: 'u-'
+};
+```
+
+而在代码中：
+```html
+<div class="
+	u-color:blue
+	hover:u-color:red
+	[a]{u-color:blue}
+"></div>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## mangleSelectors
+如果mangle selectors选项被设置为 "true"，那么CSS中的选择器将被从长变短。
+
+这只是配置了编译结果，所以它生成的是最小化的CSS选择器。要重写文件中的选择器，你需要调用`compiler.rewriteSelectors(content)'方法。
+
+`rewriteSelectors`方法在Unplugin、Bundler、Astro、Nuxt和Nuxt Module包中自动执行。如果你想直接使用编译器，你必须调用它。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	mangleSelectors: true
+};
+```
+
+```javascript
+const compiler = new Compiler(config);
+
+compiler.rewriteSelectors(content);
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## mangledSelectorsPrefix
+这个前缀会被添加到所有混杂的选择器之前。你可以使用任何非数字字符，例如`_`（下划线）。
+
+这个功能可以防止混杂的选择器与你的应用程序中已经有的选择器发生碰撞。只有在有这种碰撞的情况下才使用它。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	mangledSelectorsPrefix: '_'
+};
+```
+
+```html
+<div class="color:blue"></div>
+
+<!-- 有了配置 -->
+<div class="_a"></div>
+
+<!-- 没有配置 --->
+<div class="a"></div>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## variables
+变量可以在选择器中使用，也可以在宏里面访问。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	variables: {
+		blue: '#01befe',
+		shadow: '0 8px 32px -8px rgb(0, 0, 0, 0.2)',
+		// 当变量是一个对象时，Stylify CSS会尝试为它寻找屏幕。
+		// 你可以使用你在屏幕中定义的任何屏幕
+		dark: { blue: 'lightblue' },
+		md: { fontSize: 24px },
+		'minw640px': { fontSize: 32px },
+		// 当没有找到屏幕时，它会回到一个随机的自定义选择器上
+		'.dark': { blue: 'lightblue' },
+		':root[data-theme="dark"]': { blue: 'lightblue' }
+	},
+	// 默认情况下，变量被替换成它们的值。如果这个选项被启用，它们
+	// 被var(--variableName)所替代，并且可以更加动态。
+	// 这对于在浅色和深色模式之间切换是非常好的。
+	replaceVariablesByCssVariables: false,
+	// 默认情况下，变量会作为CSS变量自动注入到生成的CSS中。
+	// 你可以通过将下面的选项设置为false来改变这种行为
+	injectVariablesIntoCss: true
+};
+```
+
+使用方法：
+```html
+<span class="color:$blue"></span>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## externalVariables
+如果你在其他地方定义了一些CSS变量，而不是在Stylify的配置中，你可以将它们标记为外部变量。
+
+<Note>外部变量不能在帮助器中使用，因为它们的值不能被访问和处理。</Note>
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	externalVariables: [
+		// 简单的字符串检查
+		'some-color',
+		// 定义回调以指定更灵活的检查。
+		// 例如，这将标记每一个以md-开头的变量。
+		// 作为外部变量。
+		(variable) => variable.startsWith('md-') ? true : undefined
+	],
+	// 如果你有很多外部变量，而且你不想麻烦地映射它们,
+	// 你可以改变警告级别
+	// 'silent' => 完全禁止警告
+	// 'warn' => 是开发时的默认值。
+	// 'error' => 默认用于生产。
+	undefinedVariableWarningLevel: 'silent'
+};
+```
+
+使用方法：
+```html
+<span class="
+	color:$some-color
+	background:$md-sys-color-primary
+	border-color:$md-sys-color-tertiary
+"></span>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## keyframes
+Stylify CSS中的关键帧的定义与CSS中的语法相同。
+
+关键帧也可以使用[content options](#contentoptionsprocessors)在文件的注释中定义。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	keyframes: {
+		fadeIn: 'from { opacity: 0; } to { opacity: 1; }',
+		fadeOut: 'from { opacity: 1; } to { opacity: 0; }',
+		shadowPulse: `
+			from { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2); }
+			to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+		`
+	}
+};
+```
+
+```html
+<span class="animation:fadeIn_2s_infinite">淡入</span>
+<span class="animation:fadeOut_2s_infinite">淡出</span>
+<span class="animation:shadowPulse_2s_infinite">阴影脉冲</span>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## screens
+屏幕是用来生成媒体查询的。关键可以是一个字符串或一个正则表达式。你可以使用预定义的[屏幕](/zh/docs/stylify/native-preset#屏幕)或定义你自己的。
+
+屏幕可以使用逻辑操作数进行组合：
+- **逻辑和**： `&&`
+- **逻辑OR**： `||`
+
+</div>
+<div slot="code">
+
+
+```javascript
+const compilerConfig = {
+	screens: {
+		'sm': '(min-width: 400px)',
+		// 屏幕也可以是函数
+		// 这可以让你尽可能地制作灵活的屏幕
+		'minw\\w+': (screen) => `(min-width: ${screen.replace('minw', '')})`
+	}
+};
+```
+
+使用方法：
+```html
+<span class="sm:color:darkred"></span>
+<div class="minw640px:color:$blue"></span>
+<div class="minw80rem:color:darkgreen"></span>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## components
+组件可以减少模板中选择器的数量。它们可以被定义在使用它们的文件中，也可以在配置中。当使用content-option定义时，它期望javascript对象没有周围括号。
+当定义一个组件时，你也可以使用[嵌套语法](#自定义选择器的嵌套语法)
+
+也可以使用[内容选项](#contentoptionsprocessors)直接在文件中定义组件。
+
+<Note>当你定义一个组件或宏，如<code>link</code>，这个选择器在生产中可能会与<code>sidebar-link</code>这样的选择器发生碰撞，当混用选择器时。这个选择器将被替换为<code>a</code>（用于链接）和<code>sidebar-a</code>（用于部分）。你可以通过在<a href="#ignoredareas">ignoredAreas</a>选项中配置sidebar-section来防止这种行为。</Note>
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	components: {
+		// 选择器 => 依赖性
+		'button': 'padding:4px background:black color:white hover:background:grey',
+		'container': `
+			max-width:1024px
+			margin:0_auto
+			md:max-width:1280px
+		`,
+		// 你可以在一个键中定义多个组件，只要用","（逗号）隔开即可
+		'wrapper, footer': 'padding:24px',
+		// 当一个组件被多次定义时，选择器会被合并起来
+		// 当选择器链被定义时，最后一个会被应用
+		'wrapper': 'margin-top:24px',
+		'button--big': `
+			&.btn {
+				font-size:48px
+			}
+		`,
+		// 动态组件
+		// 当函数有一个回调时，它接受来自正则表达式的匹配。
+		// 变量，帮助器和如果是dev环境。
+		// 这样，你可以定义一个组件，根据正则表达式的匹配结果返回选择器。
+		// 来自正则表达式。
+		'title(?:--(\\S+))?': ({ matches, variables, helpers, dev }) => {
+			const color = matches[1] ?? '#000';
+			return `font-size:24px${color ? ` color:${color}` : ''}`;
+		},
+	}
+};
+```
+
+使用方法：
+```html
+<span class="button"></span>
+<div class="container"></div>
+<!-- 动态组件 -->
+<div class="title"></div>
+<div class="title--#06f">
+<div class="title--$red">
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## customSelectors
+自定义选择器允许你为元素编写CSS选择器。
+当为直接元素配置伪类时，你可以直接使用该伪类。当选择器不是直接的，那么伪类应该在选择器上，而不是在Stylify的CSS选择器中。请看例子。
+
+自定义选择器也可以直接在文件中使用[内容选项](#contentoptionsprocessors)来定义。
+
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		// 选择器 => 依赖性
+		'article': 'font-size:16px line-height:28px color:#222',
+		'article h1, article h2': 'color:blue',
+		// 对于带有伪类的间接选择器，如`div > button`, `article a`。
+		'article a:hover': 'color:blue'
+		'article a:hover i': 'color:white'
+		// 对于带有伪类的直接选择器，如a、input或a.button和a.link
+		'a': 'color:green hover:color:blue',
+		'a.link': 'color:green hover:color:red'
+	}
+};
+```
+
+使用方法：
+```html
+<article></article>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+### 自定义选择器的嵌套语法
+你可以使用类似SCSS的语法来嵌套选择器。
+创建选择器的方法与CSS中的相同。使用`&`字符来引用上层。
+为了保持简单，唯一的功能是嵌套和链式。语法与`内容选项`相同。像`:hover`这样的伪类与上面的例子中的工作原理相同。
+下面的例子将生成以下内容：
+- `header { width:800px }`
+- `header nav { font-size:14px }`
+- `header.fixed {}`
+- `.docs header { background:blue }`
+- `header h1, header h2 { font-family:arial }`
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		'header': `
+			width:800px
+			nav {
+				font-size:14px
+			}
+			&.fixed {
+				position:fixed
+			}
+			.docs & { background:blue }
+			h1, h2 { font-family:arial }
+		`
+	}
+}
+```
+
+</div>
+
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+自定义选择器也可以直接写入类的属性中。语法如下`[选择器]{宏观}`。使用`_`下划线来代替空格。对于引号，使用`^`。而要分割不同的宏，则使用`;`。
+下面的例子将生成以下内容：
+- `.docs [.docs_&]{font-size:14px;color:#222} {font-size:14px; color:#222}`
+- `[h1,h2]{margin-top:0} h1, [h1,h2]{margin-top:0} h2 { margin-top:0 }`
+
+对于伪类：
+- `[a::after]{content:^Hello_World^} a::after {content:'Hello World'}`
+- `[a]{hover:color:steelblue} a:hover {color:steelblue}`
+- `[a:hover]{color:steelblue} a:hover {color:steelblue}`
+- `[&:hover_a]{color:steelblue}:hover a {color:steelblue}`
+
+
+</div>
+<div slot="code">
+
+```html
+<article class="
+	[.docs_&]{font-size:14px;color:#222}
+	[h1,h2]{margin-top:0}
+
+	[a]{hover:color:steelblue}
+	[a:hover]{color:steelblue}
+	[&:hover_a]{color:steelblue}
+"></article>
+```
+
+</div>
+
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## helpers
+帮助器是当一个选择器被匹配并且其属性被生成时可以被调用的函数。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	helpers: {
+		shortcut(value) {
+			const shortcuts = {
+				'bgc': 'background-color',
+				'zi': 'z-index'
+			};
+
+			return value in shortcuts ? shortcuts[value] : value;
+		},
+		joinText(...texts) => '"' + texts.join(' ') + '"'
+	},
+	macros: {
+		'(bgc|zi):(\\S+?)': ({helpers, macroMatch, selectorProperties}) => {
+			const property = helpers.shortcut(macroMatch.getCapture(0));
+			macroMatch.add(property, selectorProperties.getCapture(1));
+		}
+	}
+}
+```
+
+使用方法：
+```html
+<div class="
+	zi:2 bgc:red
+	color:lighten(#000,10)
+	content:joinText(^Custom^,^Long_Text^)
+"></div>
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## selectorsAreas
+如果你想在任何框架的特定类属性中重写选择器，你必须定义该属性来进行匹配。
+默认情况下，Stylify CSS支持Vue、React、Lit、AlpineJS和Nette的一些语法。如果某些类属性没有被匹配，可以添加selectorsAreas选项，用正则表达式来匹配它。
+
+</div>
+<div slot="code">
+
+```javascript
+const compilerConfig = {
+	selectorsAreas: [
+		// Vue.js
+		'(?:^|\\s+)(?:v-bind)?:class="([^"]+)"',
+		// React
+		'(?:^|\\s+)className="([^"]+)"'
+	]
+};
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## ignoredAreas
+如果你需要在编译过程中标记一个代码被忽略，你可以使用忽略的区域。
+
+`stylify-ignore`和`stylify-runtime-ignore`是默认的区域，你可以用它来移除编译的内容。
+
+同时，以下元素也会被忽略（只是没有属性）： `code, head, pre, script, style`。
+
+请注意，使用正则表达式匹配标签或区域在某些情况下是不可靠的，因此尽量使用`stylify-ignore`，因为它是最可靠的选项。
+
+</div>
+<div slot="code">
+
+使用方法
+
+```html
+<!-- stylify-ignore -->
+里面的东西将被忽略
+<div class="color:red"></div>
+<!-- /stylify-ignore -->
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+### pregenerate
+pregenerate选项允许你在编译过程中添加一些内容。
+
+</div>
+<div slot="code">
+
+
+```javascript
+const compilerConfig = {
+	pregenerate: 'color:red color:blue width:100%'
+};
+```
+
+</div>
+</DocsSection>
+
+
+<DocsSection>
+<div slot="description">
+
+## contentOptionsProcessors
+一些配置选项可以直接在文件中使用`内容选项'来定义。例如，保持一个组件的定义与它的HTML是很好的。
+
+</div>
+<div slot="code">
+
+```html
+<!--
+// 组件希望有一个有效的javascript对象作为值，不需要周围的括号
+stylify-components
+	button: `font-size:24px padding:4px`,
+	'button--big': `
+		&.btn {
+			font-size:48px
+		}
+	`
+/stylify-components
+
+// 变量需要一个有效的javascript对象作为值，不需要周围的括号。
+stylify-variables
+	blue: `#01befe`
+/stylify-variables
+
+// 关键帧希望有一个有效的javascript对象作为值，不需要周围的括号。
+stylify-keyframes
+	fadeIn: 'from { opacity: 0; } to { opacity: 1; }',
+	fadeOut: 'from { opacity: 1; } to { opacity: 0; }',
+	shadowPulse: `
+		from { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.2); }
+		to { box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+	`
+/stylify-keyframes
+
+
+// 自定义选择器需要一个有效的javascript对象作为值，不需要周围的括号。
+stylify-customSelectors
+	article: `font-size:24px`
+/stylify-customSelectors
+
+// Pregenerate期望一个字符串
+stylify-pregenerate
+	border-top:1px_solid_#444
+/stylify-pregenerate
+
+// Screens希望得到一个有效的javascript对象作为值，不需要周围的括号。
+stylify-screens
+	'testScreen': '(min-width: 123px)',
+	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
+/stylify-screens
+-->
+```
+
+添加自定义内容选项处理器
+
+```javascript
+import { hooks } from '@stylify/stylify'
+
+// 你可以使用Stylify编译器来获取任何选项
+hooks.addListener('compiler:processContentOption:myOption', ({
+	contentOptions,
+	option,
+	value
+}) => {
+
+});
+```
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## 编译结果
+编译结果可以被创建或配置，并作为第二个参数传入编译器。通过这种方法，你可以改变编译行为并扩展功能。
+
+<Note>请注意，如果你修改了编译结果或用错误的配置创建了一个新的编译结果，你会破坏整个编译过程。</Note>
+
+</div>
+<div slot="code">
+
+```javascript
+const compilationResult = new CompilationResult({
+	// 所有选项都是可选的
+	dev: false,
+	// 如果可重新配置被设置为false，配置将不会改变
+	reconfigurable: false,
+	// 这个函数负责在生成CSS之前对屏幕进行排序。
+	// 参数是一个Map类型，该函数也必须返回一个Map类型。
+	screensSortingFunction: (screensList) => { return screensList },
+	// 如果mangle selectors为true，CSS中的选择器将被处理。
+	mangleSelectors: false,
+});
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## CSS记录
+Css记录只能通过钩子`compilationResult:configureCssRecord`访问。CSS记录负责保存CSS树以及选择器如何被连接、管理等。
+
+</div>
+<div slot="code">
+
+```javascript
+hooks.addListener('compilationResult:configureCssRecord', ({cssRecord}) => {
+	// ...
+});
+```
+
+</div>
+</DocsSection>
+
+## 钩子
+
+Stylify有一个可钩住的系统，允许你修改扩展功能。
+
+<DocsSection>
+<div slot="description">
+
+- **compiler:beforeMacrosProcessed**： 在内容被处理和宏匹配之前
+- **compiler:afterMacrosProcessed**： 就在 "beforeMacrosProcessed "之后
+- **compiler:compilationResultConfigured**： 当编译结果准备好时被触发
+- **compiler:newMacroMatch**： 当内容中的宏被匹配时，该钩子被触发。
+- **compiler:processContentOption:\[option\]**： 在处理内容选项时触发。如果你想处理你自己的选项，"[option]"必须由内容选项的名称代替，如 "customOption"。
+- **compilationResult:configureCssRecord**： 这个钩子在创建CSS记录时被调用。例如，你可以设置范围
+- **cssRecord:addProperty**： 这个钩子在添加CSS`属性:值`之前被调用。
+- **cssRecord:cssGenerated**： 当CSS被生成时触发
+
+</div>
+<div slot="code">
+
+```javascript
+import { hooks } from '@stylify/stylify';
+
+hooks.addListener('hoook:name', (options) => {});
+```
+
+</div>
+</DocsSection>
+
+## 自定义编译过程
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '<div class="color:blue"></div>';
+
+const compiler = new Compiler();
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+// 如果第三个参数被设置，如果它是真的（默认），它将重写选择器
+// 只在selectorsAreas中定义的区域，而不是整个内容中。
+const mangledContent = compiler.rewriteSelectors(content, compilationResult, true);
+```

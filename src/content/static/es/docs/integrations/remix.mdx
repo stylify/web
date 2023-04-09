@@ -1,0 +1,110 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Remix"
+navigationIconPath: '/images/brands/remix.svg'
+image: '/integrations/remix/header.jpg'
+ogImage: '/integrations/remix/og-image.jpg'
+
+title: Uso de Stylify CSS en Remix
+description: "Aprende a integrar el CSS de Stylify en Remix. Codifica tu web Remix más rápido con Stylify CSS"
+howToSchemaTitle: "Cómo usar Stylify CSS en Remix"
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "Instala el paquete @stylify/bundler usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "A continuación, crea un archivo, por ejemplo stylify.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Remix es un framework web de pila completa que te permite centrarte en la interfaz de usuario y retroceder a través de los estándares web para ofrecer una experiencia de usuario rápida, hábil y resistente.
+
+Stylify se puede integrar en el Remix utilizando Bundler.
+
+<StackBlitzLink link="stylify-remix-example" />
+
+## Cómo integrar el CSS de Stylify en el Remix
+
+Primero, instala el paquete [@stylify/bundler](/es/docs/bundler) usando NPM o Yarn:
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+También para el modo watch, necesitamos ejecutar dos tareas paralelas. Esto se puede resolver usando concurrently:
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+A continuación, crea un archivo, por ejemplo `stylify.js`:
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// Esto agrupa todo el CSS en un archivo
+// Puede configurar el Bundler para agrupar el CSS de cada página por separado
+// Ver el enlace del bundler más abajo
+bundler.bundle([
+	{files: ['./app/**/*.tsx'], outputFile: './app/styles/stylify.css' },
+]);
+```
+
+Cuando el bundler esté configurado, añade la ruta al CSS de Stylify en el `app/root.tsx`:
+
+```jsx
+import styles from '~/styles/stylify.css';
+
+export function links() {
+	return [{ rel: 'stylesheet', href: styles }];
+}
+```
+
+Y el último paso es añadir los scripts en el `package.json`:
+
+```javascript
+"scripts": {
+	"build": "yarn stylify:build & cross-env NODE_ENV=production remix build",
+	"dev": "concurrently 'yarn stylify:dev' 'cross-env NODE_ENV=development remix dev'",
+	"stylify:build": "node stylify.js",
+	"stylify:dev": "node stylify.js --w"
+}
+```
+
+Ahora, cuando ejecutes `yarn dev`, se generará el archivo CSS. En producción, los selectores serán manipulados.
+
+Usted puede personalizar la construcción de arriba como quieras.
+
+<WhereToNext packageName="bundler" />

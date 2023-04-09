@@ -1,0 +1,64 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: 浏览器
+navigationIconPath: '/images/browser.svg'
+image: '/integrations/browser/header.jpg'
+ogImage: '/integrations/browser/og-image.jpg'
+
+title: "在浏览器中使用Stylify CSS"
+description: "了解如何在浏览器中直接使用Stylify CSS，无需安装和捆绑程序。"
+howToSchemaTitle: "如何在浏览器中通过CDN使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装和配置",
+		"text":  "复制&粘贴Stylify CSS CDN脚本到页面中",
+		"url": "#installation--configuration",
+	},
+	{
+		"name": "安装和配置--模块",
+		"text": "复制&粘贴Stylify CSS CDN脚本到页面中。使用脚本类型模块。",
+		"url": "#installation--configuration--modules",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Stylify可以使用CDN直接在浏览器中使用，也可以作为模块导入。
+
+<Note>浏览器的集成示例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/browser" target="_blank" rel="noopener">集成示例库</a>中找到。</Note>
+
+## 安装和配置
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>。
+
+<script>
+// 可选的 - https://stylifycss.com/en/docs/stylify/runtime
+Stylify.configure({ });
+</script>
+```
+
+## 安装和配置 - 模块
+有了模块（配置和上面一样）：
+
+```javascript
+<script type="module">
+import { Runtime } from 'https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/esm/index.min.js';
+
+// 可选 - https://stylifycss.com/en/docs/stylify/runtime
+new Runtime({ });
+</script>
+```
+
+## 高级配置
+去看看[Runtime docs](/zh/docs/stylify/runtime)。
+
+<WhereToNext packageName={null} />

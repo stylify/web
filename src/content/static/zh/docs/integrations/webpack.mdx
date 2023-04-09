@@ -1,0 +1,97 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Webpack"
+navigationIconPath: '/images/brands/webpack-icon.svg'
+image: '/integrations/webpack/header.jpg'
+ogImage: '/integrations/webpack/og-image.jpg'
+
+title: 在Webpack中使用Stylify CSS
+description: "了解如何使用Stylify CSS与Webpack。用Stylify CSS和Webpack更快地编写你的网站代码。"
+howToSchemaTitle: "如何在Webpack中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Webpack是一个模块捆绑器。它的主要目的是捆绑JavaScript文件以便在浏览器中使用，然而它也能够进行转换、捆绑等。
+
+<Note>Webpack的集成实例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/webpack" target="_blank" rel="noopener">集成实例库</a>中找到。</Note>
+
+## 如何将Stylify的CSS集成到Webpack中
+
+首先，使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来，在`webpack.config.js`文件中添加以下配置：
+
+```javascript
+const path = require('path');
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const mode = 'development';
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{
+		outputFile: './index.css',
+		files: ['./**/*.html'],
+		rewriteSelectorsInFiles: mode === 'production'
+	}],
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+module.exports = {
+	entry: './input.js',
+	mode: mode,
+	plugins: [ stylifyPlugin ],
+	module: {
+		rules: [{
+			test: /\.css$/i,
+			use: ["style-loader", "css-loader", "postcss-loader"]
+		}],
+	},
+	output: {
+		path: path.resolve(__dirname),
+		filename: 'index.js',
+		libraryTarget: 'umd'
+	}
+};
+```
+
+现在将生成的`index.css`文件添加到`index.js`入口文件中。
+
+<DocsUnpluginBuildInfo bundler="Webpack" />
+
+<WhereToNext />

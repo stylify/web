@@ -1,0 +1,15 @@
+---
+import { Prism } from '@astrojs/prism';
+
+const { lang = 'html', code, maxHeight } = Astro.props;;
+---
+
+<!--
+stylify-externalVariables
+	highlighterMaxHeight
+/stylify-externalVariables
+ -->
+
+<div style={`--highlighterMaxHeight:${maxHeight ?? 'none'}`} class=" width:100% [pre]{overflow:auto;max-height:$highlighterMaxHeight}">
+	<Prism lang={lang} code={code.trim()} />
+</div>

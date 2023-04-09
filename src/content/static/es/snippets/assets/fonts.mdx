@@ -1,0 +1,28 @@
+---
+section: assets
+
+order: 1
+
+navigationTitle: "Fuentes"
+
+title: "Fuentes"
+description: "Enlaces a fuentes gratuitas para tu próximo proyecto web"
+---
+
+En esta página, encontrará una lista de páginas, donde puede encontrar fuentes gratuitas para su próximo proyecto web.
+
+## Tipografía Golden Ratio
+Obtenga la altura de línea correcta para su fuente => https://grtcalculator.com
+
+## Fuentes
+- [Google Fonts](https://fonts.google.com)
+- [Font Squirell](https://www.fontsquirrel.com)
+- [Font Space](https://www.fontspace.com)
+
+## Optimización de fuentes
+Cuando cargue fuentes personalizadas, debería comprobar los siguientes trucos de optimización:
+- Intenta evitar importar varios tamaños de fuente: 300,400,700 debería ser suficiente para la mayoría de los casos.
+- Puede descargar la fuente y alojarla en su propio servidor. Es más rápido que usar un CDN externo.
+- Utilice woff o woff2. Evite las fuentes SVG
+- La forma más rápida de cargar la fuente es convertirla en Base64 en el archivo CSS. De esta manera, los navegadores no tienen que esperar a que la fuente se cargue y no hay cambios de diseño causados por el cambio de fuente.
+- Cuando lazyloading la fuente, utilice la propiedad `font-diplay:swap`. Esto no bloquea el renderizado de la página.

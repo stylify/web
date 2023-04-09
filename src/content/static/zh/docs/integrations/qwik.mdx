@@ -1,0 +1,122 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Qwik
+navigationIconPath: '/images/brands/qwik.svg'
+image: '/integrations/qwik/header.jpg'
+ogImage: '/integrations/qwik/og-image.jpg'
+
+title: "在Qwik框架中使用Stylify CSS"
+description: "了解如何在Qwik框架中使用Stylify CSS。用Stylify CSS更快地编写你的Qwik网站代码。"
+howToSchemaTitle: "如何在Qwik中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Qwik是为边缘地区重新设计的JavaScript框架。没有水化，自动懒散加载，边缘优化。
+
+使用Stylify CSS Vite插件可以在Qwik框架内使用Stylify。
+
+<StackBlitzLink link="stylify-qwik-example" />
+
+## 安装
+
+集成只能通过CLI如NPM或Yarn来安装：
+```
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+## 使用方法
+
+编辑`vite.config.js`。
+
+
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [
+		{ files: ['src/**/*.tsx'], outputFile: 'src/global.css' }
+	],
+	// 可选的 - https://stylifycss.com/en/docs/unplugin
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin]
+});
+```
+
+在`src/root.tsx`中导入`global.css`：
+
+```javascript
+import './global.css';
+```
+
+## 为每个页面分割捆绑
+捆绑程序也可以为每个页面单独配置。用这种方法，你可以得到尽可能小的CSS。比如说
+
+
+```javascript
+bundles: [
+	//布局
+	{ files: ['src/root.tsx', 'src/routes/layout.tsx'], outputFile: 'src/assets/css/layout.css'},
+	// 索引页
+	{ files: ['src/routes/index.tsx'], outputFile: 'src/assets/css/index.css'},
+],
+```
+
+在`src/routes/index.tsx`中，有以下内容：
+
+```javascript
+import { useStyles$ } from '@builder.io/qwik';
+import indexCss from '../assets/css/index.css';
+// ...
+
+export default component$(() => {
+	useStyles$(indexCss);
+	// ...
+})
+```
+
+并在`src/root.tsx`中添加布局导入`import './assets/css/layout.css`。
+
+## 配置
+有很多的选项你可以配置：
+- [@stylify/unplugin](/zh/docs/unplugin)
+- [编译器配置](/zh/docs/stylify/compiler)
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

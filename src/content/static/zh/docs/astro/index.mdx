@@ -1,0 +1,62 @@
+---
+section: astro
+
+order: 0
+
+navigationTitle: "@stylify/astro"
+
+title: "@stylify/astro"
+description: "@stylify/astro简化了Stylify CSS与Astri.build的集成。"
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Astro集成简化了Stylify CSS集成到Astri.build中。
+
+<StackBlitzLink link="stylify-astro-example" />
+
+## 安装
+
+集成只能通过CLI如NPM或Yarn来安装：
+```
+yarn add @stylify/astro
+npm i @stylify/astro
+```
+
+## 用法
+
+在`astro.config.mjs`中添加一个buildModule：
+
+
+```javascript
+import { defineConfig } from 'astro/config';
+import stylify from '@stylify/astro';
+
+export default defineConfig({
+	integrations: [stylify()]
+});
+```
+
+## 配置
+
+配置是可选的。如果没有设置 "bundles "选项，src目录下的所有文件将被编译，并生成一个单一的`stylify.css`文件并注入到所有页面。
+
+在`astro.config.mjs`中配置：
+```javascript
+stylify({
+	// https://stylifycss.com/en/docs/unplugin#configuration
+})
+```
+
+你也可以使用自定义文件或在`astro.config.mjs`旁边创建的`stylify.config.js`来配置Stylify的CSS。
+
+
+```javascript
+import { defineConfig } from '@stylify/astro';
+
+export default defineConfig({
+	// https://stylifycss.com/en/docs/unplugin#configuration
+});
+```
+
+## 配置片段
+你也可以为Astro应用程序使用[配置片段](/zh/snippets/snippets/astro)，以加快设置速度。

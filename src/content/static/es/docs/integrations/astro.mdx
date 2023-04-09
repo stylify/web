@@ -1,0 +1,63 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Astro
+navigationIconPath: '/images/brands/astro.svg'
+image: '/integrations/astro/header.jpg'
+ogImage: '/integrations/astro/og-image.jpg'
+
+title: "Uso de Stylify CSS en Astro.build"
+description: "Aprende a usar Stylify CSS con Astro.build. Codifica tu web Astro.build más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Astro.build.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/astro usando CLI como YARN o NPM",
+		"url": "/integrations/astro#installation",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en astro.config.mjs",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Astro.build es un framework que te permite construir tu sitio web más rápido.
+
+La integración de @stylify/astro simplifica la integración de CSS de Stylify en Astro.build.
+
+<StackBlitzLink link="stylify-astro-example" />
+
+## Instalación
+
+La integración se puede instalar sólo a través de CLI como NPM o Yarn:
+```
+yarn add @stylify/astro
+npm i @stylify/astro
+```
+
+## Uso
+
+Añade un buildModule en el `astro.config.mjs`:
+
+```javascript
+import { defineConfig } from 'astro/config';
+import stylify from '@stylify/astro';
+
+export default defineConfig({
+	integrations: [stylify()]
+});
+```
+
+## Configuración
+
+Echa un vistazo al paquete [@stylify/astro](/es/docs/astro#configuration).

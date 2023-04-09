@@ -1,0 +1,142 @@
+---
+section: snippets
+
+order: 1
+
+ogImage: '/snippets/material-theme/og-image-v3.jpg'
+
+navigationTitle: "材料主题"
+
+title: "材料主题生成器（Material You）生成的主题集成"
+description: "学习如何在一分钟内开始使用生成的Material Theme（Material You）与Stylify CSS。"
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
+
+如果你打算在你的网站上使用Material Theme，你可能想用[Material Theme Builder](https://m3.material.io/theme-builder#/custom)生成一个调色板和主题。
+
+<StackBlitzLink link="stylify-material-theme-example" />
+
+Material Theme Builder可以为你的项目生成包含light/dark模式变量的CSS文件。它允许你在短时间内设置你想要的调色板。下面是关于如何生成主题以及如何将其整合到Stylify CSS中的指南。
+
+## 如何获得一个自定义的Material Theme
+用Material Theme Builder生成所需的主题很简单：
+- 进入[Material Theme Builder](https://m3.material.io/theme-builder#/custom)网站。
+- 在左侧（桌面上），点击主色调。
+- 颜色生成器的对话框会出现。选择你喜欢的颜色。
+- 可以选择重复这个过程，选择第二、第三和中性色。
+- 当你完成配置后，在右上角，有一个导出按钮
+- 点击它并选择网页（CSS）。
+- 下载该文件并将其提取到你的项目中。
+
+如果你想知道，如何使用每种颜色，请确保查看设备预览下的部分。这里有带有每种颜色名称的调色板：
+- 例如，`on-primary`颜色应该用于`primary`颜色的文本。这意味着例如一个按钮的背景是原色的（紫色），文字是原色的（白色）。
+- 颜色在浅色/深色模式下被分割
+- 完整的指南可以在[材料项目文件](https://m3.material.io/styles/color/the-color-system/color-roles)
+
+<img src="/images/blog/stylify-material-theme/colors-setup.png" loading="lazy" fetchpriority="low" />
+
+## 将Material Theme整合到Stylify CSS中
+为了完成配置过程，你必须配置Stylify，让它知道以`md-`开头的变量是外部变量，并且它必须用CSS变量来代替变量的值。
+
+### 使用取消插件
+这一部分是针对`@stylify/unplugin`的输出： `stylifyVite`, `stylifyWebpack`, `stylifyEsbuild`和`stylifyRollup`。
+
+如果你在你的项目中使用unplugin（Next.js、Nuxt.js、SvelteKit、Vite、Webpack、Rollup或任何其他），这个指南就是你要找的东西。
+
+所以，如果你在你的项目中使用其中一个，这就是它的配置：
+
+```javascript
+const stylifyConfig = {
+	compiler: {
+		replaceVariablesByCssVariables: true,
+		externalVariables: [
+			// 添加外部变量标识符
+			// 这个检查，如果变量以md-开头。
+			// 如果是，它就被标记为外部变量。
+			// 不要添加-md。标识符方法适用于Stylify变量名称
+			// 而不是CSS变量名。Stylify会自动添加 --
+			// 如果启用了CSS变量
+			(variable) => {
+				if (variable.startsWith('md-')) return true;
+			}
+		]
+	}
+	// ...
+};
+
+stylifyVite(stylifyConfig);
+stylifyWebpack(stylifyConfig);
+stylifyRollup(stylifyConfig);
+stylifyEsbuild(stylifyConfig);
+```
+
+### 集成Astro
+配置与unplugin相同。
+
+```javascript
+stylify(stylifyConfig);
+```
+
+### 捆绑器
+如果你直接使用`@stylify/bundler`，请使用上面关于unplugin集成部分的`stylifyConfig`，但你必须把它传到Bundler初始化中。
+
+```javascript
+const bundler = new Bundler({
+	...stylifyConfig
+});
+```
+
+## 使用方法
+最后一步是将生成的主题导入我们的项目中：
+- 将生成的主题提取到你的项目中。
+- 将`theme.css`文件导入你的项目中（确保目录是公开的）。这个文件将导入所有其他必要的文件。
+
+<Note>如果你关心一下优化，这也会引起至少4个HTTP请求，因为主题文件中的`@import`规则。
+你可能想把那些其他文件的内容复制到<code>theme.css</code>文件中，或者使用一些捆绑程序合并它们，以减少请求的数量。</Note>
+
+当文件被导入到你的项目中，你就可以开始在Stylify工具中使用Material Theme的CSS变量了。
+```html
+<button class="
+	border:none
+	padding:8px_12px
+	border-radius:24px
+
+	background:$md-sys-color-primary
+	color:$md-sys-color-on-primary
+	display-large
+">材质按钮</button>
+```
+
+<img src="/images/blog/stylify-material-theme/buttons.png" alt="" loading="lazy" fetchpriority="low" />
+
+## 清理
+如果你打算只使用Stylify的CSS工具，那么你可以删除`colors.module.css`。它包含了 "color "和 "background "的实用程序。
+
+除了颜色模块外，还有一个`typography.module.css`。你可能想把它也去掉，然后用Stylify动态组件语法把这些类改写成Stylify组件。
+
+```javascript
+const stylifyConfig = {
+	compiler: {
+		components: {
+			// 显示类的例子
+			// 这与display-small/medium/large相匹配。
+			// 并根据匹配的尺寸动态地返回实用工具
+			'display-(small|medium|large)': ({ matches }) => `
+				font-family:$md-sys-typescale-display-${matches[1]}-font-family-name
+				font-style:$md-sys-typescale-display-${matches[1]}-font-family-style
+				font-weight:$md-sys-typescale-display-${matches[1]}-font-weight
+				font-size:$md-sys-typescale-display-${matches[1]}-font-size
+				letter-spacing:$md-sys-typescale-display-${matches[1]}-tracking
+				line-height:$md-sys-typescale-display-small-height
+				text-transform:$md-sys-typescale-display-${matches[1]}-text-transform
+				text-decoration:$md-sys-typescale-display-${matches[1]}-text-decoration
+			`
+		}
+	}
+}
+```

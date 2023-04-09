@@ -1,0 +1,28 @@
+---
+section: assets
+
+order: 1
+
+navigationTitle: "字体"
+
+title: "字体"
+description: "为你的下一个网络项目提供的免费字体链接"
+---
+
+在这个页面上，你会发现一个页面列表，在这里你可以为你的下一个网络项目找到免费字体。
+
+## 黄金比例排版
+为你的字体获得正确的行高 => https://grtcalculator.com
+
+## 字体
+- [Google Fonts](https://fonts.google.com)
+- [Font Squirell](https://www.fontsquirrel.com)
+- [Font Space](https://www.fontspace.com)
+
+## 字体优化
+在加载自定义字体时，你应该看看以下的优化技巧：
+- 尽量避免导入各种字体大小： 300,400,700对于大多数情况来说应该是足够了
+- 你可能想下载字体并从你自己的服务器上托管它。这比使用外部CDN要快。
+- 使用woff或woff2。避免使用SVG字体
+- 加载字体的最快方法是将其转换为Base64格式的CSS文件。这样一来，浏览器就不必等待字体的加载，也不会因为字体的变化而导致布局的变化。
+- 当懒惰加载字体时，使用`font-diplay:swap`属性。这不会阻碍页面的渲染。

@@ -1,0 +1,163 @@
+---
+section: snippets
+
+order: 1
+
+navigationTitle: "Astro.build"
+
+title: "Fragmentos de CSS de Stylify para Astro.build"
+description: "Fragmentos de configuración CSS de Stylify para la integración de Astro.build para un rápido desarrollo web."
+---
+
+## Paquetes CSS automatizados
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" loading="lazy" fetchpriority="low" class="width:100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+El siguiente fragmento le permite dividir automáticamente los paquetes para cada "página" y "diseño".
+
+Funciona en los siguientes pasos:
+1. Busca todas las páginas en `src/pages` y todos los layouts en `src/layouts` y llama a `createBundles` para que nos cree la configuración de bundles con el nombre de capa y el fichero de salida correctos.
+2. La integración de Stylify se inicializa y el orden de las capas CSS se configura para que genere el orden sólo en un archivo, que tiene el nombre de capa CSS `layout`.
+3. Se añade el hook [bundler:fileToProcessOpened](/es/docs/bundler#hooks). Este gancho tiene dos partes. Una parte se hace, cuando este archivo es un diseño o una página y la otra para cada archivo abierto.
+	- Cuando se abre un archivo de diseño o una página, comprueba si contiene una ruta al archivo CSS y, si no es así, la añade a la cabecera del archivo.
+	- Para todos los demás archivos, intenta comprobar si hay "importaciones". Si encuentra algún componente importado, lo asigna como dependencia. De esta forma puede mapear todo un árbol de dependencias de componentes de forma automática, por lo que sólo tienes que seguir añadiendo/eliminando y el CSS se genera correctamente
+4. Cuando Bundler se inicializa podemos empezar a buscar archivos recién añadidos dentro de los directorios `layout` y `pages`. Cada vez que se añade un nuevo archivo, creamos un nuevo Bundle.
+5. La integración de Stylify se añade a la configuración de Astro.
+
+También puedes probar esto [ejemplo en Stack Blitz](https://stackblitz.com/edit/stylify-astro-automated-bundles-example?file=src%2Fpages%2Findex.astro).
+
+```javascript
+import stylify from '@stylify/astro';
+import { hooks } from '@stylify/bundler';
+import fastGlob from 'fast-glob';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const pagesDir = 'src/pages';
+const layoutsDir = 'src/layouts';
+const stylesDir = 'src/styles';
+
+/** @type { import('@stylify/bundler').BundlerConfigInterface[]} */
+const stylifyBundles = [];
+const layoutCssLayerName = 'layout';
+const pageCssLayerName = 'page';
+
+const getFileCssLayerName = (filePath) =>
+	filePath.includes('/pages/') ? pageCssLayerName : layoutCssLayerName;
+
+const getOutputFileName = (file) => {
+	const parsedFile = path.parse(file);
+	const fileName = parsedFile.name.toLowerCase();
+	const dirNameCleanupRegExp = new RegExp(`${pagesDir}|${layoutsDir}|\\W`, 'g');
+	const dir = parsedFile.dir.replace(dirNameCleanupRegExp, '');
+	return `${dir.length ? `${dir}-` : ''}${fileName}.css`;
+};
+
+const createBundle = (file) => {
+	const fileCssLayerName = getFileCssLayerName(file);
+
+	return {
+		outputFile: `${stylesDir}/${fileCssLayerName}/${getOutputFileName(file)}`,
+		files: [file],
+		cssLayer: fileCssLayerName,
+	};
+};
+
+const createBundles = (files) => {
+	for (const file of files) {
+		stylifyBundles.push(createBundle(file));
+	}
+};
+
+// 1. Mapear archivos en layouts/páginas y crear bundles
+createBundles(fastGlob.sync(`${pagesDir}/**/*.astro`));
+createBundles(fastGlob.sync(`${layoutsDir}/**/*.astro`));
+
+// 2. Init Stylify Astro Integraton
+const stylifyIntegration = stylify({
+	bundler: {
+		id: 'astro',
+		// Establecer el orden de las @capas CSS
+		cssLayersOrder: {
+			// El orden será @layer layout,page;
+			order: [layoutCssLayerName, pageCssLayerName].join(','),
+			// El orden de las capas se exportará al archivo con layout @layer
+			exportLayer: [layoutCssLayerName],
+		},
+	},
+	bundles: stylifyBundles,
+});
+
+// 3. Añadir hook que procese los ficheros abiertos
+/** @param { import('@stylify/bundler').BundleFileDataInterface } data */
+hooks.addListener('bundler:fileToProcessOpened', (data) => {
+	let { content, filePath } = data;
+
+	// 3.1 Sólo para archivos de diseño y de página
+	if (filePath.includes('/pages/') || filePath.includes('/layouts/')) {
+		const cssFileName = path.parse(filePath).name;
+		const cssFilePathImport = `import '/${stylesDir}/${getFileCssLayerName(
+		filePath
+		)}/${getOutputFileName(filePath)}';`;
+
+		if (!content.includes(cssFilePathImport)) {
+		if (/import \S+ from (?:'|")\S+(\/layouts\/\S+)(?:'|");/.test(content)) {
+			content = content.replace(
+			/import \S+ from (?:'|")\S+\/layouts\/\S+(?:'|");/,
+			`$&\n${cssFilePathImport}`
+			);
+		} else if (/^\s*---\n/.test(content)) {
+			content = content.replace(/^(\s*)---\n/, `$&${cssFilePathImport}\n`);
+		} else {
+			content = `---\n${cssFilePathImport}\n---\n${content}`;
+		}
+
+		fs.writeFileSync(filePath, content);
+		}
+	}
+
+	// 3.2 Para todos los archivos
+	const regExp = new RegExp(
+		`import \\S+ from (?:'|")\\S+(\\/components\\/\\S+)(?:'|");`,
+		'g'
+	);
+	let importedComponent;
+	const importedComponentFiles = [];
+	const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
+	while ((importedComponent = regExp.exec(content))) {
+		importedComponentFiles.push(
+		path.join(rootDir, 'src', importedComponent[1])
+		);
+	}
+
+	data.contentOptions.files = importedComponentFiles;
+});
+
+// 4. Esperar a que bundler se inicialice y vigilar los directorios
+// para crear nuevos bundles cuando se añada un archivo
+hooks.addListener('bundler:initialized', ({ bundler }) => {
+	// Vigilar directorios de layouts y páginas
+	// Si planea usar directorios anidados como blog/_slug.astro
+	// para los que quieras automatizar la configuración de bundles
+	// Tendrá que añadir la ruta a ellos aquí
+	const dirsToWatchForNewBundles = [layoutsDir, pagesDir];
+	for (const dir of dirsToWatchForNewBundles) {
+		fs.watch(dir, (eventType, fileName) => {
+		const fileFullPath = path.join(dir, fileName);
+
+		if (eventType !== 'rename' || !fs.existsSync(fileFullPath)) {
+			return;
+		}
+
+		bundler.bundle([createBundle(fileFullPath)]);
+		});
+	}
+});
+
+export default {
+	// 5. Añadir integración Stylify Astro
+	integrations: [stylifyIntegration]
+};
+```

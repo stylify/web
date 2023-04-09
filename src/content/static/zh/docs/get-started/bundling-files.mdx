@@ -1,0 +1,41 @@
+---
+section: get-started
+
+order: 3
+
+navigationTitle: "捆绑文件"
+
+title: "捆绑文件"
+description: "如何为任何网络项目捆绑CSS文件。"
+---
+
+如果你不打算使用任何像[@stylify/unplugin](/zh/docs/unplugin)或[@stylify/astro](/zh/docs/astro)的整合，你可以直接使用[@stylify/bundler](/zh/docs/bundler)。
+
+Stylify Bundler是一个允许你为你的项目生成CSS文件的软件包。你可以捆绑任何文件格式。最简单的方法是把所有的CSS生成一个文件。然而捆绑的数量是没有限制的。
+
+
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+// http://stylifycss.com/docs/bundler#configuration
+const bundler = new Bundler({
+	// 可选
+	compiler: {
+		variables: {},
+		macros: {},
+		components: {},
+		// 如果你想混用选择器
+		mangleSelectors: true
+		// ...
+	}
+})
+
+bundler.bundle([
+	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.html'] },
+	//Bundler使用https://npmjs.com/package/fast-glob
+	// 你可以使用它的glob语法
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
+]);
+
+await bundler.waitOnBundlesProcessed();
+```

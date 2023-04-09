@@ -1,0 +1,87 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Symfony"
+navigationIconPath: '/images/brands/symfony-icon.svg'
+image: '/integrations/symfony/header.jpg'
+ogImage: '/integrations/symfony/og-image.jpg'
+
+title: Uso de Stylify CSS en Symfony Framework
+description: "Aprende a usar el CSS de Stylify con el Framework Symfony. Codifica tu sitio web Symfony más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Symfony'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en webpack.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Symfony es un conjunto de componentes PHP reutilizables y un framework PHP para construir aplicaciones web, APIs, microservicios y servicios web.
+
+<Note>Ejemplo de integración para el framework Symfony se puede encontrar en <a href="https://github.com/stylify/integrations-examples/tree/master/symfony" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en el framework Symfony.
+
+El siguiente ejemplo utiliza `symfony/skeleton` y anuncia algunos paquetes de Composer de acuerdo con el tutorial de introducción: `twig, annotations, @symfony/webpack-encore`.
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando CLI:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+Ahora añade la siguiente configuración en el `webpack.config.js`:
+
+```javascript
+const Encore = require('@symfony/webpack-encore');
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const cssPath = './assets/styles/index.css';
+
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{ outputFile: cssPath, files: [ './templates/**/*.html.twig' ] }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+Encore
+	// Usar el plugin CSS de Stylify
+	.addPlugin(stylifyPlugin)
+	.addStyleEntry('index', cssPath);
+```
+
+Ahora puedes usar el bundle generado en la app symfony:
+```
+{{ encore_entry_link_tags('index.css') }}
+```
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

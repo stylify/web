@@ -1,0 +1,104 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Nette"
+navigationIconPath: '/images/brands/nette.png'
+image: '/integrations/nette/header.jpg'
+ogImage: '/integrations/nette/og-image.jpg'
+
+title: 在Nette框架中使用Stylify CSS
+description: "了解如何将Stylify CSS集成到Nette框架中。用Stylify CSS更快地给你的Nette网站编码。"
+howToSchemaTitle: "如何在Nette中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/bundler软件包",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text":  "接下来，创建一个文件，例如，bundles.js。",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Nette是一个在捷克共和国制造的PHP web框架，专注于快速和快速的web开发。
+
+Nette框架默认不使用任何捆绑程序。因此你可以直接使用Stylify的[Bundler](/zh/docs/bundler)或者通过[Webpack](/zh/docs/integrations/webpack)、[Rollup.js](/zh/docs/integrations/rollupjs)、[Vite](/zh/docs/integrations/vitejs)等使用Stylify。
+
+<Note>Nette框架的集成实例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/nette" target="_blank" rel="noopener">集成实例库</a>中找到。</Note>
+
+## 如何将Stylify CSS集成到Nette框架中
+
+在下面的例子中，我们将单独使用Bundler软件包。
+
+首先，使用NPM或Yarn安装[@stylify/bundler](/zh/docs/bundler)软件包：
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+接下来，创建一个文件，例如，`bundles.js`：
+
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const bundler = new Bundler({
+	watchFiles: process.argv[process.argv.length - 1] === '--w',
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+bundler.bundle([{
+	files: ['./app/Presenters/templates/**/*.latte'], outputFile: './www/static/css/index.css'
+}]);
+```
+
+最后一步是在`package.json`中添加脚本：
+
+
+```javascript
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
+}
+```
+
+现在你可以在`@layout.latte`中添加一个生成CSS的链接：
+
+```html
+<link rel="stylesheet" href="/static/css/index.css">
+```
+
+你可以随心所欲地定制上面的构建。
+
+## ＃＃＃交换条件
+如果你在Nette的类属性中使用了像下面这样的自定义选择器，你可能需要把它包在`n:class="''"`中。这是因为Nette将自定义选择器作为宏来匹配。单引号可以防止这种情况。
+
+```html
+<div n:class="'[div]{width:240px}'"></div>
+<div n:class="'md:{width:320px}'"></div>
+```
+
+<WhereToNext packageName="bundler" />

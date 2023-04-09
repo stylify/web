@@ -1,0 +1,42 @@
+---
+section: migration
+
+order: 0
+
+navigationTitle: "迁移指南"
+
+title: "如何从其他 CSS 框架和库迁移到 Stylify CSS"
+description: "了解如何从其他CSS框架和CSS-in-JS库轻松迁移到Stylify CSS。"
+---
+import Note from '@components/Note.astro';
+import MigrationBlocks from '@components/MigrationBlocks.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+## 选择你的迁移指南
+如果你还没有找到一个你想迁移到Stylify的工具，请告诉我们吧
+
+<MigrationBlocks />
+
+## 将Stylify集成到现有的项目中
+如果你准备将Stylify的CSS集成到一个现有的项目中，你应该先重写你的应用程序的小部分内容，以减少集成的错误，并小心地删除所有未使用的重写的CSS部分。
+
+<Note>不要担心因为切换到Stylify而增加你应用程序中的CSS大小。Stylify CSS并不包含任何预定义的CSS，它只会生成与你使用的选择器相匹配的CSS。因此，如果你什么都不写，就不会生成任何东西。</Note>
+Stylify也可以为每个包生成CSS，所以你可以创建小块的CSS，只在需要的时候加载它们。
+
+建议你应该遵循以下步骤：
+1. 在你的应用程序中选择一个小的（或非关键的）部分。
+2. 使用[@stylify/bundler](/zh/docs/bundler)为该部分应用程序创建一个捆绑包。
+3. 重写该部分的CSS。
+4. 导入捆绑的CSS并删除未使用的重写的CSS。
+5. 如果前面的步骤都完成了，在生产构建过程中混杂选择器，重复这个过程，直到所有的东西都被重写。
+
+### 解决选择器的冲突
+如果与Stylify的选择器有冲突，你可以配置[selectors prefix](/zh/docs/stylify/compiler#selectorsprefix)，如果你启用了混编，并且有冲突，那么你必须添加[mangled selectors prefix](/zh/docs/stylify/compiler#mangleselectors)。
+
+### 解决CSS的特殊性问题
+如果Stylify的工具被你的css所覆盖，你需要提高Stylify CSS工具的特殊性。
+
+无论你是使用[@stylify/unplugin](/zh/docs/unplugin)或[@stylify/bundler](/zh/docs/bundler)直接使用，你可以配置[css layers](/zh/docs/bundler#configuration)。这样，你就可以把你现有的CSS包进这个层，这个层的特异性比Stylify CSS生成的CSS要低，而被覆盖的实用程序的问题也就解决了。
+
+
+<MigrationPageFooter />

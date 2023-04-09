@@ -1,0 +1,106 @@
+---
+title: "用Stylify CSS更快地编码您的SolidJS网站"
+image: '/images/blog/stylify-solidjs/header.jpg'
+ogImage: '/images/blog/stylify-solidjs/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation: '用Stylify CSS更快地编写您的SolidJS网站代码'
+createdAt: 'November 22, 2022'
+---
+
+使用 [Stylify CSS](/) 类似于 CSS 的工具，在没有 CSS-in-JS 的情况下，快速而轻松地为您的 SolidJS 应用程序设计样式。
+
+## 介绍
+[Stylify](/) 是一个库，它使用类似 CSS 的选择器，根据您所写的内容生成优化的实用优先 CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了什么问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 安装
+使用CLI安装Stylify：
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+在`vite.config.js`中添加以下配置：
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+import solidPlugin from 'vite-plugin-solid';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.jsx'] }],
+	// 可选
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, solidPlugin()],
+	server: {
+		port: 3000,
+	},
+	build: {
+		target: 'esnext',
+	},
+});
+```
+
+在`src/index.js`中添加Stylify CSS：
+```javascript
+import './stylify.css';
+```
+
+## 使用方法
+Stylify的语法与CSS类似。你只需要写`_`而不是空格，`^`而不是引号。
+
+因此，如果我们编辑`src/App.jsx`：
+```jsx
+function App() {
+	return (
+		<h1 class="font-size:24px margin:12px_24px">
+			你好，世界!
+		</h1>
+	);
+}
+
+export default App;
+```
+
+在生产中，你将得到优化的CSS和纠结的HTML：
+```html
+<h1 class="p u">你好，世界!</h1>
+```
+
+```css
+.p{font-size: 24px}
+.u{margin: 12px 24px}
+```
+
+## Stackblitz Playground
+继续尝试[Stylify CSS + SolidJS on Stackblitz](https://stackblitz.com/edit/stylifycss-solidjs-vite?file=src%2FApp.jsx)。
+
+## 配置
+上面的例子并不包括Stylify能做的一切：
+- 定义[组件](/zh/docs/stylify/compiler#components)
+- 添加[自定义选择器](/zh/docs/stylify/compiler#customselectors)
+- 配置[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`为 margin-left。
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

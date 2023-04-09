@@ -1,0 +1,11 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="text-align:center margin-bottom:48px">
+	<h2 class="lg:font-size:32px margin-bottom:24px">{t('Interested? Go ahead and give Stylify CSS a try!')}</h2>
+	<a href={getLocalizedRoute('/docs/get-started', lang)} class="btn line-height:1 lg:font-size:24px">{t('Get Started')}&nbsp;<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i></a>
+</div>

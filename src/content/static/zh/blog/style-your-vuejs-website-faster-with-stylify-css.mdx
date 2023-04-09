@@ -1,0 +1,157 @@
+---
+title: "🚀 使用Stylify CSS更快地为你的Vue网站设计风格"
+image: '/images/blog/stylify-vue/header.jpg'
+ogImage: '/images/blog/stylify-vue/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "用Stylify更快、更直观地设计你的Vue网站。"
+createdAt: 'July 15, 2022'
+---
+[Stylify](/) + Vue + Vite。用Stylify为你的Vue网站更快设计风格。不要研究选择器、语法和文档。使用纯粹的CSS语法，并获得生成的CSS，并对生产进行高级优化。
+
+为了更容易入门，你可以查看[Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-vue-vite?file=src%2FApp.vue) 🎮。
+
+## 💎 Stylify CSS简介
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 🚀 Vue.js设置
+设置Vue的最简单方法是使用CLI：
+- 运行`yarn create vite app`。
+- 选择 "vue"。
+- 然后`cd app`。
+
+这样你就会得到默认的Vue应用程序的骨架。
+
+## 🔌 Stylify CSS集成
+使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```bash
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+打开`vite.config.js`并复制以下内容到其中：
+
+```javascript
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [
+		{
+			files: ['./src/**/*.vue'],
+			outputFile: './src/assets/stylify.css',
+		},
+	]
+});
+
+export default defineConfig(() => ({
+	plugins: [stylifyPlugin, vue()]
+}));
+
+```
+
+在最后一步，打开`src/main.js`并添加`stylify.css`的路径：
+
+```javascript
+// ...
+import './stylify.css'
+```
+
+## 塑造网站的风格
+如果你把下面的代码复制到`src/App.vue`中，然后运行`yarn dev`，你会得到一个有风格的`你好，世界! 🎉"文本：
+
+```html
+<template>
+	<div class="max-width:800px margin:0_auto">
+		<h1 class="text-align:center margin-top:100px font-size:42px">你好，世界！🤩</h1>
+	</div>
+</template>
+```
+
+Stylify会观察文件中任何与bundle文件中的掩码相匹配的变化，并将CSS生成到`src/stylify.css`中。
+
+例如，如果你添加了`color:blue`，CSS就会自动更新 🎉。
+
+请直接在[Stackblitz.com](https://stackblitz.com/edit/stylify-vue-vite?file=src%2FApp.vue) 💡尝试Stylify CSS。
+
+### 组件
+为了避免实用程序带来的臃肿模板，你可以在文件中直接使用
+组件，它们通过[content options](/zh/docs/get-started#定义一个组件)(期望有javascript对象，没有括号)或在[compiler config](/zh/docs/get-started#定义一个组件)中直接使用。
+
+```html
+<!--
+stylify-components
+	container: 'max-width:800px margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:42px'
+/stylify-components
+-->
+<template>
+	<div class="container">
+		<h1 class="title">你好，世界! 🤩</h1>
+	</div>
+</template>
+```
+
+###变量
+如果你喜欢干净的代码，你也想避免在选择器中使用硬编码值。[变量](/zh/docs/get-started#adding-a-variable)可以用与组件相同的方式定义：
+
+```html
+<!--
+stylify-variables
+	titleFontSize: '42px',
+	containerWidth: '800px'
+/stylify-variables
+
+stylify-components
+	container: 'max-width:$containerWidth margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:$titleFontSize'
+/stylify-components
+-->
+<template>
+	<div class="container">
+		<h1 class="title">你好，世界! 🤩</h1>
+	</div>
+</template>
+```
+
+## 为生产构建
+如果你运行`yarn build`+`yarn preview`，vue的标记会被弄成这样：
+
+```html
+<template>
+	<div class="a">
+		<h1 class="d">你好，世界! 🤩</h1>
+	</div>
+</template>
+```
+
+CSS也被缩短了：
+```css
+:root {--titleFontSize: 42px;--containerWidth: 800px;}
+.b,.a{max-width:800px}
+.c,.a{margin:0 auto}
+.f,.d{text-align:center}
+.e,.d{margin-top:100px}
+.g,.d{font-size:42px}
+```
+
+## 配置任何你需要的东西
+上面的例子并不包括Stylify CSS能做的一切：
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)
+- 样式[全局选择器](/zh/docs/stylify/compiler#customselectors)
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 添加[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`表示 margin-left。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

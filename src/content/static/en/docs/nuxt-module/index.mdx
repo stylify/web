@@ -1,0 +1,111 @@
+---
+section: nuxt-module
+
+order: 0
+
+navigationTitle: "@stylify/nuxt-module"
+
+title: "@stylify/nuxt-module"
+description: "@stylify/nuxt-module provides seamless Stylify integration into the Nuxt.js v2."
+---
+import Note from '@components/Note.astro';
+import DocsSection from '@components/DocsSection.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Nuxt module provides seamless Stylify CSS integration into the Nuxt.js v2+ < v3.
+
+<StackBlitzLink link="stylify-nuxtjs-template" />
+
+<Note><strong>@stylify/nuxt-module</strong> can be used only in Nuxt v2. For Nuxt v3 and above check out [@stylify/nuxt](/en/docs/nuxt).</Note>
+
+<DocsSection>
+<div slot="description">
+
+## Installation
+Nuxt module can be installed only via CLI like NPM or Yarn:
+
+</div>
+<div slot="code">
+
+```bash
+yarn add -D @stylify/nuxt-module
+npm i -D @stylify/nuxt-module
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## Usage
+Add a buildModule into the `nuxt.config.js`:
+
+</div>
+<div slot="code">
+
+```javascript
+buildModules: [
+	'@stylify/nuxt-module'
+]
+```
+
+</div>
+</DocsSection>
+
+## Configuration
+
+If you want to configure the Stylify, you can use configuration section directly in `nuxt.config.js` or create a file `stylify.config.js` next to the nuxt.config.js. In both cases you use the same configuration scheme shown below.
+
+The code part below should be used inside the `nuxt.config.js` or inside the `stylify.config.js`:
+```javascript
+import { defineConfig } from '@stylify/nuxt-module';
+
+const stylifyConfig = defineConfig({
+	dev: false,
+	configPath: 'stylify.config.js',
+	// Compiler config info https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// When vars dir paths are set, Stylify CSS will export variables into
+	// a file according to given path
+	cssVarsDirPath: null,
+	sassVarsDirPath: null,
+	lessVarsDirPath: null,
+	stylusVarsDirPath: null,
+	// Files masks are used by @stylify/bundler
+	// Bundler uses these masks to find files from which he should generate CSS
+	// When you add a mask and you want to mangleSelectors, you also need to add appropriate loader. See below
+	filesMasks: [],
+	// Loaders are used during webpack build when compiler.mangleSelectors are set to true and when nuxt runs production build
+	// When a file is loaded by webpack according to defined loader, its content
+	// will be mangled by Stylify CSS Compiler.
+	// Loaders have the following structure
+	// {
+	//		test: /\.vue$/i,
+	//		include: ['path/to/some/dir']
+	//	},
+	loaders: []
+});
+```
+
+<Note>In case you use `stylify.config.ts`, you cannot use [hooks ](/en/docs/stylify/compiler#hooks). It is because Nuxt compiles that file and hooks will work with a different instance of hooks manager than the dev server. Therefore, they cannot listen to triggered hooks on a dev server and will be useless.</Note>
+
+Example for nuxt.config.js
+```javascript
+export default {
+	stylify: stylifyConfig
+}
+```
+
+Example for stylify.config.js
+```javascript
+export default stylifyConfig;
+```

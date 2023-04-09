@@ -1,0 +1,38 @@
+---
+import BlogLayout from "@layouts/BlogLayout.astro";
+import DocsLayout from "@layouts/DocsLayout.astro";
+import SnippetsLayout from "@layouts/SnippetsLayout.astro";
+import { getLangFromSlug, removeLangFromSlug } from "@serverHelpers";
+import { getStaticContent, isBlogPage, isDocsPage, isSnippetsPage } from '@content';
+
+export const getStaticPaths = async () => {
+	const staticContent = await getStaticContent();
+	const paths = staticContent.map((page) => {
+		const lang = getLangFromSlug(page.slug);
+		const slug = removeLangFromSlug(page.slug);
+		return {
+			params: { lang, slug },
+			props: page
+		}
+	});
+
+	return paths;
+}
+
+const { slug } = Astro.params;
+const { data, render, id } = Astro.props;
+const { Content, headings } = await render();
+const posts = [];
+---
+
+{isBlogPage(slug) &&
+	<BlogLayout id={id} slug={slug} data={data} headings={headings}><Content /></BlogLayout>
+}
+
+{isDocsPage(slug) &&
+	<DocsLayout id={id} slug={slug} data={data} headings={headings}><Content /></DocsLayout>
+}
+
+{isSnippetsPage(slug) &&
+	<SnippetsLayout id={id} slug={slug} data={data} headings={headings}><Content /></SnippetsLayout>
+}

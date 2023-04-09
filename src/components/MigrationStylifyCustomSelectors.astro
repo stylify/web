@@ -1,0 +1,63 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const customSelectorsExample = `
+<div class="[.button_.icon]{font-size:14px}">
+	<button class="
+		[.icon]{color:#fff;border-radius:12px}
+		[&+button]{margin-left:24px}
+	">
+		<i class="icon"></i>
+	</button>
+	<button></button>
+<div>
+`.trim();
+
+const syntaxPattern = `[css selectors]{stylify selectors split by ;}`;
+
+const globalConfig = `
+const compilerConfig = {
+	customSelectors: {
+		'.buttons-wrapper .button .icon': 'font-size:14px',
+		'.button': \`
+			.icon { color:#fff border-radius:12px }
+			& + button { margin-left:24px }
+		\`,
+	}
+}
+`.trim();
+
+const globalConfigUsage = `
+<div class="buttons-wrapper">
+	<button class="button">
+		<i class="icon"></i>
+	</button>
+	<button></button>
+<div>
+`.trim();
+---
+
+<div>
+	<p class="margin-top:0" set:html={t('Stylify provides <a href="{{link1}}">custom selectors</a> with which you can style elements globally. These selectors can be defined directly within the class attribute or in the global config or in a file where they are used using <a href="{{link2}}">content options</a>.', {link1: `${getLocalizedRoute('/docs/get-started', lang)}#${t('custom-selectors')}`, link2: getLocalizedRoute('/docs/stylify/compiler#contentoptionsprocessors', lang)})}></p>
+
+	<p>{t('Example with the class attribute')}:</p>
+	<ShikiHighlighter code={customSelectorsExample} />
+
+	<p>{t('The syntax pattern in the class attribute looks like this')}:</p>
+
+	<ShikiHighlighter code={syntaxPattern} />
+
+	<p set:html={t('The <code>_</code> (underscore) is used instead of space in both CSS and Stylify selectors and the <code>&</code> character always refers to the current element.')}></p>
+
+	<p>{t('The same code but in the global config would look like this')}:</p>
+	<ShikiHighlighter lang="js" code={globalConfig} />
+
+	<p set:html={t('When defining `customSelectors` in the global config on through <a href="{{link1}}">content options</a>, the syntax lets you use a <a href="{{link2}}">nesting feature</a>. The <code>&</code> characters refers to the upper level like in the SCSS.', {link1: getLocalizedRoute('/docs/stylify/compiler#contentoptionsprocessors', lang), link2: `${getLocalizedRoute('/docs/stylify/compiler', lang)}#${t('nested-syntax-for-custom-selectors')}`})}></p>
+
+	<p>{t('Usage of the global config')}:</p>
+	<ShikiHighlighter code={globalConfigUsage} />
+</div>

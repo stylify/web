@@ -1,0 +1,155 @@
+---
+import MainLayout from '@mainLayout';
+import ShareButtons from '@components/ShareButtons.astro';
+import GithubButton from '@components/GithubButton.astro';
+import Affiliate from '@components/Affiliate.astro';
+import { siteUrl } from '@projectConfig';
+import { formatDateTime, getLangFromUrl, useTranslations } from '@serverHelpers';
+import { queryStaticContent } from '@content';
+
+const { pathname } = Astro.url;
+const { data, headings } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const sidebarPosts = await queryStaticContent({
+	lang,
+	postsType: 'blog',
+	limit: 3,
+	sortBy: 'blogPostNewest',
+	filter: (page) => {
+		return `/${page.slug}` !== pathname;
+	}
+});
+
+---
+
+<script type="applicaiton/ld+json" set:html={JSON.stringify({
+	"@context": "https://schema.org",
+	"@type": "Article",
+	"headline": data.title,
+	"description": data.annotation,
+	"image": [ `${siteUrl}${data.image}` ],
+	"mainEntityOfPage": {
+		"@type": "WebPage",
+		"@id": `${siteUrl}/${pathname}`
+	},
+	"datePublished": new Date(data.createdAt).toISOString(),
+	"dateModified": new Date(data.updatedAt ?? data.createdAt).toISOString(),
+	"author": [{
+		"@type": "Person",
+		"name": 'Vladimír Macháček',
+	}]
+})}></script>
+
+<!--
+stylify-components
+	'blog-post__footer-link': `
+		color:$blue1
+		text-decoration:none
+		display:inline-flex
+		align-items:center
+		max-width:320px
+		span {
+			display:-webkit-box
+			webkit-line-clamp:2
+			webkit-box-orient:vertical
+			max-height:52px
+			overflow:hidden
+		}
+	`
+/stylify-components
+-->
+<MainLayout
+	pageTitle={data.title}
+	pageDescription={data.annotation}
+	pageImage={data.ogImage}
+>
+	<div class="container tolg:flex-direction:column display:flex margin-bottom:48px md:margin-top:48px">
+		<div class="width:100% max-width:800px lg:max-width:calc(100%_-_432px) margin-left:auto margin-right:auto">
+			<!-- <a
+				v-if="!previousPost && !nextPost"
+				href="/blog"
+				class="color:$blue1 text-decoration:none display:inline-flex align-items:center line-height:1 margin-bottom:12px"
+			>
+				<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
+				<span>Go back to blog</span>
+			</a> -->
+
+			<article class="margin-bottom:24px">
+				<div class="margin-bottom:12px color:$grey4">{formatDateTime(data.createdAt, lang)}</div>
+				<img src={data.image} alt="" loading="eager" width="800" height="400" class="filter:brightness(0.9) width:100% height:auto max-height:400px object-fit:cover margin-bottom:12px md:margin-bottom:24px" />
+				<h1>{data.title}</h1>
+				<p>{data.annotation}</p>
+				<hr />
+				<div class="text-align:center">
+					<ShareButtons url={pathname} title={data.title} description={data.annotation} image={data.ogImage} />
+				</div>
+				<hr />
+				<slot />
+			</article>
+
+			<div>
+				<strong class="font-size:26px color:#fefefe">{t('Give as Feedback!')}</strong>
+				<div>{t('Do you like Stylify CSS? Let us know by starring our repo!')}&nbsp;<span class="margin-left:8px vertical-align:middle" ><GithubButton/></span></div>
+			</div>
+
+			<hr class="margin-top:24px">
+			<div class="text-align:center">
+				<ShareButtons url={pathname} title={data.title} description={data.annotation} image={data.ogImage} />
+			</div>
+			<hr class="margin-bottom:24px">
+			<div class="display:flex justify-content:space-between margin-bottom:24px">
+				<div class="display:flex margin-right:8px">
+				<!-- 	<a
+						v-if="previousPost"
+						:href="previousPost._path"
+						class="blog-post__footer-link"
+					>
+						<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
+						<span>{{ previousPost.title }} </span>
+					</a> -->
+					<!-- <a
+						v-if="!previousPost && !nextPost"
+						href="/blog"
+						class="blog-post__footer-link"
+					>
+						<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
+						<span>Go back to blog</span>
+					</a> -->
+				</div>
+				<div class="display:flex margin-left:8px">
+					<!-- <a
+						v-if="nextPost"
+						:href="nextPost._path"
+						class="blog-post__footer-link"
+					>
+						<span>{{ nextPost.title }}</span>
+						<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+					</a> -->
+				</div>
+			</div>
+			<!-- <div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div> -->
+		</div>
+		<div class="padding-top:12px lg:margin-left:24px lg:max-width:408px max-height:calc(100%_-_$stickyHeaderMargin)">
+			<section class="top:calc($stickyHeaderMargin_+_12px) lg:position:sticky">
+				<h2 class="text-align:center">{t('Other Articles')}</h2>
+				<div class="gap:12px display:grid grid-template-columns:repeat(auto-fit,minmax(250px,1fr))">
+					{sidebarPosts.map((post) => (
+						<a
+							href={`/${post.slug}`}
+							class="display:flex flex-direction:column color:$grey5 text-decoration:none border-radius:4px overflow:hidden"
+						>
+							<img src={post.data.image} width="400" height="200" alt="" class="filter:brightness(0.9) width:100% height:200px object-fit:cover border-radius:4px border:1px_solid_$grey3" loading="lazy" fetchpriority="low" />
+							<div class="padding-top:12px">
+								<div class="color:$grey5">{formatDateTime(post.data.createdAt, lang)}</div>
+								<h3 class="margin-top:0 margin-bottom:4px font-size:18px display:-webkit-box -webkit-box-orient:vertical -webkit-line-clamp:3 overflow:hidden max-height:84px">{ post.data.title }</h3>
+							</div>
+						</a>
+					))}
+				</div>
+			</section>
+		</div>
+	</div>
+</MainLayout>

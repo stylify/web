@@ -1,0 +1,11 @@
+---
+import MainLayout from '@mainLayout';
+import Homepage from '@components/Homepage.astro';
+import { getStaticPathsForSupportedLanguages } from '@serverHelpers';
+
+export const getStaticPaths = () => getStaticPathsForSupportedLanguages();
+---
+
+<MainLayout>
+	<Homepage />
+</MainLayout>

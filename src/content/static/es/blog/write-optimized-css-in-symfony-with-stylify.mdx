@@ -1,0 +1,193 @@
+---
+title: Escribir CSS optimizado en Symfony con Stylify
+image: '/images/blog/stylify-symfony/header.jpg'
+ogImage: '/images/blog/stylify-symfony/og-image-v2.jpg'
+author: Vladimír Macháček
+annotation: "Permanecer en archivos Twig y PHP, utilizar utilidades similares a CSS para obtener CSS optimizado. Aprende a escribir CSS optimizado en una aplicación web Symfony con Stylify CSS."
+createdAt: 'June 14, 2022'
+---
+
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías darle una oportunidad!](/es/docs/get-started/why-stylify-css)
+
+## Configuración rápida de Symfony 🚀
+Para un comienzo más sencillo, puedes consultar el [ejemplo de integración](https://github.com/stylify/integrations-examples/tree/master/symfony) 🎮.
+
+La forma más fácil de empezar es utilizar los paquetes Symfony Skeleton y Web App.
+```
+composer create-project symfony/skeleton myproject/
+cd myproject
+composer require webapp
+npm install
+```
+
+Añade el HpController `src/Controller/HpController.php`:
+
+```php
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+class HomeController extends AbstractController
+{
+	#[Route('/')]
+	public function home(): Response
+	{
+		return $this->render('hp.html.twig');
+	}
+}
+```
+
+y la plantilla de la página de inicio `templates/hp.html.twig`.
+```twig
+{% extends "base.html.twig" %}
+{% block body %} ¡Hola Mundo! {% endblock %}
+```
+
+## Integración de Stylify CSS
+
+Instala el plugin universal CSS de Stylify.
+```
+npm i @stylify/unplugin
+```
+
+Actualiza el `webpack.config.js`. Importa Stylify, añade el plugin y la entrada de estilo `hp`.
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+const path = require('path');
+// ...
+const layoutCssPath = './assets/styles/layout.css';
+const homepageCssPath = './assets/styles/homepage.css';
+
+Encore
+	.addPlugin(stylifyWebpack({
+		bundles: [
+			{ outputFile: layoutCssPath, files: [
+				'./templates/base.html.twig'
+			]},
+			{ outputFile: homepageCssPath, files: [
+				'./templates/hp.html.twig'
+			]}
+		]
+	}))
+	.addStyleEntry('homepage', homepageCssPath)
+	// ...
+```
+
+Cambia `app.css` en `assets/app.js` a `layout.css` y añade el enlace CSS en el `hp.html.twig`.
+
+```twig
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('hp') }}
+{% endblock %}
+```
+
+## Estilizar el sitio web
+Una vez finalizada la configuración, edita el archivo `hp.html.twig`:
+```html
+<div class="color:blue">¡Hola mundo!</div>
+```
+y ejecuta `npm run dev`.
+
+Stylify encontrará el selector `color:blue`, y generará el CSS para él. Introduce `.color\:blue{color:blue}` en el `homepage.css`.
+
+A menudo es necesario reutilizar código en varias páginas. No es una buena idea tener plantillas hinchadas por utilidades y unidades hardcoded en los selectores. Definamos un componente `container` y algunas variables.
+
+Abre el `webpack.config.js` y edita la configuración del plugin CSS de Stylify:
+```javascript
+.addPlugin(stylifyWebpack({
+	// ...
+	compiler: {
+		variables: {
+			containerSize: '800px',
+			textColor: 'blue'
+		},
+		components: {
+			container: 'max-width:$containerSize margin:0_auto'
+		}
+	}
+}));
+```
+
+Ahora podemos actualizar el `base.html.twig`:
+```twig
+<div class="container">{% block body %}{% endblock %}</div>
+```
+
+y el `hp.html.twig`:
+
+```twig
+<div class="color:$textColor">¡Hola mundo!</div>
+```
+
+A veces, algunos componentes se utilizan sólo en un lugar. No tiene sentido definirlos en el `webpack.config.js`. También podemos definir componentes, variables y etc directamente en el archivo donde se utilizan. Stylify CSS tiene [content options](/es/docs/stylify/compiler#contentoptionsprocessors) para eso.
+
+Vamos a añadir un componente de párrafo en el `hp.html.twig`:
+
+```twig
+{#
+stylify-components
+	'text-block': `
+		font-size:16px
+		margin:12px_0
+		md:margin:24px_0
+	`
+/stylify-components
+#}
+...
+{% block body %}
+	...
+	<div class="text-block">Primer texto</div>
+	<div class="text-block">Segundo texto</div>
+{% endblock %}
+```
+
+## La compilación de producción
+Cuando ejecutamos la compilación para producción `npm run build`, Stylify CSS manipula automáticamente todos los selectores reconocidos y genera CSS optimizado.
+
+Optimizado `hp.html.twig`:
+```twig
+{% block body %}
+	<div class="a">¡Hola Mundo!</div>
+	<div class="b">Primer texto</div>
+	<div class="b">Segundo texto</div>
+{% endblock %}
+```
+
+CSS de la página de inicio optimizado:
+```css
+.a{color:blue}
+.e,
+.b{font-size:16px}
+.c,.b{margin:12px 0}
+@media (min-width: 768px) {.d,.b{margin:24px 0}}
+```
+
+El ejemplo también se puede encontrar en los [docs](/es/docs/integrations/symfony).
+
+## Más configuración
+Los ejemplos anteriores no incluyen todo lo que Stylify CSS puede hacer:
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Estilizar [selectores globales](/es/docs/stylify/compiler#customselectors)
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Añade [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Y mucho más
+
+Siéntete libre de [revisar la documentación](/es/docs/get-started) para aprender más 💎.

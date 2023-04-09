@@ -1,0 +1,80 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Rollup.js"
+navigationIconPath: '/images/brands/rollupjs.svg'
+image: '/integrations/rollupjs/header.jpg'
+ogImage: '/integrations/rollupjs/og-image.jpg'
+
+title: 在Rollup.js中使用Stylify CSS
+description: "学习如何将Stylify CSS与Rollup.js一起使用。用Stylify CSS和Rollup.js更快地编写你的网站代码。"
+howToSchemaTitle: "如何在Rollup.js中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "在rollup.config.mjs中添加Stylify CSS构建模块",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Rollup.js是一个JavaScript的模块捆绑器，它可以将小段的代码编译成更大更复杂的东西，比如一个库或应用程序。
+
+<Note>Rollup.js的集成示例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/rollupjs" target="_blank" rel="noopener">集成示例库</a>中找到。</Note>
+
+## 如何将Stylify的CSS集成到Rollup.js中
+
+首先，使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来，添加创建一个配置文件`rollup.config.js`：
+
+
+```javascript
+const { stylifyRollup } = require('@stylify/unplugin');
+const postcss = require('rollup-plugin-postcss');
+
+const stylifyPlugin = stylifyRollup({
+	bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
+	// 可选
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default {
+	input: 'input.js',
+	plugins: [stylifyPlugin, postcss()],
+	output: { file: 'index.js', format: 'umd' }
+};
+```
+
+现在你可以运行build命令。这将生成`stylify.css`，并在文件中混入选择器，如果配置了的话。
+
+<WhereToNext />

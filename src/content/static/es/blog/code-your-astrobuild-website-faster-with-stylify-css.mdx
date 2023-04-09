@@ -1,0 +1,75 @@
+---
+title: 'Codifica tu web Astro.build más rápido con Stylify CSS'
+image: '/images/blog/stylify-astro/header.jpg'
+ogImage: '/images/blog/stylify-astro/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation: "Codifica tu sitio web Astro.build más rápido con Stylify CSS. Utiliza utilidades similares a CSS. No estudies CSS framework"
+createdAt: 'December 3, 2022'
+---
+
+Estiliza tu sitio web Astro.build rápida y fácilmente con [Stylify CSS](/) utilidades similares a CSS.
+
+## Introducción
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Instalación
+Instala Stylify usando CLI:
+
+```
+yarn add @stylify/astro
+```
+
+Añade un buildModule en el `astro.config.mjs`:
+
+```javascript
+import { defineConfig } from 'astro/config';
+import stylify from '@stylify/astro';
+
+export default defineConfig({
+	integrations: [stylify()]
+});
+```
+
+## Uso
+La sintaxis de Stylify es similar a la de CSS. Sólo tienes que escribir `_` en lugar de un espacio y `^` en lugar de una comilla.
+
+Así que si editamos el `src/pages/index.astro`:
+```html
+<h1 class="font-size:24px margin:12px_24px">
+	¡¡¡Hola Mundo!!!
+</h1>
+```
+
+En producción, obtendrás CSS optimizado y HTML destrozado:
+```html
+<h1 class="a b">¡Hola Mundo!</h1>
+```
+
+```css
+.a{font-size: 24px}
+.b{margin: 12px 24px}
+```
+
+## Stackblitz Playground
+Adelante y prueba [Stylify CSS + Astro.build en Stackblitz](https://stackblitz.com/edit/stylify-astro-example?file=src%2Fpages%2Findex.astro).
+
+## Configuración
+Los ejemplos anteriores no incluyen todo lo que Stylify puede hacer:
+- Definir [componentes](/es/docs/stylify/compiler#components)
+- Añadir [selectores personalizados](/es/docs/stylify/compiler#customselectors)
+- Configura [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Define [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Y mucho más
+
+No dudes en [consultar la documentación](/es/docs/get-started) para aprender más 💎.

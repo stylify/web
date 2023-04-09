@@ -1,0 +1,235 @@
+---
+title: "更快的React应用编码： 如何从Emotion CSS-in-JS迁移到Stylify Utility-First CSS。"
+image: '/images/blog/emotion-migration/header.jpg'
+ogImage: '/images/blog/emotion-migration/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "想更快地设计你的React应用程序吗？了解如何轻松地从Emotion CSS-in-JS迁移到Stylify utility-first CSS，以便更好地开发React。"
+createdAt: 'February 24, 2023'
+---
+
+在React中寻找一个更好的方式来管理你的CSS？了解如何从Emotion CSS-in-JS迁移到Stylify CSS的utility-first方法并简化你的开发工作流程。
+
+你可以在[Playground On Stackblitz](https://stackblitz.com/edit/stylify-styled-components-migration?file=package.json,src%2FApp.jsx,README.MD,src%2Fmain.jsx)🚀中尝试本文的例子。
+
+## 💎 介绍
+[Stylify](https://stylifycss.com)是一个库，它使用类似CSS的选择器，根据你所写的内容生成优化的实用优先的CSS。
+
+特点：
+- ✅构建模块。没有运行时脚本。
+- ✅ 类似CSS的选择器
+- ✅ 没有框架需要研究
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+## 🔗 组件
+在Emotion中，组件通常是这样定义的：
+```jsx
+const Title = styled.h1`
+	color: blue
+	font-weight: bold
+	@media (max-width: 640px) {
+		color:red
+	}
+`;
+<Title>你好，世界！🎉</Title>
+```
+
+Stylify提供了一个类似的功能。[组件](/zh/docs/stylify/compiler/#components)可以在文件中定义（使用[content options](/zh/docs/stylify/compiler/#contentoptionsprocessors)），在那里它们被使用，或者在配置中全局定义。
+
+以文件内的配置为例。`stylify-components'之间的内容希望是没有周围括号的javascript对象：
+```html
+<!--
+stylify-components
+	title: 'color:blue font-weight:bold md:color:red'
+/stylify-components
+-->
+<h1 class="title"></h1>
+```
+
+全局编译器配置中的例子：
+```javascript
+const compilerConfig = {
+	title: 'color:blue font-weight:bold md:color:red'
+};
+```
+
+使用方法：
+```html
+<h1 class="title"></h1>
+```
+
+**组件是 "懒惰的"（按需生成）**。这意味着，即使你配置了它们（在文件中或全局中），它们也只在内容中匹配时才会被生成。没有未使用的CSS将被生成。实用程序也是如此。如果一个组件的实用程序没有在内容中直接匹配，选择器不会被生成，只有组件的选择器被添加到CSS输出中。
+
+**生产中的CSS输出**在生产中看起来会是这样的：
+```css
+.a,.d {color:blue}
+.b,.d {font-weight:bold}
+ @media (max-width: 768px) {
+ .c,.d {color:red}
+ }
+```
+
+html的输出：
+```html
+<h1 class="d"></h1>
+```
+
+## 🎯选择器
+在Emotion中，你可以使用CSS道具直接对元素进行样式设置，就像这样：
+```jsx
+<div css={css`
+	color: blue;
+	font-weight: bold;
+	@media (min-width: 640px) {
+		color: red;
+	}
+`}></div>
+```
+
+Stylify允许你在内容中直接使用实用程序。所以上面的例子可以重构成这样：
+```html
+<div className="color:blue font-weight:bold md:color:red"></div>
+```
+
+CSS的生产输出将类似于组件的例子。然而，HTML将看起来像这样：
+```html
+<div className="a b c"></div>
+```
+
+## 🌐全局样式
+有时我们需要对应用程序的某些部分进行全局样式设计。要在Emotion中做到这一点，我们需要使用Global组件：
+```jsx
+<Global
+	styles={css`
+		.some-class {
+		color: hotpink !important;
+		}
+	`}
+/>
+```
+
+在Stylify中，你可以使用[自定义选择器](/zh/docs/get-started#自定义选择器)来解决这个问题。这些选择器可以直接定义在类属性中或在全局配置中。
+
+以class属性为例：
+```jsx
+<div className="[.button_.icon]{font-size:14px}">
+	<button className="
+		[.icon]{color:#fff;border-radius:12px}
+		[&+button]{margin-left:24px}
+	">
+		<i className="icon"></i>
+	</button>
+	<button></button>
+<div>
+```
+
+类属性中的语法模式看起来像这样：
+```
+[css selectors]{stylify selectors split by ;}
+```
+
+在CSS和Stylify选择器中，`_`（下划线）被用来代替空格，`&`字符总是指的是当前元素。
+
+同样的代码，但在全局配置中，看起来是这样的：
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		'.buttons-wrapper .button .icon': 'font-size:14px',
+		'.button': `
+		.icon { color:#fff border-radius:12px }
+		& + button { margin-left:24px }
+		`,
+	}
+}
+```
+
+当在全局配置中定义`customSelectors`时，该语法让你使用嵌套功能。&字符指的是上层。
+
+全局配置的用法：
+```jsx
+<div className="buttons-wrapper">
+	<button className="button">
+		<i className="icon"></i>
+	</button>
+	<button></button>
+</div>
+```
+
+## 💲变量
+当你需要使用道具向组件传递颜色时，那么你可以使用本地CSS变量，而不是这样做`color: ${props => props.textColor};`：
+```html
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+>
+</div>
+```
+
+我们只需要告诉Stylify用CSS变量来代替变量的值，并且`localTextColor`是外部的：
+
+```javascript
+const compilerConfig = {
+	replaceVariablesByCssVariables: true,
+	externalVariables: ['localTextColor']
+}
+```
+
+外部变量也可以只在使用它的文件中定义：
+```html
+<!--
+stylify-externalVariables
+	localTextColor
+/stylify-externalVariables
+-->
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+>
+```
+
+Stylify还提供了一个选项来**配置自定义变量**。它可以在使用它们的文件中进行，方法与组件相同，或者在全局配置中进行：
+
+在文件中：
+```html
+<!--
+stylify-variables
+	primary: '#000',
+	secondary: '#444'
+/stylify-variables
+-->
+<div class="color:$primary"></div>
+```
+
+在编译器配置中：
+```javascript
+const compilerConfig = {
+	primary: '#000'
+}
+```
+
+## 📦分割CSS
+Emotion会自动拆分CSS，并根据渲染后的组件直接注入到文档中。
+
+Stylify没有任何运行时脚本，所以你必须手动配置[Bundler](/zh/docs/bundler)和拆分功能。
+
+然而，Stylify的输出非常小（对于一个大型网站来说，它甚至可以是10 Kb（gzipped）），所以整个项目只有一个捆绑包就可以了。最终，你可以[查看提示](/zh/docs/get-started/best-practices#splitting-css)来分割CSS捆绑。
+
+捆绑配置的例子：
+```javascript
+const bundles = [
+	{
+		outputFile: 'path/to/layout.css',
+		files: ['path/to/layout.jsx']
+	},
+
+	// 捆绑器使用https://npmjs.com/package/fast-glob
+	// 你可以使用它的glob语法
+	{
+		outputFile: 'path/to/global.css',
+		files: ['path/**/*.jsx']
+	}
+]);
+```

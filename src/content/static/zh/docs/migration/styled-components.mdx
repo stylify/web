@@ -1,0 +1,127 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Styled Components"
+navigationIconPath: '/images/brands/styled-components.png'
+image: '/migration/styled-components/header.jpg'
+ogImage: '/migration/styled-components/og-image.jpg'
+
+title: "如何从Styled Components CSS-in-JS库迁移到Stylify CSS"
+description: "了解如何毫不费力地从Styled Components CSS-in-JS迁移到Stylify的实用性优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationStylifyVariablesCssInJs from '@components/MigrationStylifyVariablesCssInJs.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Styled Components CSS-in-JS库和Stylify的实用优先CSS的特性和语法，并让你了解如何从Styled Components迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+Styled Components是一个可以让你在JavaScript中编写实际CSS的库。这意味着你可以使用所有你使用和喜爱的CSS功能，包括（但不限于）媒体查询、所有的伪选择器、嵌套等等。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+我找不到任何信息表明Styled Components提供了像Emotion CSS-in-JS那样的动态实用工具或CSS属性。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+当在风格化组件中定义全局样式时，你必须创建一个全局样式组件：
+```jsx
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+	body {
+		color: ${props => (props.whiteColor ? 'white' : 'black')};
+	}
+`;
+
+<React.Fragment>
+	<GlobalStyle whiteColor />
+</React.Fragment>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+在Styled Components中，组件通常是这样定义的：
+
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+
+<Title>你好，世界! 🎉</Title>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+在Styled Components CSS中，你主要使用在Javascript中定义的变量，或者一些配置文件或CSS变量。
+
+```jsx
+const color = 'blue';
+const Title = styled.h1`
+	color: ${color},
+	font-size: var(--font-size)
+`;
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+<MigrationStylifyVariablesCssInJs />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

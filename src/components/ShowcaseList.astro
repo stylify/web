@@ -1,0 +1,85 @@
+---
+import { Image } from '@astrojs/image/components';
+import { getLangFromUrl, useTranslations } from '@serverHelpers';
+
+const { limit } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const items = [
+	{
+		name: 'Conviu',
+		img: 'conviucom.jpg',
+		url: 'https://conviu.cz',
+		description: 'A tool that helps Czech e-commerce platforms to increase sales',
+		techStack: ['symfony.svg'],
+	},
+	{
+		name: 'Zsht.cz',
+		img: 'zshtcz.jpg',
+		url: 'https://zsht.cz',
+		description: 'Czech School website',
+		techStack: ['wordpress.svg'],
+	},
+	{
+		name: 'MilesPernicious.com',
+		img: 'milesperniciouscom.jpg',
+		url: 'https://www.milespernicious.com/',
+		description: 'Personal Blog',
+		techStack: ['astro.svg'],
+	},
+	{
+		name: 'PoStopachSilverA.cz',
+		img: 'postopachsilvera.jpg',
+		url: 'https://postopachsilvera.cz/',
+		description: 'Website for a charity run',
+		techStack: ['svelte.svg'],
+	},
+	{
+		name: 'FSuminho',
+		img: 'fsuminho.jpg',
+		url: 'https://fsuminho.github.io/website/',
+		description: 'Website from Minho University Formula Cars Students',
+		techStack: ['browser.svg'],
+	},
+	{
+		name: 'StylifyCSS.com',
+		img: 'stylifycsscom.jpg',
+		url: 'https://stylifycss.com',
+		techStack: ['nuxtjs.svg'],
+	}
+];
+
+const showCarousel = limit !== null && limit <= 6;
+const itemsList = limit === null ? items : items.slice(0, limit);
+---
+
+<div class={`${showCarousel ? 'padding:0_8px overflow:auto margin:0_-8px md:margin:0_-12px lg:margin:0_-24px xl:margin:0 lg:padding:0' : ''}`}>
+	<div class={`${showCarousel ? ' toxl:{grid-auto-flow:column;min-width:max-content}' : ''} display:grid gap:24px grid-template-columns:repeat(auto-fit,minmax(300px,1fr))`}>
+		{
+			itemsList.map((item) => (
+				<a href={`${item.url}?ref=stylifycss.com`} target="_blank" rel="noopener nofollow" class="
+					position:relative text-decoration:none border:1px_solid_#1e2431 border-radius:8px overflow:hidden
+					[&:hover>div]{opacity:1}
+				">
+					<Image src={`/images/showcase/${item.img}`} alt="" loading="lazy" fetchpriority="low" quality={80} format="webp" width={400} height={200} background="rgba(0,0,0,0)" fit="contain" class="width:100% min-height:200px object-fit:cover display:flex" />
+					<div class="color:#f1f1f1 opacity:0 padding:12px background:rgba(0,0,0,0.5) transition:.3s will-change:opacity backdrop-filter:blur(5px) position:absolute inset:0 display:flex align-items:center justify-content:center flex-direction:column">
+						<div class="md:font-size:20px text-align:center"><strong>{ item.name }{ item.description ? ` - ${item.description}` : '' }</strong></div>
+						{typeof item.techStack !== 'undefined' &&
+							<div>
+								<span>{t('Tech Stack')}:</span>
+								<div class="display:flex flex-wrap:wrap gap:8px">
+									{
+										item.techStack.map((stackImage) => (
+											<img src={`/images/brands/${stackImage}`} alt="" width="80px" height="40px" loading="lazy" fetchpriority="low" class="padding:8px border-radius:8px background:#1e2431 max-height:40px max-width:80px height:auto width:100% display:flex" />
+										))
+									}
+								</div>
+							</div>
+						}
+					</div>
+				</a>
+			))
+		}
+	</div>
+</div>

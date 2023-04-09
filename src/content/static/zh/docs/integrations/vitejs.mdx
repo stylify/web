@@ -1,0 +1,91 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Vite.js"
+navigationIconPath: '/images/brands/vitejs.svg'
+image: '/integrations/vitejs/header.jpg'
+ogImage: '/integrations/vitejs/og-image.jpg'
+
+title: 在Vite.js中使用Stylify CSS
+description: "学习如何使用Stylify CSS与Vite.js。用Stylify CSS和Vite.js更快地编写你的网站代码。"
+howToSchemaTitle: "如何在Vite.js中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Vite.js是下一代的前端工具和资产捆绑器。
+
+Stylify可以通过@stylify/bundler集成到Vite.js中。
+
+<StackBlitzLink link="stylify-vite-example" />
+
+## 如何将Stylify的CSS集成到Vite.js中
+
+下面的例子适用于Vite模板。但是你可以使用下面的例子，并为Svelte、React、Vue、Angular、Lit和其他任何你想要的框架配置它。
+
+首先，用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来在`vite.config.js`中添加以下配置：
+
+
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
+	// 可选
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig(({ mode }) => ({
+	plugins: [stylifyPlugin],
+}));
+```
+
+现在你可以将生成的`stylify.css`的路径添加到`main.js`文件中：
+
+
+```javascript
+import './stylify.css';
+```
+
+如果你现在使用Vite.js命令，你将得到生成的`stylify.css`文件。
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

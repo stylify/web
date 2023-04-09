@@ -1,0 +1,163 @@
+---
+section: snippets
+
+order: 1
+
+navigationTitle: "Astro.build"
+
+title: "Stylify CSS snippets for Astro.build"
+description: "用于Astro.build集成的Stylify CSS配置片段，用于快速网页开发。"
+---
+
+## 自动化的CSS捆绑
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" loading="lazy" fetchpriority="low" class="width:100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+下面的片段允许你为每个 "页面 "和 "布局 "自动分割捆绑。
+
+它按以下步骤工作：
+1. 它找到`src/pages`中的所有页面和`src/layouts`中的所有布局，并调用`createBundles`为我们创建具有正确层名和输出文件的bundles配置。
+2. Stylify集成被初始化，CSS层的顺序被配置，所以它将只生成一个文件，该文件有`layout`的CSS层名。
+3. [bundler:fileToProcessOpened](/zh/docs/bundler#hooks)钩子被添加。这个钩子有两个部分。一部分是当这个文件是一个布局或一个页面时完成的，另一部分是对每个打开的文件完成的。
+ - 当一个布局或页面文件被打开时，它会检查它是否包含一个CSS文件的路径，如果没有，它会把它加到文件的头部。
+ - 对于所有其他文件，它试图检查 "导入"。如果发现任何组件的导入，它就将其映射为一个依赖关系。这样，它可以自动映射整个组件的依赖树，所以你只要不断地添加/删除它们，就可以正确地生成CSS。
+4. 当Bundler被初始化时，我们可以开始观察在`layout`和`pages`目录下新添加的文件。每当一个新的文件被添加，我们就创建一个新的Bundle。
+5. 5.Stylify集成被添加到Astro配置中。
+
+你也可以试试这个[Stack Blitz上的例子](https://stackblitz.com/edit/stylify-astro-automated-bundles-example?file=src%2Fpages%2Findex.astro)。
+
+```javascript
+import stylify from '@stylify/astro';
+import { hooks } from '@stylify/bundler';
+import fastGlob from 'fast-glob';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const pagesDir = 'src/pages';
+const layoutsDir = 'src/layouts';
+const stylesDir = 'src/styles';
+
+/** @type { import('@stylify/bundler').BundlerConfigInterface[]} */
+const stylifyBundles = [];
+const layoutCssLayerName = 'layout';
+const pageCssLayerName = 'page';
+
+const getFileCssLayerName = (filePath) =>
+	filePath.includes('/pages/') ? pageCssLayerName : layoutCssLayerName;
+
+const getOutputFileName = (file) => {
+	const parsedFile = path.parse(file);
+	const fileName = parsedFile.name.toLowerCase();
+	const dirNameCleanupRegExp = new RegExp(`${pagesDir}|${layoutsDir}|\\W`, 'g');
+	const dir = parsedFile.dir.replace(dirNameCleanupRegExp, '');
+	return `${dir.length ? `${dir}-` : ''}${fileName}.css`;
+};
+
+const createBundle = (file) => {
+	const fileCssLayerName = getFileCssLayerName(file);
+
+	return {
+		outputFile: `${stylesDir}/${fileCssLayerName}/${getOutputFileName(file)}`,
+		files: [file],
+		cssLayer: fileCssLayerName,
+	};
+};
+
+const createBundles = (files) => {
+	for (const file of files) {
+		stylifyBundles.push(createBundle(file));
+	}
+};
+
+// 1.在布局/页面中映射文件并创建捆绑文件
+createBundles(fastGlob.sync(`${pagesDir}/**/*.astro`));
+createBundles(fastGlob.sync(`${layoutsDir}/**/*.astro`));
+
+// 2. 启动Stylify Astro Integraton
+const stylifyIntegration = stylify({
+	bundler: {
+		id: 'astro',
+		// 设置CSS @layers顺序
+		cssLayersOrder: {
+			// 顺序将是@层的布局，页面;
+			order: [layoutCssLayerName, pageCssLayerName].join(','),
+			// 层的顺序将被导出到文件中，布局为@layer
+			exportLayer: [layoutCssLayerName],
+		},
+	},
+	bundles: stylifyBundles,
+});
+
+// 3.添加处理已打开文件的钩子
+/** @param { import('@stylify/bundler').BundleFileDataInterface } data */
+hooks.addListener('bundler:fileToProcessOpened', (data) => {
+	let { content, filePath } = data;
+
+	// 3.1 只针对布局和页面文件
+	if (filePath.includes('/pages/') || filePath.includes('/layouts/')) {
+		const cssFileName = path.parse(filePath).name;
+		const cssFilePathImport = `import '/${stylesDir}/${getFileCssLayerName(
+		filePath
+		)}/${getOutputFileName(filePath)}';`;
+
+		if (!content.includes(cssFilePathImport)) {
+		if (/import \S+ from (?:'|")\S+(\/layouts\/\S+)(?:'|");/.test(content)) {
+			content = content.replace(
+			/import \S+ from (?:'|")\S+\/layouts\/\S+(?:'|");/,
+			`$&\n${cssFilePathImport}`
+			);
+		} else if (/^\s*---\n/.test(content)) {
+			content = content.replace(/^(\s*)---\n/, `$&${cssFilePathImport}\n`);
+		} else {
+			content = `---\n${cssFilePathImport}\n---\n${content}`;
+		}
+
+		fs.writeFileSync(filePath, content);
+		}
+	}
+
+	// 3.2 对于所有文件
+	const regExp = new RegExp(
+		`import \\S+ from (?:'|")\\S+(\\/components\\/\\S+)(?:'|");`,
+		'g'
+	);
+	let importedComponent;
+	const importedComponentFiles = [];
+	const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
+	while ((importedComponent = regExp.exec(content))) {
+		importedComponentFiles.push(
+		path.join(rootDir, 'src', importedComponent[1])
+		);
+	}
+
+	data.contentOptions.files = importedComponentFiles;
+});
+
+// 4.等待捆绑器初始化并观察目录的变化
+// 来创建新的捆绑包，当一个文件被添加时
+hooks.addListener('bundler:initialized', ({ bundler }) => {
+	// 观察布局和页面目录
+	// 如果你打算使用嵌套目录，如blog/_slug.astro
+	// 你想对其进行自动的捆绑配置
+	// 你将需要在这里添加它们的路径
+	const dirsToWatchForNewBundles = [layoutsDir, pagesDir];
+	for (const dir of dirsToWatchForNewBundles) {
+		fs.watch(dir, (eventType, fileName) => {
+		const fileFullPath = path.join(dir, fileName);
+
+		if (eventType !== 'rename' || !fs.existsSync(fileFullPath)) {
+			return;
+		}
+
+		bundler.bundle([createBundle(fileFullPath)]);
+		});
+	}
+});
+
+export default {
+	// 5.添加Stylify Astro集成
+	integrations: [stylifyIntegration]
+};
+```

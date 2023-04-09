@@ -1,0 +1,27 @@
+---
+section: components
+
+order: 1
+
+navigationTitle: "Navegaciones y menús"
+
+title: "Componentes CSS de navegaciones y menús"
+description: "Navegaciones CSS y Componentes de Menús Móviles de Stylify. Navegaciones CSS y Menús Móviles preparados para tu próximo proyecto web. Copy&Paste, sin framework CSS"
+---
+import InteractivePreview from '@components/InteractivePreview.astro';
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="300"
+	title="Navegación horizontal con indicadores de desbordamiento"
+	description="Se trata de una navegación sencilla. Cuando la navegación no tiene suficiente espacio (en móviles, por ejemplo) los indicadores de desbordamiento con gradiente blanco (a la derecha y a la izquierda) se muestran para señalar que el menú es desplazable. En caso de que no quieras estos indicadores, puedes eliminarlos. No se olvide de eliminar el javascript y CSS para ellos también. Si hay algún elemento activo en el menú, se desplaza automáticamente a la vista."
+	htmlSnippet="components/navigation-with-overflow"
+/>
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="300"
+	title="Navegación móvil"
+	description="Menú móvil simple que se abre tras hacer clic en un icono de hamburguesa."
+	htmlSnippet="components/mobile-navigation"
+/>

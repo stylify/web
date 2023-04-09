@@ -1,0 +1,11 @@
+---
+import ExampleEditor from './ExampleEditor.astro';
+
+const code = `
+<div class="font-size:12px minw768px:font-size:32px lg:font-size:24px">
+	Screens
+</div>
+`;
+---
+
+<ExampleEditor { ...Astro.props } showHtml={true} code={code} />

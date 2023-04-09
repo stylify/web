@@ -1,0 +1,95 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Vue"
+navigationIconPath: '/images/brands/vuejs.svg'
+image: '/integrations/vuejs/header.jpg'
+ogImage: '/integrations/vuejs/og-image.jpg'
+
+title: 在Vue.js中使用Stylify CSS
+description: "了解如何在Vue.js中使用Stylify CSS。用Stylify CSS更快地编写你的Vue.js网站代码。"
+howToSchemaTitle: '如何在Vue.js中使用Stylify CSS。'
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Vue.js是渐进式JavaScript框架。
+
+<StackBlitzLink link="stylify-vue-vite" />
+
+## 如何将Stylify CSS与Vue.js和Vite.js整合起来
+
+下面的例子适用于Vite - Vue模板。然而，你可以使用下面的例子，并为React.js、Vue和其他任何你使用的框架进行配置。
+
+首先，使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来在`vite.config.js`中添加以下配置：
+
+
+```javascript
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ files: ['./src/**'], outputFile: './src/stylify.css' }],
+	// 可选
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig(({ mode}) => ({
+	plugins: [stylifyPlugin, vue()]
+}));
+```
+
+现在你可以将生成的`src/stylify.css`的路径添加到`src/main.js`文件中：
+
+
+```javascript
+import './stylify.css';
+```
+
+现在运行`yarn dev`。`src/stylify.css`文件将被生成。
+
+## 配置
+有很多选项你可以配置：
+- [@stylify/unplugin](/zh/docs/unplugin)
+- [编译器配置](/zh/docs/stylify/compiler)
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

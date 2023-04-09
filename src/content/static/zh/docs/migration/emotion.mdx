@@ -1,0 +1,134 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Emotion"
+navigationIconPath: '/images/brands/emotion.png'
+image: '/migration/emotion/header.jpg'
+ogImage: '/migration/emotion/og-image.jpg'
+
+title: "如何从Emotion CSS-in-JS库迁移到Stylify CSS"
+description: "学习如何毫不费力地从Emotion CSS-in-JS迁移到Stylify的实用性优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationStylifyVariablesCssInJs from '@components/MigrationStylifyVariablesCssInJs.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Emotion CSS-in-JS库和Stylify的实用优先CSS的特性和语法，并让你了解如何从Emotion迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+Emotion是一个为使用JavaScript编写CSS样式而设计的库。它提供了强大的和可预测的样式组合，此外还提供了良好的开发者体验，如源码图、标签和测试工具。同时支持字符串和对象样式。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+在Emotion中，你可以使用CSS道具直接对元素进行样式设置，就像这样：
+```jsx
+<div css={css`
+	color: blue;
+	font-weight: bold;
+	@media (min-width: 640px) {
+		color: red;
+	}
+`}></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+有时我们需要对应用程序的某些部分进行全局风格化。为了在Emotion中做到这一点，我们需要使用Global组件：
+```jsx
+import { Global, css } from '@emotion/react'
+
+render(
+	<Global styles={css`
+		.some-class {
+			color: hotpink !important;
+		}
+	`}/>
+)
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+在Emotion中，组件通常是这样定义的：
+
+```jsx
+const Title = styled.h1`
+	color: blue
+	font-weight: bold
+	@media (max-width: 640px) {
+		color:red
+	}
+`;
+<Title>你好，世界！🎉</Title>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+在Emotion CSS中，你主要使用在Javascript中定义的变量，或者一些配置文件或CSS变量。
+
+```jsx
+const color = 'blue';
+const Title = styled.h1`
+	color: ${color},
+	font-size: var(--font-size)
+`;
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+<MigrationStylifyVariablesCssInJs />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

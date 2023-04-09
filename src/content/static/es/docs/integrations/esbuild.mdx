@@ -1,0 +1,79 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Esbuild"
+navigationIconPath: '/images/brands/esbuild.svg'
+image: '/integrations/esbuild/header.jpg'
+ogImage: '/integrations/esbuild/og-image.jpg'
+
+title: Uso de Stylify CSS con Esbuild
+description: "Aprende a usar el CSS de Stylify junto con Esbuild. Codifica tu sitio web más rápido con Stylify CSS y Esbuild"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Esbuild.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import WhereToNext from '@components/WhereToNext.astro';
+
+Esbuild es un bundler de módulos para JavaScript que compila pequeños trozos de código en algo más grande y complejo, como una librería o una aplicación.
+El objetivo principal del proyecto Esbuild bundler es traer una nueva era de rendimiento de la herramienta de compilación, y crear un bundler moderno fácil de usar en el camino.
+
+## Cómo integrar Stylify CSS en Esbuild
+
+## Instalación
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+## Uso
+A continuación, añadir crear un archivo de configuración `esbuild.config.js`:
+
+```javascript
+const esbuild = require('esbuild');
+const { stylifyEsbuild } = require('@stylify/unplugin');
+
+esbuild.build({
+	entryPoints: ['./index.js'],
+	bundle: true,
+	outfile: './output.js',
+	plugins: [
+		stylifyEsbuild({
+			bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
+			// Opcional
+			// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+			compiler: {
+				// https://stylifycss.com/en/docs/stylify/compiler#variables
+				variables: {},
+				// https://stylifycss.com/en/docs/stylify/compiler#macros
+				macros: {},
+				// https://stylifycss.com/en/docs/stylify/compiler#components
+				components: {},
+				// ...
+			}
+		})
+	]
+});
+```
+
+Ahora puede ejecutar el comando `node esbuild.config.js`. Esto generará el `output.js` y `index.css` y mangle selectores en los archivos, si está configurado.
+
+<WhereToNext />

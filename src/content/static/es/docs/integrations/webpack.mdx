@@ -1,0 +1,97 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Webpack"
+navigationIconPath: '/images/brands/webpack-icon.svg'
+image: '/integrations/webpack/header.jpg'
+ogImage: '/integrations/webpack/og-image.jpg'
+
+title: Uso de Stylify CSS con Webpack
+description: "Aprende a utilizar el CSS de Stylify con Webpack. Codifica tu sitio web más rápido con Stylify CSS y Webpack"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Webpack.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Webpack es un agrupador de módulos. Su propósito principal es empaquetar archivos JavaScript para su uso en un navegador, aunque también es capaz de transformar, empaquetar, etc.
+
+<Note>Puede encontrar ejemplos de integración para Webpack en <a href="https://github.com/stylify/integrations-examples/tree/master/webpack" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en el Webpack.
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación, añade la siguiente configuración en el archivo `webpack.config.js`:
+
+```javascript
+const path = require('path');
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const mode = 'development';
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{
+		outputFile: './index.css',
+		files: ['./**/*.html'],
+		rewriteSelectorsInFiles: mode === 'production'
+	}],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+module.exports = {
+	entry: './input.js',
+	mode: mode,
+	plugins: [ stylifyPlugin ],
+	module: {
+		rules: [{
+			test: /\.css$/i,
+			use: ["style-loader", "css-loader", "postcss-loader"]
+		}],
+	},
+	output: {
+		path: path.resolve(__dirname),
+		filename: 'index.js',
+		libraryTarget: 'umd'
+	}
+};
+```
+
+Ahora añade el archivo generado `index.css` en el archivo de entrada `index.js`.
+
+<DocsUnpluginBuildInfo bundler="Webpack" />
+
+<WhereToNext />

@@ -1,0 +1,183 @@
+---
+section: get-started
+
+order: 2
+
+navigationTitle: Hoja de trucos de sintaxis
+
+title: "Hoja de trucos de sintaxis"
+description: "Completa hoja de trucos de sintaxis de selectores CSS de Stylify"
+---
+import Note from '@components/Note.astro';
+
+Esta página es una guía para que usted aprenda fácilmente Stylify CSS Sintaxis en un solo lugar.
+
+Contiene patrones de selectores de uso frecuente, para que puedas encontrar rápidamente el que no sabes cómo escribir.
+
+<Note>Si no has encontrado el selector que buscabas, háznoslo saber, y lo añadiremos.</Note>
+
+## Caracteres especiales
+- Al crear un selector, utilice `_` (guión bajo) en lugar de espacio y `^` para las comillas. Esto se aplica a cualquier forma de selector
+- Para conservar un guión bajo o un carácter de sombrero, utilice `\` (una barra invertida) => `\_`
+- Para los prefijos de proveedor `-webkit`, `-moz`, no añada `-` (un guión) al principio.
+- Si ha definido variables, puede utilizarlas dentro de los selectores. Sólo tienes que añadir `$` antes de la variable
+
+## Selectores
+
+```html
+color:blue
+👉 .color\:blue {}
+
+webkit-font-smoothing:antialiased
+👉 .webkit-font-smoothing\:antialiased {}
+
+<!-- Usando la variable $blue -->
+color:$blue
+👉 .color\:\$blue {}
+
+<!-- Usando _ -->
+margin:0_24px
+👉 .margin\:0_24px {}
+
+<!-- Usando ^ -->
+content:^✅^
+👉 .content\:\^\✅\^
+
+hover:color:blue
+👉 .color\:blue:hover {}
+
+<!--
+Envuelva las clases en un grupo de pseudo-clases.
+El ejemplo de abajo es un atajo para
+hover:color:red + hover:font-weight:bold.
+-->
+hover:{color:red;font-weight:bold}
+👉 hover\:\{color\:red;font-weight:bold\}:hover {}
+
+<!-- Lo mismo que arriba pero también con pantalla -->
+md:hover:{color:red;font-weight:bold}
+👇
+@media (min-width: 1024px) {
+	md\:hover\:\{color\:red;font-weight:bold\}:hover {}
+}
+
+lg:hover:color:blue
+👇
+@media (min-width: 1024px) {
+	.color\:blue:hover {}
+}
+
+minw640px:color:blue
+👇
+@media (min-width: 640px) {
+	.color\:blue {}
+}
+
+minw640px&&maxw1023px:color:blue
+👇
+@media (min-width: 640px) and (max-width: 1023px) {
+	.minw640px\&\&maxw1023px\:color\:blue {}
+}
+```
+
+## Selectores personalizados
+
+- Los selectores personalizados tienen el siguiente patrón:
+```
+[selectores css]{selectores de estilización divididos por ;}
+```
+
+- Cuando se utiliza el carácter `&` dentro del atributo class, se refiere al elemento actual.
+
+A continuación se muestran ejemplos de selectores personalizados dentro del atributo `class`:
+```html
+[a]{color:blue}
+👉 .\[a\]\{color\:blue\} a {}
+
+[a]{hover:color:blue}
+👉 .\[a\]\{hover\:color\:blue\} a:hover {}
+
+[a]{lg:hover:color:blue}
+👇
+@media (min-width: 1024px) {
+	.\[a\]\{lg\:hover\:color\:blue\} a:hover {}
+}
+
+<!-- Múltiples selectores divididos por , -->
+[h1,h2]{font-weight:bold}
+👇
+.\[h1\,h2\]\{font\-weight\:bold\} h1,
+.\[h1\,h2\]\{font\-weight\:bold\} h2 {}
+
+<!-- Usando & -->
+[&+div]{margin-left:12px}
+👉 .\[\&\+div\]\{margin\-left\:12px\}+div {}
+
+<!-- Preservando _ (guión bajo) usando \ antes de _ -->
+[.custom\_\_section]{color:blue}
+👉 .\[\.custom\_\_section\]\{color\:blue\} .custom__section {}
+
+[li:nth-of-type(even)]{color:blue}
+👉 .\[li\:nth\-of\-type\(even\)\]\{color\:blue\} li:nth-of-type(even) {}
+
+[&[open]_summary_~_*]{visibility:visible}
+👉 .\[\&\[open\]\_summary\_\~\_\*\]\{visibility\:visible\}[open] summary ~ * {}
+
+[summary::-webkit-details-marker,summary::marker]{display:none}
+👇
+.\[summary\:\:\-webkit\-details\-marker\,summary\:\:marker\]\{display\:none\} summary::-webkit-details-marker,
+.\[summary\:\:\-webkit\-details\-marker\,summary\:\:marker\]\{display\:none\} summary::marker {}
+
+[:not(summary)]{opacity:O}
+👉 .\[\:not\(summary\)\]\{opacity\:O\} :not(summary) {}
+```
+
+- La sintaxis anidada es similar a SCSS y al módulo de anidamiento CSS presentado (en propuesta).
+
+- El carácter `&` siempre se refiere al nivel superior.
+
+Aquí están los equivalentes escritos dentro de la sintaxis de anidamiento CSS de Stylify:
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		a: 'color:blue',
+		`h1,h2`: `
+			margin-top:0
+
+			& + p {
+				margin-top:0
+			}
+		`
+	}
+}
+```
+
+Salida CSS:
+```css
+a {}
+h1, h1 + p,
+h2, h2 + p {}
+```
+
+
+## Componentes
+
+```javascript
+const compilerConfig = {
+	components: {
+		'title': `
+			font-size:24px
+
+			&--larger {
+				font-size:32px
+			}
+		`,
+	}
+}
+```
+
+Salida CSS:
+```css
+.title {}
+.title--larger {}
+```

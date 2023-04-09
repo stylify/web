@@ -1,0 +1,100 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "SolidJS"
+navigationIconPath: '/images/brands/solidjs.svg'
+image: '/integrations/solidjs/header.jpg'
+ogImage: '/integrations/solidjs/og-image.jpg'
+
+title: 在 SolidJS 中使用 Stylify CSS
+description: "学习如何在SolidJS中使用Stylify CSS。用Stylify CSS更快地编码您的SolidJS网站。"
+howToSchemaTitle: '如何在 SolidJS 中使用 Stylify CSS。'
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+SolidJS是一个用于构建用户界面的简单和高性能反应性的框架。
+
+<StackBlitzLink link="stylifycss-solidjs-vite" />
+
+## 如何将 Stylify CSS 与 SolidJS 和 Vite.js 整合起来
+
+下面的例子适用于Vite - SolidJS模板。然而，您可以使用下面的例子，并为React.js、Vue和您使用的任何其他框架配置它。
+
+首先，使用 NPM 或 Yarn 安装 [@stylify/unplugin](/zh/docs/unplugin) 包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来在`vite.config.js`中添加以下配置：
+
+
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+import solidPlugin from 'vite-plugin-solid';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.jsx'] }],
+	// 可选
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, solidPlugin()],
+	server: {
+		port: 3000,
+	},
+	build: {
+		target: 'esnext',
+	},
+});
+```
+
+现在你可以将生成的`src/stylify.css`的路径添加到`src/index.js`文件中：
+
+
+```javascript
+import './stylify.css';
+```
+
+现在运行`yarn dev`。`src/stylify.css`文件将被生成。
+
+## 配置
+有很多选项你可以配置：
+- [@stylify/unplugin](/zh/docs/unplugin)
+- [编译器配置](/zh/docs/stylify/compiler)
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

@@ -1,0 +1,72 @@
+---
+title: Stylify CSS - Generador dinámico de CSS basado en utilidades
+image: '/images/blog/intro/header.gif'
+ogImage: '/images/blog/intro/og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Stylify genera CSS optimizado basado en lo que escribes. Escribe HTML. Obtén CSS. 🚀'
+createdAt: January 5, 2022
+---
+
+## Déjame contarte una historia
+Recientemente, he estado trabajando en varios proyectos. Un proyecto utiliza Bootstrap, el segundo Tailwind y algunos otros vanilla CSS con sus propias clases de utilidades y componentes.
+
+A pesar de que esas herramientas son grandes y los enfoques no "malo", ** aprender y recordar las clases, configuraciones, selectores de todo de nuevo es simplemente molesto y consume mucho tiempo **. Los plugins IDE para clases susurrantes a veces me parecen pura desesperación.
+
+Me he preguntado muchas veces, **por qué no hay un framework o una librería que utilice propiedades CSS naturales y sus valores como selectores**, que los desarrolladores ya conozcan. Sí, los selectores serán tal vez un poco más largos, pero no habría nada que estudiar para usarlo.
+
+Como no he podido encontrar ninguna, he creado la mía propia.
+
+## De la idea al proyecto
+
+Me ha llevado un año de desarrollo y por fin he sacado la primera versión 🎉.
+[Stylify](/) es una librería que viene con un [Native Preset](/es/docs/stylify/native-preset) **que puede igualar 678 (probablemente todas)** propiedades CSS de `Chrome, Mozilla, Opera, Safari y Edge`. El tamaño es inferior a **28 kB**.
+
+La sintaxis es simple: `cssProperty:value` y en caso de necesitar pantallas y pseudo clases `pantall:pseudoClases:propiedad:valor`.
+
+En la práctica, el uso de la CSS Stylify se parece a esto:
+```html
+<div class="font-size:24px hover:color:red md:font-size:48px">
+	¡Hola Mundo!
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+```
+Debido a que algunos valores pueden contener un espacio y una comilla, he decidido añadir una sintaxis especial. Cuando escribas un selector cuyo valor deba contener un espacio, puedes usar `_`(guión bajo) y para una comilla `^` (sombrero).
+
+Esto te permite escribir selectores como este:
+
+```html
+<div class="
+ border:12px_solid_steelblue
+ font-family:^Arial^,_sans-serif
+">
+	¡Hola Mundo!
+</div>
+```
+
+Una vez compilado y manipulado, genera el siguiente CSS:
+
+```css
+.a{
+ border:12px solid steelblue
+}
+.b{
+ font-family:'Arial', sans-serif
+}
+```
+
+### Otras Características
+- **[Selectores dinámicos](/es/docs/stylify/compiler#macros)**: Define una macro y úsala como quieras `width:240px`, `width:10%`, `width:30rem`.
+- **[Pantallas dinámicas](/es/docs/stylify/compiler#logical-operands-in-screens)**: Puedes combinar pantallas usando operandos lógicos como `||` y `&&` => `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5)` y usar cualquier valor que quieras `minw123px:font-size:24px`.
+- **Manipulación de selectores**: Stylify CSS puede convertir selectores largos `transition:color_0.3s_ease-in-out` a `_abc123`.
+- **División de CSS**: CSS puede ser generado para cada archivo por separado. Gracias a eso puedes dividir CSS por ejemplo para una página y un diseño.
+- **[Componentes](/es/docs/stylify/compiler#components)**: Define por ejemplo un `botón` con dependencias como `background:#000 color:#fff padding:24px` y úsalo en todo un proyecto.
+- **[Variables](/es/docs/stylify/compiler#variables)**: Definir variables para valores repetitivos. Pueden ser inyectadas en el código como variables CSS.
+- **[Selectores](/es/docs/stylify/compiler#customselectors)**: Permite dar estilo a selectores como `article > h1`.
+- **[Ayudantes](/es/docs/stylify/compiler#helpers)**: Se puede utilizar cuando se genera el CSS por ejemplo para recalcular unidades y etc.
+
+## Integración
+Stylify puede integrarse fácilmente en frameworks como [Next.js](/es/docs/integrations/nextjs), [Nuxt.js](/es/docs/integrations/nuxtjs), [Vite. js](/es/docs/integrations/vitejs), [Symfony Framework](/es/docs/integrations/symfony), [Nette Framework](/es/docs/integrations/nette), [Laravel](/es/docs/integrations/laravel) y etc. También funciona muy bien junto con [Webpack](/es/docs/integrations/webpack) y [Rollup.js](/es/docs/integrations/rollupjs).
+
+Para una integración más sencilla hay un [@stylify/nuxt-module](/es/docs/nuxt-module) para Nuxt.js y un [@stylify/bundler](/es/docs/bundler) que puede usarse con los ya mencionados Rollup.js y Webpack o en cualquier otra herramienta.
+
+Cuando se integra en un proyecto existente, es posible generar CSS para cada página por separado (incluso para componentes pequeños) y [reescribir lentamente el sitio web](/es/docs/get-started/migrating-to-stylify) sin aumentar su tamaño ni romper nada.

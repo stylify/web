@@ -1,0 +1,405 @@
+---
+title: 'Prácticas recomendadas para Utility-First CSS de utilidad primero'
+image: '/images/blog/best-practices/header-v2.jpg'
+ogImage: '/images/blog/best-practices/og-image-v2.jpg'
+author: 'Vladimír Macháček'
+annotation: 'Aprenda a usar Utility-First CSS de manera efectiva para diseñar su sitio web y evitar las plantillas infladas y las dificultades de mantenimiento.'
+createdAt: 'February 2, 2023'
+---
+
+Utility-First CSS es un enfoque moderno y flexible para diseñar sitios web.
+
+Sin embargo, anima a los desarrolladores a "pisar el acelerador", activar el heavy metal y escribir literalmente todo en los atributos de clase en un orden completamente aleatorio. Esto termina con una clase larga como la Ruta 50 y la codificación se convierte en una "experiencia de Sherlock Holmes".
+
+Esta guía es una lista de lecciones útiles aprendidas mientras trabajaba y probaba CSS de utilidad primero. Su objetivo es ayudarlo a usar CSS de utilidad primero de manera efectiva mientras elimina los problemas mencionados a continuación.
+
+Aunque esta guía se enfoca principalmente en Stylify CSS, hay enlaces a la documentación de Tailwind para una tecnología/enfoque similar y todos los consejos explicados en esta guía se pueden usar dentro de cualquier otro marco CSS de utilidad primero que admita características similares.
+
+## Pros y contras de Utility-First CSS
+A continuación se muestra una lista de algunos pros y contras que probablemente encontrará al trabajar con Stylify CSS o Tailwind CSS. Los he explicado con más detalle en [por qué publicar Stylify](/es/docs/get-started/why-stylify-css).
+
+Ventajas:
+- Te permite diseñar atómicamente cada elemento de la página exactamente como lo necesitas
+- No tiene que crear nombres de selector extraños, cambiar entre archivos, limpiar CSS no utilizado, etc.
+- Hay menos `propiedad:valores` y `reglas at` duplicados en el CSS
+- El CSS suele ser más pequeño que con CSS escrito manualmente o con marcos de componentes
+
+Contras:
+- Los atributos de clase en las plantillas pueden volverse fácilmente "ilegibles"
+- Algunos elementos que deberían funcionar como componentes (botones, por ejemplo) se definen como elementos con atributos de clase duplicados, lo que puede dificultar el mantenimiento
+- Los valores para propiedades como `color`, `borde` y `margen` a menudo están codificados dentro de la plantilla
+
+Ahora que conocemos al menos algunos aspectos positivos/negativos al usar CSS de utilidad primero, echemos un vistazo a los aspectos negativos e intentemos resolverlos.
+
+## Cómo alinear y ordenar selectores
+Para mejorar la legibilidad de los atributos de clase, ordene sus selectores desde la consulta de medios/pantalla/contenedor más pequeño hasta el más grande:
+
+```html
+<!-- Ancho mínimo -->
+<button class="font-size:14px sm:font-size:24px lg:font-size:32px"></button>
+<!-- Ancho máximo -->
+<button class="maxw640px:margin-top:24px tomd:flex-direction:column"></button>
+```
+
+En caso de que el atributo de clase sea largo y tenga varias consultas de medios dentro del atributo, coloque cada consulta de medios en una línea separada. De esta manera, puede ver fácilmente qué línea es responsable de cada consulta de medios/contenedores y qué cambió en la solicitud de extracción.
+```html
+<div class="
+	width:240px height:240px margin-bottom:24px
+	md:margin-bottom:32px md:width:320px
+	xl:width:100%
+"></div>
+```
+
+Si hay varios atributos en un elemento y un atributo de clase con muchas utilidades, coloque el atributo de clase al final y divídalo en varias líneas. Esto mantendrá el elemento más legible:
+
+```html
+<div id="" aria-label="" data-my-custom-data class="
+	width:240px height:240px margin-bottom:24px
+	md:margin-bottom:32px md:width:320px
+	xl:width:100%
+"></div>
+```
+
+Cuando se trata de selectores que están "relacionados" entre sí, como font-size/line-height y width/height, ponlos uno al lado del otro. De esta manera es más fácil encontrar selectores relacionados.
+
+```html
+<button class="font-size:18px line-height:24px width:100% height:24px"></button>
+<button class="
+	display:flex flex-direction:column align-items:center
+	font-size:18px line-height:24px
+	md:flex-direction:row md:font-size:20px
+"></button>
+```
+
+Si utilizas Tailwind, puede que quieras comprobar su [Prettier Plugin](https://tailwindcss.com/blog/automatic-class-sorting-with-prettier) que puede ordenar tus clases automáticamente.
+
+Para reducir el número de clases, también puede utilizar atajos y funciones CSS modernas para evitar clases innecesarias.
+```html
+<div class="margin-top:12px margin-right:24px font-size:16px md:font-size:24px xl:font-size:32px"></div>
+<div class="margin:12px_24px_0_0 font-size:clamp(16px,10vh,32px)"></div>
+```
+
+## Limpieza de plantillas hinchadas y atributos de clase duplicados
+Debido a la simplicidad de uso de las utilidades, es fácil olvidarse de dividir el código en partes reutilizables. Desafortunadamente, no podemos evitar esto, si no queremos tener plantillas ilegibles:
+- Podemos dar estilo a los elementos globalmente, para lo cual podemos usar [global custom selectors](/es/docs/stylify/compiler#customselectors), o [components](/es/docs/stylify/compiler#components).
+- Cuando usamos frameworks como React, Vue, Svelte o Angular, podemos crear fácilmente componentes basados en frameworks con slots.
+- En el caso de Stylify, también podemos definir componentes dentro de un archivo de configuración o dentro de un archivo (plantilla) donde se utilizan.
+- Si usas Tailwind, puedes configurar componentes dentro de archivos CSS con la regla `@apply`. Tienen su guía sobre [reutilización de estilos](https://tailwindcss.com/docs/reusing-styles), [adición de estilos personalizados](https://tailwindcss.com/docs/adding-custom-styles) y [ampliación de la configuración](https://tailwindcss.com/docs/configuration).
+
+Cada uno de estos enfoques tiene su propósito que se explica a continuación.
+
+### Creación de componentes reutilizables
+
+Si trabajas con frameworks como Nuxt, Next, Vue, React, Svelte o Lit, puedes definir componentes y reutilizarlos.
+De esta manera, tienes estilos para tales componentes sólo en un lugar y no hincha tu HTML en otros lugares.
+
+Además, puede restringir la cantidad de posibles variantes de estilo de componentes mediante la representación del componente basado en props pasados.
+
+```html
+// MyButton.vue
+<template>
+	<button class="color:red font-size:24px">
+		<slot></slot>
+	</button>
+</template>
+
+// Page.vue
+<template>
+	<MyButton>Click me!</MyButton>
+</template>
+```
+
+Un enfoque similar también se puede utilizar en frameworks PHP como [Symfony](https://twig.symfony.com/doc/2.x/tags/include.html), [Laravel](https://laravel.com/docs/9.x/blade#components) o [Nette](https://latte.nette.org/en/template-inheritance#toc-horizontal-reuse). Puede que no sea tan flexible como los componentes de React o Vue, pero puedes crear un montón de bloques reutilizables.
+
+### Estilizando elementos globalmente
+A veces es necesario estilizar elementos globalmente. Como estilizar elementos anidados dentro de un artículo o añadir algún reset CSS.
+
+En Stylify, esto se puede hacer de varias maneras usando [selectores personalizados](/es/docs/stylify/compiler#customselectors).
+
+Si usas Tailwind, hay [variantes arbitrarias](https://tailwindcss.com/docs/adding-custom-styles#arbitrary-variants) para esto.
+
+Cuando sólo tienes una pequeña cantidad de selectores y elementos para modificar, está bien darle estilo directamente a través del atributo class.
+
+```html
+<nav class="
+display:flex flex-direction:column
+
+[a]{display:inline-flex;align-items:center;text-decoration:none}
+[a_.icon]{margin-right:4px;line-height:1}
+[a_span]{font-size:16px}
+[a:hover_span]{text-decoration:underline}
+">
+	<a href="#">
+		<i class="icon"></i>
+		<span>Link</span>
+	</a>
+</nav>
+```
+
+Cuando el estilo que tienes que añadir a elementos internos/globales empieza a crecer, es mejor moverlo fuera del atributo class.
+En [Stylify CSS](/) puedes definir estos selectores dentro del archivo de configuración o en una plantilla donde se utilicen.
+
+En caso de que el estilo se aplique sólo en una plantilla, podemos definirlo dentro de la plantilla. Los selectores personalizados se pueden definir dentro de un comentario en la sección `stylify-customSelectors`. Se espera un objeto javascript sin corchetes alrededor. La sintaxis dentro de los literales de la plantilla es similar a SCSS. Sin embargo, para mantener las cosas simples, sólo soporta anidamiento y encadenamiento. Las opciones de contenido de los selectores personalizados esperan un objeto javascript sin corchetes alrededor:
+```html
+<!--
+stylify-customSelectors
+	'.navigation': `
+		display:flex flex-direction:column
+
+		a {
+			display:inline-flex align-items:center text-decoration:none
+			.icon { margin-right:4px line-height:1 }
+			span { font-size:16px }
+			&:hover span { text-decoration:underline }
+		}
+	`
+/stylify-customSelectors
+-->
+<nav class="navigation">
+	<a href="#">
+		<i class="icon"></i>
+		<span>Link</span>
+	</a>
+</nav>
+```
+
+La configuración de la plantilla también se puede mover al [archivo config](/es/docs/stylify/compiler#customselectors):
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		'.navigation': `
+			display:flex flex-direction:column
+
+			a {
+				display:inline-flex align-items:center text-decoration:none
+				.icon { margin-right:4px line-height:1 }
+				span { font-size:16px }
+				&:hover span { text-decoration:underline }
+			}
+		`
+	}
+}
+```
+
+## Eliminando Valores Hardcodeados por Variables
+Al principio, parece correcto escribir un selector como `color:#000` o `box-shadow:0_4px_8px_rgba(0,0,0,.16)`. Sin embargo, ¿qué pasa si queremos utilizar la misma sombra en toda la web o en algún lugar en el futuro, vamos a querer apoyar un modo claro / oscuro. Esto simplemente no funcionará y complicará el mantenimiento y la refactorización.
+
+Si usas Tailwind, tienen una [guía extensa](https://tailwindcss.com/docs/configuration) sobre cómo configurar cada parte del framework.
+
+En el caso de Stylify, no hay nada parecido a un "tema". Sólo hay variables que se pueden definir de dos maneras. Si la variable es usada globalmente, ponla en el [global config](/es/docs/stylify/compiler#variables):
+```javascript
+const compilerConfig = {
+	variables: {
+		textColor: '#000',
+		shadow: '0 4px 8px rgba(0,0,0,.16)'
+	}
+}
+```
+
+Si se utiliza localmente, configurarlo dentro de un comentario en un archivo donde se utiliza utilizando [opciones de contenido](/es/docs/stylify/compiler#contentoptionsprocessors). Espera objeto javascript sin corchetes alrededor:
+
+```html
+<!--
+stylify-variables
+	textColor: '#000',
+	shadow: '0 4px 8px rgba(0,0,0,.16)'
+/stylify-variables
+-->
+```
+
+Puede reutilizar estas variables en varios lugares de esta manera:
+```html
+<span class="color:$textColor box-shadow:$shadow">Hello World!</span>
+```
+
+Cuando necesite modificar la fuente o el color en función de la pantalla o de las preferencias del tema de color, utilice variables CSS para cambiar de forma flexible los colores, los tamaños de fuente, el fondo y otras propiedades, en función de la pantalla y de la consulta de medios. Esto disminuirá el número de selectores y simplificará la refactorización.
+```javascript
+const compilerConfig = {
+	// CSS variables are note enabled by default in Stylify
+	replaceVariablesByCssVariables: true,
+	// https://stylifycss.com/en/docs/stylify/compiler#variables
+	variabels: {
+		textFontSize: '12px',
+		textColor: '#000',
+		// Tries to match a screen, can be sm, md, lg...
+		minw400px: {
+			textFontSize: '18px'
+		},
+		// For a @media (prefer-color-scheme: dark)
+		dark: {
+			textColor: '#fff'
+		},
+		// When screen is not found,
+		// it falls back to a custom selector
+		// in this case element with the ".dark" class
+		// which will very probably be the root (html el)
+		'.dark': {
+			textColor: '#fff'
+		},
+	}
+};
+```
+
+Y en HTML:
+```html
+<span class="font-size:$textFontSize color:$textColor"></span>
+```
+
+Tailwind tiene una [Guía de Modo Oscuro](https://tailwindcss.com/docs/dark-mode) en su documentación, así que asegúrate de echarle un vistazo. En su caso, puedes usar por ejemplo una clase para cambiar de tema.
+
+## Simplificación del desarrollo mediante ganchos
+Para eliminar algunas tareas repetitivas, puedes utilizar el sistema de CSS Hooks de Stylify. Stylify proporciona varios ganchos dentro del [Compilador](/es/docs/stylify/compiler#hooks), [Bundler](/es/docs/bundler#hooks) y [Runtime](/es/docs/stylify/runtime#hooks).
+
+Estos ganchos se pueden utilizar para adjuntar oyentes, con los que se puede, por ejemplo:
+- Generar dinámicamente una guía de estilo
+- Modificar/Convertir/Extender valores de nuevas coincidencias de selector
+- Modificar la salida del bundler
+- Activar algún callback dentro de un navegador, cuando Stylify genera CSS inicial
+- Etc...
+
+Abajo hay un ejemplo de un hook, que escucha una nueva macro para `font-size`. Este hook comprueba si el valor del tamaño de la fuente está dentro del rango permitido y convierte las unidades `px` a `REM`. También adjunta la altura de línea correcta para que no tengamos que añadir el selector `line-height` cada vez que queramos usar el selector `font-size`:
+
+```javascript
+import { hooks } from '@stylify/stylify';
+
+// 1. Crear una función, que trabajará con la propiedad font-size
+const fontSizeHandler = ({ selectorProperties }) => {
+	const propertyValue = selectorProperties.properties['font-size'];
+
+	// Si el valor de la fuente es, por ejemplo, un valor por defecto REM, no hacer nada
+	// O, si la unidad no son píxeles por ejemplo
+	if (propertyValue === '62.5%' || !propertyValue.endsWith('px')) {
+		return;
+	}
+
+	const numberValue = Number(propertyValue.match(/^\d+/));
+	// Añadamos los tamaños de fuente permitidos
+	const allowedFontSizes = {
+		'Small text': 12,
+		'Regular text': 16,
+		'Large text': 20,
+		'Subtitle': 24,
+		'Title': 32,
+		'Large title': 42,
+		'Extra large title': 64
+	}
+
+	// Si el desarrollador intenta utilizar, por ejemplo, font-size:13px, se producirá un error
+	if (!Object.values(allowedFontSizes).includes(numberValue)) {
+		throw new Error(`Font size "${propertyValue}" is not allowed. Available values are "${JSON.stringify(allowedFontSizes)}".`);
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
+
+	// Además, recalcula px a rem y añade una altura de línea correcta
+	// Para no tener que añadirla manualmente cada vez
+	selectorProperties.addMultiple({
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
+	});
+}
+
+// 2. Añádelo a los manejadores
+const newMacroMatchHandlers = {
+	'font-size': fontSizeHandler
+};
+
+// 3. Añade un hook que escuche la coincidencia de una nueva macro, obtenga el manejador apropiado y lo llame
+hooks.addListener('compiler:newMacroMatch', ({ macroMatch, selectorProperties }) => {
+	const selectorProperties = Object.keys(data.selectorProperties.properties);
+	for (const selectorProperty of selectorProperties) {
+		const handler = newMacroMatchHandlers[selectorProperty] ?? undefined;
+
+		if (handler === undefined) {
+			continue;
+		}
+
+		handler(data);
+	}
+});
+```
+
+## Dividir CSS
+[Stylify CSS](/) le permite dividir los paquetes CSS básicamente para cada archivo por separado.
+Esta característica trae aumenta el nivel de optimización de CSS al siguiente nivel como los paquetes pueden llegar a ser muy pequeño.
+
+### Dividir CSS para secciones de aplicaciones
+Digamos que tienes 2 secciones de aplicación. Uno para la parte delantera de la página web y otro para el panel de administración / usuario.
+Para 2 secciones, sólo 2 archivos CSS serán generados. El CSS para el frontend no se cargará en el admin y viceversa.
+
+### Dividir CSS para diseños y páginas
+De esta forma tienes una importación de CSS para el layout y otra para la página. Cuando cargues una página, se cargarán el CSS del diseño y el de la página. Lo mismo ocurre con todas las demás páginas, excepto con el CSS del diseño, que ahora se almacena en caché.
+
+### Capas y ámbitos CSS
+Si decides dividir el CSS en múltiples archivos para maquetaciones/páginas puedes encontrarte con un problema de selectores CSS anulados.
+
+Afortunadamente este problema tiene una fácil solución. Usamos capas CSS y Ámbitos para corregir la especificidad.
+
+Tailwind tiene su propia solución para las capas CSS así que asegúrate de revisar [su guía](https://tailwindcss.com/docs/adding-custom-styles#using-css-and-layer).
+
+Stylify CSS proporciona soporte para capas CSS dentro de la configuración del paquete. Esta configuración puede ser usada dentro de Stylify Unplugin (para Next, React, Vue, Vite, SvelteKit, Symfony, Laravel, Nette y etc.) y Stylify Astro (Astro.build). Ambos paquetes utilizan el paquete Stylify Bundler bajo el capó.
+
+Configuración común para Stylify Unplugin, integración con Astro y Bundler:
+```javascript
+const bundlerConfig = {
+	cssLayersOrder: {
+		// Esto generará @layer layout,page;
+		order: 'layout, page',
+		// Esto le dice a Stylify que exporte el orden de las capas anteriores
+		// sólo en paquetes, que tiene diseño CSS capa
+		exportLayer: ['layout']
+	},
+};
+
+const layoutBundle = {
+	files: ['path/to/layout.html'],
+	outputFile: 'path/to/layout.css',
+	cssLayer: 'layout'
+};
+
+const pageBundle = {
+	files: ['path/to/page.html'],
+	outputFile: 'path/to/page.css',
+	cssLayer: 'page'
+};
+
+const config = {
+	bundler: bundlerConfig,
+	bundles: [ layoutBundle, pageBundle ]
+};
+```
+
+Uso de esta configuración con unplugin:
+```javascript
+import { stylifyVite, stylifyWebpack, stylifyEsbuild, stylifyRollup } from '@stylify/unplugin';
+
+stylifyVite(config);
+stylifyWebpack(config);
+stylifyEsbuild(config);
+stylifyRollup(config);
+```
+
+Example with Astro.build integration:
+```javascript
+import stylify from '@stylify/astro';
+
+export default {
+		integrations: [stylify(config)]
+}
+```
+
+Ejemplo con integración de Astro.build:
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+const bundler = new Bundler(config)
+bundler.bundle();
+
+await bundler.waitOnBundlesProcessed();
+```
+
+## ¡Háganos saber lo que piensa!
+¿Tienes alguna otra buena práctica que utilices? ¿Falta algo en la documentación? ¿Hay algo que necesite más explicación?
+
+Muchas gracias también a [Posandu Mapa](https://twitter.com/Posandu) por su colaboración en este artículo.

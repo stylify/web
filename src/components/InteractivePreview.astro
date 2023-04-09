@@ -1,0 +1,79 @@
+---
+import { getComponentPreviewData, getLangFromUrl, useTranslations } from '@serverHelpers';
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const { htmlSnippet, withoutComponents = false, minHeight = 300, title, description = null } = Astro.props
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const snippetsToImport = {
+	'HTML': `${htmlSnippet}.html`,
+	'HTML (Components)': !withoutComponents ? `${htmlSnippet}-components.html` : null
+};
+
+const snippetsPromises = []
+const importedSnippets = {};
+
+for (const [snippetType, pathPart] of Object.entries(snippetsToImport)) {
+	if (pathPart === null) {
+		continue;
+	}
+
+	snippetsPromises.push(new Promise(async (resolve) => {
+		const result = await getComponentPreviewData(pathPart);
+		importedSnippets[snippetType] = result;
+		resolve(true);
+	}));
+};
+
+
+await Promise.all(snippetsPromises);
+---
+
+<script>
+import { domReady } from '@clientHelpers';
+
+domReady(() => {
+	const visibleClass = 's-active';
+
+	document.querySelectorAll('[data-preview]').forEach((previewElement) => {
+		const getButtons = () => previewElement.querySelectorAll('[data-preview-tab-button]');
+
+		getButtons().forEach((button) => {
+			button.addEventListener('click', () => {
+				getButtons().forEach((button) => button.classList.remove(visibleClass));
+
+				button.classList.add(visibleClass);
+				previewElement.querySelectorAll('[data-preview-tab]').forEach((tab) => tab.classList.remove(visibleClass));
+				previewElement.querySelector(`[data-preview-tab="${button.dataset.previewTabButton}"]`).classList.toggle(visibleClass);
+			});
+		});
+	});
+})
+</script>
+
+<!--
+stylify-components
+	'interactive-preview__button': 'margin-left:4px font-size:12px'
+/stylify-components
+-->
+<section class="interactive-preview" data-preview>
+	<div class="display:flex justify-content:space-between align-items:center flex-wrap:wrap white-space:nowrap">
+		<h2 class="color:#fefefe font-weight:bold margin-right:24px white-space:nowrap margin-bottom:8px margin-top:0 tomd:font-size:18px">{ title }</h2>
+		<div class="display:flex align-items:center margin-left:-4px overflow:auto margin-bottom:8px [.btn]{margin-left:4px;font-size:12px} [.btn:not(.s-active)]{background:none;hover:background-color:rgba(1,190,254,0.1)}">
+			<a data-preview-tab-button="Preview" role="button" class="btn s-active">{t('Preview')}</a>
+			{Object.keys(importedSnippets).map((label) => <a data-preview-tab-button={label} role="button" class="btn">{t(label)}</a> )}
+		</div>
+	</div>
+	{description && <div class="margin-top:4px" set:html={description}></div>}
+	{true &&
+		<div class="margin-top:12px [>[data-preview-tab]:not(.s-active)]{display:none}">
+			<iframe data-preview-tab="Preview" class="s-active width:100% overflow:auto border-radius:4px" style={`min-height:${minHeight}px`} frameBorder="0" srcdoc={importedSnippets['HTML'].srdoc}></iframe>
+			{Object.keys(importedSnippets).map((label) => (
+				<div data-preview-tab={label}>
+					<ShikiHighlighter code={importedSnippets[label].previewHtml} />
+				</div>
+			))}
+		</div>
+	}
+</section>

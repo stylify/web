@@ -1,0 +1,222 @@
+---
+title: 'Simple React como botón con Stylify CSS. De Utilidades, a Componentes, selectores mangled y 50% más pequeño build de producción.'
+image: '/images/blog/stylify-react-like-button/header.jpg'
+ogImage: '/images/blog/stylify-react-like-button/og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Estiliza botones en React rápidamente con Stylify CSS. Es como escribir CSS directamente en la plantilla.'
+createdAt: 'October 10, 2022'
+---
+
+Comprueba cómo dar estilo a un botón rápidamente usando sólo utilidades y luego limpiar la plantilla usando [components](/es/docs/get-started#defining-a-component). Aprenda por qué la salida en producción puede ser del 50% y más pequeña🔥.
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## El código
+Aquí está el código detrás del botón:
+```jsx
+import { useState } from 'react';
+import './stylify.css';
+
+function LikeButton() {
+	const [count, setCount] = useState(0);
+
+	return (
+		<button
+		className="
+			color:#222
+			font-weight:bold
+			border:0
+			background:#fff
+			font-size:16px
+			padding:8px_16px
+			border-radius:4px
+			cursor:pointer
+			box-shadow:0_.3em_.6em_rgba(0,0,0,0.3)
+			transition:background_0.3s,scale_0.3
+			align-items:center
+			display:inline-flex
+
+			[&:hover_span:first-of-type]{transform:scale(1.5)}
+			[span]{display:inline-flex}
+		"
+		onClick={() => setCount(count + 1)}
+		>
+		<span className="
+			margin-right:8px
+			font-size:24px
+			transition:transform_0.3s
+		">❤️</span>
+		<span className="margin-right:6px">Igual que</span>
+		<span
+			className="
+			background:#eee
+			padding:4px
+			align-items:center
+			justify-content:center
+			border-radius:50%
+			min-width:24px
+			min-height:24px
+		">{count}</span>
+		</button>
+	);
+}
+
+export default LikeButton;
+```
+
+El CSS generado para el ejemplo anterior:
+```css
+.color\:\#222{color: #222}
+.font-weight\:bold{font-weight: bold}
+.border\:0{border: 0}
+.background\:\#fff{background: #fff}
+.font-size\:16px{font-size: 16px}
+.padding\:8px_16px{padding: 8px 16px}
+.border-radius\:4px{border-radius: 4px}
+.cursor\:pointer{cursor: pointer}
+.box-shadow\:0_\.3em_\.6em_rgba\(0\,0\,0\,0\.3\){box-shadow: 0 .3em .6em rgba(0,0,0,0.3)}
+.transition\:background_0\.3s\,scale_0\.3{transition: background 0.3s,scale 0.3}
+.align-items\:center{align-items: center}
+.\[span\]\{display\:inline\-flex\} span,
+.display\:inline-flex{display: inline-flex}
+.margin-right\:8px{margin-right: 8px}
+.font-size\:24px{font-size: 24px}
+.transition\:transform_0\.3s{transition: transform 0.3s}
+.margin-right\:6px{margin-right: 6px}
+.background\:\#eee{background: #eee}
+.padding\:4px{padding: 4px}
+.justify-content\:center{justify-content: center}
+.border-radius\:50\%{border-radius: 50%}
+.min-width\:24px{min-width: 24px}
+.min-height\:24px{min-height: 24px}
+.\[\&\:hover\_span\:first\-of\-type\]\{transform\:scale\(1\.5\)\}:hover span:first-of-type,
+.transform\:scale\(1\.5\){transform: scale(1.5)}
+```
+## Production build - 50% más pequeño
+Cuando permites que [Stylify](/) manipule los selectores, el resultado es el siguiente:
+```css
+.c{color:#222}
+.d{font-weight:bold}
+.e{border:0}
+.f{background:#fff}
+.g{font-size:16px}
+.h{padding:8px 16px}
+.i{border-radius:4px}
+.j{cursor:pointer}
+.k{box-shadow:0 .3em .6em rgba(0,0,0,0.3)}
+.l{transition:background 0.3s,scale 0.3}
+.m{align-items:center}
+.b span,.n{display:inline-flex}
+.o{margin-right:8px}
+.p{font-size:24px}
+.q{transition:transform 0.3s}
+.r{margin-right:6px}
+.s{background:#eee}
+.t{padding:4px}
+.u{justify-content:center}
+.v{border-radius:50%}
+.w{min-width:24px}
+.x{min-height:24px}
+.a:hover span:first-of-type,.y{transform:scale(1.5)}
+```
+
+Además, los selectores en JSX están minificados
+```jsx
+<button
+	className="c d e f g h i j k l m n a b"
+	onClick={() => setCount(count + 1)}
+>
+	<span className="o p q">❤️</span>
+	<span className="r">Like</span>
+	<span className="s t m u v w x">{count}</span>
+</button>
+```
+
+Tamaño del CSS:
+- Dev: **1101 bytes**
+- Producción: **556 bytes**
+
+El ahorro de tamaño ronda el **50%** (El tamaño es similar en modo comprimido). Si tomamos el HTML manipulado, la diferencia será aún mayor.
+
+## Limpieza de plantillas
+¿Qué pasa si tenemos muchas utilidades y queremos moverlas fuera de la plantilla? Con [Stylify](/) puedes hacerlo usando componentes reutilizables. Se pueden definir dentro de un comentario (espera objeto js sin corchetes alrededor) en el archivo donde se utilizan o en una configuración global.
+
+```jsx
+// ...
+
+/*
+stylify-components
+'like-button': `
+	color:#222
+	font-weight:bold
+	border:0
+	background:#fff
+	font-size:16px
+	padding:8px_16px
+	border-radius:4px
+	cursor:pointer
+	box-shadow:0_.3em_.6em_rgba(0,0,0,0.3)
+	transition:background_0.3s,scale_0.3
+	align-items:center
+	display:inline-flex
+	span { display:inline-flex }
+	&:hover span:first-of-type { transform:scale(1.5) }
+`,
+'like-button__hearth': 'margin-right:8px font-size:24px transition:transform_0.3s',
+'like-button__counter': `
+	background:#eee
+	padding:4px
+	align-items:center
+	justify-content:center
+	border-radius:50%
+	min-width:24px
+	min-height:24px
+`
+/stylify-components
+*/
+
+function LikeButton() {
+	// ...
+
+	return (
+	<button className="like-button" onClick={() => setCount(count + 1)}>
+		<span className="like-button__hearth">❤️</span>
+		<span className="margin-right:6px">Like</span>
+		<span className="like-button__counter">{count}</span>
+	</button>
+	);
+}
+
+// ...
+```
+
+En producción, los componentes también están maltratados.
+
+## Explicación de la sintaxis
+En el ejemplo anterior, puedes ver Stylify usando selectores similares a CSS. Con algunas diferencias.
+- `_` dentro de un selector se utiliza en lugar de un espacio
+- `[span]{display:inline-flex}` es un selector personalizado en línea. Esto permite aplicar estilo a los selectores personalizados.
+- `&` dentro de `[&:hover_span:first-of-type]` siempre se refiere a un nivel superior como en SCSS
+- La sintaxis indentada en los componentes es también como en SCSS. Excepto que, para mantener las cosas simples, sólo soporta anidamiento y encadenamiento
+```css
+span {
+	display:inline-flex
+}
+&:hover span:first-of-type {
+	transform:scale(1.5)
+}
+```
+
+## Echa un vistazo a Stackblitz Playground
+Puedes probar el patio de recreo en [Stackblitz](https://stackblitz.com/edit/stylify-react-like-button-example?file=src%2FLikeButton.jsx).

@@ -1,0 +1,225 @@
+---
+section: get-started
+
+order: 0
+
+navigationTitle: Empezar
+
+title: "Empezar"
+description: "Stylify genera CSS dinámicamente basándose en lo que escribes. Aprende a usarlo!"
+---
+import IntegrationBlocks from '@components/IntegrationBlocks.astro';
+import GetStartedSelectors from '@components/GetStartedSelectors.astro';
+import GetStartedVariables from '@components/GetStartedVariables.astro';
+import GetStartedComponents from '@components/GetStartedComponents.astro';
+import GetStartedScreens from '@components/GetStartedScreens.astro';
+import GetStartedCombinedScreens from '@components/GetStartedCombinedScreens.astro';
+import Note from '@components/Note.astro';
+import ComponentsPreviewGrid from '@components/ComponentsPreviewGrid.astro';
+import ExampleEditor from '@components/ExampleEditor.astro';
+
+Stylify es una biblioteca que utiliza selectores similares a los de CSS para generar CSS optimizado en función de la utilidad bajo demanda.
+Stylify procesa contenido (de un archivo por ejemplo), encuentra selectores de clase y genera CSS para ellos. Luego hace alguna optimización y genera archivos CSS.
+
+Todo lo que tienes que hacer para empezar a usar Stylify es instalarlo y escribir selectores tipo CSS en atributos de clase. No requiere configuración. No tienes que crear ningún archivo CSS, añadir ninguna configuración o estudiar nada. Si sabes un poco de CSS, ya sabes, como usar Stylify.
+
+Sin embargo, si quieres, puedes usar otras características como Variables, Componentes, Macros y Selectores personalizados. Más sobre ellos a continuación.
+
+Stylify CSS no viene con ningún atajo "Fancy Pants", temas de color o tipografía predefinida. Te estarás preguntando por qué, así que aquí hay algunas explicaciones para empezar:
+- **Atajos**: Son difíciles de recordar y poco prácticos. Sí, usarlos significa menos tecleo y atributos de clase más cortos a costa de estudiar la sintaxis (que es fácil de olvidar) y una mayor complejidad.
+- **Paletas de colores**: Stylify no proporciona ninguna porque no se ajusta a las necesidades de diseño en la mayoría de los casos. Cuando trabajes en un proyecto, también tendrás que obtenerlas del diseñador del proyecto, del tema descargado o generarlas por tu cuenta usando alguna herramienta como [Material Theme Builder](/es/snippets/snippets/material-theme).
+- **Tipografía**: Lo mismo que las paletas de colores. Puedes encontrar algunas [herramientas y recursos tipográficos](/es/snippets/assets/fonts) y [fragmentos tipográficos](/es/snippets/snippets/stylify#variables) en la documentación de Stlyify.
+- En resumen, el objetivo es apegarse lo más posible a la sintaxis CSS nativa sin configuraciones predefinidas innecesarias que son prácticamente inútiles y sobrevaloradas.
+
+## Instalación
+
+Stylify puede funcionar con cualquier herramienta. Para algunas de ellas tiene su propia integración. Si no has encontrado tu favorita háznoslo saber.
+
+<IntegrationBlocks />
+
+## Inicio Rápido
+La forma más fácil de empezar es jugar dentro de los editores de abajo o copiar los ejemplos y probarlo dentro del <a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>.
+
+[Syntax](/es/docs/stylify/compiler#sintaxis) es similar a CSS `propiedad:valor` con algunas diferencias:
+- Usar `_` (un guión bajo) para un espacio y `^` (un sombrero) para una comilla.
+- Para conservar un guión bajo o un carácter de sombrero, utilice `\` (una barra invertida) => `\_`.
+- Para los prefijos de proveedor `-webkit`, `-moz`, no añada `-` (un guión) al principio.
+- El patrón sintáctico por defecto es `<pantalla>:<pseudoclases>:<propiedad>:<valor>`. Las pantallas y pseudoclases son opcionales
+
+```html
+color:blue => color azul
+hover:color:blue => color azul tras hover
+lg:color:blue => color azul para la pantalla seleccionada
+lg:hover:color:blue => color azul después de pasar el cursor desde la pantalla seleccionada
+
+webkit-font-smoothing:antialiased
+```
+
+Cuando muchas propiedades se repiten para la misma pantalla o pseudoclase, puedes agruparlas como en el siguiente ejemplo. La sintaxis es `<pantalla>:<pseudoclases>:{selectores de estilo divididos por ;}`.
+
+```
+hover:{color:blue;font-weight:bold} # Acceso directo para múltiples selectores
+lg:hover:{color:blue;font-weight:bold} # Lo mismo pero también para pantalla
+```
+
+<GetStartedSelectors />
+
+## Uso de pantallas
+Stylify tiene accesos directos predefinidos como `sm`, `md`, `lg` y pantallas dinámicas como `minw`, `maxw`, `rng`. Las [pantallas dinámicas](/es/docs/stylify/compiler#screens) son flexibles y la consulta de medios generada depende del valor que elijas al usarlas.
+Consulta la [lista completa](/es/docs/stylify/native-preset#screens). Todas las pantallas generadas están automáticamente ordenadas.
+
+<GetStartedScreens />
+
+Las pantallas también se pueden combinar utilizando operandos lógicos: **Logical AND**: `&&`, **Logical OR**: `||`
+
+<GetStartedCombinedScreens />
+
+Si desea añadir una pantalla personalizada, puede hacerlo de la siguiente manera:
+```javascript
+const compilerConfig = {
+	screens: {
+		'xs': '(min-width: 400px)',
+		// Las pantallas también pueden ser funciones => pantallas dinámicas
+		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
+	}
+};
+```
+
+## Añadir una variable
+No es una buena práctica tener valores codificados en el código. Por lo tanto puedes [definir variables](/es/docs/stylify/compiler#variables).
+
+La variable puede ser definida en un contenido (espera un objeto sin corchetes alrededor) cuando se usa localmente o en una configuración del compilador, cuando se usa globalmente.
+
+<GetStartedVariables />
+
+En una configuración del compilador:
+```javascript
+const compilerConfig = {
+	variables: {
+		fontSize: '24px',
+		fontSizeLg: '32px',
+		textShadow: '0 4px 8px #379adf'
+	}
+};
+```
+
+### Variables CSS
+Cuando quieras activar las variables CSS, simplemente añade `replaceVariablesByCssVariables` en la configuración de stylify. Esto reemplazará la variable por una variable CSS en lugar de su valor.
+
+<Note>Las variables CSS estarán activadas por defecto en la próxima versión 0.6.</Note>
+
+Stylify intenta ser estricto por defecto. Cuando las variables CSS están habilitadas, es posible que desee establecer [variables externas](/es/docs/stylify/compiler#externalvariables), para informar a Stylify, que algunas variables existen pero son externas. Si no quieres configurarlas todas, puedes desactivar la advertencia completamente.
+
+<Note>Una buena práctica es, por ejemplo, cargar el contenido del archivo de un tema, analizar el contenido mediante una expresión regular para que coincida con todas las posibles variables CSS y pasar los nombres coincidentes a la matriz de variables externas.
+También puede utilizar una función para comprobar si una variable utilizada dentro de un selector coincide con algún patrón como <code>md-</code> para Material Theme. Si es así, se mostrará como externa. De esta manera no tienes que analizar ningún archivo y comprobar los nombres.</Note>
+
+En la configuración del compilador:
+```javascript
+const compilerConfig = {
+	// Habilitar variables CSS
+	replaceVariablesByCssVariables: true,
+	// Establecer variables externas
+	externalVariables: [
+		// Comprobación de cadena simple
+		'some-color',
+		// Definir callback para especificar una comprobación más flexible.
+		// Esto marcará, por ejemplo, cada variable que empiece por md-
+		// como externa.
+		(variable) => variable.startsWith('md-') ? true : undefined
+	],
+	// Desactiva el error de variable indefinida
+	// 'silent' => desactiva completamente la advertencia
+	// 'warn' => es por defecto para desarrollo
+	// 'error' => por defecto para producción
+	undefinedVariableWarningLevel: 'silent'
+};
+```
+
+## Definiendo un Componente
+Cuando queremos reutilizar un trozo de código, por ejemplo para un botón sin duplicar clases, podemos [definir un componente](/es/docs/stylify/compiler#components). El componente se puede definir en un contenido (se espera un objeto sin corchetes alrededor) cuando se utiliza localmente (un archivo / unas pocas páginas) o en una configuración del compilador, cuando se utiliza globalmente.
+
+<GetStartedComponents layout="column" />
+
+En una configuración del compilador:
+```javascript
+const compilerConfig = {
+	components: {
+		'label-icon': 'lg:font-size:48px margin-left:8px',
+		label: `
+			display:flex
+			line-height:1.2
+			font-size:32px
+			align-items:center
+		`,
+	}
+};
+```
+
+<Note>Cuando defines un componente o macro como <code>link</code> este selector puede tener una colisión en producción con selector como <code>sidebar-link</code>, al manipular selectores. Consulte la documentación de componentes para [más información](/es/docs/stylify/compiler#components).</Note>
+
+## Añadir Macros
+En caso de que quieras añadir por ejemplo una variante más corta para `margin-left` como `ml`, puedes [add macro](/es/docs/stylify/compiler#macros) como en el ejemplo de abajo.
+
+```javascript
+const compilerConfig = {
+	macros: {
+		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			// ml:24px => creará => margin-left: 24px
+			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+		}
+	}
+};
+```
+
+## Selectores personalizados
+Estilizar elementos globalmente puede hacerse usando [selectores personalizados](/es/docs/stylify/compiler#customselectors).
+La sintaxis es la siguiente `[selectores css]{selectores de estilo divididos por ;}`.
+El carácter `&` siempre se refiere al elemento actual como en SCSS.
+Para un espacio use el `_` (guión bajo) y para una comilla `^` un carácter de sombrero.
+
+```html
+<!-- Cada <a> va a tener color azul -->
+<div class="[a]{color:blue}">
+	<!-- Cuando el cursor esté sobre el enlace, sólo se subrayará la etiqueta -->
+	<a href="#" class="
+		hover:text-decoration:none
+		[&:hover_.label]{text-decoration:underline;font-weight:bold}
+	">
+		<span class="icon">&plus;</span>
+		<span class="label">Enlace azul</span>
+	</a>
+</div>
+```
+
+## Componentes Preparados
+¿Buscas componentes preparados? ¡Te tenemos cubierto!
+
+<ComponentsPreviewGrid />
+
+## Guía de integración de Material Theme
+Si usted está buscando algunas paletas de colores, [hay una guía](/es/snippets/snippets/material-theme) sobre cómo utilizar Material Theme Builder para generar fácilmente Material Theme para su próximo proyecto.
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
+
+## Configuración avanzada
+Echa un vistazo al [compilador](/es/docs/stylify/compiler) para más opciones de configuración. El Compiler Config es reutilizable y el mismo para todos los paquetes listados a continuación.
+
+En caso de que quieras usar Stylify dentro del navegador directamente, deberías revisar la documentación [Runtime](/es/docs/stylify/runtime).
+
+## Paquetes CSS de Stylify
+Stylify viene con múltiples paquetes. Todos ellos pueden ser instalados usando NPM o YARN. Stylify CSS y Profiler también se pueden utilizar directamente a través de CDN:
+
+- [@stylify/astro](/es/docs/astro) - Módulo de integración para Astro.build
+- [@stylify/stylify](/es/docs/stylify) - El núcleo. Genera CSS. Reescribe los selectores.
+- [@stylify/bundler](/es/docs/bundler) - Para generar paquetes CSS.
+- [@stylify/unplugin](/es/docs/unplugin) - Plugin universal para Rollup, Webpack, Vite y Esbuild
+- [@stylify/nuxt](/es/docs/nuxt) - Módulo para Nuxt.js v3
+- [@stylify/nuxt-module](/es/docs/nuxt-module) - Un módulo para Nuxt.js v2 < v3
+
+## ¡Prueba Stylify CSS con tu herramienta favorita!
+
+Para empezar más fácilmente con tu herramienta favorita echa un vistazo a los [ejemplos de integración](/es/docs/integrations).
+
+<IntegrationBlocks />

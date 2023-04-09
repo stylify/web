@@ -1,0 +1,42 @@
+---
+section: migration
+
+order: 0
+
+navigationTitle: "Guías de migración"
+
+title: "Cómo migrar a Stylify CSS desde otros frameworks y librerías CSS"
+description: "Aprende a migrar fácilmente a Stylify CSS desde otros frameworks CSS y librerías CSS-in-JS."
+---
+import Note from '@components/Note.astro';
+import MigrationBlocks from '@components/MigrationBlocks.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+## Elija su guía de migración
+Si no has encontrado una herramienta desde la que quieras migrar a Stylify, ¡háznoslo saber!
+
+<MigrationBlocks />
+
+## Integrando Stylify en un proyecto existente
+Si estás a punto de integrar el CSS de Stylify en un proyecto existente deberías empezar reescribiendo pequeñas piezas de tu aplicación para minimizar los errores de integración y eliminar cuidadosamente todas las piezas de CSS reescritas no utilizadas.
+
+<Note>No te preocupes por aumentar el tamaño del CSS en tu aplicación al cambiar a Stylify. Stylify CSS no incluye ningún CSS predefinido y sólo generará el CSS que coincida con los selectores que utilices. Así que si no escribes nada, no se generará nada.<br />
+Stylify también puede generar CSS para cada paquete por separado para que puedas crear pequeños trozos de CSS y cargarlos sólo cuando sea necesario.</Note>
+
+Los pasos recomendados que debes seguir son los siguientes:
+1. Elige una pieza pequeña (o no crítica) de tu aplicación.
+2. Crea un bundle para esa pieza de la aplicación usando [@stylify/bundler](/es/docs/bundler).
+3. Reescribe el CSS de esa parte seleccionada.
+4. Importa el CSS del bundle y elimina el CSS reescrito no utilizado.
+5. Si todos los pasos anteriores están hechos, manipule los selectores durante una compilación de producción y repita el proceso hasta que todo esté reescrito.
+
+### Solución de colisiones de selectores
+Si hay una colisión con los selectores de Stylify, puedes configurar [selectors prefix](/es/docs/stylify/compiler#selectorsprefix) y en caso de que habilites el mangling y haya una colisión, entonces debes añadir el [mangled selectors prefix](/es/docs/stylify/compiler#mangleselectors).
+
+### Resolviendo problemas de Especificidad CSS
+En caso de que las utilidades de Stylify sean anuladas por tu CSS, necesitas incrementar la especificidad de las utilidades CSS de Stylify.
+
+Tanto si usas [@stylify/unplugin](/es/docs/unplugin) o [@stylify/bundler](/es/docs/bundler) directamente, puedes configurar [css layers](/es/docs/bundler#configuration). De esta manera, usted puede envolver su CSS existente en la capa, que tiene menor especificidad que el CSS generado por Stylify CSS y el problema con las utilidades anuladas será resuelto.
+
+
+<MigrationPageFooter />

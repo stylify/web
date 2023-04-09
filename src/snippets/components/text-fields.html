@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #f97819;
+			--gradientTo: #fcd24c;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	green: '#52c41a',
+	red: '#b3261e',
+/stylify-variables
+ -->
+
+<!-- Valid/invalid --->
+<div class="position:relative display:flex">
+	<input id="text1" type="text" placeholder="Label" class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<label for="text1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input</label>
+</div>
+
+<br>
+
+<div class="position:relative display:flex">
+	<input id="date1" type="date" placeholder="Date" required class="background:#fff width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&:valid]{border-color:$green} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<label for="date1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Date</label>
+</div>
+
+<br>
+
+<div class="position:relative display:flex">
+	<select id="option1" required class="background:#fff width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&:valid]{border-color:$green} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+		<option value="">---</option>
+		<option value="1">First</option>
+		<option value="2">Second</option>
+	</select>
+	<label for="option1" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Select</label>
+</div>
+
+<br>
+
+<div class="position:relative display:flex">
+	<textarea id="text2" placeholder="Label" class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px max-height:400px resize:vertical [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&::placeholder]{color:transparent} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}"></textarea>
+	<label for="text2" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px padding:0_4px">Textarea</label>
+</div>
+
+<br>
+
+<!-- Disabled -->
+<div class="position:relative display:flex">
+	<input id="text3" disabled type="text" placeholder="Label" class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+	<label for="text3" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Input - disabled</label>
+</div>
+
+<br>
+
+<div class="position:relative display:flex">
+	<textarea id="text4" disabled placeholder="Label" class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px max-height:400px resize:vertical [&:disabled]{border-color:#e3dfe3} [&:disabled+label]{color:#aaa7ab} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&::placeholder]{color:transparent} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}"></textarea>
+	<label for="text4" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s left:8px padding:0_4px">Textarea - disabled</label>
+</div>
+
+</div></div></body></html>

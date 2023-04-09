@@ -1,0 +1,106 @@
+---
+title: "用Stylify CSS更快编写你的Laravel网站代码"
+image: '/images/blog/stylify-laravel/header.jpg'
+ogImage: '/images/blog/stylify-laravel/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "用Stylify的类似于CSS的工具更快地编写你的Laravel网站。不要研究CSS框架。专注于编码。"
+createdAt: 'December 8, 2022'
+---
+
+## 简介
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了什么问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+
+## 安装
+本文使用Laravel和Vite。对于带有Webpack的旧版本，请查看[本指南](/zh/docs/integrations/laravel#for-older-vesions of-laravel-with-webpack)。
+
+使用CLI安装Stylify：
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+在`vite.config.js`中添加以下配置：
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	// 你可以定义多个bundles，本例为简单起见只用了一个
+	bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
+	// 可选的 - https://stylifycss.com/en/docs/unplugin
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig(() => ({
+	plugins: [
+		stylifyPlugin,
+		laravel({
+			// 添加生成文件的路径
+			input: ['resources/js/app.js', 'resources/css/stylify.css'],
+			refresh: true,
+		}),
+	],
+}));
+```
+
+在模板中添加`resources/css/stylify.css`的路径：
+
+```html
+<head>
+	@vite('resources/css/stylify.css')
+</head>
+```
+
+如果你在`stylifyVite`插件中定义了一个以上的bundle，请确保在正确的页面上导入生成的CSS文件。
+
+## 使用方法
+Stylify的语法与CSS相似。你只需要写`_`而不是空格，`^`而不是引号。
+
+因此，如果我们编辑`resources/views/welcome.blade.php`：
+```jsx
+<div class="text-align:center font-size:48px color:blue">Stylify + Laravel = 🚀</div>
+```
+
+在生产中, 你会得到优化的CSS和纠结的HTML：
+```html
+<div class="a b c">Stylify + Laravel = 🚀</div>
+```
+
+```css
+.a{text-align:center}
+.b{font-size:48px}
+.c{color:blue}
+```
+
+## 整合实例
+你也可以在Github上查看我们的<a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">Laravel集成示例</a>。
+
+## 配置
+上面的例子并不包括Stylify能做的一切：
+- 定义[组件](/zh/docs/stylify/compiler#components)
+- 添加[自定义选择器](/zh/docs/stylify/compiler#customselectors)
+- 配置[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`为 margin-left。
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

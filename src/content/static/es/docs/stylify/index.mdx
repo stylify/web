@@ -1,0 +1,32 @@
+---
+section: stylify
+
+order: 0
+
+navigationTitle: "@stylify/stylify"
+
+title: "@stylify/stylify"
+description: "Stylify es una Biblioteca que utiliza selectores similares a CSS para generar dinámicamente CSS optimizado con prioridad a la utilidad."
+---
+import IntegrationBlocks from '@components/IntegrationBlocks.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+El paquete @stylify/stylify es un paquete central para todos los demás paquetes. Es responsable de toda la magia de compilación CSS.
+
+El tamaño del módulo ESM del núcleo de Stylify es de alrededor de <strong>32 Kb</strong>. Cuando se utiliza en un entorno de navegador, el tamaño es de alrededor de 10 Kb Gzipped.
+
+Aprende [cómo empezar con Stylify](/es/docs/get-started) o echa un vistazo a la guía sobre [cómo integrar Stylify CSS en un proyecto existente](/es/docs/get-started/migrating-to-stylify).
+
+## Instalación
+El paquete Stylify puede ser utilizado por sí mismo. No tiene dependencias. El único requisito es Node.js runtime ahora. Solo ejecuta el comando de instalación y revisa la guía de integración de Node.js que se encuentra debajo:
+
+```
+yarn install @stylify/stylify
+npm install @stylify/stylify
+```
+
+Sin embargo, si no quieres crear ningún proceso de bundling por tu cuenta, puede que estés buscando una guía de integración.
+
+<IntegrationBlocks />
+
+<WhereToNext packageName={null} />

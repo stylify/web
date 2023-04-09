@@ -1,0 +1,85 @@
+---
+section: nuxt
+
+order: 0
+
+navigationTitle: "@stylify/nuxt"
+
+title: "@stylify/nuxt"
+description: "El módulo Nuxt de Stylify proporciona una perfecta integración CSS de Stylify en Nuxt.js v3+."
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+El módulo Nuxt proporciona una integración perfecta de Stylify CSS en Nuxt.js v3+.
+
+<StackBlitzLink link="stylify-nuxt3" />
+
+<Note><strong>@stylify/nuxt</strong> sólo se puede utilizar en Nuxt v3 y superiores. Para Nuxt v2 consulte [@stylify/nuxt-module](/es/docs/nuxt-module).</Note>
+
+## Instalación
+
+El módulo Nuxt sólo se puede instalar a través de CLI como NPM o Yarn:
+
+```
+yarn add @stylify/nuxt
+npm i @stylify/nuxt
+```
+
+## Uso
+
+Añade un módulo en `nuxt.config.js`:
+```javascript
+modules: [
+	'@stylify/nuxt'
+]
+```
+
+## Configuración
+
+Si quieres configurar Stylify, puedes usar la sección de configuración directamente en `nuxt.config.js` o crear un fichero `stylify.config.js` junto al `nuxt.config.js`. En ambos casos se utiliza el mismo esquema de configuración que se muestra a continuación.
+
+La parte de código que sigue debe usarse dentro del `nuxt.config.js` o dentro del `stylify.config.js` o `stylify.config.mjs`:
+
+```javascript
+import { defineConfig } from '@stylify/nuxt';
+
+const stylifyConfig = defineConfig({
+	dev: false,
+	configPath: 'stylify.config.js',
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// Cuando se establecen rutas vars dir, Stylify CSS exportará las variables a
+	// un archivo de acuerdo a la ruta dada
+	cssVarsDirPath: null,
+	sassVarsDirPath: null,
+	lessVarsDirPath: null,
+	stylusVarsDirPath: null,
+	// Las máscaras de los archivos son utilizadas por @stylify/bundler
+	// Bundler utiliza estas máscaras para encontrar los archivos de los que debe generar CSS
+	// Cuando añades una máscara y quieres mangleSelectors, también necesitas añadir el cargador apropiado. Ver más abajo
+	filesMasks: []
+});
+```
+
+<Note>En caso de que uses `stylify.config.ts`, no podrás usar [hooks](/es/docs/stylify/compiler#hooks). Es porque Nuxt compila ese archivo y los hooks trabajarán con una instancia diferente del gestor de hooks que el dev server. Por lo tanto, no pueden escuchar los ganchos activados en un servidor dev y serán inútiles.</Note>
+
+Ejemplo para nuxt.config.js
+```javascript
+export default {
+	stylify: stylifyConfig
+}
+```
+
+Ejemplo para stylify.config.js
+```javascript
+export default stylifyConfig;
+```

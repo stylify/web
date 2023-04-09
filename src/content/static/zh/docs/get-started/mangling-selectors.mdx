@@ -1,0 +1,32 @@
+---
+section: get-started
+
+order: 4
+
+navigationTitle: "混用选择器"
+
+title: "纠缠选择器"
+description: "如何使用Stylify CSS编译器来处理HTML类选择器。"
+---
+import Note from '@components/Note.astro';
+
+当你想混合选择器时，你必须设置编译器选项 => `mangleSelectors: true`。
+
+下面的例子是针对你想做一些自定义编译的情况。
+像 [@stylify/bundler](/zh/docs/bundler), [@stylify/unplugin](/zh/docs/unplugin), [@stylify/nuxt](/zh/docs/nuxt), [@stylify/astro](/zh/docs/astro) 这些软件包内部使用同样的过程（自动）。
+
+<Note>当你定义一个组件或宏，如<code>link</code>，这个选择器在生产中可能与<code>sidebar-link</code>这样的选择器发生碰撞，当混用选择器时。请查看组件文档[更多信息](/zh/docs/stylify/compiler#components)</Note>
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+const compiler = new Compiler({
+	mangleSelectors: true
+});
+
+const compilationResult = compiler.compile(content);
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+const css = compilationResult.generateCss();
+```

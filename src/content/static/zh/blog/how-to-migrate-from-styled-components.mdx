@@ -1,0 +1,160 @@
+---
+title: "如何毫不费力地从Styled Components CSS-in-JS迁移到Stylify Utility-First CSS以获得更好的React开发。"
+image: '/images/blog/styled-components-migration/header.jpg'
+ogImage: '/images/blog/styled-components-migration/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "了解如何轻松迁移到Stylify CSS，以便更好地开发React。"
+createdAt: 'February 16, 2023'
+---
+
+告别CSS-in-JS和用于注入和编译CSS的Runtime脚本，向闪电般快速的编码打招呼吧
+[Stylify utility-first CSS](/)。作为一个React前端工程师，你知道高效、精简的解决方案的重要性，它不会牺牲风格或功能。而这正是Stylify所提供的。
+
+使用Stylify，从Styled Components CSS-in-JS解决方案迁移是一件非常容易的事情。而且因为它没有运行时间，你可以期待更快的性能。
+
+你可以在[Playground On Stackblitz](https://stackblitz.com/edit/stylify-styled-components-migration?file=package.json,src%2FApp.jsx,README.MD,src%2Fmain.jsx) 🚀本文中的例子。
+
+## 💎 介绍
+[Stylify](/)是一个库，它使用类似CSS的选择器，根据你所写的内容生成优化的实用优先的CSS。
+
+特点：
+- ✅构建模块。没有运行时脚本。
+- ✅ 类似CSS的选择器
+- ✅ 没有框架需要研究
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+另外，我们有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 🔗 组件
+在Styled Components中，组件通常是这样定义的：
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+
+<Title>你好，世界! 🎉</Title>
+```
+
+Stylify提供了一个类似的功能。组件可以在文件中定义，在文件中使用，或者在配置中全局定义。
+
+以文件内的配置为例。`stylify-components'之间的内容期望是没有周围括号的javascript对象：
+```html
+<!--
+stylify-components
+	title: 'color:blue font-weight:bold md:color:red'
+/stylify-components
+-->
+<div class="title"></div>
+```
+
+全局编译器配置中的例子：
+```javascript
+const compilerConfig = {
+	title: 'color:blue font-weight:bold md:color:red'
+};
+```
+
+使用方法：
+```html
+<div class="title"></div>
+```
+
+**组件是 "懒惰的"（按需生成）**。这意味着，即使你配置了它们（在文件中或全局中），它们也只有在内容中匹配时才会生成。没有未使用的CSS将被生成。实用程序也是如此。如果一个组件的实用程序没有在内容中直接匹配，选择器不会被生成，只有组件的选择器被添加到CSS输出中。
+
+**生产中的CSS输出**在生产中看起来会是这样的：
+```css
+.a,.d {color:blue}
+.b,.d {font-weight:bold}
+@media (max-width: 768px) {
+	.c,.d {color:red}
+}
+```
+
+html的输出：
+```html
+<div class="d"></div>
+```
+
+## 🎯选择器
+Stylify也允许你在内容中直接使用实用工具。所以上面的例子也可以是这样的：
+
+```html
+<div class="color:blue font-weight:bold md:color:red"></div>
+```
+
+CSS的生产输出将与组件的例子类似。然而，HTML将看起来像这样：
+```html
+<div class="a b c"></div>
+```
+
+## 💲变量
+当你需要使用道具向组件传递颜色时，那么你可以使用本地的CSS变量，而不是这样做`color: ${props => props.textColor};`：
+
+```html
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+>
+</div>
+```
+
+另外，我们需要配置Stylify，用CSS变量代替变量的值：
+
+```javascript
+const compilerConfig = {
+	replaceVariablesByCssVariables: true,
+	externalVariables: ['localTextColor']
+}
+```
+
+Stylify还提供了一个选项来**配置自定义变量**。它可以在使用它们的文件中进行，与组件的方式相同，或者在全局配置中进行：
+
+在文件中：
+```html
+<!--
+stylify-variables
+	primary: '#000',
+	secondary: '#444'
+/stylify-variables
+-->
+<div class="color:primary"></div>
+```
+
+在编译器配置中：
+```javascript
+const compilerConfig = {
+	primary: '#000'
+}
+```
+
+## 📦分割CSS
+Stylify组件会自动分割CSS，并根据渲染的组件直接注入到文档中。
+
+Stylify没有任何运行时脚本，所以你必须手动配置[Bundler](/zh/docs/bundler)和拆分功能。
+
+然而，Stylify的输出非常小（对于一个大型网站来说，它甚至可以是10 Kb（gzipped）），所以整个项目只有一个捆绑包就可以了。最终，你可以[查看提示](/zh/docs/get-started/best-practices#splitting-css)来分割CSS捆绑。
+
+捆绑配置的例子：
+```javascript
+const bundles = [
+	{
+		outputFile: 'path/to/layout.css',
+		files: ['path/to/layout.jsx']
+	},
+
+	// 捆绑器使用https://npmjs.com/package/fast-glob
+	// 你可以使用它的glob语法
+	{
+		outputFile: 'path/to/global.css',
+		files: ['path/**/*.jsx']
+	}
+]);
+```

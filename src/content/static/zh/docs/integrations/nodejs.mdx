@@ -1,0 +1,71 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Node.js
+navigationIconPath: '/images/brands/nodejs.svg'
+image: '/integrations/nodejs/header.jpg'
+ogImage: '/integrations/nodejs/og-image.jpg'
+
+title: 在Node.js中使用Stylify CSS
+description: "了解如何在Node.js环境下使用Stylify CSS。用Stylify CSS更快地编码你的Node.js驱动的网站。"
+howToSchemaTitle: "如何在Node.js中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "使用YARN或NPM等CLI安装@stylify/stylify包",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text":  "接下来，创建一个文件，例如stylify.js。" ,
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+
+Node.js是一个建立在Chrome的V8 JavaScript引擎上的JavaScript运行时间。
+
+Stylify可以直接使用[@stylify/stylify](/zh/docs/stylify)或通过[@stylify/bundler](/zh/docs/bundler)包。
+
+<Note>Node.js的集成实例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/nodejs" target="_blank" rel="noopener">集成实例库</a>中找到。</Note>
+
+## 如何将Stylify的CSS集成到Node.js中
+
+你可以创建你自己的编译过程或使用[@stylify/bundler](/zh/docs/bundler)软件包。
+
+### 直接使用@stylify/stylify
+
+更多信息见[Stylify documentation](/zh/docs/stylify)：
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+const compiler = new Compiler({
+	// https://stylifycss.com/en/docs/stylify/compiler#variables
+	variables: {},
+	// https://stylifycss.com/en/docs/stylify/compiler#macros
+	macros: {},
+	// https://stylifycss.com/en/docs/stylify/compiler#components
+	components: {},
+	// ...
+});
+
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+```
+
+### 使用@stylify/bundler包
+
+更多信息见[bundler documentation](/zh/docs/bundler)。

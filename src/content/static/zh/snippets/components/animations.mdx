@@ -1,0 +1,33 @@
+---
+section: components
+
+order: 1
+
+navigationTitle: "动画"
+
+title: "CSS动画组件"
+description: "Stylify CSS Animations Components. 为你的下一个网络项目准备的CSS动画。复制&粘贴，无需CSS框架。"
+---
+import InteractivePreview from '@components/InteractivePreview.astro';
+
+CSS动画组件使用Stylify CSS Keyframes评论内容选项。
+
+如果你直接使用Stylify CSS Unplugin或Bundler，你可以配置CSS关键帧[in the config](/zh/docs/stylify/compiler#keyframes)：
+
+
+```javascript
+stylifyVite({
+	compiler: {
+		keyframes: {}
+	}
+})
+```
+<br />
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="250"
+	title="动画"
+	htmlSnippet="components/animations"
+	withoutComponents
+/>

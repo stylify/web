@@ -1,0 +1,159 @@
+---
+section: snippets
+
+order: 1
+
+navigationTitle: "Stylify"
+
+title: "Fragmentos CSS de Stylify"
+description: "Snippets para la configuración CSS de Stylify para un rápido desarrollo web"
+---
+
+Snippets en esta página son piezas de configuración de uso frecuente.
+Puedes copiarlos en tu configuración, para no tener que escribirla por tu cuenta.
+
+## Selectores personalizados
+
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		// Corrige el tamaño de la caja
+		'*': 'box-sizing:border-box',
+		// Configura la tipografía base a 10 cosas para uso rem
+		// Desplazamiento suave
+		// Mantiene la barra de desplazamiento
+		html: `
+			font-size:62.5%
+			min-width:100%
+			min-height:100%
+			overflow-y:scroll
+			scroll-behavior:smooth
+		`,
+		// Establece el tamaño por defecto de la fuente
+		// Renderizado bonito de la fuente
+		body: 'font-size:1.6rem webkit-font-smoothing:antialiased'
+	}
+}
+```
+
+## Variables
+
+```javascript
+const compilerConfig = {
+	variables: {
+		// Radio del borde
+		radius4: '4px',
+		radius8: '8px',
+		radius12: '12px',
+		radius16: '16px',
+		radius20: '20px',
+		radius24: '24px',
+		circle: '50%',
+
+		// Tamaño de fuente
+		// Espera que font-size:62.5% se establezca en el elemento HTML
+		// Las alturas de línea se estiman a partir de la fuente Arial
+		// => https://grtcalculator.com/
+		font8: '0.8rem', // Altura de línea 1.7rem
+		font12: '1.2rem', // Altura de línea 2rem
+		font14: '1.4rem', // Altura de línea 2.4rem
+		font18: '1.8rem', // Altura de línea 3rem
+		font24: '2.4rem', // Altura de línea 4rem
+		font32: '3.2rem', // Altura de línea 5.4rem
+		font40: '4rem', // Altura de línea 6.7rem
+		font48: '4.8rem', // Altura de línea 8.1rem
+		font56: '5.6rem', // Altura de línea 9.4rem
+		font64: '6.4rem', // Altura de línea 10.8rem
+
+		// Altura de línea
+		// Los tamaños de fuente adecuados están por encima de
+		font17: '1.7rem',
+		font20: '2rem',
+		font24: '2.4rem',
+		font30: '3rem',
+		font40: '4rem',
+		font54: '5.4rem',
+		font67: '6.7rem',
+		font81: '8.1rem',
+		font94: '9.4rem',
+		font108: '10.8rem',
+
+		// Pila de fuentes
+		systemFontStack: `-apple-system,'Segoe_UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica_Neue',Arial,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol'`,
+		georgiaFontStack: `Georgia,serif`,
+		monospaceFontStack: `Consolas,'Courier_New',monospace`
+	}
+}
+```
+
+## Macros
+
+```javascript
+const compilerConfig = {
+	macros: {
+		// Esta macro coincidirá por ejemplo con `typo:16` y generará
+		// la altura de línea para ello. También convertirá el número a tamaño rem.
+		// Espera que el tamaño de la fuente del elemento HTML sea font-size:62.5%.
+		'typo:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			const pixelFontSize = Number(macroMatch.getCapture(0));
+			selectorProperties.addMultiple({
+				'font-size': `${Number(pixelFontSize) * 0.0625}rem`,
+				'line-height': `${pixelFontSize * 1.333 * 0.0625}rem`
+			});
+		}
+	}
+}
+```
+
+## Componentes
+```javascript
+const compilerConfig = {
+	components: {
+		// Texto visualmente oculto pero visible para lectores de pantalla
+		'sr-only': `
+			position:absolute!important
+			overflow:hidden
+			clip:rect(0_0_0_0)
+			width:1px
+			height:1px
+			margin:-1px
+			padding:0
+			border:0
+		`
+	}
+}
+```
+
+## Hooks
+
+```javascript
+import { hooks } from '@stylify/stylify';
+
+/*
+	Este hook escucha una nueva coincidencia de tamaño de fuente y añade la altura de línea correcta.
+	Por lo tanto no tienes que añadir la altura de línea.
+*/
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
+		return;
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
+
+	// Ajuste los números de corrección de fuente a continuación para que se ajusten a sus necesidades
+	const smallFontSizeCorrection = 1.6;
+	const largeFontSizeCorrection = 1.2;
+	// El 32 es para font-size:32px. Las fuentes más grandes como los títulos pueden no necesitar
+	// una altura de línea tan grande como 16px o 18px dentro de un artículo.
+	const fontCorrection = pixelFontSize > 32 ? largeFontSizeCorrection : smallFontSizeCorrection;
+
+	// Esto añade la altura de la línea y anula el tamaño de la fuente en la unidad rem.
+	selectorProperties.addMultiple({
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * fontCorrection}rem`
+	});
+});
+```

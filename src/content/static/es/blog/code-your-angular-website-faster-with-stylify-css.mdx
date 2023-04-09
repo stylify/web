@@ -1,0 +1,123 @@
+---
+title: 'Codifica tu web Angular más rápido con Stylify CSS'
+image: '/images/blog/stylify-angular/header.jpg'
+ogImage: '/images/blog/stylify-angular/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation: 'Codifica tu web Angular más rápido con Stylify CSS'
+createdAt: 'November 28, 2022'
+---
+
+Dale estilo a tu aplicación Angular de forma rápida y sencilla con [Stylify CSS](/). Divide CSS para páginas grandes o crea un bundle para toda una app y obtén CSS extremadamente pequeño.
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Instalación
+Primero, instala el paquete [@stylify/bundler](/es/docs/bundler) usando NPM o Yarn:
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+También para el modo watch, necesitamos ejecutar dos tareas paralelas. Esto se puede resolver usando concurrently:
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+A continuación, crea un archivo, por ejemplo `stylify.js`:
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// Opcional
+	compiler: {
+		mangleSelectors: !isDev,
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+});
+
+// Esto agrupa todo el CSS en un archivo
+// Puede configurar el Bundler para agrupar el CSS de cada página por separado
+// Ver el enlace de bundler más abajo
+bundler.bundle([
+	{
+		files: ['./src/**/*.html', './src/**/*.ts'],
+		outputFile: './src/styles.css',
+	},
+
+	// También puedes dividir CSS para cada componente
+	// Puede asignar archivos dentro de los componentes utilizando la opción de comentario de contenido
+	// https://stylifycss.com/en/docs/bundler#files-content-option
+	// Stylify toma esa opción y busca los archivos definidos. Si el archivo definido
+	// también tiene una opción, id comprueba también esos archivos y así sucesivamente.
+	// De esta manera mapea todos los archivos y todas las dependencias.
+	/*
+	{
+		files: ['./src/app/app.component.*'],
+		outputFile: './src/app/app.component.css',
+	},
+	*/
+]);
+
+```
+
+Si no defines múltiples paquetes, todo se agrupará en `styles.css`. Si defines múltiples paquetes, no olvides añadir las rutas a los archivos generados en los componentes de Angular.
+
+El último paso es añadir scripts en el `package.json`:
+
+```javascript
+"scripts": {
+	"dev": "concurrently 'yarn stylify.dev' 'ng serve -c development'",
+	"prod": "yarn stylify.build & ng serve",
+	"stylify.build": "node stylify.js",
+	"stylify.dev": "node stylify.js --w"
+}
+```
+
+En producción, obtendrás CSS optimizado y HTML manipulado:
+```html
+<h1 class="font-size:24px color:#dd0031 font-family:arial">
+<h1>¡Hola Mundo!
+</h1>
+```
+
+```css
+.a{font-size:24px}
+.b{color:#dd0031}
+.c{font-family:arial}
+```
+
+## Stackblitz Playground
+Adelante y prueba [Stylify CSS + Angular on Stackblitz](https://stackblitz.com/edit/stylifycss-angular-example?file=src%2Fapp%2Fapp.component.html).
+
+## Configuración
+Los ejemplos anteriores no incluyen todo lo que Stylify puede hacer:
+- Definir [componentes](/es/docs/stylify/compiler#components)
+- Añadir [selectores personalizados](/es/docs/stylify/compiler#customselectors)
+- Configura [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para `margin-left`
+- Define [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Y mucho más
+
+No dudes en [consultar la documentación](/es/docs/get-started) para aprender más 💎.

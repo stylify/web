@@ -1,0 +1,142 @@
+---
+section: snippets
+
+order: 1
+
+ogImage: '/snippets/material-theme/og-image-v3.jpg'
+
+navigationTitle: "Material Theme"
+
+title: "Integración de temas generados por Material Theme Builder (Material You)"
+description: "Aprende a empezar a usar Material Theme generado (Material You) con Stylify CSS en un minuto"
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
+
+Si planea utilizar Material Theme en su sitio web, es posible que desee generar una paleta de colores y un tema utilizando [Material Theme Builder](https://m3.material.io/theme-builder#/custom).
+
+<StackBlitzLink link="stylify-material-theme-example" />
+
+Material Theme Builder genera archivos CSS que contienen variables para el modo claro/oscuro de tu proyecto. Te permite configurar la paleta de colores que desees en muy poco tiempo. A continuación se muestra una guía sobre cómo generar un tema y cómo integrarlo en Stylify CSS.
+
+## Cómo obtener un Tema Material personalizado
+Generar el tema deseado con el Material Theme Builder es sencillo:
+- Ir a la página web [Material Theme Builder](https://m3.material.io/theme-builder#/custom).
+- En la parte izquierda (en Escritorio), haz clic en el color primario.
+- Aparecerá el diálogo del generador de colores. Seleccione su color favorito.
+- Opcionalmente, repita este proceso para un color secundario, terciario y neutro.
+- Cuando termines la configuración, en la esquina superior derecha, hay un botón de exportación
+- Haz clic en él y selecciona Web (CSS).
+- Descarga el archivo y extráelo en tu proyecto.
+
+En caso de que te preguntes, cómo usar cada color, asegúrate de revisar la sección debajo de la vista previa del dispositivo. Hay paletas de colores con el nombre de cada color:
+- Por ejemplo el color `on-primary` debe ser usado para texto en color `primary`. Esto significa, por ejemplo, un botón con fondo de color primario (púrpura) y texto en color primario (blanco).
+- Los colores se dividen en modo claro/oscuro
+- La guía completa se puede encontrar en [material theme docs](https://m3.material.io/styles/color/the-color-system/color-roles)
+
+<img src="/images/blog/stylify-material-theme/colors-setup.png" loading="lazy" fetchpriority="low" />
+
+## Integrando Material Theme en Stylify CSS
+Para terminar el proceso de configuración, tienes que configurar Stylify, para que sepa, que las variables que empiezan por `md-` son externas y que tiene que reemplazar las variables por variables CSS en lugar de por su valor.
+
+### Con Unplugin
+Esta parte es para las exportaciones de `@stylify/unplugin`: `stylifyVite`, `stylifyWebpack`, `stylifyEsbuild` y `stylifyRollup`.
+
+Si utilizas unplugin en tu proyecto (Next.js, Nuxt.js, SvelteKit, Vite, Webpack, Rollup o cualquier otro), esta guía es lo que estás buscando.
+
+Así que en caso de que utilices uno de ellos en tu proyecto, esta es la configuración para el mismo:
+
+```javascript
+const stylifyConfig = {
+	compiler: {
+		replaceVariablesByCssVariables: true,
+		externalVariables: [
+			// Añadir identificador de variables externas
+			// Este comprueba, si la variable empieza por md-.
+			// Si es así, se marca como externa.
+			// No añadas --md. Los métodos de identificador funcionan con el nombre de la variable Stylify
+			// y no con el nombre de la variable CSS. Stylify añade -- automáticamente
+			// si las variables CSS están habilitadas
+			(variable) => {
+				if (variable.startsWith('md-')) return true;
+			}
+		]
+	}
+	// ...
+};
+
+stylifyVite(stylifyConfig);
+stylifyWebpack(stylifyConfig);
+stylifyRollup(stylifyConfig);
+stylifyEsbuild(stylifyConfig);
+```
+
+### Integración con Astro
+La configuración es la misma que para unplugin.
+
+```javascript
+stylify(stylifyConfig);
+```
+
+### Bundler
+En caso de que uses `@stylify/bundler` directamente, usa la `stylifyConfig` de la sección anterior sobre Integración con Unplugin, pero tienes que pasarla a la inicialización de Bundler.
+
+```javascript
+const bundler = new Bundler({
+	...stylifyConfig
+});
+```
+
+## Uso
+El paso final es importar el tema generado a nuestro proyecto:
+- Extrae el tema generado a tu proyecto.
+- Importa el archivo `theme.css` a tu proyecto (asegúrate de que el directorio es público). Este archivo importará todos los demás archivos necesarios.
+
+<Note>Si te preocupa un poco la optimización, esto también causará al menos 4 peticiones HTTP debido a las reglas `@import` dentro del archivo del tema.
+Puede que quieras copiar el contenido de esos otros archivos en el archivo <code>theme.css</code> o fusionarlos usando algún bundler para disminuir el número de peticiones.</Note>
+
+Cuando el archivo es importado a tu proyecto, puedes empezar a usar las variables CSS de Material Theme en las utilidades de Stylify.
+```html
+<button class="
+	border:none
+	padding:8px_12px
+	border-radius:24px
+
+	background:$md-sys-color-primary
+	color:$md-sys-color-on-primary
+	display-large
+">Botón Material</button>
+```
+
+<img src="/images/blog/stylify-material-theme/buttons.png" alt="" loading="lazy" fetchpriority="low" />
+
+## Limpieza
+En caso de que planees utilizar únicamente las utilidades CSS de Stylify, entonces puedes eliminar el `colors.module.css`. Contiene utilidades para `color` y `background`.
+
+Aparte del módulo de colores, hay un `typography.module.css`. Puede que quieras eliminarlo también y reescribir estas clases en componentes de Stylify usando la sintaxis de componentes dinámicos de Stylify.
+
+```javascript
+const stylifyConfig = {
+	compiler: {
+		componentes: {
+			// Ejemplo para la clase display
+			// Esto coincide con display-small/medium/large
+			// y devuelve utilidades dinámicamente en función del tamaño coincidente
+			'display-(small|medium|large)': ({ matches }) => `
+				font-family:$md-sys-typescale-display-${matches[1]}-font-family-name
+				font-style:$md-sys-typescale-display-${matches[1]}-font-family-style
+				font-weight:$md-sys-typescale-display-${matches[1]}-font-weight
+				font-size:$md-sys-typescale-display-${matches[1]}-font-size
+				letter-spacing:$md-sys-typescale-display-${matches[1]}-tracking
+				line-height:$md-sys-typescale-display-small-height
+				text-transform:$md-sys-typescale-display-${matches[1]}-text-transform
+				text-decoration:$md-sys-typescale-display-${matches[1]}-text-decoration
+			`
+		}
+	}
+}
+```

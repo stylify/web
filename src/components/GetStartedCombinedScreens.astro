@@ -1,0 +1,11 @@
+---
+import ExampleEditor from './ExampleEditor.astro';
+
+const code = `
+<div class="lg||landscape:color:orange sm&&dark:color:grey lg&&dark:color:white">
+	Combined screens
+</div>
+`.trim();
+---
+
+<ExampleEditor { ...Astro.props } showHtml={true} code={code} class="min-height:395px" />

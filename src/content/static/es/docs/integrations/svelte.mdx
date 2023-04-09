@@ -1,0 +1,149 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Svelte"
+navigationIconPath: '/images/brands/svelte.svg'
+image: '/integrations/svelte/header.jpg'
+ogImage: '/integrations/svelte/og-image.jpg'
+
+title: Uso de Stylify CSS en Svelte
+description: "Aprende a utilizar el CSS de Stylify con Svelte. Codifica tu web Svelte más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Svelte.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Svelte es un enfoque radicalmente nuevo de la creación de interfaces de usuario. Mientras que los frameworks tradicionales como React y Vue realizan la mayor parte de su trabajo en el navegador, Svelte desplaza ese trabajo a un paso de compilación que tiene lugar cuando construyes tu aplicación.
+
+Puedes usar Stylify CSS con SvelteKit o con Vite + Svelte App. A continuación hay guías para ambos escenarios.
+
+## Cómo integrar Stylify CSS con SvelteKit
+
+<StackBlitzLink link="stylify-sveltekit-example" />
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade la siguiente configuración en `vite.config.js`:
+
+```javascript
+import { sveltekit } from '@sveltejs/kit/vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.{svelte,html}'],
+	}]
+});
+
+const config = {
+	plugins: [
+		stylifyPlugin,
+		sveltekit(),
+	]
+};
+
+export default config;
+```
+
+El último paso, crear `src/routes/+layout.svelte` con el siguiente contenido `stylify.css`:
+
+```html
+<script>
+	import '../stylify.css';
+</script>
+
+<slot />
+```
+
+En caso de que hayas creado más paquetes, por ejemplo para páginas, tienes que añadir las rutas a esos archivos CSS generados en los archivos Svelte correctos.
+
+Ahora ejecuta `yarn dev`. Se generará el fichero `src/stylify.css`.
+
+## Cómo integrar el CSS de Stylify con Svelte y Vite.js
+
+<StackBlitzLink link="stylify-svelte-vite" />
+
+El ejemplo de abajo funciona con la plantilla Vite - Svelte. Sin embargo, puedes utilizar el ejemplo de abajo y configurarlo para React.js, Vue y cualquier otro framework que utilices.
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade la siguiente configuración en `vite.config.js`:
+
+```javascript
+import { defineConfig } from 'vite'
+import { svelte } from '@sveltejs/vite-plugin-svelte'
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ outputFile: './src/stylify.css', files: ['./src/**/*.svelte'] }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, svelte()]
+});
+```
+
+Ahora puedes añadir la ruta del `src/stylify.css` generado en el archivo `src/main.js`:
+
+```javascript
+import './stylify.css';
+```
+
+Ahora ejecuta `yarn dev`. Se generará el archivo `src/stylify.css`.
+
+## Configuración
+Hay muchas opciones que puedes configurar:
+- [@stylify/unplugin](/es/docs/unplugin)
+- [Compiler config](/es/docs/stylify/compiler)
+
+## Otros consejos
+En caso de que uses la sintaxis de grupo de Stylify como `[h1,h2]{color:blue}`, svelte coincidirá con el `{color` como variable. Para evitarlo, utiliza la sintaxis con llaves y literales de plantilla para los atributos de clase:
+```
+class={` [h1,h2]{color:blue} `}
+```
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

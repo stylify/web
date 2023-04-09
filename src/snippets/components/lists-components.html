@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #D4ACFB;
+			--gradientTo: #B84FCE;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-components
+	list: `
+		padding-left:0
+		li {
+			padding-left:28px margin-bottom:4px position:relative list-style:none
+			&:before { position:absolute left:0 }
+			&:last-of-type { margin-bottom:0 }
+		}
+		&--rating {
+			li.pros:before { content:^👍^ }
+			li.cons:before { content:^👎^ }
+		}
+		&--odd-even {
+			li:nth-child(odd):before { content:^🍎^ }
+			li:nth-child(even):before { content:^🥑^ }
+		}
+		&--checked li:before { content:^✅^ }
+	`
+/stylify-components
+-->
+
+<ul class="list list--checked">
+	<li>Item</li>
+	<li>Item</li>
+	<li>Item</li>
+</ul>
+
+<ul class="list list--odd-even">
+	<li>Odd item</li>
+	<li>Even item</li>
+	<li>Odd item</li>
+	<li>Even item</li>
+</ul>
+
+<ul class="list list--rating">
+	<li class="pros">Pros (.pros)</li>
+	<li class="cons">Cons (.cons)</li>
+</ul>
+
+</div></div></body></html>

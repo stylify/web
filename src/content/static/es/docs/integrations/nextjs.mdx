@@ -1,0 +1,98 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Next.js"
+navigationIconPath: '/images/brands/nextjs.svg'
+image: '/integrations/nextjs/header.jpg'
+ogImage: '/integrations/nextjs/og-image.jpg'
+
+title: Uso de Stylify CSS en Next.js
+description: "Aprende a integrar el CSS de Stylify en Next.js. Codifica tu web Next.js más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Next.js.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en next.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Next.js te ofrece crear aplicaciones React de nivel de producción que escalan.
+
+Stylify se puede integrar fácilmente en Next.js utilizando @stylify/unplugin.
+
+<StackBlitzLink link="stylify-nextjs-template" />
+
+## Cómo integrar el CSS de Stylify en el Next.js
+
+Primero, instala el paquete [@stylify/bundler](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade una configuración en el `next.config.js`:
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const stylifyPlugin = (dev) => stylifyWebpack({
+	dev: dev,
+	bundles: [{ outputFile: './styles/stylify.css', files: ['./pages/**/*.js'] }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+module.exports = {
+	reactStrictMode: true,
+	webpack: (config, { dev }) => {
+		config.plugins.push(stylifyPlugin(dev));
+		return config;
+	}
+}
+```
+
+Y el último paso es añadir el `stylify.css` en el `_app.js`:
+
+```javascript
+import '../styles/globals.css';
+import '../styles/stylify.css';
+
+function MyApp({ Component, pageProps }) {
+	return <Component {...pageProps} />
+}
+
+export default MyApp;
+```
+
+Ahora puedes usar los comandos de Next.js para construir tus assets. En producción, manipulará los selectores.
+
+<DocsUnpluginBuildInfo bundler="Next" />
+
+<WhereToNext />

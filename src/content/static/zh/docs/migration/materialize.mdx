@@ -1,0 +1,114 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Materialize"
+navigationIconPath: '/images/brands/materialize.svg'
+image: '/migration/materialize/header.jpg'
+ogImage: '/migration/materialize/og-image.jpg'
+
+title: "如何从Materialize CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从Materialize CSS组件框架迁移到Stylify的效用优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Materialize组件框架和Stylify的实用优先CSS的特性和语法，并让你了解如何从Materialize迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+
+Materialize是一个基于Material Design的现代响应式前端框架。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize为颜色、排版、网格等属性提供了很多实用工具：
+
+```html
+<span class="blue-text text-darken-2">这是一个带有深蓝色文字的卡片面板</span>
+<div class="row">
+	<div class="col s1">1</div>
+	<div class="col s1">2</div>
+</div>
+<p class="flow-text">我是流动文本</p>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+我找不到任何信息表明Materialize提供了类似动态全局选择器的东西。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize是一个基于组件的框架。因此，有大量的组件，如按钮、徽章、表单、表格、菜单等：
+
+```html
+<span class="badge">1</span>
+<a class="btn-floating btn-large waves-effect waves-light red">
+	<i class="material-icons">add</i>
+</a>
+<ul class="pagination">
+	<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+	<li class="active"><a href="#!">1</a></li>
+	<li class="waves-effect"><a href="#!">2</a></li>
+	<li class="waves-effect"><a href="#!">3</a></li>
+	<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize CSS可以通过修改下载的SCSS文件和在构建过程中生成一个新的主题来进行配置。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

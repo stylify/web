@@ -1,0 +1,125 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Laravel"
+navigationIconPath: '/images/brands/laravel.svg'
+image: '/integrations/laravel/header.jpg'
+ogImage: '/integrations/laravel/og-image.jpg'
+
+title: Uso de Stylify CSS en Laravel Framework
+description: "Aprende a utilizar Stylify CSS con el Framework Laravel. Codifica tu sitio web Laravel más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Laravel.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Laravel es un framework de aplicaciones web PHP con una sintaxis expresiva y elegante.
+
+Stylify se puede integrar en Laravel utilizando el plugin Stylify CSS Vite.
+
+<Note>Ejemplo de integración para el framework Laravel se puede encontrar en <a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en el framework Laravel.
+
+Primero instala [Stylify unplugin](/es/docs/unplugin):
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+Abre el `vite.config.js` y añade el plugin CSS de Stylify:
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
+	// Opcional - https://stylifycss.com/en/docs/unplugin
+	compiler: {},
+});
+
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		stylifyPlugin,
+		laravel({
+			// Añadir ruta a los archivos generados
+			input: ['resources/js/app.js', 'resources/css/stylify.css'],
+			refresh: true,
+		}),
+	],
+}));
+```
+
+Añade la ruta a `resources/css/stylify.css` en la plantilla:
+
+```html
+<head>
+	@vite('resources/css/stylify.css')
+</head>
+```
+
+Ahora cuando ejecutes el comando `dev` en `package.json`, el CSS será generado. Cuando ejecutes `build`, el CSS también será modificado.
+
+## Para versiones antiguas de Laravel con Webpack
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade el plugin CSS de Stylify en el `webpack.mix.js`:
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{
+		outputFile: './resources/css/homepage.css',
+		files: ['./resources/views/welcome.blade.php']
+	}],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+mix.webpackConfig({
+	mode: 'development',
+	plugins: [stylifyPlugin]
+});
+```
+
+Ahora puedes usar los comandos para laravel mix.
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

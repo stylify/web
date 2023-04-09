@@ -1,0 +1,71 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Node.js
+navigationIconPath: '/images/brands/nodejs.svg'
+image: '/integrations/nodejs/header.jpg'
+ogImage: '/integrations/nodejs/og-image.jpg'
+
+title: Uso de Stylify CSS en Node.js
+description: "Aprende a utilizar el CSS de Stylify en el entorno Node.js. Codifica tu sitio web potenciado por Node.js más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Node.js.'
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "Instala el paquete @stylify/stylify usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "A continuación, crea un archivo, por ejemplo stylify.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+
+Node.js es un runtime JavaScript construido sobre el motor JavaScript V8 de Chrome.
+
+Stylify se puede utilizar directamente [@stylify/stylify](/es/docs/stylify) o a través del paquete [@stylify/bundler](/es/docs/bundler).
+
+<Note>El ejemplo de integración para Node.js se puede encontrar en <a href="https://github.com/stylify/integrations-examples/tree/master/nodejs" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en Node.js
+
+Puedes crear tu propio proceso de compilación o utilizar el paquete [@stylify/bundler](/es/docs/bundler).
+
+### Usando @stylify/stylify directamente
+
+Para más información consulta [Stylify documentation](/es/docs/stylify):
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+const compiler = new Compiler({
+	// https://stylifycss.com/en/docs/stylify/compiler#variables
+	variables: {},
+	// https://stylifycss.com/en/docs/stylify/compiler#macros
+	macros: {},
+	// https://stylifycss.com/en/docs/stylify/compiler#components
+	components: {},
+	// ...
+});
+
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+```
+
+### Usando el paquete @stylify/bundler
+
+Para más información ver [documentación de bundler](/es/docs/bundler).

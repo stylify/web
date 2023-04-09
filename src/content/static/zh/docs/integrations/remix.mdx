@@ -1,0 +1,111 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Remix"
+navigationIconPath: '/images/brands/remix.svg'
+image: '/integrations/remix/header.jpg'
+ogImage: '/integrations/remix/og-image.jpg'
+
+title: 在Remix中使用Stylify CSS
+description: "了解如何将Stylify CSS集成到Remix中。用Stylify CSS更快地给你的Remix网站编码。"
+howToSchemaTitle: "如何在Remix中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "使用YARN或NPM等CLI安装@stylify/bundler软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text":  "接下来，创建一个文件，例如stylify.js。" ,
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Remix是一个全栈式的Web框架，让你专注于用户界面，并通过Web标准进行回溯，提供快速、流畅、有弹性的用户体验。
+
+Stylify可以使用Bundler集成到Remix中。
+
+<StackBlitzLink link="stylify-remix-example" />
+
+## 如何将Stylify的CSS集成到Remix中
+
+首先，使用NPM或Yarn安装[@stylify/bundler](/zh/docs/bundler)软件包：
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+同样对于观察模式，我们需要运行两个并行任务。这可以用并发的方式来解决：
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+接下来，创建一个文件，例如`stylify.js`：
+
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// 这将所有的CSS捆绑到一个文件中
+// 你可以配置捆绑器，为每个页面单独捆绑CSS。
+// 请看下面的捆绑器链接
+bundler.bundle([
+	{files: ['./app/**/*.tsx'], outputFile: './app/styles/stylify.css' },
+]);
+```
+
+当捆绑器配置好后，在`app/root.tsx`中添加Stylify CSS的路径：
+
+```jsx
+import styles from '~/styles/stylify.css';
+
+export function links() {
+	return [{ rel: 'stylesheet', href: styles }];
+}
+```
+
+最后一步是在`package.json`中添加脚本：
+
+```javascript
+"scripts": {
+	"build": "yarn stylify:build & cross-env NODE_ENV=production remix build",
+	"dev": "concurrently 'yarn stylify:dev' 'cross-env NODE_ENV=development remix dev'",
+	"stylify:build": "node stylify.js",
+	"stylify:dev": "node stylify.js --w"
+}
+```
+
+现在当你运行`yarn dev`时，CSS文件将被生成。在生产中，选择器会被处理掉。
+
+你可以根据自己的需要定制上面的构建。
+
+<WhereToNext packageName="bundler" />

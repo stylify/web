@@ -1,0 +1,163 @@
+---
+title: "🚀 使用Stylify CSS更快地编码你的SvelteKit网站"
+image: '/images/blog/stylify-sveltekit/header.jpg'
+ogImage: '/images/blog/stylify-sveltekit/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "用Stylify更快、更直观地给你的SvelteKit网站设计风格。了解如何定义组件、变量并获得极其优化的CSS。"
+createdAt: 'January 2, 2023'
+---
+
+[Stylify](/) + SvelteKit. 用Stylify更快地为你的SvelteKit网站设计风格。不要研究选择器和语法。使用纯粹的CSS语法，并获得生成的CSS，并对生产进行高级优化。
+
+为了更容易入门，你可以查看[Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-sveltekit-example?file=src%2Froutes%2F%2Bpage.svelte) 🎮。
+
+## 💎 Stylify CSS简介
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了什么问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 🚀 SvelteKit设置
+设置SvelteKit的最简单方法是使用CLI：
+- 运行`yarn create svelte@latest`。
+- 然后`cd app`。
+
+这样你就会得到默认的SvelteKit应用程序骨架。
+
+## 🔌 Stylify CSS集成
+使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```bash
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+打开`vite.config.js`并复制以下内容到其中：
+
+```javascript
+import { sveltekit } from '@sveltejs/kit/vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.svelte'],
+	}]
+});
+
+const config = {
+	plugins: [
+		stylifyPlugin,
+		sveltekit(),
+	]
+};
+
+export default config;
+```
+
+最后一步，创建`src/routes/+layout.svelte`，内容如下`stylify.css`：
+
+```html
+<script>
+	import '../stylify.css';
+</script>
+
+<slot />
+```
+
+如果你创建了更多的包，例如页面，你必须将这些生成的CSS文件的路径添加到正确的Svelte文件中。
+
+## 塑造网站的风格
+如果你把下面的代码复制到 "src/routes/+page.svelte "中，然后运行 "yarn dev"，就会得到一个有风格的 "你好，世界! 🎉"文本：
+
+```html
+<main class="max-width:800px margin:0_auto">
+	<h1 class="text-align:center margin-top:100px font-size:42px">。
+		你好，世界! 🎉
+	</h1>
+</main>
+```
+
+Stylify会观察文件中与bundle文件中的掩码相匹配的任何变化，并将CSS生成到`src/stylify.css`中。
+
+例如，如果你添加了`color:blue`，CSS就会自动更新 🎉。
+
+请直接在[Stackblitz.com](https://stackblitz.com/edit/stylify-sveltekit-example?file=src%2Froutes%2F%2Bpage.svelte) 💡尝试Stylify CSS。
+
+### 组件
+为了避免实用程序带来的臃肿模板，你可以在文件中直接使用
+组件，它们通过[content options](/zh/docs/get-started#定义一个组件)(期望有javascript对象，没有括号)或在[compiler config](/zh/docs/get-started#定义一个组件)中直接使用。
+
+```html
+<!--
+stylify-components
+	container: 'max-width:800px margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:42px'
+/stylify-components
+-->
+<main class="container">
+	<h1 class="title">
+		你好，世界! 🎉
+	</h1>
+</main>
+```
+
+### 变量
+如果你喜欢简洁的代码，你也想避免选择器中的硬编码值。[变量](/zh/docs/get-started#adding-a-variable)可以用与组件相同的方式定义：
+
+```html
+<!--
+stylify-variables
+	titleFontSize: '42px',
+	containerWidth: '800px'
+/stylify-variables
+
+stylify-components
+	container: 'max-width:$containerWidth margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:$titleFontSize'
+/stylify-components
+-->
+<main class="container">
+	<h1 class="title">
+		你好，世界! 🎉
+	</h1>
+</main>
+```
+
+## 为生产而构建
+如果你运行`yarn build`+`yarn preview`，svelte标记将被修改成这样：
+
+```html
+<main class="a">
+	<h1 class="b">
+		你好，世界! 🎉
+	</h1>
+</main>
+```
+
+CSS也被缩短了：
+```css
+:root {--titleFontSize: 42px;--containerWidth: 800px;}
+.c,.a{max-width:800px}
+.d,.a{margin:0 auto}
+.e,.b{text-align:center}
+.f,.b{margin-top:100px}
+.g,.b{font-size:42px}
+```
+
+## 配置任何你需要的东西
+上面的例子并不包括Stylify能做的一切：
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)
+- 样式[全局选择器](/zh/docs/stylify/compiler#customselectors)
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 添加[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`表示 margin-left。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

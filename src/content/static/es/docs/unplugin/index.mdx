@@ -1,0 +1,128 @@
+---
+section: unplugin
+
+order: 0
+
+navigationTitle: "@stylify/unplugin"
+
+title: "@stylify/unplugin"
+description: "Stylify Unplugin es un plugin universal para Webpack, Vite.js y Rollup.js y ESbuild."
+---
+import WhereToNext from '@components/WhereToNext.astro';
+
+Unplugin es un plugin universal para Webpack, Vite.js y Rollup.js y ESbuild.<br />
+Bajo el capó utiliza [unplugin](https://github.com/unjs/unplugin).
+
+## Instalación
+
+Unplugin sólo se puede instalar a través de CLI como NPM o Yarn:
+```
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+## Uso
+
+Unplugin se puede utilizar dentro de Webpack, Vite.js y Rollup.js.
+Cada herramienta tiene su propia página de documentación:
+- [Webpack](/es/docs/integrations/webpack)
+- [Vite.js](/es/docs/integrations/vitejs)
+- [Rollup.js](/es/docs/integrations/rollupjs)
+
+## Configuración
+La configuración para Unplugin es siempre la misma para cada bundler
+
+```javascript
+import {
+	unplugin, defineConfig
+	stylifyVite, stylifyRollup, stylifyWebpack, stylifyEsbuild
+} from '@stylify/unplugin';
+
+const config = defineConfig({
+	// --- Requerido
+	// Ver https://stylifycss.com/en/docs/bundler#configuration
+	// Parte Array de bundles
+	bundles: [],
+
+	// --- Opcional
+	// Ruta al archivo de configuración. Si no se especifica esta opción
+	// unplugin intentará encontrar la configuración en process.cwd() dir
+	// que suele ser la raíz del proyecto.
+	// Por defecto busca stylify.config.(js|mjs|cjs).
+	configFile: '',
+	// true | false
+	// Por defecto es null. Si se detecta un valor nulo
+	// el plugin intenta detectar el entorno
+	dev: null,
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// Véase https://stylifycss.com/en/docs/bundler#configuration
+	bundler: {
+		bundles: []
+	},
+	// Id es un nombre de archivo
+	// Devuelve true, si el tipo o nombre de archivo debe ser procesado
+	// El ejemplo es con sufijo HTML
+	// Por defecto Stylify CSS comprueba si el archivo no está en node_modules
+	// y también comprueba si hay varios tipos de archivos
+	// listados aquí https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
+	transformIncludeFilter: (id) => id.endsWith('html')
+});
+
+let webpackPlugin = stylifyWebpack(config);
+let vitePlugin = stylifyVite(config);
+let rollupPlugin = stylifyRollup(config);
+let esbuildPlugin = stylifyEsbuild(config);
+```
+
+## Fichero de configuración externo
+Si desea mover la configuración fuera de la configuración del proyecto, utilice la opción `configFile` mencionada anteriormente. Por defecto, unplugin busca archivos `stylify.config.(js|mjs|cjs)`. Si alguno de ellos es encontrado, es procesado.
+
+A continuación se muestra un ejemplo de exportación de config. El método Define config es opcional. Es sólo un ayudante que proporciona una mejor experiencia Typescript.
+
+JS común (CJS):
+
+```javascript
+const { defineConfig } = require('@stylify/unplugin');
+
+// Con defineConfig
+module.exports = defineConfig(() => ({
+	bundles: [
+		{ outputFile: './index.css', files: ['./index.html'] }
+	]
+});
+
+// Sin defineConfig
+module.exports = {
+	// ...
+}
+
+```
+
+Módulos (ESM):
+
+```javascript
+import { defineConfig } from '@stylify/unplugin';
+
+// Con defineConfig
+export default defineConfig(() => ({
+	bundles: [
+		{ outputFile: './index.css', files: ['./index.html'] }
+	]
+});
+
+// Sin defineConfig
+export default {
+	// ...
+}
+```
+
+<WhereToNext />

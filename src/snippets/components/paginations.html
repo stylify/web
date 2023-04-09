@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #099773;
+			--gradientTo: #43B692;
+		}
+		.content { min-width:360px }
+	</style>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#099773',
+	borderColor: '#ddd'
+/stylify-variables
+-->
+
+<nav class="
+	display:flex
+	[a]{border-color:$borderColor;border-style:solid;transition:.3s;will-change:background;display:inline-flex;align-items:center;justify-content:center;min-width:46px;padding:12px;white-space:nowrap;font-weight:700;letter-spacing:0.1px;outline:none;font-size:16px;color:#222;user-select:none;text-decoration:none;transition:background_0.3s}
+	[a:not(:first-of-type)]{border-width:1px_1px_1px_0}
+	[a:first-of-type]{border-width:1px;border-radius:8px_0px_0px_8px}
+	[a:last-of-type]{border-radius:0_8px_8px_0}
+	[a.s-disabled]{color:#888;cursor:default}
+	[a.s-active]{background:$color;color:#fff;border-color:$color;cursor:default}
+	[a:not(.s-active):not(.s-disabled)]{hover:background:$borderColor}
+">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-active">2</a>
+	<a href="#">3</a>
+	<a href="#">Next</a>
+</nav>
+
+<br>
+
+<nav class="
+	display:flex gap:8px
+	[a]{border-color:$borderColor;border-style:solid;transition:.3s;will-change:background;display:inline-flex;align-items:center;justify-content:center;min-width:46px;padding:12px;white-space:nowrap;font-weight:700;letter-spacing:0.1px;outline:none;font-size:16px;color:#222;user-select:none;text-decoration:none;transition:background_0.3s}
+	[a]{border-width:1px;border-radius:8px}
+
+	[a.s-disabled]{color:#888;cursor:default}
+	[a.s-active]{background:$color;color:#fff;border-color:$color;cursor:default}
+	[a:not(.s-active):not(.s-disabled)]{hover:background:$borderColor}
+">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-disabled">...</a>
+	<a href="#" class="s-active">10</a>
+	<a href="#">11</a>
+	<a href="#">Next</a>
+</nav>
+
+<br>
+
+<nav class="
+	[a]{transition:.3s}
+	[a]{display:inline-flex;align-items:center;justify-content:center;min-width:46px;padding:12px;white-space:nowrap;font-weight:700;letter-spacing:0.1px;outline:none;font-size:16px;color:#222;user-select:none;text-decoration:none;transition:background_0.3s}
+	[a]{border-radius:8px}
+
+	[a.s-disabled]{color:#888;cursor:default}
+	[a.s-active]{color:$color;cursor:default}
+	[a:not(.s-active):not(.s-disabled)]{hover:background:$borderColor}
+">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-active">2</a>
+	<a href="#">3</a>
+	<a href="#">Next</a>
+</nav>
+
+</div></div></body></html>

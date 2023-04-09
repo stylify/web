@@ -1,0 +1,228 @@
+---
+title: "Estilización de aplicaciones React: Stylify CSS vs Styled Components"
+image: '/images/blog/stylify-styled-components/header.jpg'
+ogImage: '/images/blog/stylify-styled-components/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Estilización de aplicaciones React: Stylify CSS vs Styled Components"
+createdAt: 'August 21, 2022'
+---
+
+[Stylify](/) genera CSS basado en lo que escribes. Funciona con cualquier framework y con cualquier herramienta. Styled Components es una librería para estilizar componentes React.
+
+Este artículo no trata de qué herramienta es mejor, sino de comparar enfoques a la hora de estilizar la aplicación con estas herramientas.
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores tipo CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Configuración
+Para todos los ejemplos a continuación, voy a utilizar la configuración de vite-react.
+
+[Stylify](/) requiere la instalación y un poco de configuración. Esto se debe a que el CSS se genera durante la compilación antes de que la aplicación se inicialice:
+```
+npm i -D @stylify/unplugin
+```
+
+Y el vite.config.js:
+```javascript
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.js', './src/**/*.jsx'],
+	}]
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, react()]
+});
+```
+
+Puedes intentar editar los ejemplos [Stylify+Vite+React](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) y [Stylify+Next](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages/index.js) en Stackblitz.
+
+Styled Components sólo requiere instalar la librería y puede usarse inmediatamente.
+```
+npm i styled-components
+```
+
+## Sintaxis y uso
+Cuando quieras dar estilo a un elemento con Styled Components, puedes usar la API CSS o crear un componente:
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+`;
+
+<Title>¡Hola Mundo!🎉</Title>
+```
+
+El CSS generado tiene el siguiente aspecto:
+```css
+.sc-bdVaJa {} .knKEua{color:blue;font-weight:bold;}
+```
+
+[Stylify](/) por otro lado toma el contenido del archivo y genera CSS para cada selector coincidente. Cada selector es por defecto una utilidad y se genera sólo una vez.
+
+La [sintaxis](/es/docs/stylify/compiler/#sintaxis)es por defecto CSS nativo `propiedad:valor`. Además, al escribir valores, puedes usar `_` (guión bajo) en lugar de espacio y `^` para las comillas. Es similar a Tailwind, pero sin tener que aprender y recordar los selectores y atajos personalizados. Si sabes CSS ya conoces los selectores CSS de Stylify. En caso de que necesites selectores más cortos o personalizados, puedes [añadir tus propias macros](/es/docs/stylify/compiler#macros).
+
+Los selectores se pueden escribir directamente sin definir un componente.
+```jsx
+<div className="color:blue font-weight:bold">¡Hola Mundo!🎉</div>
+```
+
+Salida CSS:
+```css
+.color\:blue {color:blue}
+.font-weight\:bold {font-weight:bold}
+```
+
+Sin embargo, nadie quiere plantillas hinchadas con utilidades. A veces los [componentes](/es/docs/stylify/compiler#components) son necesarios. Se pueden definir globalmente en una configuración o localmente en un archivo (a través de [opciones de contenido](/es/docs/stylify/compiler/#contentoptionsprocessors)), donde se utilizan. En el archivo, se espera un objeto javascript sin los corchetes circundantes. La definición se recomienda dentro de los comentarios porque casi cualquier formato de archivo puede manejar comentarios. En [Stylify](/) el componente es una clase CSS y puede usarse en cualquier elemento:
+```jsx
+/*
+stylify-components
+	title: 'color:blue font-weight:bold'
+/stylify-components
+*/
+<div className="title">¡Hola Mundo!🎉</div>
+```
+
+El selector `title` en el CSS se adjunta a cada selector que requiere. Debido a eso, hay menos selectores/duplicados y el CSS es más pequeño.
+```css
+.color\:blue,.title{color:blue}
+.font-weight\:bold,.title{font-weight:bold}
+```
+
+Cuando se trata de la producción, los selectores pueden ser minified:
+```jsx
+<div class="d">¡Hola Mundo!🎉</div>
+```
+
+```css
+.a,.d{color:blue}
+.b,.d{font-weight:bold}
+```
+
+### Consultas de medios
+Cuando necesitamos un estilo diferente para varias consultas de medios, podemos hacerlo así en Styled Components:
+```jsx
+const Title = styled.div`
+	color:blue
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+```
+
+Con Stylify, puedes usar [pantallas predefinidas o dinámicas](/es/docs/stylify/compiler/#screens):
+```jsx
+/*
+stylify-components
+	title: `
+		color:blue
+		md:color:red
+		minw640px:color:orange
+	`
+/stylify-components
+*/
+<div className="title">¡Hola Mundo!🎉</div>
+```
+
+### Variables
+Las variables se pueden utilizar dentro de los Styled Components directamente en los estilos:
+
+```jsx
+const Title = styled.div`
+	color: ${props => props.color || "red"}
+`;
+```
+
+Stylify permite definir [variables](/es/docs/stylify/compiler/#variables) y luego usarlas dentro de los selectores:
+```jsx
+/*
+stylify-variables
+	blue: '#005EB8',
+	red: '#8b0000'
+/stylify-variables
+
+stylify-components
+	title: 'color:$blue'
+/stylify-components
+*/
+<div className="color:$red"></div>
+```
+
+Cuando se da el caso de que necesitamos varios tipos de un botón, necesitamos escribir los selectores completos en stylify
+```jsx
+<div className={`wrapper searchDiv ${isOrangeButton ? 'color:orange' : 'color:blue'}`}></div>
+```
+
+### Fotogramas clave
+Los keyframes en los Styled Components se pueden definir así:
+```jsx
+const rotate = keyframes`
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+`;
+
+const Rotate = styled.div`
+	animation: ${rotate} 2s linear infinite;
+`;
+```
+
+En Stylify CSS se ve un poco diferente
+```jsx
+/*
+stylify-keyframes
+	rotate: `
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	`
+/stylify-keyframes
+*/
+<div class="animation:rotate_2s_linear_infinite"></div>
+```
+Un ejemplo de animación simple:
+<img src="/images/blog/stylify-styled-components/stylify-keyframes.gif" width="851" height="402" loading="lazy" decoding="async" class="object-fit:cover max-width:100% height:auto" />
+
+### Selectores simples
+Cuando se trata de estilos globales y selectores simples, se pueden definir dentro de los Styled Components usando `createGlobalStyle`:
+```jsx
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+	button { color:red }
+`;
+
+<React.Fragment>
+	<GlobalStyle />
+</React.Fragment>
+```
+
+En Stylify, se consigue lo mismo usando [selectores planos](/es/docs/stylify/compiler/#customselectors). Los selectores se inyectan directamente en el archivo CSS generado.
+```jsx
+/*
+stylify-customSelectors
+	button: 'color:red'
+/stylify-customSelectors
+*/
+<button></button>
+```
+
+## Dividiendo CSS
+Styled Components hace un buen trabajo cuando se trata de optimización, ya que divide automáticamente el CSS en crítico y no crítico e inyecta el CSS de aquellos componentes que se utilizan. Sin embargo, la compilación se realiza cuando la aplicación se está ejecutando.
+
+Stylify no funciona así.
+Genera archivos CSS de acuerdo con tu configuración y tienes que decirle a la app cuándo debe cargarse el CSS.
+Puedes configurar un bundle para cada `page/component/layout` por separado. Aunque puedes dividir el CSS como quieras, gracias a la combinación utilidades/componentes el tamaño del CSS va a ser relativamente pequeño ya que los selectores se generan sólo una vez. Así que a veces tiene sentido tener sólo Front + Admin CSS. El sitio web de Stylify tiene menos de `20 Kb` y otros sitios web están entre `30-50 Kb`.
+Una característica más es, que no ralentiza la aplicación porque el CSS se genera antes de que la aplicación se inicializa.
+
+## ¡Gracias por la ayuda!
+También un gran agradecimiento a [Luke Shiru](https://twitter.com/lukeshiru) por revisar la información sobre los Styled Components.

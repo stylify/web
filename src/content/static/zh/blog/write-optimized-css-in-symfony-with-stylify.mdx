@@ -1,0 +1,193 @@
+---
+title: 用Stylify在Symfony中编写优化的CSS
+image: '/images/blog/stylify-symfony/header.jpg'
+ogImage: '/images/blog/stylify-symfony/og-image-v2.jpg'
+author: 'Vladimír Macháček'
+annotation:  "停留在Twig和PHP文件中，使用类似CSS的工具来获得优化的CSS。了解如何用Stylify CSS在Symfony网络应用中编写优化的CSS。"
+createdAt: 'June 14, 2022'
+---
+
+
+## 介绍
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了什么问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## Symfony快速设置🚀
+为了更容易开始，你可以查看[集成实例](https://github.com/stylify/integrations-examples/tree/master/symfony) 🎮。
+
+最简单的开始方式是使用Symfony骨架和Web App包。
+```
+composer create-project symfony/skeleton myproject/
+cd myproject
+composer require webapp
+npm install
+```
+
+添加HpController `src/Controller/HpController.php`。
+
+```php
+<?php
+
+namespace App\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\Response;
+
+class HomeController extends AbstractController
+{
+	#[Route('/')]
+	public function home(): Response
+	{
+		return $this->render('hp.html.twig');
+	}
+}
+```
+
+和主页模板`templates/hp.html.twig`。
+```twig
+{% extends "base.html.twig" %}
+{% block body %} 你好，世界! {% endblock %}
+```
+
+## Stylify CSS集成
+
+安装Stylify CSS通用插件。
+```
+npm i @stylify/unplugin
+```
+
+更新 `webpack.config.js`. 导入Stylify，添加该插件和`hp`样式条目。
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+const path = require('path');
+// ...
+const layoutCssPath = './assets/styles/layout.css';
+const homepageCssPath = './assets/styles/homepage.css';
+
+Encore
+	.addPlugin(stylifyWebpack({
+		bundles: [
+			{ outputFile: layoutCssPath, files: [
+				'./templates/base.html.twig'
+			]},
+			{ outputFile: homepageCssPath, files: [
+				'./templates/hp.html.twig'
+			]}
+		]
+	}))
+	.addStyleEntry('homepage', homepageCssPath)
+	// ...
+```
+
+将`assets/app.js`中的`app.css`改为`layout.css`并将CSS链接添加到`hp.html.twig`中。
+
+```twig
+{% block stylesheets %}
+	{{ parent() }}
+	{{ encore_entry_link_tags('hp') }}
+{% endblock %}
+```
+
+## 塑造网站的风格
+设置完成后，编辑`hp.html.twig`。
+```html
+<div class="color:blue">你好，世界! </div>
+```
+并运行`npm run dev`。
+
+Stylify会找到`color:blue`选择器，并为其生成CSS。`.color\:blue{color:blue}`放入`homepage.css`。
+
+有些代码经常需要在多个页面上重复使用。通过实用工具和选择器中的硬编码单位来实现臃肿的模板不是一个好主意。让我们来定义一个`container`组件和一些变量。
+
+打开`webpack.config.js`，编辑Stylify CSS插件的配置：
+```javascript
+.addPlugin(stylifyWebpack({
+	// ...
+	compiler: {
+		variables: {
+			containerSize: '800px',
+			textColor: 'blue'
+		},
+		components: {
+			container: 'max-width:$containerSize margin:0_auto'
+		}
+	}
+}));
+```
+
+现在我们可以更新`base.html.twig`了
+```twig
+<div class="container">{% block body %}{% endblock %}</div>
+```
+
+和 `hp.html.twig`：
+
+```twig
+<div class="color:$textColor">你好，世界! </div>
+```
+
+有时，有些组件只在一个地方使用。在`webpack.config.js`中定义它们就没有意义了。我们也可以直接在使用的文件中定义组件、变量等。Stylify CSS有[内容选项](/zh/docs/stylify/compiler#contentoptionsprocessors)来实现。
+
+让我们在`hp.html.twig`中添加一个段落组件：
+
+```twig
+{#
+stylify-components
+	'text-block': `
+		font-size:16px
+		margin:12px_0
+		md:margin:24px_0
+	`
+/stylify-components
+#}
+...
+{% block body %}
+	...
+	<div class="text-block">第一段文字</div>
+	<div class="text-block">第二段文字</div>
+{% endblock %}
+```
+
+## 生产构建
+当我们运行生产构建时`npm run build`，Stylify CSS会自动处理所有被识别的选择器并生成优化的CSS。
+
+优化后的`hp.html.twig`：
+```twig
+{% block body %}
+	<div class="a">你好，世界! </div>
+	<div class="b">第一个文本</div>
+	<div class="b">第二段文字</div>
+{% endblock %}
+```
+
+优化的hp CSS：
+```css
+.a{color:blue}
+.e,
+.b{font-size:16px}
+.c,.b{margin:12px 0}
+@media (min-width: 768px) {.d,.b{margin:24px 0}}
+```
+
+这个例子也可以在[docs](/zh/docs/integrations/symfony)中找到。
+
+## 更多配置
+上面的例子并不包括Stylify CSS能做的一切：
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)
+- 样式[全局选择器](/zh/docs/stylify/compiler#customselectors)
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 添加[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`表示 margin-left。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

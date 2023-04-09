@@ -1,0 +1,181 @@
+---
+import { getLocalizedRoute, getLangFromUrl, useTranslations } from '@serverHelpers';
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const selectorsExampleSnippet = `
+<h1 class="font-size:24px color:blue hover:color:lightblue lg:font-size:32px">
+	Hello World!🎉
+</h1>
+`.trim();
+
+const htmlOutputExampleSnippet = `
+<!-- Production HTML -->
+<h1 class="a b c d">
+	Hello World!🎉
+</h1>
+`.trim()
+
+const cssOutputExampleSnippet = `
+/* Production CSS */
+.a {font-size:24px}
+.b {color:blue}
+.c:hover {color:lightblue}
+
+@media (min-width: 1024px) {
+  .d{ font-size: 32px }
+}
+`.trim();
+
+const configurationExampleSnippet = `
+const config = {
+	variables: {
+		primary: '#01befe',
+		titleFontSize: '24px',
+		// Variables based on color scheme dark/light
+		dark: {
+			primary: '#fff'
+		},
+		// Variables based on screen size
+		'minw640px': {
+			titleFontSize: 38px
+		}
+	},
+	components: {
+		'section': 'max-width:1240px margin:0_auto_24px_auto',
+		// Dynamic components
+		'title(?:--(\\\\S+))?': ({ matches, variables, helpers, dev }) => {
+			const color = matches[1] ?? '#000';
+			return \`font-size:24px\${color ? \` color:\${color}\` : ''}\`;
+		},
+	},
+	customSelectors: {
+		'*': 'box-sizing:border-box',
+		'h1,h2': 'margin-top:0 margin-bottom:12px md:margin-bottom:24px'
+	},
+	macros: {
+		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			// ml:24px => will create => margin-left: 24px
+			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+		}
+	},
+}
+`.trim();
+
+const bundlesSplittingExampleSnippet = `
+const bundles = [
+	// Use Glob syntax to map files
+	{ files: [ 'templates/**/*.html' ], outputFile: 'global.css },
+	// Split CSS for layouts
+	{ files: [ 'layout.html' ], outputFile: 'layout.css' },
+	// And for pages
+	{ files: [ 'index.html' ], outputFile: 'index.css' }
+];
+`.trim();
+
+const contentOptionsExampleSnippet = `
+<!--
+stylify-variables
+	blue: '#01befe'
+/stylify-variables
+
+stylify-components
+	subtitle: 'font-size:24px margin-bottom:12px color:$blue'
+/stylify-components
+-->
+<h2 class="subtitle">Subtitle 1</h2>
+<h2 class="subtitle">Subtitle 2</h2>
+`.trim();
+
+const hooksOptionsExampleSnippet = `
+// This hook example converts px font size
+// to REM and automatically calculates line height.
+import {hooks} from '@stylify/stylify';
+
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
+		return;
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
+
+	selectorProperties.addMultiple({
+		'font-size': \`\${remFontSize}rem\`,
+		'line-height': \`\${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem\`
+	});
+});
+`.trim();
+---
+<!--
+stylify-components
+'features-section': `
+	scroll-margin-top:100px display:grid grid-template-columns:100% md:grid-template-columns:calc(50%_-_12px)_calc(50%_-_12px) gap:24px align-items:center
+	h2 { text-align:center font-size:32px margin-top:0 margin-bottom:8px md:text-align:left }
+	p { text-align:center margin-bottom:0 md:text-align:left }
+`
+/stylify-components
+-->
+<div id="features" class="container">
+	<div class="[section]{margin-bottom:64px}">
+		<section id="zero-learning-curve" class="features-section">
+			<div>
+				<h2>{t('Zero Learning Curve and Faster Coding')}</h2>
+				<p set:html={t('Instead of writing CSS and switching between HTML and CSS files use CSS-like selectors. The <a href="{{link1}}" class="link">syntax is similar to CSS</a>. Use <code>_</code>&nbsp;instead of space and <code>^</code>&nbsp;for a quote.', {link1: `${getLocalizedRoute('/docs/get-started', lang)}#${t('quick-start')}`})}></p>
+			</div>
+			<ShikiHighlighter code={selectorsExampleSnippet} />
+		</section>
+
+		<section id="optimization" class="features-section">
+			<div>
+				<h2>{t('Automatic and Extremely Tunned CSS and HTML Optimization')}</h2>
+				<p>{t('CSS is dynamically generated into CSS files, it is optimized and HTML is mangled. No unused CSS is generated. No CSS purge is needed. No CSS files have to be created. Thanks to inner algorithm for joining selectors, almost no duplicates are generated.')}</p>
+			</div>
+			<div>
+				<ShikiHighlighter code={htmlOutputExampleSnippet} />
+				<br><ShikiHighlighter lang="css" code={cssOutputExampleSnippet} />
+			</div>
+		</section>
+
+		<section id="bundles-splitting" class="features-section">
+			<div>
+				<h2>{t('Simple CSS Bundles Splitting')}</h2>
+				<p>{t('CSS bundles can be split into multiple files. It\'s more efficient than combining CSS manually and it also makes the CSS output smaller.')}</p>
+			</div>
+			<ShikiHighlighter lang="js" code={bundlesSplittingExampleSnippet} />
+		</section>
+
+		<section id="configuration" class="features-section">
+			<div>
+				<h2>{t('Intuitive Configuration')}</h2>
+				<p set:html={t('Define reusable <a href="{{link1}}" class="link font-family:monospace">variables</a>, <a href="{{link2}}" class="link font-family:monospace">components</a> and <a href="{{link3}}" class="link font-family:monospace">custom selectors</a> to simplify the development. Variables values can be different for each screen. This allows you to change it for dark mode/light mode and desktop/mobile.', {link1: `${getLocalizedRoute('/docs/get-started', lang)}#${t('adding-a-variable')}`, link2: `${getLocalizedRoute('/docs/get-started', lang)}#${t('defining-a-component')}`, link3: `${getLocalizedRoute('/docs/get-started', lang)}#${t('custom-selectors')}`})}></p>
+			</div>
+			<ShikiHighlighter maxHeight="400px" lang="js" code={configurationExampleSnippet} />
+		</section>
+
+		<section id="content-options" class="features-section">
+			<div>
+				<h2>{t('Configure Variables, Components and Global Selectors in files, where they are used')}</h2>
+				<p>{t('Components, Variables and Global Selectors can be defined within a file, where they are used. This encapsulates component CSS and HTML into one file.')}</p>
+			</div>
+			<ShikiHighlighter code={contentOptionsExampleSnippet} />
+		</section>
+
+		<section id="hooks" class="features-section">
+			<div>
+				<h2>{t('Extend Functionality with Hooks')}</h2>
+				<p set:html={t('Hooks can be used extend functionality and modify the output during compilation. There are hooks for <a href="{{link1}}" class="link">Compiler</a>, <a href="{{link2}}" class="link">Bundler</a> and in browser for <a href="{{link3}}" class="link">Runtime</a>.', {link1: `${getLocalizedRoute('/docs/stylify/compiler', lang)}#${t('hooks')}`, link2: `${getLocalizedRoute('/docs/bundler', lang)}#${t('hooks')}`, link3: `${getLocalizedRoute('/docs/stylify/runtime', lang)}#${t('hooks')}`})}></p>
+			</div>
+			<ShikiHighlighter lang="js" code={hooksOptionsExampleSnippet} />
+		</section>
+	</div>
+	<div class="text-align:center margin-top:24px">
+		<a href={getLocalizedRoute('/docs/get-started', lang)} class="btn btn--hp margin-top:12px">
+			{t('Get Started')} <i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+		</a>
+	</div>
+</div>

@@ -1,0 +1,169 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Stitches"
+navigationIconPath: '/images/brands/stitches.svg'
+image: '/migration/stitches/header.jpg'
+ogImage: '/migration/stitches/og-image.jpg'
+
+title: "Cómo migrar de la librería Stitches CSS-in-JS a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo de la CSS-in-JS de Stitches a la CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationStylifyVariablesCssInJs from '@components/MigrationStylifyVariablesCssInJs.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y la sintaxis de la biblioteca CSS-in-JS de Stitches con las de CSS utility-first de Stylify, y darte una idea de cómo migrar de Stitches a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Stitches es un CSS-in-JS con tiempo de ejecución cercano a cero, SSR, soporte multivariante, y una experiencia de desarrollador de lo mejor en su clase.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="stitches.svg">
+<div slot="tool">
+
+Cuando quieras estilizar algún elemento directamente, puedes usar la propiedad CSS:
+
+```jsx
+<Button css={{
+	borderRadius: '0',
+	'&:hover': {
+		backgroundColor: 'black',
+		color: 'white',
+	},
+}}>Botón</Button>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="stitches.svg">
+<div slot="tool">
+
+Los estilos globales se pueden definir dentro de Stitches de la siguiente manera:
+
+```jsx
+import { globalCss } from '@stitches/react';
+
+const globalStyles = globalCss({
+	'*': { margin: 0, padding: 0 },
+});
+
+() => {
+	globalStyles();
+	return <div ... />
+};
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="stitches.svg">
+<div slot="tool">
+
+Stitches permite definir componentes de esta manera:
+
+```jsx
+import { styled } from '@stitches/react';
+
+const Button = styled('button', {
+	backgroundColor: 'gainsboro',
+	borderRadius: '9999px',
+	fontSize: '13px',
+	padding: '10px 15px',
+	'&:hover': {
+		backgroundColor: 'lightgray',
+	},
+});
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+
+<MigrationCodeBlock image="stitches.svg">
+<div slot="tool">
+
+Stitches se puede configurar técnicamente desde cualquier lugar dentro de la aplicación.
+Puedes crear una nueva instancia de Stitches y reutilizarla en cualquier lugar que necesites.
+
+Ejemplo de configuración global:
+```jsx
+export const { styled, css } = createStitches({
+	theme: {
+		colors: {
+			gray500: 'hsl(206,10%,76%)',
+		},
+		space: {
+			1: '5px',
+		},
+		fontSizes: {
+			1: '12px',
+		},
+		fonts: {
+			mono: 'Söhne Mono, menlo, monospace',
+		},
+	// ...
+	}
+});
+```
+
+Ejemplo de configuración local:
+```jsx
+const { styled } = createStitches({
+	theme: {
+		colors: {
+			violet800: 'hsl(252 62% 54.9%)',
+		},
+	},
+});
+const Button = styled('button', {
+	backgroundColor: '$violet800',
+});
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+<MigrationStylifyVariablesCssInJs />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

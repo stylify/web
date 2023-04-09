@@ -1,0 +1,19 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+import ComponentsPreviewGrid from './ComponentsPreviewGrid.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section id="components" class="container">
+	<h2 class="hp-section-title">{t('Prepared Headless Components')}</h2>
+	<div class="md:font-size:20px text-align:center margin-bottom:24px">{t('Copy&Paste, unstyled components inspired by the Material Design V3.')}</div>
+	<ComponentsPreviewGrid />
+	<div class="text-align:center">
+		<a href={getLocalizedRoute('/snippets/components', lang)} class="btn btn--hp margin-top:12px">
+			{t('Check out components')}
+			<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+		</a>
+	</div>
+</section>

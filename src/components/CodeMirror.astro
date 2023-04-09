@@ -1,0 +1,103 @@
+---
+const { id = '', withBorder = false, lang = 'html', readonly = false, defaultCode = '' } = Astro.props
+
+const prepareCode = (code) => {
+	return code.replace('&amp;', '&')
+		.replace(/\s+data-v-\S+=""/g, '')
+		.replace(/&amp;/g, '&')
+		.replace(/&lt;/g, '<')
+		.replace(/&gt;/g, '>')
+		.replace(/\n<div data-netlify-deploy(.|\s)+/, '')
+		.trim();
+};
+---
+
+<script>
+import { EditorView, highlightActiveLine, rectangularSelection } from '@codemirror/view'
+import { html } from '@codemirror/lang-html';
+import { css } from '@codemirror/lang-css';
+import { javascript } from '@codemirror/lang-javascript'
+import { oneDark } from '@codemirror/theme-one-dark';
+import { closeBrackets } from '@codemirror/autocomplete'
+import { history } from '@codemirror/commands'
+import { bracketMatching, indentOnInput } from '@codemirror/language'
+import { highlightSelectionMatches } from '@codemirror/search'
+import { EditorState } from '@codemirror/state';
+import { domReady, dispatchEvent } from '@clientHelpers';
+import { EditorState } from '@codemirror/state'
+
+const languages = {
+	html: html,
+	js: javascript,
+	css: css
+}
+
+const getEditorExtensions = ({ lang, readonly, id }) => [
+	//lineNumbers(),
+	//highlightActiveLineGutter(),
+	//highlightSpecialChars(),
+	//foldGutter(),
+	//drawSelection(),
+	//dropCursor(),
+	//autocompletion(),
+	//crosshairCursor(),
+	//syntaxHighlighting(defaultHighlightStyle, { fallback: true }),,
+	oneDark,
+	languages[lang](),
+	readonly
+		? [
+			EditorState.readOnly.of(true)
+		] :
+		[
+			EditorView.updateListener.of((viewUpdate) => {
+				if (viewUpdate.docChanged && EditorView.editable) {
+					dispatchEvent(`codemirror:${id}:updated`, {
+						code: viewUpdate.state.doc.toString()
+					});
+				}
+			}),
+			history(),
+			indentOnInput(),
+			bracketMatching(),
+			closeBrackets(),
+			rectangularSelection(),
+			highlightActiveLine(),
+			highlightSelectionMatches(),
+		]
+];
+
+const createEditorState = (lang, id, code, readonly) => {
+	return EditorState.create({
+		doc: code,
+		extensions: getEditorExtensions({ lang, id, readonly }),
+	});
+}
+
+domReady(() => {
+	document.querySelectorAll('.js-codemirror').forEach(element => {
+		const textContent = element.textContent;
+		element.innerHTML = '';
+		const readonly = element.hasAttribute('data-readonly');
+		const id = element.dataset.id;
+		const lang = element.dataset.lang;
+		const editor = new EditorView({
+			state: createEditorState(lang, id, textContent.trim(), readonly),
+			parent: element
+		});
+
+		if (readonly) {
+			document.addEventListener(`codemirror:${id}:updateCode`, ({ detail }) => {
+				editor.setState(createEditorState(lang, id, detail.code, readonly));
+			});
+		}
+	});
+});
+
+</script>
+
+<pre
+	data-readonly={readonly}
+	data-lang={lang}
+	data-id={id}
+	class={`${withBorder ? '' : 'border:none'} js-codemirror border-radius:0 height:100% max-height:400px overflow:auto width:100% [.cm-editor]{background:$blue6}`}
+><slot>{prepareCode(defaultCode.trim())}</slot></pre>

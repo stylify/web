@@ -1,0 +1,106 @@
+---
+import DocsArticle from '@components/DocsArticle.astro';
+import DocsContent from '@components/DocsContent.astro';
+import DocsFooter from '@components/DocsFooter.astro';
+import DocsSidebar from '@components/DocsSidebar.astro';
+import { queryStaticContent } from '@content';
+import { siteUrl } from '@projectConfig';
+import MainLayout from '@mainLayout';
+import type { CollectionEntry } from 'astro:content';
+import { getLangFromUrl, removeLangFromSlug } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const { pathname } = Astro.url;
+let {
+	navigationItems = {},
+	id,
+	data,
+	slug,
+	headings
+}: { navigationItems?: Record<string, CollectionEntry<'static'>[]>} = Astro.props;
+
+let previousPage = null;
+let nextPage = null;
+
+if (Object.keys(navigationItems).length === 0) {
+	navigationItems = {
+		'get-started': [],
+		'integrations': [],
+		'migration': [],
+		'stylify': [],
+		'bundler': [],
+		'unplugin': [],
+		'astro': [],
+		'nuxt': [],
+		'nuxt-module': [],
+	};
+
+	const content = await queryStaticContent({
+		lang,
+		postsType: 'docs'
+	});
+
+	for (const contentPage of content) {
+		const section = contentPage.data.section;
+		navigationItems[section].push(contentPage);
+	}
+}
+
+let surroundingPagesSearched = false;
+for (const [section, items] of Object.entries(navigationItems)) {
+	navigationItems[section] = items.sort((a, b) => a.data.order - b.data.order);
+
+	const actualPageIndex = navigationItems[section].findIndex((item) => {
+		return removeLangFromSlug(item.slug) === slug;
+	});
+
+	if (surroundingPagesSearched || actualPageIndex === -1) {
+		continue;
+	}
+
+	surroundingPagesSearched = true;
+	previousPage = navigationItems[section][actualPageIndex -1] ?? null;
+	nextPage = navigationItems[section][actualPageIndex + 1] ?? null;
+}
+
+
+
+---
+<MainLayout
+	pageTitle={data.title}
+	pageDescription={data.description}
+>
+	<div class="docs container container-lg width:100% display:flex flex-direction:column justify-content:center margin-top:24px margin-bottom:24px lg:margin-bottom:48px lg:margin-top:48px lg:flex-direction:row">
+		<DocsSidebar items={navigationItems} urlPath={slug} />
+		<section class="width:100% lg:width:calc(100%_-_254px) padding:0_14px margin-left:auto margin-right:auto lg:padding:0 lg:margin-left:0 margin-right:0">
+			<DocsArticle pageData={data} headings={headings}>
+				<slot />
+				{typeof data.howToSchemaTitle !== 'undefined' &&
+					<script type="application/ld+json" set:html={JSON.stringify(
+						{
+							"@context": "https://schema.org",
+							"@type": "HowTo",
+							"tool": [
+								{
+									"@type": "HowToTool",
+									"name": `Stylify CSS => ${siteUrl}`
+								}
+							],
+							"image": {
+								"@type": "ImageObject",
+								"url": `${siteUrl}/images${data.image}`
+							},
+							"name": data.howToSchemaTitle,
+							"step": data.howToSchemaSteps.map((step) => {
+										step.url = `${siteUrl}${pathname}${step.url}`;
+										step['@type'] = "HowToStep";
+										return step;
+									})
+						}
+					)}></script>
+				}
+			</DocsArticle>
+ 			<DocsFooter id={id} nextPage={nextPage} previousPage={previousPage} />
+		</section>
+	</div>
+</MainLayout>

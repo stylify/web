@@ -1,0 +1,32 @@
+---
+section: components
+
+order: 1
+
+navigationTitle: "Animations"
+
+title: "CSS Animations Components"
+description: "Stylify CSS Animations Components. Prepared CSS animations for your next web project. Copy&Paste, without CSS framework."
+---
+import InteractivePreview from '@components/InteractivePreview.astro';
+
+CSS animations component uses Stylify CSS Keyframes comments content option.
+
+If you use Stylify CSS Unplugin or Bundler directly, you can configure CSS keyframes [within the config](/en/docs/stylify/compiler#keyframes):
+
+```javascript
+stylifyVite({
+	compiler: {
+		keyframes: {}
+	}
+})
+```
+<br />
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="250"
+	title="Animation"
+	htmlSnippet="components/animations"
+	withoutComponents
+/>

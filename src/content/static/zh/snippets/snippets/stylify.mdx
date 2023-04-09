@@ -1,0 +1,162 @@
+---
+section: snippets
+
+order: 1
+
+navigationTitle: "Stylify"
+
+title: "Stylify的CSS片段"
+description: "Stylify CSS配置的片段，用于快速网页开发。"
+---
+
+本页的片段是经常使用的配置片段。
+你可以把它们复制到你的配置中，这样你就不用自己写了。
+
+## 自定义选择器
+
+
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		// 纠正了盒子的大小
+		'*': 'box-sizing:border-box',
+		//将排版基数设置为10，以便于rem使用。
+		// 平滑滚动
+		// 保留滚动条
+		html: `
+			font-size:62.5%
+			min-width:100%
+			min-height:100%
+			overflow-y:scroll
+			scroll-behavior:smooth
+		`,
+		// 设置字体的默认大小
+		// 漂亮的字体渲染
+		body: 'font-size:1.6rem webkit-font-smoothing:antialiased'
+	}
+}
+```
+
+## 变量
+
+
+```javascript
+const compilerConfig = {
+	variables: {
+		// 边框半径
+		radius4: '4px',
+		radius8: '8px',
+		radius12: '12px',
+		radius16: '16px',
+		radius20: '20px',
+		radius24: '24px',
+		circle: '50%',
+
+		// 字体大小
+		// 希望在HTML元素上设置字体大小：62.5%。
+		// 行高是根据Arial字体估计的
+		// => https://grtcalculator.com/
+		font8: '0.8rem', // 行高1.7rem
+		font12: '1.2rem', // 行高2rem
+		font14: '1.4rem', // 行高2.4rem
+		font18: '1.8rem', // 行高3rem
+		font24: '2.4rem', // 行高4rem
+		font32: '3.2rem', // 行高5.4rem
+		font40: '4rem', // 行高6.7rem
+		font48: '4.8rem', // 行高8.1rem
+		font56: '5.6rem', // 行高9.4rem
+		font64: '6.4rem', // 行高10.8rem
+
+		// 行高
+		// 适当的字体大小在上面
+		font17: '1.7rem',
+		font20: '2rem',
+		font24: '2.4rem',
+		font30: '3rem',
+		font40: '4rem',
+		font54: '5.4rem',
+		font67: '6.7rem',
+		font81: '8.1rem',
+		font94: '9.4rem',
+		font108: '10.8rem',
+
+		// 字体堆栈
+		systemFontStack: `-apple-system,'Segoe_UI',Roboto,Oxygen,Ubuntu,Cantarell,'Helvetica_Neue',Arial,sans-serif,'Apple_Color_Emoji','Segoe_UI_Emoji','Segoe_UI_Symbol'`,
+		georgiaFontStack: `Georgia,serif`,
+		monospaceFontStack: `Consolas,'Courier_New',monospace`
+	}
+}
+```
+
+## 宏指令
+
+```javascript
+const compilerConfig = {
+	macros: {
+		// 这个宏将匹配例如`typo:16`，它将生成
+		//它的行高。同时，它还会将数字转换为rem大小。
+		// 它希望HTML元素的字体大小被设置为font-size:62.5%。
+		'typo:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			const pixelFontSize = Number(macroMatch.getCapture(0));
+			selectorProperties.addMultiple({
+				'font-size': `${Number(pixelFontSize) * 0.0625}rem`,
+				'line-height': `${pixelFontSize * 1.333 * 0.0625}rem`
+			});
+		}
+	}
+}
+```
+
+## 组件
+
+```javascript
+const compilerConfig = {
+	components: {
+		// 文字在视觉上是隐藏的，但对屏幕阅读器是可见的
+		'sr-only': `
+			position:absolute!important
+			overflow:hidden
+			clip:rect(0_0_0_0)
+			width:1px
+			height:1px
+			margin:-1px
+			padding:0
+			border:0
+		`
+	}
+}
+```
+
+## 钩子
+
+```javascript
+从'@stylify/stylify'导入{钩子};
+
+/*
+	这个钩子会监听一个新的字体大小匹配，并添加正确的行高。
+	因此，你不需要添加行高。
+*/
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
+		return;
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
+
+	// 调整下面的字体校正数字以适应你的需要
+	const smallFontSizeCorrection = 1.6;
+	const largeFontSizeCorrection = 1.2;
+	// 32是指font-size:32px。较大的字体如标题可能不需要
+	// 在一篇文章中，像16px或18px这样大的行高。
+	const fontCorrection = pixelFontSize > 32 ? largeFontSizeCorrection : smallFontSizeCorrection;
+
+	// 这将增加行高，并将字体大小重写为rem单位。
+	selectorProperties.addMultiple({
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * fontCorrection}rem`
+	});
+});
+```

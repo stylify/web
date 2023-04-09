@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #FFA585;
+			--gradientTo: #FFEDA0;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#FFA585'
+/stylify-variables
+-->
+<nav class="
+	js-nav
+	position:relative overflow:hidden
+	[.nav-overflow-indicator]{width:32px;transition:.3s;will-change:transform;height:100%;display:flex;position:absolute;top:0}
+">
+	<div class="
+		s-hidden
+		js-nav-overflow-indicator nav-overflow-indicator
+		left:0 background:linear-gradient(90deg,#fff,rgba(255,255,255,0))
+		[&.s-hidden]{transform:translateX(-50px)}
+	"></div>
+	<div class="
+		js-nav-scrollbar
+		display:flex gap:16px overflow:auto
+		[a]{text-decoration:none;color:#000;font-weight:bold;white-space:nowrap}
+		[a:hover,a.s-selected]{color:$color}
+	">
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#" class="s-selected">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+		<a href="#">Link</a>
+	</div>
+	<div class="
+		s-hidden
+		js-nav-overflow-indicator nav-overflow-indicator
+		right:0 background:linear-gradient(-90deg,#fff,rgba(255,255,255,0))
+		[&.s-hidden]{transform:translateX(50px)}
+	"></div>
+</nav>
+
+<script>
+	const scrollLinkIntoView = (link) => {
+		// TODO this is disabled because it cause scroll on Stylify web
+		// Uncomment this so the selected item scrolls into the view
+		//link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+	};
+
+	const getNavScrollBar = (nav) => nav.querySelector('.js-nav-scrollbar');
+	const getNavScrollIndicators = (nav) => {
+		const indicators = nav.querySelectorAll('.js-nav-overflow-indicator');
+
+		return {
+			left: indicators[0],
+			right: indicators[1]
+		}
+	}
+
+	const indicatorHiddenClass = 's-hidden';
+	const scrollIndicatorLimitToHide = 24;
+	const toggleNavScrollIndicators = (nav, scrollBar) => {
+		scrollBar = scrollBar ?? getNavScrollBar(nav);
+		const navWidth = parseInt(window.getComputedStyle(nav).width.match(/\d+/));
+		const scrollBarScrollWidth = scrollBar.scrollWidth;
+		const indicators = getNavScrollIndicators(nav);
+
+		if (scrollBarScrollWidth <= navWidth) {
+			indicators.left.classList.add(indicatorHiddenClass);
+			indicators.right.classList.add(indicatorHiddenClass);
+			return;
+		}
+
+		const leftOverflow = scrollBar.scrollLeft;
+
+		indicators.left.classList.toggle(indicatorHiddenClass, leftOverflow <= scrollIndicatorLimitToHide);
+
+		indicators.right.classList.toggle(
+			indicatorHiddenClass,
+			scrollBarScrollWidth - leftOverflow <= navWidth + scrollIndicatorLimitToHide
+		);
+	}
+
+	const navigations = document.querySelectorAll('.js-nav');
+
+	navigations.forEach((nav) => {
+		const scrollBar = getNavScrollBar(nav);
+		const indicators = getNavScrollIndicators(nav);
+
+		nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => scrollLinkIntoView(link)));
+
+		for (const indicator of Object.values(indicators)) {
+			indicator.addEventListener('touchstart', () => indicator.classList.add(indicatorHiddenClass));
+			indicator.addEventListener('mouseover', () => indicator.classList.add(indicatorHiddenClass));
+			indicator.addEventListener('mouseout', () => toggleNavScrollIndicators(nav, scrollBar));
+		}
+
+		scrollBar.addEventListener('scroll', () => toggleNavScrollIndicators(nav, scrollBar));
+
+		toggleNavScrollIndicators(nav);
+	});
+
+	window.addEventListener('load', () => {
+		document.querySelectorAll('.s-selected').forEach((link) => scrollLinkIntoView(link));
+	});
+
+	window.addEventListener('resize', () => navigations.forEach((nav) => toggleNavScrollIndicators(nav)));
+</script>
+
+</div></div></body></html>

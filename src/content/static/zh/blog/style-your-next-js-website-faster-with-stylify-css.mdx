@@ -1,0 +1,163 @@
+---
+title: "🚀 使用Stylify CSS更快地为Next.js网站设计样式"
+image: '/images/blog/stylify-next/header.jpg'
+ogImage: '/images/blog/stylify-next/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "使用类似于Stylify的CSS工具，可以更快地编码你的Next.js网站。不要研究CSS-in-JS或CSS框架。专注于编码。让Stylify CSS来完成剩下的工作。"
+createdAt: 'June 28, 2022'
+---
+
+要想更容易入门，你可以看看[Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 🎮。
+
+## ＃＃介绍
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## Next.js设置
+设置Next.js的最简单方法是使用CLI：
+- 运行`yarn create next-app`。
+- 选择你的项目名称
+
+这样你就会得到默认的Next.js应用程序骨架。
+
+## Stylify CSS集成
+使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```bash
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+打开`next.config.js`并复制以下内容到其中：
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const stylifyPlugin = (dev) => stylifyWebpack({
+	dev: dev,
+	bundles: [{
+		// 从所有js文件中生成CSS
+		files: ['./pages/**/*.js'],
+		outputFile: './styles/stylify.css',
+	}]
+});
+
+module.exports = {
+	reactStrictMode: true,
+	webpack: (config, { dev }) => {
+		// 添加Stylify CSS Webpack插件
+		config.plugins.push(stylifyPlugin(dev));
+		return config;
+	}
+}
+```
+
+最后一步，打开`pages/_app.js`并添加`stylify.css`的路径：
+
+```jsx
+// ...
+import '../styles/stylify.css';
+
+function MyApp({ Component, pageProps }) {
+	return <Component {...pageProps} />
+}
+
+export default MyApp;
+```
+
+## 塑造网站的风格
+如果你把下面的代码复制到`pages/index.js`中，然后运行`yarn dev`，你会得到一个有风格的`你好，世界!`文本：
+
+```jsx
+export default function Home() {
+	return <div className="color:blue">你好，世界！</div>;
+}
+```
+
+Stylify会观察`js`文件中的任何变化，并将CSS生成到`styles/stylify.css`中。
+如果你添加了像`font-size:24px`这样的选择器，CSS就会自动更新 🎉。
+
+请直接在[Stackblitz.com](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages%2Findex.js) 💡尝试Stylify CSS。
+
+### 组件
+充满实用选择器的模板是很难阅读的。Stylify允许你直接在文件中定义组件，通过[content options](/zh/docs/get-started#定义一个组件)(期望有javascript对象，没有括号)或在[compiler config](/zh/docs/get-started#定义一个组件)中使用它们。
+
+```jsx
+/*
+stylify-components
+	container: 'max-width:800px margin:0_auto'
+/stylify-components
+*/
+export default function Home() {
+	return (
+		<div className="container">
+			<div className="color:blue">你好，世界!</div>
+		</div>
+	)
+}
+```
+
+### 变量
+避免在选择器中使用硬编码值是一个好的做法。[变量](/zh/docs/get-started#adding-a-variable)可以用与组件相同的方式定义：
+
+```jsx
+/*
+stylify-variables
+	blue: 'steelblue',
+	containerWidth: '800px'
+/stylify-variables
+
+stylify-components
+	container: 'max-width:$containerWidth margin:0_auto'
+/stylify-components
+*/
+export default function Home() {
+	return (
+		<div className="container">
+			<div className="color:$blue">你好，世界!</div>
+		</div>
+	)
+}
+```
+
+## 生产构建
+当我们使用`yarn build`+`yarn start`运行生产构建时, JSX标记将被修改成这样：
+
+```jsx
+export default function Home() {
+	return (
+		<div className="a">
+			<div className="b">世界你好！</div>
+		</div>
+	)
+}
+```
+
+CSS也被缩短了：
+```css
+:root {
+	--blue: #4682b4;
+	--containerWidth: 800px
+}
+.b {color: #4682b4}
+.a,.c { max-width: 800px }
+.a,.d { margin: 0 auto }
+```
+
+## 配置任何你需要的东西
+上面的例子并不包括Stylify CSS能做的一切：
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)
+- 样式[自定义选择器](/zh/docs/stylify/compiler#customselectors)
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 添加[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`用于`margin-left`。
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

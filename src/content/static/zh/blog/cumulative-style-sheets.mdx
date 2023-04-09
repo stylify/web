@@ -1,0 +1,97 @@
+---
+title: 累积样式表
+image: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets.jpg'
+ogImage: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets-og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "学习如何以优化的方式编写CSS，远离昂贵的重构。"
+createdAt: 'May 1, 2022'
+---
+
+让我们从一个例子开始。创建一个简单的蓝色按钮有多难？这就像一个选择器，可能是一个悬停状态和一些属性。像这样的东西：
+
+```css
+.button {
+	font-size:18px;
+	padding:8px 24px;
+	background:#2196f3;
+	color:#fff;
+	border-radius:2px;
+	border:0;
+	display:inline-block;
+	cursor:pointer;
+}
+
+.button:hover {
+	background:#1e87db
+}
+```
+用同样的方法，我们可以创建各种下拉菜单、侧边栏、标题、章节等。但是...
+
+上面的代码和方法是正确的方法吗？
+
+嗯...🤷。
+
+## 问题所在
+每当你创建一个新的组件或设计一个部分时，你就会增加你的CSS的大小。如果我们给图片添加一个边框半径，给一些文字添加字体大小，会发生什么？
+
+```css
+.button { /* ... */ border-radius:2px; /* ... */ }
+img { border-radius:2px; /* 重复 */ }
+.subtitle { font-size:18px /* 重复 */ }
+```
+
+## 解决方案
+我认为为我们的按钮编写CSS的更好方法是**混合组件和实用工具**的解决方案：
+
+```css
+.hover\:background\:\#1e87db:hover,
+.button:hover { background: #1e87db }
+.font-size\:16px, .button { font-size: 16px }
+.padding\:8px_24px, .button { padding: 8px 24px }
+.background\:\#2196f3, .button { background: #2196f3 }
+.color\:\#fff, .button { color: #fff }
+.border-radius\:2px, .button { border-radius: 2px }
+.border\:0, .button { border: 0 }
+.display\:inline-block, .button { display: inline-block }
+.cursor\:pointer, .button { cursor: pointer }
+```
+
+当你看到这段代码时，你可能会想 "这到底是什么？"。
+
+让我解释一下： 你添加到CSS中的每一个`属性:值`也应该是一个实用工具：
+- 你可以在任何地方轻松地重复使用它们
+重复的属性比较少
+- 项目越大，重用的类就越多，这意味着CSS的大小会慢慢增长
+
+好吧，但谁会想手动编写这样的东西呢？好消息是，你不需要这样做。
+
+## Stylify CSS来拯救你
+正是由于上述原因，[stylifycss.com](/)已经被创建。
+
+下面是一个例子，说明如何用Stylify CSS创建同样的按钮（请看HTML标签）：
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="KKQKReX" data-user="Machy8" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+	<span>See the Pen <a href="https://codepen.io/Machy8/pen/KKQKReX"> Stylify - button</a> by Vladimír Macháček (<a href="https://codepen.io/Machy8">@Machy8</a>) on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+CSS选择器也可以被最小化[在node.js中使用时](/zh/docs/stylify/compiler#usage)：
+
+```html
+<button class="a"></button>
+<style>
+.b:hover, .a:hover { background: #1e87db }
+.c,.a { font-size: 16px }
+.d,.a { padding: 8px 24px }
+.e,.a { background: #2196f3 }
+.f,.a { color: #fff }
+.g,.a { border-radius: 2px }
+.h,.a { border: 0 }
+.i,.a { display: inline-block }
+.j,.a { cursor: pointer }
+</style>
+```
+
+如果你也花时间把布局和每个页面的CSS分开（[用Stylify很容易做到](/zh/docs/bundler#installation)），你可以为你的每个页面准备一个非常小的CSS区块。
+你也不必关心重复的问题，而且选择器会自动被最小化。

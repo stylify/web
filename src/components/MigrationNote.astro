@@ -1,0 +1,9 @@
+---
+import { getLangFromUrl, useTranslations } from "@serverHelpers";
+import Note from "./Note.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Note>{t('If you find any incorrect or missing information, please contact <a href="mailto:dev@stylifyccss.com">dev@stylifycss.com</a> or edit this page on Github.')}</Note>

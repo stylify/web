@@ -1,0 +1,32 @@
+---
+import DocsTitleLink from "./DocsTitleLink.astro";
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { title = t('Where to go next?'), packageName = 'unplugin' } = Astro.props;
+const packageIsUnplugin = packageName === 'unplugin';
+const packageIsBundler = packageName === 'bundler';
+
+---
+<section>
+	<h2 id="where-to-next">
+		<DocsTitleLink href="where-to-next" />
+		{title}
+	</h2>
+	<ul>
+		<li set:html={t('🚀 Learn <a href="{{link1}}">how to get started</a>', {link1: getLocalizedRoute('/docs/get-started', lang)})}></li>
+		{packageIsUnplugin && <li set:html={t('🔌 Check out <a href="{{link1}}">@stylify/unplugin configuration</a>', {link1: getLocalizedRoute('/docs/unplugin', lang)})}></li>}
+		{packageIsBundler && <li set:html={t('🔌 Check out <a href="{{link1}}"">@stylify/bundler configuration</a>', {link1: getLocalizedRoute('/docs/bundler', lang)})}></li> }
+		<li>
+			{t('⚙️ Or configure Stylify right away')}:
+			<ul>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#variables', lang)}>{t('Variables')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#screens', lang)}>{t('Screens')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#macros', lang)}>{t('Macros and selectors')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#components', lang)}>{t('Components')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#customselectors', lang)}>{t('Global Selectors')}</a></li>
+			</ul>
+		</li>
+	</ul>
+</section>

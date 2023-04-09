@@ -1,0 +1,72 @@
+---
+title: Stylify CSS - 动态实用优先的CSS生成器
+image: '/images/blog/intro/header.gif'
+ogImage: '/images/blog/intro/og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Stylify会根据你所写的内容动态生成优化的实用优先的CSS。写HTML。获取CSS。🚀'
+createdAt: January 5, 2022
+---
+
+## 让我告诉你一个故事
+最近，我一直在做多个项目。一个项目使用Bootstrap，第二个项目使用Tailwind，还有一些使用自己的工具和组件类的vanilla CSS。
+
+尽管这些工具很好，而且方法也不 "坏"，但**学习和记住所有的类、配置、选择器简直是令人厌烦和耗时**。窃窃私语类的IDE插件有时会让我感到纯粹的绝望。
+
+我多次问自己，**为什么没有一个框架或库，使用自然的CSS属性和它们的值作为选择器**，而开发者已经知道。是的，选择器可能会长一点，但为了使用它，没有什么可研究的。
+
+因为我找不到任何东西，所以我创建了我自己的。
+
+## 从想法到项目
+
+经过一年的开发，我终于发布了第一个版本🎉。
+[Stylify](/)是一个带有[Native Preset](/zh/docs/stylify/native-preset)的库，**可以匹配678个（可能是全部）**来自`Chrome, Mozilla, Opera, Safari 和 Edge`的CSS属性。其大小小于**28 kB**。
+
+语法很简单：`cssProperty:value`，如果你需要屏幕和伪类`screen:pseudoClass:property:value`。
+
+在实践中，Stylify CSS的用法是这样的：
+```html
+<div class="font-size:24px hover:color:red md:font-size:48px" >
+	你好，世界!
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>。
+```
+因为有些值可以包含空格和引号，我决定增加一个特殊的语法。当写一个选择器时，它的值应该包含一个空格，你可以使用`_`(下划线)，对于引号`^`（帽子）。
+
+这使得你可以写出这样的选择器：
+
+```html
+<div class="
+ border:12px_solid_steelblue
+ font-family:^Arial^,_sans-serif
+">
+	你好，世界!
+</div>
+```
+
+经过编译和处理后，它生成了以下CSS：
+
+```css
+.a{
+ border:12px solid steelblue
+}
+.b{
+ font-family:'Arial', sans-serif
+}
+```
+
+### 另一个特点
+- **[动态选择器](/zh/docs/stylify/compiler#macros)**： 定义一个宏，并随意使用它 `width:240px`, `width:10%`, `width:30rem`.
+- **[动态屏幕](/zh/docs/stylify/compiler#logical-operands in-screens)**： 你可以使用逻辑操作数如`||`和`&&`来组合屏幕=> `sm&&tolg:font-size:48px xl&&dark:color:rgba(200,200,200,0.5)`并使用任何你想要的值 `minw123px:font-size:24px`。
+- **选择器的混用**： Stylify CSS可以将长选择符`transition:color_0.3s_ease-in-out`转换成`_abc123`。
+- **拆分CSS**： CSS可以为每个文件单独生成。由于这个原因，你可以为一个页面和布局分割CSS，例如。
+- **[组件](/zh/docs/stylify/compiler#components)**： 例如，定义一个 "按钮 "的依赖性，如 "background:#000 color:#fff padding:24px "并在整个项目中使用它。
+- **[变量](/zh/docs/stylify/compiler#variables)**： 为重复的值定义变量。它们可以作为CSS变量被注入到代码中。
+- **[普通选择器](/zh/docs/stylify/compiler#customselectors)**： 允许你对选择器进行风格化处理，如 "article > h1"。
+- **[帮助器](/zh/docs/stylify/compiler#helpers)**： 可以在生成CSS的时候使用，例如重新计算单位等。
+
+## 无缝集成
+Stylify可以很容易地集成到框架中，如[Next.js](/zh/docs/integrations/nextjs), [Nuxt.js](/zh/docs/integrations/nuxtjs), [Vite. js](/zh/docs/integrations/vitejs), [Symfony Framework](/zh/docs/integrations/symfony), [Nette Framework](/zh/docs/integrations/nette), [Laravel](/zh/docs/integrations/laravel) 等等。此外，它与[Webpack](/zh/docs/integrations/webpack)和[Rollup.js](/zh/docs/integrations/rollupjs)一起工作也很好。
+
+为了更容易集成，有一个[@stylify/nuxt-module](/zh/docs/nuxt-module)用于Nuxt.js和一个[@stylify/bundler](/zh/docs/bundler)，可以与已经提到的Rollup.js和Webpack或任何其他工具一起使用。
+
+当集成到一个现有的项目中时，有可能为每个页面单独生成CSS（即使是小的组件），并[慢慢重写网站](/zh/docs/get-started/migrating-to-stylify)而不增加其大小或破坏任何东西。

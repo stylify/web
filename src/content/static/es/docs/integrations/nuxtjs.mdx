@@ -1,0 +1,114 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Nuxt.js"
+navigationIconPath: '/images/brands/nuxtjs-icon.svg'
+image: '/integrations/nuxtjs/header.jpg'
+ogImage: '/integrations/nuxtjs/og-image.jpg'
+
+title: Uso de Stylify CSS en Nuxt.js
+description: "Aprende a usar el CSS de Stylify con Nuxt.js. Codifica tu sitio web Nuxt.js más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo utilizar Stylify CSS en Nuxt.js.'
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "Instala el paquete @stylify/nuxt (para Nuxt v3) o @stylify/nuxt-module (para Nuxt v2) usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo CSS de Stylify en nuxt.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Nuxt.js es un framework de código abierto que utiliza Vue.js para hacer que el desarrollo web sea sencillo y potente.
+
+La integración utiliza paquetes CSS de Stylify para Nuxt 2 y Nuxt 3. Echa un vistazo a las guías a continuación.
+
+## Cómo integrar Stylify CSS en Nuxt.js v3+
+
+<StackBlitzLink link="stylify-nuxt3" />
+
+Primero, instala el paquete usando CLI:
+```
+npm i -D @stylify/nuxt
+yarn add -D @stylify/nuxt
+```
+
+A continuación, añade un módulo de compilación en la sección de módulos de compilación `nuxt.config.js`:
+```javascript
+modules: [
+	'@stylify/nuxt'
+]
+```
+
+Ahora puedes empezar a usar Stylify CSS con Nuxt.js.
+
+<Note>Por alguna razón desconocida, el CSS no se recarga cuando se produce un error dentro de Nuxt (sintaxis, atributos duplicados). Si eso ocurre, simplemente pulsa guardar dentro del archivo de configuración de Nuxt o reinicia el servidor dev.</Note>
+
+## Cómo integrar Stylify CSS en el Nuxt.js v2+ < v3
+
+<StackBlitzLink link="stylify-nuxtjs-template" />
+
+Primero, instala el paquete usando CLI:
+```
+npm i -D @stylify/nuxt-module
+yarn add -D @stylify/nuxt-module
+```
+
+A continuación, añade un módulo de compilación en la sección de módulos de compilación `nuxt.config.js`:
+```javascript
+buildModules: [
+	'@stylify/nuxt-module'
+]
+```
+
+Ahora puedes empezar a usar Stylify CSS con Nuxt.js.
+
+## Configuración
+Hay muchas opciones que puedes configurar:
+- Nuxt v3: [@stylify/nuxt](/es/docs/nuxt)
+- Nuxt v2: [@stylify/nuxt-module](/es/docs/nuxt-module)
+
+### Stylelint
+En caso de que uses Stylelint, puede que quieras añadir el `stylify.css` generado y posibles archivos con variables en el archivo `.stylelintignore`.
+
+```
+assets/stylify.css
+assets/scss/variables/stylify-variables.scss
+```
+
+Si Stylelint se queja de un patrón que no coincide con ningún archivo, añade la regla [--allow-empty-input](https://stylelint.io/user-guide/usage/cli/#--allow-empty-input---aei) en el archivo package.json al `lint:style` y la configuración `stylelint` en el `nuxt.config.js`:
+
+```javascript
+stylelint: {
+	allowEmptyInput: true
+}
+```
+
+### Build config
+La compilación puede fallar porque no está configurada para usar las características modernas de ES6.
+Puedes arreglarlo configurando la opción transpile en `nuxt.config.js`:
+
+```javascript
+build: {
+	transpile: [
+		'@stylify/stylify/lib/index.cjs',
+		'@stylify/stylify/esm/index.mjs'
+	]
+}
+```
+
+<WhereToNext />

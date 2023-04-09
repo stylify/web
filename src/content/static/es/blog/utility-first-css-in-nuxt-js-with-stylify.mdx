@@ -1,0 +1,197 @@
+---
+title: Estiliza tu Nuxt.js más rápido con Stylify CSS
+image: '/images/blog/stylify-nuxt/stylify-nuxt.jpg'
+ogImage: '/images/blog/stylify-nuxt/stylify-nuxt-og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Estiliza tu sitio web Nuxt.js más rápido, con utilidades tipo CSS de Stylify.'
+createdAt: February 12, 2022
+---
+
+Estiliza tu aplicación Nuxt.JS de forma rápida y sencilla con las utilidades tipo CSS de [Stylify](/) y evita tener que estudiar un framework o cambiar entre etiquetas usando.
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Instalación
+Para un comienzo más fácil, puedes echar un vistazo a [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-nuxtjs-template?file=pages%2Findex.vue) 🎮.
+
+Stylify proporciona [@stylify/nuxt-module](/es/docs/nuxt-module) que simplifica el proceso de integración al mínimo:
+
+Para Nuxt v3
+```
+yarn add @stylify/nuxt
+```
+
+Para Nuxt v2
+```
+yarn add @stylify/nuxt-module
+```
+
+Cuando el CSS de Stylify esté instalado añade el módulo Nuxt en la sección `buildModules` de `nuxt.config.js`.
+```javascript
+buildModules: [
+	// Para Nuxt v3
+	'@stylify/nuxt'
+	// Para Nuxt v2
+	'@stylify/nuxt-module'
+]
+```
+
+Y ya está. Ahora puedes empezar a usar [Stylify](/) para dar estilo a tu app Nuxt.js 🤩.
+
+## Primer CSS
+
+Abre el directorio `pages/index.vue` y copia el siguiente contenido en él.
+
+```html
+<template>
+	<div class="max-width:1024px margin:0_auto">
+		<h1 class="font-size:24px lg:font-size:32px text-align:center">
+			¡Hola Mundo 🥳!
+		</h1>
+	</div>
+</template>
+```
+
+Enhorabuena, ¡ya has dado estilo a tu primera página!
+
+## Limpieza y Configuración
+
+Cuando la cantidad de selectores en el enfoque utility-first empieza a aumentar, puede convertirse en un lío enorme e ilegible del que los ingenieros de backend lloran día y noche cuando lo ven.
+
+Por lo tanto, tenemos componentes. Los componentes se pueden definir en tres lugares:
+- En un archivo donde se utilizan
+- En el archivo `stylify.config.js`
+- Dentro de un `nuxt.config.js` en la sección Stylify
+
+Vamos a definir el componente title dentro del index.vue ya que sólo se utiliza aquí.
+
+```html
+<!--
+stylify-components
+	title: `
+		font-size:24px lg:font-size:32px
+		text-align:center
+	`
+/stylify-components
+-->
+<template>
+	<div class="container">
+		<h1 class="title">¡Hola Mundo 🥳!</h1>
+	</div>
+</template>
+```
+
+Ahora, vamos a añadir un componente contenedor en `stylify.config.js`, porque probablemente va a ser utilizado en todo un proyecto.
+
+Crea el `stylify.config.js`:
+
+```javascript
+export default {
+	compiler: {
+		components: {
+			container: 'max-width:1024px margin:0_auto',
+		}
+	}
+};
+```
+
+A veces es necesario dar estilo a los elementos globalmente. Se puede hacer usando **customSelectors**:
+
+```javascript
+export default {
+	compiler: {
+		// ...
+		customSelectors: {
+			'*': 'font-family:arial font-size:16px'
+		}
+	}
+};
+```
+
+Las variables se utilizan casi en todos los códigos. En CSS no es diferente. Así que vamos a añadir una variable:
+
+```javascript
+export default {
+	compiler: {
+		// ...
+		variables: {
+			'titleColor': 'steelblue'
+		}
+	}
+};
+```
+
+Ahora podemos usar la variable en nuestros selectores en todo un proyecto:
+
+```html
+<!--
+stylify-components
+	"title": "color:$titleColor ..."
+/stylify-components
+-->
+```
+
+## El Resultado
+
+Stylify genera stylify.css en el directorio assets. El CSS reutiliza cada selector tanto como sea posible para evitar `properties:values` duplicados.
+
+
+**HTML modificado**
+```html
+<div class="a">
+	<h1 class="b">¡Hola Mundo 🥳!</h1>
+</div>
+```
+
+**CSS generado**
+```css
+:root {--titleColor: steelblue;}
+*,.font-family\:arial{ font-family:arial }
+*, .font-size\:16px{ font-size:16px }
+.max-width\:1024px, .container{ max-width:1024px }
+.margin\:0_auto, .container{ margin:0 auto }
+.color\:\$titleColor,
+.title{ color:steelblue }
+.font-size\:24px, .title{ font-size:24px }
+.text-align\:center, .title{ text-align:center }
+
+@media (min-width: 1024px) {
+.lg\:font-size\:32px,.title{ font-size:32px }
+}
+```
+
+**CSS modificado**
+```css
+:root { --titleColor: steelblue; }*,
+.c { font-family: arial }
+*, .d { font-size: 16px }
+.e,.a { max-width: 1024px }
+.f,.a { margin: 0 auto }
+.g,.b { color: steelblue }
+.h,.b { font-size: 24px }
+.i,.b { text-align: center }
+
+@media (min-width: 1024px) {
+.j,.b {font-size: 32px}
+}
+```
+
+## Configura todo lo que necesites
+Los ejemplos anteriores no incluyen todo lo que Stylify CSS puede hacer:
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Estilizar [selectores personalizados](/es/docs/stylify/compiler#customselectors)
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Añade [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para `margin-left`.
+
+Siéntete libre de [revisar la documentación](/es/docs/get-started) para aprender más 💎.

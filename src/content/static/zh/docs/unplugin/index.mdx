@@ -1,0 +1,131 @@
+---
+section: unplugin
+
+order: 0
+
+navigationTitle: "@stylify/unplugin"
+
+title: "@stylify/unplugin"
+description: "Stylify Unplugin是Webpack、Vite.js和Rollup.js以及ESbuild的一个通用插件。"
+---
+import WhereToNext from '@components/WhereToNext.astro';
+
+Unplugin是一个适用于Webpack、Vite.js和Rollup.js以及ESbuild的通用插件。
+在引擎盖下，它使用[unplugin](https://github.com/unjs/unplugin)。
+
+## 安装
+
+Unplugin只能通过NPM或Yarn等CLI安装：
+```
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+## 使用方法
+
+Unplugin可以在Webpack、Vite.js和Rollup.js中使用。
+每个工具都有自己的文档页面：
+- [Webpack](/zh/docs/integrations/webpack)
+- [Vite.js](/zh/docs/integrations/vitejs)
+- [Rollup.js](/zh/docs/integrations/rollupjs)
+
+## 配置
+Unplugin的配置对每个bundler都是一样的
+
+
+```javascript
+import {
+	unplugin, defineConfig
+	stylifyVite, stylifyRollup, stylifyWebpack, stylifyEsbuild
+} from '@stylify/unplugin';
+
+const config = defineConfig({
+	// -- 需要
+	// 见 https://stylifycss.com/en/docs/bundler#configuration
+	// 部分捆绑物的数组
+	bundles: [],
+
+	// -- 可选
+	// 配置文件的路径。如果没有指定这个选项
+	// unplugin将尝试在process.cwd()目录下找到配置。
+	// 中找到配置，该目录主要是项目的根目录。
+	// 默认情况下，它会搜索 stylify.config.(js|mjs|cjs)。
+	configFile: '',
+	// true | false
+	// 默认为空。如果检测到空值
+	// 插件就会尝试检测环境
+	dev: null,
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// 见 https://stylifycss.com/en/docs/bundler#configuration
+	bundler: {
+		bundles: []
+	},
+	// Id是一个文件名
+	// 如果文件类型或名称应该被处理，则返回true。
+	// 例子是有HTML后缀的
+	// 默认情况下，Stylify CSS会检查该文件是否不在node_modules中。
+	// 并且检查各种文件类型
+	// 这里列出了https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
+	transformIncludeFilter: (id) => id.endsWith('html')
+});
+
+let webpackPlugin = stylifyWebpack(config);
+let vitePlugin = stylifyVite(config);
+let rollupPlugin = stylifyRollup(config);
+let esbuildPlugin = stylifyEsbuild(config);
+```
+
+## 外部配置文件
+如果你想把配置移到项目配置之外，使用上面提到的`configFile`选项。默认情况下，unplugin会搜索`stylify.config.(js|mjs|cjs)`文件。如果找到其中任何一个，它就会被处理。
+
+配置导出的例子如下所示。定义配置方法是可选的。它只是一个提供更好的Typescript体验的辅助工具。
+
+普通JS（CJS）：
+
+
+```javascript
+const { defineConfig } = require('@stylify/unplugin');
+
+// 使用defineConfig
+module.exports = defineConfig(() => ({
+	bundles: [
+		{ outputFile: './index.css', files: ['./index.html'] }
+	]
+});
+
+// 没有defineConfig
+module.exports = {
+	// ...
+}
+
+```
+
+模块（ESM）：
+
+
+```javascript
+import { defineConfig } from '@stylify/unplugin';
+
+// 使用defineConfig
+export default defineConfig(() => ({
+	bundles: [
+		{ outputFile: './index.css', files: ['./index.html'] }
+	]
+});
+
+// 没有defineConfig
+export default {
+	// ...
+}
+```
+
+<WhereToNext />

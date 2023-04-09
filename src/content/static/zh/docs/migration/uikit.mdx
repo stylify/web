@@ -1,0 +1,122 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "UIkit"
+navigationIconPath: '/images/brands/uikit.svg'
+image: '/migration/uikit/header.jpg'
+ogImage: '/migration/uikit/og-image.jpg'
+
+title: "如何从UIkit CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从UIkit CSS组件框架迁移到Stylify的实用性优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较UIkit组件框架和Stylify的实用优先CSS的功能和语法，并让你了解如何从UIkit迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+
+UIkit是一个轻量级和模块化的前端框架，用于开发快速和强大的Web界面。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit为margin、padding、width等属性提供了一组实用工具。
+
+我找不到任何信息，如果它提供像`hover'或`active'这样的伪类支持和媒体查询支持。
+
+```html
+<div class="
+	uk-width-1-1
+	uk-padding-small
+	u-text-lead
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+我找不到任何信息表明UIkit提供了类似动态全局选择器的东西。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit是一个基于组件的框架。因此，有大量的组件，如按钮、徽章、表单、表格、菜单等：
+
+```html
+<span class="uk-badge"></span>
+<a class="uk-button uk-button-default" href=""></a>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit提供了一个主题，你可以在构建过程中通过变量来修改：
+
+```scss
+// 1.你的自定义变量和变量覆盖。
+$global-link-color: #DA7D02;
+
+// 2.导入默认变量和可用的混合变量。
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3.你的自定义混合器覆盖。
+@mixin hook-card() { color: #000; }
+
+// 4.导入UIkit。
+@import "uikit/src/scss/uikit-theme.scss";
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />
