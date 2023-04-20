@@ -1,0 +1,79 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Rollup.js"
+navigationIconPath: '/images/brands/rollupjs.svg'
+image: '/integrations/rollupjs/header.jpg'
+ogImage: '/integrations/rollupjs/og-image.jpg'
+
+title: Uso de Stylify CSS con Rollup.js
+description: "Aprende a utilizar el CSS de Stylify junto con Rollup.js. Codifica tu sitio web más rápido con Stylify CSS y Rollup.js"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Rollup.js.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en rollup.config.mjs",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Rollup.js es un agrupador de módulos para JavaScript que compila pequeños fragmentos de código en algo más grande y complejo, como una biblioteca o una aplicación.
+
+<Note>Puede encontrar ejemplos de integración para Rollup.js en <a href="https://github.com/stylify/integrations-examples/tree/master/rollupjs" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en el Rollup.js
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación, añadir crear un archivo de configuración `rollup.config.js`:
+
+```javascript
+const { stylifyRollup } = require('@stylify/unplugin');
+const postcss = require('rollup-plugin-postcss');
+
+const stylifyPlugin = stylifyRollup({
+	bundles: [{ files: ['./index.html'], outputFile: './index.css' }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default {
+	input: 'input.js',
+	plugins: [stylifyPlugin, postcss()],
+	output: { file: 'index.js', format: 'umd' }
+};
+```
+
+Ahora puedes ejecutar el comando build. Esto generará el `stylify.css` y mangle selectores en los archivos, si está configurado.
+
+<WhereToNext />

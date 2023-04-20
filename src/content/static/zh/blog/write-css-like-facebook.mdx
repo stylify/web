@@ -1,0 +1,200 @@
+---
+title: 用Stylify编写像Facebook一样的原子CSS
+image: '/images/blog/stylify-facebook/stylify-facebook.jpg'
+ogImage: '/images/blog/stylify-facebook/stylify-facebook.jpg'
+author: Vladimír Macháček
+annotation: '像素完美的网页设计，原子级的CSS，纠结的选择器和极简的输出？是的🤩！'
+createdAt: January 10, 2022
+---
+
+前段时间，在喝咖啡的时候，我一直在研究Facebook的CSS。我检查了多个页面，下载了其中的CSS，并想到了一个可以简化我写CSS方式的工具。
+
+懒惰是一件伟大的事情。它导致人们简化他们的工作，所以最后他们不得不什么都不做。这也导致我创建了https://stylifycss.com 💎。
+
+当我一直在挖掘Facebook的代码时，我发现了以下内容。
+
+Html：
+
+<img src="/images/blog/stylify-facebook/fb.jpg" loading="lazy" width="818" height="163" class="object-fit:cover" />
+
+CSS：
+
+<img src="/images/blog/stylify-facebook/fb2.jpg" loading="lazy" width="433" height="253" class="object-fit:cover" />
+
+如果你仔细看看，你就会发现，他们使用的是原子式CSS，而且是混用选择器。
+
+我还找到了一篇文章[Rebuilding our tech stack for the new Facebook.com](https://engineering.fb.com/2020/05/08/web/facebook-redesign/)，来自Facebook本身，其中他们解释了他们为新的Facebook版本做了哪些改变。这篇文章还说，在改用Atomic CSS之前，他们已经加载了超过400 kB的压缩CSS。
+
+根据我的经验，手动编写CSS是非常缓慢和耗时的。组件框架很好，直到你开始转换每个组件。Tailwind的JIT足够接近，但我不喜欢我必须记住或搜索我想使用的选择器。我还需要更小的块状物，并将其整合到现有的项目中，而不增加它们的规模。
+
+所以目标很明确。创建一个工具，它将能够
+- 根据内容分别生成CSS
+- 纠结选择器
+- 按需生成CSS
+- 默认使用本地CSS的`属性:值`作为选择器
+- 在没有捆绑器、框架和后置/预处理程序的情况下独立工作
+
+## ＃＃介绍
+[Stylify](/)是一个库，它使用类似CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 使用Stylify的原子CSS
+Stylify提供了[native preset](/zh/docs/stylify/native-preset)，其中的选择器与CSS的`property:value`相同。多亏了这一点，我不需要记住或搜索选择器。本地预设是可选的，你可以定义你自己的选择器。它还提供了以下功能：
+- **小块的**：它可以为每个文件、组件、布局分别生成CSS。
+- **没有预生成的CSS**：只有在内容中找到一个组件或选择器时才会生成CSS。
+- 尽可能地在内部组合和重用选择器，以使CSS很小。
+- **宏**：可用于定义自定义选择器，如`m:20px'用于保证金。
+- **屏幕的逻辑操作数**：像`&&`和`||`操作数的屏幕组合，如`sm&&tolg:font-size:24px`。
+- **选择器的混用**：从长的`font-weight:bold`到短的`_ab`。
+- 不需要预处理程序、后处理程序或捆绑程序
+- **按需生成CSS**：CSS可以按需捆绑，例如在一个请求中。
+- 因为它可以单独生成CSS，而且默认情况下不会带来任何CSS，所以它**可以很容易地集成到一个现有的项目中，而不会全面增加其规模**。
+
+## 编写HTML。获取CSS。纠结选择器。都是自动的。
+
+下面的例子和它的所有代码可以在[StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html)上找到和编辑。
+
+在下面的例子中，有一个简单的画廊图片的代码：
+```html
+<div class="
+	display:inline-flex
+	position:relative
+	margin:24px
+	overflow:hidden
+	box-shadow:0__2px__8px__#000
+	width:300px
+	md:margin:48px
+	md:width:600px
+">
+	<img class="width:100% object-fit:cover height:auto" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg" alt="" />
+	<div class="
+		font-family:arial
+		font-weight:bold
+		font-size:18px
+		position:absolute
+		bottom:0
+		left:0
+		padding:24px
+		background:rgba(0,0,0,0.7)
+		color:#fff
+		md:font-size:32px
+	">
+		扎科帕内（波兰）
+	</div>
+</div>
+```
+
+上述代码的结果将看起来像这样：
+
+<a href="">
+	<img src="/images/blog/stylify-facebook/stylify-facebook-result.jpg" alt="" width="702" height="577" loading="lazy" />
+</a>
+
+上面的代码如果用纯CSS写的话，看起来几乎是一样的。只有 "box-shadow "使用了"__"（两个下划线），而不是一个空格。
+
+由于可维护性和上述代码可以在多个地方使用的事实，有必要使其更加可重复使用。因此，让我们来定义一些组件、宏和变量吧!
+
+### 清理和配置
+
+对于上面的例子，我使用了下面的初始化，可以在[StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html)上找到（它在index.js中，为了在该环境下工作，它被稍微改变了）：
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+const config = {};
+const compiler = new Compiler(config);
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+```
+
+让我们先把阴影变量添加到编译器配置中：
+```javascript
+config.variables: {
+	shadow: '0 2px 8px #000'
+};
+```
+
+当变量被定义后，我们可以像这样使用它： `box-shadow:$shadow`。
+
+本机预设不是必需的。你可以定义你自己的选择器。例如，对于margin来说，它看起来是这样的：
+
+```javascript
+config.macros['m:(\\S+?)'] = ({macroMatch, selectorProperties}) => {
+	selectorProperties.add('margin', macroMatch.getCapture(0));
+};
+```
+
+当宏被定义后，它可以使用自定义的值，如`m:24px`和`md:m:48px`。
+
+如果多个相同的选择器应该在多个地方使用，为了简化可维护性和可读性，为它们定义一个组件是一个好的做法：
+
+```javascript
+config.components = {
+	'gallery-image__wrapper': `
+		display:inline-flex
+		position:relative
+		m:24px
+		md:m:48px
+		overflow:hidden
+		box-shadow:$shadow
+		width:300px
+		md:width:600px
+	`,
+	'gallery-image': 'width:100% object-fit:cover height:auto',
+	'gallery-image__label': `
+		font-family:arial
+		font-weight:bold
+		font-size:18px
+		position:absolute
+		bottom:0
+		left:0
+		padding:24px
+		background:rgba(0,0,0,0.7)
+		color:#fff
+		md:font-size:32px
+	`
+};
+```
+
+添加 "box-sizing:border-box "也是一个很好的做法，以防止在未来某个地方出现wtf时刻：
+
+```javascript
+config.customSelectors: {
+	'*': 'box-sizing:border-box'
+};
+```
+
+有了以上所有的改进，最终的代码就小了很多：
+
+```html
+<div class="gallery-image__wrapper">
+	<img class="gallery-image" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg" />
+	<div class="gallery-image__label">
+		扎科帕内（波兰）
+	</div>
+</div>
+```
+
+## 缩小和优化
+
+Stylify通过以下方式对CSS进行优化：
+
+1. 只有在内容中找到选择器和组件时才会生成。
+2. 2.它尽可能地重复使用选择器
+3. 3.它将长的选择器如`font-weight:bold`转化为短的选择器`_ab12`。
+
+下面是StackBlitz的图片，其中有经过处理和优化的输出。该CSS（不含新行和空格）只有**0.78 Kb**：
+
+<img src="/images/blog/stylify-facebook/processed-html.jpg" alt="" loading="lazy" width="856" height="506" />

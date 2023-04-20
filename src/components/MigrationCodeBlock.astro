@@ -1,0 +1,22 @@
+---
+import { Image } from '@astrojs/image/components';
+
+const { image } = Astro.props;
+---
+
+<div class="
+	margin:32px_0 display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:24px
+	[img]{width:200px;height:60px;object-fit:contain}
+	[>div]{display:flex;flex-direction:column;align-items:center}
+	[>div>div]{width:100%;margin-top:32px}
+	[>div>div_p:first-of-type]{margin-top:0}
+">
+	<div>
+		<Image src={`/images/brands/${image}`} alt="" loading="lazy" fetchpriority="low" quality={image.endsWith('svg') ? '' : 80} format={image.endsWith('svg') ? 'svg' : 'webp'} width={200} height={60} background="rgba(0,0,0,0)" fit="contain" />
+		<div><slot name="tool"></slot></div>
+	</div>
+	<div>
+		<img src="/images/logo/horizontal-dark.svg" alt="" width="200" height="60" loading="lazy" fetchpriority="low">
+		<div><slot name="stylify"></slot></div>
+	</div>
+</div>

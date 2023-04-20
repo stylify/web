@@ -1,0 +1,134 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Emotion"
+navigationIconPath: '/images/brands/emotion.png'
+image: '/migration/emotion/header.jpg'
+ogImage: '/migration/emotion/og-image.jpg'
+
+title: "Cómo migrar de la librería Emotion CSS-in-JS a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo de Emotion CSS-in-JS a CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationStylifyVariablesCssInJs from '@components/MigrationStylifyVariablesCssInJs.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y la sintaxis de la biblioteca Emotion CSS-in-JS con las de CSS utility-first de Stylify, y darte una idea de cómo migrar de Emotion a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Emotion es una librería diseñada para escribir estilos CSS con JavaScript. Proporciona una composición de estilos potente y predecible además de una gran experiencia para el desarrollador con características como mapas de fuentes, etiquetas y utilidades de prueba. Soporta tanto estilos de cadena como de objeto.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+En Emotion, puedes usar CSS prop para estilizar elementos directamente así:
+```jsx
+<div css={css`
+	color: blue;
+	font-weight: bold;
+	@media (min-width: 640px) {
+		color: red;
+	}
+`}></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+A veces necesitamos dar estilo a algunas partes de la aplicación de forma global. Para hacerlo dentro de Emotion, necesitamos usar el componente Global:
+```jsx
+import { Global, css } from '@emotion/react'
+
+render(
+	<Global styles={css`
+		.some-class {
+			color: hotpink !important;
+		}
+	`}/>
+)
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+En Emotion, los componentes suelen definirse de esta manera:
+
+```jsx
+const Title = styled.h1`
+	color: blue
+	font-weight: bold
+	@media (max-width: 640px) {
+		color:red
+	}
+`;
+<Title>¡Hola Mundo!🎉</Title>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="emotion.png">
+<div slot="tool">
+
+En Emotion CSS se utilizan principalmente variables que se definen dentro del Javascript o algún archivo de configuración o variables CSS.
+
+```jsx
+const color = 'blue';
+const Title = styled.h1`
+	color: ${color},
+	font-size: var(--font-size)
+`;
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+<MigrationStylifyVariablesCssInJs />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

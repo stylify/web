@@ -1,0 +1,32 @@
+---
+section: components
+
+order: 0
+
+navigationTitle: "组件"
+
+title: "无头的CSS组件"
+description: "Stylify Headless CSS Components - 按钮、网格、表单、动画、开关以及更多。复制&粘贴，无需CSS框架。"
+---
+
+import ComponentsPreviewGrid from '@components/ComponentsPreviewGrid.astro';
+import InteractivePreview from '@components/InteractivePreview.astro';
+import Note from '@components/Note.astro';
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
+
+Stylify组件的灵感来自[Material Design 3](https://m3.material.io/)。
+Stylify默认不提供任何调色板，因为准备好的调色板大多不符合项目的需要，而且无论如何都要改变。
+
+但是我们有一个指南，说明如何使用由[Material Theme Builder](/zh/snippets/snippets/material-theme)生成的主题和调色板。
+
+组件的比例取自其[社区figma文件](https://www.figma.com/file/DJMWYdOn4HyZ9GQqrGZfXD/Material-3-Design-Kit-(Community)?node-id=47909%3A2)。
+
+<Note>组件希望你的页面中包含某种 "重置 "样式表。
+例如[Normalize.css](https://necolas.github.io/normalize.css/)。
+另外，所有的元素都应该添加 "box-sizing:border-box"。</Note>
+
+## 组件列表：
+<ComponentsPreviewGrid selected={[]} />

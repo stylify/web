@@ -1,0 +1,136 @@
+---
+section: stylify
+
+order: 1
+
+navigationTitle: Runtime
+
+title: "Runtime"
+description: "Aprende a usar el Runtime de @stylify/stylify y empieza a usar el CSS de Stylify en poco tiempo."
+---
+
+Runtime está pensado para ser utilizado en un navegador. Bajo el capó se utiliza compilador. Genera CSS a partir de cualquier elemento añadido o modificado. Es una buena y rápida manera de crear pequeños y simples sitios web o prototipos.
+
+## Instalación
+Hay dos maneras de usar el Runtime. Una forma es cargarlo como un módulo y la otra como un script clásico.
+
+Ejemplo con un script:
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+
+<script>
+// Opcional - si quieres configurar algo
+Stylify.configure(config);
+</script>
+```
+
+Ejemplo con módulos:
+```javascript
+import { Runtime } from '@stylify/stylify/esm/index.min.js';
+
+const runtime = new Runtime();
+
+// Opcional - si quieres configurar algo
+// La configuración también se puede pasar al constructor Runtime(config)
+runtime.configure(config);
+```
+
+## Configuración
+El objeto config de abajo sirve como ejemplo que puede ser usado en los scripts de arriba. Todas las opciones de configuración son opcionales.
+```javascript
+const config = {
+	// Opcional
+	// Si es entorno dev - se pasa al compilador también
+	dev: false,
+	// Tiempo en ms para reducir la cantidad de compilaciones cuando algo cambia
+	repaintTimeout: 100,
+	// https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#screens
+		screens: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {}
+		// ...
+	}
+}
+```
+
+La forma recomendada de definir una configuración de Stylify reutilizable es crear un archivo, por ejemplo `stylify.config.js` y enlazarlo en la página. De esta forma puedes reutilizarlo en todas las páginas:
+
+Ejemplo para un script clásico:
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+<script src="/ruta/a/stylify.config.js"></script>
+```
+
+Ejemplo para el módulo esm:
+```javascript
+import { Runtime } from '@stylify/stylify/esm/index.min.js';
+import config from '/path/to/stylify.config.js';
+
+const runtime = new Runtime(config);
+```
+
+## Ganchos
+
+Stylify Runtime activa 4 hooks cuando se usa:
+
+- **stylify:ready**: Se activa cuando el Runtime es creado y configurado pero aún no se ha realizado la compilación.
+- **stylify:configured**: Se activa cuando el Runtime está configurado.
+- **stylify:repainted**: Se activa cuando se genera el CSS.
+- **stylify:uncloak**: Se dispara cuando se elimina una clase cloak de un elemento. Puedes utilizar esta escucha para cambiar el estado de, por ejemplo, un componente Vue.js.
+
+Puedes escuchar estos hooks así:
+
+```javascript
+runtime.hooks.addListener('stylify:ready', (event) => {
+	console.log(event);
+});
+```
+
+## Ocultar
+Para ocultar elementos que aún no han sido procesados, puedes usar la clase `s-cloak`. Esta clase
+se elimina justo después de que el elemento es procesado por Stylify.
+
+Puede "ayudar" a evitar cambios en el diseño, implementar algún tipo de pantalla de carga o marcador de posición y ocultar la página
+sin
+
+```html
+<style>
+	.s-cloak {
+		visibility: hidden;
+		content-visibility: hidden;
+	}
+</style>
+<div class="color:blue s-cloak">Texto</div>
+```
+
+Para lograr compatibilidad con frameworks reactivos como React o Vue, hay un evento dom que se dispara cada vez que
+el `s-cloak` es removido. El argumento es el elemento procesado.
+
+```javascript
+document.addEventListener('stylify:uncloak', (event) => {
+	// Hacer algo
+	console.log(event)
+});
+```
+
+## Desventajas
+Aunque usar el Runtime como configuración por defecto es más fácil, se recomienda generar CSS en el backend o durante una compilación y luego importar el CSS generado. Esto reduce el tiempo de carga y el tamaño de la página.
+
+Además, cuando se utiliza el Runtime por sí mismo sin un procesamiento previo de la plantilla por parte del compilador, no se pueden reescribir (manipular) los selectores.
+
+### Solución
+En caso de que quiera usar sólo el Runtime y al mismo tiempo mantener el sitio web rápido, puede hacer lo siguiente:
+
+1. Estiliza tu página con CSS de Stylify importado desde CDN.
+2. Copia el contenido del elemento de estilo con id `stylify-css`.
+3. Pega el CSS copiado directamente en el archivo HTML dentro del elemento style
+4. Comentar o eliminar la importación en tiempo de ejecución
+5. En caso de que necesites prefijar el CSS, puedes utilizar el [autoprefixer online](https://autoprefixer.github.io)
+
+Este enfoque te permite generar todo el CSS necesario sin usar ningún bundler o Node.js y además no ralentiza la página porque no se carga el Runtime.

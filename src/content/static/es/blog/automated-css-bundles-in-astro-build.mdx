@@ -1,0 +1,213 @@
+---
+title: 'Stylify CSS: primeros paquetes CSS de utilidades automatizados que se dividen en capas CSS en Astro.build'
+image: '/images/blog/stylify-astro-bundles/header.jpg'
+ogImage: '/images/blog/stylify-astro-bundles/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation: 'Stylify CSS: primeros paquetes CSS de utilidad automatizados que se dividen en capas CSS en Astro.build'
+createdAt: 'December 11, 2022'
+---
+
+Utility-First CSS de primera utilidad pueden ser muy pequeños. Pero, ¿y si pudiéramos hacerlos aún más pequeños? ¿Dividirlos para cada página/diseño, por ejemplo? Es posible que algunas páginas no tengan estilos de otra página. Aprende a dividir paquetes de CSS en Astro. construir automáticamente usando Stylify CSS.
+
+## Video Guide
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" class="width:100%" frameborder="0" loading="lazy" fetchpriority="low" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## La introducción de Stylify CSS
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar un CSS de primera utilidad optimizado en función de lo que escribe.
+
+- ✅ Selectores tipo CSS
+- ✅ Sin marco para estudiar
+- ✅ Menos tiempo dedicado a los documentos
+- ✅ CSS destrozado y extremadamente pequeño
+- ✅ No se necesita purga de CSS
+- ✅ Componentes, Variables, Selectores personalizados
+- ✅ Puede generar múltiples paquetes CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué debería probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Motivación
+Cada paquete puede contener solo el CSS necesario. Esto significa casi cero CSS no utilizado y, en producción, se puede modificar y minimizar, por lo que el CSS es aún más pequeño (más información a continuación).
+![Stylify Ejemplo](/images/blog/stylify-astro-bundles/preview.png)
+
+## El código
+Bien, primero el código, luego la explicación. Aunque el código puede parecer complicado, en realidad es bastante simple:
+
+```javascript
+import stylify from '@stylify/astro';
+import { hooks } from '@stylify/bundler';
+import fastGlob from 'fast-glob';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const pagesDir = 'src/pages';
+const layoutsDir = 'src/layouts';
+const stylesDir = 'src/styles';
+
+/** @type { import('@stylify/bundler').BundlerConfigInterface[]} */
+const stylifyBundles = [];
+const layoutCssLayerName = 'layout';
+const pageCssLayerName = 'page';
+
+const getFileCssLayerName = (filePath) =>
+	filePath.includes('/pages/') ? pageCssLayerName : layoutCssLayerName;
+
+const getOutputFileName = (file) => {
+	const parsedFile = path.parse(file);
+	const fileName = parsedFile.name.toLowerCase();
+	const dirNameCleanupRegExp = new RegExp(`${pagesDir}|${layoutsDir}|\\W`, 'g');
+	const dir = parsedFile.dir.replace(dirNameCleanupRegExp, '');
+	return `${dir.length ? `${dir}-` : ''}${fileName}.css`;
+};
+
+const createBundle = (file) => {
+	const fileName = path.parse(file).name;
+	const fileCssLayerName = getFileCssLayerName(file);
+
+	return {
+		outputFile: `${stylesDir}/${fileCssLayerName}/${getOutputFileName(file)}`,
+		files: [file],
+		cssLayer: fileCssLayerName,
+	};
+};
+
+const createBundles = (files) => {
+	for (const file of files) {
+		stylifyBundles.push(createBundle(file));
+	}
+};
+
+// 1. Asignar archivos en diseños/páginas y crear paquetes
+createBundles(fastGlob.sync(`${pagesDir}/**/*.astro`));
+createBundles(fastGlob.sync(`${layoutsDir}/**/*.astro`));
+
+// 2. Inic Stylify Astro Integraton
+const stylifyIntegration = stylify({
+	bundler: {
+		id: 'astro',
+		// Set CSS @layers order
+		cssLayersOrder: {
+			// Order will be @layer layout,page;
+			order: [layoutCssLayerName, pageCssLayerName].join(','),
+			// Layers order will be exported into file with layout @layer
+			exportLayer: [layoutCssLayerName],
+		},
+	},
+	bundles: stylifyBundles,
+});
+
+// 3. Agregue un enlace que procese los archivos abiertos
+/** @param { import('@stylify/bundler').BundleFileDataInterface } data */
+hooks.addListener('bundler:fileToProcessOpened', (data) => {
+	let { content, filePath } = data;
+
+	// 3.1 Solo para archivos de diseño y página
+	if (filePath.includes('/pages/') || filePath.includes('/layouts/')) {
+		const cssFileName = path.parse(filePath).name;
+		const cssFilePathImport = `import '/${stylesDir}/${getFileCssLayerName(
+			filePath
+		)}/${getOutputFileName(filePath)}';`;
+
+		if (!content.includes(cssFilePathImport)) {
+			if (/import \S+ from (?:'|")\S+(\/layouts\/\S+)(?:'|");/.test(content)) {
+				content = content.replace(
+					/import \S+ from (?:'|")\S+\/layouts\/\S+(?:'|");/,
+					`$&\n${cssFilePathImport}`
+				);
+			} else if (/^\s*---\n/.test(content)) {
+				content = content.replace(/^(\s*)---\n/, `$&${cssFilePathImport}\n`);
+			} else {
+				content = `---\n${cssFilePathImport}\n---\n${content}`;
+			}
+
+			fs.writeFileSync(filePath, content);
+		}
+	}
+
+	// 3.2 Para todos los archivos
+	const regExp = new RegExp(
+		`import \\S+ from (?:'|")\\S+(\\/components\\/\\S+)(?:'|");`,
+		'g'
+	);
+	let importedComponent;
+	const importedComponentFiles = [];
+	const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
+	while ((importedComponent = regExp.exec(content))) {
+		importedComponentFiles.push(
+			path.join(rootDir, 'src', importedComponent[1])
+		);
+	}
+
+	data.contentOptions.files = importedComponentFiles;
+});
+
+// 4. Espere a que el paquete se inicialice y observe los directorios
+// para crear nuevos paquetes cuando se agrega un archivo
+hooks.addListener('bundler:initialized', ({ bundler }) => {
+	// Ver diseños y directorios de páginas
+	// Si planea usar directorios anidados como blog/_slug.astro
+	// para el que desea automatizar la configuración de paquetes
+	// Deberá agregar la ruta a ellos aquí
+	const dirsToWatchForNewBundles = [layoutsDir, pagesDir];
+	for (const dir of dirsToWatchForNewBundles) {
+		fs.watch(dir, (eventType, fileName) => {
+			const fileFullPath = path.join(dir, fileName);
+
+			if (eventType !== 'rename' || !fs.existsSync(fileFullPath)) {
+				return;
+			}
+
+			bundler.bundle([createBundle(fileFullPath)]);
+		});
+	}
+});
+
+export default {
+	// 5. Agregue Stylify Astro Integration
+	integrations: [stylifyIntegration]
+};
+```
+
+## Cómo funciona
+El código anterior se divide en 5 pasos:
+1. Encuentra todas las páginas en `src/pages` y todos los diseños en `src/layouts` y llama a `createBundles` para crear la configuración de paquetes para nosotros con el nombre de capa y el archivo de salida correctos.
+2. Se inicializa la integración de Stylify y se configura el orden de las capas CSS, por lo que generará el orden solo en un archivo, que tiene el nombre de capa CSS `layout`.
+3. Se agrega el gancho [bundler:fileToProcessOpened](/es/docs/bundler#hooks). Este gancho tiene dos partes. Una parte está hecha, cuando este archivo es un diseño o página y la otra para cada archivo abierto.
+	- Cuando se abre un diseño o un archivo de página, comprueba si contiene una ruta al archivo CSS y, si no, la agrega al encabezado del archivo.
+	- Para todos los demás archivos, intenta verificar las `importaciones`. Si se encuentra alguna importación de componentes, la asigna como una dependencia. De esta manera, puede mapear un árbol de dependencia de componentes completo automáticamente, de modo que solo los agregue/elimine y el CSS se genere correctamente.
+4. Cuando se inicializa Bundler, podemos comenzar a buscar archivos recién agregados dentro del directorio `layout` y `pages`. Cada vez que se agrega un nuevo archivo, creamos un nuevo paquete.
+5. La integración Stylify se agrega a la configuración de Astro.
+
+**Cuando ejecutamos el comando dev, Stylify hará lo siguiente:**
+
+1. Diseño de mapa/archivos de página
+2. Genere CSS en los archivos correctos, envuelva el contenido en la capa CSS correcta y agregue enlaces a estos archivos en las plantillas de Astro.
+3. Si se crea un nuevo archivo en diseño/páginas, se agrega automáticamente un nuevo paquete
+
+**¿Y cómo se ve la salida para la producción?**
+Diseño (src/layouts/Layout.astro):
+```css
+@layer layout,page;
+@layer layout {.b{font-size:16px}}
+```
+
+Página (src/pages/index.astro):
+```css
+@layer page {.a{color:darkblue}}
+```
+
+## Ejemplo de integración
+Consulte el [ejemplo en Stack Blitz] interactivo (https://stackblitz.com/edit/stylify-astro-automated-bundles-example?file=src%2Fpages%2Findex.astro).
+
+## Configuración
+Los ejemplos anteriores no incluyen todo lo que Stylify puede hacer:
+- Definir [componentes](/es/docs/stylify/compiler#components)
+- Agregar [selectores personalizados](/es/docs/stylify/compiler#customselectors)
+- Configure [sus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Puede mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Y mucho más
+
+No dudes en [consultar los documentos](/es/docs/get-started) para obtener más información 💎.

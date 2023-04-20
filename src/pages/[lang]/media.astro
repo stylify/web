@@ -1,0 +1,58 @@
+---
+import { getLangFromUrl, getStaticPathsForSupportedLanguages, useTranslations } from '@serverHelpers';
+import MainLayout from "@mainLayout";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const formats = ['svg', 'png', 'eps'];
+const logos = [
+	{
+		imageName: 'horizontal',
+		type: 'light',
+		label: t('Preferred - Horizontal')
+	},
+	{
+		imageName: 'vertical',
+		type: 'light',
+		label: t('Vertical alternative')
+	},
+	{
+		imageName: 'horizontal-dark',
+		type: 'dark',
+		label: t('Preferred - Horizontal (dark)')
+	},
+	{
+		imageName: 'vertical-dark',
+		type: 'dark',
+		label: t('Vertical alternative (dark)')
+	}
+];
+
+export const getStaticPaths = () => getStaticPathsForSupportedLanguages();
+---
+
+<MainLayout
+	pageTitle={t('Logo & Assets')}
+	pageDescription={t('Assets that represent the Stylify CSS brand.')}
+>
+	<section class="container margin-bottom:48px">
+		<h1 class="font-size:48px text-align:center margin-bottom:0">{t('Stylify logo')}</h1>
+		<p class="max-width:800px margin:0_auto_42px_auto text-align:center font-size:20px" set:html={t('The following are assets that represent the Stylify CSS brand. All assets are considered open-source contributions and should be used according to open standards and licensing rules. In case of any question about usage, alignment, editing, feel free to contact us via e-mail <a href="mailto:dev@stylifycss.com" class="color:$blue1">dev@stylifycss.com</a> or through Discord.')}></p>
+		<div class="display:grid md:grid-template-columns:50%_50% gap:24px">
+			{logos.map((logo) => (
+				<div>
+					<h2 class="margin-top:0 margin-bottom:8px">{logo.label}</h2>
+					<div class={`${logo.type === 'light' ? 'background:#f1f1f1' : 'background:#1e2431'} padding:24px border-radius:4px`}>
+						<img src={`/images/logo/${logo.imageName}.svg`} class="width:100% max-height:100px" width="1000" height="273" />
+					</div>
+					<div class="display:flex flex-wrap:wrap margin-left:-12px margin-top:4px">
+						{formats.map((format) => (
+							<a href={`/images/logo/${logo.imageName}.${format}`} download={`${logo.imageName}.${format}`} class="color:$blue1 margin-left:12px display:inline-flex">{format.toUpperCase()}</a>
+						))}
+					</div>
+				</div>
+			))}
+		</div>
+	</section>
+</MainLayout>

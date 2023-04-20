@@ -1,0 +1,157 @@
+---
+section: get-started
+
+order: 5
+
+navigationTitle: "发布与更新"
+
+title: "Stylify发布"
+description: "Stylify的发布、更新日志以及如何从一个版本更新到另一个版本。"
+---
+
+Stylify的发布、更新日志以及如何从一个版本更新到另一个版本。
+
+## 实际版本
+
+<div class="max-width:100% overflow:auto">
+
+| 项目                   | 状态                                                         | 描述                                                                                  |
+| --------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------|
+| [astro]               | [![astro-status]][astro-package]                             | Integration for Astro.build                                                          |
+| [bundler]             | [![bundler-status]][bundler-package]                         | A flexible CSS bundler.                                                              |
+| [nuxt]                | [![nuxt-status]][nuxt-package]                               | Module for [Nuxt.js Framework](https://nuxtjs.org/) v3+.                             |
+| [nuxt-module]         | [![nuxt-module-status]][nuxt-module-package]                 | Module for [Nuxt.js Framework](https://nuxtjs.org/) v2 < v3.                         |
+| [stylify]             | [![stylify-status]][stylify-package]                         | Core package. Generates CSS and minifies selectors.                                  |
+| [unplugin]            | [![unplugin-status]][unplugin-package]                       | Universal plugin for Vite, Webpack, Rollup and Esbuild.                              |
+
+
+[astro]: https://github.com/stylify/packages/tree/master/packages/astro
+[astro-status]: https://img.shields.io/npm/v/@stylify/astro?color=%2301befe&label=Version&style=for-the-badge
+[astro-package]: https://npmjs.com/package/@stylify/astro
+
+[bundler]: https://github.com/stylify/packages/tree/master/packages/bundler
+[bundler-status]: https://img.shields.io/npm/v/@stylify/bundler?color=%2301befe&label=Version&style=for-the-badge
+[bundler-package]: https://npmjs.com/package/@stylify/bundler
+
+[nuxt]: https://github.com/stylify/packages/tree/master/packages/nuxt
+[nuxt-status]: https://img.shields.io/npm/v/@stylify/nuxt?color=%2301befe&label=Version&style=for-the-badge
+[nuxt-package]: https://npmjs.com/package/@stylify/nuxt
+
+[nuxt-module]: https://github.com/stylify/packages/tree/master/packages/nuxt-module
+[nuxt-module-status]: https://img.shields.io/npm/v/@stylify/nuxt-module?color=%2301befe&label=Version&style=for-the-badge
+[nuxt-module-package]: https://npmjs.com/package/@stylify/nuxt-module
+
+[stylify]: https://github.com/stylify/packages/tree/master/packages/stylify
+[stylify-status]: https://img.shields.io/npm/v/@stylify/stylify?color=%2301befe&label=Version&style=for-the-badge
+[stylify-package]: https://npmjs.com/package/@stylify/stylify
+
+[unplugin]: https://github.com/stylify/packages/tree/master/packages/unplugin
+[unplugin-status]: https://img.shields.io/npm/v/@stylify/unplugin?color=%2301befe&label=Version&style=for-the-badge
+[unplugin-package]: https://npmjs.com/package/@stylify/unplugin
+
+</div>
+
+## 从0.4升级到0.5
+- 发布: [v0.5.0](https://github.com/stylify/packages/releases/tag/v0.5.0)
+
+### @stylify/stylify
+- 宏的回调现在接受一个带参数的对象，而不是一连串的参数。`this`对象不再被修改。
+```javascript
+// v0.4.0
+const macros = {
+	'macro': (macroMatch, selectorProperties) => { const { helpers, variables, dev } = this;}
+};
+
+// v0.5.0
+const macros = {
+	'macro':({ macroMatch, selectorProperties, helpers, variables, dev }) => {}
+};
+```
+- 重写选择器方法现在可以接受一个参数对象，而不是两个参数。
+```javascript
+// 如果传递给重写选择器的选项是字符串，那么预计只有一个参数
+compiler.rewriteSelectors(code)
+
+// 如果有两个或更多的参数被传递，那么它需要是一个对象
+compiler.rewriteSelectors({
+	content: '',
+	// 可选的
+	rewriteOnlyInSelectorsAreas: true,
+	matchSelectorsWithPrefix: false
+})
+```
+- rewriteSelectors方法中的参数`rewriteInAreas`被改名为`rewriteInSelectorsAreas`。
+- 将配置和内容选项中的`plainSelectors`改名为`customSelectors`。
+- 每个`customSelector`和`component`现在只接受一个字符串作为值。
+- 自定义选择器现在可以直接从模板生成。参见[docs](/zh/docs/stylify/compiler#customselectors)。
+- 如果你为组件使用了选择器链，请将其改写为新的类似SCSS的语法。
+```javascript
+// v0.4.0
+const components = {
+	'btn--big': {
+		selectors: 'color:blue',
+		selectorsChain: 'btn'
+	}
+};
+
+// v0.5.0
+const components = {
+	'btn--big': `
+		&.btn { color:blue }
+	`
+};
+```
+- 现在钩子的使用方法如下。请查看[Stylify钩子](/zh/docs/stylify/compiler#hooks)。
+
+```javascript
+import { hooks } from '@stylify/stylify';
+
+hooks.addListener('', (options) => {});
+```
+- 对于运行时间
+
+```javascript
+const runtime = new Runtime();
+runtime.hooks.addListener('', (options) => {});
+```
+
+### @stylify/bundler
+- 现在，Bundler钩子的使用方法如下。Bundler钩子扩展了默认的Stylify CSS钩子。请查看 [Bundler hooks](/zh/docs/bundler#hooks)。
+```javascript
+import { hooks } from '@stylify/bundler';
+
+hooks.addListener('', (options) => {});
+```
+- 现在只有`await bundler.waitOnBundlesProcessed()`可以用来等待bundler完成捆绑工作。await `bundler.bundle()`是没有必要的。
+
+### @stylify/bundler
+- 取消插件的出口现在是`stylifyVite`, `stylifyRollup`, `stylifyWebpack`, `stylifyEsbuild`。
+
+## 从0.3升级到0.4
+- 发布: [v0.4.0](https://github.com/stylify/packages/releases/tag/v0.4.0)
+- 只使用一个下划线`_`（代表一个空格字符） => `border:1px_solid_blue'.
+- 集成被从`stylifyIntegration`更名为`stylify`。
+- 在集成的初始化中不需要传递空对象或配置。
+
+## 从0.2升级到0.3
+- 发布: [v0.3.0](https://github.com/stylify/packages/releases/tag/v0.3.0)
+- 你可以从配置中移除React、Vue、Angular、Nette、Lit和Alpine的`selectorsAreas`。它们现在被默认在编译器配置中。
+- 将`extend`对象中的所有内容移到根中：
+```javascript
+const config = {
+	// 所有来自extend对象的配置选项都移到这里。
+	//编译器只是一个例子。
+	compiler: {},
+	// Extend关键字被移除
+	extend: {
+		compiler: {}
+	}
+}
+```
+- Stylify CSS Runtime现在只有`Stylify.configure()`方法。`Stylify.runtime.configure()`被移除。
+
+## 从0.1升级到0.2
+- 发布: [v0.2.1](https://github.com/stylify/packages/releases/tag/v0.2.1)
+- 配置文件已被删除
+- Autoprefixer 不一定要包含在你的 bundler 配置中。它现在是 bundler 中的默认配置。
+- 选择器现在只能由字母数字字符启动。

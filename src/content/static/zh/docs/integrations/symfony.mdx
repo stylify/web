@@ -1,0 +1,87 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Symfony"
+navigationIconPath: '/images/brands/symfony-icon.svg'
+image: '/integrations/symfony/header.jpg'
+ogImage: '/integrations/symfony/og-image.jpg'
+
+title: 在Symfony框架中使用Stylify CSS
+description: "了解如何在Symfony框架中使用Stylify CSS。用Stylify CSS更快地编写你的Symfony网站代码。"
+howToSchemaTitle: "如何在Symfony中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "在webpack.config.js中添加Stylify CSS构建模块",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Symfony是一套可重用的PHP组件和PHP框架，用于构建Web应用、API、微服务和Web服务。
+
+<Note>Symfony框架的集成实例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/symfony" target="_blank" rel="noopener">集成实例库</a>中找到。</Note>
+
+## 如何将Stylify CSS集成到Symfony框架中
+
+下面的例子使用了`symfony/skeleton`，并根据入门教程，广告了一些 composer 包： `twig, annotations, @symfony/webpack-encore`。
+
+首先，使用CLI安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+现在在`webpack.config.js`中添加以下配置：
+
+```javascript
+const Encore = require('@symfony/webpack-encore');
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const cssPath = './assets/styles/index.css';
+
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{ outputFile: cssPath, files: ['./templates/**/*.html.twig' ] }],
+	// 可选
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+Encore
+	// 使用Stylify CSS插件
+	.addPlugin(stylifyPlugin)
+	.addStyleEntry('index', cssPath);
+```
+
+现在你可以在symfony应用程序中使用生成的bundle：
+```
+{{ encore_entry_link_tags('index.css') }}
+```
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

@@ -1,0 +1,39 @@
+---
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const code = `
+/*
+https://stylifycss.com/en/docs/stylify/compiler#helpers
+
+Helpers can be used within selectors or macros.
+For example color:lighten(#000,10) is helper
+for lightening color.
+
+You can define your own easily within helpers option.
+*/
+new Compiler({
+	helpers: {
+		textPropertyType(value) {
+			if (value === 'bold') {
+				return 'font-weight';
+			} else if (value === 'italic') {
+				return 'font-style'
+			} else if (value.includes('$')) {
+				return 'color';
+			}
+		},
+	},
+	macros: {
+		'text:(\\\\S+)': ({macroMatch, selectorProperties}) => {
+			const property = helpers.textPropertyType(
+				macroMatch.getCapture(0)
+			);
+			selectorProperties.add(
+				property, macroMatch.getCapture(0)
+			);
+		}
+	}
+});`.trim();
+---
+
+<ShikiHighlighter maxHeight="400px"  class="hp__code-editor" code={code} lang="js" />

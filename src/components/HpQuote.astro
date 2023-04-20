@@ -1,0 +1,48 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+import { Image } from '@astrojs/image/components';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<script>
+	const youtubeIframe = `<iframe width="310" height="185" src="https://www.youtube-nocookie.com/embed/GRwtXDnm5gE?autoplay=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy" fetchpriority="low" allowfullscreen class="max-width:100%"></iframe>`
+	const toggleButton = document.querySelector('.js-quote-toggle');
+
+	toggleButton.addEventListener('click', () => {
+		document.querySelector('.js-quote-video-wrapper').innerHTML = youtubeIframe;
+		toggleButton.remove();
+	});
+</script>
+
+<section id="quote" class="container">
+	<h2 class="hp-section-title">{t('Don\'t study frameworks. Focus on coding!')}</h2>
+	<div class="display:flex flex-direction:column md:flex-direction:row align-items:center justify-content:center">
+		<div class="max-width:724px md:width:calc(100%_-_220px) font-size:16px">
+			<p class="margin-top:0">
+				{t('As a developer, you want to code your website easily, quickly, and without spending too much time in docs. Frameworks, CSS-in-JS libraries, and preprocessors have many great features, but they also make development more complex, forcing you to study syntax, randomly named selectors, and how to use different features (which you may forget after a week of holiday 🍹).')}
+			</p>
+			<p class="margin:0">
+				{t('Stylify focuses on simplicity and uses CSS-like selectors that you already know. It\'s like writing pure CSS directly into the markup without the need to switch between files and figure out the names for selectors. If you know CSS, you know how to use Stylify. By trying Stylify, you will find that preprocessors and short selectors are unnecessary.')}
+			</p>
+		</div>
+		<div class="display:flex flex-direction:row md:flex-direction:column margin-top:24px md:margin-top:0 md:padding-left:24px align-items:center flex-direction:column">
+			<a role="button" v-if="!videoOpened" class="js-quote-toggle cursor:pointer">
+				<Image src="/images/hp/youtube-video-preview.png" width={310} height={185} alt="" loading="lazy" fetchpriority="low" quality={80} format="webp" background="rgba(0,0,0,0)" fit="cover" class="object-fit:cover" />
+			</a>
+			<div class="js-quote-video-wrapper"></div>
+			<div class="margin-left:12px md:margin-left:0 margin-top:8px md:margin-top:12px text-align:center">
+				<strong class="color:#fefefe">Vladimír Macháček</strong>
+				<br><span set:html={t('Author of Stylify&nbsp;CSS')}></span>
+				<br><span set:html={t('Webdev at <a href="https://slevomat.cz" class="color:$blue1" target="_blank">Slevomat.cz</a>')}></span>
+			</div>
+		</div>
+	</div>
+	<div class="text-align:center margin-top:24px">
+		<a href={getLocalizedRoute('/docs/get-started', lang)} class="btn btn--hp margin-top:12px">
+			{t('Go ahead and try Stylify')}
+			<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+		</a>
+	</div>
+</section>

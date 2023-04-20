@@ -1,0 +1,114 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Materialize"
+navigationIconPath: '/images/brands/materialize.svg'
+image: '/migration/materialize/header.jpg'
+ogImage: '/migration/materialize/og-image.jpg'
+
+title: "Cómo migrar del framework Materialize CSS a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework de componentes Materialize CSS al CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework de componentes Materialize con las del CSS utility-first de Stylify, y darte una idea de cómo migrar de Materialize a Stylify.
+
+<MigrationNote />
+
+## Introducción
+
+Materialize es un moderno marco de front-end responsivo basado en Material Design
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize proporciona un montón de utilidades para propiedades como colores, tipografía, rejillas, etc:
+
+```html
+<span class="blue-text text-darken-2">Este es un panel de tarjeta con texto azul oscuro</span>
+<div class="row">
+	<div class="col s1">1</div>
+	<div class="col s1">2</div>
+</div>
+<p class="flow-text">Soy Flow Text</p>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Materialize proporciona algo así como Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize es un framework basado en componentes. Por lo tanto, hay un montón de componentes, como botones, insignias, formularios, tablas, menús, etc:
+
+```html
+<span class="badge">1</span>
+<a class="btn-floating btn-large waves-effect waves-light red">
+	<i class="material-icons">añadir</i>
+</a>
+<ul class="pagination">
+	<li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+	<li class="active"><a href="#!">1</a></li>
+	<li class="waves-effect"><a href="#!">2</a></li>
+	<li class="waves-effect"><a href="#!">3</a></li>
+	<li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="materialize.svg">
+<div slot="tool">
+
+Materialize CSS se puede configurar modificando los archivos SCSS descargados y generando un nuevo tema durante un proceso de compilación.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

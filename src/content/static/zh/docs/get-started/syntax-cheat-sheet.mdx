@@ -1,0 +1,184 @@
+---
+section: get-started
+
+order: 2
+
+navigationTitle: 语法小抄
+
+title: "语法小抄"
+description: "完整的Stylify CSS选择器语法小抄"
+---
+import Note from '@components/Note.astro';
+
+本页是一个指南，让你在一个地方轻松学习Stylify CSS语法。
+
+它包含了经常使用的选择器模式，所以你可以快速找到你不知道怎么写的那一个。
+
+<Note>如果你没有找到你要找的选择器，请告诉我们，我们会添加它。</Note>
+
+## 特殊字符
+- 当创建一个选择器时，用`_`（下划线）代替空格，用`^`代替引号。这适用于任何形式的选择器
+- 要保留下划线或帽子字符，使用``（反斜杠）=> ``_`。
+- 对于供应商前缀`-webkit`，`-moz`，不要在开头添加`-`（一个连字符）。
+- 如果你定义了变量，你可以在选择器中使用它们。只要在变量前加上`$`即可
+
+## 选择器
+
+```html
+color:blue
+👉 .color\:blue {}
+
+webkit-font-smoothing:antialiased
+👉 .webkit-font-smoothing\:antialiased {}
+
+<!-- 使用变量$blue -->
+color:$blue
+👉 .color\:\$blue {}
+
+<!-- 使用 _ -->
+margin:0_24px
+👉 .margin\:0_24px {}
+
+<!-- 使用 ^-->
+content:^✅^
+👉 .content\:\^\✅\^
+
+hover:color:blue
+👉 .color\:blue:hover {}
+
+<!--
+将类包入伪类组。
+下面的例子是一个快捷方式
+hover:color:red + hover:font-weight:bold。
+-->
+hover:{color:red;font-weight:bold}
+👉 hover\:\{color\:red;font-weight:bold\}:hover {}
+
+<!-- 与上面相同，但也有屏幕 -->
+md:hover:{color:red;font-weight:bold}
+👇
+@media (min-width: 1024px) {
+	md\:hover\:\{color\:red;font-weight:bold\}:hover {}
+}
+
+lg:hover:color:blue
+👇
+@media (min-width: 1024px) {
+	.color\:blue:hover {}
+}
+
+minw640px:color:blue
+👇
+@media (min-width: 640px) {
+	.color\:blue {}
+}
+
+minw640px&&maxw1023px:color:blue
+👇
+@media (min-width: 640px) and (max-width: 1023px) {
+	.minw640px\&\&maxw1023px\:color\:blue {}
+}
+```
+
+## 自定义选择器
+
+- 自定义选择器有以下模式：
+```
+[css selectors]{stylify selectors split by ;}
+```
+
+- 当在class属性中使用`&`字符时，它指的是当前元素。
+
+下面是在`class`属性中自定义选择器的例子：
+```html
+[a]{color:blue}
+👉 .\[a\]\{color\:blue\} a {}
+
+[a]{hover:color:blue}
+👉 .\[a\]\{hover\:color\:blue\} a:hover {}
+
+[a]{lg:hover:color:blue}
+👇
+@media (min-width: 1024px) {
+	.\[a\]\{lg\:hover\:color\:blue\} a:hover {}
+}
+
+<!-- 多个选择器由, 分割。-->
+[h1,h2]{font-weight:bold}
+👇
+.\[h1\,h2\]\{font\-weight\:bold\} h1,
+.\[h1\,h2\]\{font\-weight\:bold\} h2 {}
+
+<!-- 使用&-->
+[&+div]{margin-left:12px}
+👉 .\[\&\+div\]\{margin\-left\:12px\}+div {}
+
+<!--在_之前使用\保存_（下划线）-->
+[.custom\_\_section]{color:blue}
+👉 .\[\.custom\_\_section\]\{color\:blue\} .custom__section {}
+
+[li:nth-of-type(even)]{color:blue}
+👉 .\[li\:nth\-of\-type\(even\)\]\{color\:blue\} li:nth-of-type(even) {}
+
+[&[open]_summary_~_*]{visibility:visible}
+👉 .\[\&\[open\]\_summary\_\~\_\*\]\{visibility\:visible\}[open] summary ~ * {}
+
+[summary::-webkit-details-marker,summary::marker]{display:none}
+👇
+.\[summary\:\:\-webkit\-details\-marker\,summary\:\:marker\]\{display\:none\} summary::-webkit-details-marker,
+.\[summary\:\:\-webkit\-details\-marker\,summary\:\:marker\]\{display\:none\} summary::marker {}
+
+[:not(summary)]{opacity:O}
+👉 .\[\:not\(summary\)\]\{opacity\:O\} :not(summary) {}
+```
+
+- 嵌套的语法类似于SCSS和实际提交的CSS嵌套模块（提案中）。
+
+- `&`字符总是指的是上层。
+
+下面是在Stylify CSS嵌套语法中写的等价物：
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		a: 'color:blue',
+		`h1,h2`: `
+			margin-top:0
+
+			& + p {
+				margin-top:0
+			}
+		`
+	}
+}
+```
+
+CSS输出：
+```css
+a {}
+h1, h1 + p,
+h2, h2 + p {}
+```
+
+
+## 组件
+
+
+```javascript
+const compilerConfig = {
+	components: {
+		'title': `
+			font-size:24px
+
+			&--larger {
+				font-size:32px
+			}
+		`,
+	}
+}
+```
+
+CSS输出：
+```css
+.title {}
+.title--larger {}
+```

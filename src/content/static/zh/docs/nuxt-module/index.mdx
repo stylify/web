@@ -1,0 +1,112 @@
+---
+section: nuxt-module
+
+order: 0
+
+navigationTitle: "@stylify/nuxt-module"
+
+title: "@stylify/nuxt-module"
+description: "@stylify/nuxt-module为Nuxt.js v2提供无缝的Stylify集成。"
+---
+import Note from '@components/Note.astro';
+import DocsSection from '@components/DocsSection.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Nuxt模块提供无缝的Stylify CSS集成到Nuxt.js v2+ < v3中。
+
+<StackBlitzLink link="stylify-nuxtjs-template" />
+
+<Note><strong>@stylify/nuxt-module</strong>只能在Nuxt v2中使用。对于Nuxt v3及以上版本，请查看[@stylify/nuxt](/zh/docs/nuxt)。</Note>
+
+<DocsSection>
+<div slot="description">
+
+## 安装
+Nuxt模块只能通过NPM或Yarn等CLI安装：
+
+</div>
+<div slot="code">
+
+```bash
+yarn add -D @stylify/nuxt-module
+npm i -D @stylify/nuxt-module
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+## 使用方法
+在`nuxt.config.js`中添加一个buildModule：
+
+</div>
+<div slot="code">
+
+```javascript
+buildModules: [
+	'@stylify/nuxt-module'
+]
+```
+
+</div>
+</DocsSection>
+
+## 配置
+
+如果你想配置Stylify，你可以在`nuxt.config.js`中直接使用配置部分，或者在nuxt.config.js旁边创建一个`stylify.config.js`文件。在这两种情况下，你都使用如下所示的相同的配置方案。
+
+下面的代码部分应该用在`nuxt.config.js`或`stylify.config.js`里面：
+```javascript
+import { defineConfig } from '@stylify/nuxt-module';
+
+const stylifyConfig = defineConfig({
+	dev: false,
+	configPath: 'stylify.config.js',
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// 当vars dir paths被设置后，Stylify CSS会根据给定的路径将变量导出到
+	// 根据给定的路径导出一个文件
+	cssVarsDirPath: null,
+	sassVarsDirPath: null,
+	lessVarsDirPath: null,
+	stylusVarsDirPath: null,
+	//文件掩码被@stylify/bundler使用。
+	// 捆绑器使用这些掩码来寻找他应该生成CSS的文件。
+	// 当你添加一个掩码，并且你想要mangleSelectors时，你还需要添加适当的加载器。见下文
+	filesMasks: [],
+	// 当compiler.mangleSelectors设置为 "true "时，加载器会在webpack构建过程中使用，当nuxt运行生产构建时也会使用。
+	// 当webpack根据定义的加载器加载一个文件时，它的内容
+	// 将被Stylify CSS编译器处理。
+	// 加载器有以下结构
+	// {
+	//		test: /\.vue$/i,
+	//		include: ['path/to/some/dir']
+	//	},
+	loaders: []
+});
+```
+
+<Note>如果你使用`stylify.config.ts`，你不能使用[hooks](/zh/docs/stylify/compiler#hooks)。这是因为Nuxt编译该文件时，钩子将在与开发服务器不同的钩子管理器实例中工作。因此，它们不能监听开发服务器上的触发钩子，将是无用的。</Note>
+
+nuxt.config.js的例子
+```javascript
+export default {
+	stylify: stylifyConfig
+}
+```
+
+stylify.config.js的例子
+
+```javascript
+export default stylifyConfig;
+```

@@ -1,0 +1,37 @@
+---
+import BlogPostListItem from "@components/BlogPostListItem.astro";
+import NewsletterForm from "@components/NewsletterForm.astro";
+import MainLayout from "@mainLayout";
+import { useTranslations, getStaticPathsForSupportedLanguages, getLangFromUrl } from '@serverHelpers';
+import { queryStaticContent } from '@content';
+
+const lang = getLangFromUrl(Astro.url);
+const posts = await queryStaticContent({
+	lang,
+	postsType: 'blog',
+	sortBy: 'blogPostNewest'
+});
+
+const t = useTranslations(lang);
+
+export const getStaticPaths = () => getStaticPathsForSupportedLanguages();
+
+
+---
+
+<MainLayout
+	pageTitle="Blog"
+	pageDescription={t('News and articles about the Stylify.')}
+>
+	<section class="container margin-top:24px margin-bottom:48px md:margin-top:48px">
+		<h1 class="text-align:center font-size:48px margin-bottom:24px margin-top:0">Blog</h1>
+
+		<div class="container margin-bottom:64px">
+			<NewsletterForm />
+		</div>
+
+		<div class="display:flex flex-direction:column flex-wrap:wrap sm:margin-left:-24px sm:flex-direction:row">
+			{posts.map((post) => <BlogPostListItem data={post.data} slug={post.slug} />)}
+		</div>
+	</section>
+</MainLayout>

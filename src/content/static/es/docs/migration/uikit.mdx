@@ -1,0 +1,122 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "UIkit"
+navigationIconPath: '/images/brands/uikit.svg'
+image: '/migration/uikit/header.jpg'
+ogImage: '/migration/uikit/og-image.jpg'
+
+title: "Cómo migrar de UIkit CSS framework a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework de componentes CSS UIkit al CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework de componentes UIkit con las del CSS utility-first de Stylify, y darte una idea de cómo migrar de UIkit a Stylify.
+
+<MigrationNote />
+
+## Introducción
+
+UIkit es un framework front-end ligero y modular para desarrollar interfaces web rápidas y potentes.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit proporciona un conjunto de utilidades para propiedades como margin, padding, width, etc.
+
+No he podido encontrar ninguna información si proporciona algo como `hover` o `active` pseudo clases de apoyo y los medios de comunicación consultas de apoyo.
+
+```html
+<div class="
+	uk-width-1-1
+	uk-padding-small
+	u-text-lead
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que UIkit proporciona algo así como Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit es un framework basado en componentes. Por lo tanto, hay un montón de componentes, como botones, insignias, formularios, tablas, menús, etc:
+
+```html
+<span class="uk-badge"></span>
+<a class="uk-button uk-button-default" href=""></a>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="uikit.svg">
+<div slot="tool">
+
+UIkit proporciona un tema que puedes modificar durante el proceso de compilación a través de variables:
+
+```css
+// 1. Tus variables personalizadas y sobreescrituras de variables.
+$global-link-color: #DA7D02;
+
+// 2. Importar variables por defecto y mixins disponibles.
+@import "uikit/src/scss/variables-theme.scss";
+@import "uikit/src/scss/mixins-theme.scss";
+
+// 3. Tu mixin personalizado sobrescribe.
+@mixin hook-card() { color: #000; }
+
+// 4. Importar UIkit.
+@import "uikit/src/scss/uikit-theme.scss";
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

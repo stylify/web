@@ -1,0 +1,200 @@
+---
+title: Escribir CSS atómica como Facebook con Stylify
+image: '/images/blog/stylify-facebook/stylify-facebook.jpg'
+ogImage: '/images/blog/stylify-facebook/stylify-facebook.jpg'
+author: Vladimír Macháček
+annotation: '¿Diseño web pixel perfect, CSS atómico, selectores manidos y salida minimalista? Sí 🤩!'
+createdAt: January 10, 2022
+---
+
+Hace algún tiempo durante un café ☕ descanso he estado cavando a través de la CSS de Facebook. Revisé varias páginas, descargué el CSS de ellas y tuve una idea sobre una herramienta que podría simplificar la forma en que escribo el CSS.
+
+La pereza es una gran cosa. Lleva a la gente a simplificar su trabajo para que al final no tengan que hacer nada. También me llevó a crear https://stylifycss.com 💎.
+
+Cuando he estado rebuscando en el código de Facebook, he encontrado lo siguiente.
+
+Html:
+
+<img src="/images/blog/stylify-facebook/fb.jpg" loading="lazy" width="818" height="163" class="object-fit:cover" />
+
+CSS:
+
+<img src="/images/blog/stylify-facebook/fb2.jpg" loading="lazy" width="433" height="253" class="object-fit:cover" />
+
+Si echas un vistazo más de cerca, puedes ver que están usando CSS atómico y que manipulan los selectores.
+
+También he encontrado un artículo [Rebuilding our tech stack for the new Facebook.com](https://engineering.fb.com/2020/05/08/web/facebook-redesign/) del propio Facebook en el que explican qué han cambiado para la nueva versión de Facebook. Lo que también dice el artículo es que han estado cargando más de 400 kB de CSS comprimido y antes de cambiar a Atomic CSS.
+
+Desde mi experiencia, escribir CSS manualmente es lento y consume mucho tiempo. Los frameworks de componentes son geniales hasta que empiezas a transformar cada componente. El JIT de Tailwind se acerca bastante, pero no me gusta tener que recordar o buscar el selector que quiero usar. También necesito trozos más pequeños e integrarlo en proyectos existentes sin aumentar su tamaño.
+
+Así que el objetivo estaba claro. Crear una herramienta que sea capaz de:
+- Generar CSS por separado según el contenido
+- Mangle selectores
+- Generar CSS bajo demanda
+- Usar CSS nativo `properties:values` como selectores por defecto
+- Trabajar por su cuenta sin bundlers, frameworks y post/preprocesadores
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías darle una oportunidad!](/es/docs/get-started/why-stylify-css)
+
+## CSS atómico con Stylify
+Stylify viene con el [native preset](/es/docs/stylify/native-preset) en el que los selectores son los mismos que CSS `propiedad:valor`. Gracias a eso no tengo que recordar o buscar selectores. El Native Preset es opcional y puedes definir tus propios selectores. También proporciona las siguientes características:
+- **Pequeños trozos**: puede generar CSS para cada archivo, componente, diseño por separado.
+- **Sin CSS pregenerado**: el CSS se genera sólo si se encuentra un componente o selector en el contenido
+- Combina y reutiliza internamente los selectores en la medida de lo posible para reducir el tamaño del CSS.
+- **Macros**: se pueden utilizar para definir selectores personalizados como `m:20px` para el margen
+- Operandos lógicos para pantallas**: como operandos `&&` y `||` para la combinación de pantallas como `sm&&tolg:font-size:24px`.
+- Manipulación de selectores**: de largo `font-weight:bold` a corto `_ab`.
+- No requiere preprocesador, postprocesador ni bundler.
+- CSS generado bajo demanda**: el CSS puede agruparse bajo demanda, por ejemplo, durante una solicitud.
+- Como puede generar CSS por separado y no trae CSS por defecto, **puede integrarse fácilmente en un proyecto existente sin aumentar su tamaño globalmente**.
+
+## Escribir HTML. Obtener CSS. Mangle selectors. Todo automágicamente.
+
+El ejemplo de abajo y todo su código se puede encontrar y editar en [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html).
+
+En el ejemplo de abajo hay un código para una simple imagen de galería:
+```html
+<div class="
+	display:inline-flex
+	position:relative
+	margin:24px
+	overflow:hidden
+	box-shadow:0__2px__8px__#000
+	width:300px
+	md:margin:48px
+	md:width:600px
+">
+	<img class="width:100% object-fit:cover height:auto" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg" alt="" />
+	<div class="
+		font-family:arial
+		font-weight:bold
+		font-size:18px
+		position:absolute
+		bottom:0
+		left:0
+		padding:24px
+		background:rgba(0,0,0,0.7)
+		color:#fff
+		md:font-size:32px
+	">
+		Zakopané (Poland)
+	</div>
+</div>
+```
+
+El resultado del código anterior tendrá el siguiente aspecto:
+
+<a href="">
+	<img src="/images/blog/stylify-facebook/stylify-facebook-result.jpg" alt="" width="702" height="577" loading="lazy" />
+</a>
+
+El código anterior se vería casi igual si se escribiera en CSS puro. Sólo el `box-shadow` utiliza el `__` (dos guiones bajos) en lugar de un espacio.
+
+Debido a la facilidad de mantenimiento y al hecho de que el código anterior podría ser utilizado en múltiples lugares, es necesario hacerlo más reutilizable. ¡Así que vamos a definir algunos componentes, macros y variables!
+
+### Limpieza y configuración
+
+Para el ejemplo de arriba, estoy usando la siguiente inicialización que se puede encontrar en [StackBlitz](https://stackblitz.com/edit/expressjs-bvexzl?file=index.html) (Está en el index.js y está ligeramente cambiado para que funcione en ese entorno):
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+const config = {};
+const compiler = new Compiler(config);
+const compilationResult = compiler.compile(content);
+const css = compilationResult.generateCss();
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+```
+
+Añadamos primero la variable shadow en la configuración del compilador:
+```javascript
+config.variables: {
+	shadow: '0 2px 8px #000'
+};
+```
+
+Una vez definida la variable, podemos usarla así `box-shadow:$shadow`.
+
+El preset nativo no es necesario. Puedes definir tus propios selectores. Por ejemplo para el margen quedaría así:
+
+```javascript
+config.macros['m:(\\S+?)'] = ({macroMatch, selectorProperties}) => {
+	selectorProperties.add('margin', macroMatch.getCapture(0));
+};
+```
+
+Una vez definida la macro, puede utilizarse con valores personalizados como `m:24px` y `md:m:48px`.
+
+Si se deben utilizar varios selectores iguales en varios lugares, es una buena práctica definir un componente para ellos con el fin de simplificar el mantenimiento y la legibilidad:
+
+```javascript
+config.components = {
+	'gallery-image__wrapper': `
+		display:inline-flex
+		position:relative
+		m:24px
+		md:m:48px
+		overflow:hidden
+		box-shadow:$shadow
+		width:300px
+		md:width:600px
+	`,
+	'gallery-image': 'width:100% object-fit:cover height:auto',
+	'gallery-image__label': `
+		font-family:arial
+		font-weight:bold
+		font-size:18px
+		position:absolute
+		bottom:0
+		left:0
+		padding:24px
+		background:rgba(0,0,0,0.7)
+		color:#fff
+		md:font-size:32px
+	`
+};
+```
+
+También es una buena práctica añadir el `box-sizing:border-box` para evitar los momentos wtf en el futuro:
+
+```javascript
+config.customSelectors: {
+	'*': 'box-sizing:border-box'
+};
+```
+
+Con todas las mejoras anteriores, el código final es mucho más pequeño:
+
+```html
+<div class="gallery-image__wrapper">
+	<img class="gallery-image" src="https://stylifycss.com/images/blog/stylify-facebook/mountains.jpg" />
+	<div class="gallery-image__label">
+		Zakopané (Poland)
+	</div>
+</div>
+```
+
+## Minificación y optimización
+
+Bajo el capó el Stylify optimiza el CSS de las siguientes maneras:
+
+1. Los selectores y componentes se generan sólo cuando se encuentran en el contenido
+2. Intenta reutilizar los selectores tanto como sea posible
+3. Transforma los selectores largos como `font-weight:bold` en los cortos `_ab12`.
+
+A continuación se muestra una imagen de StackBlitz con el resultado procesado y optimizado. El CSS (sin nuevas líneas y espacios) tiene sólo **0.78 Kb**:
+
+<img src="/images/blog/stylify-facebook/processed-html.jpg" alt="" loading="lazy" width="856" height="506" />

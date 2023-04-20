@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const contentOptions = `
+<!--
+stylify-components
+	title: 'color:blue font-weight:bold md:color:red'
+/stylify-components
+-->
+<h1 class="title"></h1>
+`.trim();
+
+const globalConfig = `
+const compilerConfig = {
+	components: {
+		title: 'color:blue font-weight:bold md:color:red'
+	}
+};
+`.trim();
+
+const globalConfigNesting = `
+const compilerConfig = {
+	components: {
+		button: \`
+			color:black font-weight:bold
+			&:hover { color:grey }
+			&--red {
+				color:red
+				&:hover { color: darkred }
+			}
+		\`
+	}
+};
+`.trim();
+
+const globalConfigUsage = '<h1 class="title"></h1>';
+---
+
+<div>
+	<p set:html={t('Stylify doesn\'t provide any predefined CSS <a href="{{link1}}">Components</a> by default. However, it provides two ways to define them and there is a set of copy&paste <a href="{{link2}}">Headless Components</a> you can use in your project.', {link1: getLocalizedRoute('/docs/stylify/compiler/#components', lang), link2: getLocalizedRoute('/snippets/components', lang)})}></p>
+
+	<p set:html={t('Components can be configured in a file (using <a href="{{link1}}">content options</a>), where they are used, or globally within a $projectConfig.', {link1: getLocalizedRoute('/docs/stylify/compiler/#contentoptionsprocessors', lang)})}></p>
+
+	<p set:html={`${t('Example with the configuration within a file. The content between <code>stylify-components</code> expects javascript object without surrounding brackets')}:`}></p>
+
+	<ShikiHighlighter code={contentOptions} />
+
+	<p>{t('Example in a global compiler config')}:</p>
+	<ShikiHighlighter lang="js" code={globalConfig} />
+
+	<p>{t('Usage')}:</p>
+	<ShikiHighlighter code={globalConfigUsage} />
+
+	<p>{t('When defining component, you can also use nesting syntax like in SCSS. This works in a global config and also in the content options')}:</p>
+	<ShikiHighlighter lang="js" code={globalConfigNesting} />
+</div>

@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:18
 
 RUN apt-get update && apt-get install -y --no-install-recommends git zip unzip curl
 

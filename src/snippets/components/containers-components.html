@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #FCDBCA;
+			--gradientTo: #D5B3E8;
+		}
+		.content-wrapper {
+			width:100%;
+		}
+		.content-wrapper > div {
+			margin-top:8px;
+			margin-bottom:8px;
+			padding:4px;
+			border:1px solid #AAA;
+			padding: 4px;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-components
+	container: `
+		padding:0_8px sm:padding:0_16px xl:padding:0 margin-left:auto margin-right:auto
+		&--sm { max-width:640px }
+		&--md { max-width:768px }
+		&--lg { max-width:1024px }
+		&--xl { max-width:1280px }
+		&--2xl { max-width:1536px }
+		&--3xl { max-width:1920px }
+	`
+/stylify-components
+-->
+<div class="container">Container fluid</div>
+<div class="container container--sm">Container 640px</div>
+<div class="container container--md">Container 768px</div>
+<div class="container container--lg">Container 1024px</div>
+<div class="container container--xl">Container 1280px</div>
+<div class="container container--2xl">Container 1536px</div>
+<div class="container container--3xl">Container 1920px</div>
+
+</div></div></body></html>

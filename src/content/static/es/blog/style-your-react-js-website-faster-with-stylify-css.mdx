@@ -1,0 +1,164 @@
+---
+title: 🚀 Dale estilo a tu web React.js más rápido con Stylify CSS
+image: '/images/blog/stylify-reactjs/header.jpg'
+ogImage: '/images/blog/stylify-reactjs/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Dale estilo a tu web React.js de forma más rápida e intuitiva con Stylify"
+createdAt: 'July 6, 2022'
+---
+[Stylify](/) + React.js + Vite.js. Estiliza tu web React.js más rápido con Stylify. No estudies selectores y sintaxis. Usa sintaxis CSS pura y obtén CSS generado con optimización avanzada para producción.
+
+Para empezar más fácilmente, puedes consultar el [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) 🎮.
+
+## 💎 Introducción a Stylify CSS
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías darle una oportunidad!](/es/docs/get-started/why-stylify-css)
+
+## 🚀 Configuración de React.js
+La forma más fácil de Setup el React.js está utilizando CLI:
+- Ejecutar `yarn create vite app`
+- Selecciona `react` o `react-ts`.
+- Luego `cd app`.
+
+De esta forma obtendrás el esqueleto de la aplicación React.js por defecto.
+
+## 🔌 Integración CSS de Stylify
+Instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```bash
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+Abre el archivo `vite.config.js` y copia el siguiente contenido en él:
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		// Crear sólo un bundle para todo el proyecto => stylify.css
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.js', './src/**/*.ts', './src/**/*.jsx', './src/**/*.tsx'],
+	}]
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, react()]
+});
+```
+
+El último paso, abre el `src/main.jsx` y añade la ruta a `stylify.css`:
+
+```jsx
+// ...
+import './stylify.css'
+```
+
+## Estilizar la web
+¡Si copias el código de abajo en `src/App.jsx` y ejecutas `yarn dev` obtendrás un `Hello World! 🎉` con estilo:
+
+```jsx
+export default function App() {
+	return (
+		<div className="text-align:center margin-top:100px font-size:42px">
+			¡¡¡Hola Mundo!!! 🎉
+		</div>
+	);
+}
+```
+
+Stylify observa cualquier cambio en los archivos que coincide con la máscara en los archivos del paquete y genera CSS en el `src/stylify.css`.
+
+Si añades por ejemplo `color:blue` el CSS se actualizará automáticamente 🎉.
+
+Adelante y prueba Stylify CSS directamente en [Stackblitz.com](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx) 💡.
+
+### Componentes
+Para evitar plantillas hinchadas con utilidades, puedes usar
+componentes directamente en los archivos, donde se utilizan a través de [opciones de contenido](/es/docs/get-started#defining-a-component) (espera objeto javascript sin corchetes) o en el [compilador config](/es/docs/get-started#defining-a-component).
+
+```jsx
+/*
+stylify-components
+	container: 'max-width:800px margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:42px'
+/stylify-components
+*/
+export default function App() {
+	return (
+		<div class="container">
+			<div className="title">¡Hola Mundo! 🎉</div>
+		</div>
+	);
+}
+```
+
+### Variables
+Si te gusta el código limpio, también quieres evitar valores hardcodeados en los selectores. [Las variables (/es/docs/get-started#adding-a-variable) pueden definirse de la misma forma que los componentes:
+
+```jsx
+/*
+stylify-variables
+	titleFontSize: '42px',
+	containerWidth: '800px'
+/stylify-variables
+
+stylify-components
+	container: 'max-width:$containerWidth margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:$titleFontSize'
+/stylify-components
+*/
+export default function App() {
+	return (
+		<div class="container">
+			<div className="title">¡Hola Mundo! 🎉</div>
+		</div>
+	);
+}
+
+```
+
+## Construyendo para producción
+Si ejecutas `yarn build` + `yarn preview`, el marcado JSX se convertirá en esto:
+
+```jsx
+export default function App() {
+	return (
+		<div class="a">
+			<div className="d">¡Hola Mundo! 🎉</div>
+		</div>
+	);
+}
+```
+
+El CSS también se acorta:
+```css
+:root {--titleFontSize: 42px;--containerWidth: 800px;}
+.b,.a{max-width:800px}
+.c,.a{margin:0 auto}
+.f,.d{text-align:center}
+.e,.d{margin-top:100px}
+.g,.d{font-size:42px}
+```
+
+## Configura todo lo que necesites
+Los ejemplos anteriores no incluyen todo lo que Stylify CSS puede hacer:
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Estilizar [selectores globales](/es/docs/stylify/compiler#customselectors)
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Añade [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Y mucho más
+
+Siéntete libre de [revisar la documentación](/es/docs/get-started) para aprender más 💎.

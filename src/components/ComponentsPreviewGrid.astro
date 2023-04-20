@@ -1,0 +1,164 @@
+---
+import { getComponentPreviewData, getLangFromUrl, getLocalizedRoute, useTranslations } from "@serverHelpers";
+
+const {selected = [
+	'components/buttons',
+	'components/navigations',
+	'components/switches',
+	'components/text-fields',
+	'components/paginations',
+	'components/articles',
+	'components/dialogs',
+	'components/messages',
+	'components/forms'
+]} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const components = [
+	{
+		previewUrl: 'components/article-list1.html',
+		docsUrl: 'components/articles',
+		title: t('Articles List - Type 1')
+	},
+	{
+		previewUrl: 'components/article-list2.html',
+		docsUrl: 'components/articles',
+		title: t('Articles List - Type 2')
+	},
+	{
+		previewUrl: 'components/article-list3.html',
+		docsUrl: 'components/articles',
+		title: t('Articles List - Type 3')
+	},
+	{
+		previewUrl: 'components/article-detail.html',
+		docsUrl: 'components/articles',
+		title: t('Articles - Detail')
+	},
+	{
+		previewUrl: 'components/animations.html',
+		docsUrl: 'components/animations',
+		title: t('Animations')
+	},
+	{
+		previewUrl: 'components/badges.html',
+		docsUrl: 'components/badges',
+		title: t('Badges')
+	},
+	{
+		previewUrl: 'components/breadcrumb.html',
+		docsUrl: 'components/breadcrumb',
+		title: t('Breadcrumb')
+	},
+	{
+		previewUrl: 'components/buttons.html',
+		docsUrl: 'components/buttons',
+		title: t('Buttons')
+	},
+	{
+		previewUrl: 'components/containers.html',
+		docsUrl: 'components/containers',
+		title: t('Containers')
+	},
+	{
+		previewUrl: 'components/dialogs.html',
+		docsUrl: 'components/dialogs',
+		title: t('Dialogs')
+	},
+	{
+		previewUrl: 'components/dividers.html',
+		docsUrl: 'components/dividers',
+		title: t('Dividers')
+	},
+	{
+		previewUrl: 'components/faq.html',
+		docsUrl: 'components/faq',
+		title: t('FAQ')
+	},
+	{
+		previewUrl: 'components/sign-in-form.html',
+		docsUrl: 'components/forms',
+		title: t('Forms')
+	},
+	{
+		previewUrl: 'components/grids-fit.html',
+		docsUrl: 'components/grids',
+		title: t('Grids')
+	},
+	{
+		previewUrl: 'components/lists.html',
+		docsUrl: 'components/lists',
+		title: t('Lists')
+	},
+	{
+		previewUrl: 'components/messages.html',
+		docsUrl: 'components/messages',
+		title: t('Messages')
+	},
+	{
+		previewUrl: 'components/mobile-navigation.html',
+		docsUrl: 'components/navigations',
+		title: t('Mobile navigation')
+	},
+	{
+		previewUrl: 'components/navigation-with-overflow.html',
+		docsUrl: 'components/navigations',
+		title: t('Navigation with overflow'),
+	},
+	{
+		previewUrl: 'components/paginations.html',
+		docsUrl: 'components/paginations',
+		title: t('Paginations')
+	},
+	{
+		previewUrl: 'components/shadows.html',
+		docsUrl: 'components/shadows',
+		title: t('Shadows')
+	},
+	{
+		previewUrl: 'components/switches.html',
+		docsUrl: 'components/switches',
+		title: t('Switches')
+	},
+	{
+		previewUrl: 'components/text-fields.html',
+		docsUrl: 'components/text-fields',
+		title: t('Text Fields')
+	},
+]
+
+let selectedComponents = [];
+
+if (selected.length) {
+	for (const docsUrl of selected) {
+		selectedComponents.push(components.find((component) => component.docsUrl === docsUrl ));
+	}
+} else {
+	selectedComponents = components;
+}
+
+const snippetsPromises = []
+const importedSnippets = {};
+
+for (const selectedComponent of selectedComponents) {
+	snippetsPromises.push(new Promise(async (resolve) => {
+		const result = await getComponentPreviewData(`${selectedComponent?.previewUrl}`);
+		selectedComponent.srdoc = result.srdoc;
+		resolve(true);
+	}));
+};
+
+
+await Promise.all(snippetsPromises);
+---
+
+<div class="display:grid grid-template-columns:repeat(auto-fit,minmax(300px,1fr)) gap:24px flex-wrap:wrap">
+	{selectedComponents.map((component) => (
+		<a href={getLocalizedRoute(`/snippets/${component.docsUrl}`, lang)} class="text-decoration:none width:100% display:flex flex-direction:column margin-bottom:24px border-radius:8px [&:hover_h3]{color:$blue1}">
+			<iframe srcdoc={component.srdoc} class="width:100% height:250px overflow:hidden border-radius:8px" frameBorder="0" loading="lazy" fetchpriority="low" title=""></iframe>
+			<h3 class="margin:12px_0_0_0 font-size:18px line-height:1!important transition:.3s">{ component.title }</h3>
+		</a>
+	))}
+</div>

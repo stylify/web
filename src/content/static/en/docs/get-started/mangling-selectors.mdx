@@ -1,0 +1,32 @@
+---
+section: get-started
+
+order: 4
+
+navigationTitle: "Mangling selectors"
+
+title: "Mangling Selectors"
+description: "How to mangle HTML class selectors using the Stylify CSS Compiler."
+---
+import Note from '@components/Note.astro';
+
+When you want to mangle selectors, you must set the compiler option => `mangleSelectors: true`.
+
+The example below is for a case when you would want to do some custom compilation.
+Packages like [@stylify/bundler](/en/docs/bundler), [@stylify/unplugin](/en/docs/unplugin), [@stylify/nuxt](/en/docs/nuxt), [@stylify/astro](/en/docs/astro) uses the same process internaly (automaticaly).
+
+<Note>When you define a component or macro like <code>link</code> this selector can have a collision in production with selector like <code>sidebar-link</code>, when mangling selectors. Check out components documentation for [more info](/en/docs/stylify/compiler#components).</Note>
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+const compiler = new Compiler({
+	mangleSelectors: true
+});
+
+const compilationResult = compiler.compile(content);
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+const css = compilationResult.generateCss();
+```

@@ -1,0 +1,225 @@
+---
+section: get-started
+
+order: 0
+
+navigationTitle: 开始吧
+
+title: "开始"
+description: "Stylify会根据你写的东西动态生成CSS。了解如何使用它！"
+---
+import IntegrationBlocks from '@components/IntegrationBlocks.astro';
+import GetStartedSelectors from '@components/GetStartedSelectors.astro';
+import GetStartedVariables from '@components/GetStartedVariables.astro';
+import GetStartedComponents from '@components/GetStartedComponents.astro';
+import GetStartedScreens from '@components/GetStartedScreens.astro';
+import GetStartedCombinedScreens from '@components/GetStartedCombinedScreens.astro';
+import Note from '@components/Note.astro';
+import ComponentsPreviewGrid from '@components/ComponentsPreviewGrid.astro';
+import ExampleEditor from '@components/ExampleEditor.astro';
+
+Stylify是一个库，它使用类似CSS的选择器来按需生成优化的实用优先CSS。
+Stylify处理内容（例如文件），找到类选择器并为其生成CSS。然后它做一些优化并生成CSS文件。
+
+为了开始使用Stylify，你所要做的就是安装它并将类似CSS的选择器写入类的属性中。不需要配置。你不需要创建任何CSS文件，添加任何配置或学习任何东西。如果你对CSS稍有了解，你已经知道如何使用Stylify了。
+
+然而，如果你愿意，你可以使用其他功能，如变量、组件、宏和自定义选择器。下面会有更多关于它们的介绍。
+
+Stylify CSS并没有提供任何 "花哨的裤子 "快捷键、颜色主题和预定义的排版。你可能会问为什么，所以这里有一些解释供你参考：
+- **快捷方式**： 它们很难记住，而且不切实际。是的，使用它们意味着更少的打字和更短的类属性，代价是学习语法（容易忘记）和增加复杂性。
+- **颜色调色板**： Stylify不提供任何调色板，因为它们在大多数情况下不符合设计需求。当在一个项目上工作时，你也必须从项目设计者那里得到它们，下载的主题或使用一些工具如[Material Theme Builder](/zh/snippets/snippets/material-theme)自己生成它们。
+- **排版**： 和调色板一样。你可以在Stlyify文档中找到一些[排版工具和资产](/zh/snippets/assets/fonts)和[排版片段](/zh/snippets/snippets/stylify#variables)。
+- 总而言之，我们的目标是尽可能地坚持使用原生的CSS语法，而不使用不必要的预定义配置，这些配置实际上是无用的，而且价值过高。
+
+## 安装
+
+Stylify可以和任何工具一起工作。对于其中一些工具，它有自己的集成。如果你还没有找到你喜欢的，请告诉我们。
+
+<IntegrationBlocks />
+
+## 快速入门
+最简单的方法是在下面的编辑器中玩，或者复制例子并在<a href="https://codepen.io/Machy8/pen/Bawpvdy?editors=1010" target="blank" rel="noopener nofollow">Codepen Playground</a>中测试它。
+
+[语法](/zh/docs/stylify/compiler#语法)与CSS的`property:value`类似，但有一些不同：
+- 使用`_`（一个下划线）表示空格，使用`^`（一个帽子）表示引号。
+- 要保留下划线或帽子字符，使用``（一个反斜杠）=> `_`。
+- 对于供应商的前缀`-webkit`，`-moz`，不要在开头添加`-`（一个连字符）。
+- 默认的语法模式是`<屏幕>:<伪类>:<属性>:<值>`。屏幕和伪类是可选的
+
+```html
+color:blue => 蓝色
+hover:color:blue => 悬停后的蓝色
+lg:color:blue => 选定屏幕的蓝色
+lg:hover:color:blue => 从选定屏幕悬停后的蓝色
+
+webkit-font-smoothing:antialiased
+```
+
+当很多属性在同一个屏幕或伪类中重复出现时，你可以像下面的例子那样将它们分组。语法是 `<屏幕>:<伪类>:{stylify选择器由;}分割`。
+
+```
+hover:{color:blue;font-weight:bold} # 多个选择器的快捷方式
+lg:hover:{color:blue;font-weight:bold} # 同样的，也适用于屏幕
+```
+
+<GetStartedSelectors />
+
+## 屏幕的用法
+Stylify有预定义的快捷键，如`sm`、`md`、`lg`和动态屏幕，如`minw`、`maxw`、`rng`。[动态屏幕](/zh/docs/stylify/compiler#screens)很灵活，生成的媒体查询取决于你在使用它们时选择的值。
+查看[完整列表](/zh/docs/stylify/native-preset#屏幕)。所有生成的屏幕都是自动排序。
+
+<GetStartedScreens />
+
+屏幕也可以使用逻辑操作数进行组合： **逻辑和**： `&&`, **逻辑OR**： `||`
+
+<GetStartedCombinedScreens />
+
+如果你想添加一个自定义屏幕，你可以这样做：
+```javascript
+const compilerConfig = {
+	screens: {
+		'xs': '(min-width: 400px)',
+		// 屏幕也可以是函数 => 动态屏幕
+		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
+	}
+};
+```
+
+## 添加一个变量
+在代码中设置硬编码的值并不是一个好的做法。因此你可以[定义变量](/zh/docs/stylify/compiler#variables)。
+
+变量可以在本地使用时定义在内容中（期望是一个没有括号的对象），或者在全局使用时定义在编译器配置中。
+
+<GetStartedVariables />
+
+在一个编译器配置中：
+```javascript
+const compilerConfig = {
+	variables: {
+		fontSize: '24px',
+		fontSizeLg: '32px',
+		textShadow: '0 4px 8px #379adf'
+	}
+};
+```
+
+### CSS变量
+当你想打开CSS变量时，只需在stylify配置中添加`replaceVariablesByCssVariables`。这将用一个CSS变量来代替变量的值。
+
+<Note>CSS变量将在即将到来的0.6版本中被默认启用。</Note>
+
+Stylify在默认情况下会努力做到严格。当CSS变量被启用时，你可能想设置[external variables](/zh/docs/stylify/compiler#externalvariables)，以通知Stylify，有些变量是存在的，但却是外部的。如果你不想配置所有的变量，你可以完全停用这个警告。
+
+<Note>一个好的做法是，例如加载一个主题的文件内容，用正则表达式来解析内容，以匹配所有可能的CSS变量，并将匹配的名称传入外部变量数组。
+你也可以使用一个函数来检查在选择器中使用的变量是否与某些模式相匹配，比如<code>md-</code>用于Material Theme。如果是这样，它将被匹配为外部变量。这样你就不必解析任何文件和检查名称了。</Note>
+
+在一个编译器配置中：
+```javascript
+const compilerConfig = {
+	// 启用CSS变量
+	replaceVariablesByCssVariables: true,
+	// 设置外部变量
+	externalVariables: [
+		// 简单的字符串检查
+		'some-color',
+		// 定义回调以指定更灵活的检查。
+		// 例如，这将标记每一个以md-开头的变量。
+		// 作为外部变量。
+		(variable) => variable.startsWith('md-') ? true : undefined
+	],
+	// 禁用未定义的变量错误
+	// 'silent' => 完全停用警告。
+	// 'warn' => 开发时默认为警告。
+	// 'error' => 默认用于生产。
+	undefinedVariableWarningLevel: 'silent'
+};
+```
+
+## 定义一个组件
+当我们想重复使用一段代码时，例如一个按钮，而不重复使用类，我们可以[定义一个组件](/zh/docs/stylify/compiler#components)。当本地使用时（一个文件/几个页面），组件可以被定义在内容中（希望是一个没有括号的对象），当全局使用时，可以定义在编译器配置中。
+
+<GetStartedComponents layout="column" />
+
+在一个编译器配置中：
+```javascript
+const compilerConfig = {
+	components: {
+		'label-icon': 'lg:font-size:48px margin-left:8px',
+		label: `
+			display:flex
+			line-height:1.2
+			font-size:32px
+			align-items:center
+		`,
+	}
+};
+```
+
+<Note>当你定义一个组件或宏，如<code>link</code>，这个选择器在生产中可能与<code>sidebar-link</code>这样的选择器发生碰撞，当混杂选择器时。请查看组件文档[更多信息](/zh/docs/stylify/compiler#components) 。</Note>
+
+## 添加宏
+如果你想为`margin-left`添加一个更短的变体，比如`ml`，你可以[添加宏](/zh/docs/stylify/compiler#macros)，如下面的例子。
+
+```javascript
+const compilerConfig = {
+	macros: {
+		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+			// ml:24px => 将创建 => margin-left: 24px
+			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+		}
+	}
+};
+```
+
+## 自定义选择器
+使用[自定义选择器](/zh/docs/stylify/compiler#customselectors)可以对元素进行全局造型。
+语法如下 `[css selectors]{stylify selectors split by ;}`。
+`&`字符总是指的是当前元素，就像在SCSS中一样。
+空格用`_`（下划线），引号用`^`（帽子）字符。
+
+```html
+<!-- 每个<a>都会有蓝色的颜色 -->
+<div class="[a]{color:blue}">
+	<!-- 当光标在链接上时，只有标签会被下划线 -->
+	<a href="#" class="
+		hover:text-decoration:none
+		[&:hover_.label]{text-decoration:underline;font-weight:bold}
+	">
+		<span class="icon">&plus;</span>
+		<span class="label">蓝色链接</span>
+	</a>
+</div>
+```
+
+## 预备组件
+你在寻找一些预先安排好的组件吗？我们已经为你准备好了!
+
+<ComponentsPreviewGrid />
+
+## 材料主题集成指南
+如果你正在寻找一些调色板，[有一个指南](/zh/snippets/snippets/material-theme)，说明如何使用Material Theme Builder来为你的下一个项目轻松生成Material Theme。
+
+<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
+</video>
+
+## 高级配置
+查看[编译器](/zh/docs/stylify/compiler)以获得更多配置选项。编译器配置是可重复使用的，对下面列出的所有包都是一样的。
+
+如果你想在浏览器中直接使用Stylify，你应该查看[Runtime](/zh/docs/stylify/runtime)文档。
+
+## Stylify的CSS包
+Stylify提供了多个软件包。所有这些都可以使用NPM或YARN来安装。Stylify CSS和Profiler也可以通过CDN直接使用：
+
+- [@stylify/astro](/zh/docs/astro) - Astro.build的整合模块
+- [@stylify/stylify](/zh/docs/stylify) - 核心。生成CSS。重写(mangles)选择器
+- [@stylify/bundler](/zh/docs/bundler) - 用于生成CSS包。
+- [@stylify/unplugin](/zh/docs/unplugin) - Rollup、Webpack、Vite 和 Esbuild 的通用插件。
+- [@stylify/nuxt](/zh/docs/nuxt) - Nuxt.js v3的模块。
+- [@stylify/nuxt-module](/zh/docs/nuxt-module) - Nuxt.js v2 < v3的模块。
+
+## 用你喜欢的工具尝试Stylify CSS!
+
+为了更容易地使用你喜欢的工具，请查看[集成实例](/zh/docs/integrations)。
+
+<IntegrationBlocks />

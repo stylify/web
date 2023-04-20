@@ -1,0 +1,114 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Foundation"
+navigationIconPath: '/images/brands/foundation.png'
+image: '/migration/foundation/header.jpg'
+ogImage: '/migration/foundation/og-image.jpg'
+
+title: "How to migrate from Foundation CSS framework to Stylify CSS"
+description: "Learn how to migrate effortlessly from the Foundation CSS component framework to Stylify's utility-first CSS and code faster with less code."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+This guide is here to help you quickly compare the features and syntax of the Foundation component framework with those of Stylify's utility-first CSS, and give you an idea of how to migrate from Foundation to Stylify.
+
+<MigrationNote />
+
+## Introduction
+Foundation is a Framework for any device, medium, and accessibility. Foundation is a family of responsive front-end frameworks that make it easy to design beautiful responsive websites, apps and emails that look amazing on any device.
+
+<MigrationStylifyDescription />
+
+## Selectors and CSS Utilities
+
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation Sited provides utilities for properties like shadow, flexbox, visibility, etc:
+
+```html
+<div class="float-left shadow show-for-medium">Left</div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Global Selectors
+
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+I could not find any information suggesting that Foundation provides something like dynamic Global Selectors.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Components
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation is a framework based on components. Therefore, there are plenty of components, such as buttons, badges, forms, tables, menus, etc:
+
+```html
+<span class="badge primary">1</span>
+<a role="button" class="button radius primary">1</a>
+<ul class="menu">
+	<li><a href="#">One</a></li>
+	<li><a href="#">Two</a></li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuration, Customization and Variables
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation Sites can be configured within SCSS file. If you downloaded the Foundation directly from their website, you can configure it in `_settings.scss` file, otherwise, you have to override imported variables:
+
+```css
+$foundation-palette: (
+	"primary": #1779ba,
+	"secondary": #767676,
+	"success": #3adb76,
+	"warning": #ffae00,
+	"alert": #cc4b37,
+);
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

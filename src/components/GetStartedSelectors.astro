@@ -1,0 +1,20 @@
+---
+import ExampleEditor from './ExampleEditor.astro';
+
+const code = `
+<!--
+Edit Me 😎!
+Write selectors as CSS property:value
+Use _ for a space and ^ for a quote
+-->
+<img src="/images/p1.jpg" class="
+		height:120px
+		width:auto
+		border-radius:4px
+		transition:.3s
+		hover:scale:1.1
+">
+`.trim();
+---
+
+<ExampleEditor { ...Astro.props } showHtml={true} code={code} class="min-height:513px" />

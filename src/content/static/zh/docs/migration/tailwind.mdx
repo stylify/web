@@ -1,0 +1,143 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Tailwind"
+navigationIconPath: '/images/brands/tailwind.svg'
+image: '/migration/tailwind/header.jpg'
+ogImage: '/migration/tailwind/og-image.jpg'
+
+title: "如何从Tailwind Utility-First CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从Tailwind实用程序优先的CSS框架迁移到Stylify CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+本指南是为了帮助你快速比较Tailwind实用优先CSS框架和Stylify的功能和语法，并让你了解如何从Tailwind迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+
+Tailwind是一个帮助你快速建立现代网站的库，而无需离开你的HTML。它是一个实用至上的CSS框架，包含了诸如flex、`pt-4`、`text-center`和`rotate-90`等类，可以直接在你的标记中组成任何设计。
+
+<MigrationStylifyDescription />
+
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Tailwind为颜色、间距、排版、可见性等属性提供了很多灵活的CSS工具：
+
+```html
+<div class="
+	bg-slate-100
+	rounded-xl
+	p-8
+	top-[117px]
+	md:flex
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+当你想在Tailwind中选择例如子元素时，你可以使用任意的变体来实现：
+
+```html
+<div class="
+	[&>*]:underline
+	[&>p]:mt-0
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Tailwind中的组件可以使用`@apply`规则来定义。同时，它们也可以被嵌套到CSS层中：
+
+```css
+@layer components {
+	.btn-primary {
+		@apply py-2 px-4 bg-blue-500 text-white;
+	}
+}
+```
+
+Tailwind在其网站上也提供了很多复制&粘贴的组件。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Tailwind可以通过扩展/覆盖现有的主题在一个配置文件中进行配置：
+
+```javascript
+module.exports = {
+	content: ['./src/**/*.{html,js}'],
+	theme: {
+		colors: {
+			'blue': '#1fb6ff',
+		},
+		fontFamily: {
+			sans: ['Graphik', 'sans-serif'],
+		},
+		extend: {
+			spacing: {
+				'8xl': '96rem',
+				'9xl': '128rem',
+			},
+			borderRadius: {
+				'4xl': '2rem',
+			}
+		}
+	},
+}
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

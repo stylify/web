@@ -1,0 +1,60 @@
+---
+section: astro
+
+order: 0
+
+navigationTitle: "@stylify/astro"
+
+title: "@stylify/astro"
+description: "@stylify/astro simplifica la integración de CSS de Stylify en Astri.build."
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+La integración de Astro simplifica la integración de CSS de Stylify en el Astro.build.
+
+<StackBlitzLink link="stylify-astro-example" />
+
+## Instalación
+
+La integración se puede instalar sólo a través de CLI como NPM o Yarn:
+```
+yarn add @stylify/astro
+npm i @stylify/astro
+```
+
+## Uso
+
+Añade un buildModule en el `astro.config.mjs`:
+
+```javascript
+import { defineConfig } from 'astro/config';
+import stylify from '@stylify/astro';
+
+export default defineConfig({
+	integrations: [stylify()]
+});
+```
+
+## Configuración
+
+La configuración es opcional. Si la opción "bundles" no está configurada, todos los archivos dentro del directorio src serán compilados y un único archivo `stylify.css` será generado e inyectado a todas las páginas.
+
+Configuración en `astro.config.mjs`:
+```javascript
+stylify({
+	// https://stylifycss.com/en/docs/unplugin#configuration
+})
+```
+
+También puedes configurar el CSS de Stylify usando el archivo personalizado o `stylify.config.js` creado junto al `astro.config.mjs`.
+
+```javascript
+import { defineConfig } from '@stylify/astro';
+
+export default defineConfig({
+	// https://stylifycss.com/en/docs/unplugin#configuration
+});
+```
+
+## Fragmentos de configuración
+También puedes usar [configuration snippets](/es/snippets/snippets/astro) para la aplicación Astro para acelerar la configuración.

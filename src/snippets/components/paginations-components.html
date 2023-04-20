@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #099773;
+			--gradientTo: #43B692;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#099773',
+	borderColor: '#ddd'
+/stylify-variables
+
+stylify-components
+	pagination: `
+		display:flex
+		a { transition:.3s line-height:1 border-radius:8px border-style:solid border-color:rgba(0,0,0,0) display:inline-flex align-items:center justify-content:center min-width:46px padding:12px white-space:nowrap font-weight:700 letter-spacing:0.1px outline:none font-size:16px color:#222 user-select:none text-decoration:none }
+		a.s-disabled { color:#888 cursor:default }
+		a.s-active { color:$color }
+		a:not(.s-active):not(.s-disabled){ hover:background:$borderColor }
+
+		&--with-border.pagination {
+			gap:8px
+			a { border-width:1px border-color:$borderColor  }
+			a.s-active { background:$color color:#fff border-color:$color }
+			a:not(.s-active):not(.s-disabled) { hover:background:$borderColor }
+		}
+
+		&--without-gap.pagination {
+			gap:0
+			a { border-radius:0 }
+			a:not(:first-of-type):not(:last-of-type) { border-left:none border-right:none }
+			a:first-of-type { border-width:1px border-radius:8px_0px_0px_8px }
+			a:last-of-type { border-radius:0_8px_8px_0 }
+		}
+	`
+/stylify-components
+-->
+
+<nav class="pagination pagination--with-border pagination--without-gap">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-active">2</a>
+	<a href="#">3</a>
+	<a href="#">Next</a>
+</nav>
+
+<br>
+
+<nav class="pagination pagination--with-border">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-active">2</a>
+	<a href="#">3</a>
+	<a href="#">Next</a>
+</nav>
+
+<br>
+
+<nav class="pagination">
+	<a href="#" class="s-disabled">Prev</a>
+	<a href="#">1</a>
+	<a href="#" class="s-active">2</a>
+	<a href="#">3</a>
+	<a href="#">Next</a>
+</nav>
+
+</div></div></body></html>

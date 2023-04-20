@@ -1,0 +1,97 @@
+---
+title: Hojas de estilo acumulativas
+image: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets.jpg'
+ogImage: '/images/blog/cumulative-style-sheets/stylify-cumulative-style-sheets-og-image.jpg'
+author: Vladimír Macháček
+annotation: "Aprende a escribir CSS de forma optimizada y aléjate de las costosas refactorizaciones"
+createdAt: 'May 1, 2022'
+---
+
+Empecemos con un ejemplo. ¿Qué tan difícil es crear un simple botón azul? Es como un selector, probablemente un estado hover y algunas propiedades. Algo como esto:
+
+```css
+.button {
+	font-size:18px;
+	padding:8px 24px;
+	background:#2196f3;
+	color:#fff;
+	border-radius:2px;
+	border:0;
+	display:inline-block;
+	cursor:pointer;
+}
+
+.button:hover {
+	background:#1e87db
+}
+```
+Con el mismo planteamiento, podríamos crear varios desplegables, barras laterales, títulos, secciones, etc. Pero...
+
+¿Es el código y el planteamiento anterior la forma correcta de hacerlo?
+
+Pues... 🤷.
+
+## El Problema
+Cada vez, que creas un nuevo componente o das estilo a una sección, aumentas el tamaño de tu CSS. ¿Qué pasa si añadimos un radio de borde a una imagen y font-size a un texto?
+
+```css
+.button { /* ... */ border-radius:2px; /* ... */ }
+img { border-radius:2px; /* Duplicado */ }
+.subtitle { font-size:18px /* Duplicado */ }
+```
+
+## La Solución
+La solución que veo mejor para escribir el CSS de nuestro botón es **mezclar componentes y utilidades**:
+
+```css
+.hover\:background\:\#1e87db:hover,
+.button:hover { background: #1e87db }
+.font-size\:16px, .button { font-size: 16px }
+.padding\:8px_24px, .button { padding: 8px 24px }
+.background\:\#2196f3, .button { background: #2196f3 }
+.color\:\#fff, .button { color: #fff }
+.border-radius\:2px, .button { border-radius: 2px }
+.border\:0, .button { border: 0 }
+.display\:inline-block, .button { display: inline-block }
+.cursor\:pointer, .button { cursor: pointer }
+```
+
+Cuando veas el código probablemente pensarás algo así como "¿Qué demonios es eso?".
+
+Deja que te lo explique: Cada `propiedad:valor` que añadas al CSS debería ser también una utilidad:
+- Puedes reutilizarlos fácilmente en cualquier sitio
+Hay menos propiedades duplicadas
+- Cuanto mayor sea el proyecto, más clases se reutilizan, lo que significa que el tamaño del CSS crecerá lentamente
+
+Vale, pero ¿quién querría escribir algo así manualmente? La buena noticia es que no tienes que hacerlo.
+
+## Stylify CSS al rescate
+Exactamente por las razones anteriores, [stylifycss.com](/) han sido creados.
+
+Aquí tienes un ejemplo, de cómo crear el mismo botón con el CSS de Stylify (Echa un vistazo a la pestaña HTML):
+
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="KKQKReX" data-user="Machy8" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+	<span>Vea el Pen <a href="https://codepen.io/Machy8/pen/KKQKReX"> Stylify - button</a> por Vladimír Macháček (<a href="https://codepen.io/Machy8">@Machy8</a>) en <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async defer src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+
+Los selectores CSS también se pueden minificar [cuando se usan en node.js](/es/docs/stylify/compiler#usage):
+
+```html
+<button class="a"></button>
+<style>
+.b:hover, .a:hover { background: #1e87db }
+.c,.a { font-size: 16px }
+.d,.a { padding: 8px 24px }
+.e,.a { background: #2196f3 }
+.f,.a { color: #fff }
+.g,.a { border-radius: 2px }
+.h,.a { border: 0 }
+.i,.a { display: inline-block }
+.j,.a { cursor: pointer }
+</style>
+```
+
+En caso de que también te tomes el tiempo y separes tu CSS para el diseño y cada página por separado ([lo cual es fácil de hacer con Stylify](/es/docs/bundler#installation)) puedes tener un trozo de CSS realmente pequeño para cada una de tus páginas.
+Tampoco tienes que preocuparte por los duplicados y los selectores se minifican automáticamente.

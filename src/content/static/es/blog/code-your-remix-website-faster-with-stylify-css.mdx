@@ -1,0 +1,150 @@
+---
+title: 'Codifica tu web Remix más rápido con Stylify CSS'
+image: '/images/blog/stylify-remix/header.jpg'
+ogImage: '/images/blog/stylify-remix/og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Dale estilo a tu aplicación Remix de forma rápida y sencilla con Stylify CSS. Divide CSS para páginas grandes, define Componentes CSS y Variables y obtén CSS extremadamente pequeño.'
+createdAt: 'December 29, 2022'
+---
+import WhereToNext from '@components/WhereToNext.astro';
+
+## Introducción
+[Stylify](/) es una librería que utiliza selectores tipo CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Instalación
+Debido a que Remix aún no tiene soporte para plugins (2022), necesitamos usar [Stylify CSS Bundler](/es/docs/bundler) directamente. Primero, instala el paquete [@stylify/bundler](/es/docs/bundler) usando NPM o Yarn:
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+También para el modo watch, necesitamos ejecutar dos tareas paralelas. Esto se puede resolver usando concurrently:
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+A continuación, crea un archivo, por ejemplo `stylify.js`:
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// Opcional
+	compiler: {
+		mangleSelectors: !isDev,
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// Esto agrupa todo el CSS en un archivo
+// Puede configurar el Bundler para agrupar el CSS de cada página por separado
+// Ver el enlace de bundler más abajo
+bundler.bundle([
+	{ files: ['./app/**/*.tsx'], outputFile: './app/styles/stylify.css' },
+]);
+```
+
+Cuando el bundler esté configurado, añade la ruta al CSS de Stylify en el `app/root.tsx`:
+
+```jsx
+import styles from '~/styles/stylify.css';
+
+export function links() {
+	return [{ rel: 'stylesheet', href: styles }];
+}
+```
+
+Y el último paso es añadir los scripts en el `package.json`:
+
+```javascript
+"scripts": {
+	"build": "yarn stylify:build & cross-env NODE_ENV=production remix build",
+	"dev": "concurrently 'yarn stylify:dev' 'cross-env NODE_ENV=development remix dev'",
+	"stylify:build": "node stylify.js",
+	"stylify:dev": "node stylify.js --w"
+}
+```
+
+## Estilizando la primera página
+Si ahora editamos el `app/routes/index.tsx` y ejecutamos el comando `yarn dev`, se generará el CSS:
+
+```javascript
+export default function Index() {
+	return (
+		<h1 className="font-size:48px font-family:arial color:steelblue">
+			Stylify + Remix = 🚀
+		</h1>
+	);
+}
+```
+
+## Definición de componentes y variables
+También podemos definir [Componentes](/es/docs/get-started#defining-a-component) y [Variables](/es/docs/get-started#adding-a-variable). Dentro de un archivo, donde se utilizan o en una configuración global.
+En el código de abajo, usamos la configuración dentro de un fichero, donde se usa el componente.
+
+```javascript
+/*
+stylify-variables
+	blue: 'steelblue'
+/stylify-variables
+
+stylify-components
+	title: 'font-size:48px font-family:arial color:$blue'
+stylify-components
+*/
+export default function Index() {
+	return (
+		<h1 className="title">
+			Stylify + Remix = 🚀
+		</h1>
+	);
+}
+```
+
+## Salida de CSS y JSX en producción
+El JSX y CSS pueden ser manipulados en producción (configurado por el `compiler.mangleSelectors`). Si es así, la salida es aún más pequeña y se parece a la de abajo.
+
+Para el primer ejemplo con utilidades
+```javascript
+export default function Index() {
+	return (
+		// Para las utilidades del primer ejemplo
+		<h1 className="a b c">
+			Stylify + Remix = 🚀
+		</h1>
+	);
+}
+```
+
+```css
+.a { font-size:48px }
+.b { font-family:arial }
+.c { color:blue acero }
+```
+
+## Stackblitz Playground
+Sigue adelante y prueba [Stylify CSS + Remix en Stackblitz](https://stackblitz.com/edit/stylify-remix-example?file=package.json,app%2Froutes%2Findex.tsx).
+
+Puede personalizar la construcción de arriba como quieras.
+
+<WhereToNext packageName="bundler" />

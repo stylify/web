@@ -1,0 +1,160 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Windi"
+navigationIconPath: '/images/brands/windi.svg'
+image: '/migration/windi/header.jpg'
+ogImage: '/migration/windi/og-image.jpg'
+
+title: "如何从Windi utility-first CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从Windi utility-first CSS框架迁移到Stylify CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Windi utility-first CSS框架和Stylify的特性和语法，并让你了解如何从Windi迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+
+Windi CSS是Tailwind的一个按需替代品，它提供了更快的加载时间，与Tailwind v2.0完全兼容，还有一些额外的很酷的功能。
+
+<MigrationStylifyDescription />
+
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+在Windi中，你可以直接在元素上使用实用工具。选择器（组）也可以包含一个空格：
+
+```jsx
+<div class="
+	py-8 px-8 max-w-sm mx-auto
+	sm:(py-4 flex items-center space-y-0 space-x-6)
+">
+</div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+我没有找到任何信息表明Windi提供了类似动态全局选择器的东西。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+在Windi中，组件可以像这样在一个插件中定义：
+
+```javascript
+import plugin from 'windicss/plugin'
+
+plugin(({ addComponents }) => {
+	addComponents({
+		'.btn': {
+			padding: '.5rem 1rem',
+			borderRadius: '.25rem',
+		},
+	})
+})
+```
+
+你也可以定义一个快捷方式：
+
+```javascript
+export default {
+	shortcuts: {
+		'btn': {
+			'color': 'white',
+			'@apply': 'py-2 px-4 font-semibold rounded-lg',
+			'&:hover': {
+				'@apply': 'bg-green-700',
+				'color': 'black',
+			},
+		},
+	},
+}
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+在Windi中，你在配置文件中配置了一个主题。
+
+```jsx
+import { defineConfig } from 'windicss/helpers'
+import colors from 'windicss/colors'
+import plugin from 'windicss/plugin'
+
+export default defineConfig({
+	darkMode: 'class',
+	theme: {
+		extend: {
+			screens: {
+				'sm': '640px',
+			},
+			colors: {
+				blue: colors.sky,
+			},
+			fontFamily: {
+				sans: ['Graphik', 'sans-serif'],
+			},
+			spacing: {
+				128: '32rem',
+			},
+			borderRadius: {
+				'4xl': '2rem',
+			},
+		},
+	},
+})
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

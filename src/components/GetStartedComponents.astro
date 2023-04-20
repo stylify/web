@@ -1,0 +1,22 @@
+---
+import ExampleEditor from "./ExampleEditor.astro";
+
+const code = `
+<!--
+stylify-components
+	'image': \`
+		height:100px
+		width:auto
+		border-radius:4px
+		transition:.3s
+		margin:0_8px
+		hover:scale:1.1
+	\`
+/stylify-components
+-->
+<img src="/images/p1.jpg" class="image">
+<img src="/images/p2.jpg" class="image">
+`.trim();
+---
+
+<ExampleEditor { ...Astro.props } showHtml={true} code={code} class="min-height:400px" />

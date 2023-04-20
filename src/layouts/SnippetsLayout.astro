@@ -1,0 +1,33 @@
+---
+import { queryStaticContent } from '@content';
+import DocsLayout from './DocsLayout.astro';
+import { getLangFromUrl } from '@serverHelpers';
+
+const { data, slug, id, headings } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+
+const navigationItems = {
+	'components': [],
+	'snippets': [],
+	'assets': []
+};
+
+const content = await queryStaticContent({
+	lang,
+	postsType: 'snippets'
+});
+
+for (const contentPage of content) {
+	const section = contentPage.data.section;
+	navigationItems[section].push(contentPage);
+}
+
+---
+
+<script>
+	history.scrollRestoration = 'manual';
+</script>
+
+<DocsLayout navigationItems={navigationItems} headings={headings} id={id} slug={slug} data={data}>
+	<slot />
+</DocsLayout>

@@ -1,0 +1,106 @@
+---
+title: 'Codifica tu web Laravel más rápido con Stylify CSS'
+image: '/images/blog/stylify-laravel/header.jpg'
+ogImage: '/images/blog/stylify-laravel/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Codifica tu web Laravel más rápido con las utilidades tipo CSS de Stylify. No estudies el framework CSS. Céntrate en codificar"
+createdAt: 'December 8, 2022'
+---
+
+## Introducción
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+
+## Instalación
+Este artículo usa Laravel con Vite. Para versiones anteriores con Webpack, consulta [esta guía](/es/docs/integrations/laravel#for-older-vesions-of-laravel-with-webpack).
+
+Instalar Stylify usando CLI:
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+Añade la siguiente configuración en `vite.config.js`:
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	// Puedes definir múltiples bundles, este ejemplo usa solo uno por simplicidad
+	bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
+	// Opcional - https://stylifycss.com/en/docs/unplugin
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig(() => ({
+	plugins: [
+		stylifyPlugin,
+		laravel({
+			// Añadir ruta a los archivos generados
+			input: ['resources/js/app.js', 'resources/css/stylify.css'],
+			refresh: true,
+		}),
+	],
+}));
+```
+
+Añade la ruta a `resources/css/stylify.css` en la plantilla:
+
+```html
+<head>
+	@vite('resources/css/stylify.css')
+</head>
+```
+
+En caso de que definas más de un bundle en el plugin `stylifyVite`, asegúrate de importar los archivos CSS generados en las páginas correctas.
+
+## Uso
+La sintaxis de Stylify es similar a la de CSS. Sólo tienes que escribir `_` en lugar de un espacio y `^` en lugar de una comilla.
+
+Así que si editamos el `resources/views/welcome.blade.php`:
+```jsx
+<div class="text-align:center font-size:48px color:blue">Stylify + Laravel = 🚀</div>
+```
+
+En producción, obtendrás CSS optimizado y HTML destrozado:
+```html
+<div class="a b c">Stylify + Laravel = 🚀</div>
+```
+
+```css
+.a{text-align:center}
+.b{font-size:48px}
+.c{color:blue}
+```
+
+## Ejemplo de integración
+También puedes consultar nuestro <a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">ejemplo de integración con Laravel</a> en Github.
+
+## Configuración
+Los ejemplos anteriores no incluyen todo lo que Stylify puede hacer:
+- Definir [componentes](/es/docs/stylify/compiler#components)
+- Añadir [selectores personalizados](/es/docs/stylify/compiler#customselectors)
+- Configura [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Define [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Y mucho más
+
+No dudes en [consultar la documentación](/es/docs/get-started) para aprender más 💎.

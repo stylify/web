@@ -1,0 +1,214 @@
+---
+title: 'Stylify CSS： 在Astro.build中自动将实用优先的CSS捆绑分割成CSS层'
+image: '/images/blog/stylify-astro-bundles/header.jpg'
+ogImage: '/images/blog/stylify-astro-bundles/og-image.jpg'
+author: Vladimír Macháček
+annotation: 'Stylify CSS： 在Astro.build中，自动将实用性第一的CSS捆绑物分割成CSS层'
+createdAt: 'December 11, 2022'
+---
+
+
+实用优先的CSS包可以非常小。但是，如果我们能让它们变得更小呢？比如说，为每个页面/布局分割它们？有些页面可能没有另一个页面的样式。了解如何在Astro中分割CSS捆绑。
+
+## 视频指南
+
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/OYJn23w8fqI" class="width:100%" frameborder="0" loading="lazy" fetchpriority="low" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Stylify CSS介绍
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 动机
+每个捆绑包只能包含必要的CSS。这意味着几乎没有未使用的CSS，而且在生产中，它可以被粉碎和最小化，所以CSS更小（更多信息见下文）。
+![Stylify例子](/images/blog/stylify-astro-bundles/preview.png)
+
+## 代码
+好的，首先是代码，然后是解释。尽管代码看起来很复杂，但实际上很简单：
+
+```javascript
+import stylify from '@stylify/astro';
+import { hooks } from '@stylify/bundler';
+import fastGlob from 'fast-glob';
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+
+const pagesDir = 'src/pages';
+const layoutsDir = 'src/layouts';
+const stylesDir = 'src/styles';
+
+/** @type { import('@stylify/bundler').BundlerConfigInterface[]} */
+const stylifyBundles = [];
+const layoutCssLayerName = 'layout';
+const pageCssLayerName = 'page';
+
+const getFileCssLayerName = (filePath) =>
+	filePath.includes('/pages/') ? pageCssLayerName : layoutCssLayerName;
+
+const getOutputFileName = (file) => {
+	const parsedFile = path.parse(file);
+	const fileName = parsedFile.name.toLowerCase();
+	const dirNameCleanupRegExp = new RegExp(`${pagesDir}|${layoutsDir}|\\W`, 'g');
+	const dir = parsedFile.dir.replace(dirNameCleanupRegExp, '');
+	return `${dir.length ? `${dir}-` : ''}${fileName}.css`;
+};
+
+const createBundle = (file) => {
+	const fileName = path.parse(file).name;
+	const fileCssLayerName = getFileCssLayerName(file);
+
+	return {
+		outputFile: `${stylesDir}/${fileCssLayerName}/${getOutputFileName(file)}`,
+		files: [file],
+		cssLayer: fileCssLayerName,
+	};
+};
+
+const createBundles = (files) => {
+	for (const file of files) {
+		stylifyBundles.push(createBundle(file));
+	}
+};
+
+// 1.在布局/页面中映射文件并创建捆绑文件
+createBundles(fastGlob.sync(`${pagesDir}/**/*.astro`));
+createBundles(fastGlob.sync(`${layoutsDir}/**/*.astro`));
+
+// 2. 启动Stylify Astro Integraton
+const stylifyIntegration = stylify({
+	bundler: {
+		id: 'astro',
+		// 设置CSS @layers顺序
+		cssLayersOrder: {
+			// 顺序将是@层的布局，页面;
+			order: [layoutCssLayerName, pageCssLayerName].join(','),
+			// 层的顺序将被导出到文件中，布局为@layer
+			exportLayer: [layoutCssLayerName],
+		},
+	},
+	bundles: stylifyBundles,
+});
+
+// 3.添加处理已打开文件的钩子
+/** @param { import('@stylify/bundler').BundleFileDataInterface } data */
+hooks.addListener('bundler:fileToProcessOpened', (data) => {
+	let { content, filePath } = data;
+
+	// 3.1 只针对布局和页面文件
+	if (filePath.includes('/pages/') || filePath.includes('/layouts/')) {
+		const cssFileName = path.parse(filePath).name;
+		const cssFilePathImport = `import '/${stylesDir}/${getFileCssLayerName(
+			filePath
+		)}/${getOutputFileName(filePath)}';`;
+
+		if (!content.includes(cssFilePathImport)) {
+			if (/import \S+ from (?:'|")\S+(\/layouts\/\S+)(?:'|");/.test(content)) {
+				content = content.replace(
+					/import \S+ from (?:'|")\S+\/layouts\/\S+(?:'|");/,
+					`$&\n${cssFilePathImport}`
+				);
+			} else if (/^\s*---\n/.test(content)) {
+				content = content.replace(/^(\s*)---\n/, `$&${cssFilePathImport}\n`);
+			} else {
+				content = `---\n${cssFilePathImport}\n---\n${content}`;
+			}
+
+			fs.writeFileSync(filePath, content);
+		}
+	}
+
+	// 3.2 对于所有文件
+	const regExp = new RegExp(
+		`import \\S+ from (?:'|")\\S+(\\/components\\/\\S+)(?:'|");`,
+		'g'
+	);
+	let importedComponent;
+	const importedComponentFiles = [];
+	const rootDir = path.dirname(fileURLToPath(import.meta.url));
+
+	while ((importedComponent = regExp.exec(content))) {
+		importedComponentFiles.push(
+			path.join(rootDir, 'src', importedComponent[1])
+		);
+	}
+
+	data.contentOptions.files = importedComponentFiles;
+});
+
+// 4.等待捆绑器初始化并观察目录的变化
+// 来创建新的捆绑包，当一个文件被添加时
+hooks.addListener('bundler:initialized', ({ bundler }) => {
+	// 观察布局和页面目录
+	// 如果你打算使用嵌套目录，如blog/_slug.astro
+	// 你想对其进行自动的捆绑配置
+	// 你将需要在这里添加它们的路径
+	const dirsToWatchForNewBundles = [layoutsDir, pagesDir];
+	for (const dir of dirsToWatchForNewBundles) {
+		fs.watch(dir, (eventType, fileName) => {
+			const fileFullPath = path.join(dir, fileName);
+
+			if (eventType !== 'rename' || !fs.existsSync(fileFullPath)) {
+				return;
+			}
+
+			bundler.bundle([createBundle(fileFullPath)]);
+		});
+	}
+});
+
+export default {
+	// 5.添加Stylify Astro集成
+	integrations: [stylifyIntegration]
+};
+```
+
+## 如何工作
+上面的代码分为5个步骤：
+1. 它找到`src/pages`中的所有页面和`src/layouts`中的所有布局，并调用`createBundles`为我们创建具有正确层名和输出文件的bundles配置。
+2. 2.Stylify集成被初始化，CSS层的顺序被配置，所以它将只生成一个文件，该文件有`layout`的CSS层名。
+3. 3. [bundler:fileToProcessOpened](/zh/docs/bundler#hooks)钩子被添加。这个钩子有两个部分。一部分是当这个文件是一个布局或页面时进行的，另一部分是对每个打开的文件进行的。
+	- 当一个布局或页面文件被打开时，它会检查它是否包含一个CSS文件的路径，如果没有，它会把它加到文件的头部。
+	- 对于所有其他文件，它试图检查 "导入"。如果发现任何组件的导入，它就将其映射为一个依赖关系。这样，它可以自动映射整个组件的依赖树，所以你只要不断地添加/删除它们，就可以正确地生成CSS。
+4. 当Bundler被初始化时，我们可以开始观察在`layout`和`pages`目录下新添加的文件。每当一个新的文件被添加，我们就创建一个新的Bundle。
+5. 5.Stylify集成被添加到Astro配置中。
+
+**当我们运行dev命令时，Stylify将做以下工作：**。
+
+1. 绘制布局/页面文件
+2. 将CSS生成正确的文件，将内容包装成正确的CSS层，并将这些文件的链接添加到Astro模板中。
+3. 如果在布局/页面中创建一个新的文件，就会自动添加一个新的捆绑。
+
+**生产时的输出是怎样的？
+布局（src/layouts/Layout.astro）：
+```css
+@layer layout,page;
+@layer layout {.b{font-size:16px}}
+```
+
+页面（src/pages/index.astro）：
+```css
+@layer page {.a{color:darkblue}}
+```
+
+## 集成实例
+查看交互式[Stack Blitz上的例子](https://stackblitz.com/edit/stylify-astro-automated-bundles-example?file=src%2Fpages%2Findex.astro)。
+
+## 配置
+上面的例子并不包括Stylify能做的一切：
+- 定义[组件](/zh/docs/stylify/compiler#components)
+- 添加[自定义选择器](/zh/docs/stylify/compiler#customselectors)
+- 配置[你的宏](/zh/docs/stylify/compiler#macros)，如`ml:20px`为 margin-left。
+- 定义[自定义屏幕](/zh/docs/stylify/compiler#screens)
+- 你可以在模板中映射[嵌套文件](/zh/docs/bundler#files-content-option)。
+- 还有更多
+
+请随时[查看文档](/zh/docs/get-started)以了解更多信息 💎。

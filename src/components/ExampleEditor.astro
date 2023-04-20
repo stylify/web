@@ -1,0 +1,231 @@
+---
+import ShikiHighlighter from './ShikiHighlighter.astro';
+import CodeMirror from './CodeMirror.astro';
+import { Compiler } from '@stylify/stylify';
+import { getLangFromUrl, useTranslations } from '@serverHelpers';
+
+let { code = '', layout = 'column', showHtml = false } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const codeMirrorUid = Math.floor(Math.random() * Date.now());
+
+let devCss = '';
+let productionCss = '';
+let productionHtml = '';
+let previewCode = '';
+let previewCss = '';
+let iframeDocument = '';
+
+const setPreviewCode = (code) => {
+	try {
+		const previewCompiler = new Compiler({ dev: true });
+		const editorCompiler = new Compiler({
+			dev: true,
+			mangleSelectors: true
+		});
+
+		const compilationResult = editorCompiler.compile(code);
+		const previewCssValue = previewCompiler.compile(code).generateCss();
+
+		devCss = previewCssValue.trim();
+		productionCss = compilationResult.generateCss().trim();
+		productionHtml = editorCompiler.rewriteSelectors(code);
+
+		previewCode = code.replace(/\\([^\\]+)/g, (fullMatch, followingCharacter) => followingCharacter);
+		previewCss = previewCssValue;
+
+		iframeDocument = `
+			<!DOCTYPE html>
+			<html lang="en">
+				<head>
+					<meta charset="UTF-8">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<style>
+						* { box-sizing:border-box }
+						html { height:100% }
+						body {
+							min-height:100%;
+							margin: 0;
+							text-align:center;
+							background-color: #0d1424;
+							color: #f1f1f1;
+							font-family: arial;
+							display:flex;
+							align-items:center;
+							justify-content:center;
+						}
+						.preview-center
+					</style>
+					<style>${previewCss}</style>
+				</head>
+				<body><div class="preview-wrapper">${previewCode}</div></body>
+			</html>
+		`.trim();
+	} catch (error) {
+	}
+};
+
+const hasDefaultCode = code.length > 0;
+const hasDefaultSlot = Astro.slots.has('default');
+if (hasDefaultCode || hasDefaultSlot) {
+	if (hasDefaultSlot) {
+		code = await Astro.slots.render('default');
+	}
+
+	setPreviewCode(code)
+}
+---
+
+<script>
+import { Compiler } from '@stylify/stylify/esm/index.js';
+import { domReady, dispatchEvent } from '@clientHelpers';
+
+domReady(() => {
+
+	document.querySelectorAll('[data-editor-id]').forEach((element) => {
+		const getAllButtons = () => element.querySelectorAll('[data-tab-button]');
+
+		const uid = element.dataset.editorId;
+		const compiler = new Compiler({ dev: true });
+		const prodCompiler = new Compiler({ dev: true, mangleSelectors: true });
+		const iframe = element.querySelector('iframe');
+
+		getAllButtons().forEach((button) => {
+			const buttonTab = button.dataset.tabButton;
+
+			button.onclick = () => {
+				element.querySelectorAll('[data-tab]').forEach((tab) => {
+					tab.classList.toggle('s-visible', tab.dataset.tab === buttonTab);
+				});
+
+				getAllButtons().forEach((tabButton) => tabButton.classList.remove('s-active'));
+
+				button.classList.add('s-active');
+			}
+
+			setTimeout(() => {
+				if (buttonTab === 'editor') {
+					button.click();
+				}
+			}, 100);
+
+		});
+
+		document.addEventListener(`codemirror:${uid}-editor:updated`, ({ detail }) => {
+			const css = compiler.compile(detail.code).generateCss();
+			const prodCss = prodCompiler.compile(detail.code).generateCss();
+			const prodHtml = prodCompiler.rewriteSelectors(detail.code);
+
+			dispatchEvent(`codemirror:${uid}-dev-css:updateCode`, { code: css });
+			dispatchEvent(`codemirror:${uid}-prod-css:updateCode`, { code: prodCss });
+			dispatchEvent(`codemirror:${uid}-prod-html:updateCode`, { code: prodHtml });
+
+			iframe.setAttribute('srcdoc', `
+				<!DOCTYPE html>
+				<html lang="en">
+					<head>
+						<meta charset="UTF-8">
+						<meta name="viewport" content="width=device-width, initial-scale=1.0">
+						<style>
+							* { box-sizing:border-box }
+							html { height:100% }
+							body {
+								min-height:100%;
+								margin: 0;
+								text-align:center;
+								background-color: #0d1424;
+								color: #f1f1f1;
+								font-family: arial;
+								display:flex;
+								align-items:center;
+								justify-content:center;
+							}
+							.preview-center
+						</style>
+						<style>${css}</style>
+					</head>
+					<body><div class="preview-wrapper">${detail.code}</div></body>
+				</html>
+			`);
+		})
+	});
+})
+
+</script>
+
+<div data-editor-id={codeMirrorUid} class={`${layout === 'column' ? 'flex-direction:column-reverse' : 'md:flex-direction:row'} example-editor background:$blue6 border:1px_solid_$blue5 overflow:hidden border-radius:4px display:flex justify-content:space-between flex-direction:column-reverse justify-content:center width:100%`} >
+	<div
+		class={`
+			${layout === 'column' ? 'md:width:100%' : 'width:100% max-width:100% md:width:50% md:min-width:50%'}
+			background:lighten($blue3,20) display:flex md:align-self:stretch
+		`}
+	>
+		<div class="width:100% display:flex flex-direction:column">
+			<div class="
+				padding:8px_12px_0_12px background:$blue6 font-weight:bold color:$grey5 white-space:nowrap overflow-x:auto
+				[a]{border-bottom-width:2px;border-bottom-style:solid;padding:0_4px;transition:border-color_.3s;display:inline-flex;cursor:pointer}
+				[a:not(.s-active)]{border-bottom-color:transparent;color:#fefefe}
+				[a.s-active]{border-color:$blue1;color:$blue1}
+			">
+				<a role="button" data-tab-button="editor" class="s-active" >{t('Editor')}</a>
+				<a role="button" data-tab-button="dev-css">{t('Dev CSS')}</a>
+				<a role="button" data-tab-button="prod-css">{t('Production CSS')}</a>
+				{showHtml &&
+					<a role="button" data-tab-button="prod-html">{t('Production HTML')}</a>
+				}
+			</div>
+			<div class="display:flex flex:1 [>.s-visible]{display:flex} [>div]{display:none;width:100%}">
+				<div data-tab="placeholder" class="preview-code s-visible">
+					<ShikiHighlighter code={code.trim()} />
+				</div>
+				<div data-tab="editor">
+					<CodeMirror
+						id={`${codeMirrorUid}-editor`}
+						withBorder={false}
+					><slot>{code}</slot></CodeMirror>
+				</div>
+				<div data-tab="dev-css">
+					<CodeMirror
+						id={`${codeMirrorUid}-dev-css`}
+						defaultCode={devCss}
+						withBorder={false}
+						lang="css"
+						readonly
+					/>
+				</div>
+				<div data-tab="prod-css">
+					<CodeMirror
+						id={`${codeMirrorUid}-prod-css`}
+						defaultCode={productionCss}
+						withBorder={false}
+						lang="css"
+						readonly
+					/>
+				</div>
+				{showHtml &&
+					<div data-tab="prod-html">
+						<CodeMirror
+							id={`${codeMirrorUid}-prod-html`}
+							defaultCode={productionHtml}
+							withBorder={false}
+							readonly
+						/>
+					</div>
+				}
+			</div>
+		</div>
+	</div>
+
+	<div
+		class={`
+			${layout === 'column' ? 'md:width:100% border-bottom:1px_solid_$blue5' : 'width:100% border-bottom:1px_solid_$blue5 md:border-bottom:0 md:border-left:1px_solid_$blue5 md:width:50% md:min-width:50%'}
+			min-height:100px max-height:400px overflow:auto display:flex
+			align-items:center justify-content:center padding:12px
+			md:align-self:stretch
+
+		`}
+	>
+		<iframe srcdoc={iframeDocument} frameborder="0" title="Code Editor" class="width:100% height:100%"></iframe>
+	</div>
+</div>

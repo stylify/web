@@ -1,0 +1,150 @@
+---
+section: stylify
+
+order: 1
+
+navigationTitle: Native Preset
+
+title: "Native Preset"
+description: "Native preset es una configuración preparada para Stylify CSS con 678 tipos de selectores que puedes utilizar."
+---
+import Note from '@components/Note.astro';
+import DocsSection from '@components/DocsSection.astro';
+
+Native (por defecto) preset es una configuración preparada para Stylify CSS que consiste en macros predefinidas, pantallas y helpers.
+El código detrás del NativePreset se puede encontrar en el <a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Compiler/defaultPreset.ts" target="_blank" rel="noopener">@stylify/stylify repository</a>.
+
+## Dentro del preset
+
+### Macro predefinida
+Esta macro te permite usar una sintaxis similar a CSS que coincide con **678 propiedades CSS** disponibles en Chrome, Safari, Mozilla, Opera y Edge.
+Consulta la [guía de sintaxis](/es/docs/stylify/compiler#sintaxis).
+
+La lista de todos los selectores disponibles se encuentra en <a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/default-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify repository</a>.
+
+### Pantallas
+Hay atajos estáticos como `tosm, sm, md, ...` y pantallas dinámicas como `minw, maxw, rng, ...` que generan media queries basadas en el valor que elijas al usarlas. Los valores y unidades que utilices dependen de ti.
+
+No olvides que las pantallas se pueden combinar usando los operandos lógicos `&&` (and) y `||` (or) como `maxw320px&&maxh667px:color:blue`.
+
+<div class="max-width:100% overflow:auto [table]{width:100%}">
+
+{/* stylify-ignore */}
+
+| Pantalla | Valor | Ejemplo |
+|------------|--------------------------------------------------------------|----------------------------|
+| tosm       | @media (max-width: 639px)                                    | tosm:color:blue            |
+| sm         | @media (min-width: 640px)                                    | sm:color:blue              |
+| tomd       | @media (max-width: 767px)                                    | tomd:color:blue            |
+| md         | @media (min-width: 768px)                                    | md:color:blue              |
+| tolg       | @media (max-width: 1023px)                                   | tolg:color:blue            |
+| lg         | @media (min-width: 1024px)                                   | lg:color:blue              |
+| toxl       | @media (max-width: 1279px)                                   | toxl:color:blue            |
+| xl         | @media (min-width: 1280x)                                    | xl:color:blue              |
+| to2xl      | @media (max-width: 1535px)                                   | to2xl:color:blue           |
+| 2xl        | @media (min-width: 1536px)                                   | 2xl:color:blue             |
+| to3xl      | @media (max-width: 1919px)                                   | to3xl:color:blue           |
+| 3xl        | @media (min-width: 1920px)                                   | 3xl:color:blue             |
+| minw       | @media (min-width: custom)                                   | minw640px:color:blue       |
+| maxw       | @media (max-width: custom)                                   | maxw639px:color:blue       |
+| minh       | @media (min-height: custom)                                  | minh668px:color:blue       |
+| maxh       | @media (max-height: custom)                                  | maxh667px:color:blue       |
+| rng        | @media (min-width: custom) and @media(max-width: custom)     | rng640px-1023px:color:blue |
+| screen     | @media screen                                                | screen:color:blue          |
+| onlyScreen | @media only screen                                           | onlyScreen:color:blue      |
+| portrait   | @media (orientation: portrait)                               | portrait:color:blue        |
+| landscape  | @media (orientation: landscape)                              | landscape:color:blue       |
+| dark       | @media (prefers-color-scheme: dark)                          | dark:color:blue            |
+| light      | @media (prefers-color-scheme: light)                         | light:color:blue           |
+
+{/* /stylify-ignore */}
+</div>
+
+
+<DocsSection>
+<div slot="description">
+
+### Ordenación
+Las pantallas se ordenan automáticamente. La función de ordenación se puede cambiar (ver [configuration](/es/docs/stylify/compiler#compilation-result)).
+
+<Note>**asc** - de menor a mayor, enfoque móvil primero<br />
+**desc** - de mayor a menor, enfoque desktop first</Note>
+
+</div>
+<div slot="code">
+
+- sin media query
+- min-ancho => asc
+- min-height => asc
+- max-ancho => desc
+- max-height => desc
+- min-ancho-dispositivo => asc
+- min-device-height => asc
+- max-ancho-dispositivo => desc
+- max-device-height => desc
+- modo claro => según arriba
+- modo oscuro => según arriba
+- imprimir => según arriba
+- otros
+
+</div>
+</DocsSection>
+
+### Ayudantes
+Native preset viene con algunos ayudantes que pueden simplificar el proceso de desarrollo.
+Cuando pasas un argumento que contiene `,`, debes añadir comillas a ese argumento usando `^` (`^` es reemplazado por quote, ver [página de sintaxis](/es/docs/stylify/compiler#quotes)).
+
+Cuando pasas un argumento al helper, puedes usar variables como `$myVariable`.
+
+<DocsSection>
+<div slot="description">
+
+#### Aclarar color
+Este ayudante espera un color en formato hexadecimal o rgb y lo aclara. El color se devuelve en formato hexadecimal.
+
+</div>
+<div slot="code">
+
+```
+color:lighten($myColor,10)
+color:lighten(#222,10)
+color:lighten(^rgb(0,0,0)^,10)
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+#### Oscurecer color
+Este ayudante espera un color en formato hexadecimal o rgb y oscurece el color. El color se devuelve en formato hexadecimal.
+
+</div>
+<div slot="code">
+
+```
+color:darken(#eee,10)
+color:darken(^rgb(255,255,255)^,10)
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+#### Color a RGB
+Este ayudante espera un color en formato hexadecimal o rgb. Devuelve en formato rgb. Si se pasa el canal alfa como segundo argumento, devuelve el formato rgba.
+
+</div>
+<div slot="code">
+
+```
+color:colorToRgb(#000) => se convierte en rgba(0, 0, 0);
+color:colorToRgb(#000,0.1) => se convierte en rgba(0, 0, 0, 0.1)
+color:colorToRgb(^rgb(0,0,0)^,0.1) => se convierte en rgba(0, 0, 0, 0.1)
+```
+
+</div>
+</DocsSection>

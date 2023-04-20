@@ -1,0 +1,79 @@
+---
+section: get-started
+
+order: 1
+
+navigationTitle: "¿Por qué Stylify?"
+
+title: "¿Por qué deberías usar Stylify CSS?"
+description: "¿Por qué deberías usar Stylify CSS en lugar de escribir CSS manualmente? Aprende cuáles son las características de Stylify CSS y qué problemas intenta resolver Stylify."
+---
+import InterestedTryItNow from '@components/InterestedTryItNow.astro';
+import StylifyFeatures from '@components/StylifyFeatures.astro';
+
+Aprende qué son las características CSS de Stylify y qué problemas intenta resolver Stylify. Descubre cómo puede mejorar tu experiencia diaria de codificación y cómo simplifica la incorporación de un nuevo desarrollador al equipo.
+
+Stylify puede parecerse a los estilos en línea. ¿Por qué no usarlos? Porque no se pueden optimizar eficientemente.
+
+## Características de Stylify CSS
+Stylify CSS te permite escribir CSS más rápido y obtener paquetes de CSS extremadamente pequeños. Además es fácilmente integrable en cualquier herramienta.
+
+<StylifyFeatures />
+
+## Problemas que Stylify CSS intenta resolver
+Stylify CSS se centra principalmente en la sintaxis de las utilidades y en la optimización de los paquetes CSS. Pero aparte de eso, hay muchos problemas que Stylify resuelve.
+Algunos de ellos aparecen al escribir CSS y otros cuando un nuevo empleado se une a una empresa.
+
+#### Propiedades duplicadas para selectores
+Tanto si escribimos un componente como un selector, la mayoría de las veces duplicamos `properties:values` adjuntas a ese selector. Stylify soluciona esto mediante un algoritmo interno para unir selectores, componentes y utilidades.
+
+#### Consultas de medios duplicadas
+El mismo problema anterior pero para las media queries. Stylify adjunta selectores a las consultas de medios correctas y se generan sólo una vez para cada archivo.
+
+#### Cambio constante entre archivos CSS y HTML
+Cuando escribimos CSS manualmente, a menudo necesitamos crear un archivo CSS, luego ir a HTML, adjuntar esa clase a algún elemento y añadir CSS para él. Con Stylify CSS esto no es necesario.
+
+#### Necesidad de eliminar manualmente las clases no utilizadas
+Puedes hacerlo con la herramienta de purga pero eso solo arregla errores ya cometidos. Stylify CSS genera todo bajo demanda. No se genera CSS sin usar. No se necesita purga.
+
+#### Gestión complicada de archivos CSS
+Si el CSS se escribe manualmente (con o sin un preprocesador CSS) tenemos que crear archivos CSS o etiquetas de estilo para ello (dentro de plantillas Vue por ejemplo). Esto dificulta la gestión de CSS. Tenemos que crear, eliminar y renombrar archivos manualmente. En caso de importar archivos, tenemos que arreglar siempre la ruta cuando el archivo se mueve a otro lugar o se renombra. Cuando la cantidad de archivos CSS empieza a aumentar, es simplemente cada vez más difícil. Este no es el caso con Stylify CSS. Los archivos pueden estar en el `.gitignore`. Se generan automáticamente en función de la configuración de cada paquete. Añadir etiquetas de estilo e importaciones puede ser automatizado usando hooks también.
+
+#### División incorrecta de CSS
+Lleva mucho trabajo dividir e importar correctamente CSS, para evitar importar estilos no utilizados. Dado que las utilidades de CSS son pequeñas y el buen enfoque es dividirlo por diseño/página o no dividir nada en absoluto, la importación es sencilla.
+
+#### Tenemos que averiguar los nombres para los selectores usando BEM o un enfoque similar.
+Esto se elimina con las utilidades tipo CSS. No hay necesidad de BEM u otras convenciones de nomenclatura.
+
+#### Crear selectores inútiles para cosas simples
+Las utilidades resuelven el problema de crear un selector como `sidebar--larger-margin` sólo para una sangría mayor.
+
+#### Alta especificidad innecesaria en CSS
+Esto se resuelve de nuevo con utilidades y las anulaciones específicas se pueden resolver usando variables CSS. Debido a que puedes aplicar estilo a los elementos de forma condicional y atómica, a menudo no necesitas tener una mayor especificidad cuando utilizas utilidades.
+
+#### Anidamiento contraintuitivo en preprocesadores
+En preprocesadores como SCSS y Stylus, tendemos a usar demasiado el anidamiento como en el ejemplo de abajo. Esto hace que el descubrimiento del selector sea más difícil y también más difícil de mantener. Con utilidades, simplemente no usas esto.
+
+```css
+.section {
+	&__homepage {
+		// ...
+		&-top-left { /* */ }
+	}
+	&--big
+}
+```
+
+#### Los selectores se modifican desde varios sitios
+A menudo necesitamos modificar por ejemplo un botón. Para hacerlo más grande/pequeño para algún lugar dentro de una aplicación. Entonces hacemos una clase que modifica ese botón (si se hace correctamente) o sobreescribimos ese selector de botón directamente (lo cual es incorrecto).
+
+Sobreescribir puede llevar a copiar tales selectores en múltiples lugares, lo cual es difícil de mantener y a veces, también necesitamos sobreescribir ese selector ya sobreestablecido. Lo cual es un problema aún mayor.
+
+En el caso de los modificadores, la pregunta es, ¿vas a ponerlos en un archivo CSS, que se carga en la página, donde se utiliza o en el archivo de componentes para mantener todos los modificadores en un solo lugar. El primer enfoque hace que el mantenimiento sea más difícil porque los modificadores están dispersos en varios archivos y el segundo conduce a modificadores no utilizados en una página.
+
+Stylify te permite definir modificadores de ambas maneras. Dentro de los archivos, donde se utilizan o en una configuración global. Sin embargo, los modificadores siempre se generan sólo en los paquetes, donde se utilizan. Los modificadores no utilizados (globales o locales) no se generan.
+
+#### Menos problemas para los nuevos empleados
+Cuando un nuevo empleado se une a una empresa, no tiene que estudiar ningún framework. Si sabe CSS, puede empezar a usar Stylify CSS inmediatamente. No tiene que estudiar la librería CSS-in-JS, los atajos del framework CSS y cómo usar ese framework para que la salida sea optimizada.
+
+<InterestedTryItNow />

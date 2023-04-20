@@ -1,0 +1,130 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Bootstrap"
+navigationIconPath: '/images/brands/bootstrap.svg'
+image: '/migration/bootstrap/header.jpg'
+ogImage: '/migration/bootstrap/og-image.jpg'
+
+title: "如何从Bootstrap CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从Bootstrap CSS组件框架迁移到Stylify的实用性优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Bootstrap组件框架和Stylify实用优先的CSS的特性和语法，并让你了解如何从Bootstrap迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+Bootstrap是一个强大的、可扩展的、功能丰富的前端工具箱。使用Sass进行构建和定制，利用预置的网格系统和组件，并通过强大的JavaScript插件将项目变为现实。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+Bootstrap为属性提供了很多实用工具，如display、flex、color、overflow等。
+
+我找不到任何信息表明Bootstrap提供了像`hover`或`active`伪类支持和媒体查询支持：
+
+
+```html
+<div class="d-flex p-2 text-primary shadow-lg">
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+我没有找到任何信息表明Bootstrap提供了类似动态全局选择器的东西。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+Bootstrap是一个基于组件的框架。因此，有大量的组件，如按钮、徽章、表单、表格、菜单等：
+
+```html
+<button class="btn btn-primary"></button>
+<span class="badge bg-secondary"></span>
+<ul class="list-group">
+	<li class="list-group-item">一个项目</li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+Bootstrap的定制大部分是在SCSS/CSS文件中完成的，主题是在构建过程中生成的：
+
+```css
+// 需要
+@import "../node_modules/bootstrap/scss/functions";
+
+// 默认的变量覆盖
+$body-bg: #000;
+$body-color: #111;
+
+// 需要
+@import "../node_modules/bootstrap/scss/variables";
+```
+
+你也可以添加自定义的主题颜色：
+
+```css
+// 创建你自己的地图
+$custom-colors: (
+	"custom-color": #900
+);
+
+// 合并这些地图
+$theme-colors: map-merge($theme-colors, $custom-colors);
+```
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

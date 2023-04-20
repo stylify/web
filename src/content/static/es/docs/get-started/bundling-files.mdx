@@ -1,0 +1,40 @@
+---
+section: get-started
+
+order: 3
+
+navigationTitle: "Agrupación de archivos"
+
+title: "Agrupación de archivos"
+description: "Cómo empaquetar archivos CSS para cualquier proyecto web que quieras"
+---
+
+En caso de que no planees usar ninguna integración como [@stylify/unplugin](/es/docs/unplugin) o [@stylify/astro](/es/docs/astro), puedes usar [@stylify/bundler](/es/docs/bundler) directamente.
+
+Stylify Bundler es un paquete que te permite generar archivos CSS para tu proyecto. Puedes empaquetar cualquier formato de archivo. La forma más fácil es generar todo el CSS en un solo archivo. Sin embargo la cantidad de bundles no está limitada.
+
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+// http://stylifycss.com/docs/bundler#configuration
+const bundler = new Bundler({
+	// Opcional
+	compiler: {
+		variables: {},
+		macros: {},
+		components: {},
+		// Si desea manipular los selectores
+		mangleSelectors: true
+		// ...
+	}
+})
+
+bundler.bundle([
+	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.html'] },
+	// Bundler utiliza https://npmjs.com/package/fast-glob
+	// Puedes usar su sintaxis glob
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
+]);
+
+await bundler.waitOnBundlesProcessed();
+```

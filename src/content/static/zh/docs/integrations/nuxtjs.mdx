@@ -1,0 +1,116 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Nuxt.js"
+navigationIconPath: '/images/brands/nuxtjs-icon.svg'
+image: '/integrations/nuxtjs/header.jpg'
+ogImage: '/integrations/nuxtjs/og-image.jpg'
+
+title: 在Nuxt.js中使用Stylify CSS
+description: "了解如何在Nuxt.js中使用Stylify CSS。用Stylify CSS更快地编写你的Nuxt.js网站代码。"
+howToSchemaTitle: '如何在Nuxt.js中使用Stylify CSS。'
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "使用YARN或NPM等CLI安装@stylify/nuxt（用于Nuxt v3）或@stylify/nuxt-module（用于Nuxt v2）软件包",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS模块添加到nuxt.config.js中。" ,
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Nuxt.js是一个使用Vue.js的开源框架，使网页开发简单而强大。
+
+该集成使用了Nuxt 2和Nuxt 3的Stylify CSS包。请看下面的指南。
+
+## 如何将Stylify CSS集成到Nuxt.js v3+中
+
+<StackBlitzLink link="stylify-nuxt3" />
+
+首先，使用CLI安装该软件包：
+```
+npm i -D @stylify/nuxt
+yarn add -D @stylify/nuxt
+```
+
+然后在`nuxt.config.js`构建模块部分添加一个构建模块：
+```javascript
+modules: [
+	'@stylify/nuxt'
+]
+```
+
+现在你可以开始使用Nuxt.js的Stylify CSS了。
+
+<Note>由于一些未知的原因，当Nuxt中出现错误（语法、重复属性）时，CSS不会被重新加载。如果发生这种情况，只需在Nuxt配置文件中点击保存或重新启动开发服务器。</Note>
+
+## 如何将Stylify CSS整合到Nuxt.js v2+ < v3
+
+<StackBlitzLink link="stylify-nuxtjs-template" />
+
+首先，使用CLI安装该软件包：
+```
+npm i -D @stylify/nuxt-module
+yarn add -D @stylify/nuxt-module
+```
+
+然后在`nuxt.config.js`构建模块部分添加一个构建模块：
+
+```javascript
+buildModules: [
+	'@stylify/nuxt-module'
+]
+```
+
+现在你可以开始使用Nuxt.js的Stylify CSS了。
+
+## 配置
+你可以配置很多的选项：
+- Nuxt v3: [@stylify/nuxt](/zh/docs/nuxt)
+- Nuxt v2: [@stylify/nuxt-module](/zh/docs/nuxt-module)
+
+### Stylelint
+如果你使用Stylelint，你可能想把生成的`stylify.css`和可能带有变量的文件加入`.stylelintignore`文件。
+
+```
+assets/stylify.css
+assets/scss/variables/stylify-variables.scss
+```
+
+如果Stylelint抱怨没有匹配任何文件的模式，请将[--allow-empty-input](https://stylelint.io/user-guide/usage/cli/#--allow-empty-input---aei)规则添加到package.json文件中的`lint:style`和`stylelint`配置中的`nuxt.config.js`：
+
+```javascript
+stylelint: {
+	allowEmptyInput: true
+}
+```
+
+### 构建配置
+构建可能会失败，因为它没有被配置为使用现代ES6特性。
+你可以通过在`nuxt.config.js`中设置transpile选项来解决这个问题：
+
+
+```javascript
+build: {
+	transpile: [
+		'@stylify/stylify/lib/index.cjs',
+		'@stylify/stylify/esm/index.mjs'
+	]
+}
+```
+
+<WhereToNext />

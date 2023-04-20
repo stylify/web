@@ -1,0 +1,32 @@
+---
+import { getLangFromUrl, getLocalizedRoute } from "@serverHelpers";
+import { Image } from '@astrojs/image/components';
+const { items = [] } = Astro.props
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<!--
+stylify-components
+	'integration-block__image-wrapper': `max-height:40px max-width:100%`,
+	'integration-block': `
+		display:flex color:$grey3 flex-direction:row justify-content:center align-items:center
+		border-radius:$radius2 background:lighten($blue3,20)
+		padding:8px text-decoration:none min-height:60px
+	`
+/stylify-components
+-->
+
+<div
+	class="display:grid grid-template-columns:repeat(auto-fit,minmax(70px,1fr)) md:grid-template-columns:repeat(auto-fit,minmax(112px,1fr)) gap:12px"
+>
+	{
+		items.map((item) => (
+			<a href={getLocalizedRoute(`/docs/${item.slug}`, lang)} aria-label={item.label} title={item.label} class="integration-block">
+				<div class="integration-block__image-wrapper">
+					<Image src={`/images/${item.image}`} alt="" loading="lazy" fetchpriority="low" quality={item.image.endsWith('svg') ? '' : 80} format={item.image.endsWith('svg') ? 'svg' : 'webp'} width={80} background="rgba(0,0,0,0)" height={40} fit="contain" class="width:auto height:40px" />
+				</div>
+			</a>
+		))
+	}
+</div>

@@ -1,0 +1,163 @@
+---
+title: 🚀 Codifica tu web SvelteKit más rápido con Stylify CSS
+image: '/images/blog/stylify-sveltekit/header.jpg'
+ogImage: '/images/blog/stylify-sveltekit/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Dale estilo a tu web SvelteKit de forma más rápida e intuitiva con Stylify. Aprende a definir componentes, variables y consigue un CSS extremadamente optimizado."
+createdAt: 'January 2, 2023'
+---
+
+[Stylify](/) + SvelteKit. Estiliza tu web SvelteKit más rápido con Stylify. No estudies selectores y sintaxis. Usa sintaxis CSS pura y obtén CSS generado con optimización avanzada para producción.
+
+Para un comienzo más fácil, puedes revisar el [Stylify Stackblitz playground](https://stackblitz.com/edit/stylify-sveltekit-example?file=src%2Froutes%2F%2Bpage.svelte) 🎮.
+
+## 💎 Introducción a Stylify CSS
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías darle una oportunidad!](/es/docs/get-started/why-stylify-css)
+
+## 🚀 Configuración de SvelteKit
+La forma más fácil de Setup el SvelteKit está utilizando CLI:
+- Ejecuta `yarn create svelte@latest`.
+- Luego `cd app`.
+
+De esta forma obtendrás el esqueleto de la aplicación SvelteKit por defecto.
+
+## 🔌 Integración CSS de Stylify
+Instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```bash
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+Abre el archivo `vite.config.js` y copia el siguiente contenido en él:
+
+```javascript
+import { sveltekit } from '@sveltejs/kit/vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.svelte'],
+	}]
+});
+
+const config = {
+	plugins: [
+		stylifyPlugin,
+		sveltekit(),
+	]
+};
+
+export default config;
+```
+
+El último paso, crear `src/routes/+layout.svelte` con el siguiente contenido `stylify.css`:
+
+```html
+<script>
+	import '../stylify.css';
+</script>
+
+<slot />
+```
+
+En caso de que hayas creado más paquetes, por ejemplo para páginas, tienes que añadir las rutas a esos archivos CSS generados en los archivos Svelte correctos.
+
+## Estilizando el sitio web
+¡Si copias el siguiente código en `src/routes/+page.svelte` y ejecutas `yarn dev` obtendrás un `Hello World! 🎉` texto:
+
+```html
+<main class="max-width:800px margin:0_auto">
+	<h1 class="text-align:center margin-top:100px font-size:42px">
+		¡¡¡Hola Mundo!!! 🎉
+	</h1>
+</main>
+```
+
+Stylify observa cualquier cambio en los archivos que coincida con la máscara en los archivos del bundle y genera CSS en el `src/stylify.css`.
+
+Si añades por ejemplo `color:blue` el CSS se actualizará automáticamente 🎉.
+
+Adelante y prueba Stylify CSS directamente en [Stackblitz.com](https://stackblitz.com/edit/stylify-sveltekit-example?file=src%2Froutes%2F%2Bpage.svelte) 💡.
+
+### Componentes
+Para evitar plantillas hinchadas con utilidades, puedes usar
+componentes directamente en los archivos, donde se utilizan a través de [opciones de contenido](/es/docs/get-started#defining-a-component) (espera objeto javascript sin corchetes) o en el [compilador config](/es/docs/get-started#defining-a-component).
+
+```html
+<!--
+stylify-components
+	container: 'max-width:800px margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:42px'
+/stylify-components
+-->
+<main class="container">
+	<h1 class="title">
+		¡¡¡Hola Mundo!!! 🎉
+	</h1>
+</main>
+```
+
+### Variables
+Si te gusta el código limpio, también quieres evitar valores hardcodeados en los selectores. [Las variables (/es/docs/get-started#adding-a-variable) se pueden definir de la misma manera que los componentes:
+
+```html
+<!--
+stylify-variables
+	titleFontSize: '42px',
+	containerWidth: '800px'
+/stylify-variables
+
+stylify-components
+	container: 'max-width:$containerWidth margin:0_auto',
+	title: 'text-align:center margin-top:100px font-size:$titleFontSize'
+/stylify-components
+-->
+<main class="container">
+	<h1 class="title">
+		¡¡¡Hola Mundo!!! 🎉
+	</h1>
+</main>
+```
+
+## Construyendo para producción
+Si ejecutas `yarn build` + `yarn preview`, el marcado svelte se convertirá en esto:
+
+```html
+<main class="a">
+	<h1 class="b">
+		¡Hello World! 🎉
+	</h1>
+</main>
+```
+
+El CSS también se acorta:
+```css
+:root {--titleFontSize: 42px;--containerWidth: 800px;}
+.c,.a{max-width:800px}
+.d,.a{margin:0 auto}
+.e,.b{text-align:center}
+.f,.b{margin-top:100px}
+.g,.b{font-size:42px}
+```
+
+## Configura todo lo que necesites
+Los ejemplos anteriores no incluyen todo lo que Stylify puede hacer:
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Estilizar [selectores globales](/es/docs/stylify/compiler#customselectors)
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Añade [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Y mucho más
+
+No dudes en [consultar la documentación](/es/docs/get-started) para aprender más 💎.

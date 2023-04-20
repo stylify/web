@@ -1,0 +1,127 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Styled Components"
+navigationIconPath: '/images/brands/styled-components.png'
+image: '/migration/styled-components/header.jpg'
+ogImage: '/migration/styled-components/og-image.jpg'
+
+title: "Cómo migrar de la librería CSS-in-JS de Styled Components a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo de la CSS-in-JS de Styled Components a la CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationStylifyVariablesCssInJs from '@components/MigrationStylifyVariablesCssInJs.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis de la librería CSS-in-JS de Styled Components con las de CSS utility-first de Stylify, y darte una idea de cómo migrar de Styled Components a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Styled Components es una librería que te permite escribir CSS real en tu JavaScript. Esto significa que puedes usar todas las características de CSS que usas y amas, incluyendo (pero ni mucho menos limitadas a) media queries, todos los pseudo-selectores, nesting, etc.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Styled Components proporcione algo así como utilidades dinámicas o propiedades CSS como Emotion CSS-in-JS.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+Al definir estilos globales en Styled Components, tienes que crear un componente de estilo global:
+```jsx
+import { createGlobalStyle } from 'styled-components'
+
+const GlobalStyle = createGlobalStyle`
+	body {
+		color: ${props => (props.whiteColor ? 'white' : 'black')};
+	}
+`;
+
+<React.Fragment>
+	<GlobalStyle whiteColor />
+</React.Fragment>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+En Styled Components, los componentes se definen a menudo de esta manera:
+
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+
+<Title>¡Hola Mundo!🎉</Title>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="styled-components.png">
+<div slot="tool">
+
+En Styled Components CSS se utilizan principalmente variables que se definen dentro del Javascript o algún archivo de configuración o variables CSS.
+
+```jsx
+const color = 'blue';
+const Title = styled.h1`
+	color: ${color},
+	font-size: var(--font-size)
+`;
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+<MigrationStylifyVariablesCssInJs />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

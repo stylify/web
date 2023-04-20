@@ -1,0 +1,159 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Windi"
+navigationIconPath: '/images/brands/windi.svg'
+image: '/migration/windi/header.jpg'
+ogImage: '/migration/windi/og-image.jpg'
+
+title: "Cómo migrar de Windi utility-first CSS framework a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework CSS utility-first de Windi a Stylify CSS y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework CSS utility-first de Windi con las de Stylify, y darte una idea de cómo migrar de Windi a Stylify.
+
+<MigrationNote />
+
+## Introducción
+
+Windi CSS es una alternativa bajo demanda a Tailwind, que proporciona tiempos de carga más rápidos, compatibilidad total con Tailwind v2.0, y un montón de características adicionales interesantes.
+
+<MigrationStylifyDescription />
+
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+En Windi, puedes usar utilidades directamente sobre el elemento. Los selectores (grupos) también pueden contener un espacio:
+
+```jsx
+<div class="
+	py-8 px-8 max-w-sm mx-auto
+	sm:(py-4 flex items-center space-y-0 space-x-6)
+">
+</div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Windi proporcione algo parecido a Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+En Windi, los componentes se definen dentro de un plugin así:
+
+```javascript
+import plugin from 'windicss/plugin'
+
+plugin(({ addComponents }) => {
+	addComponents({
+		'.btn': {
+			padding: '.5rem 1rem',
+			borderRadius: '.25rem',
+		},
+	})
+})
+```
+
+También puedes definir un atajo:
+```javascript
+export default {
+	shortcuts: {
+		'btn': {
+			'color': 'white',
+			'@apply': 'py-2 px-4 font-semibold rounded-lg',
+			'&:hover': {
+				'@apply': 'bg-green-700',
+				'color': 'black',
+			},
+		},
+	},
+}
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="windi.svg">
+<div slot="tool">
+
+En Windi se configura un tema en el archivo config.
+
+```jsx
+import { defineConfig } from 'windicss/helpers'
+import colors from 'windicss/colors'
+import plugin from 'windicss/plugin'
+
+export default defineConfig({
+	darkMode: 'class',
+	theme: {
+		extend: {
+			screens: {
+				'sm': '640px',
+			},
+			colors: {
+				blue: colors.sky,
+			},
+			fontFamily: {
+				sans: ['Graphik', 'sans-serif'],
+			},
+			spacing: {
+				128: '32rem',
+			},
+			borderRadius: {
+				'4xl': '2rem',
+			},
+		},
+	},
+})
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

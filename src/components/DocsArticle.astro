@@ -1,0 +1,43 @@
+---
+import { getLangFromUrl, useTranslations } from "@serverHelpers";
+
+const { pageData, headings } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="lg:{gap:24px;grid-template-columns:calc(100%_-_244px)_220px;display:grid}">
+	<article class="max-width:100% margin-bottom:32px">
+		<h1 class="margin-bottom:24px">{ pageData.title }</h1>
+		{headings.length > 0 &&
+			<div class="margin-top:8px min-height:38px md:display:none">
+				<span>{t('Shortcuts')}:</span>
+				{headings.map((heading) => (
+					<a href={`#${heading.slug}`} class="color:$grey5 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px">
+						{ heading.text }
+					</a>
+				))}
+			</div>
+		}
+		<slot />
+	</article>
+	<div class="tolg:display:none min-height:100% width:220px">
+		{headings.length > 0 &&
+			<aside class="position:sticky top:$stickyHeaderMargin max-height:calc(100vh_-_$stickyHeaderMargin) left:0 heivht:100vh">
+				<strong class="color:#f1f1f1">{t('Shortcuts')}:</strong>
+				<div class="display:flex flex-direction:column gap:4px margin-top:12px overflow:auto max-height:calc(100vh_-_$stickyHeaderMargin_-_30px)">
+					{headings.map((heading) => (
+						<a
+							v-for="shortcutLink in shortcuts"
+							href={`#${heading.slug}`}
+							class="color:$grey5 border-radius:0 font-weight:normal hover:color:$blue1 padding:0 margin-bottom:8px margin-left:8px"
+						>
+							{ heading.text }
+						</a>
+					))}
+				</div>
+			</aside>
+		}
+	</div>
+</div>

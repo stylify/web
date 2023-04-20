@@ -1,0 +1,114 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Foundation"
+navigationIconPath: '/images/brands/foundation.png'
+image: '/migration/foundation/header.jpg'
+ogImage: '/migration/foundation/og-image.jpg'
+
+title: "如何从Foundation CSS框架迁移到Stylify CSS"
+description: "了解如何毫不费力地从Foundation CSS组件框架迁移到Stylify的实用性优先的CSS，并以更少的代码更快地进行编码。"
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+这篇指南是为了帮助你快速比较Foundation组件框架和Stylify实用至上的CSS的特性和语法，并让你了解如何从Foundation迁移到Stylify。
+
+<MigrationNote />
+
+## 简介
+Foundation是一个适用于任何设备、媒介和可访问性的框架。Foundation是一个响应式的前端框架系列，它可以轻松地设计出漂亮的响应式网站、应用程序和电子邮件，在任何设备上看起来都非常棒。
+
+<MigrationStylifyDescription />
+
+## 选择器和CSS工具
+
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation Sited提供了一些实用工具，如阴影、弹性框、可见性等属性：
+
+```html
+<div class="float-left shadow show-for-medium">Left</div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## 全局选择器
+
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+我没有找到任何信息表明Foundation提供了类似动态全局选择器的东西。
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## 组件
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation是一个基于组件的框架。因此，有大量的组件，如按钮、徽章、表单、表格、菜单等：
+
+```html
+<span class="badge primary">1</span>
+<a role="button" class="button radius primary">1</a>
+<ul class="menu">
+	<li><a href="#">一</a></li>
+	<li><a href="#">二</a></li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## 配置、定制和变量
+<MigrationCodeBlock image="foundation.png">
+<div slot="tool">
+
+Foundation网站可以在SCSS文件中进行配置。如果你直接从他们的网站下载了Foundation，你可以在`_settings.scss`文件中进行配置，否则，你必须覆盖导入的变量：
+
+```css
+$foundation-palette: (
+	"primary": #1779ba,
+	"secondary": #767676,
+	"success": #3adb76,
+	"warning": #ffae00,
+	"alert": #cc4b37,
+);
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

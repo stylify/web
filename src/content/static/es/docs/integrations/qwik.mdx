@@ -1,0 +1,120 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Qwik
+navigationIconPath: '/images/brands/qwik.svg'
+image: '/integrations/qwik/header.jpg'
+ogImage: '/integrations/qwik/og-image.jpg'
+
+title: "Uso de Stylify CSS en Qwik Framework"
+description: "Aprende a utilizar Stylify CSS con Qwik Framework. Codifica tu sitio web Qwik más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Qwik.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Qwik es un framework JavaScript reimaginado para el borde. Sin hidratación, auto lazy-loading, edge-optimized.
+
+Stylify se puede utilizar dentro del marco Qwik utilizando el plugin Stylify CSS Vite.
+
+<StackBlitzLink link="stylify-qwik-example" />
+
+## Instalación
+
+La integración sólo puede ser instalada vía CLI como NPM o Yarn:
+```
+yarn add @stylify/unplugin
+npm i @stylify/unplugin
+```
+
+## Uso
+
+Edita el `vite.config.js`.
+
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [
+		{ files: ['src/**/*.tsx'], outputFile: 'src/global.css' }
+	],
+	// Opcional - https://stylifycss.com/en/docs/unplugin
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin]
+});
+```
+
+Importar `global.css` en `src/root.tsx`:
+
+```javascript
+import './global.css';
+```
+
+## Dividir paquetes para cada página
+Los paquetes también pueden configurarse para cada página por separado. Con este enfoque, puede obtener el CSS más pequeño posible. Por ejemplo
+
+```javascript
+bundles: [
+	// Diseño
+	{ files: ['src/root.tsx', 'src/routes/layout.tsx'], outputFile: 'src/assets/css/layout.css'},
+	// Página de índice
+	{ files: ['src/routes/index.tsx'], outputFile: 'src/assets/css/index.css'},
+],
+```
+
+En `src/routes/index.tsx` lo siguiente:
+
+```javascript
+import { useStyles$ } from '@builder.io/qwik';
+import indexCss from '../assets/css/index.css';
+// ...
+
+export default component$(() => {
+	useStyles$(indexCss);
+	// ...
+})
+```
+
+Y añade el layout import `import './assets/css/layout.css'` en `src/root.tsx`.
+
+## Configuración
+Hay muchas opciones que puedes configurar:
+- [@stylify/unplugin](/es/docs/unplugin)
+- [Compiler config](/es/docs/stylify/compiler)
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

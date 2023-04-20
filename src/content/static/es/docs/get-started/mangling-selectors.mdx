@@ -1,0 +1,32 @@
+---
+section: get-started
+
+order: 4
+
+navigationTitle: "Manipulando selectores"
+
+title: "Mangling Selectors"
+description: "Cómo manipular selectores de clase HTML usando el compilador CSS de Stylify"
+---
+import Note from '@components/Note.astro';
+
+Cuando quieras manipular selectores, debes configurar la opción del compilador => `mangleSelectors: true`.
+
+El ejemplo de abajo es para un caso en el que quieras hacer alguna compilación personalizada.
+Paquetes como [@stylify/bundler](/es/docs/bundler), [@stylify/unplugin](/es/docs/unplugin), [@stylify/nuxt](/es/docs/nuxt), [@stylify/astro](/es/docs/astro) usan el mismo proceso internamente (automáticamente).
+
+<Note>Cuando se define un componente o macro como <code>link</code> este selector puede tener una colisión en producción con selector como <code>sidebar-link</code>, cuando se manipulan selectores. Echa un vistazo a la documentación de componentes para [más información](/es/docs/stylify/compiler#components).</Note>
+
+```javascript
+import { Compiler } from '@stylify/stylify';
+
+const content = '';
+
+const compiler = new Compiler({
+	mangleSelectors: true
+});
+
+const compilationResult = compiler.compile(content);
+const mangledContent = compiler.rewriteSelectors(content, compilationResult);
+const css = compilationResult.generateCss();
+```

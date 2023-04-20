@@ -1,0 +1,109 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "CakePHP"
+navigationIconPath: '/images/brands/cakephp.png'
+image: '/integrations/cakephp/header.jpg'
+ogImage: '/integrations/cakephp/og-image.jpg'
+
+title: 在CakePHP中使用Stylify CSS
+description: "了解如何将Stylify CSS集成到CakePHP中。用Stylify CSS更快地给你的CakePHP网站编码。"
+howToSchemaTitle: '如何在CakePHP中使用Stylify CSS。'
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/bundler软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text":  "接下来，创建一个文件，例如根中的stylify.js",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+CakePHP是一个开源的Web快速开发框架，使构建Web应用程序更简单,
+更快，并且需要更少的代码。
+
+因为CakePHP没有附带任何捆绑程序，你可以使用捆绑程序包将Stylify集成到CakePHP中。
+
+<Note>在<a href="https://github.com/stylify/integrations-examples/tree/master/cakephp" target="_blank" rel="noopener">集成实例库</a>中可以找到CakePHP的集成实例。</Note>
+
+## 如何将Stylify CSS集成到CakePHP中
+
+在下面的例子中，我们将单独使用Bundler软件包。
+
+## 安装
+因为没有package.json，我们需要创建它：
+```
+yarn init
+npm init
+```
+
+使用NPM或Yarn安装[@stylify/bundler](/zh/docs/bundler)软件包：
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+## 使用方法
+接下来，创建一个文件，例如`stylify.js`在根目录下：
+
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// 这将所有的CSS捆绑到一个文件中
+// 你可以配置捆绑器，为每个页面单独捆绑CSS。
+// 请看下面的捆绑器链接
+bundler.bundle([
+	{ files: ['./templates/**/*.php', './src/**/*.php'], outputFile: './webroot/css/stylify.css' },
+]);
+```
+
+最后一步是在`package.json`中添加脚本：
+
+
+```javascript
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
+}
+```
+
+现在你可以在`templates/layouts/default.php`中添加`stylify.css`文件的路径：
+
+```php
+<?= $this->Html->css(['stylify']) ?>
+```
+
+你可以随心所欲地定制上面的构建。
+
+<WhereToNext packageName="bundler" />

@@ -1,0 +1,32 @@
+---
+section: stylify
+
+order: 0
+
+navigationTitle: "@stylify/stylify"
+
+title: "@stylify/stylify"
+description: "Stylify是一个图书馆，它使用类似CSS的选择器来动态生成优化的实用优先CSS。"
+---
+import IntegrationBlocks from '@components/IntegrationBlocks.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+@stylify/stylify包是所有其他包的核心包。它负责所有的CSS编译魔法。
+
+Stylify核心ESM模块的大小约为<strong>32 Kb</strong>。当在浏览器环境中使用时，其大小约为10 Kb Gzipped。
+
+了解[如何开始使用Stylify](/zh/docs/get-started)或查看[如何将Stylify CSS集成到现有项目中](/zh/docs/get-started/migrating-to-stylify)的指南。
+
+## 安装
+Stylify软件包可以单独使用。它没有任何依赖性。现在唯一的要求是Node.js运行时间。只要运行安装命令并查看下面的Node.js集成指南就可以了：
+
+```
+yarn install @stylify/stylify
+npm install @stylify/stylify
+```
+
+然而，如果你不想自己创建任何捆绑过程，你可能要找一个集成指南。
+
+<IntegrationBlocks />
+
+<WhereToNext packageName={null} />

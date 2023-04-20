@@ -1,0 +1,69 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+---
+
+<!--
+stylify-components
+	'why-stylify__block': `
+		margin-left:12px margin-bottom:12px background:lighten($blue3,20) padding:12px
+		width:100% sm:width:calc(50%_-_12px) border-radius:$radius2
+		lg:width:calc(100%_*_1/3_-_12px) lg:margin-bottom:0
+	`,
+	'why-stylify__block-title': 'margin:0 font-size:22px display:flex flex-direction:row align-items:center',
+	'why-stylify__block-title-icon': 'font-weight:bold color:$blue1 width:24px height:24px display:inline-block margin-right:8px',
+	'why-stylify__list': `
+		font-size:14px margin-bottom:0 margin-top:4px padding-left:0 color:lighten($grey5,20)
+		li:before {content:^⚡️^;position:absolute;left:0;}
+		li {list-style:none;padding-left:24px;position:relative}
+	`
+/stylify-components
+-->
+<div id="why-stylify-css" class="display:flex margin-left:-12px flex-wrap:wrap [ul]{list-style:none;padding-left:0}">
+	<section id="faster-coding" class="why-stylify__block">
+		<h3 class="why-stylify__block-title">
+			<i class="icon icon-heart why-stylify__block-title-icon"></i>
+			<span>{t('Code faster')}</span>
+		</h3>
+		<ul class="why-stylify__list">
+			<li>{t('Use CSS-like selectors. Don\'t study framework')}</li>
+			<li set:html={t('Define <a href="{{link1}}" class="color:$blue1">Variables</a>, <a href="{{link2}}" class="color:$blue1">Components</a>, <a href="{{link3}}" class="color:$blue1">Custom selectors</a>.', {link1: getLocalizedRoute('/docs/stylify/compiler#variables', lang), link2: getLocalizedRoute('/docs/stylify/compiler#components', lang), link3: getLocalizedRoute('/docs/stylify/compiler#customselectors', lang)})}></li>
+			<li set:html={t('Add <a href="{{link1}}" class="color:$blue1">custom macros</a> like <code>ml:2</code>.', {link1: getLocalizedRoute('/docs/stylify/compiler#macros', lang)})}></li>
+			<li>{t('Variables can be injected into CSS as CSS variables.')}</li>
+			<li set:html={t('CSS <a href="{{link1}}" class="color:$blue1">variables can differ for each screen</a>.', {link1: getLocalizedRoute('/docs/stylify/compiler#variables', lang)})}></li>
+			<li set:html={t('Use <a href="{{link1}}" class="color:$blue1">helpers</a> like <code>color:lighten(#000,10)</code>.', {link1: getLocalizedRoute('/docs/stylify/compiler#helpers', lang)})}></li>
+			<li set:html={t('Style any device with dynamic <a href="{{link1}}" class="color:$blue1">screens</a>', {link1: getLocalizedRoute('/docs/stylify/compiler#screens', lang)})}></li>
+		</ul>
+	</section>
+
+	<section id="output-optimization" class="why-stylify__block">
+		<h3 class="why-stylify__block-title">
+			<i class="icon icon-archive why-stylify__block-title-icon"></i>
+			<span>{t('Get extremely optimized CSS output')}</span>
+		</h3>
+		<ul class="why-stylify__list">
+			<li>{t('Split bundles for page/layout/component.')}</li>
+			<li set:html={t('Selectors minification<code>.color:blue</code> =&gt; <code>.a</code>.')}></li>
+			<li>{t('No purge needed. CSS is generated on demand.')}</li>
+			<li set:html={t('Almost zero duplicated <code>property:value</code>.')}></li>
+			<li set:html={t('Mark areas that <a href="{{link1}}" class="color:$blue1">should not be processed</a>.', {link1: getLocalizedRoute('/docs/stylify/compiler#ignoredareas', lang)})}></li>
+			<li>{t('Use hooks to extend functionality')}</li>
+		</ul>
+	</section>
+
+	<section id="copypaste-integration"  class="why-stylify__block">
+		<h3 class="why-stylify__block-title">
+			<i class="icon icon-layers why-stylify__block-title-icon"></i>
+			<span>{t('Copy&Paste Integration')}</span>
+		</h3>
+		<ul class="why-stylify__list">
+			<li set:html={t('Works with any framework like <a href="{{link1}}" class="color:$blue1">Nuxt.js</a>, <a href="{{link2}}" class="color:$blue1">Next.js</a>, <a href="{{link3}}" class="color:$blue1">Astro</a>. <a href="{{link4}}" class="color:$blue1">SolidJS</a>, <a href="{{link5}}" class="color:$blue1">Qwik</a>, <a href="{{link6}}" class="color:$blue1">Symfony</a>, <a href="{{link7}}" class="color:$blue1">Laravel</a>.', {link1: getLocalizedRoute('/docs/integrations/nuxtjs', lang), link2: getLocalizedRoute('/docs/integrations/nextjs', lang), link3: getLocalizedRoute('/docs/integrations/astro', lang), link4: getLocalizedRoute('/docs/integrations/solidjs', lang), link5: getLocalizedRoute('/docs/integrations/qwik', lang), link6: getLocalizedRoute('/docs/integrations/symfony', lang), link7: getLocalizedRoute('/docs/integrations/laravel', lang)})}></li>
+			<li set:html={t('Integrable into bundlers like <a href="{{link1}}" class="color:$blue1">Webpack</a>, <a href="{{link2}}" class="color:$blue1">Rollup</a>, <a href="{{link3}}" class="color:$blue1">Vite.js</a>.', {link1: getLocalizedRoute('/docs/integrations/webpack', lang), link2: getLocalizedRoute('/docs/integrations/rollupjs', lang), link3: getLocalizedRoute('/docs/integrations/vitejs', lang)})}></li>
+			<li>{t('Generated CSS can be used within SCSS, Less, Stylus.')}</li>
+			<li>{t('CSS variables can be exported into an external file.')}</li>
+		</ul>
+	</section>
+</div>

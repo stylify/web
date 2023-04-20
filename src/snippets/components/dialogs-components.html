@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #B429F9;
+			--gradientTo: #26C5F3;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	primaryColor: '#6750A4',
+	secondaryColor: '#52c41a',
+	tertiaryColor: '#faad14'
+/stylify-variables
+
+stylify-components
+	dialog: `
+		backdrop-filter:blur(3px) position:fixed inset:0 z-index:10 background:rgba(0,0,0,0.8) display:flex justify-content:center align-items:center will-change:opacity,visibility transition:opacity_.3s
+		&[hidden] { visibility:hidden }
+		&:not(.s-opaque) { opacity:0 }
+	`,
+	dialog__inner: 'display:flex justify-content:flex-start flex-direction:column background-color:#fff border-radius:24px overflow:hidden min-width:300px max-width:600px',
+	dialog__header: `
+		padding:24px_24px_12px_24px font-size:24px line-height:32px color:#000 font-weight:700
+		&--centered { text-align:center }
+	`,
+	dialog__content: 'color:#49454F flex:1 overflow:auto padding:12px_24px_12px_24px',
+	dialog__footer: `
+		padding:12px_24px_24px_24px display:flex align-items:center justify-content:flex-end flex-wrap:wrap gap:32px
+		&.dialog__footer--centered { justify-content:center }
+	`
+/stylify-components
+-->
+<div data-dialog="dialog1" hidden class="dialog">
+	<div class="dialog__inner">
+		<div class="dialog__header">Dialog</div>
+		<div class="dialog__content">
+			A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.
+		</div>
+		<div class="dialog__footer">
+			<!-- This can be buttons -->
+			<a role="button" class="color:$primaryColor cursor:pointer">Action</a>
+			<a role="button" class="color:$primaryColor cursor:pointer" data-close-dialog="dialog1">Close</a>
+		</div>
+	</div>
+</div>
+
+<div data-dialog="dialog2" hidden class="dialog">
+	<div class="dialog__inner">
+		<div class="dialog__header dialog__header--centered">Dialog - centered</div>
+		<div class="dialog__content">
+			A dialog is a type of modal window that appears in front of app content to provide critical information, or prompt for a decision to be made.
+		</div>
+		<div class="dialog__footer dialog__footer--centered">
+			<!-- This can be buttons -->
+			<a role="button" class="color:$primaryColor cursor:pointer">Action</a>
+			<a role="button" class="color:$primaryColor cursor:pointer" data-close-dialog="dialog2">Close</a>
+		</div>
+	</div>
+</div>
+
+<button data-open-dialog="dialog1">Open Dialog - normal</button>
+<br><br>
+<button data-open-dialog="dialog2">Open Dialog - centered title + footer</button>
+
+
+<script type="text/javascript">
+	const getDialog = (id) => document.querySelector(`[data-dialog="${id}"]`);
+	const opaqueClassName = 's-opaque';
+	const closeDialog = (id) => {
+		const dialog = getDialog(id);
+		// ms, must be the same like in css
+		// if you use css variables, you can get the variable
+		// and use it instead of a hardcoded number.
+		const opacityTransitionTimeout = 300;
+		dialog.classList.remove(opaqueClassName);
+		setTimeout(() => {
+			document.querySelector(`[data-dialog="${id}"]`).hidden = true;
+		}, opacityTransitionTimeout);
+	}
+
+	const openDialog = (id) => {
+		const dialog = getDialog(id);
+		dialog.classList.add(opaqueClassName);
+		document.querySelector(`[data-dialog="${id}"]`).hidden = false;
+	}
+
+	document.addEventListener("DOMContentLoaded", () => {
+		document.querySelectorAll('[data-open-dialog]').forEach((element) => {
+			const dialog = element.dataset.openDialog;
+			element.addEventListener('click', () => openDialog(dialog));
+		});
+
+		document.querySelectorAll('[data-close-dialog]').forEach((element) => {
+			const dialog = element.dataset.closeDialog;
+			element.addEventListener('click', () => closeDialog(dialog));
+		});
+	});
+	</script>
+</div></div></body></html>

@@ -1,0 +1,46 @@
+---
+import { getLangFromUrl, useTranslations } from "@serverHelpers";
+import ShikiHighlighter from "./ShikiHighlighter.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const localVariable = `
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+">
+</div>
+`.trim();
+
+const compilerConfig = `
+const compilerConfig = {
+	replaceVariablesByCssVariables: true,
+	externalVariables: ['localTextColor']
+}
+`.trim();
+
+const externalVariable = `
+<!--
+stylify-externalVariables
+	localTextColor
+/stylify-externalVariables
+-->
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+">
+</div>
+`.trim();
+---
+
+<div class="margin-top:20px">
+	<p>{t('When you need to pass a color into the component using props, use native CSS variables')}:</p>
+	<ShikiHighlighter code={localVariable} />
+
+	<p set:html={`${t('We just need to tell Stylify to replace variables with CSS variables instead of their value and that the <code>localTextColor</code> is external')}:`}></p>
+	<ShikiHighlighter code={compilerConfig} />
+
+	<p>{`${t('The external variable can also be defined only in the file where it is used')}:`}</p>
+	<ShikiHighlighter code={externalVariable} />
+</div>

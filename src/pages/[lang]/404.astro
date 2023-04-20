@@ -1,0 +1,10 @@
+---
+import PageNotFoundLayout from "@pageNotFoundLayout";
+import { getStaticPathsForSupportedLanguages } from '@serverHelpers';
+
+export const getStaticPaths = () => getStaticPathsForSupportedLanguages();
+
+
+---
+
+<PageNotFoundLayout />

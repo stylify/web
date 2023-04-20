@@ -1,0 +1,126 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Angular"
+navigationIconPath: '/images/brands/angular.svg'
+image: '/integrations/angular/header.jpg'
+ogImage: '/integrations/angular/og-image.jpg'
+
+title: 在Angular中使用Stylify CSS
+description: "了解如何将Stylify CSS集成到Angular中。用Stylify CSS更快地编码你的Angular网站。"
+howToSchemaTitle: "如何在Angular中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "Stylify CSS installatiom",
+		"text": "使用YARN或NPM等CLI安装@stylify/bundler软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "用捆绑器配置创建 stylify.js",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import WhereToNext from '@components/WhereToNext.astro';
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Angular是一个用于构建移动和桌面网络应用的平台。
+
+Stylify可以使用Bundler集成到Angular中。
+
+<StackBlitzLink link="stylifycss-angular-example" />
+
+<Note>如果你使用任何一种捆绑器，如Webpack、Vite、Rollup或ESbuild，去看看[@stylify/unplugin](/zh/docs/unplugin)的指南，可以很容易地集成到这些工具。</Note>
+
+## 如何将Stylify的CSS集成到Angular中
+
+首先，使用NPM或Yarn安装[@stylify/bundler](/zh/docs/bundler)软件包：
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+同样对于观察模式，我们需要运行两个并行任务。这可以用并发的方式来解决：
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+接下来，创建一个文件，例如`stylify.js`：
+
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// 这将所有的CSS捆绑到一个文件中
+// 你可以配置捆绑器，为每个页面单独捆绑CSS。
+// 请看下面的捆绑器链接
+bundler.bundle([
+	{
+		files: ['./src/**/*.html', './src/**/*.ts'],
+		outputFile: './src/styles.css',
+	},
+
+	// 你也可以为每个组件分割CSS
+	// 你可以使用内容注释选项来映射组件内的文件
+	// https://stylifycss.com/en/docs/bundler#files-content-option
+	// Stylify接受该选项并搜索定义的文件。如果定义的文件
+	// 也有一个选项，ID也会检查这些文件，如此反复。
+	// 这样，它就可以映射所有的文件和所有的依赖关系。
+	/*
+	{
+		files: ['./src/app/app.component.*'],
+		outputFile: './src/app/app.component.css',
+	},
+	*/
+]);
+
+```
+
+如果你不使用拆分，而且所有东西都不会捆绑在`styles.css`中，那么不要忘记添加CSS文件的路径。
+
+最后一步是在`package.json`中添加脚本：
+
+```javascript
+"scripts": {
+	"dev": "concurrently 'yarn stylify.dev' 'ng serve -c development'",
+	"prod": "yarn stylify.build & ng serve",
+	"stylify.build": "node stylify.js",
+	"stylify.dev": "node stylify.js --w"
+}
+```
+
+现在当你运行`yarn dev`时，CSS文件将被生成。在生产中，选择器会被处理掉。
+
+你可以随心所欲地定制上述构建方式。
+
+## 自定义Webpack构建
+如果你决定使用自定义生成器，如`@angular-builders/custom-webpack`，请查看[Webpack指南](/zh/docs/integrations/webpack)
+
+<WhereToNext packageName="bundler" />

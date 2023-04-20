@@ -1,0 +1,66 @@
+---
+import { getLangFromUrl, useTranslations } from "@serverHelpers";
+import GetStartedComponents from "./GetStartedComponents.astro";
+import GetStartedCustomSelectors from "./GetStartedCustomSelectors.astro";
+import GetStartedHelpers from "./GetStartedHelpers.astro";
+import GetStartedHpScreens from "./GetStartedHpScreens.astro";
+import GetStartedSelectors from "./GetStartedSelectors.astro";
+import GetStartedVariables from "./GetStartedVariables.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const tabs = {
+	selectors: `<span><i class="icon icon-target"></i><br>${t('Selectors')}</span>`,
+	components: `<span><i class="icon icon-link"></i><br>${t('Components')}</span>`,
+	customSelectors: `<span><i class="icon icon-crosshair"></i><br>${t('Global Selectors')}</span>`,
+	variables: `<span><i class="icon icon-dollar-sign"></i><br>${t('Variables')}</span>`,
+	dynamicScreens: `<span><i class="icon icon-monitor"></i><br>${t('Screens')}</span>`,
+	helpers: `<span><i class="icon icon-settings"></i><br>${t('Functions')}</span>`
+};
+---
+
+<script>
+import { domReady } from '@clientHelpers';
+
+domReady(() => {
+	const visibleClass = 's-active';
+	const getButtons = () => document.querySelectorAll('.js-hp-code-example-toggle-tab');
+
+	getButtons().forEach((element) => {
+		element.addEventListener('click', () => {
+			getButtons().forEach((button) => button.classList.remove(visibleClass));
+
+			element.classList.add(visibleClass);
+			document.querySelectorAll('.js-hp-code-example-tab').forEach((tab) => tab.classList.remove(visibleClass));
+			document.querySelector(`.js-hp-code-example-tab[data-tab="${element.dataset.tab}"]`).classList.toggle(visibleClass);
+		});
+	});
+})
+</script>
+
+<div>
+	<div class="tolg:padding-left:8px tolg:padding-right:8px gap:16px tolg:margin:0_-8px padding-bottom:12px display:flex justify-content:space-between flex-wrap:nowrap overflow:auto">
+		{Object.keys(tabs).map((tabName) => (
+			<a
+				role="button"
+				data-tab={tabName}
+				class={`
+					${tabName === 'selectors' ? 's-active' : ''}
+					js-hp-code-example-toggle-tab
+					color:$grey5 transition:.3s font-weight:bold white-space:nowrap cursor:pointer text-align:center display:inline-flex
+					[i]{font-size:24px} [span]{font-size:14px}
+					[&.s-active]{color:$blue1}
+				`}
+				set:html={tabs[tabName]}
+			></a>
+		))}
+	</div>
+	<div class="[>.s-active]{display:flex} [>div]{display:none;position:relative;width:100%}">
+		<div class="s-active js-hp-code-example-tab" data-tab="selectors"><GetStartedSelectors /></div>
+		<div class="js-hp-code-example-tab" data-tab="components"><GetStartedComponents /></div>
+		<div class="js-hp-code-example-tab" data-tab="customSelectors"><GetStartedCustomSelectors /></div>
+		<div class="js-hp-code-example-tab" data-tab="variables"><GetStartedVariables /></div>
+		<div class="js-hp-code-example-tab" data-tab="dynamicScreens"><GetStartedHpScreens /></div>
+		<div class="js-hp-code-example-tab" data-tab="helpers"><GetStartedHelpers /></div>
+	</div>
+</div>

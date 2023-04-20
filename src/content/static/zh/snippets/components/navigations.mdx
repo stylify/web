@@ -1,0 +1,27 @@
+---
+section: components
+
+order: 1
+
+navigationTitle: "导航和菜单"
+
+title: "CSS导航和菜单组件"
+description: "Stylify CSS导航和移动菜单组件。为你的下一个网络项目准备的CSS导航和移动菜单。复制&粘贴，无需CSS框架。"
+---
+import InteractivePreview from '@components/InteractivePreview.astro';
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="300"
+	title="带溢出指示器的水平导航"
+	description="这是一个简单的导航。当导航没有足够的空间时（例如在手机上），带有白色渐变的溢出指示器（在右边和左边）会显示出来，表示菜单是可以滚动的。如果你不想要这些指示器，你可以把它们删除。不要忘了把它们的javascript和CSS也删除。如果菜单上有任何活动项目，它就会自动滚动到视图中。"
+	htmlSnippet="components/navigation-with-overflow"
+/>
+
+<InteractivePreview
+	class="margin-bottom:48px"
+	min-height="300"
+	title="移动导航"
+	description="简单的移动菜单，在点击汉堡包图标后打开。"
+	htmlSnippet="components/mobile-navigation"
+/>

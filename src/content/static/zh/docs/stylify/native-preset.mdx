@@ -1,0 +1,150 @@
+---
+section: stylify
+
+order: 1
+
+navigationTitle: 原生预设
+
+title: "原生预设"
+description: "Native预设是为Stylify CSS准备的配置，有678种选择器类型可以使用。"
+---
+import Note from '@components/Note.astro';
+import DocsSection from '@components/DocsSection.astro';
+
+Native（默认）预设是为Stylify CSS准备的配置，包括预定义的宏、屏幕和帮助器。
+NativePreset背后的代码可以在<a href="https://github.com/stylify/packages/blob/master/packages/stylify/src/Compiler/defaultPreset.ts" target="_blank" rel="noopener">@stylify/stylify资源库</a>中找到。
+
+## 预设内部
+
+### 预定义的宏
+这个宏允许你使用类似于CSS的语法来匹配Chrome、Safari、Mozilla、Opera和Edge中可用的**678个CSS属性。
+请查看[语法指南](/zh/docs/stylify/compiler#语法)。
+
+所有可用的选择器的列表可以在<a href="https://github.com/stylify/packages/tree/master/packages/stylify/tools/default-preset-generator/lists" target="_blank" rel="noopener">@stylify/stylify资源库</a>中找到。
+
+### 屏幕
+有一些静态快捷键，如`tosm, sm, md, ...`和动态屏幕，如`minw, maxw, rng, ...`，在使用它们时，会根据你选择的数值生成媒体查询。你使用的值和单位由你决定。
+
+不要忘记，屏幕可以使用逻辑操作数`&&`（和）和`||`（或）进行组合，如`maxw320px&&maxh667px:color:blue`。
+
+<div class="max-width:100% overflow:auto [table]{width:100%}">
+
+{/* stylify-ignore */}
+
+| 画面       | 勇气                                                         | 例子                        |
+|------------|--------------------------------------------------------------|----------------------------|
+| tosm       | @media (max-width: 639px)                                    | tosm:color:blue            |
+| sm         | @media (min-width: 640px)                                    | sm:color:blue              |
+| tomd       | @media (max-width: 767px)                                    | tomd:color:blue            |
+| md         | @media (min-width: 768px)                                    | md:color:blue              |
+| tolg       | @media (max-width: 1023px)                                   | tolg:color:blue            |
+| lg         | @media (min-width: 1024px)                                   | lg:color:blue              |
+| toxl       | @media (max-width: 1279px)                                   | toxl:color:blue            |
+| xl         | @media (min-width: 1280x)                                    | xl:color:blue              |
+| to2xl      | @media (max-width: 1535px)                                   | to2xl:color:blue           |
+| 2xl        | @media (min-width: 1536px)                                   | 2xl:color:blue             |
+| to3xl      | @media (max-width: 1919px)                                   | to3xl:color:blue           |
+| 3xl        | @media (min-width: 1920px)                                   | 3xl:color:blue             |
+| minw       | @media (min-width: custom)                                   | minw640px:color:blue       |
+| maxw       | @media (max-width: custom)                                   | maxw639px:color:blue       |
+| minh       | @media (min-height: custom)                                  | minh668px:color:blue       |
+| maxh       | @media (max-height: custom)                                  | maxh667px:color:blue       |
+| rng        | @media (min-width: custom) and @media(max-width: custom)     | rng640px-1023px:color:blue |
+| screen     | @media screen                                                | screen:color:blue          |
+| onlyScreen | @media only screen                                           | onlyScreen:color:blue      |
+| portrait   | @media (orientation: portrait)                               | portrait:color:blue        |
+| landscape  | @media (orientation: landscape)                              | landscape:color:blue       |
+| dark       | @media (prefers-color-scheme: dark)                          | dark:color:blue            |
+| light      | @media (prefers-color-scheme: light)                         | light:color:blue           |
+
+{/* /stylify-ignore */}
+</div>
+
+
+<DocsSection>
+<div slot="description">
+
+### 排序
+屏幕是自动排序的。排序功能可以被改变（见[配置](/zh/docs/stylify/compiler#compilation-result)）。
+
+<Note>**asc** - 从最小到最大，移动优先的方法<br />
+**desc** - 从大到小，首先进入桌面</Note>
+
+</div>
+<div slot="code">
+
+- without media query
+- min-width => asc
+- min-height => asc
+- max-width => desc
+- max-height => desc
+- min-device-width => asc
+- min-device-height => asc
+- max-device-width => desc
+- max-device-height => desc
+- light mode => according to above
+- dark mode => according to above
+- print => according to above
+- others
+
+</div>
+</DocsSection>
+
+### 帮助器
+Native预设带有一些可以简化开发过程的辅助工具。
+当传递一个包含`,`的参数时，你必须使用`^`给该参数加上引号（`^`被quote取代，见[语法页](/zh/docs/stylify/compiler#quotes)）。
+
+当把一个参数传入帮助器时，你可以使用像`$myVariable`这样的变量。
+
+<DocsSection>
+<div slot="description">
+
+#### 淡化颜色
+这个助手希望得到一个十六进制或rgb格式的颜色，并使该颜色变浅。颜色会以十六进制格式返回。
+
+</div>
+<div slot="code">
+
+```
+color:lighten($myColor,10)
+color:lighten(#222,10)
+color:lighten(^rgb(0,0,0)^,10)
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+#### 深化颜色
+这个助手希望得到一个十六进制或rgb格式的颜色，并使该颜色变暗。颜色会以十六进制格式返回。
+
+</div>
+<div slot="code">
+
+```
+color:darken(#eee,10)
+color:darken(^rgb(255,255,255)^,10)
+```
+
+</div>
+</DocsSection>
+
+<DocsSection>
+<div slot="description">
+
+#### 颜色到RGB
+这个帮助程序希望得到一个十六进制或RGB格式的颜色。它以rgb格式返回。如果alpha canal作为第二个参数被传递，它返回rgba格式。
+
+</div>
+<div slot="code">
+
+```
+color:colorToRgb(#000) => 被转换为rgba(0, 0, 0);
+color:colorToRgb(#000,0.1) => 转换成rgba(0, 0, 0, 0.1)
+color:colorToRgb(^rgb(0,0,0)^,0.1) => 被转换为rgba(0, 0, 0, 0.1)
+```
+
+</div>
+</DocsSection>

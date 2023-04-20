@@ -1,0 +1,44 @@
+<a role="button" id="scroll-to-top-button" aria-label="Return to top" class="
+	position:fixed bottom:0 right:24px text-decoration:none font-size:42px transform:translateY(100px) width:50px height:50px
+	display:inline-flex align-items:center justify-content:center border-radius:50px font-weight:700 cursor:pointer font-size:42px color:#fff user-select:none text-decoration:none background:$blue1 transition:.3s
+	box-shadow:0_4px_8px_rgba(0,0,0,0.16),0_4px_8px_rgba(0,0,0,0.23) will-change:transform,background-color
+
+	[&:hover,&:focus]{background:lighten($blue1,20)}
+	[&.s-visible]{transform:translateY(-80px);lg:transform:translateY(-24px)}
+">
+	<!-- Replace this icon by whatever you want -->
+	<svg height="30px" width="30px" viewBox="0 0 185.343 185.343" xml:space="preserve" transform="rotate(270)">
+		<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+		<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+		<g id="SVGRepo_iconCarrier">
+			<g><g><path style="fill:#ffffff;" d="M51.707,185.343c-2.741,0-5.493-1.044-7.593-3.149c-4.194-4.194-4.194-10.981,0-15.175 l74.352-74.347L44.114,18.32c-4.194-4.194-4.194-10.987,0-15.175c4.194-4.194,10.987-4.194,15.18,0l81.934,81.934 c4.194,4.194,4.194,10.987,0,15.175l-81.934,81.939C57.201,184.293,54.454,185.343,51.707,185.343z"></path></g></g>
+		</g>
+	</svg>
+</a>
+
+<script>
+import { domReady } from "@clientHelpers";
+
+domReady(() => {
+	// Adjust this to your needs
+	// It can be for example a height of page header
+	const minScrollTop = 50;
+	const scrollToTopButton = document.querySelector('#scroll-to-top-button');
+	scrollToTopButton.addEventListener('click', () => {
+		window.scrollTo(0, 0);
+	});
+
+	const toggleScrollToTopButton = () => {
+		let scrollTopPosition = document.documentElement.scrollTop;
+
+		if (scrollTopPosition > minScrollTop) {
+			scrollToTopButton.classList.add('s-visible');
+		} else {
+			scrollToTopButton.classList.remove('s-visible');
+		}
+	}
+
+	document.addEventListener('scroll', toggleScrollToTopButton, { passive: true });
+	document.addEventListener("DOMContentLoaded", toggleScrollToTopButton);
+});
+</script>

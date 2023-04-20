@@ -7,11 +7,11 @@ const rootDir = path.join(__dirname, '..');
 const stylifyPackagesDir = path.join(rootDir, '..', '/stylify/packages');
 const stylifyPackageDir = path.join(stylifyPackagesDir, 'stylify');
 const bundlerPackageDir = path.join(stylifyPackagesDir, 'bundler');
-const nuxtPackageDir = path.join(stylifyPackagesDir, 'nuxt-module');
+const astroPackageDir = path.join(stylifyPackagesDir, 'astro');
 
 const nodeModulesDir =  path.join(rootDir, 'node_modules/@stylify');
 const bundlerNodeModuleDir = path.join(nodeModulesDir, 'bundler');
-const nuxtNodeModuleDir = path.join(nodeModulesDir, 'nuxt-module');
+const astroNodeModuleDir = path.join(nodeModulesDir, 'astro');
 const stylifyNodeModuleDir = path.join(nodeModulesDir, 'stylify');
 
 
@@ -22,5 +22,5 @@ fs.copySync(path.join(stylifyPackageDir, 'esm'), path.join(stylifyNodeModuleDir,
 fs.copySync(path.join(bundlerPackageDir, 'lib'), path.join(bundlerNodeModuleDir, 'lib'));
 fs.copySync(path.join(bundlerPackageDir, 'esm'), path.join(bundlerNodeModuleDir, 'esm'));
 
-fs.copySync(path.join(nuxtPackageDir, 'lib'), path.join(nuxtNodeModuleDir, 'lib'));
-fs.copySync(path.join(nuxtPackageDir, 'esm'), path.join(nuxtNodeModuleDir, 'esm'));
+fs.copySync(path.join(astroPackageDir, 'lib'), path.join(astroNodeModuleDir, 'lib'));
+fs.copySync(path.join(astroPackageDir, 'esm'), path.join(astroNodeModuleDir, 'esm'));

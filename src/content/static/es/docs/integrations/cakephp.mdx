@@ -1,0 +1,107 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "CakePHP"
+navigationIconPath: '/images/brands/cakephp.png'
+image: '/integrations/cakephp/header.jpg'
+ogImage: '/integrations/cakephp/og-image.jpg'
+
+title: Uso de Stylify CSS en CakePHP
+description: "Aprende a integrar el CSS de Stylify en CakePHP. Codifica tu sitio web CakePHP más rápido con Stylify CSS"
+howToSchemaTitle: 'Como usar Stylify CSS en CakePHP.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/bundler usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "A continuación, crea un archivo, por ejemplo stylify.js en la raíz",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+CakePHP es una web de código abierto, marco de desarrollo rápido que hace que la construcción de aplicaciones web más simple,
+más rápido y requieren menos código.
+
+Debido a que CakePHP no se entrega con ningún bundler, puedes integrar Stylify en CakePHP usando el paquete Bundler.
+
+<Note>Ejemplo de integración para CakePHP puede ser encontrado en <a href="https://github.com/stylify/integrations-examples/tree/master/cakephp" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Cómo integrar el CSS de Stylify en CakePHP
+
+En el siguiente ejemplo utilizaremos el paquete Bundler por sí solo.
+
+## Instalación
+Debido a que no hay package.json, necesitamos crearlo:
+```
+yarn init
+npm init
+```
+
+Instala el paquete [@stylify/bundler](/es/docs/bundler) usando NPM o Yarn:
+
+```
+npm i -D @stylify/bundler
+yarn add -D @stylify/bundler
+```
+
+## Uso
+A continuación, crea un archivo, por ejemplo `stylify.js` en la raíz:
+
+```javascript
+const { Bundler } = require('@stylify/bundler');
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+// Esto agrupa todo el CSS en un archivo
+// Puede configurar el Bundler para agrupar el CSS de cada página por separado
+// Ver el enlace del bundler más abajo
+bundler.bundle([
+	{ files: ['./templates/**/*.php', './src/**/*.php'], outputFile: './webroot/css/stylify.css' },
+]);
+```
+
+Y el último paso es añadir los scripts en el `package.json`:
+
+```javascript
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
+}
+```
+
+Ahora puedes añadir la ruta al archivo `stylify.css` en `templates/layouts/default.php`:
+
+```php
+<?= $this->Html->css(['stylify']) ?>
+```
+
+Usted puede personalizar la construcción de arriba como quieras.
+
+<WhereToNext packageName="bundler" />

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #85BEFA;
+			--gradientTo: #4E9DF1;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#4E9DF1',
+/stylify-variables
+-->
+
+<!-- With ellipsis for each item -->
+<nav class="
+	display:flex flex-wrap:nowrap align-items:center gap:8px overflow:auto font-size:14px white-space:nowrap
+	[a]{text-decoration:none;color:$color}
+	[a,span]{text-overflow:ellipsis;overflow:hidden}
+	[svg]{display:inline-flex;color:grey;font-size:32px;min-width:14px}
+">
+	<a href="#">Homepage</a>
+	<svg width="14" height="14" fill="currentColor" viewBox="0 0 14 14">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	<a href="#">Section</a>
+	<svg width="14" height="14" fill="currentColor" viewBox="0 0 14 14">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	<span href="#" class="color:#000!important">Current Page</span>
+</nav>
+
+<br>
+
+<!-- Breadcrumb with overflow to tablet -->
+<nav class="
+	display:flex flex-wrap:nowrap width:100% align-items:center gap:8px font-size:14px
+	tomd:{white-space:nowrap;overflow:auto}
+	[a]{text-decoration:none;color:$color;text-align:center}
+	[svg]{display:inline-flex;color:grey;font-size:32px;min-width:14px}
+">
+	<a href="#">With</a>
+	<svg width="14" height="14" fill="currentColor" viewBox="0 0 14 14">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	<a href="#">Overflow</a>
+	<svg width="14" height="14" fill="currentColor" viewBox="0 0 14 14">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	<a href="#">On Small</a>
+	<svg width="14" height="14" fill="currentColor" viewBox="0 0 14 14">
+		<path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+	</svg>
+	<span href="#" class="color:#000!important">Screen</span>
+</nav>
+
+</div></div></body></html>

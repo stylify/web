@@ -1,0 +1,100 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Next.js"
+navigationIconPath: '/images/brands/nextjs.svg'
+image: '/integrations/nextjs/header.jpg'
+ogImage: '/integrations/nextjs/og-image.jpg'
+
+title: 在Next.js中使用Stylify CSS
+description: "了解如何将Stylify CSS集成到Next.js中。用Stylify CSS更快地编写你的Next.js网站代码。"
+howToSchemaTitle: "如何在Next.js中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到next.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Next.js为你提供了创建可扩展的生产级React应用程序。
+
+使用@stylify/unplugin，Stylify可以轻松地集成到Next.js中。
+
+<StackBlitzLink link="stylify-nextjs-template" />
+
+## 如何将Stylify的CSS集成到Next.js中
+
+首先，使用NPM或Yarn安装[@stylify/bundler](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来在`next.config.js`中添加一个配置：
+
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const stylifyPlugin = (dev) => stylifyWebpack({
+	dev: dev,
+	bundles: [{ outputFile: './styles/stylify.css', files: ['./pages/**/*.js'] }],
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+module.exports = {
+	reactStrictMode: true,
+	webpack: (config, { dev }) => {
+		config.plugins.push(stylifyPlugin(dev));
+		return config;
+	}
+}
+```
+
+最后一步是将`stylify.css`添加到`_app.js`中：
+
+
+```javascript
+import '../styles/globals.css';
+import '../styles/stylify.css';
+
+function MyApp({ Component, pageProps }) {
+	return <Component {...pageProps} />
+}
+
+export default MyApp;
+```
+
+现在你可以使用Next.js命令来构建你的资产。在生产中，它将混入选择器。
+
+<DocsUnpluginBuildInfo bundler="Next" />
+
+<WhereToNext />

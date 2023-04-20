@@ -1,0 +1,21 @@
+---
+import { getLangFromUrl, useTranslations } from "@serverHelpers";
+import ComponentsPreviewGrid from "./ComponentsPreviewGrid.astro";
+import IntegrationBlocks from "./IntegrationBlocks.astro";
+import WhereToNext from "./WhereToNext.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div>
+	<h2>{t('Integrate Stylify into your favorite tool')}</h2>
+	<p>{t('Stylify can be used in various tools. Pick your favorite tool and start using Stylify CSS in a minute.')}</p>
+	<IntegrationBlocks />
+
+	<WhereToNext title={t('Get Started')} package={null} />
+
+	<h2>{t('Speed up development with prepared Headless CSS Components')}</h2>
+	<p>{t('Copy&Paste, unstyled components inspired by the Material Design V3.')}</p>
+	<ComponentsPreviewGrid />
+</div>

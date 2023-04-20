@@ -1,0 +1,137 @@
+---
+section: stylify
+
+order: 1
+
+navigationTitle: 运行时间
+
+title: "运行时间"
+description: "学习如何使用@stylify/stylify运行时，并在短时间内开始使用Stylify CSS。"
+---
+
+Runtime是用来在浏览器中使用的。在引擎盖下，它使用编译器。它从任何添加或改变的元素中生成CSS。这是一个很好的快速方法来创建小型和简单的网站或原型。
+
+## 安装
+有两种方法来使用Runtime。一种是将其作为模块加载，另一种是作为经典脚本加载。
+
+以脚本为例：
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>。
+
+<script>
+// 可选的--如果你想配置一些东西的话
+Stylify.configure(config);
+</script>
+```
+
+使用模块的例子：
+```javascript
+import { Runtime } from '@stylify/stylify/esm/index.min.js';
+
+const runtime = new Runtime();
+
+// 可选的--如果你想配置一些东西的话
+// 配置也可以传递给构造函数 Runtime(config)
+runtime.configure(config);
+```
+
+## 配置
+下面的config对象作为一个例子，可以在上面的脚本中使用。所有的配置选项都是可选的。
+
+```javascript
+const config = {
+	// 可选的
+	// 如果是开发环境--它也会被传递到编译器中。
+	dev: false,
+	// 当有变化时，以ms为单位的时间来减少编译的数量
+	repaintTimeout: 100,
+	// https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#screens
+		screens: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {}
+		// ...
+	}
+}
+```
+
+定义一个可重复使用的Stylify配置的推荐方法是创建一个文件，例如`stylify.config.js`并在页面中链接。这样你就可以在所有的页面上重复使用它：
+
+经典脚本的例子：
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+<script src="/path/to/stylify.config.js"></script>
+```
+
+esm模块的例子：
+```javascript
+import { Runtime } from '@stylify/stylify/esm/index.min.js';
+import config from '/path/to/stylify.config.js';
+
+const runtime = new Runtime(config);
+```
+
+## 钩子
+
+当使用Stylify Runtime时，会触发4个钩子：
+
+- **stylify:ready**： 当Runtime实例被创建并配置好，但还没有进行编译时触发。
+- **stylify:configured**： 当Runtime被配置好时触发。
+- **stylify:repainted**： 当CSS被生成时触发。
+- **stylify:uncloak**： 当一个元素的隐身类被移除时触发。你可以使用这个监听器来改变例如Vue.js组件的状态。
+
+你可以像这样监听这些钩子：
+
+```javascript
+runtime.hooks.addListener('stylify:ready', (event) => {
+	console.log(event);
+});
+```
+
+## Cloak
+为了隐藏尚未处理的元素，你可以使用`s-cloak`类。这个类
+会在元素被Stylify处理后立即被移除。
+
+它可以 "帮助 "防止布局转移，实现某种加载屏幕或占位符，以及隐藏页面
+没有
+
+```html
+<style>
+	.s-cloak {
+		visibility: hidden;
+		content-visibility: hidden;
+	}
+</style>
+<div class="color:blue s-cloak">文本</div>
+```
+
+为了实现与React或Vue等反应式框架的兼容，每次有一个dom事件触发
+`s-cloak'被移除时都会触发一个dom事件。参数是被处理的元素。
+
+```javascript
+document.addEventListener('stylify:uncloak', (event) => {
+	//做一些事情
+	console.log(event)
+});
+```
+
+## 交易损失
+尽管使用Runtime作为默认设置比较容易，但还是建议在后台或构建过程中生成CSS，然后导入生成的CSS。这样可以减少页面的加载时间和大小。
+
+另外，当Runtime被单独使用时，没有事先通过编译器进行模板处理，你不能重写（混合）选择器。
+
+### 解决方案
+如果你想只使用Runtime，同时保持网站的速度，你可以做以下事情：
+
+1. 使用从CDN导入的Stylify CSS为你的页面设计样式
+2. 2.复制id为`stylify-css`的样式元素的内容。
+3. 将复制的CSS直接粘贴到HTML文件的样式元素中。
+4. 注释或删除运行时的导入
+5. 如果你需要给CSS加前缀，你可以使用[在线自动加前缀器](https://autoprefixer.github.io)
+
+这种方法可以让你在不使用任何bundler或Node.js的情况下生成所有必要的CSS，同时也不会因为Runtime没有被加载而降低页面的速度。

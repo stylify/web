@@ -1,0 +1,63 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Navegador
+navigationIconPath: '/images/browser.svg'
+image: '/integrations/browser/header.jpg'
+ogImage: '/integrations/browser/og-image.jpg'
+
+title: "Uso de Stylify CSS en el navegador"
+description: "Aprende a usar Stylify CSS directamente en navegador sin instalación ni bundlers."
+howToSchemaTitle: 'Cómo usar Stylify CSS vía CDN en el navegador.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación y Configuración",
+		"text": "Copiar&Pegar el script CSS CDN de Stylify en la página",
+		"url": "#instalación--configuración",
+	},
+	{
+		"name": "Instalación y configuración - Módulos",
+		"text": "Copiar&Pegar script CSS CDN de Stylify en la página. Usar módulo de tipo script",
+		"url": "#instalacion--configuracion---modulos",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Stylify puede usarse directamente en el navegador usando CDN o importarse como módulo.
+
+<Note>El ejemplo de integración para el navegador se puede encontrar en <a href="https://github.com/stylify/integrations-examples/tree/master/browser" target="_blank" rel="noopener">repositorio de ejemplos de integración</a>.</Note>
+
+## Instalación y configuración
+```html
+<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/dist/stylify.min.js"></script>
+
+<script>
+// Opcional - https://stylifycss.com/en/docs/stylify/runtime
+Stylify.configure({ });
+</script>
+```
+
+## Instalación y Configuración - módulos
+Con módulos (config es la misma que arriba):
+```javascript
+<script type="module">
+import { Runtime } from 'https://cdn.jsdelivr.net/npm/@stylify/stylify@latest/esm/index.min.js';
+
+// Opcional - https://stylifycss.com/en/docs/stylify/runtime
+new Runtime({ });
+</script>
+```
+
+## Configuración avanzada
+Ve y echa un vistazo a los [Runtime docs](/es/docs/stylify/runtime).
+
+<WhereToNext packageName={null} />

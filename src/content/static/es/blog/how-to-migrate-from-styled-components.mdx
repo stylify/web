@@ -1,0 +1,159 @@
+---
+title: Cómo migrar sin esfuerzo de Styled Components CSS-in-JS a Stylify Utility-First CSS para un mejor desarrollo en React.
+image: '/images/blog/styled-components-migration/header.jpg'
+ogImage: '/images/blog/styled-components-migration/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Aprende a migrar fácilmente a Stylify CSS para un mejor desarrollo de React"
+createdAt: 'February 16, 2023'
+---
+
+Diga adiós a CSS-in-JS y scripts Runtime para inyectar y compilar CSS y hola a la codificación rápida como el rayo con
+[Stylify utility-first CSS](/). Como ingeniero frontend de React, conoces la importancia de las soluciones eficientes y optimizadas que no sacrifican el estilo ni la funcionalidad. Y eso es exactamente lo que ofrece Stylify.
+
+Migrar desde la solución CSS-in-JS de Styled Components es pan comido con Stylify. Y como no tiene tiempo de ejecución, puedes esperar un rendimiento más rápido.
+
+Puedes los ejemplos de este artículo en el [Playground On Stackblitz](https://stackblitz.com/edit/stylify-styled-components-migration?file=package.json,src%2FApp.jsx,README.MD,src%2Fmain.jsx) 🚀.
+
+## 💎 Introducción
+[Stylify](/) es una librería que utiliza selectores tipo CSS para generar CSS optimizado basado en lo que escribes.
+
+Características:
+- ✅ Módulo de construcción. No hay secuencia de comandos en tiempo de ejecución.
+- ✅ Selectores tipo CSS
+- ✅ Sin framework que estudiar.
+- ✅ Menos tiempo invertido en docs.
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+Además, tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías darle una oportunidad!](/es/docs/get-started/why-stylify-css)
+
+## Componentes
+En Styled Components, los componentes se definen a menudo de esta manera:
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+
+<Title>¡Hola Mundo!🎉</Title>
+```
+
+Stylify proporciona una característica similar. Los componentes pueden ser definidos dentro de un archivo, donde son usados, o globalmente dentro de una config.
+
+Ejemplo con la configuración dentro de un archivo. El contenido entre `stylify-components` esperar objeto javascript sin corchetes circundantes:
+```html
+<!--
+stylify-components
+	title: 'color:blue font-weight:bold md:color:red'
+/stylify-components
+-->
+<div class="title"></div>
+```
+
+Ejemplo en una configuración global del compilador:
+```javascript
+const compilerConfig = {
+	title: 'color:blue font-weight:bold md:color:red'
+};
+```
+
+Uso:
+```html
+<div class="title"></div>
+```
+
+**Los componentes son "lazy" (generados bajo demanda)**. Esto significa, que incluso si los configuras (en un archivo o globalmente), se generarán sólo si coinciden dentro del contenido. No se generará CSS no utilizado. Lo mismo ocurre con las utilidades. Si la utilidad de un componente no coincide directamente con el contenido, no se generará el selector y sólo se añadirá el selector del componente a la salida CSS.
+
+**La salida CSS de producción** tendrá este aspecto en producción:
+```css
+.a,.d {color:blue}
+.b,.d {font-weight:bold}
+@media (max-width: 768px) {
+	.c,.d {color:red}
+}
+```
+
+La salida html:
+```html
+<div class="d"></div>
+```
+
+## Selectores
+Stylify también permite utilizar utilidades directamente dentro del contenido. Así que el ejemplo anterior también puede verse así:
+
+```html
+<div class="color:blue font-weight:bold md:color:red"></div>
+```
+
+La salida de producción del CSS será similar al ejemplo de los componentes. El HTML sin embargo se verá así:
+```html
+<div class="a b c"></div>
+```
+
+## 💲Variables
+Cuando necesites pasar un color al componente usando props, entonces en lugar de hacer esto `color: ${props => props.textColor};`, puedes usar variables CSS nativas:
+
+```html
+<div
+	style={{ '--localTextColor': props.textColor }}
+	className="title color:$localTextColor"
+">
+</div>
+```
+
+Además, necesitamos configurar Stylify, para reemplazar las variables por variables CSS en lugar de su valor:
+```javascript
+const compilerConfig = {
+	replaceVariablesByCssVariables: true,
+	externalVariables: ['localTextColor']
+}
+```
+
+Stylify también proporciona una opción para **configurar variables personalizadas**. Se puede hacer en el fichero donde se usan, de la misma forma que los componentes o en la configuración global:
+
+En el fichero:
+```html
+<!--
+stylify-variables
+	primary: '#000',
+	secondary: '#444'
+/stylify-variables
+-->
+<div class="color:primary"></div>
+```
+
+En Compiler Config:
+```javascript
+const compilerConfig = {
+	primary: '#000'
+}
+```
+
+## 📦 Dividir CSS
+Styled Components divide el CSS automáticamente y lo inyecta directamente en el documento basándose en los componentes renderizados.
+
+Stylify no tiene ningún script de ejecución, por lo que tienes que configurar el [Bundler](/es/docs/bundler) y la división manualmente.
+
+Sin embargo, la salida de Stylify es tan pequeña (puede ser incluso 10 Kb (gzipped) para un sitio web grande), que está bien tener sólo un paquete para todo el proyecto. Eventualmente, puedes [ver consejos](/es/docs/get-started/best-practices#splitting-css) para dividir los paquetes CSS.
+
+Ejemplo de configuración de paquetes:
+```javascript
+const bundles = [
+	{
+		outputFile: 'path/to/layout.css',
+		files: ['path/to/layout.jsx']
+	},
+
+	// Bundler utiliza https://npmjs.com/package/fast-glob
+	// Puedes usar su sintaxis glob
+	{
+		outputFile: 'path/to/global.css',
+		files: ['path/**/*.jsx']
+	}
+]);
+```

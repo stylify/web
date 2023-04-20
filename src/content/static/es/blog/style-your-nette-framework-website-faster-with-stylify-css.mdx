@@ -1,0 +1,221 @@
+---
+title: 🚀 Dale estilo a tu web Nette Framework más rápido con Stylify CSS
+image: '/images/blog/stylify-nette/header.jpg'
+ogImage: '/images/blog/stylify-nette/og-image.jpg'
+author: Vladimír Macháček
+annotation: "Dale estilo a tu web Nette Framework de forma más rápida e intuitiva con Stylify"
+createdAt: 'July 9, 2022'
+---
+
+Estiliza tu web Nette Framework de forma más rápida e intuitiva con [Stylify](/). No estudies selectores y sintaxis. Usa sintaxis CSS pura y obtén CSS generado con optimización avanzada para producción.
+
+Para el ejemplo de abajo, puedes consultar el [Ejemplo de integración de Nette Framework](https://github.com/stylify/integrations-examples/tree/master/nette).
+
+## 🚀 Introducción a Nette
+[Nette](https://nette.org/en/) es un framework PHP creado por [David Grudl](https://twitter.com/DavidGrudl) y es una gran alternativa a Symfony y Laravel. Tiene un sistema de plantillas increíble llamado [Latte](https://latte.nette.org/) que utiliza una sintaxis similar a PHP y por defecto tiene escapes sensibles al contexto (que ningún otro framework tiene). En mi opinión, es más fácil de aprender, porque viene con una estructura simple por defecto, no tiene dependencias y menos patrones que aprender.
+
+## 💎 Introducción a Stylify CSS
+[Stylify](/) es una biblioteca que utiliza selectores similares a CSS para generar CSS optimizado basado en lo que escribes.
+
+- ✅ Selectores similares a CSS
+- ✅ Sin framework que estudiar
+- ✅ Menos tiempo dedicado a la documentación
+- ✅ CSS manoseado y extremadamente pequeño
+- ✅ No es necesario purgar CSS
+- ✅ Componentes, variables, selectores personalizados
+- ✅ Puede generar múltiples paquetes de CSS
+
+También tenemos una página sobre [¡qué problemas resuelve Stylify CSS y por qué deberías probarlo!](/es/docs/get-started/why-stylify-css)
+
+## Instalación de Nette
+La forma más fácil de empezar con Nette es usar Composer siguiendo [esta guía](https://doc.nette.org/en/quickstart/getting-started):
+- Ejecute `composer create-project nette/web-project nette-blog`.
+- Vaya al directorio del proyecto `cd nette-blog`.
+- Para iniciar la web ejecute `php -S 0.0.0.0:80 -t www`.
+- La web debería estar disponible en `http://localhost`.
+
+## Configuración de Stylify CSS
+Debido a que Nette no viene con ningún bundler ni con ningún paquete javascript por defecto, vamos a utilizar el Stylify CSS Bundler.
+
+Instala el bundler `yarn add -D @stylify/bundler`.
+Crea el archivo `bundles.js` en la raíz del proyecto con el siguiente contenido:
+
+```javascript
+const { nativePreset } = require('@stylify/stylify');
+const { Bundler } = require('@stylify/bundler');
+
+// Detectar el modo watch
+const watchFiles = process.argv[process.argv.length - 1] === '--w';
+const bundler = new Bundler({
+	compiler: {
+		// Selectores de mangle para producción
+		mangleSelectors: !watchFiles,
+		// Coincidencia de atributos n:class
+		selectorsAreas: [
+			'(?:^|\\s+)n:class="([^"]+)"',
+			'(?:^|\\s+)n:class=\'([^\']+)\''
+		]
+	},
+	watchFiles: watchFiles
+});
+
+bundler.bundle([
+	{
+		files: ['./app/Presenters/templates/@layout.latte'],
+		outputFile: './www/static/css/layout.css'
+	},
+	{
+		files: ['./app/Presenters/templates/Homepage/default.latte'],
+		outputFile: './www/static/css/homepage.css'
+	}
+]);
+```
+Esta configuración generará dos paquetes:
+- `Layout` - usado globalmente
+- `Homepage` - sólo para la página de inicio
+
+Por supuesto, podríamos generar CSS para todo el proyecto en un solo archivo. Pero esto haría el CSS innecesariamente más grande.
+
+Ahora abre el archivo `package.json` y añade los siguientes scripts:
+
+```javascript
+"scripts": {
+	"build": "node bundles.js",
+	"watch": "node bundles.js --w"
+}
+```
+
+El último paso es editar las plantillas. Abre `App/Presenters/Templates/@layout.latte` y añade el enlace al archivo CSS del diseño:
+```html
+<link rel="stylesheet" href="/static/css/layout.css">
+```
+En `App/Presenters/Templates/Homepage/default.latte` añade lo siguiente:
+
+```html
+{block content}
+<link rel="stylesheet" href="/static/css/homepage.css">
+<div class="font-size:48px text-align:center">
+	Hola Mundo!🎉
+</div>
+```
+
+Si ejecutas `yarn watch`, Stylify CSS generará CSS y vigilará cualquier archivo en busca de cambios.
+
+### Componentes
+Para evitar plantillas hinchadas con utilidades, puedes configurar
+componentes directamente en los archivos, donde son usados usando [content options](/es/docs/get-started#defining-a-component) (espera objeto javascript sin corchetes) o en el [compiler config](/es/docs/get-started#defining-a-component).
+
+En primer lugar, vamos a añadir el componente global `container`. Abre el `bundles.js`, y lo siguiente:
+
+```javascript
+const compilerConfig = {
+	components: {
+		container: 'max-width:1024px margin:0_auto'
+	}
+}
+
+const bundler = new Bundler({ /*...*/ });
+```
+Ahora podemos usarlo en todo el proyecto. En nuestro caso, lo añadimos al layout:
+
+```html
+<main class="container">{include content}</main>
+```
+
+En la página principal, podemos añadir un componente local para el título usando las opciones de contenido:
+
+```html
+{*
+	stylify-components
+		title: 'font-size:48px text-align:center'
+	/stylify-components
+*}
+
+{block content}
+<link rel="stylesheet" href="/static/css/homepage.css">
+<div class="title">¡Hola Mundo!🎉</div>
+```
+
+### Variables
+Siempre es una buena idea tener un código limpio y flexible sin valores hardcodeados. Las [Variables](/es/docs/get-started#adding-a-variable) pueden definirse de la misma manera que los componentes. Modifiquemos el componente title:
+
+```html
+{*
+	stylify-variables
+		titleFontSize: '48px'
+	/stylify-variables
+
+	stylify-components
+		title: 'font-size:$titleFontSize text-align:center'
+	/stylify-components
+*}
+
+{block content}
+{* ... *}
+```
+
+### Asignación de archivos
+Cuando una plantilla incluye un componente o una parte de plantilla anidada, podemos añadirla al paquete utilizando la opción `stylify-files`.
+
+Vamos a crear la parte de plantilla `_content.latte` junto a `default.latte` con el siguiente contenido:
+
+```html
+{*
+	stylify-components
+		title: 'font-size:$titleFontSize text-align:center'
+	/stylify-components
+*}
+<div class="title">¡Hola Mundo!🎉</div>
+```
+
+El `Homepage/default.latte` entonces informa al bundler sobre las rutas externas usando la opción `stylify-files` que espera rutas separadas por un espacio o una nueva línea:
+```html
+{*
+...
+stylify-files
+	./_content.latte
+/stylify-files
+*}
+
+{block content}
+{include './_content.latte'}
+```
+
+El contenido en el `./_content.latte` es procesado automáticamente por el bundler.
+
+## 🔥 Construcción de producción:
+Si ejecutas `yarn build`, los selectores serán reducidos y el CSS minificado:
+
+`@layout.latte`:
+```html
+<main class="a">{include content}</main>
+```
+
+`_content.latte`:
+```html
+<div class="d">¡Hola Mundo!🎉</div>
+```
+
+`layout.css`:
+```css
+.b,.a{max-width:1024px}
+.c,.a{margin:0 auto}
+```
+
+`homepage.css`:
+```css
+:root {--titleFontSize: 48px;}
+.e,.d{font-size:48px}
+.f,.d{text-align:center}
+```
+
+
+## Configura todo lo que necesites
+Los ejemplos anteriores no incluyen todo lo que Stylify CSS puede hacer:
+- Puedes mapear [archivos anidados](/es/docs/bundler#files-content-option) en la plantilla
+- Estilizar [selectores globales](/es/docs/stylify/compiler#customselectors)
+- Definir [pantallas personalizadas](/es/docs/stylify/compiler#screens)
+- Añade [tus macros](/es/docs/stylify/compiler#macros) como `ml:20px` para margin-left
+- Y mucho más
+
+Siéntete libre de [revisar la documentación](/es/docs/get-started) para aprender más 💎.

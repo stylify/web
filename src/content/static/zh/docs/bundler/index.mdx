@@ -1,0 +1,187 @@
+---
+section: bundler
+
+order: 0
+
+navigationTitle: "@stylify/bundler"
+
+title: "@stylify/bundler"
+description: "@stylify/bundler 是一个用于在项目中生成和捆绑简单CSS的包。"
+---
+import DocsSection from '@components/DocsSection.astro';
+
+Bundler是一个允许你为你的项目生成CSS文件的包。Bundler在内部被用于其他Stylify CSS包中。
+
+<img src="/images/docs/bundler/bundler.png" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
+
+## 安装
+
+Bundler只能通过NPM或Yarn等CLI安装：
+
+```
+yarn add -D @stylify/bundler
+npm i -D @stylify/bundler
+```
+
+## 使用方法
+
+
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+const bundler = new Bundler();
+
+bundler.bundle([
+	{
+		outputFile: 'path/to/output.css',
+		files: ['path/to/layout.html', 'path/to/page.vue']
+	},
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
+]);
+```
+
+## 配置
+
+捆绑程序提供了各种配置选项：
+
+
+```javascript
+import { defineConfig } from '@stylify/bundler';
+
+const config = defineConfig({
+	// 捆绑程序是可选的。
+	// 但如果它们没有在bundle()方法的调用过程中被传入
+	// 它们需要在这里被传递。否则将不会生成捆绑文件
+	bundles: [],
+
+	// 可选选项是可选的
+	// https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {},
+	// 配置文件的路径。当处于观察模式时
+	// nuxt观察配置文件的变化
+	configFile: 'path/to/config.js',
+	// 如果启用了verbose，将显示构建信息
+	verbose: true,
+	// 默认情况下，构建是同步的
+	sync: true,
+	// 如果设置为 "true"，在构建完成后，bundler将开始
+	// 观察文件是否有变化
+	watchFiles: false,
+	// 当实例被创建时，可以直接定义捆绑程序
+	// 捆绑配置在bundler.bundle()方法中显示如下
+	// 必须调用bundle()方法来启动捆绑过程
+	bundles: [],
+	// 这配置了CSS层的顺序和导出
+	cssLayersOrder: {
+		// 这将生成@层的布局，页面;
+		order: 'layout, page',
+		// 这告诉Stylify导出上述层的顺序
+		// 只导出到有布局CSS层的包中
+		exportLayer: ['布局']
+	},
+	// 如果在下面的选项中提供了文件路径
+	//编译器配置中的 变量将被导出到这些文件中
+	// 所以你可以在CSS、scss等文件中重复使用它们。
+	// -----------
+	// CSS变量默认会被注入到生成的CSS中。
+	// 你可以通过配置编译器来改变这种行为。
+	// 见 https://stylifycss.com/en/docs/stylify/compiler#variables
+	cssVarsDirPath: 'path/to/vars',
+	sassVarsDirPath: 'path/to/vars',
+	lessVarsDirPath: 'path/to/vars',
+	stylusVarsDirPath: 'path/to/vars'
+});
+
+const bundler = new Bundler(config);
+
+// 捆绑器的数组，返回Promise<void>。
+bundler.bundle([
+	{
+		// 需要
+		// 输出文件将用于存储生成的CSS文件。
+		// 来自给定文件的
+		outputFile: '/path/to/output.css',
+		// 文件或文件掩码将被用于查找将生成CSS的文件。
+		// 从这些文件中生成CSS。
+		// 在内部，Stylify CSS使用https://npmjs.com/package/fast-glob
+		// 用于查找文件。
+		files: [
+			'path/to/file.html',
+			'path/files/*/*.html',
+			'path/to/files/**/*.html'
+		],
+
+		// 可选
+		//这个id可以用来按id查找bundle
+		id: 'my-bundle-id',
+		// 当为真时，给定文件中的选择器将被混合处理。
+		// 如果这个选项被设置为 "true"，并且rewriteSelectorsInFiles为 "false"，那么将只处理CSS选择器。
+		// 它将只处理CSS选择器
+		mangleSelectors: false,
+		// 当你想只处理CSS，而不处理文件时，可以禁用文件中的选择器的重写。
+		// 改写CSS但不改写文件
+		rewriteSelectorsInFiles: false,
+		// 当你想只为页面的某一特定部分生成CSS或不想
+		//破坏项目中的其他CSS。适合于组件和开源插件
+		// 像聊天室等。
+		// 这个选择器完全按照你的设置来使用。因此，如果你在结尾处使用空格,
+		// 就会在范围中使用这个空格。
+		scope: '#my-scope',
+		// 编译器配置可以是特定的捆绑包
+		// https://stylifycss.com/en/docs/stylify/compiler#configuration
+		compiler: {},
+		// 如果配置了层，css将被包裹在@layer <name> {}中。
+		cssLayer: 'page'
+	}
+]);
+
+// 如果你需要等待CSS的生成，请调用此方法。
+await bundler.waitOnBundlesProcessed();
+```
+
+
+## 文件内容选项
+文件[content options](/zh/docs/stylify/compiler#contentoptionsprocessors)允许你直接在一个文件中配置选项。除了默认的内容选项外，你可以使用`文件`选项。
+
+<DocsSection>
+<div slot="description">
+
+该选项期望文件路径为字符串，当文件路径以`/`开头时，它是一个绝对路径，否则是相对路径。
+
+</div>
+<div slot="code">
+
+```
+stylify-files
+	/path/to/layout.html
+	path/to/template/part.html
+/stylify-files
+```
+
+</div>
+</DocsSection>
+
+## 钩子
+
+捆绑器扩展了[默认钩子](/zh/docs/stylify/compiler#hooks)并增加了一些。
+
+<DocsSection>
+<div slot="description">
+
+- **bundler:initialized**： 当捆绑器实例被创建时
+- **bundler:beforeInputFileRewritten**： 在输入文件被重写之前
+- **bundler:beforeCssFileCreated**： 在创建CSS文件之前
+- **bundler:bundleProcessed**： 当捆绑文件被处理时
+- **bundler:fileToProcessOpened**： 在文件被处理之前
+
+</div>
+<div slot="code">
+
+```javascript
+import { hooks } from '@stylify/bundler';
+
+hooks.addListener('hoook:name', (options) => {});
+```
+
+</div>
+</DocsSection>

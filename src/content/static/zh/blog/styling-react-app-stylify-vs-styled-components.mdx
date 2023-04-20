@@ -1,0 +1,229 @@
+---
+title: "React应用程序的风格化： Stylify CSS vs Styled Components"
+image: '/images/blog/stylify-styled-components/header.jpg'
+ogImage: '/images/blog/stylify-styled-components/og-image.jpg'
+author: 'Vladimír Macháček'
+annotation:  "为React应用程序造型： Stylify CSS vs Styled Components"
+createdAt: 'August 21, 2022'
+---
+
+[Stylify](/)根据你所写的内容生成实用优先的CSS。它适用于任何框架和任何工具。Styled Components是一个为React组件设计样式的库。
+
+这篇文章不是关于哪个工具更好，而是关于用这些工具对应用程序进行造型时的方法比较。
+
+## 简介
+[Stylify](/)是一个库，它使用类似于CSS的选择器，根据你写的内容生成优化的实用优先的CSS。
+
+- ✅ 类似CSS的选择器
+- ✅ 不需要研究框架
+- ✅ 花在文档上的时间更少
+- ✅ 纠结&极小的CSS
+- ✅ 不需要清除CSS
+- ✅ 组件、变量、自定义选择器
+- ✅ 它可以生成多个CSS捆绑包
+
+我们也有一个关于[Stylify CSS解决了哪些问题，以及为什么你应该尝试一下！](/zh/docs/get-started/why-stylify-css)
+
+## 设置
+在下面的例子中，我将使用vit-react设置。
+
+[Stylify](/)需要安装并进行一些配置。这是因为CSS是在应用程序初始化前的构建过程中生成的：
+```
+npm i -D @stylify/unplugin
+```
+
+还有vite.config.js：
+
+```javascript
+const stylifyPlugin = stylifyVite({
+	bundles: [{
+		outputFile: './src/stylify.css',
+		files: ['./src/**/*.js', './src/**/*.jsx'],
+	}]
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, react()]
+});
+```
+
+你可以尝试编辑Stackblitz上的[Stylify+Vite+React](https://stackblitz.com/edit/stylify-react-vite?file=src%2FApp.jsx)和[Stylify+Next](https://stackblitz.com/edit/stylify-nextjs-template?devtoolsheight=33&file=pages/index.js)例子。
+
+Stylified Components只需要安装库，就可以马上使用。
+```
+npm i styled-components
+```
+
+## 语法和用法
+当你想用Styled Components来设计一个元素的样式时，你可以使用CSS API或者创建一个组件：
+```jsx
+const Title = styled.div`
+	color: blue
+	font-weight: bold
+`;
+
+<Title>你好，世界! 🎉</Title>
+```
+
+生成的CSS看起来像这样：
+```css
+.sc-bdVaJa {} .knKEua{color:blue;font-weight:bold;}
+```
+
+另一方面，[Stylify](/)接收文件内容并为每个匹配的选择器生成CSS。每个选择器默认是一个工具，只生成一次。
+
+语法](/zh/docs/stylify/compiler/#语法)默认为本地CSS的`属性:值'。另外，在写值时，你可以用`_`（下划线）代替空格，用`^`代替引号。它与Tailwind相似，但不必学习和记住自定义选择器和快捷键。如果你了解CSS，你已经知道Stylify的CSS选择器。如果你需要更短的或自定义的选择器，你可以[添加你自己的宏](/zh/docs/stylify/compiler#macros)。
+
+选择器可以马上写出来，而不需要定义一个组件。
+```jsx
+<div className="color:blue font-weight:bold">你好，世界! 🎉</div>
+```
+
+CSS输出：
+```css
+.color\:blue {color:blue}
+.font-weight\:bold {font-weight:bold}
+```
+
+然而，没有人想用实用程序来制作臃肿的模板。有时[组件](/zh/docs/stylify/compiler#components)是必要的。它们可以在配置中全局定义，也可以在文件中本地定义（通过[content options](/zh/docs/stylify/compiler/#contentoptionsprocessors)），在文件中使用它们。在文件中，它期望一个没有周围括号的javascript对象。建议在注释中定义，因为几乎任何文件格式都可以处理注释。在[Stylify](/)中，该组件是一个CSS类，它可以在任何元素上使用：
+```jsx
+/*
+stylify-components
+	title: 'color:blue font-weight:bold'
+/stylify-components
+*/
+<div className="title">你好，世界！🎉</div>
+```
+
+CSS中的`title`选择器被附加到它所需要的每个选择器上。正因为如此，选择器/重复的东西比较少，CSS也比较小。
+```css
+.color\:blue,.title{color:blue}
+.font-weight\:bold,.title{font-weight:bold}
+```
+
+到了生产阶段，选择器就可以被最小化了：
+```jsx
+<div class="d">你好，世界! 🎉</div>
+```
+
+```css
+.a,.d{color:blue}
+.b,.d{font-weight:bold}
+```
+
+### 媒体查询
+当我们需要为各种媒体查询提供不同的样式时，我们可以在样式化组件中这样做：
+```jsx
+const Title = styled.div`
+	color:blue
+	@media (max-width: 768px) {
+		color:red
+	}
+`;
+```
+
+使用Stylify，你可以使用[预定义屏幕或动态屏幕](/zh/docs/stylify/compiler/#screens)：
+```jsx
+/*
+stylify-components
+	title: `
+		color:blue
+		md:color:red
+		minw640px:color:orange
+	`
+/stylify-components
+*/
+<div className="title">你好，世界! 🎉</div>
+```
+
+### 变量
+变量可以直接在风格组件中使用：
+
+```jsx
+const Title = styled.div`
+	color: ${props => props.color || "red"}
+`;
+```
+
+Stylify允许你定义[变量](/zh/docs/stylify/compiler/#variables)，然后在选择器中使用它们：
+```jsx
+/*
+stylify-variables
+	blue: '#005EB8',
+	red: '#8b0000'
+/stylify-variables
+
+stylify-components
+	title: 'color:$blue'
+/stylify-components
+*/
+<div className="color:$red"></div>
+```
+
+当我们需要各种类型的按钮时，我们需要在stylify中写入完整的选择器
+```jsx
+<div className={`wrapper searchDiv ${isOrangeButton ? 'color:orange' : 'color:blue'}`}></div>
+```
+
+### 关键帧
+造型组件中的关键帧可以像这样定义：
+```jsx
+const rotate = keyframes`
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+`;
+
+const Rotate = styled.div`
+	animation: ${rotate} 2s linear infinite;
+`;
+```
+
+在Stylify CSS中，它看起来有点不同
+```jsx
+/*
+stylify-keyframes
+	rotate: `
+		from { transform: rotate(0deg); }
+		to { transform: rotate(360deg); }
+	`
+/stylify-keyframes
+*/
+<div class="animation:rotate_2s_linear_infinite"></div>
+```
+一个简单的动画例子：
+<img src="/images/blog/stylify-stylified-components/stylify-keyframes.gif" width="851" height="402" loading="lazy" decoding="async" class="object-fit:cover max-width:100% height:auto" />
+
+### 普通的选择器
+当涉及到全局样式和简单选择器时，可以使用`createGlobalStyle`在风格化组件中定义它们：
+```jsx
+import { createGlobalStyle } from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+	button { color:red }
+`;
+
+<React.Fragment>
+	<GlobalStyle />
+</React.Fragment>
+```
+
+在Stylify中，使用[普通选择器](/zh/docs/stylify/compiler/#customselectors)也可以实现同样的效果。选择器被直接注入到生成的CSS文件中。
+```jsx
+/*
+stylify-customSelectors
+	button: 'color:red'
+/stylify-customSelectors
+*/
+<button></button>
+```
+
+## 分割CSS
+样式化组件在优化方面做得很好，因为它自动将CSS分成关键和非关键，并注入那些被使用的组件的CSS。然而，编译工作是在应用程序运行时完成的。
+
+Stylify不是这样工作的。
+它根据你的配置生成CSS文件，你必须告诉应用程序什么时候应该加载CSS。
+你可以为每个`page/component/layout`单独配置一个bundle。尽管你可以随心所欲地分割CSS，但由于实用工具/组件的组合，CSS的大小会相对较小，因为选择器只生成一次。因此，有时只有前台+后台的CSS是有意义的。Stylify网站的体积小于`20 Kb`，其他网站则在`30-50 Kb`之间。
+还有一个特点是，它不会降低应用程序的速度，因为CSS是在应用程序初始化之前生成的。
+
+## 谢谢你的帮助!
+也非常感谢[Luke Shiru](https://twitter.com/lukeshiru)对风格化组件信息的审查。

@@ -1,0 +1,18 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from "@serverHelpers";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<section>
+	<h2>{t('How to use and modify Stylify CSS components')}</h2>
+	<p>{t('When you want to use some component do the following')}:</p>
+	<ol>
+		<li set:html={t('Copy&Paste component HTML. If you use the components approach, don\'t forget to copy their definition within the comments. Copy this definition exactly as is into a comment, if you plan to use it in one file or want the whole definition at one place and not in a global $projectConfig. Otherwise copy the content between <code>stylify-components</code> tags into the Compiler $projectConfig. Don\'t forget to copy <code>script tag</code>, if the compoenent has any.')}></li>
+		<li set:html={t('Adjust it to your needs: Change <code>font-size</code>, <code>padding</code>, <code>width</code>, <code>height</code>... Variables like <code>$color</code> can be removed/modified, etc.')}></li>
+		<li>{t('Check if you have copied everything necessary. Scripts, Components definition.')}</li>
+	</ol>
+
+	<p set:html={t('In case you don\'t have any color palette yet, you might want to check out the guide for <a href="{{link1}}" class="color:$blue1">Material Theme Builder</a>.', {link1: getLocalizedRoute('/snippets/snippets/material-theme', lang)})}></p>
+</section>

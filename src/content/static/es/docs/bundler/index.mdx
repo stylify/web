@@ -1,0 +1,185 @@
+---
+section: bundler
+
+order: 0
+
+navigationTitle: "@stylify/bundler"
+
+title: "@stylify/bundler"
+description: "@stylify/bundler es un paquete para generar y empaquetar CSS de forma sencilla en un proyecto."
+---
+import DocsSection from '@components/DocsSection.astro';
+
+Bundler es un paquete que te permite generar archivos CSS para tu proyecto. Bundler se utiliza internamente dentro de otros paquetes CSS de Stylify.
+
+<img src="/images/docs/bundler/bundler.png" alt="" width="914" height="170" loading="lazy" class="border-radius:4px" />
+
+## Instalación
+
+Bundler sólo se puede instalar a través de CLI como NPM o Yarn:
+
+```
+yarn add -D @stylify/bundler
+npm i -D @stylify/bundler
+```
+
+## Uso
+
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+const bundler = new Bundler();
+
+bundler.bundle([
+	{
+		outputFile: 'path/to/output.css',
+		files: ['path/to/layout.html', 'path/to/page.vue']
+	},
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
+]);
+```
+
+## Configuración
+
+Bundler proporciona varias opciones de configuración:
+
+```javascript
+import { defineConfig } from '@stylify/bundler';
+
+const config = defineConfig({
+	// Los paquetes son opcionales.
+	// Pero si no se pasan durante la llamada al método bundle()
+	// deben pasarse aquí. De lo contrario no se generarán bundles
+	bundles: [],
+
+	// Las opciones son opcionales
+	// https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {},
+	// Ruta a un archivo de configuración. En modo vigilancia
+	// nuxt vigila el fichero de configuración por si hay cambios
+	configFile: 'path/to/config.js',
+	// Si se activa verbose, se mostrará la información de compilación
+	verbose: true,
+	// La compilación está sincronizada por defecto
+	sync: true,
+	// Si se establece en true, después de la compilación, bundler comenzará a
+	// a buscar cambios en los archivos
+	watchFiles: false,
+	// Los bundles se pueden definir directamente cuando se crea la instancia
+	// La configuración del bundle se muestra a continuación en el método bundler.bundle()
+	// El método bundle() debe ser llamado para iniciar el proceso de bundling
+	bundles: [],
+	// Esto configura el orden y la exportación de las capas CSS
+	cssLayersOrder: {
+		// Esto generará @layer layout,page;
+		order: 'layout, page',
+		// Esto le dice a Stylify que exporte el orden de capas anterior
+		// sólo en los paquetes, que tiene capa de diseño CSS
+		exportLayer: ['layout']
+	},
+	// Si la ruta del archivo se proporciona en las siguientes opciones
+	// las variables de la configuración del compilador se exportarán a esos archivos
+	// para que puedas reutilizarlas dentro de CSS, scss y etc.
+	// -----------
+	// Las variables CSS se inyectan por defecto en el CSS generado.
+	// Puedes cambiar este comportamiento configurando el compilador
+	// Ver https://stylifycss.com/en/docs/stylify/compiler#variables
+	cssVarsDirPath: 'path/to/vars',
+	sassVarsDirPath: 'path/to/vars',
+	lessVarsDirPath: 'path/to/vars',
+	stylusVarsDirPath: 'path/to/vars'
+});
+
+const bundler = new Bundler(config);
+
+// Matriz de bundles, devuelve Promise<void>
+bundler.bundle([
+	{
+		// Requerido
+		// El archivo de salida se utilizará para almacenar el CSS generado
+		// de los archivos dados
+		outputFile: '/path/to/output.css',
+		// Los archivos o máscaras de archivos se utilizarán para encontrar los archivos
+		// a partir de los cuales se generará el CSS.
+		// Internamente Stylify CSS utiliza https://npmjs.com/package/fast-glob
+		// para encontrar archivos.
+		files: [
+			'path/to/file.html',
+			'path/files/*/*.html',
+			'path/to/files/**/*.html'
+		],
+
+		// Opcional
+		// Este id puede ser usado para encontrar bundle por id
+		id: 'my-bundle-id',
+		// Cuando es true, los selectores en los archivos dados serán manipulados
+		// Si esta opción es true y rewriteSelectorsInFiles es false
+		// sólo se modificarán los selectores CSS
+		mangleSelectors: false,
+		// Puede deshabilitar la reescritura de selectores dentro de un archivo cuando sólo desee
+		// manipular CSS pero no ficheros
+		rewriteSelectorsInFiles: false,
+		// Cuando desea generar CSS sólo para una parte específica de la página o no quiere
+		// romper otro CSS en el proyecto. Bueno para componentes y plugins de código abierto
+		// como chats y etc.
+		// Este selector se usa EXACTAMENTE como lo configuras. Así que si usas espacio al final
+		// el espacio se utilizará en el ámbito.
+		scope: '#my-scope',
+		// La configuración del compilador puede ser específica del paquete
+		// https://stylifycss.com/en/docs/stylify/compiler#configuration
+		compiler: {},
+		// Si la capa está configurada, css se envolverá en @capa <nombre> {}
+		cssLayer: 'page'
+	}
+]);
+
+// En caso de que necesites esperar a que se genere el CSS, llama a este método.
+await bundler.waitOnBundlesProcessed();
+```
+
+
+## Ficheros opción contenido
+El archivo [content options](/es/docs/stylify/compiler#contentoptionsprocessors) permite configurar opciones directamente en un archivo. Aparte de las opciones de contenido por defecto, puede utilizar la opción `files`.
+
+<DocsSection>
+<div slot="description">
+
+Esta opción espera rutas de archivos como cadena Cuando la ruta del archivo comienza con `/`, es una ruta absoluta, de lo contrario es relativa.
+
+</div>
+<div slot="code">
+
+```
+stylify-files
+	/path/to/layout.html
+	path/to/template/part.html
+/stylify-files
+```
+
+</div>
+</DocsSection>
+
+## Hooks
+
+Bundler extiende [default hooks](/es/docs/stylify/compiler#hooks) y añade algunos más.
+
+<DocsSection>
+<div slot="description">
+
+- **bundler:initialized**: Cuando se crea la instancia de bundler.
+- **bundler:beforeInputFileRewritten**: Antes de reescribir el archivo de entrada
+- **bundler:beforeCssFileCreated**: Antes de crear un archivo CSS
+- **bundler:bundleProcessed**: Cuando se procesa el bundle
+- **bundler:fileToProcessOpened**: Antes de que se procese el archivo
+
+</div>
+<div slot="code">
+
+```javascript
+import { hooks } from '@stylify/bundler';
+
+hooks.addListener('hoook:name', (options) => {});
+```
+
+</div>
+</DocsSection>

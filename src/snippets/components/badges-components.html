@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: "#b3005f";
+			--gradientTo: #ca070e;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color: '#6750A4',
+/stylify-variables
+
+stylify-components
+	badge: `
+		display:inline-flex align-items:center white-space:nowrap padding:2px_4px font-size:14px line-height:24px
+		&--primary { color:#fff background:$color }
+		&__number {
+			border-radius:50% display:inline-flex width:24px min-width:24px
+			font-size:14px margin-right:4px line-height:1 height:24px flex-shrink:0
+			justify-content:center align-items:center
+		}
+		&__cross {
+			hover:background:lighten($color,25) margin-top:1px cursor:pointer
+			transition:background_0.3s border-radius:50% display:inline-flex font-size:20px
+			margin-left:4px width:20px min-width:20px line-height:20px height:20px flex-shrink:0
+			justify-content:center align-items:center
+		}
+	`
+/stylify-components
+-->
+
+<span class="badge badge--primary border-radius:4px">Badge</span>
+<span class="badge badge--primary border-radius:4px">Badge</span>
+<span class="badge badge--primary border-radius:4px">Badge</span>
+<span class="badge badge--primary border-radius:4px">Badge</span>
+
+<br><br>
+
+<span class="badge badge--primary border-radius:4px">
+	<span class="badge__number background:lighten($color,25)">32</span>
+	<span>Badge</span>
+</span>
+<span class="badge badge--primary border-radius:8px">
+	<span class="badge__number background:lighten($color,25)">32</span>
+	<span>Badge</span>
+</span>
+<span class="badge badge--primary border-radius:12px">
+	<span class="badge__number background:lighten($color,25)">32</span>
+	<span>Badge</span>
+</span>
+<span class="badge badge--primary border-radius:24px">
+	<span class="badge__number background:lighten($color,25)">32</span>
+	<span>Badge</span>
+</span>
+
+<br><br>
+
+<span class="badge badge--primary border-radius:4px">
+	<span>Badge</span>
+	<span class="badge__cross">&times;</span>
+</span>
+<span class="badge badge--primary border-radius:8px">
+	<span>Badge</span>
+	<span class="badge__cross">&times;</span>
+</span>
+<span class="badge badge--primary border-radius:12px">
+	<span>Badge</span>
+	<span class="badge__cross">&times;</span>
+</span>
+<span class="badge badge--primary border-radius:24px">
+	<span>Badge</span>
+	<span class="badge__cross">&times;</span>
+</span>
+
+
+</div></div></body></html>

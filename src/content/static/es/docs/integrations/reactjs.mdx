@@ -1,0 +1,97 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "React.js"
+navigationIconPath: '/images/brands/react.png'
+image: '/integrations/reactjs/header.jpg'
+ogImage: '/integrations/reactjs/og-image.jpg'
+
+title: Uso de Stylify CSS en React.js
+description: "Aprende a usar el CSS de Stylify con React.js. Codifica tu sitio web React.js más rápido con Stylify CSS"
+howToSchemaTitle: 'Cómo usar Stylify CSS en React.js.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+React.js es una librería JavaScript para construir interfaces de usuario.
+
+Stylify se puede utilizar con React.js de varias maneras:
+- Con Vite.js (este ejemplo)
+- [Next.js](/es/docs/integrations/nextjs)
+
+<StackBlitzLink link="stylify-react-vite" />
+
+## Cómo integrar el CSS de Stylify con React.js y Vite.js
+
+El ejemplo de abajo funciona con la plantilla Vite - React.js. Sin embargo, puedes utilizar el ejemplo de abajo y configurarlo para Svelte, Vue y cualquier otro framework que utilices.
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade la siguiente configuración en `vite.config.js`:
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{outputFile: './src/stylify.css', files: ['./src/**'] }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig({
+	plugins: [stylifyPlugin, react()]
+});
+```
+
+Ahora puedes añadir la ruta al `src/stylify.css` generado en el archivo `src/main.js`:
+
+```javascript
+import './stylify.css';
+```
+
+Ahora ejecuta `yarn dev`. Se generará el archivo `src/stylify.css`.
+
+## Configuración
+Hay muchas opciones que puedes configurar:
+- [@stylify/unplugin](/es/docs/unplugin)
+- [Compiler config](/es/docs/stylify/compiler)
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

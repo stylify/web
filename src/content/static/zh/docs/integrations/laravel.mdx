@@ -1,0 +1,126 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Laravel"
+navigationIconPath: '/images/brands/laravel.svg'
+image: '/integrations/laravel/header.jpg'
+ogImage: '/integrations/laravel/og-image.jpg'
+
+title: 在Laravel框架中使用Stylify CSS
+description: "学习如何在Laravel框架中使用Stylify CSS。用Stylify CSS更快的为你的Laravel网站编码。"
+howToSchemaTitle: "如何在Laravel中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/unplugin软件包。",
+		"url": "#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到vite.config.js中",
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import Note from '@components/Note.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Laravel是一个具有表现力的、优雅的语法的PHP Web应用程序框架。
+
+Stylify可以通过Stylify CSS Vite插件集成到Laravel中。
+
+<Note>Laravel框架的集成实例可以在<a href="https://github.com/stylify/integrations-examples/tree/master/laravel" target="_blank" rel="noopener">集成实例库</a>中找到。</Note>
+
+## 如何将Stylify的CSS集成到Laravel框架中
+
+首先安装[Stylify unplugin](/zh/docs/unplugin)：
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+打开`vite.config.js`，添加Stylify CSS插件：
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ files: ['resources/views/**/*.blade.php'], outputFile: 'resources/css/stylify.css' }],
+	// 可选的 - https://stylifycss.com/en/docs/unplugin
+	compiler: {},
+});
+
+export default defineConfig(({ mode }) => ({
+	plugins: [
+		stylifyPlugin,
+		laravel({
+			// 添加生成文件的路径
+			input: ['resources/js/app.js', 'resources/css/stylify.css'],
+			refresh: true,
+		}),
+	],
+}));
+```
+
+在模板中添加`resources/css/stylify.css`的路径：
+
+```html
+<head>
+	@vite('resources/css/stylify.css')
+</head>
+```
+
+现在当你在`package.json`中运行`dev`命令时，CSS将被生成。当你运行`build`时，CSS也会被修改。
+
+## 对于带有Webpack的Laravel的旧版本
+
+首先, 使用NPM或Yarn安装[@stylify/unplugin](/zh/docs/unplugin)软件包：
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+接下来将Stylify CSS插件添加到`webpack.mix.js`中：
+
+
+```javascript
+const { stylifyWebpack } = require('@stylify/unplugin');
+
+const stylifyPlugin = stylifyWebpack({
+	bundles: [{
+		outputFile: './resources/css/homepage.css',
+		files: ['./resources/views/welcome.blade.php']
+	}],
+	// 可选
+	// 编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+mix.webpackConfig({
+	mode: 'development',
+	plugins: [stylifyPlugin]
+});
+```
+
+现在你可以使用laravel mix的命令了。
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

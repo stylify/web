@@ -1,0 +1,130 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Bootstrap"
+navigationIconPath: '/images/brands/bootstrap.svg'
+image: '/migration/bootstrap/header.jpg'
+ogImage: '/migration/bootstrap/og-image.jpg'
+
+title: "Cómo migrar del framework CSS de Bootstrap al CSS de Stylify"
+description: "Aprende a migrar sin esfuerzo del framework de componentes CSS de Bootstrap al CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework de componentes de Bootstrap con las del CSS utility-first de Stylify, y darte una idea de cómo migrar de Bootstrap a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Bootstrap es un conjunto de herramientas frontend potente, extensible y repleto de características. Construye y personaliza con Sass, utiliza el sistema de cuadrícula y los componentes preconstruidos, y da vida a los proyectos con potentes plugins JavaScript.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+Bootstrap proporciona un montón de utilidades para propiedades como display, flex, colores, overflow, etc.
+
+No he podido encontrar ninguna información que sugiera que Bootstrap proporciona algo como `hover` o `active` pseudo clases de apoyo y los medios de comunicación consultas de apoyo:
+
+
+```html
+<div class="d-flex p-2 text-primary shadow-lg">
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Bootstrap proporciona algo así como Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+Bootstrap es un framework basado en componentes. Por lo tanto, hay un montón de componentes, como botones, insignias, formularios, tablas, menús, etc:
+
+```html
+<button class="btn btn-primary"></button>
+<span class="badge bg-secondary"></span>
+<ul class="list-group">
+	<li class="list-group-item">Un elemento</li>
+</ul>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="bootstrap.svg">
+<div slot="tool">
+
+La personalización de Bootstrap se realiza principalmente dentro de los archivos SCSS/CSS y el tema se genera durante un proceso de construcción:
+
+```css
+// Requerido
+@import "../node_modules/bootstrap/scss/functions";
+
+// Variables por defecto
+$body-bg: #000;
+$body-color: #111;
+
+// Necesario
+@import "../node_modules/bootstrap/scss/variables";
+```
+
+También puedes añadir colores de tema personalizados:
+
+```css
+// Crea tu propio mapa
+$custom-colors: (
+	"custom-color": #900
+);
+
+// Fusionar los mapas
+$theme-colors: map-merge($theme-colors, $custom-colors);
+```
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

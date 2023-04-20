@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<link rel="stylesheet" href="/content/snippets/components/iframe.css">
+	<script src="https://cdn.jsdelivr.net/npm/@stylify/stylify@0.5.30/dist/stylify.min.js" async defer fetchpriority="low"></script>
+	<style>
+		:root {
+			--gradientFrom: #9BF8F4;
+			--gradientTo: #6F7BF7;
+		}
+		.content-wrapper {
+			min-width: 310px;
+		}
+	</style>
+</head>
+<body><div class="content"><div class="content-wrapper">
+
+<!--
+stylify-variables
+	color:'#6F7BF7',
+	green: '#52c41a',
+	red: '#b3261e',
+/stylify-variables
+ -->
+
+<!--
+Used components
+- https://stylifycss.com/en/snippetscomponents/buttons
+- https://stylifycss.com/en/snippetscomponents/text-fields
+- https://stylifycss.com/en/snippetscomponents/dividers
+- https://stylifycss.com/en/snippetscomponents/switches
+-->
+
+<section class="max-width:400px">
+	<h2 class="font-size:24px text-align:center">SIGN IN</h2>
+	<div class="display:flex flex-direction:column gap:24px">
+		<div class="position:relative display:flex">
+			<input id="email" type="email" placeholder="E-mail" required class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+			<label for="email" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">E-mail</label>
+		</div>
+
+		<div class="position:relative display:flex">
+			<input id="password" type="password" placeholder="Password" required class="width:100% padding:12px border:2px_solid_#000 border-radius:4px min-height:40px [&::placeholder]{color:transparent} [&:not(:placeholder-shown):valid]{border-color:$green} [&:not(:placeholder-shown):invalid]{border-color:$red} [&:focus+label,&:not(:placeholder-shown)+label]{top:0;background:#fff}">
+			<label for="password" class="position:absolute top:50% transform:translateY(-50%) max-width:calc(100%_-_16px) will-change:top transition:top_0.2s,background_0.2s left:8px padding:0_4px">Password</label>
+		</div>
+
+		<span class="height:1px display:flex width:100% background:#CAC4D0"></span>
+
+		<div class="display:flex justify-content:space-between align-items:center">
+			<div>
+				<input type="checkbox" id="remember" checked class="
+					display:none
+					[&:checked+label::before]{border-color:$color;background:$color}
+					[&:checked+label::after]{opacity:1}
+				">
+				<label for="remember" class="
+					display:flex align-items:center cursor:pointer min-height:22px position:relative padding-left:28px
+					[&::before,&::after]{display:flex;content:^^;position:absolute;left:0;top:0;transition:.3s}
+					[&::after]{content:^\2713^;font-size:20px;line-height:1;opacity:0;color:#fff;align-items:center;justify-content:center;width:22px;height:22px}
+					[&::before]{border:1px_solid_#000;border-radius:2px;width:20px;height:20px}
+				">
+					Remember me
+				</label>
+			</div>
+			<button class="display:inline-flex align-items:center padding:12px_24px border-radius:24px white-space:nowrap line-height:24px border:none font-weight:700 letter-spacing:0.1px outline:none cursor:pointer line-height:20px font-size:16px color:#fff user-select:none text-decoration:none background:$color transition:background_0.3s hover:background:lighten($color,20) focus:background:lighten($color,20)">Submit</button>
+		</div>
+
+		<div class="display:flex flex-direction:column gap:12px [a]{text-decoration:none;hover:text-decoration:underline}">
+			<a href="#" class="color:$color">Don't have an account yet? Sign Up!</a>
+			<a href="#" class="color:$color">Forgot your password?</a>
+		</div>
+	</div>
+</section>
+
+</div></div></body></html>

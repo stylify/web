@@ -1,0 +1,87 @@
+---
+section: nuxt
+
+order: 0
+
+navigationTitle: "@stylify/nuxt"
+
+title: "@stylify/nuxt"
+description: "Stylify Nuxt模块提供无缝的Stylify CSS集成到Nuxt.js v3+。"
+---
+import Note from '@components/Note.astro';
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Nuxt模块提供无缝的Stylify CSS集成到Nuxt.js v3+中。
+
+<StackBlitzLink link="stylify-nuxt3" />
+
+<Note><strong>@stylify/nuxt</strong>只能在Nuxt v3及以上版本使用。对于Nuxt v2，请查看[@stylify/nuxt-module](/zh/docs/nuxt-module)。</Note>
+
+## 安装
+
+Nuxt模块只能通过NPM或Yarn等CLI安装：
+
+```
+yarn add @stylify/nuxt
+npm i @stylify/nuxt
+```
+
+## 使用方法
+
+在`nuxt.config.js`中添加一个模块：
+
+```javascript
+modules: [
+	'@stylify/nuxt'
+]
+```
+
+## 配置
+
+如果你想配置Stylify，你可以在`nuxt.config.js`中直接使用配置部分，或者在`nuxt.config.js`旁边创建一个文件`stylify.config.js`。在这两种情况下，你都使用下面所示的相同配置方案。
+
+下面的代码部分应该用在`nuxt.config.js`里面或者`stylify.config.js`或者`stylify.config.mjs`里面：
+
+```javascript
+import { defineConfig } from '@stylify/nuxt';
+
+const stylifyConfig = defineConfig({
+	dev: false,
+	configPath: 'stylify.config.js',
+	//编译器配置信息 https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	},
+	// 当vars dir paths被设置后，Stylify CSS会根据给定的路径将变量导出到
+	// 根据给定的路径导出一个文件
+	cssVarsDirPath: null,
+	sassVarsDirPath: null,
+	lessVarsDirPath: null,
+	stylusVarsDirPath: null,
+	//文件掩码被@stylify/bundler使用。
+	// 捆绑器使用这些掩码来寻找他应该生成CSS的文件。
+	// 当你添加一个掩码，并且你想要mangleSelectors时，你还需要添加适当的加载器。见下文
+	filesMasks: []
+});
+```
+
+<Note>如果你使用`stylify.config.ts`，你不能使用[hooks](/zh/docs/stylify/compiler#hooks)。这是因为Nuxt编译该文件时，钩子将在与开发服务器不同的钩子管理器实例中工作。因此，它们不能监听开发服务器上的触发钩子，将是无用的。</Note>
+
+nuxt.config.js的例子
+```javascript
+export default {
+	stylify: stylifyConfig
+}
+```
+
+stylify.config.js的例子
+
+```javascript
+export default stylifyConfig;
+```

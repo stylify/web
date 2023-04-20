@@ -1,0 +1,45 @@
+---
+import GithubButton from './GithubButton.astro';
+import Affiliate from './Affiliate.astro';
+import { websiteRepositoryUrl } from '@projectConfig';
+import { getLangFromUrl, useTranslations } from '@serverHelpers';
+const { id, nextPage = null, previousPage = null } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="lg:max-width:calc(100%_-_224px)">
+	<div class="display:flex justify-content:space-between margin-bottom:24px">
+		<div>
+			{previousPage &&
+				<a href={`/${previousPage.slug}`} class="link text-decoration:none line-height:1">
+					<i class="icon icon-arrow-down-circle display:inline-block margin-right:8px transform:rotate(90deg)"></i>
+					<span>{previousPage.data.navigationTitle}</span>
+				</a>
+			}
+		</div>
+		<div>
+			{nextPage &&
+				<a href={`/${nextPage.slug}`} class="link text-decoration:none line-height:1">
+					<span>{nextPage.data.navigationTitle}</span>
+					<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+				</a>
+			}
+		</div>
+	</div>
+	<hr class="margin-bottom:24px">
+	<div class="display:flex align-items:center justify-content:center">
+			<a
+				href={`${websiteRepositoryUrl}/edit/master/src/content/static/${id}`}
+				target="_blank"
+				rel="noopener"
+				class="color:$blue1 text-decoration:none line-height:1"
+			>
+				<i class="icon icon-edit margin-right:8px"></i>
+				<span>{t('Edit this page on Github')}</span>
+			</a>
+			<span class="margin:0_12px">|</span>
+			<GithubButton />
+	</div>
+	<!-- <div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div> -->
+</div>

@@ -1,0 +1,59 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+import ShikiHighlighter from './ShikiHighlighter.astro';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const contentOptions = `
+<!--
+stylify-variables
+	primary: '#000',
+	secondary: '#eee'
+	titleFontSize: '24px',
+	shadow: '0 2px 3px #000'
+/stylify-variables
+-->
+<div class="color:$primary"></div>
+`.trim();
+
+
+const globalConfig = `
+const compilerConfig = {
+	variables: {
+		primary: '#000',
+		secondary: '#eee',
+		titleFontSize: '24px',
+		shadow: '0 2px 3px #000'
+	}
+}
+`.trim();
+
+const globalConfigMediaQuery = `
+const compilerConfig = {
+	variables: {
+		dark: { blue: 'lightblue' },
+		md: { fontSize: 24px },
+		'minw640px': { fontSize: 32px },
+		// When screen is not found, it falls back to a random custom selector
+		'.dark': { blue: 'lightblue' },
+		':root[data-theme="dark"]': { blue: 'lightblue' }
+	}
+}
+`.trim();
+---
+
+<div>
+	<p>{t('In Stylify, there is nothing like a "theme", neither extend section in $projectConfig. There are only variables.')}</p>
+
+	<p set:html={t('<a href="{{link1}}">Variables</a> can be defined in two ways in Stylify. In a global config or within a file where they are used via <a href="{{link2}}">content options</a>.', {link1: `${getLocalizedRoute('/docs/get-started', lang)}#${t('adding-a-variable')}`, link2: getLocalizedRoute('/docs/stylify/compiler#contentoptionsprocessors', lang)})}></p>
+
+	<p>{t('Example with global config')}:</p>
+	<ShikiHighlighter lang="js" code={globalConfig} />
+
+	<p>{t('Variables can also be defined based on media query')}:</p>
+	<ShikiHighlighter lang="js" code={globalConfigMediaQuery} />
+
+	<p>{t('Example with content options')}:</p>
+	<ShikiHighlighter code={contentOptions} />
+</div>

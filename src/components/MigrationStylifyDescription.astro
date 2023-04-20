@@ -1,0 +1,7 @@
+---
+import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+<p set:html={t('Stylify CSS is a library that uses native CSS-like selectors <code>color:blue</code>, <code>width:640px</code>, <code>margin:0_auto</code> along with <a href="{{link1}}">variables</a>, <a href="{{link2}}">components</a>, <a href="{{link3}}">custom selectors</a> to generate optimized CSS dynamically based on what you write.', {link1: `${getLocalizedRoute('/docs/get-started', lang)}#${t('adding-a-variable')}`, link2: `${getLocalizedRoute('/docs/get-started', lang)}#${t('defining-a-component')}`, link3: `${getLocalizedRoute('/docs/get-started', lang)}#${t('custom-selectors')}`})}></p>

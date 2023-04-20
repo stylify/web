@@ -1,0 +1,59 @@
+---
+import GithubButton from "./GithubButton.astro";
+import { getLangFromUrl, getLocalizedRoute } from "@serverHelpers";
+import { discordUrl, twitterUrl, youtubeUrl, supportedLanguages } from "@projectConfig";
+
+const lang = getLangFromUrl(Astro.url);
+---
+
+<script>
+import { domReady } from "@clientHelpers"
+
+domReady(() => {
+	document.addEventListener('click', (event) => {
+		if (!(event.target instanceof HTMLElement) || !event.target.closest('.js-lang-switch')) {
+			document.querySelectorAll('.js-lang-switch details[open] summary').forEach((detailsElement) => detailsElement.click());
+		}
+	});
+})
+</script>
+
+<!--
+stylify-components
+	'layout-header-icon-link': 'width:100% object-fit:cover'
+/stylify-components
+ -->
+<nav class="display:flex align-items:center">
+	<figure class="js-lang-switch margin:0_8px_0_0 display:flex justify-content:center align-items:center width:40px height:40px border-radius:4px border:2px_solid_#fff color:#fff">
+		<details class="
+			position:relative
+			[&[open]:not(.s-closing)>div]{max-height:200px}
+			[&[open]:not(.s-closing)>summary_svg]{transform:rotate(-90deg)}
+		">
+			<summary class="
+				position:relative display:flex padding:4px align-items:center justify-content:space-between font-size:14px outline:none
+				[&::marker]{content:^^} cursor:pointer
+			">
+				<i class="icon icon-translate font-size:24px line-height:1!important"></i>
+			</summary>
+			<div class="position:absolute min-width:100px top:50px border-radius:4px transform:translateX(-50%) left:50% padding:8px border:2px_solid_#fff background:$blue6">
+				<div class="display:flex flex-direction:column gap:4px font-size:16px [a:not(:hover)]{text-decoration:none}">
+					{Object.keys(supportedLanguages).map((langKey) => (
+						<a href={getLocalizedRoute('/', langKey)} hreflang={langKey} class="link">{supportedLanguages[langKey]}</a>
+					))}
+				</div>
+			</div>
+		</details>
+	</figure>
+	<div class="display:flex height:40px width:84px margin-right:8px"><GithubButton /></div>
+	<div class="display:none minw410px:display:flex height:40px width:92px"><GithubButton type="sponsor" /></div>
+	<div class="margin-left:8px display:flex align-items:center gap:12px width:120px">
+		<a href={discordUrl} target="_blank" rel="noopener" title="Discord" aria-label="Discord" class="display:inline-flex"><img src="/images/brands/discord-icon.svg" height="25" width="31" class="layout-header-icon-link" alt="" loading="lazy" /></a>
+		<a href={twitterUrl} target="_blank" rel="noopener" title="Twitter" aria-label="Twitter" class="display:inline-flex"><img src="/images/brands/twitter-icon.svg" height="25" width="25" class="layout-header-icon-link" alt="" loading="lazy" fetchpriority="low"/></a>
+		<!--
+			<a href={$projectConfig.facebookUrl} target="_blank" rel="noopener" title="Facebook" aria-label="Youtube" class="display:inline-flex"><img src="/images/brands/facebook-icon.svg" height="24" width="32" class="layout-header-icon-link" alt="" loading="lazy" /></a>
+			<a href={$projectConfig.instagramUrl} target="_blank" rel="noopener" title="Instagram" aria-label="Youtube" class="display:inline-flex"><img src="/images/brands/instagram-icon.svg" height="24" width="32" class="layout-header-icon-link" alt="" loading="lazy" /></a>
+		-->
+		<a href={youtubeUrl} target="_blank" rel="noopener" title="Youtube" aria-label="Youtube" class="display:inline-flex"><img src="/images/brands/youtube.svg" height="24" width="32" class="layout-header-icon-link" alt="" loading="lazy" /></a>
+	</div>
+</nav>

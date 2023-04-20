@@ -1,0 +1,143 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Tailwind"
+navigationIconPath: '/images/brands/tailwind.svg'
+image: '/migration/tailwind/header.jpg'
+ogImage: '/migration/tailwind/og-image.jpg'
+
+title: "Cómo migrar del framework CSS Tailwind Utility-First a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework CSS utility-first de Tailwind a Stylify CSS y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework CSS utility-first de Tailwind con las de Stylify, y darte una idea de cómo migrar de Tailwind a Stylify.
+
+<MigrationNote />
+
+## Introducción
+
+Tailwind es una librería que te ayuda a construir rápidamente sitios web modernos sin salir de tu HTML. Es un framework CSS que prioriza la utilidad y está repleto de clases como flex, `pt-4`, `text-center` y `rotate-90` que se pueden componer para construir cualquier diseño, directamente en tu marcado.
+
+<MigrationStylifyDescription />
+
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Tailwind proporciona un montón de utilidades CSS flexibles para propiedades como color, espaciado, tipografía, visibilidad, etc:
+
+```html
+<div class="
+	bg-slate-100
+	rounded-xl
+	p-8
+	top-[117px]
+	md:flex
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Cuando quieras seleccionar por ejemplo elementos hijo en Tailwind, puedes usar variantes arbitrarias para ello:
+
+```html
+<div class="
+	[&>*]:underline
+	[&>p]:mt-0
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Los componentes en Tailwind se pueden definir usando la regla `@apply`. También se pueden anidar en capas CSS:
+
+```css
+@layer components {
+	.btn-primary {
+		@apply py-2 px-4 bg-blue-500 text-white;
+	}
+}
+```
+
+Tailwind también proporciona un montón de componentes copy&paste en su web.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="tailwind.svg">
+<div slot="tool">
+
+Tailwind se puede configurar dentro de un archivo de configuración extendiendo/sobrescribiendo un tema existente:
+
+```javascript
+module.exports = {
+	content: ['./src/**/*.{html,js}'],
+	theme: {
+		colors: {
+			'blue': '#1fb6ff',
+		},
+		fontFamily: {
+			sans: ['Graphik', 'sans-serif'],
+		},
+		extend: {
+			spacing: {
+				'8xl': '96rem',
+				'9xl': '128rem',
+			},
+			borderRadius: {
+				'4xl': '2rem',
+			}
+		}
+	},
+}
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

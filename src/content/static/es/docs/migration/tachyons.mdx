@@ -1,0 +1,116 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Tachyons"
+navigationIconPath: '/images/brands/tachyons.svg'
+image: '/migration/tachyons/header.jpg'
+ogImage: '/migration/tachyons/og-image.jpg'
+
+title: "Cómo migrar de Tachyons Utility-First CSS framework a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework CSS utility-first de Tachyons a Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y la sintaxis del framework CSS utility-first de Tachyons con las de Stylify, y darte una idea de cómo migrar de Tachyons a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Tachyons es un framework que te permite crear interfaces de carga rápida, altamente legibles y 100% responsive con la menor cantidad de CSS posible.
+
+<MigrationStylifyDescription />
+
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="tachyons.svg">
+<div slot="tool">
+
+Tachyons proporciona un montón de utilidades CSS flexibles para propiedades como color, espaciado, tipografía, visibilidad, etc:
+
+```html
+<div class="flex">
+	<div class="outline w-25 pa3 mr2">
+		<code>1</code>
+	</div>
+</div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="tachyons.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Tachyons proporciona algo así como Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="tachyons.svg">
+<div slot="tool">
+
+Tachyons no tiene ninguna API de configuración para los componentes.
+Sin embargo, tiene un conjunto preparado de componentes de copiar y pegar en su sitio web que puedes usar en tu proyecto y puedes configurarlos en el configurador mencionado en su sitio web:
+
+```html
+<div class="ph3">
+	<h1 class="f6 fw6 ttu tracked">Botón básico</h1>
+	<a class="f6 link dim ph3 pv2 mb2 dib white bg-black" href="#0">Texto del botón</a>
+</div>
+
+<article class="mw5 mw6-ns center pt4">
+	<div class="aspect-ratio aspect-ratio--16x9 mb4">
+		<div class="aspect-ratio--object cover"></div>
+	</div>
+</article>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="tachyons.svg">
+<div slot="tool">
+
+Tachyons se puede configurar directamente modificando los archivos CSS descargados.
+También puedes usar tachyons con variables CSS y definir tus propios tamaños, colores, etc.
+
+Tienen un vídeo en su web sobre cómo hacerlo.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

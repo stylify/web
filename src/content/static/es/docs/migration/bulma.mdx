@@ -1,0 +1,127 @@
+---
+section: migration
+
+order: 1
+
+navigationTitle: "Bulma"
+navigationIconPath: '/images/brands/bulma.svg'
+image: '/migration/bulma/header.jpg'
+ogImage: '/migration/bulma/og-image.jpg'
+
+title: "Cómo migrar de Bulma CSS framework a Stylify CSS"
+description: "Aprende a migrar sin esfuerzo del framework de componentes CSS Bulma al CSS utility-first de Stylify y codifica más rápido con menos código."
+---
+import MigrationNote from '@components/MigrationNote.astro';
+import MigrationStylifyDescription from '@components/MigrationStylifyDescription.astro';
+import MigrationStylifySelectors from '@components/MigrationStylifySelectors.astro';
+import MigrationStylifyVariables from '@components/MigrationStylifyVariables.astro';
+import MigrationStylifyComponents from '@components/MigrationStylifyComponents.astro';
+import MigrationStylifyCustomSelectors from '@components/MigrationStylifyCustomSelectors.astro';
+import MigrationCodeBlock from '@components/MigrationCodeBlock.astro';
+import MigrationPageFooter from '@components/MigrationPageFooter.astro';
+
+Esta guía está aquí para ayudarte a comparar rápidamente las características y sintaxis del framework de componentes Bulma con las del CSS utility-first de Stylify, y darte una idea de cómo migrar de Bulma a Stylify.
+
+<MigrationNote />
+
+## Introducción
+Bulma es un framework gratuito y de código abierto que proporciona componentes frontend listos para usar que puedes combinar fácilmente para construir interfaces web responsivas.
+
+<MigrationStylifyDescription />
+
+## Selectores y utilidades CSS
+
+<MigrationCodeBlock image="bulma.svg">
+<div slot="tool">
+
+Bulma proporciona utilidades CSS para propiedades como color, espaciado, tipografía, visibilidad, etc:
+
+```html
+<div class="
+	has-text-white
+	mb-4 px-1
+	is-capitalized
+"></div>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifySelectors />
+
+</div>
+</MigrationCodeBlock>
+
+
+## Selectores globales
+
+<MigrationCodeBlock image="bulma.svg">
+<div slot="tool">
+
+No he podido encontrar ninguna información que sugiera que Bulma proporciona algo así como Selectores Globales dinámicos.
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyCustomSelectors />
+
+</div>
+</MigrationCodeBlock>
+
+## Componentes
+<MigrationCodeBlock image="bulma.svg">
+<div slot="tool">
+
+Bulma es un framework basado en componentes. Por lo tanto, hay un montón de componentes, como botones, insignias, formularios, tablas, menús, etc:
+
+```html
+<input class="input is-primary">
+<aside class="menu">
+	<p class="menu-label">General</p>
+	<ul class="menu-list">
+		<li><a>Panel de control</a></li>
+	</ul>
+</aside>
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyComponents />
+
+</div>
+</MigrationCodeBlock>
+
+## Configuración, personalización y variables
+<MigrationCodeBlock image="bulma.svg">
+<div slot="tool">
+
+Bulma se configura a través de variables SCSS dentro de un archivo de importación y el tema se genera durante un proceso de construcción:
+
+```css
+// Configura los colores de tu marca
+$purple: #8A4D76;
+// ...
+
+// Actualiza las variables globales de Bulma
+$family-sans-serif: "Nunito", sans-serif;
+// ...
+
+// Actualizar algunas variables de los componentes de Bulma
+$body-background-color: $beige-lighter;
+// ...
+
+// Importa sólo lo que necesites de Bulma
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/base/_all.sass";
+// ...
+```
+
+</div>
+<div slot="stylify">
+
+<MigrationStylifyVariables />
+</div>
+</MigrationCodeBlock>
+
+<MigrationPageFooter />

@@ -1,0 +1,27 @@
+---
+import ShowcaseList from "@components/ShowcaseList.astro";
+import MainLayout from "@mainLayout";
+import { useTranslations, getStaticPathsForSupportedLanguages, getLangFromUrl } from '@serverHelpers';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+export const getStaticPaths = () => getStaticPathsForSupportedLanguages();
+---
+
+<MainLayout
+	pageTitle={t('Showcase')}
+	pageDescription={t('Check out projects that use Stylify CSS.')}
+>
+	<section class="container margin-top:24px margin-bottom:48px md:margin-top:48px">
+		<h1 class="font-size:48px text-align:center margin:0">{t('Showcase')}</h1>
+		<p class="margin-bottom:42px margin-top:0 font-size:20px text-align:center">{t('Check out projects that use Stylify CSS.')}</p>
+		<ShowcaseList />
+		<div class="margin-top:42px text-align:center">
+			<a href="https://github.com/stylify/web/blob/master/src/components/ShowcaseList.astro" target="_blank" rel="noopener nofollow" class="btn btn--hp">
+				{t('Add your project')}
+				<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+			</a>
+		</div>
+	</section>
+</MainLayout>

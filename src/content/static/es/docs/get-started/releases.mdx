@@ -1,0 +1,156 @@
+---
+section: get-started
+
+order: 5
+
+navigationTitle: "Lanzamientos y actualizaciones"
+
+title: "Lanzamientos de Stylify"
+description: "Lanzamientos de Stylify, changelog y cómo actualizar de una versión a otra."
+---
+
+Lanzamientos de Stylify, registro de cambios y cómo actualizar de una versión a otra.
+
+## Versiones actuales
+
+<div class="max-width:100% overflow:auto">
+
+| Proyecto              | Estado                                                       | Descripción                                                                          |
+| --------------------- | ------------------------------------------------------------ | -------------------------------------------------------------------------------------|
+| [astro]               | [![astro-status]][astro-package]                             | Integration for Astro.build                                                          |
+| [bundler]             | [![bundler-status]][bundler-package]                         | A flexible CSS bundler.                                                              |
+| [nuxt]                | [![nuxt-status]][nuxt-package]                               | Module for [Nuxt.js Framework](https://nuxtjs.org/) v3+.                             |
+| [nuxt-module]         | [![nuxt-module-status]][nuxt-module-package]                 | Module for [Nuxt.js Framework](https://nuxtjs.org/) v2 < v3.                         |
+| [stylify]             | [![stylify-status]][stylify-package]                         | Core package. Generates CSS and minifies selectors.                                  |
+| [unplugin]            | [![unplugin-status]][unplugin-package]                       | Universal plugin for Vite, Webpack, Rollup and Esbuild.                             |
+
+
+[astro]: https://github.com/stylify/packages/tree/master/packages/astro
+[astro-status]: https://img.shields.io/npm/v/@stylify/astro?color=%2301befe&label=Version&style=for-the-badge
+[astro-package]: https://npmjs.com/package/@stylify/astro
+
+[bundler]: https://github.com/stylify/packages/tree/master/packages/bundler
+[bundler-status]: https://img.shields.io/npm/v/@stylify/bundler?color=%2301befe&label=Version&style=for-the-badge
+[bundler-package]: https://npmjs.com/package/@stylify/bundler
+
+[nuxt]: https://github.com/stylify/packages/tree/master/packages/nuxt
+[nuxt-status]: https://img.shields.io/npm/v/@stylify/nuxt?color=%2301befe&label=Version&style=for-the-badge
+[nuxt-package]: https://npmjs.com/package/@stylify/nuxt
+
+[nuxt-module]: https://github.com/stylify/packages/tree/master/packages/nuxt-module
+[nuxt-module-status]: https://img.shields.io/npm/v/@stylify/nuxt-module?color=%2301befe&label=Version&style=for-the-badge
+[nuxt-module-package]: https://npmjs.com/package/@stylify/nuxt-module
+
+[stylify]: https://github.com/stylify/packages/tree/master/packages/stylify
+[stylify-status]: https://img.shields.io/npm/v/@stylify/stylify?color=%2301befe&label=Version&style=for-the-badge
+[stylify-package]: https://npmjs.com/package/@stylify/stylify
+
+[unplugin]: https://github.com/stylify/packages/tree/master/packages/unplugin
+[unplugin-status]: https://img.shields.io/npm/v/@stylify/unplugin?color=%2301befe&label=Version&style=for-the-badge
+[unplugin-package]: https://npmjs.com/package/@stylify/unplugin
+
+</div>
+
+## Actualización de 0.4 a 0.5
+- Release: [v0.5.0](https://github.com/stylify/packages/releases/tag/v0.5.0)
+
+### @stylify/stylify
+- Macros callbacks ahora acepta un objeto con argumentos en lugar de una cadena de argumentos. El objeto `this` ya no se modifica.
+```javascript
+// v0.4.0
+const macros = {
+	'macro': (macroMatch, selectorProperties) => { const { helpers, variables, dev } = this;}
+};
+
+// v0.5.0
+const macros = {
+	'macro':({ macroMatch, selectorProperties, helpers, variables, dev }) => {}
+};
+```
+- El método rewrite selectors ahora acepta opcionalmente un objeto de argumentos en lugar de 2 argumentos
+```javascript
+// Si las opciones pasadas a rewrite selectors son string, entonces sólo se espera un argumento
+compiler.rewriteSelectors(code)
+
+// Si se pasan dos o más, tiene que ser un objeto
+compiler.rewriteSelectors({
+	content: '',
+	// Opcional
+	rewriteOnlyInSelectorsAreas: true,
+	matchSelectorsWithPrefix: false
+})
+```
+- El argumento `rewriteInAreas` del método rewriteSelectors ha sido renombrado a `rewriteInSelectorsAreas`.
+- Cambiar el nombre de `plainSelectors` en config y en las opciones de contenido a `customSelectors`.
+- Cada `customSelector` y `component` ahora sólo acepta una cadena como valor.
+- Los selectores personalizados ahora se pueden generar directamente desde la plantilla. Ver [docs](/es/docs/stylify/compiler#customselectors).
+- En caso de utilizar una cadena de selectores para componentes, reescríbala a la nueva sintaxis tipo SCSS.
+```javascript
+// v0.4.0
+const components = {
+	'btn--big': {
+		selectors: 'color:blue',
+		selectorsChain: 'btn'
+	}
+};
+
+// v0.5.0
+const components = {
+	'btn--big': `
+		&.btn { color:blue }
+	`
+};
+```
+- Los hooks ahora se usan como abajo. Echa un vistazo a [Stylify hooks](/es/docs/stylify/compiler#hooks).
+```javascript
+import { hooks } from '@stylify/stylify';
+
+hooks.addListener('', (options) => {});
+```
+- Para el tiempo de ejecución
+
+```javascript
+const runtime = new Runtime();
+runtime.hooks.addListener('', (options) => {});
+```
+
+### @stylify/bundler
+- Los hooks de Bundler se usan ahora como se indica a continuación. Bundler hooks extiende los hooks CSS por defecto de Stylify. Echa un vistazo a [Bundler hooks](/es/docs/bundler#hooks).
+```javascript
+import { hooks } from '@stylify/bundler';
+
+hooks.addListener('', (options) => {});
+```
+- Ahora sólo se puede utilizar `await bundler.waitOnBundlesProcessed()` para esperar a que bundler termine de empaquetar. El await `bundler.bundle()` no es necesario.
+
+### @stylify/bundler
+- Los unplugins exportados son ahora `stylifyVite`, `stylifyRollup`, `stylifyWebpack`, `stylifyEsbuild`.
+
+## Actualización de 0.3 a 0.4
+- Lanzamiento: [v0.4.0](https://github.com/stylify/packages/releases/tag/v0.4.0)
+- Usar sólo un guión bajo `_` (para un carácter de espacio) => `border:1px_solid_blue`
+- La integración ha sido renombrada de `stylifyIntegration` a `stylify`.
+- No hay que pasar ningún objeto vacío ni configuración en la inicialización de la integración
+
+## Actualización de 0.2 a 0.3
+- Lanzamiento: [v0.3.0](https://github.com/stylify/packages/releases/tag/v0.3.0)
+- Se puede eliminar `selectorsAreas` para React, Vue, Angular, Nette, Lit y Alpine de la configuración. Ahora están por defecto en la configuración del compilador.
+- Mueve todo desde el objeto `extend` a la raíz:
+```javascript
+const config = {
+	// Todas las opciones de configuración del objeto extend se mueven aquí.
+	// El compilador es solo un ejemplo.
+	compiler: {},
+	// La palabra clave extend fue removida
+	extend: {
+		compiler: {}
+	}
+}
+```
+- Stylify CSS Runtime ahora sólo tiene el método `Stylify.configure()`. Se ha eliminado `Stylify.runtime.configure()`.
+
+## Actualización de 0.1 a 0.2
+- Lanzamiento: [v0.2.1](https://github.com/stylify/packages/releases/tag/v0.2.1)
+- Se han eliminado los perfiles
+- Autoprefixer no es necesario incluirlo en la configuración de bundler. Ahora está por defecto en bundler.
+- Los selectores ahora sólo pueden iniciarse por caracteres alfanuméricos.

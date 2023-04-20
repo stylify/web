@@ -1,0 +1,89 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: "Vite.js"
+navigationIconPath: '/images/brands/vitejs.svg'
+image: '/integrations/vitejs/header.jpg'
+ogImage: '/integrations/vitejs/og-image.jpg'
+
+title: Uso de Stylify CSS con Vite.js
+description: "Aprende a usar Stylify CSS con Vite.js. Codifica tu sitio web más rápido con Stylify CSS y Vite.js"
+howToSchemaTitle: 'Cómo usar Stylify CSS en Vite.js.'
+howToSchemaSteps: [
+	{
+		"name": "Instalación",
+		"text": "Instalar paquete @stylify/unplugin usando CLI como YARN o NPM",
+		"url": "#instalación",
+	},
+	{
+		"name": "Uso",
+		"text": "Añade el módulo de construcción CSS de Stylify en vite.config.js",
+		"url": "#usage",
+	},
+	{
+		"name": "Configuración",
+		"text": "Extiende la configuración CSS de Stylify como necesites. Configura variables, componentes, selectores personalizados y mucho más",
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+import DocsUnpluginBuildInfo from '@components/DocsUnpluginBuildInfo.astro';
+import WhereToNext from '@components/WhereToNext.astro';
+
+Vite.js es la próxima generación de herramientas de frontend y Assets Bundler.
+
+Stylify puede integrarse en Vite.js utilizando @stylify/bundler.
+
+<StackBlitzLink link="stylify-vite-example" />
+
+## Cómo integrar el CSS de Stylify en el Vite.js
+
+El ejemplo de abajo funciona con la plantilla Vite. Sin embargo, puedes usar el ejemplo de abajo y configurarlo para Svelte, React, Vue, Angular, Lit y cualquier otro framework que desees.
+
+Primero, instala el paquete [@stylify/unplugin](/es/docs/unplugin) usando NPM o Yarn:
+
+```
+npm i -D @stylify/unplugin
+yarn add -D @stylify/unplugin
+```
+
+A continuación añade la siguiente configuración en `vite.config.js`:
+
+```javascript
+import { defineConfig } from 'vite';
+import { stylifyVite } from '@stylify/unplugin';
+
+const stylifyPlugin = stylifyVite({
+	bundles: [{ files: ['./*'], outputFile: './stylify.css' }],
+	// Opcional
+	// Información de configuración del compilador https://stylifycss.com/en/docs/stylify/compiler#configuration
+	compiler: {
+		// https://stylifycss.com/en/docs/stylify/compiler#variables
+		variables: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#macros
+		macros: {},
+		// https://stylifycss.com/en/docs/stylify/compiler#components
+		components: {},
+		// ...
+	}
+});
+
+export default defineConfig(({ mode }) => ({
+	plugins: [stylifyPlugin],
+}));
+```
+
+Ahora puedes añadir la ruta del `stylify.css` generado en el archivo `main.js`:
+
+```javascript
+import './stylify.css';
+```
+
+Si ahora utilizas los comandos de Vite.js obtendrás el fichero `stylify.css` generado.
+
+<DocsUnpluginBuildInfo />
+
+<WhereToNext />

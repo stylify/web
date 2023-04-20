@@ -1,0 +1,374 @@
+---
+section: get-started
+
+order: 2
+
+navigationTitle: "最佳实践"
+
+title: "实用优先的CSS的最佳实践"
+description: "如何使用效用优先的CSS。了解何时使用哪种功能，以获得这种方法的最大效果。"
+---
+
+本指南列出了在工作和测试utility-first CSS时学到的有用经验。
+它的目标是帮助你有效地使用效用优先的CSS，同时消除下面提到的问题。
+
+## 如何对齐和排序选择器
+将你的选择器从最小的媒体查询/屏幕/容器，到最大的选择器排序。
+
+```html
+<!--最小宽度-->
+<button class="font-size:14px sm:font-size:24px lg:font-size:32px"></button>
+<!--最大宽度 -->
+<button class="maxw640px:margin-top:24px tomd:flex-direction:column"></button>
+```
+
+如果类属性很长，而且你在属性中拥有多个媒体查询，请将每个媒体查询放在单独的一行。这样你就可以很容易地看到，哪一行负责每个媒体/容器查询，以及拉动请求中的变化。
+```html
+<div class="
+	width:240px height:240px margin-bottom:24px
+	md:margin-bottom:32px md:width:320px
+	xl:width:100%
+"></div>
+```
+
+如果一个元素上有多个属性，而且类有很多效用，把类属性放在最后，分成多行。这将保持元素的可读性：
+
+```html
+<div id="" aria-label="" data-my-custom-data class="
+	width:240px height:240px margin-bottom:24px
+	md:margin-bottom:32px md:width:320px
+	xl:width:100%
+"></div>
+```
+
+当涉及到像 "字体大小"/"行高 "和 "宽度"/"高度 "这样彼此 "相关 "的选择器时，把它们放在彼此的旁边。这样就更容易找到相关的选择器。
+
+```html
+<button class="font-size:18px line-height:24px width:100% height:24px"></button>
+<button class="
+	display:flex flex-direction:column align-items:center
+	font-size:18px line-height:24px
+	md:flex-direction:row md:font-size:20px
+"></button>
+```
+
+为了减少类的数量，你也可以使用快捷键和现代CSS功能来避免不必要的类。
+```html
+<div class="margin-top:12px margin-right:24px font-size:16px md:font-size:24px xl:font-size:32px"></div>
+<div class="margin:12px_24px_0_0 font-size:clamp(16px,10vh,32px)"></div>
+```
+
+## 清理臃肿的模板和重复的类属性
+由于实用程序使用的简单性，我们很容易忘记将代码分割成可重用的部分。不幸的是，如果我们不想有无法阅读的模板，我们就不能避免这种情况：
+- 我们可以对元素进行全局样式化，为此我们可以使用[全局自定义选择器](/zh/docs/stylify/compiler#customselectors)，或者[组件](/zh/docs/stylify/compiler#components)。
+- 当使用React、Vue、Svelte或Angular等框架时，我们可以用插槽轻松地创建基于框架的组件。
+- 我们也可以在配置文件中或在使用它们的文件（模板）中定义组件。
+
+每种方法都有它的目的，下面会解释。
+
+### 创建可重复使用的组件
+
+如果你使用Nuxt、Next、Vue、React、Svelte或Lit等框架，你可以定义组件并重复使用它们。
+这样一来，你只需在一个地方为这些组件设置样式，而不会在其他地方让你的HTML变得臃肿。
+
+另外，你可以根据传递的道具来渲染组件，从而限制可能的组件样式变体的数量。
+
+```html
+// MyButton.vue
+<template>
+	<button class="color:red font-size:24px">
+		<slot></slot>
+	</button>
+</template>
+
+// Page.vue
+<template>
+	<MyButton>点击我！</MyButton>
+</template>
+```
+
+类似的方法也可以在PHP框架内使用，如[Symfony](https://twig.symfony.com/doc/2.x/tags/include.html)、[Laravel](https://laravel.com/docs/9.x/blade#components)或[Nette](https://latte.nette.org/zh/template-inheritance#toc-horizontal-reuse)。它可能不像React或Vue组件那样灵活，但你可以创建很多可重复使用的块。
+
+### 全局性的元素样式
+有时有必要对元素进行全局样式化。比如在一篇文章中对嵌套的元素进行造型，或者添加一些CSS重置。
+
+这可以通过使用[自定义选择器](/zh/docs/stylify/compiler#customselectors)以各种方式完成。
+
+当你只有少量的选择器或元素需要修改时，直接通过class属性进行样式设计就可以了。
+
+```html
+<nav class="
+display:flex flex-direction:column
+
+[a]{display:inline-flex;align-items:center;text-decoration:none}
+[a_.icon]{margin-right:4px;line-height:1}
+[a_span]{font-size:16px}
+[a:hover_span]{text-decoration:underline}
+">
+	<a href="#">
+		<i class="icon"></i>
+		<span>链接</span>
+	</a>
+</nav>
+```
+
+当你要添加到内部/全局元素的样式开始增长时，最好把它移到类属性之外。
+你可以在你的配置文件中或在使用它们的模板中定义这些选择器。
+
+如果样式只应用于一个模板，我们可以在模板中定义它。自定义选择器可以在 "stylify-customSelectors "部分的注释中定义。它希望是一个没有周围括号的javascript对象。模板字面上的语法与SCSS类似。然而，为了保持简单，它只支持嵌套和链式。自定义选择器的内容选项期望有一个不带括号的javascript对象：
+```html
+<!--
+stylify-customSelectors
+	'.navigation': `
+		display:flex flex-direction:column
+
+		a {
+			display:inline-flex align-items:center text-decoration:none
+			.icon { margin-right:4px line-height:1 }
+			span { font-size:16px }
+			&:hover span { text-decoration:underline }
+		}
+	`
+/stylify-customSelectors
+-->
+<nav class="navigation">
+	<a href="#">
+		<i class="icon"></i>
+		<span>链接</span>
+	</a>
+</nav>
+```
+
+模板的配置也可以移到[配置文件](/zh/docs/stylify/compiler#customselectors)：
+
+```javascript
+const compilerConfig = {
+	customSelectors: {
+		'.navigation': `
+			display:flex flex-direction:column
+
+			a {
+				display:inline-flex align-items:center text-decoration:none
+				.icon { margin-right:4px line-height:1 }
+				span { font-size:16px }
+				&:hover span { text-decoration:underline }
+			}
+		`
+	}
+}
+```
+
+## 通过变量消除硬编码值
+起初，写选择符如`color:#000`或`box-shadow:0_4px_8px_rgba(0,0,0,.16)`似乎可以。然而，如果我们想在整个网络上使用相同的阴影，或者在未来的某个地方，我们想支持明/暗模式，怎么办？这根本行不通，而且会使维护和重构工作变得复杂。
+
+在Stylify的案例中，变量可以通过两种方式定义。如果一个变量是全局使用的，把它放在[全局配置](/zh/docs/stylify/compiler#variables)中：
+```javascript
+const compilerConfig = {
+	variables: {
+		textColor: '#000',
+		shadow: '0 4px 8px rgba(0,0,0,.16)'
+	}
+}
+```
+
+如果在本地使用，请在使用[content options](/zh/docs/stylify/compiler#contentoptionsprocessors)的文件的注释中配置它。它期望一个没有周围括号的javascript对象：
+
+```html
+<!--
+stylify-variables
+	textColor: '#000',
+	shadow: '0 4px 8px rgba(0,0,0,.16)'
+/stylify-variables
+-->
+```
+
+你可以在多个地方重复使用这些变量，像这样：
+```html
+<span class="color:$textColor box-shadow:$shadow">你好，世界! </span>
+```
+
+当你需要根据屏幕或颜色主题的偏好来修改字体或颜色时，使用CSS变量来灵活地改变颜色、字体大小、背景和其他属性，基于屏幕和媒体查询。这将减少选择器的数量，并将简化重构。
+```javascript
+const compilerConfig = {
+	// CSS变量在Stylify中是默认启用的。
+	replaceVariablesByCssVariables: true,
+	// https://stylifycss.com/en/docs/stylify/compiler#variables
+	variabels: {
+		textFontSize: '12px',
+		textColor: '#000',
+		// 试图与屏幕相匹配，可以是sm, md, lg...
+		minw400px: {
+			textFontSize: '18px
+		},
+		// 对于一个@media (preferred-color-scheme: dark)
+		dark: {
+			textColor: '#fff'
+		},
+		// 当没有找到屏幕时,
+		// 它就会返回到一个自定义选择器
+		// 在这种情况下，具有".dark "类的元素
+		//这很可能是根（html el）。
+		'.dark': {
+			textColor: '#fff'
+		},
+	}
+};
+```
+
+而在HTML中：
+```html
+<span class="font-size:$textFontSize color:$textColor"></span>
+```
+
+## 使用钩子简化开发
+为了消除一些重复的工作，你可以使用Stylify CSS Hooks系统。Stylify在[Compiler](/zh/docs/stylify/compiler#hooks)、[Bundler](/zh/docs/bundler#hooks)和[Runtime](/zh/docs/stylify/runtime#hooks)中提供各种挂钩。
+
+这些钩子可以用来附加监听器，例如，你可以用它来：
+- 动态地生成一个风格指南
+- 修改/转换/扩展新选择器的匹配值
+- 修改捆绑器输出
+- 当Stylify生成初始CSS时，在浏览器中触发一些回调。
+- 等等...
+
+下面是一个钩子的例子，它监听一个新的 "字体大小 "的宏匹配。这个钩子检查字体大小是否在允许的范围内，并将`px`单位转换为`REM`。它还附加了正确的行高，这样我们就不必在每次使用`font-size`选择器时添加`line-height`选择器：
+
+```javascript
+import { hooks } from '@stylify/stylify';
+
+// 1.创建一个函数，用于处理font-size属性
+const fontSizeHandler = ({ selectorProperties }) => {
+	const propertyValue = selectorProperties.properties['font-size'];
+
+	// 如果字体的值是默认的，例如重置为REM，则不做任何事情
+	// 或者，如果单位不是像素，例如
+	if (propertyValue === '62.5%' || !propertyValue.endsWith('px')) {
+		return;
+	}
+
+	const numberValue = Number(propertyValue.match(/^\d+/));
+	// 我们来创建允许的字体大小
+	const allowedFontSizes = {
+		'Small text': 12,
+		'Regular text': 16,
+		'Large text': 20,
+		'Subtitle': 24,
+		'Title': 32,
+		'Large title': 42,
+		'Extra large title': 64
+	}
+
+	// 如果开发者试图使用例如font-size:13px，它将抛出一个错误
+	if (!Object.values(allowedFontSizes).includes(numberValue)) {
+		throw new Error(`Font size "${propertyValue}" is not allowed. Available values are "${JSON.stringify(allowedFontSizes)}".`);
+	}
+
+	const pixelFontSize = Number(pixelUnit.slice(0,-2));
+	const remFontSize = pixelFontSize / 10;
+
+	// 另外，重新计算px到rem，并添加一个正确的行高
+	// 这样我们就不用每次都手动添加了
+	selectorProperties.addMultiple({
+		'font-size': `${remFontSize}rem`,
+		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
+	});
+}
+
+//2. 将其加入处理程序中
+const newMacroMatchHandlers = {
+	'font-size': fontSizeHandler
+};
+
+// 3.添加一个钩子，监听新的宏匹配，获得适当的处理程序并调用它
+hooks.addListener('compiler:newMacroMatch', ({ macroMatch, selectorProperties }) => {
+	const selectorProperties = Object.keys(data.selectorProperties.properties);
+	for (const selectorProperty of selectorProperties) {
+		const handler = newMacroMatchHandlers[selectorProperty] ?? undefined;
+
+		if (handler === undefined) {
+			continue;
+		}
+
+		handler(data);
+	}
+});
+```
+
+## 拆分CSS
+Stylify允许你分割CSS包，基本上每个文件都可以分开。
+这个功能使CSS的优化水平更上一层楼，因为文件包可以变得非常小。
+
+### 为应用程序的部分拆分CSS
+比方说，你有两个应用部分。一个用于网站的前台，另一个用于管理/用户仪表板。
+对于这两个部分，将只生成两个CSS文件。前台的CSS将不会被加载到管理员中，反之亦然。
+
+### 为布局和页面分割CSS
+这样你就有一个用于布局的CSS导入和一个用于页面的CSS导入。当你加载一个页面时，布局和页面的CSS将被加载。除了布局的CSS现在被缓存了以外，其他每一个页面都会发生这种情况。
+
+### CSS层和作用域
+如果你决定将布局/页面的CSS分成多个文件，你可能会遇到CSS选择器被重写的问题。
+
+幸运的是，这个问题有一个简单的解决方案。我们使用CSS层和Scope来纠正这种特殊性。
+
+Stylify CSS在bundle配置中提供了对CSS层的支持。这个配置可以在Stylify Unplugin（用于Next、React、Vue、Vite、SvelteKit、Symfony、Laravel、Nette等）和Stylify Astro（Astro.build）中使用。这两个软件包都在引擎下使用了Stylify捆绑程序包。
+
+Stylify Unplugin、Astro集成和Bundler的常见配置：
+```javascript
+const bundlerConfig = {
+	cssLayersOrder: {
+		// 这将生成@layer布局,页面;
+		order: 'layout, page',
+		// 这告诉Stylify导出上述层的顺序
+		// 只导出到有布局CSS层的包中
+		exportLayer: ['layout']
+	},
+};
+
+const layoutBundle = {
+	files: ['path/to/layout.html'],
+	outputFile: 'path/to/layout.css',
+	cssLayer: 'layout'
+};
+
+const pageBundle = {
+	files: ['path/to/page.html'],
+	outputFile: 'path/to/page.css',
+	cssLayer: 'page'
+};
+
+const config = {
+	bundler: bundlerConfig,
+	bundles: [ layoutBundle, pageBundle ]
+};
+```
+
+此配置与unplugin的用法：
+
+```javascript
+import { stylifyVite, stylifyWebpack, stylifyEsbuild, stylifyRollup } from '@stylify/unplugin';
+
+stylifyVite(config);
+stylifyWebpack(config);
+stylifyEsbuild(config);
+stylifyRollup(config);
+```
+
+与Astro.build集成的例子：
+
+```javascript
+import stylify from '@stylify/astro';
+
+export default {
+	integrations: [stylify(config)]
+}
+```
+
+直接使用捆绑器的例子：
+
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+const bundler = new Bundler(config)
+bundler.bundle();
+
+await bundler.waitOnBundlesProcessed();
+```

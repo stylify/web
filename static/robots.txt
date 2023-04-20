@@ -1,3 +1,0 @@
-User-agent: *
-Sitemap: https://stylifycss.com/sitemap.xml
-Disallow: /404 /content/*

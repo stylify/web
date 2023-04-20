@@ -1,0 +1,29 @@
+---
+const { type } = Astro.props
+const affiliateOptions = [
+	{
+		imageSrc: 'wedos.webp',
+		imageWidth: '50',
+		imageHeight: '50',
+		text: '<strong>NoLimit Wehosting for $2/month</strong>.<br>Code <strong>WN231XKD9O</strong>',
+		link: 'https://www.wedos.cz/webhosting?ap=nrgRt3'
+	},
+	{
+		imageSrc: 'wedos.webp',
+		imageWidth: '50',
+		imageHeight: '50',
+		text: '<strong>50% discount on .EU, .ONLINE, .STORE, .TECH, .SITE, .WEBSITE, .SPACE, .FUN domains</strong>.<br>Code <strong>DM231Z2LGY</strong>',
+		link: '	https://www.wedos.com/domains?ap=nrgRt3'
+	},
+];
+const item = affiliateOptions[Math.floor(Math.random() * affiliateOptions.length)];
+---
+
+<a href={item.link} target="blank" rel="noopener nofollow" class={`
+	text-decoration:none border:1px_solid_#eee border-radius:4px font-size:12px padding:8px
+	display:inline-flex align-items:center color:#f1f1f1 max-width:300px
+	${type === 'docsSidebar' ? 'flex-direction:column justify-content:center' : ''}
+`}>
+	<img src={`/images/affil/${item.imageSrc}`} loading="lazy" fetchpriority="low" width={item.imageWidth} height={item.imageHeight} alt="" class={type === 'docsSidebar' ? 'margin-bottom:8px' : 'margin-right:8px'}>
+	<span class={type === 'docsSidebar' ? 'text-align:center' : ''} set:html={item.text} />
+</a>

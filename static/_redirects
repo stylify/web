@@ -1,7 +1,0 @@
-# Netlify redirects
-/docs								  /docs/get-started
-/docs/								  /docs/get-started
-/docs/get-started/installation/       /docs/get-started
-/docs/get-started/writting-first-css/ /docs/get-started
-/docs/get-started/installation        /docs/get-started
-/docs/get-started/writting-first-css  /docs/get-started

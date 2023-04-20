@@ -1,0 +1,64 @@
+---
+section: integrations
+
+order: 1
+
+navigationTitle: Astro
+navigationIconPath: '/images/brands/astro.svg'
+image: '/integrations/astro/header.jpg'
+ogImage: '/integrations/astro/og-image.jpg'
+
+title: "在Astro.build中使用Stylify CSS"
+description: "了解如何在Astro.build中使用Stylify CSS。用Stylify CSS更快编写你的Astro.build网站代码。"
+howToSchemaTitle: "如何在Astro.build中使用Stylify CSS。"
+howToSchemaSteps: [
+	{
+		"name": "安装",
+		"text": "使用YARN或NPM等CLI安装@stylify/astro软件包",
+		"url": "/integrations/astro#installation",
+	},
+	{
+		"name": "用法",
+		"text": "将Stylify CSS构建模块添加到astro.config.mjs中。" ,
+		"url": "#usage",
+	},
+	{
+		"name": "配置",
+		"text": "根据你的需要来扩展Stylify的CSS配置。配置变量、组件、自定义选择器和更多。" ,
+		"url": "#configuration",
+	},
+]
+---
+import StackBlitzLink from '@components/StackBlitzLink.astro';
+
+Astro.build是一个框架，让你更快地建立你的网站。
+
+@stylify/astro的集成简化了Stylify的CSS集成到Astro.build中。
+
+<StackBlitzLink link="stylify-astro-example" />
+
+## 安装
+
+集成只能通过NPM或Yarn等CLI安装：
+```
+yarn add @stylify/astro
+npm i @stylify/astro
+```
+
+## 用法
+
+在`astro.config.mjs`中添加一个buildModule：
+
+
+```javascript
+import { defineConfig } from 'astro/config';
+import stylify from '@stylify/astro';
+
+export default defineConfig({
+	integrations: [stylify()]
+});
+```
+
+## 配置
+
+查看 [@stylify/astro](/zh/docs/astro#configuration) 包。
