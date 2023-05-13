@@ -204,10 +204,8 @@ const compilerConfig = {
 		'.dark': { blue: 'lightblue' },
 		':root[data-theme="dark"]': { blue: 'lightblue' }
 	},
-	// 默认情况下，变量被替换成它们的值。如果这个选项被启用，它们
-	// 被var(--variableName)所替代，并且可以更加动态。
-	// 这对于在浅色和深色模式之间切换是非常好的。
-	replaceVariablesByCssVariables: false,
+	// 如果你想禁用CSS变量，请将此选项设为false。
+	cssVariablesEnabled: true,
 	// 默认情况下，变量会作为CSS变量自动注入到生成的CSS中。
 	// 你可以通过将下面的选项设置为false来改变这种行为
 	injectVariablesIntoCss: true

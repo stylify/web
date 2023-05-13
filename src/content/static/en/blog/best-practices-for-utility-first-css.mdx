@@ -215,8 +215,6 @@ You can reuse these variables in multiple places like this:
 When you need to modify the font or color based on screen or color theme preference, use CSS variables to flexibly change colors, font sizes, background and other properties, based on screen and media query. This will decrease the number of selectors and will simplify the refactoring.
 ```javascript
 const compilerConfig = {
-	// CSS variables are note enabled by default in Stylify
-	replaceVariablesByCssVariables: true,
 	// https://stylifycss.com/en/docs/stylify/compiler#variables
 	variabels: {
 		textFontSize: '12px',

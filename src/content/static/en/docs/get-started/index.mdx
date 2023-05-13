@@ -104,11 +104,7 @@ const compilerConfig = {
 ```
 
 ### CSS variables
-When you want to turn on CSS variables, just add `replaceVariablesByCssVariables` in stylify config. This will replace variable by a CSS variable instead of it's value.
-
-<Note>CSS variables will be enabled by default in the upcoming 0.6 version.</Note>
-
-Stylify tries to be strict by default. When the CSS variables are enabled, you might want to set [external variables](/en/docs/stylify/compiler#externalvariables), to inform Stylify, that some variables exists but are external. If you don't want to configure all of them, you can disable the warning completely.
+Stylify tries to be strict by default. You might want to set [external variables](/en/docs/stylify/compiler#externalvariables), to inform Stylify, that some variables exists but are external. If you don't want to configure all of them, you can disable the warning completely.
 
 <Note>A good practice is to for example load the file content of a theme, parse the content by a regular expression to match all possible CSS variables and pass matched names into the external variables array.
 You can also use a function to check if a variable used within a selector matches some pattern like <code>md-</code> for Material Theme. If so, it will be matched as external. This way you don't have to parse any files and check for names.</Note>
@@ -116,8 +112,6 @@ You can also use a function to check if a variable used within a selector matche
 In a compiler config:
 ```javascript
 const compilerConfig = {
-	// Enable CSS variables
-	replaceVariablesByCssVariables: true,
 	// Set external variables
 	externalVariables: [
 		// Simple string check

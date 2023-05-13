@@ -106,11 +106,10 @@ CSS的生产输出将与组件的例子类似。然而，HTML将看起来像这�
 </div>
 ```
 
-另外，我们需要配置Stylify，用CSS变量代替变量的值：
+另外，我们需要配置Stylify，让它知道 "localTextColor "是外部的：
 
 ```javascript
 const compilerConfig = {
-	replaceVariablesByCssVariables: true,
 	externalVariables: ['localTextColor']
 }
 ```

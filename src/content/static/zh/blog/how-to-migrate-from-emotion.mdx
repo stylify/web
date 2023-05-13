@@ -168,11 +168,9 @@ const compilerConfig = {
 </div>
 ```
 
-我们只需要告诉Stylify用CSS变量来代替变量的值，并且`localTextColor`是外部的：
-
+我们只需要告诉Stylify，"localTextColor "是外部的：
 ```javascript
 const compilerConfig = {
-	replaceVariablesByCssVariables: true,
 	externalVariables: ['localTextColor']
 }
 ```

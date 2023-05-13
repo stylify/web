@@ -204,10 +204,8 @@ const compilerConfig = {
 		'.dark': { blue: 'lightblue' },
 		':root[data-theme="dark"]': { blue: 'lightblue' }
 	},
-	// Por defecto, las variables se sustituyen por su valor. Si se activa esta opción, se
-	// son reemplazadas por var(--variableName) y pueden ser más dinámicas.
-	// Esto es genial por ejemplo para cambiar entre modo claro y oscuro.
-	replaceVariablesByCssVariables: false,
+	// Si desea desactivar las variables CSS, establezca esta opción en false
+	cssVariablesEnabled: true,
 	// Por defecto, las variables se inyectan automáticamente en el CSS generado como variables CSS.
 	// Puedes cambiar este comportamiento configurando la opción de abajo como false
 	injectVariablesIntoCss: true

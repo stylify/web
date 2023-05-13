@@ -17,7 +17,6 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 
 export default defineConfig({
 	compiler: {
-		replaceVariablesByCssVariables: true,
 		ignoredAreas: [
 			/\b((?:docs__aside|js-main-nav)-link)/,
 			// Ignore code areas in docs

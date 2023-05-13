@@ -104,11 +104,7 @@ const compilerConfig = {
 ```
 
 ### CSS变量
-当你想打开CSS变量时，只需在stylify配置中添加`replaceVariablesByCssVariables`。这将用一个CSS变量来代替变量的值。
-
-<Note>CSS变量将在即将到来的0.6版本中被默认启用。</Note>
-
-Stylify在默认情况下会努力做到严格。当CSS变量被启用时，你可能想设置[external variables](/zh/docs/stylify/compiler#externalvariables)，以通知Stylify，有些变量是存在的，但却是外部的。如果你不想配置所有的变量，你可以完全停用这个警告。
+Stylify在默认情况下会尽量严格。你可能想设置[外部变量](/en/docs/stylify/compiler#externalvariables)，以告知Stylify，有些变量是存在的，但却是外部变量。如果你不想配置所有的变量，你可以完全禁用这个警告。
 
 <Note>一个好的做法是，例如加载一个主题的文件内容，用正则表达式来解析内容，以匹配所有可能的CSS变量，并将匹配的名称传入外部变量数组。
 你也可以使用一个函数来检查在选择器中使用的变量是否与某些模式相匹配，比如<code>md-</code>用于Material Theme。如果是这样，它将被匹配为外部变量。这样你就不必解析任何文件和检查名称了。</Note>
@@ -116,8 +112,6 @@ Stylify在默认情况下会努力做到严格。当CSS变量被启用时，你�
 在一个编译器配置中：
 ```javascript
 const compilerConfig = {
-	// 启用CSS变量
-	replaceVariablesByCssVariables: true,
 	// 设置外部变量
 	externalVariables: [
 		// 简单的字符串检查

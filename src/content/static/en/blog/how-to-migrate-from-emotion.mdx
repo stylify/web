@@ -168,10 +168,9 @@ When you need to pass a color into the component using props, then instead of do
 </div>
 ```
 
-We just need to tell Stylify to replace variables with CSS variables instead of their value and that the `localTextColor` is external:
+We just need to tell Stylify that the `localTextColor` is external:
 ```javascript
 const compilerConfig = {
-	replaceVariablesByCssVariables: true,
 	externalVariables: ['localTextColor']
 }
 ```
