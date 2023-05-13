@@ -2,7 +2,7 @@ import { hooks } from '@stylify/bundler';
 import { defineConfig } from '@stylify/astro';
 
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
-	const pixelUnit = selectorProperties.properties['font-size'];
+	const pixelUnit = selectorProperties['font-size'];
 
 	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
 		return;
@@ -11,10 +11,8 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const pixelFontSize = Number(pixelUnit.slice(0,-2));
 	const remFontSize = pixelFontSize / 10;
 
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`;
 });
 
 export default defineConfig({

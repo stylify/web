@@ -56,9 +56,9 @@ const config = {
 		'h1,h2': 'margin-top:0 margin-bottom:12px md:margin-bottom:24px'
 	},
 	macros: {
-		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'ml:(\\S+?)': (match) => {
 			// ml:24px => will create => margin-left: 24px
-			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+			return {'margin-left': match.getCapture(0)}
 		}
 	},
 }
@@ -95,7 +95,7 @@ const hooksOptionsExampleSnippet = `
 import {hooks} from '@stylify/stylify';
 
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
-	const pixelUnit = selectorProperties.properties['font-size'];
+	const pixelUnit = selectorProperties['font-size'];
 
 	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
 		return;
@@ -104,10 +104,8 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const pixelFontSize = Number(pixelUnit.slice(0,-2));
 	const remFontSize = pixelFontSize / 10;
 
-	selectorProperties.addMultiple({
-		'font-size': \`\${remFontSize}rem\`,
-		'line-height': \`\${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem\`
-	});
+	selectorProperties['font-size'] = \`\${remFontSize}rem\`;
+	selectorProperties['line-height'] = \`\${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem\`;
 });
 `.trim();
 ---

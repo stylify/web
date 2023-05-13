@@ -74,10 +74,9 @@ const compilerConfig = {
 ```javascript
 const compilerConfig = {
 	macros: {
-		'color:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'color:(\\S+?)': (match) => {
 			// color:blue => will create => color: blue
-			// 你也可以使用addMultiple({})
-			selectorProperties.add('color', macroMatch.getCapture(0));
+			return { 'color': match.getCapture(0)}
 		},
 	},
 };
@@ -98,6 +97,8 @@ const compilerConfig = {
 
 ## selectorsPrefix
 这个选项允许你设置例如 "u-"（作为效用）前缀。这个前缀将在匹配过程中与宏连接。
+
+当你定义这种前缀时，你必须在任何地方使用它（自定义选择器、组件、实用程序）。否则，选择器将不会被匹配和生成。
 
 由于这个功能，你可以在你现有的应用程序中使用Stylify，而不会与已有的选择器发生冲突。
 
@@ -316,7 +317,7 @@ const compilerConfig = {
 		'sm': '(min-width: 400px)',
 		// 屏幕也可以是函数
 		// 这可以让你尽可能地制作灵活的屏幕
-		'minw\\w+': (screen) => `(min-width: ${screen.replace('minw', '')})`
+		'minw\\w+': (screen) => `(min-width: ${screen.fullMatch.replace('minw', '')})`
 	}
 };
 ```
@@ -523,9 +524,9 @@ const compilerConfig = {
 		joinText(...texts) => '"' + texts.join(' ') + '"'
 	},
 	macros: {
-		'(bgc|zi):(\\S+?)': ({helpers, macroMatch, selectorProperties}) => {
-			const property = helpers.shortcut(macroMatch.getCapture(0));
-			macroMatch.add(property, selectorProperties.getCapture(1));
+		'(bgc|zi):(\\S+?)': (match) => {
+			const property = helpers.shortcut(match.getCapture(0));
+			return {[property]: match.getCapture(1)}
 		}
 	}
 }
@@ -618,13 +619,26 @@ const compilerConfig = {
 <div slot="description">
 
 ## contentOptionsProcessors
-一些配置选项可以直接在文件中使用`内容选项'来定义。例如，保持一个组件的定义与它的HTML是很好的。
+一些配置选项可以直接在文件中使用`内容选项`来定义。例如，保留一个组件的定义和它的HTML是很好的。
+每一个内容选项，即使在文件中定义，也是全局注册的。它也没有任何范围。因此，如果你定义了一个组件，比如按钮，它可以在应用程序的任何地方使用。
+
+内容选项可以在一个文件中的任何地方定义，就像这样：
+```
+stylify-<option name>
+  内容选项内容
+/stylify-<option name>
+```
+
+最好的方法是在多行注释中定义内容选项，这样它在页面上是不可见的。
+
+<Note>使用对你定义组件的文件类型有效的注释样式。</Note>
 
 </div>
 <div slot="code">
 
 ```html
 <!--
+
 // 组件希望有一个有效的javascript对象作为值，不需要周围的括号
 stylify-components
 	button: `font-size:24px padding:4px`,
@@ -664,7 +678,7 @@ stylify-pregenerate
 // Screens希望得到一个有效的javascript对象作为值，不需要周围的括号。
 stylify-screens
 	'testScreen': '(min-width: 123px)',
-	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
+	'dynamic\\w+': (screen) => `(max-width: ${screen.fullMatch.replace('dynamic', '')})`
 /stylify-screens
 -->
 ```

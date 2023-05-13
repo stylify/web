@@ -84,10 +84,10 @@ const config = defineConfig({
 	// CSS variables are by default injected into the generated CSS.
 	// You can change this behavior by configuring compiler
 	// See https://stylifycss.com/en/docs/stylify/compiler#variables
-	cssVarsDirPath: 'path/to/vars',
-	sassVarsDirPath: 'path/to/vars',
-	lessVarsDirPath: 'path/to/vars',
-	stylusVarsDirPath: 'path/to/vars'
+	cssVarsExportPath: 'path/to/vars',
+	sassVarsExportPath: 'path/to/export-file.scss',
+	lessVarsExportPath: 'path/to/vars',
+	stylusVarsExportPath: 'path/to/vars'
 });
 
 const bundler = new Bundler(config);

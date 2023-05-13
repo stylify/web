@@ -74,10 +74,9 @@ Eeach matched selector is automatically mangled if enabled: `color:rgb(255,255,2
 ```javascript
 const compilerConfig = {
 	macros: {
-		'color:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'color:(\\S+?)': (match) => {
 			// color:blue => will create => color: blue
-			// You can also use addMultiple({})
-			selectorProperties.add('color', macroMatch.getCapture(0));
+			return {'color': match.getCapture(0)}
 		},
 	},
 };
@@ -98,6 +97,8 @@ Usage:
 
 ## selectorsPrefix
 This option allows you to set for example `u-` (as utility) prefix. This prefix will be joined with macros during matching.
+
+When you define such prefix, you must use it anywhere (custom selectors, components, utilities). Otherwise, selectors will not be matched and generated.
 
 Thanks to this feature you can use Stylify within your existing application without collision with already existing selectors.
 
@@ -315,7 +316,7 @@ const compilerConfig = {
 		'sm': '(min-width: 400px)',
 		// Screens can also be functions
 		// That allows you to make as flexible screen as possible
-		'minw\\w+': (screen) => `(min-width: ${screen.replace('minw', '')})`
+		'minw\\w+': (screen) => `(min-width: ${screen.fullMatch.replace('minw', '')})`
 	}
 };
 ```
@@ -522,9 +523,9 @@ const compilerConfig = {
 		joinText(...texts) => '"' + texts.join(' ') + '"'
 	},
 	macros: {
-		'(bgc|zi):(\\S+?)': ({helpers, macroMatch, selectorProperties}) => {
-			const property = helpers.shortcut(macroMatch.getCapture(0));
-			macroMatch.add(property, selectorProperties.getCapture(1));
+		'(bgc|zi):(\\S+?)'(match) {
+			const property = this.helpers.shortcut(match.getCapture(0));
+			return {[property]: match.getCapture(1)}
 		}
 	}
 }
@@ -616,13 +617,26 @@ const compilerConfig = {
 <div slot="description">
 
 ## contentOptionsProcessors
-Some configuration options can be defined directly in a file using `content options`. It's good to keep the definition of for example a component with its HTML.
+Some configuration options can be defined directly in a file using `content options`. It's good to keep the definition for example of a component with its HTML.
+Every content option, even when defined in a file, is registered globally. It's also not scoped in any way. So if you define a component, like button, it can be used anywhere in the app.
+
+Content options can be defined anywhere within a file like this:
+```
+stylify-<option name>
+  Content option content
+/stylify-<option name>
+```
+
+The best way is to define the content options within a multiline comments, so it is not visible on the page.
+
+<Note>Use the comment style that is valid for the file type where you define the component. </Note>
 
 </div>
 <div slot="code">
 
 ```html
 <!--
+
 // Components expects a valid javascript object as value without surrounding brackets
 stylify-components
 	button: `font-size:24px padding:4px`,
@@ -662,7 +676,7 @@ stylify-pregenerate
 // Screens expects a valid javascript object as value without surrounding brackets
 stylify-screens
 	'testScreen': '(min-width: 123px)',
-	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
+	'dynamic\\w+': (screen) => `(max-width: ${screen.fullMatch.replace('dynamic', '')})`
 /stylify-screens
 -->
 ```

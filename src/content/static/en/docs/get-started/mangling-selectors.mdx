@@ -10,12 +10,15 @@ description: "How to mangle HTML class selectors using the Stylify CSS Compiler.
 ---
 import Note from '@components/Note.astro';
 
-When you want to mangle selectors, you must set the compiler option => `mangleSelectors: true`.
+Selectors mangling is a next level optimization that converts long selectors like `.color\:blue` to a short one `.a`.
+This can significantly decrease the CSS and HTML size. It also makes harder to "steal" your web design by copy-pasting your source code.
 
-The example below is for a case when you would want to do some custom compilation.
-Packages like [@stylify/bundler](/en/docs/bundler), [@stylify/unplugin](/en/docs/unplugin), [@stylify/nuxt](/en/docs/nuxt), [@stylify/astro](/en/docs/astro) uses the same process internaly (automaticaly).
+## Configuration
+Mangling is turned off by default and you have to enable it.
 
-<Note>When you define a component or macro like <code>link</code> this selector can have a collision in production with selector like <code>sidebar-link</code>, when mangling selectors. Check out components documentation for [more info](/en/docs/stylify/compiler#components).</Note>
+### Compiler
+
+When you want to mangle selectors within your custom compilation by using Compiler directly, you must set the compiler option => `mangleSelectors: true`.
 
 ```javascript
 import { Compiler } from '@stylify/stylify';
@@ -29,4 +32,80 @@ const compiler = new Compiler({
 const compilationResult = compiler.compile(content);
 const mangledContent = compiler.rewriteSelectors(content, compilationResult);
 const css = compilationResult.generateCss();
+```
+
+### @stylify/bundler
+Bundler uses Compiler under the hood. If you want to enable mangling, enable the `mangleSelectors` within the compiler config:
+
+[Bundler docs](/en/docs/bundler)
+
+```js
+const bundler = new Bundler({
+	compiler: {
+		// This will take an effect only, when bundler is not watching files
+		mangleSelectors: true
+	}
+})
+```
+
+### @stylify/unplugin
+When you enable mangling within the unplugin, selectors are mangled directly within the source code (in the same way like bundler does).
+This is, because mangling it within the content provided by the bundler (Vite, Webpack, Rollup, ...) in which the plugin is used, that is often changed by other plugins and frameworks, is not reliable.
+Selectors will be mangled only when the bundler is not in a watch mode so your local environment should not be affected unless you run the build directly on localhost.
+
+[@stylify/unplugin docs](/en/docs/unplugin)
+
+<Note>If you need to run the production build on localhost, stage/commit or back your changes first, before you run the command for production build.
+After you check the production build on localhost, you can easily revert changes done by Stylify.</Note>
+
+```js
+const config = {
+	compiler: {
+		// This will take an effect only when the bundler where the plugin is used,
+		// is not running in a watch mode
+		mangleSelectors: true
+	}
+}
+```
+
+### @stylify/astro
+
+[@stylify/astro docs](/en/docs/astro)
+
+Astro plugin use the same config as unplugin:
+```js
+const config = {
+	compiler: {
+		mangleSelectors: true
+	}
+}
+```
+
+### @stylify/nuxt
+
+[@stylify/nuxt docs](/en/docs/nuxt)
+
+Nuxt plugin use the same config as unplugin:
+```js
+const config = {
+	compiler: {
+		mangleSelectors: true
+	}
+}
+```
+
+### @stylify/nuxt-module
+Nuxt module sets the mangling automatically and uses an old webpack plugin that is prepared specifically for Nuxt 2.
+You don't need to configure anything there.
+
+[@stylify/nuxt-module docs](/en/docs/nuxt-module)
+
+However you can disable the mangling by setting `mangleSelectors: false` :
+
+```js
+const config = {
+	compiler: {
+		mangleSelectors: false
+	}
+}
 ```

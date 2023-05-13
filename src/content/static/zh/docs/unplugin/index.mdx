@@ -68,14 +68,7 @@ const config = defineConfig({
 	// 见 https://stylifycss.com/en/docs/bundler#configuration
 	bundler: {
 		bundles: []
-	},
-	// Id是一个文件名
-	// 如果文件类型或名称应该被处理，则返回true。
-	// 例子是有HTML后缀的
-	// 默认情况下，Stylify CSS会检查该文件是否不在node_modules中。
-	// 并且检查各种文件类型
-	// 这里列出了https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
-	transformIncludeFilter: (id) => id.endsWith('html')
+	}
 });
 
 let webpackPlugin = stylifyWebpack(config);

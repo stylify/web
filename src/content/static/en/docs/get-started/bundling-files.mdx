@@ -16,15 +16,18 @@ Stylify Bundler is a package that allows you to generate CSS files for your proj
 ```javascript
 import { Bundler } from '@stylify/bundler';
 
+const isDev = process.argv[process.argv.length - 1] === '--w';
+
 // http://stylifycss.com/docs/bundler#configuration
 const bundler = new Bundler({
+	watchFiles: isDev,
 	// Optional
 	compiler: {
 		variables: {},
 		macros: {},
 		components: {},
 		// If you want to mangle selectors
-		mangleSelectors: true
+		mangleSelectors: !isDev
 		// ...
 	}
 })
@@ -38,3 +41,6 @@ bundler.bundle([
 
 await bundler.waitOnBundlesProcessed();
 ```
+
+- Now, if you run `node stylify.js`, it will bundle files and mangle selectors.
+- If you add `--w`, it will also watch files `node stylify.js --w`.

@@ -51,107 +51,122 @@ Stylify的发布、更新日志以及如何从一个版本更新到另一个版�
 
 </div>
 
-## 从0.4升级到0.5
-- 发布: [v0.5.0](https://github.com/stylify/packages/releases/tag/v0.5.0)
+##从0.5升级到0.6
+* [发布 - 0.6.0]()
+* [Milestone](https://github.com/stylify/packages/milestone/2?closed=1)
 
 ### @stylify/stylify
-- 宏的回调现在接受一个带参数的对象，而不是一连串的参数。`this`对象不再被修改。
-```javascript
-// v0.4.0
-const macros = {
-	'macro': (macroMatch, selectorProperties) => { const { helpers, variables, dev } = this;}
-};
+#### 编译器
+- `configure`和`addMacro`方法中删除了`return this`。
+- 现在默认启用了CSS变量，所有的变量现在都作为CSS变量导出。另外，当在一个属性值中使用`$someVariable`时，它被转换为`var(--someVariable)`。
+- `replaceVariablesByCssVariables`被重新命名为`cssVariablesEnabled`。`cssVariablesEnabled`选项接受一个布尔值，如果等于`false`则禁用CSS变量。
 
-// v0.5.0
-const macros = {
-	'macro':({ macroMatch, selectorProperties, helpers, variables, dev }) => {}
-};
-```
-- 重写选择器方法现在可以接受一个参数对象，而不是两个参数。
-```javascript
-// 如果传递给重写选择器的选项是字符串，那么预计只有一个参数
-compiler.rewriteSelectors(code)
+#### Macros
+* 宏回调中的`this`对象现在包含编译器实例。如果你需要访问包含变量、助手和其他属性的编译器实例，你不能使用箭头函数来访问`this`对象。
+*代替`selectorProperties.add()`返回一个带有`properties: values`的对象。
+* Matches `getCapture()`方法如果没有找到捕获，现在会返回undefined作为默认值而不是空字符串。这改善了对`match.getCapture(0)?? something`的比较。
+* `hasCapture`方法已被删除
 
-// 如果有两个或更多的参数被传递，那么它需要是一个对象
-compiler.rewriteSelectors({
-	content: '',
-	// 可选的
-	rewriteOnlyInSelectorsAreas: true,
-	matchSelectorsWithPrefix: false
-})
-```
-- rewriteSelectors方法中的参数`rewriteInAreas`被改名为`rewriteInSelectorsAreas`。
-- 将配置和内容选项中的`plainSelectors`改名为`customSelectors`。
-- 每个`customSelector`和`component`现在只接受一个字符串作为值。
-- 自定义选择器现在可以直接从模板生成。参见[docs](/zh/docs/stylify/compiler#customselectors)。
-- 如果你为组件使用了选择器链，请将其改写为新的类似SCSS的语法。
-```javascript
-// v0.4.0
-const components = {
-	'btn--big': {
-		selectors: 'color:blue',
-		selectorsChain: 'btn'
-	}
-};
+```js
+// 0.5
+const compilerConfig = {
+  macros: {
+    macro: ({ macroMatch, selectorProperties, helpers, variables, dev })  => {
+      selectorProperties.add('property', macroMatch.geCapture(0));
+    }
+  }
+}
 
-// v0.5.0
-const components = {
-	'btn--big': `
-		&.btn { color:blue }
-	`
-};
-```
-- 现在钩子的使用方法如下。请查看[Stylify钩子](/zh/docs/stylify/compiler#hooks)。
-
-```javascript
-import { hooks } from '@stylify/stylify';
-
-hooks.addListener('', (options) => {});
-```
-- 对于运行时间
-
-```javascript
-const runtime = new Runtime();
-runtime.hooks.addListener('', (options) => {});
-```
-
-### @stylify/bundler
-- 现在，Bundler钩子的使用方法如下。Bundler钩子扩展了默认的Stylify CSS钩子。请查看 [Bundler hooks](/zh/docs/bundler#hooks)。
-```javascript
-import { hooks } from '@stylify/bundler';
-
-hooks.addListener('', (options) => {});
-```
-- 现在只有`await bundler.waitOnBundlesProcessed()`可以用来等待bundler完成捆绑工作。await `bundler.bundle()`是没有必要的。
-
-### @stylify/bundler
-- 取消插件的出口现在是`stylifyVite`, `stylifyRollup`, `stylifyWebpack`, `stylifyEsbuild`。
-
-## 从0.3升级到0.4
-- 发布: [v0.4.0](https://github.com/stylify/packages/releases/tag/v0.4.0)
-- 只使用一个下划线`_`（代表一个空格字符） => `border:1px_solid_blue'.
-- 集成被从`stylifyIntegration`更名为`stylify`。
-- 在集成的初始化中不需要传递空对象或配置。
-
-## 从0.2升级到0.3
-- 发布: [v0.3.0](https://github.com/stylify/packages/releases/tag/v0.3.0)
-- 你可以从配置中移除React、Vue、Angular、Nette、Lit和Alpine的`selectorsAreas`。它们现在被默认在编译器配置中。
-- 将`extend`对象中的所有内容移到根中：
-```javascript
-const config = {
-	// 所有来自extend对象的配置选项都移到这里。
-	//编译器只是一个例子。
-	compiler: {},
-	// Extend关键字被移除
-	extend: {
-		compiler: {}
-	}
+// 0.6
+const compilerConfig = {
+  macros: {
+    macro(match) {
+       const { variables, helpers, dev } = this;
+       return  {
+         ['property']: match.getCapture(0),
+         'another-property': 'value'
+       }
+    }
+  }
 }
 ```
-- Stylify CSS Runtime现在只有`Stylify.configure()`方法。`Stylify.runtime.configure()`被移除。
 
-## 从0.1升级到0.2
-- 发布: [v0.2.1](https://github.com/stylify/packages/releases/tag/v0.2.1)
-- 配置文件已被删除
-- Autoprefixer 不一定要包含在你的 bundler 配置中。它现在是 bundler 中的默认配置。
-- 选择器现在只能由字母数字字符启动。
+#### 组件
+* 组件回调中的`this`对象现在包含编译器实例。
+* 组件定义现在接收RegExpMatch，而不是一个匹配数组。使用 "getCapture(0) "代替 "matches[0]"。匹配的索引现在小了1：`fullMatch`是整个reg exp匹配，而capture只包含额外的capture：
+  - `matches[0]` => `match.fullMatch`.
+  - `matches[1]`现在是`match.getCapture(0)`。
+
+```js
+// 0.5
+const compilerConfig = {
+  components: {
+     'btn:(\\S+)'({matches, variables, helpers }) {
+        return `color:${matches[1]}`
+     }
+  }
+
+
+// 0.6
+const compilerConfig = {
+  components: {
+     'btn:(\\S+)'(match) {
+        const { variables, helpers, dev } = this;
+        return `color:${match.getCapture(0)}`
+     }
+  }
+}
+```
+
+#### 帮助器
+* `帮助器回调中的`this`对象现在包含编译器实例
+
+#### 配置器
+* 除了`getExistingConfigFiles`以外的所有方法都被删除。该方法返回现有配置文件的路径。
+
+#### Compiler hooks
+* `compiler:newMacroMatch`： 现在为选择器属性接收`Record<string, string>`而不是`SelectorProperties`类。
+
+```js
+// 0.5
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size']；
+
+	selectorProperties.addMultiple({
+		'custom-property'： 'value'、
+	});
+});
+
+// 0.6
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	// 作为一个对象属性访问值
+	const value = selectorProperties['font-size']；
+
+	//将值作为一个对象属性分配
+	selectorProperties['custom-property'] = 'value'；
+});
+```
+
+### @stylify/bundler
+- `cssVarsDirPath`, `sassVarsDirPath`, `lessVarsDirPath`, `stylusVarsDirPath`被重命名为`cssVarsExportPath`, `sassVarsExportPath`, `lessVarsExportPath`, `stylusVarsExportPath`。它接受直接的文件路径（如`./path/to/vars.css`），它将被保存到该路径，或者只接受直接路径`./path/to/cssDir`。如果没有提供文件名，`stylify-variables`文件名将被使用，并加上正确的后缀。
+
+### @stylify/astro, @stylify/unplugin, @stylify/nuxt-module
+* Mangling现在默认是关闭的
+* 这是因为可靠性和防止 "我的选择器刚刚发生了什么 "这样的混乱（尽管，这是一个功能，而不是一个错误）。
+* 纠错算法现在直接在源代码中纠错选择器。这是因为在文件中处理选择器是不可靠的，因为这些文件是由框架编译并传递给vite/webpack/rollup的，因此放弃了这种支持。
+* 如果你想启用mangling，请将mangling编译器选项设置为true。选择器将只在你运行构建命令时被处理。而不是在观察模式下。
+* 构建命令通常只在GitHub Actions、Gitlab Pipelines或类似的地方运行，因此选择器将在生产构建中被处理，而不是在本地环境中。
+* 如果你需要在本地环境中测试构建，请将你的修改藏起来或提交，运行构建命令，然后再恢复修改。
+
+```js
+// 0.6
+const compilerConfig = {
+  编译器： {
+   // 只有当捆绑器不在观察模式中时，这才会产生效果
+   mangleSelectors: true
+  }
+}
+```
+
+### @stylify/unplugin
+- `transformIncludeFilter`配置选项已被删除，因为它不再需要了。

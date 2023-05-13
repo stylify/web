@@ -42,13 +42,17 @@ export const webalize = (content: string): string => {
 
 let componentsPreviewIframeCss = '';
 const snippetsDir = resolve('./src/snippets');
+
 export const getComponentPreviewData = async (previewUrl: string, importOnly = false) => {
 	const snippetsUrlPart = snippetsDir;
 	const fileContent = fs.readFileSync(`${snippetsUrlPart}/${previewUrl}`, 'utf-8');
+
+	/* stylify-ignore */
 	const additionalCss = fileContent.match(/<style>([\S\s\n]+)<\/style>/) ?? null;
 	const previewHtml = fileContent.replace(/^[\S\s\n]+<div class="content-wrapper">/g, '')
 		.replace(/<\/div><\/div><\/body><\/html>/g, '').trim();
 	let previewCss = '';
+	/* /stylify-ignore */
 
 	if (!importOnly) {
 		if (componentsPreviewIframeCss === '') {

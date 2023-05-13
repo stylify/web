@@ -67,14 +67,7 @@ const config = defineConfig({
 	// Véase https://stylifycss.com/en/docs/bundler#configuration
 	bundler: {
 		bundles: []
-	},
-	// Id es un nombre de archivo
-	// Devuelve true, si el tipo o nombre de archivo debe ser procesado
-	// El ejemplo es con sufijo HTML
-	// Por defecto Stylify CSS comprueba si el archivo no está en node_modules
-	// y también comprueba si hay varios tipos de archivos
-	// listados aquí https://github.com/stylify/packages/blob/master/packages/unplugin/src/index.ts
-	transformIncludeFilter: (id) => id.endsWith('html')
+	}
 });
 
 let webpackPlugin = stylifyWebpack(config);

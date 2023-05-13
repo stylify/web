@@ -60,10 +60,12 @@ const stylifyConfig = defineConfig({
 	},
 	// 当vars dir paths被设置后，Stylify CSS会根据给定的路径将变量导出到
 	// 根据给定的路径导出一个文件
-	cssVarsDirPath: null,
-	sassVarsDirPath: null,
-	lessVarsDirPath: null,
-	stylusVarsDirPath: null,
+	// cssVarsExportPath: 'path/to/dir',
+	// cssVarsExportPath: 'path/to/export-file.css',
+	cssVarsExportPath: null,
+	sassVarsExportPath: null,
+	lessVarsExportPath: null,
+	stylusVarsExportPath: null,
 	//文件掩码被@stylify/bundler使用。
 	// 捆绑器使用这些掩码来寻找他应该生成CSS的文件。
 	// 当你添加一个掩码，并且你想要mangleSelectors时，你还需要添加适当的加载器。见下文

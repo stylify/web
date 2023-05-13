@@ -10,8 +10,8 @@
   "dependencies": {
     "@astrojs/image": "^0.16",
     "@astrojs/mdx": "^0.19",
-    "@astrojs/prism": "^2.1.1",
-    "@astrojs/rss": "^2.3.2",
+    "@astrojs/prism": "^2.1",
+    "@astrojs/rss": "^2.3",
     "@astrojs/sitemap": "^1.2",
     "@codemirror/lang-html": "^6.4",
     "@codemirror/lang-javascript": "^6.1",
@@ -20,11 +20,11 @@
     "@codemirror/theme-one-dark": "^6.1",
     "@docsearch/css": "^3.3",
     "@docsearch/js": "^3.3",
-    "@stylify/astro": "^0.5",
-    "astro": "^2.3",
+    "@stylify/astro": "^0.6",
+    "astro": "^2.4",
     "codemirror": "^6.0",
     "instant.page": "^5.2",
     "normalize.css": "^8.0",
-    "sharp": "^0.32.0"
+    "sharp": "^0.32"
   }
 }

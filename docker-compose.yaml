@@ -9,8 +9,8 @@ services:
       - 4000:4000
       - 24678:24678
     volumes:
-      - ./:/var/www/html
-      - "../stylify:/var/www/stylify"
+      - ./:/var/www/html:cached
+      - "../stylify:/var/www/stylify:cached"
     environment:
         - DOMAIN=localhost
         - SCHEME=http

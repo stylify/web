@@ -80,7 +80,7 @@ const compilerConfig = {
 	screens: {
 		'xs': '(min-width: 400px)',
 		// 屏幕也可以是函数 => 动态屏幕
-		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
+		'customScreen\\w+': (screen) => `(min-width: ${screen.fullMatch.replace('customScreen', '')})`
 	}
 };
 ```
@@ -163,9 +163,9 @@ const compilerConfig = {
 ```javascript
 const compilerConfig = {
 	macros: {
-		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'ml:(\\S+?)': (match) => {
 			// ml:24px => 将创建 => margin-left: 24px
-			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+			return {'margin-left': match.getCapture(0)}
 		}
 	}
 };
@@ -199,7 +199,7 @@ const compilerConfig = {
 ## 材料主题集成指南
 如果你正在寻找一些调色板，[有一个指南](/zh/snippets/snippets/material-theme)，说明如何使用Material Theme Builder来为你的下一个项目轻松生成Material Theme。
 
-<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+<video autoplay muted loop class="cf nz ag">
 	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
 </video>
 
