@@ -80,7 +80,7 @@ const compilerConfig = {
 	screens: {
 		'xs': '(min-width: 400px)',
 		// Las pantallas también pueden ser funciones => pantallas dinámicas
-		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
+		'customScreen\\w+': (screen) => `(min-width: ${screen.fullMatch.replace('customScreen', '')})`
 	}
 };
 ```
@@ -163,9 +163,9 @@ En caso de que quieras añadir por ejemplo una variante más corta para `margin-
 ```javascript
 const compilerConfig = {
 	macros: {
-		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'ml:(\\S+?)': (match) => {
 			// ml:24px => creará => margin-left: 24px
-			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+			return {'margin-left': match.getCapture(0)}
 		}
 	}
 };

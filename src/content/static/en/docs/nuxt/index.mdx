@@ -59,10 +59,12 @@ const stylifyConfig = defineConfig({
 	},
 	// When vars dir paths are set, Stylify CSS will export variables into
 	// a file according to given path
-	cssVarsDirPath: null,
-	sassVarsDirPath: null,
-	lessVarsDirPath: null,
-	stylusVarsDirPath: null,
+	// cssVarsExportPath: 'path/to/dir',
+	// cssVarsExportPath: 'path/to/export-file.css',
+	cssVarsExportPath: null,
+	sassVarsExportPath: null,
+	lessVarsExportPath: null,
+	stylusVarsExportPath: null,
 	// Files masks are used by @stylify/bundler
 	// Bundler uses these masks to find files from which he should generate CSS
 	// When you add a mask and you want to mangleSelectors, you also need to add appropriate loader. See below

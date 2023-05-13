@@ -264,7 +264,7 @@ import { hooks } from '@stylify/stylify';
 
 // 1. Crear una función, que trabajará con la propiedad font-size
 const fontSizeHandler = ({ selectorProperties }) => {
-	const propertyValue = selectorProperties.properties['font-size'];
+	const propertyValue = selectorProperties['font-size'];
 
 	// Si el valor de la fuente es, por ejemplo, un valor por defecto REM, no hacer nada
 	// O, si la unidad no son píxeles por ejemplo
@@ -294,10 +294,9 @@ const fontSizeHandler = ({ selectorProperties }) => {
 
 	// Además, recalcula px a rem y añade una altura de línea correcta
 	// Para no tener que añadirla manualmente cada vez
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`;
+
 }
 
 // 2. Añádelo a los manejadores
@@ -307,7 +306,7 @@ const newMacroMatchHandlers = {
 
 // 3. Añade un hook que escuche la coincidencia de una nueva macro, obtenga el manejador apropiado y lo llame
 hooks.addListener('compiler:newMacroMatch', ({ macroMatch, selectorProperties }) => {
-	const selectorProperties = Object.keys(data.selectorProperties.properties);
+	const selectorProperties = Object.keys(selectorProperties);
 	for (const selectorProperty of selectorProperties) {
 		const handler = newMacroMatchHandlers[selectorProperty] ?? undefined;
 
@@ -385,7 +384,7 @@ Example with Astro.build integration:
 import stylify from '@stylify/astro';
 
 export default {
-		integrations: [stylify(config)]
+	integrations: [stylify(config)]
 }
 ```
 

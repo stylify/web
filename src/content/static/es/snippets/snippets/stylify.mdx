@@ -94,12 +94,12 @@ const compilerConfig = {
 		// Esta macro coincidirá por ejemplo con `typo:16` y generará
 		// la altura de línea para ello. También convertirá el número a tamaño rem.
 		// Espera que el tamaño de la fuente del elemento HTML sea font-size:62.5%.
-		'typo:(\\S+?)': ({macroMatch, selectorProperties}) => {
-			const pixelFontSize = Number(macroMatch.getCapture(0));
-			selectorProperties.addMultiple({
+		'typo:(\\S+?)': (match) => {
+			const pixelFontSize = Number(match.getCapture(0));
+			return {
 				'font-size': `${Number(pixelFontSize) * 0.0625}rem`,
 				'line-height': `${pixelFontSize * 1.333 * 0.0625}rem`
-			});
+			}
 		}
 	}
 }
@@ -134,7 +134,7 @@ import { hooks } from '@stylify/stylify';
 	Por lo tanto no tienes que añadir la altura de línea.
 */
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
-	const pixelUnit = selectorProperties.properties['font-size'];
+	const pixelUnit = selectorProperties['font-size'];
 
 	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
 		return;
@@ -151,9 +151,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const fontCorrection = pixelFontSize > 32 ? largeFontSizeCorrection : smallFontSizeCorrection;
 
 	// Esto añade la altura de la línea y anula el tamaño de la fuente en la unidad rem.
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * fontCorrection}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * fontCorrection}rem`;
 });
 ```

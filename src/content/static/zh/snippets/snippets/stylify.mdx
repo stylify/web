@@ -96,12 +96,12 @@ const compilerConfig = {
 		// 这个宏将匹配例如`typo:16`，它将生成
 		//它的行高。同时，它还会将数字转换为rem大小。
 		// 它希望HTML元素的字体大小被设置为font-size:62.5%。
-		'typo:(\\S+?)': ({macroMatch, selectorProperties}) => {
-			const pixelFontSize = Number(macroMatch.getCapture(0));
-			selectorProperties.addMultiple({
+		'typo:(\\S+?)': (match) => {
+			const pixelFontSize = Number(match.getCapture(0));
+			return {
 				'font-size': `${Number(pixelFontSize) * 0.0625}rem`,
 				'line-height': `${pixelFontSize * 1.333 * 0.0625}rem`
-			});
+			};
 		}
 	}
 }
@@ -137,7 +137,7 @@ const compilerConfig = {
 	因此，你不需要添加行高。
 */
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
-	const pixelUnit = selectorProperties.properties['font-size'];
+	const pixelUnit = selectorProperties['font-size'];
 
 	if (typeof pixelUnit === 'undefined' || !pixelUnit.endsWith('px')) {
 		return;
@@ -154,9 +154,7 @@ hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const fontCorrection = pixelFontSize > 32 ? largeFontSizeCorrection : smallFontSizeCorrection;
 
 	// 这将增加行高，并将字体大小重写为rem单位。
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * fontCorrection}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * fontCorrection}rem`;
 });
 ```

@@ -80,7 +80,7 @@ const compilerConfig = {
 	screens: {
 		'xs': '(min-width: 400px)',
 		// Screens can also be functions => dynamic screens
-		'customScreen\\w+': (screen) => `(min-width: ${screen.replace('customScreen', '')})`
+		'customScreen\\w+': (match) => `(min-width: ${match.fullMatch.replace('customScreen', '')})`
 	}
 };
 ```
@@ -163,9 +163,13 @@ In case you want to add for example a shorter variant for `margin-left` like `ml
 ```javascript
 const compilerConfig = {
 	macros: {
-		'ml:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'ml:(\\S+?)': (match) => {
 			// ml:24px => will create => margin-left: 24px
-			selectorProperties.add('margin-left', macroMatch.getCapture(0));
+			// match.fullMatch => full match => ml:24px
+			// match.getCapture(xy) => returns captures from () according to index
+			//   getCapture(0) => 24px
+			//   getCapture(1) => undefined => there is only one capture in macro
+			return {'margin-left': match.getCapture(0)}
 		}
 	}
 };
@@ -199,7 +203,7 @@ Are you looking for some prearanged components? We have you covered!
 ## Material Theme Integration guide
 If you are looking for some color palettes, [there is a guide](/en/snippets/snippets/material-theme) on how to use Material Theme Builder to easily generate Material Theme for your next project.
 
-<video autoplay muted loop class="width:100% height:auto border-radius:8px">
+<video autoplay muted loop class="cf nz ag">
 	<source src="/videos/material-theme-builder.mp4" type="video/mp4" />
 </video>
 

@@ -51,106 +51,122 @@ Stylify releases, changelog and how to update from one version to another.
 
 </div>
 
-## Upgrading from 0.4 to 0.5
-- Release: [v0.5.0](https://github.com/stylify/packages/releases/tag/v0.5.0)
+## Upgrading from 0.5 to 0.6
+* [Release - 0.6.0]()
+* [Milestone](https://github.com/stylify/packages/milestone/2?closed=1)
 
 ### @stylify/stylify
-- Macros callbacks now accepts an object with arguments instead of a chain of arguments. The `this` object is no longer modified.
-```javascript
-// v0.4.0
-const macros = {
-	'macro': (macroMatch, selectorProperties) => { const { helpers, variables, dev } = this;}
-};
+#### Compiler
+- `return this` was removed from `configure` and `addMacro` method
+- CSS variables are now enabled by default and all variables are now exported as CSS variables. Also when used within a property value as `$someVariable` it is converted to `var(--someVariable)`.
+- `replaceVariablesByCssVariables` was renamed to `cssVariablesEnabled`. The `cssVariablesEnabled` option accepts a boolean value that disables CSS variables if is equal to `false`.
 
-// v0.5.0
-const macros = {
-	'macro':({ macroMatch, selectorProperties, helpers, variables, dev }) => {}
-};
-```
-- The rewrite selectors method now optionaly accepts an object of arguments instead of 2 arguments
-```javascript
-// If options passed to rewrite selectors are string, then only one argument is expected
-compiler.rewriteSelectors(code)
+#### Macros
+* The `this` object within the macro callback now contains the Compiler instance. If you need to access the Compiler instance that contains variables, helpers and other properties, you cannot use the arrow function to access the `this` object.
+* Instead of `selectorProperties.add()` return an object with `properties: values`
+* Matches `getCapture()` method now returns undefined for a default value if capture was not found instead of empty string. This improves comparison for `match.getCapture(0) ?? something`
+* `hasCapture` method has been removed
 
-// If two or more are passed, it needs to be an object
-compiler.rewriteSelectors({
-	content: '',
-	// Optional
-	rewriteOnlyInSelectorsAreas: true,
-	matchSelectorsWithPrefix: false
-})
-```
-- The argument `rewriteInAreas` in rewriteSelectors method was renamed to `rewriteInSelectorsAreas`.
-- Rename `plainSelectors` in config and in the content options to `customSelectors`
-- Each `customSelector` and `component` now accepts only a string as value.
-- Custom selectors can be now generated directly from template. See [docs](/en/docs/stylify/compiler#customselectors).
-- In case you used a selectors chain for components, rewrite it to the new SCSS-like syntax.
-```javascript
-// v0.4.0
-const components = {
-	'btn--big': {
-		selectors: 'color:blue',
-		selectorsChain: 'btn'
-	}
-};
+ ```js
+// 0.5
+const compilerConfig = {
+  macros: {
+    macro: ({ macroMatch, selectorProperties, helpers, variables, dev })  => {
+      selectorProperties.add('property', macroMatch.geCapture(0));
+    }
+  }
+}
 
-// v0.5.0
-const components = {
-	'btn--big': `
-		&.btn { color:blue }
-	`
-};
-```
-- Hooks are now used like below. Check out [Stylify hooks](/en/docs/stylify/compiler#hooks).
-```javascript
-import { hooks } from '@stylify/stylify';
-
-hooks.addListener('', (options) => {});
-```
-- For Runtime
-
-```javascript
-const runtime = new Runtime();
-runtime.hooks.addListener('', (options) => {});
-```
-
-### @stylify/bundler
-- Bundler hooks are now used like below. Bundler hooks extends the default Stylify CSS hooks. Check out [Bundler hooks](/en/docs/bundler#hooks).
-```javascript
-import { hooks } from '@stylify/bundler';
-
-hooks.addListener('', (options) => {});
-```
-- Now only the `await bundler.waitOnBundlesProcessed()` can be used to wait for bundler to finish bundling. The await `bundler.bundle()` is not neccessary.
-
-### @stylify/bundler
-- Unplugin exports are now `stylifyVite`, `stylifyRollup`, `stylifyWebpack`, `stylifyEsbuild`
-
-## Upgrading from 0.3 to 0.4
-- Release: [v0.4.0](https://github.com/stylify/packages/releases/tag/v0.4.0)
-- Use only one underscore `_` (for a space character) => `border:1px_solid_blue`
-- Integration was renamed from `stylifyIntegration` to `stylify`.
-- No empty object nor configuration have to be passed in the integration initialization
-
-## Upgrading from 0.2 to 0.3
-- Release: [v0.3.0](https://github.com/stylify/packages/releases/tag/v0.3.0)
-- You can remove `selectorsAreas` for React, Vue, Angular, Nette, Lit and Alpine from configuration. They are now by default in the compiler config.
-- Move everything from `extend` object to the root:
-```javascript
-const config = {
-	// All configuration options from extend object below move here.
-	// The compiler is just example.
-	compiler: {},
-	// Extend keyword was removed
-	extend: {
-		compiler: {}
-	}
+// 0.6
+const compilerConfig = {
+  macros: {
+    macro(match) {
+       const { variables, helpers, dev } = this;
+       return  {
+         ['property']: match.getCapture(0),
+         'another-property': 'value'
+       }
+    }
+  }
 }
 ```
-- Stylify CSS Runtime now has only `Stylify.configure()` method. `Stylify.runtime.configure()` was removed.
 
-## Upgrading from 0.1 to 0.2
-- Release: [v0.2.1](https://github.com/stylify/packages/releases/tag/v0.2.1)
-- Profile have been removed
-- Autoprefixer is not neccessary to be included within your bundler config. It is now by default in bundler.
-- Selecotors can now start only by alphanumeric character.
+#### Components
+* The `this` object within the component callback now contains the Compiler instance.
+* Component definition now receives RegExpMatch instead of an array of matches. Instead of `matches[0]` use `getCapture(0)`. Matches indexes are now smaller by 1: the `fullMatch` is the whole reg exp match, and captures contain only additional captures:
+  - `matches[0]` => `match.fullMatch`
+  - `matches[1]` is now `match.getCapture(0)`
+
+```js
+// 0.5
+const compilerConfig = {
+  components: {
+     'btn:(\\S+)'({matches, variables, helpers }) {
+        return `color:${matches[1]}`
+     }
+  }
+}
+
+// 0.6
+const compilerConfig = {
+  components: {
+     'btn:(\\S+)'(match) {
+        const { variables, helpers, dev } = this;
+        return `color:${match.getCapture(0)}`
+     }
+  }
+}
+```
+
+#### Helpers
+* The `this` object within the helper callback now contains the Compiler instance
+
+#### Configurator
+* All methods except `getExistingConfigFiles` were removed. This method returns paths to existing config files.
+
+#### Compiler hooks
+* `compiler:newMacroMatch`: Now receives `Record<string, string>` instead of `SelectorProperties` class for selector properties
+
+```js
+// 0.5
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	const pixelUnit = selectorProperties.properties['font-size'];
+
+	selectorProperties.addMultiple({
+		'custom-property': 'value',
+	});
+});
+
+// 0.6
+hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
+	// Access value as an object property
+	const value = selectorProperties['font-size'];
+
+	// Assign value as an objet property
+	selectorProperties['custom-property'] = 'value';
+});
+```
+
+### @stylify/bundler
+- `cssVarsDirPath`, `sassVarsDirPath`, `lessVarsDirPath`, `stylusVarsDirPath` were renamed to `cssVarsExportPath`, `sassVarsExportPath`, `lessVarsExportPath`, `stylusVarsExportPath`. It accepts direct file path (like `./path/to/vars.css`) to which it will be saved, or only a directoy path `./path/to/cssDir`. If no file name is provided, the `stylify-variables` file name will be used with correct suffix.
+
+### @stylify/astro, @stylify/unplugin, @stylify/nuxt-module
+* Mangling is now turned off by default
+* This is because of reliability and to prevent confusion like "What just happened to my selectors" (even though, it's a feature, not a bug)
+* The mangling algorithm now mangles selectors directly in the source code. It is because mangling it within files, that are compiled by the framework and passed to vite/webpack/rollup is not reliable and therefore this support was dropped
+* If you want to enable mangling, set the mangling compiler option to true. Selectors will be then mangled only, when you run build command. Not during watch mode.
+* The build command is often run only within GitHub Actions, Gitlab Pipelines, or such, so the selectors will be mangled within the production build and not in the local environment.
+* If you need to test the build in your local environment, stash or commit your changes, run the build command, and then revert changes.
+
+```js
+// 0.6
+const compilerConfig = {
+  compiler: {
+   // This will have effect only, when the bundler is not within a watch mode
+   mangleSelectors: true
+  }
+}
+```
+
+### @stylify/unplugin
+- `transformIncludeFilter` configuration option has been removed because it is not needed anymore

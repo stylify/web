@@ -24,16 +24,15 @@ new Compiler({
 		},
 	},
 	macros: {
-		'text:(\\\\S+)': ({macroMatch, selectorProperties}) => {
-			const property = helpers.textPropertyType(
-				macroMatch.getCapture(0)
+		'text:(\\\\S+)'(match) {
+			const property = this.helpers.textPropertyType(
+				match.getCapture(0)
 			);
-			selectorProperties.add(
-				property, macroMatch.getCapture(0)
-			);
+
+			return {[property]: match.getCapture(0)}
 		}
 	}
 });`.trim();
 ---
 
-<ShikiHighlighter maxHeight="400px"  class="hp__code-editor" code={code} lang="js" />
+<ShikiHighlighter maxHeight="400px" code={code} lang="js" />

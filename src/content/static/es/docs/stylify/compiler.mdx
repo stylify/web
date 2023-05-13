@@ -74,10 +74,9 @@ Cada selector coincidente es automáticamente manipulado si está habilitado: `c
 ```javascript
 const compilerConfig = {
 	macros: {
-		'color:(\\S+?)': ({macroMatch, selectorProperties}) => {
+		'color:(\\S+?)': (match) => {
 			// color:blue => creará => color: blue
-			// También puedes usar addMultiple({})
-			selectorProperties.add('color', macroMatch.getCapture(0));
+			return {'color': match.getCapture(0)}
 		},
 	},
 };
@@ -98,6 +97,8 @@ Uso:
 
 ## selectorsPrefix
 Esta opción permite establecer, por ejemplo, el prefijo `u-` (como utilidad). Este prefijo se unirá a las macros durante la búsqueda.
+
+Cuando defina dicho prefijo, debe utilizarlo en cualquier lugar (selectores personalizados, componentes, utilidades). De lo contrario, los selectores no coincidirán ni se generarán.
 
 Gracias a esta característica puedes usar Stylify dentro de tu aplicación existente sin colisión con selectores ya existentes.
 
@@ -315,7 +316,7 @@ const compilerConfig = {
 		'sm': '(min-width: 400px)',
 		// Las pantallas también pueden ser funciones
 		// Eso te permite hacer una pantalla lo más flexible posible
-		'minw\\w+': (screen) => `(min-width: ${screen.replace('minw', '')})`
+		'minw\\w+': (screen) => `(min-width: ${screen.fullMatch.replace('minw', '')})`
 	}
 };
 ```
@@ -522,9 +523,9 @@ const compilerConfig = {
 		joinText(...texts) => '"' + texts.join(' ') + '"'
 	},
 	macros: {
-		'(bgc|zi):(\\S+?)': ({helpers, macroMatch, selectorProperties}) => {
-			const property = helpers.shortcut(macroMatch.getCapture(0));
-			macroMatch.add(property, selectorProperties.getCapture(1));
+		'(bgc|zi):(\\S+?)'(match) {
+			const property = this.helpers.shortcut(match.getCapture(0));
+			return {[property]: match.getCapture(1)}
 		}
 	}
 }
@@ -616,13 +617,26 @@ const compilerConfig = {
 <div slot="description">
 
 ## contentOptionsProcessors
-Algunas opciones de configuración se pueden definir directamente en un fichero usando `content options`. Es bueno guardar la definición de por ejemplo un componente con su HTML.
+Algunas opciones de configuración pueden definirse directamente en un fichero utilizando `content options`. Es bueno guardar la definición por ejemplo de un componente con su HTML.
+Cada opción de contenido, incluso cuando se define en un archivo, se registra globalmente. Tampoco tiene ningún tipo de alcance. Así que si defines un componente, como un botón, puede ser usado en cualquier parte de la aplicación.
+
+Las opciones de contenido pueden ser definidas en cualquier lugar dentro de un archivo como este:
+```
+stylify-<nombre de la opción>
+  Contenido de la opción de contenido
+/stylify-<nombre de la opción>
+```
+
+La mejor manera es definir las opciones de contenido dentro de un comentario multilínea, para que no sea visible en la página.
+
+<Note>Utiliza el estilo de comentario que sea válido para el tipo de archivo donde definas el componente. </Note>
 
 </div>
 <div slot="code">
 
 ```html
 <!--
+
 // Components espera un objeto javascript válido como valor sin corchetes alrededor
 stylify-components
 	button: `font-size:24px padding:4px`,
@@ -662,7 +676,7 @@ stylify-pregenerate
 // Screens espera un objeto javascript válido como valor sin los corchetes circundantes
 stylify-screens
 	'testScreen': '(min-width: 123px)',
-	'dynamic\\w+': (screen) => `(max-width: ${screen.replace('dynamic', '')})`
+	'dynamic\\w+': (screen) => `(max-width: ${screen.fullMatch.replace('dynamic', '')})`
 /stylify-screens
 -->
 ```

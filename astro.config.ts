@@ -4,8 +4,8 @@ import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
 import image from "@astrojs/image";
-const host = '0.0.0.0';
 
+const host = '0.0.0.0';
 const sitemapLocales = {};
 
 for (const lang of Object.keys(supportedLanguages)) {
@@ -17,7 +17,7 @@ export default defineConfig({
 	integrations: [
 		stylify({
 			compiler: {
-				mangleSelectors: false
+				mangleSelectors: true
 			},
 			bundles: [{
 				files: ['./src/**/*.{astro,ts,js,tsx,mdx}'],

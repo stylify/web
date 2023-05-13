@@ -264,7 +264,7 @@ import { hooks } from '@stylify/stylify';
 
 // 1. Create a function, that will work with font-size property
 const fontSizeHandler = ({ selectorProperties }) => {
-	const propertyValue = selectorProperties.properties['font-size'];
+	const propertyValue = selectorProperties['font-size'];
 
 	// If value of the font is for example a default reset to REM, do nothing
 	// Or, if the unit are not pixels for example
@@ -294,10 +294,8 @@ const fontSizeHandler = ({ selectorProperties }) => {
 
 	// Also, recalculate px to rem and add a correct line height
 	// So we don't have to add it manually each time
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`;
 }
 
 // 2. Add it into the handlers
@@ -307,7 +305,7 @@ const newMacroMatchHandlers = {
 
 // 3. Add a hook that listens to new macro match, get's appropriate handler and calls it
 hooks.addListener('compiler:newMacroMatch', ({ macroMatch, selectorProperties }) => {
-	const selectorProperties = Object.keys(data.selectorProperties.properties);
+	const selectorProperties = Object.keys(selectorProperties);
 	for (const selectorProperty of selectorProperties) {
 		const handler = newMacroMatchHandlers[selectorProperty] ?? undefined;
 
@@ -385,7 +383,7 @@ Example with Astro.build integration:
 import stylify from '@stylify/astro';
 
 export default {
-		integrations: [stylify(config)]
+	integrations: [stylify(config)]
 }
 ```
 

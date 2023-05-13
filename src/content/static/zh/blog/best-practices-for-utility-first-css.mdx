@@ -296,10 +296,9 @@ const fontSizeHandler = ({ selectorProperties }) => {
 
 	// 另外，重新计算px到rem，并添加一个正确的行高
 	// 这样我们就不用每次都手动添加了
-	selectorProperties.addMultiple({
-		'font-size': `${remFontSize}rem`,
-		'line-height': `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`
-	});
+	selectorProperties['font-size'] = `${remFontSize}rem`;
+	selectorProperties['line-height'] = `${remFontSize * (pixelFontSize >= 28 ? 1.2 : 1.7)}rem`;
+
 }
 
 // 2. 将其加入处理程序中
@@ -309,7 +308,7 @@ const newMacroMatchHandlers = {
 
 // 3. 添加一个钩子，监听新的宏匹配，获得适当的处理程序并调用它
 hooks.addListener('compiler:newMacroMatch', ({ macroMatch, selectorProperties }) => {
-	const selectorProperties = Object.keys(data.selectorProperties.properties);
+	const selectorProperties = Object.keys(selectorProperties);
 	for (const selectorProperty of selectorProperties) {
 		const handler = newMacroMatchHandlers[selectorProperty] ?? undefined;
 
@@ -389,7 +388,7 @@ stylifyRollup(config);
 import stylify from '@stylify/astro';
 
 export default {
-		integrations: [stylify(config)]
+	integrations: [stylify(config)]
 }
 ```
 
