@@ -1,5 +1,4 @@
 ---
-import DocsTitleLink from "./DocsTitleLink.astro";
 import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
 
 const lang = getLangFromUrl(Astro.url);
@@ -11,7 +10,6 @@ const packageIsBundler = packageName === 'bundler';
 ---
 <section>
 	<h2 id="where-to-next">
-		<DocsTitleLink href="where-to-next" />
 		{title}
 	</h2>
 	<ul>
@@ -23,9 +21,10 @@ const packageIsBundler = packageName === 'bundler';
 			<ul>
 				<li><a href={getLocalizedRoute('/docs/stylify/compiler#variables', lang)}>{t('Variables')}</a></li>
 				<li><a href={getLocalizedRoute('/docs/stylify/compiler#screens', lang)}>{t('Screens')}</a></li>
-				<li><a href={getLocalizedRoute('/docs/stylify/compiler#macros', lang)}>{t('Macros and selectors')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/stylify/compiler#macros', lang)}>{t('Macros and Selectors')}</a></li>
 				<li><a href={getLocalizedRoute('/docs/stylify/compiler#components', lang)}>{t('Components')}</a></li>
 				<li><a href={getLocalizedRoute('/docs/stylify/compiler#customselectors', lang)}>{t('Global Selectors')}</a></li>
+				<li><a href={getLocalizedRoute('/docs/get-started/mangling-selectors', lang)}>{t('Selectors Mangling')}</a></li>
 			</ul>
 		</li>
 	</ul>

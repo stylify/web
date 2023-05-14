@@ -168,5 +168,18 @@ const compilerConfig = {
 }
 ```
 
+You might also want to disable the mangling entirely for the local environment, so you don't have to revert changes caused by Stylify each time you run build.
+This can be easily solved by using environment variable (more info [can be found here](/en/docs/get-started/mangling-selectors)):
+
+```js
+const config = {
+	compiler: {
+		// Mangle selectors only if environment variable for mangling is set
+		// The name of the variable is up to you
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
+}
+```
+
 ### @stylify/unplugin
 - `transformIncludeFilter` configuration option has been removed because it is not needed anymore

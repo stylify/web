@@ -17,7 +17,7 @@ export default defineConfig({
 	integrations: [
 		stylify({
 			compiler: {
-				mangleSelectors: true
+				mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
 			},
 			bundles: [{
 				files: ['./src/**/*.{astro,ts,js,tsx,mdx}'],
