@@ -1,5 +1,4 @@
 ---
-import DocsTitleLink from "./DocsTitleLink.astro";
 import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
 
 const lang = getLangFromUrl(Astro.url);
@@ -11,7 +10,6 @@ const packageIsBundler = packageName === 'bundler';
 ---
 <section>
 	<h2 id="where-to-next">
-		<DocsTitleLink href="where-to-next" />
 		{title}
 	</h2>
 	<ul>
