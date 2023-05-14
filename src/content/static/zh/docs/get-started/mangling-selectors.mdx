@@ -11,16 +11,42 @@ description: "如何使用Stylify CSS编译器来处理HTML类选择器。"
 import Note from '@components/Note.astro';
 
 选择器处理是一个更高层次的优化，它将长的选择器如`.color\:blue`转换为短的`.a`。
-这可以大大减少CSS和HTML的大小。它也使得通过复制粘贴你的源代码来 "窃取 "你的网页设计更加困难。
+这可以大大减少CSS和HTML的大小。这也使得通过复制粘贴你的源代码来 "偷 "你的网页设计变得更加困难。
 
-## 配置
-Mangling默认是关闭的，你必须启用它。
+## Configuration
+包 [@stylify/bundler](/en/docs/bundler), [@stylify/unplugin](/en/docs/unplugin), [@stylify/astro](/en/docs/astro) 或 [@stylify/nuxt](/en/docs/nuxt) 的混搭过程是这样进行的：
+- 默认情况下Mangling是关闭的，你必须通过设置编译器选项`mangleSelectors`为`true`来启用它。
+- 选择器总是在源代码中直接被处理（[这就是原因](#为什么stylify会在源代码中直接混入选择器))
+- 当任何一个软件包在观察模式下运行时（观察文件的变化），选择器不会被处理。
+- 当你在你的项目中运行构建命令时（用于生产/开发环境），Stylify会对选择器进行处理。
+
+由于选择器是直接在源文件中被修改的，你可能想在本地环境中禁止修改，只在暂存和生产环境中启用，这样你就不必在每次运行构建时都要恢复Stylify造成的修改。
+这可以通过使用一个 "环境变量 "轻松解决：
+
+```js
+const config = {
+	compiler: {
+		// 只有在设置了用于纠缠的环境变量的情况下才会纠缠选择器
+		// 该变量的名称由你决定
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
+}
+```
+
+这里有一个经常使用的部署服务的环境变量指南清单：
+- [Netlify](https://docs.netlify.com/environment-variables/get-started/)
+- [Vercel](https://vercel.com/docs/concepts/projects/environment-variables)
+- [Github Actions](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow)
+- [Gitlab CI](https://docs.gitlab.com/ee/ci/variables/#define-a-cicd-variable-in-the-gitlab-ciyml-file)
+- [Digital Ocean](https://docs.digitalocean.com/products/app-platform/how-to/use-environment-variables/)
+- [Google App Engine](https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=node.js#environment_variables)
+- [Docker](https://docs.docker.com/compose/environment-variables/set-environment-variables/)
 
 ### 编译器
 
 当你想通过直接使用编译器在你的自定义编译中混合选择器时，你必须设置编译器选项 => `mangleSelectors: true`。
 
-When you want to mangle selectors within your custom compilation by using Compiler directly, you must set the compiler option => `mangleSelectors: true`.
+同样，你可以使用一个环境变量来启用/禁用本地开发环境和生产环境中的mangling。
 
 ```javascript
 import { Compiler } from '@stylify/stylify';
@@ -37,9 +63,12 @@ const css = compilationResult.generateCss();
 ```
 
 ### @stylify/bundler
-捆绑器在引擎盖下使用编译器。如果你想启用mangling，请在编译器配置中启用`mangleSelectors`：
 
 [Bundler docs](/zh/docs/bundler)
+
+捆绑器在引擎盖下使用编译器。如果你想启用mangling，将编译器配置中的`mangleSelectors`设置为`true`。
+
+<Note>请确保查看有关[选择器的减化过程是如何进行的](/zh/docs/get-started/mangling-selectors#编译器)。</Note>
 
 ```js
 const bundler = new Bundler({
@@ -51,14 +80,12 @@ const bundler = new Bundler({
 ```
 
 ### @stylify/unplugin
-当你在unplugin中启用mangling时，选择器会直接在源代码中被mangling（与bundler的方式相同）。
-这是因为在使用该插件的捆绑器（Vite、Webpack、Rollup......）所提供的内容中进行纠错并不可靠，因为这些内容经常被其他插件和框架改变。
-选择器只有在捆绑器不处于观察模式时才会被处理，所以你的本地环境应该不会受到影响，除非你直接在本地主机上运行构建。
 
 [@stylify/unplugin docs](/zh/docs/unplugin)
 
-<Note>如果你需要在localhost上运行生产构建，在你运行生产构建的命令之前，先阶段性/提交或备份你的修改。
-当你在localhost上检查了生产构建后，你可以很容易地恢复Stylify所做的修改。</Note>
+Unplugin将配置传入引擎盖下的Bundler。
+
+<Note>请确保查看有关[选择器的减化过程是如何进行的](/zh/docs/get-started/mangling-selectors#编译器)。</Note>
 
 ```js
 const config = {
@@ -74,7 +101,10 @@ const config = {
 
 [@stylify/astro docs](/zh/docs/astro)
 
-Astro插件使用与unplugin相同的配置：
+Astro将配置传递给引擎盖下的Unplugin：
+
+<Note>请确保查看有关[选择器的减化过程是如何进行的](/zh/docs/get-started/mangling-selectors#编译器)。</Note>
+
 ```js
 const config = {
 	compiler: {
@@ -87,7 +117,10 @@ const config = {
 
 [@stylify/nuxt docs](/zh/docs/nuxt)
 
-Nuxt插件使用与unplugin相同的配置：
+Nuxt插件将配置传递给引擎盖下的Unplugin：
+
+<Note>请确保查看有关[选择器的减化过程是如何进行的](/zh/docs/get-started/mangling-selectors#编译器)。</Note>
+
 ```js
 const config = {
 	compiler: {
@@ -97,10 +130,11 @@ const config = {
 ```
 
 ### @stylify/nuxt-module
-Nuxt模块自动设置了mangling，并使用了一个专门为Nuxt 2准备的旧的webpack插件。
-你不需要在那里配置任何东西。
 
 [@stylify/nuxt-module docs](/zh/docs/nuxt-module)
+
+Nuxt模块自动设置了mangling，并使用了一个专门为Nuxt 2准备的旧的webpack插件。
+你不需要在那里配置任何东西。
 
 但是你可以通过设置`mangleSelectors: false`来禁用混用：
 
@@ -111,3 +145,11 @@ const config = {
 	}
 }
 ```
+
+## 为什么Stylify会在源代码中直接混入选择器？
+- Stylify的工作方式是，它匹配类的属性并处理它的内容=>生成css
+- 当你使用一些框架时，比如Astro、Vue、Nuxt、Next、React，他们经常使用Vite、Webpack或Rollup来编译他们的源代码。
+- 在编译过程中，源代码经常从`class="color:blue"`变成`createEl(el, null, {class: 'color:blue'})`或更糟糕的`c(el, 'color:blue')`。
+- 这些变化导致Stylify不能正确地匹配类，其中一些区域没有被处理=>没有生成CSS或选择器没有被处理。
+- 解决这个问题的唯一方法是将Stylify插件放在所有其他插件之前，以接收原始输入，但由于一些插件似乎在开始时就被固定了，这并不是在所有情况下都能成功。
+- 由于上述原因，这个过程并不可靠，很难调试，而且在`0.6`中取消了对它的支持。

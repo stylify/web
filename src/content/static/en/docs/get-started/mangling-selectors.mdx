@@ -11,14 +11,42 @@ description: "How to mangle HTML class selectors using the Stylify CSS Compiler.
 import Note from '@components/Note.astro';
 
 Selectors mangling is a next level optimization that converts long selectors like `.color\:blue` to a short one `.a`.
-This can significantly decrease the CSS and HTML size. It also makes harder to "steal" your web design by copy-pasting your source code.
+This can significantly decrease the CSS and HTML size. It also makes it harder to "steal" your web design by copy-pasting your source code.
 
 ## Configuration
-Mangling is turned off by default and you have to enable it.
+The mangling process for packages [@stylify/bundler](/en/docs/bundler), [@stylify/unplugin](/en/docs/unplugin), [@stylify/astro](/en/docs/astro) or [@stylify/nuxt](/en/docs/nuxt), works like this:
+- Mangling is turned off by default and you have to enable it by setting compiler option `mangleSelectors` to `true`
+- Selectors are always mangled directly in the source code ([here is why](#why-stylify-mangles-selectors-directly-in-source-code))
+- Selectors are not mangled, when any of these packages is running in watch mode (watching files for a change)
+- When you run build command in your project (fot production/dev environment), Stylify will mangle selectors
+
+Because selectors are mangled directly within the source files, you might want to disable the mangling for local environment and enable it only in staging and production environment, so you don't have to revert changes caused by Stylify each time you run build.
+This can be easily solved by using an `environment variable`:
+
+```js
+const config = {
+	compiler: {
+		// Mangle selectors only if environment variable for mangling is set
+		// The name of the variable is up to you
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
+}
+```
+
+Here is a list of guides for environment variables for often use deploy services:
+- [Netlify](https://docs.netlify.com/environment-variables/get-started/)
+- [Vercel](https://vercel.com/docs/concepts/projects/environment-variables)
+- [Github Actions](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow)
+- [Gitlab CI](https://docs.gitlab.com/ee/ci/variables/#define-a-cicd-variable-in-the-gitlab-ciyml-file)
+- [Digital Ocean](https://docs.digitalocean.com/products/app-platform/how-to/use-environment-variables/)
+- [Google App Engine](https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=node.js#environment_variables)
+- [Docker](https://docs.docker.com/compose/environment-variables/set-environment-variables/)
 
 ### Compiler
 
 When you want to mangle selectors within your custom compilation by using Compiler directly, you must set the compiler option => `mangleSelectors: true`.
+
+Again, you can use an environment variable to enable/disable mangling for the local development environment and production.
 
 ```javascript
 import { Compiler } from '@stylify/stylify';
@@ -35,9 +63,12 @@ const css = compilationResult.generateCss();
 ```
 
 ### @stylify/bundler
-Bundler uses Compiler under the hood. If you want to enable mangling, enable the `mangleSelectors` within the compiler config:
 
 [Bundler docs](/en/docs/bundler)
+
+Bundler uses Compiler under the hood. If you want to enable mangling, set the `mangleSelectors` within the compiler config to `true`.
+
+<Note>Make sure to check out the info about [how the mangling process works](/en/docs/get-started/mangling-selectors#configuration).</Note>
 
 ```js
 const bundler = new Bundler({
@@ -49,14 +80,12 @@ const bundler = new Bundler({
 ```
 
 ### @stylify/unplugin
-When you enable mangling within the unplugin, selectors are mangled directly within the source code (in the same way like bundler does).
-This is, because mangling it within the content provided by the bundler (Vite, Webpack, Rollup, ...) in which the plugin is used, that is often changed by other plugins and frameworks, is not reliable.
-Selectors will be mangled only when the bundler is not in a watch mode so your local environment should not be affected unless you run the build directly on localhost.
 
 [@stylify/unplugin docs](/en/docs/unplugin)
 
-<Note>If you need to run the production build on localhost, stage/commit or back your changes first, before you run the command for production build.
-After you check the production build on localhost, you can easily revert changes done by Stylify.</Note>
+Unplugin passes the configuration into the Bundler under the hood.
+
+<Note>Make sure to check out the info about [how the mangling process works](/en/docs/get-started/mangling-selectors#configuration).</Note>
 
 ```js
 const config = {
@@ -72,10 +101,15 @@ const config = {
 
 [@stylify/astro docs](/en/docs/astro)
 
-Astro plugin use the same config as unplugin:
+Astro passes the configuration to Unplugin under the hood:
+
+<Note>Make sure to check out the info about [how the mangling process works](/en/docs/get-started/mangling-selectors#configuration).</Note>
+
 ```js
 const config = {
 	compiler: {
+		// This will take an effect only when the bundler where the plugin is used,
+		// is not running in a watch mode
 		mangleSelectors: true
 	}
 }
@@ -85,20 +119,26 @@ const config = {
 
 [@stylify/nuxt docs](/en/docs/nuxt)
 
-Nuxt plugin use the same config as unplugin:
+Nuxt plugin passes the configuration to the Unplugin under the hood:
+
+<Note>Make sure to check out the info about [how the mangling process works](/en/docs/get-started/mangling-selectors#configuration).</Note>
+
 ```js
 const config = {
 	compiler: {
+		// This will take an effect only when the bundler where the plugin is used,
+		// is not running in a watch mode
 		mangleSelectors: true
 	}
 }
 ```
 
 ### @stylify/nuxt-module
-Nuxt module sets the mangling automatically and uses an old webpack plugin that is prepared specifically for Nuxt 2.
-You don't need to configure anything there.
 
 [@stylify/nuxt-module docs](/en/docs/nuxt-module)
+
+Nuxt module sets the mangling automatically and uses an old webpack plugin that is prepared specifically for Nuxt 2.
+You don't need to configure anything there.
 
 However you can disable the mangling by setting `mangleSelectors: false` :
 
@@ -109,3 +149,11 @@ const config = {
 	}
 }
 ```
+
+## Why Stylify mangles selectors directly in source code
+- Stylify works in a way, that it matches class attributes and processes it's content => generates css
+- When you work with some frameworks like Astro, Vue, Nuxt, Next, React, they often use Vite, Webpack or Rollup to compile their source code
+- During the build, the source code is often transformed from `class="color:blue"` to something like `createEl(el, null, {class: 'color:blue'})` or even worse `c(el, 'color:blue')`
+- Due to these changes Stylify cannot match classes properly and some of these areas are not processed => no CSS is generated or selectors are not mangled
+- The only way to solve this would be to put the Stylify plugin before all other plugins to receive raw input, but because some plugins seems to be fixed at the beginning, this doesn't work in all cases
+- Because of reasons mentioned above, this process is not reliable, it's hard to debug and the support for it was removed in `0.6`

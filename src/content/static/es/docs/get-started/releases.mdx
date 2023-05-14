@@ -168,5 +168,18 @@ const compilerConfig = {
 }
 ```
 
+También es posible que desee desactivar el mangling por completo para el entorno local, por lo que no tiene que revertir los cambios causados por Stylify cada vez que se ejecuta la construcción.
+Esto se puede resolver fácilmente mediante el uso de variables de entorno (más información [se puede encontrar aquí](/es/docs/get-started/mangling-selectors)):
+
+```js
+const config = {
+	compiler: {
+		// Mangle selectores sólo si la variable de entorno para mangling se establece
+		// El nombre de la variable depende de usted
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
+}
+```
+
 ### @stylify/unplugin
 - La opción de configuración `transformIncludeFilter` ha sido eliminada porque ya no es necesaria

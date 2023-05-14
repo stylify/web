@@ -11,14 +11,41 @@ description: "Cómo manipular selectores de clase HTML usando el compilador CSS 
 import Note from '@components/Note.astro';
 
 Selectors mangling es una optimización de siguiente nivel que convierte selectores largos como `.color\:blue` en uno corto `.a`.
-Esto puede reducir significativamente el tamaño de CSS y HTML. También hace más difícil "robar" su diseño web copiando y pegando su código fuente.
+Esto puede disminuir significativamente el tamaño de CSS y HTML. También hace más difícil "robar" tu diseño web copiando y pegando tu código fuente.
 
-## Configuración
-Mangling está desactivado por defecto y tienes que activarlo.
+## Configuration
+El proceso de "mangling" para los paquetes [@stylify/bundler](/es/docs/bundler), [@stylify/unplugin](/es/docs/unplugin), [@stylify/astro](/es/docs/astro) o [@stylify/nuxt](/es/docs/nuxt), funciona así:
+- Mangling está desactivado por defecto y tienes que activarlo estableciendo la opción del compilador `mangleSelectors` a `true
+- Los selectores son siempre manipulados directamente en el código fuente ([aquí está el porqué](#por-qué-stylify-manipula-selectores-directamente-en-el-código-fuente))
+- Los selectores no se manipulan cuando cualquiera de estos paquetes se ejecuta en modo vigilancia (vigilando los archivos en busca de cambios).
+- Cuando ejecute el comando build en su proyecto (para producción/entorno de desarrollo), Stylify manipulará los selectores.
+
+Debido a que los selectores son manipulados directamente dentro de los archivos fuente, es posible que desee desactivar la manipulación para el entorno local y activarla sólo en el entorno de producción, por lo que no tiene que revertir los cambios causados por Stylify cada vez que ejecute la construcción.
+Esto se puede resolver fácilmente mediante el uso de una "variable de entorno":
+```js
+const config = {
+	compiler: {
+		// Mangle selectores sólo si la variable de entorno para mangling se establece
+		// El nombre de la variable depende de usted
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
+}
+```
+
+Esta es una lista de guías para las variables de entorno para los servicios de despliegue de uso frecuente:
+- [Netlify](https://docs.netlify.com/environment-variables/get-started/)
+- [Vercel](https://vercel.com/docs/concepts/projects/environment-variables)
+- [Github Actions](https://docs.github.com/en/actions/learn-github-actions/variables#defining-environment-variables-for-a-single-workflow)
+- [Gitlab CI](https://docs.gitlab.com/ee/ci/variables/#define-a-cicd-variable-in-the-gitlab-ciyml-file)
+- [Digital Ocean](https://docs.digitalocean.com/products/app-platform/how-to/use-environment-variables/)
+- [Google App Engine](https://cloud.google.com/appengine/docs/standard/reference/app-yaml?tab=node.js#environment_variables)
+- [Docker](https://docs.docker.com/compose/environment-variables/set-environment-variables/)
 
 ### Compilador
 
 Cuando quieras manipular selectores dentro de tu compilación personalizada usando el compilador directamente, debes configurar la opción del compilador => `mangleSelectors: true`.
+
+De nuevo, puede utilizar una variable de entorno para activar/desactivar el mangling para el entorno de desarrollo local y producción.
 
 ```javascript
 import { Compiler } from '@stylify/stylify';
@@ -35,9 +62,12 @@ const css = compilationResult.generateCss();
 ```
 
 ### @stylify/bundler
-Bundler utiliza Compiler bajo el capó. Si quieres habilitar el mangling, habilita los `mangleSelectors` dentro de la configuración del compilador:
 
 [Bundler docs](/es/docs/bundler)
+
+Bundler utiliza el compilador bajo el capó. Si desea habilitar el mangling, establezca el `mangleSelectors` dentro de la configuración del compilador a `true`.
+
+<Note>Asegúrese de consultar la información sobre [cómo funciona el proceso de manipulación](/es/docs/get-started/mangling-selectors#configuration).</Note>
 
 ```js
 const bundler = new Bundler({
@@ -55,8 +85,7 @@ Los selectores sólo se modificarán cuando el bundler no esté en modo de vigil
 
 [@stylify/unplugin docs](/es/docs/unplugin)
 
-<Note>Si necesita ejecutar la construcción de producción en localhost, stage/commit o retroceda sus cambios primero, antes de ejecutar el comando para la construcción de producción.
-Después de comprobar la producción de construir en localhost, usted puede fácilmente revertir los cambios realizados por Stylify.</Note>
+<Note>Asegúrese de consultar la información sobre [cómo funciona el proceso de manipulación](/es/docs/get-started/mangling-selectors#configuration).</Note>
 
 ```js
 const config = {
@@ -73,9 +102,14 @@ const config = {
 [@stylify/astro docs](/es/docs/astro)
 
 Astro plugin usa la misma configuración que unplugin:
+
+<Note>Asegúrese de consultar la información sobre [cómo funciona el proceso de manipulación](/es/docs/get-started/mangling-selectors#configuration).</Note>
+
 ```js
 const config = {
 	compiler: {
+		// Esto tendrá efecto sólo cuando el bundler donde se utiliza el plugin,
+		// no se está ejecutando en modo watch
 		mangleSelectors: true
 	}
 }
@@ -86,26 +120,42 @@ const config = {
 [@stylify/nuxt docs](/es/docs/nuxt)
 
 Nuxt plugin usa la misma configuración que unplugin:
+
+<Note>Asegúrese de consultar la información sobre [cómo funciona el proceso de manipulación](/es/docs/get-started/mangling-selectors#configuration).</Note>
+
 ```js
 const config = {
 	compiler: {
+		// Esto tendrá efecto sólo cuando el bundler donde se utiliza el plugin,
+		// no se está ejecutando en modo watch
 		mangleSelectors: true
 	}
 }
 ```
 
 ### @stylify/nuxt-module
-El módulo Nuxt configura el mangling automáticamente y usa un antiguo plugin de webpack que está preparado específicamente para Nuxt 2.
-No necesitas configurar nada ahí.
 
 [@stylify/nuxt-module docs](/es/docs/nuxt-module)
+
+El módulo Nuxt configura el mangling automáticamente y usa un antiguo plugin de webpack que está preparado específicamente para Nuxt 2.
+No necesitas configurar nada ahí.
 
 Sin embargo puedes desactivar el mangling configurando `mangleSelectors: false` :
 
 ```js
 const config = {
 	compiler: {
+		// Esto tendrá efecto sólo cuando el bundler donde se utiliza el plugin,
+		// no se está ejecutando en modo watch
 		mangleSelectors: false
 	}
 }
 ```
+
+## Por qué Stylify manipula selectores directamente en el código fuente
+- Stylify funciona de una manera, que coincide con los atributos de clase y procesa su contenido => genera CSS
+- Cuando trabajas con algún framework como Astro, Vue, Nuxt, Next, React, suelen usar Vite, Webpack o Rollup para compilar su código fuente
+- Durante la compilación, el código fuente a menudo se transforma de `class="color:blue"` a algo como `createEl(el, null, {class: 'color:blue'})` o incluso peor `c(el, 'color:blue')`.
+- Estos cambios hacen que Stylify no pueda emparejar las clases correctamente y algunas de estas áreas no son procesadas => no se genera CSS o los selectores no son manipulados.
+- La única forma de solucionar esto sería poner el plugin de Stylify antes que el resto de plugins para recibir la entrada sin procesar, pero debido a que algunos plugins parecen estar fijados al principio, esto no funciona en todos los casos
+- Debido a las razones mencionadas anteriormente, este proceso no es fiable, es difícil de depurar y el soporte para ello fue eliminado en `0.6`.

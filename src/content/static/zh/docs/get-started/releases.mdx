@@ -63,7 +63,7 @@ Stylify的发布、更新日志以及如何从一个版本更新到另一个版�
 
 #### Macros
 * 宏回调中的`this`对象现在包含编译器实例。如果你需要访问包含变量、助手和其他属性的编译器实例，你不能使用箭头函数来访问`this`对象。
-*代替`selectorProperties.add()`返回一个带有`properties: values`的对象。
+* 代替`selectorProperties.add()`返回一个带有`properties: values`的对象。
 * Matches `getCapture()`方法如果没有找到捕获，现在会返回undefined作为默认值而不是空字符串。这改善了对`match.getCapture(0)?? something`的比较。
 * `hasCapture`方法已被删除
 
@@ -105,7 +105,7 @@ const compilerConfig = {
         return `color:${matches[1]}`
      }
   }
-
+}
 
 // 0.6
 const compilerConfig = {
@@ -119,7 +119,7 @@ const compilerConfig = {
 ```
 
 #### 帮助器
-* `帮助器回调中的`this`对象现在包含编译器实例
+* 帮助器回调中的`this`对象现在包含编译器实例
 
 #### 配置器
 * 除了`getExistingConfigFiles`以外的所有方法都被删除。该方法返回现有配置文件的路径。
@@ -130,20 +130,20 @@ const compilerConfig = {
 ```js
 // 0.5
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
-	const pixelUnit = selectorProperties.properties['font-size']；
+	const pixelUnit = selectorProperties.properties['font-size'];
 
 	selectorProperties.addMultiple({
-		'custom-property'： 'value'、
+		'custom-property': 'value'、
 	});
 });
 
 // 0.6
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	// 作为一个对象属性访问值
-	const value = selectorProperties['font-size']；
+	const value = selectorProperties['font-size'];
 
 	//将值作为一个对象属性分配
-	selectorProperties['custom-property'] = 'value'；
+	selectorProperties['custom-property'] = 'value';
 });
 ```
 
@@ -165,6 +165,19 @@ const compilerConfig = {
    // 只有当捆绑器不在观察模式中时，这才会产生效果
    mangleSelectors: true
   }
+}
+```
+
+你可能还想在本地环境中完全禁用mangling，这样你就不必在每次运行build时都要恢复由Stylify引起的变化。
+这可以通过使用环境变量轻松解决（更多信息[可以在这里找到](/zh/docs/get-started/mangling-selectors)）：
+
+```js
+const config = {
+	compiler: {
+		// 只有在设置了用于纠缠的环境变量的情况下才会纠缠选择器
+		// 该变量的名称由你决定
+		mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
+	}
 }
 ```
 
