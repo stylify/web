@@ -60,6 +60,23 @@ Stylify releases, changelog and how to update from one version to another.
 - `return this` was removed from `configure` and `addMacro` method
 - CSS variables are now enabled by default and all variables are now exported as CSS variables. Also when used within a property value as `$someVariable` it is converted to `var(--someVariable)`.
 - `replaceVariablesByCssVariables` was renamed to `cssVariablesEnabled`. The `cssVariablesEnabled` option accepts a boolean value that disables CSS variables if is equal to `false`.
+- `selectorAreas` now accept only regular expressions. Not strings that are regular expressions.
+
+```js
+// 0.5
+const compilerConfig = {
+  selectorsAreas: [
+	'(?:^|\\s+)class="([^"]+)"',
+  ]
+}
+
+// 0.6
+const compilerConfig = {
+  selectorsAreas: [
+	/(?:^|\s+)class="([^"]+)"/,
+  ]
+}
+```
 
 #### Macros
 * The `this` object within the macro callback now contains the Compiler instance. If you need to access the Compiler instance that contains variables, helpers and other properties, you cannot use the arrow function to access the `this` object.

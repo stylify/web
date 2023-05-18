@@ -60,6 +60,23 @@ Stylify的发布、更新日志以及如何从一个版本更新到另一个版�
 - `configure`和`addMacro`方法中删除了`return this`。
 - 现在默认启用了CSS变量，所有的变量现在都作为CSS变量导出。另外，当在一个属性值中使用`$someVariable`时，它被转换为`var(--someVariable)`。
 - `replaceVariablesByCssVariables`被重新命名为`cssVariablesEnabled`。`cssVariablesEnabled`选项接受一个布尔值，如果等于`false`则禁用CSS变量。
+- `selectorAreas`现在只接受正则表达式。而不是属于正则表达式的字符串。
+
+```js
+// 0.5
+const compilerConfig = {
+  selectorsAreas: [
+	'(?:^|\\s+)class="([^"]+)"',
+  ]
+}
+
+// 0.6
+const compilerConfig = {
+  selectorsAreas: [
+	/(?:^|\s+)class="([^"]+)"/,
+  ]
+}
+```
 
 #### Macros
 * 宏回调中的`this`对象现在包含编译器实例。如果你需要访问包含变量、助手和其他属性的编译器实例，你不能使用箭头函数来访问`this`对象。
