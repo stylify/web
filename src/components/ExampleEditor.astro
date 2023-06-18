@@ -17,7 +17,7 @@ let previewCode = '';
 let previewCss = '';
 let iframeDocument = '';
 
-const setPreviewCode = (code) => {
+const setPreviewCode = (code: string) => {
 	try {
 		const previewCompiler = new Compiler({ dev: true });
 		const editorCompiler = new Compiler({
@@ -55,7 +55,6 @@ const setPreviewCode = (code) => {
 							align-items:center;
 							justify-content:center;
 						}
-						.preview-center
 					</style>
 					<style>${previewCss}</style>
 				</head>

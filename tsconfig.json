@@ -1,40 +1,42 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "jsx": "preserve",
-    "baseUrl": ".",
-    "paths": {
-      "@layouts/*": [
-        "src/layouts/*"
-      ],
-      "@mainLayout": [
-        "src/layouts/MainLayout.astro"
-      ],
-	  "@pageNotFoundLayout": [
-        "src/layouts/PageNotFoundLayout.astro"
-      ],
-      "@projectConfig": [
-        "src/config.ts"
-      ],
-	  "@serverHelpers": [
-        "src/serverHelpers.ts"
-      ],
-	  "@clientHelpers": [
-        "src/clientHelpers.ts"
-      ],
-      "@components/*": [
-        "src/components/*"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-	  "@assets/*": ["src/assets/*"],
-      "@content": [
-        "src/content.ts"
-      ],
-      "@images/*": [
-        "public/images/*"
-      ]
-    }
-  }
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"jsx": "preserve",
+		"baseUrl": ".",
+		"paths": {
+			"@layouts/*": [
+				"src/layouts/*"
+			],
+			"@mainLayout": [
+				"src/layouts/MainLayout.astro"
+			],
+			"@pageNotFoundLayout": [
+				"src/layouts/PageNotFoundLayout.astro"
+			],
+			"@projectConfig": [
+				"src/config.ts"
+			],
+			"@serverHelpers": [
+				"src/serverHelpers.ts"
+			],
+			"@clientHelpers": [
+				"src/clientHelpers.ts"
+			],
+			"@components/*": [
+				"src/components/*"
+			],
+			"@public/*": [
+				"public/*"
+			],
+			"@assets/*": [
+				"src/assets/*"
+			],
+			"@content": [
+				"src/content.ts"
+			],
+			"@images/*": [
+				"public/images/*"
+			]
+		}
+	}
 }

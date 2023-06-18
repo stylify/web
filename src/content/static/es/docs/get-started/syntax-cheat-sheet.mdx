@@ -109,6 +109,17 @@ A continuación se muestran ejemplos de selectores personalizados dentro del atr
 .\[h1\,h2\]\{font\-weight\:bold\} h1,
 .\[h1\,h2\]\{font\-weight\:bold\} h2 {}
 
+<!-- Atributos HTML -->
+[[data-error=^true^]]{color:red}
+👉 .\[\[data-error=^true^\]\]\{color\:red\} [data-error="true"] { color:red }
+
+[input[data-selected],div[data-background=^blue^]]{background:blue}
+👇
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} input[data-selected],
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} div[data-background="blue"] {
+	background:blue
+}
+
 <!-- Usando & -->
 [&+div]{margin-left:12px}
 👉 .\[\&\+div\]\{margin\-left\:12px\}+div {}
