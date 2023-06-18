@@ -84,7 +84,7 @@ minw640px&&maxw1023px:color:blue
 
 - Custom selectors have the following pattern:
 ```
-[css selectors]{stylify selectors split by ;}
+[css selectors]{stylify selectors split by ; (semicolon)}
 ```
 
 - When the `&` character is used within class attribute, it refers to current element.
@@ -101,6 +101,17 @@ Below are examples for custom selectors within `class` attribute:
 👇
 @media (min-width: 1024px) {
 	.\[a\]\{lg\:hover\:color\:blue\} a:hover {}
+}
+
+<!-- Attributes -->
+[[data-error=^true^]]{color:red}
+👉 .\[\[data-error=^true^\]\]\{color\:red\} [data-error="true"] { color:red }
+
+[input[data-selected],div[data-background=^blue^]]{background:blue}
+👇
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} input[data-selected],
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} div[data-background="blue"] {
+	background:blue
 }
 
 <!-- Multiple selectors split by , -->

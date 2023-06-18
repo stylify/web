@@ -84,7 +84,7 @@ minw640px&&maxw1023px:color:blue
 
 - 自定义选择器有以下模式：
 ```
-[css selectors]{stylify selectors split by ;}
+[CSS 选择器]{程式化选择器由 ; （分号}
 ```
 
 - 当在class属性中使用`&`字符时，它指的是当前元素。
@@ -108,6 +108,17 @@ minw640px&&maxw1023px:color:blue
 👇
 .\[h1\,h2\]\{font\-weight\:bold\} h1,
 .\[h1\,h2\]\{font\-weight\:bold\} h2 {}
+
+<!-- HTML 属性 -->
+[[data-error=^true^]]{color:red}
+👉 .\[\[data-error=^true^\]\]\{color\:red\} [data-error="true"] { color:red }
+
+[input[data-selected],div[data-background=^blue^]]{background:blue}
+👇
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} input[data-selected],
+.\[input\[data-selected]\]\,div\[data-background=^blue^\]\{background\:blue\} div[data-background="blue"] {
+	background:blue
+}
 
 <!-- 使用&-->
 [&+div]{margin-left:12px}
