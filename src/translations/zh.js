@@ -134,7 +134,7 @@ export default {
 	'Zero Learning Curve and Faster Coding': '零学习曲线和更快的编码',
 	'Instead of writing CSS and switching between HTML and CSS files use CSS-like selectors. The <a href="{{link1}}" class="link">syntax is similar to CSS</a>. Use <code>_</code>&nbsp;instead of space and <code>^</code>&nbsp;for a quote.': '使用类似于CSS的选择器，而不是编写CSS并在HTML和CSS文件之间切换。<a href="{{link1}}" class="link">语法与CSS</a>相似。使用<code>_</code>&nbsp;代替空格，使用<code>^</code>&nbsp;代替引用。',
 	'Use <code>_</code>&nbsp;instead of space and <code>^</code>&nbsp;for a quote.': '使用<code>_</code>&nbsp;而不是空格和<code>^</code>&nbsp;来引用。',
-	'Automatic and Extremely Tunned CSS and HTML Optimization': '自动和极度调整的CSS和HTML优化',
+	'Automatic and Extremely Tuned CSS and HTML Optimization': '自动和极度调整的CSS和HTML优化',
 	'CSS is dynamically generated into CSS files, it is optimized and HTML is mangled. No unused CSS is generated. No CSS purge is needed. No CSS files have to be created. Thanks to inner algorithm for joining selectors, almost no duplicates are generated.': 'CSS被动态地生成到CSS文件中，它被优化，HTML被处理。没有未使用的CSS被生成。不需要清除CSS。不需要创建CSS文件。由于连接选择器的内部算法，几乎没有重复的生成。',
 	'Simple CSS Bundles Splitting': '简单的CSS捆绑拆分',
 	'CSS bundles can be split into multiple files. It\'s more efficient than combining CSS manually and it also makes the CSS output smaller.': 'CSS捆绑可以被分割成多个文件。这比手动组合CSS更有效，而且还能使CSS输出更小。',
