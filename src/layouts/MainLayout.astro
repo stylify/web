@@ -6,7 +6,7 @@ import GithubButton from "@components/GithubButton.astro";
 import LayoutHeaderSocialIcons from "@components/LayoutHeaderSocialIcons.astro";
 import FooterDocsLinks from '@components/FooterDocsLinks.astro';
 import { queryStaticContent } from '@content';
-import { getLocalizedRoute, getLangFromUrl, useTranslations, getLangFromSlug } from '@serverHelpers';
+import { getLocalizedRoute, getLangFromUrl, useTranslations } from '@serverHelpers';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
