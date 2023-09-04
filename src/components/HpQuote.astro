@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, getLocalizedRoute, useTranslations } from '@serverHelpers';
-import { Image } from '@astrojs/image/components';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);

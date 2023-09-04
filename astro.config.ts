@@ -3,7 +3,6 @@ import { stylify } from '@stylify/astro';
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
-import image from "@astrojs/image";
 
 const host = '0.0.0.0';
 const sitemapLocales = {};
@@ -31,10 +30,7 @@ export default defineConfig({
 				locales: sitemapLocales
 			}
 		}),
-		mdx(),
-		image({
-			serviceEntryPoint: '@astrojs/image/sharp'
-		})
+		mdx()
 	],
 	markdown: {
 		syntaxHighlight: 'prism',
