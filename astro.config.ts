@@ -1,5 +1,4 @@
 import { siteUrl, defaultLang, supportedLanguages } from './src/config.ts';
-import { stylify } from '@stylify/astro';
 import { defineConfig } from 'astro/config';
 import sitemap from "@astrojs/sitemap";
 import mdx from "@astrojs/mdx";
@@ -14,16 +13,6 @@ for (const lang of Object.keys(supportedLanguages)) {
 // https://astro.build/config
 export default defineConfig({
 	integrations: [
-		stylify({
-			compiler: {
-				mangleSelectors: typeof process.env.STYLIFY_MANGLE_SELECTORS !== 'undefined'
-			},
-			bundles: [{
-				files: ['./src/**/*.{astro,ts,js,tsx,mdx}'],
-				outputFile: './src/assets/styles/stylify.css'
-			}],
-			importDefaultBundle: false
-		}),
 		sitemap({
 			i18n: {
 				defaultLocale: defaultLang,
