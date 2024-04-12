@@ -1,5 +1,4 @@
-import { hooks } from '@stylify/bundler';
-import { defineConfig } from '@stylify/astro';
+import { hooks, defineConfig } from '@stylify/bundler';
 
 hooks.addListener('compiler:newMacroMatch', ({selectorProperties}) => {
 	const pixelUnit = selectorProperties['font-size'];

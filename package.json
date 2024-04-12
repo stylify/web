@@ -19,7 +19,7 @@
     "@codemirror/theme-one-dark": "^6.1",
     "@docsearch/css": "^3.5",
     "@docsearch/js": "^3.5",
-    "@stylify/astro": "^0.6",
+    "@stylify/bundler": "^0.6",
     "astro": "^3.0",
     "codemirror": "^6.0",
     "instant.page": "^5.2",

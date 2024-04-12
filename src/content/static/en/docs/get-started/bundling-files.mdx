@@ -9,38 +9,6 @@ title: "Bundling files"
 description: "How to bundle CSS files for any web project you want."
 ---
 
-In case you don't plan to use any integration like [@stylify/unplugin](/en/docs/unplugin) or [@stylify/astro](/en/docs/astro), you can use [@stylify/bundler](/en/docs/bundler) directly.
+import {Content as BundlingFiles} from '../_bundling-files.mdx'
 
-Stylify Bundler is a package that allows you to generate CSS files for your project. You can bundle any file format. The easiest way is to generate all CSS into one file. However the amount of bundles is not limited.
-
-```javascript
-import { Bundler } from '@stylify/bundler';
-
-const isDev = process.argv[process.argv.length - 1] === '--w';
-
-// http://stylifycss.com/docs/bundler#configuration
-const bundler = new Bundler({
-	watchFiles: isDev,
-	// Optional
-	compiler: {
-		variables: {},
-		macros: {},
-		components: {},
-		// If you want to mangle selectors
-		mangleSelectors: !isDev
-		// ...
-	}
-})
-
-bundler.bundle([
-	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.html'] },
-	// Bundler uses https://npmjs.com/package/fast-glob
-	// You can use its glob syntax
-	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
-]);
-
-await bundler.waitOnBundlesProcessed();
-```
-
-- Now, if you run `node stylify.js`, it will bundle files and mangle selectors.
-- If you add `--w`, it will also watch files `node stylify.js --w`.
+<BundlingFiles />

@@ -1,0 +1,74 @@
+import WhereToNext from '../../../../components/WhereToNext.astro';
+
+Stylify uses standalone [Bundler](/en/docs/bundler) for bundling CSS files.
+The Bundler can be used with any framework and the bundler and the configuration is always the same and only at one place.
+
+You can bundle any file format. Stylify treats all files as a string.
+The easiest way is to generate all CSS into one file.
+However the amount of bundles is not limited.
+
+Create a `stylify.js` file:
+```javascript
+import { Bundler } from '@stylify/bundler';
+
+const isDev = process.argv[process.argv.length - 1] === '--w';
+
+// http://stylifycss.com/docs/bundler#configuration
+const bundler = new Bundler({
+	watchFiles: isDev,
+	// Optional
+	compiler: {
+		variables: {},
+		macros: {},
+		components: {},
+		// If you want to mangle selectors
+		mangleSelectors: !isDev
+		// ...
+	}
+})
+
+bundler.bundle([
+	{ outputFile: 'path/to/output.css', files: ['path/to/layout.html', 'path/to/page.php'] },
+	// Bundler uses https://npmjs.com/package/fast-glob
+	// You can use its glob syntax
+	{ outputFile: 'path/to/another.css', files: ['path/**/*.html'] }
+]);
+
+await bundler.waitOnBundlesProcessed();
+```
+
+## Standalone usage
+Now, if you run `node stylify.js`, it will bundle files and mangle selectors.
+If you add `--w`, it will also watch files `node stylify.js --w`.
+
+To simplify the usage of these development commands, add them into the `package.json` file, if you have one:
+
+```json
+"scripts": {
+	"stylify:build": "node stylify.js",
+	"stylify:dev": "node stylify.js --w"
+}
+```
+
+### How to use the Bundler with other bundlers
+If you plan to use Stylify with Bundlers like Vite, Rollup or Webpack you will need to run paralel tasks for the watch mode.
+
+Install [concurrently](https://github.com/open-cli-tools/concurrently):
+
+```
+yarn add -D concurrently
+npm i concurrently
+```
+
+Edit commands in the `package.json`.
+If you don't use Vite, replace `vite` with the command of your bundler or framework:
+```json
+"scripts": {
+	"build": "npm stylify:build & vite build",
+	"dev": "concurrently 'npm stylify:dev' 'vite dev'",
+	"stylify:build": "node stylify.js",
+	"stylify:dev": "node stylify.js --w"
+}
+```
+
+<WhereToNext packageName="bundler" />

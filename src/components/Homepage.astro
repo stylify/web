@@ -12,6 +12,7 @@ import Affiliate from './Affiliate.astro';
 import HpHeader from '@components/HpHeader.astro';
 import { getLangFromUrl, getLocalizedRoute, getStaticPathsForSupportedLanguages, useTranslations } from '@serverHelpers';
 import { queryStaticContent } from '@content';
+import { Image } from 'astro:assets';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -46,6 +47,21 @@ stylify-components
 
 	<div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div>
 
+<!-- 	<div class="container margin-top:32px">
+		<h2 class="hp-section-title margin-bottom:8px">{t('Webperf Tips')}</h2>
+		<div class="md:font-size:20px [a]{color:$blue1} margin-bottom:24px text-align:center" set:html={t('<a href="{{link1}}" target="_blank">Follow me on my youtube channel</a> to learn how to find webperf issues on your website.', {link1: 'https://youtube.com/@machy8?sub_confirmation=1'})}></div>
+		<div class="margin:0_-8px md:margin:0_-12px display:grid minw1000px:margin:0 padding:0_8px grid-template-columns:1fr_1fr_1fr flex-wrap:nowrap gap:24px overflow:auto [a]{min-width:300px} [a:hover_img]{filter:brightness(1.1)}">
+			<a href="https://www.youtube.com/watch?v=HB85upkDBxE" aria-label="https://www.youtube.com/watch?v=HB85upkDBxE" target="blank">
+				<Image src="/images/youtube/webperf-tips-gastein.jpg" loading="lazy" fetchpriority="low" alt="" width="2" height="1" class="width:100% height:auto border-radius:4px transition:filter_.3s">
+			</a>
+			<a href="https://www.youtube.com/watch?v=3CV7ITSdv80" aria-label="https://www.youtube.com/watch?v=3CV7ITSdv80" target="blank">
+				<Image src="/images/youtube/webperf-tips-pilatus.jpg" loading="lazy" fetchpriority="low" alt="" width="2" height="1" class="width:100% height:auto border-radius:4px transition:filter_.3s">
+			</a>
+			<a href="https://www.youtube.com/watch?v=ISLokZEwIU8" aria-label="https://www.youtube.com/watch?v=ISLokZEwIU8" target="blank">
+				<Image src="/images/youtube/webperf-tips-summerisland.jpg" loading="lazy" fetchpriority="low" alt="" width="2" height="1" class="width:100% height:auto border-radius:4px transition:filter_.3s">
+			</a>
+		</div>
+	</div> -->
 	<section id="why-stylify" class="container text-align:center">
 		<h2 class="hp-section-title">
 			{t('Why Stylify instead of pure CSS or Inline Styles?')}
