@@ -44,28 +44,7 @@ stylify-components
 <div class="[section]{scroll-margin-top:50px} [>_section]{margin-top:48px;margin-bottom:48px;md:margin-top:64px;md:margin-bottom:64px;lg:margin-top:84px;lg:margin-bottom:84px}">
 	<HpHeader />
 
-	<div class="display:flex justify-content:center margin-top:24px"><Affiliate /></div>
-
-	<section id="why-stylify" class="container text-align:center">
-		<h2 class="hp-section-title">
-			{t('Why Stylify instead of pure CSS or Inline Styles?')}
-		</h2>
- 		<div class="md:font-size:20px [a]{color:$blue1}" set:html={t('Because of <a href="{{link1}}">fewer CSS headaches</a>, <a href="{{link2}}">faster coding</a>, and <a href="{{link3}}">extremely optimized output</a>&nbsp;💎.', {link1: `${getLocalizedRoute('/docs/get-started/why-stylify-css', lang)}#${t('problems-stylify-css-tries-to-solve')}`, link2: `${getLocalizedRoute('/docs/get-started/why-stylify-css', lang)}#${t('faster-coding')}`, link3: `${getLocalizedRoute('/docs/get-started/why-stylify-css', lang)}#${t('output-optimization')}`})}></div>
-	</section>
-	<HpFans />
-
-	<section id="showcase" class="container text-align:center">
-		<h2 class="hp-section-title">{t('Showcase')}</h2>
-		<ShowcaseList limit={3} />
-		<div class="text-align:center margin-top:24px">
-			<a href={getLocalizedRoute('/showcase', lang)} class="btn btn--hp margin-top:12px">
-				{t('Check out other projects')}
-				<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
-			</a>
-		</div>
-	</section>
-
-	<HpQuote />
+	<div class="display:flex justify-content:center margin-top:24px margin-bottom:24px"><Affiliate /></div>
 
 	<div class="
 		container display:grid gap:24px row-gap:48px md:row-gap:64px grid-template-columns:1fr md:grid-template-columns:repeat(auto-fit,minmax(500px,1fr))
@@ -110,6 +89,21 @@ stylify-components
 	<HpComponents />
 
 	<HpFeatures />
+
+	<HpFans />
+
+	<section id="showcase" class="container text-align:center">
+		<h2 class="hp-section-title">{t('Showcase')}</h2>
+		<ShowcaseList limit={3} />
+		<div class="text-align:center margin-top:24px">
+			<a href={getLocalizedRoute('/showcase', lang)} class="btn btn--hp margin-top:12px">
+				{t('Check out other projects')}
+				<i class="icon icon-arrow-down-circle display:inline-block margin-left:8px transform:rotate(-90deg)"></i>
+			</a>
+		</div>
+	</section>
+
+	<HpQuote />
 
 	<HpMaterialThemeGuide />
 
